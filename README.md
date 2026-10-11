@@ -12,7 +12,7 @@ Public site for the cloth-feed gripper, a UC Berkeley ME102B design that has not
 | `licenses/` | licence texts for the third-party assets; generated |
 | `facts.json`, `tokens.css`, `provenance.json` | figures, design tokens and file hashes read from the source; generated |
 
-`scripts/sync.py` writes every generated file from the source repository at one commit, and `provenance.json` records that commit and the hash of each file. The landing page shows no figure that is not read from `facts.json`.
+`scripts/sync.py` writes every generated file from the source repository at one commit. `provenance.json` records the source repository name, that commit, the sync date, and each served file's public path, sha256 and size; it says nothing about the source repository's layout. The landing page shows no figure that is not read from `facts.json`.
 
 ## Commands
 
@@ -31,12 +31,20 @@ npm run lint
 
 ## Checks
 
-- `scripts/check_public.py` looks for emails, phones, addresses, student IDs, local paths, credential shapes, names of people and handout text, in every file including the text inside the review app. A hit passes only with a reviewed line in `scripts/public-allowlist.txt`. `--self-test` plants one hit per rule.
+- `scripts/check_public.py` looks for emails, phones, addresses, student IDs, local paths, credential shapes, names of people, handout-style phrases and paths from the source repository (read from `scripts/sync.py`'s own input table), in every file including the text inside the review app, and for any digit typed into the landing page's text. A hit passes only with a reviewed line in `scripts/public-allowlist.txt` that also states how many times it occurs; a different count fails. `--self-test` plants one hit per rule. A shingle comparison against a course handout runs only with `--handout <file>` and has not been run.
 - `npm test` covers console errors, sideways scroll, broken text, the hero poster, film playback, the 3D canvas, each landing door, the Home link, and that nothing outside `public/` is served.
 
 ## Deploying
 
 `vercel.json` sets `public` as the output directory with no framework and no build command. Deploying is a separate step that needs the owner's say-so.
+
+After a deploy, run the guard against the live address:
+
+```powershell
+npm run check:live -- https://cloth-feed-gripper.vercel.app
+```
+
+It prints one line per path and ends with `check_live: N ok, M failed`. It exits non-zero unless the landing page, `/review/`, `/facts.json`, the full film (HEAD) and a licence text return 200, and every repository file outside `public/` (`/AGENTS.md`, `/TASK.md`, `/README.md`, `/SPEC.md`, `/package.json`, `/vercel.json`, `/.agents/INDEX.md`, `/scripts/sync.py`, `/tests/deploy.spec.mjs`, `/.gitignore`, `/site.config.json`) returns 404.
 
 ## Runtime dependencies
 

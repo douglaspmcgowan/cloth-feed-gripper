@@ -9,8 +9,9 @@
     "sync": "python scripts/sync.py",
     "check:public": "python scripts/check_public.py",
     "check:public:selftest": "python scripts/check_public.py --self-test",
+    "check:live": "node scripts/check_live.mjs",
     "test": "playwright test",
-    "lint": "python -m py_compile scripts/sync.py scripts/check_public.py && node --check scripts/extract_facts.mjs && node --check scripts/serve.mjs && node --check scripts/screens.mjs"
+    "lint": "python -m py_compile scripts/sync.py scripts/check_public.py && node --check scripts/extract_facts.mjs && node --check scripts/serve.mjs && node --check scripts/screens.mjs && node --check scripts/check_live.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.0"
