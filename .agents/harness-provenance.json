@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "authority": "agent-harness/portable-project-contract/v3",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "f046f795c99b79d3ac530ab80bb049f0d6747705134cc15b864fee12cf3fb5d1"
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49"
+    },
+    {
+      "path": ".cursor\\rules\\00-project-contract.mdc",
+      "sha256": "ac8e0383a24ebc8c03ab6d3cc18cf9dda95def81eadeb442413ee12cde1c65b2"
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "4792b698d9a6f6349578b30f50d045852091ed4baff6ff9ad259985e5f929113"
+    },
+    {
+      "path": "MEMORY.md",
+      "sha256": "dd367459aa282d38f9fc04dfbde779fed3b7ae2ac9951eafe5d61cd7b4b263ed"
+    },
+    {
+      "path": "skills-manifest.json",
+      "sha256": "ed308c6a024db7e013c4f54bb6900360041ffb78fdfcd7b31791fa67feee7035"
+    },
+    {
+      "path": "data-manifest.yaml",
+      "sha256": "783ff81174dc10ef701248d034219326d2ae5d591c1ec07f78fd42ea697c709c"
+    },
+    {
+      "path": "secret-manifest.json",
+      "sha256": "fdeabe86c2ae1b908c9a9b65be45741a365b5391fda192eb8a132e04185fe847"
+    },
+    {
+      "path": "secret-manifest.md",
+      "sha256": "8e3992867cc5c03a2dabf4cec1ae571c7ea22bdc9639df8ff8515a5f4b9f56d9"
+    },
+    {
+      "path": ".env.example",
+      "sha256": "14134afc7db61c52b05c18946421dbedd5094bd18dfcb5b3d8cb7a255da25b16"
+    },
+    {
+      "path": ".gitleaks.toml",
+      "sha256": "7ac28bee66a46975ccaaab49865783c81e2b916a69448540ebe300647ec41aed"
+    },
+    {
+      "path": ".github\\workflows\\gitleaks.yml",
+      "sha256": "119775586cd0d192e66eff7e6e77e603d59b96424459a9a175794c80de335357"
+    },
+    {
+      "path": ".agents\\feedback\\FEEDBACK-LOG.md",
+      "sha256": "fe02ff6fa43a47243a351c77911024049049e1a4803b7c0b95b2694e2e805608"
+    },
+    {
+      "path": ".agents\\skill-pathways.json",
+      "sha256": "0548f666d2d9fa5583d593b73172d91ed5a112b6cbc9c69611b138f244ca4f38"
+    },
+    {
+      "path": "PRODUCT.md",
+      "sha256": "783f939e3201afb15fc205db852191a701dbc0db7510388488d4848a4a698749"
+    }
+  ]
+}

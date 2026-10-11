@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "project": "cloth-feed-gripper",
+  "bindings": [
+    {
+      "capability": "deep-search",
+      "canonical": [
+        "deep-search"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "browser-use",
+      "canonical": [
+        "browser-use"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "recon",
+      "canonical": [
+        "recon"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "ultra-skill",
+      "canonical": [
+        "ultraskill"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "task-design",
+      "canonical": [
+        "craft"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "work-scope",
+      "canonical": [
+        "work-scope"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "engineering-workflow",
+      "canonical": [
+        "swe"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "interface-workflow",
+      "canonical": [
+        "impeccable"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "parallel-work",
+      "canonical": [
+        "swe"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "skill-discovery",
+      "canonical": [
+        "swe"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "skill-authoring",
+      "canonical": [
+        "ultraskill"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "design-review",
+      "canonical": [
+        "design-review"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "harden-tail",
+      "canonical": [
+        "pathway",
+        "tech-debt-audit",
+        "review",
+        "design-review",
+        "user",
+        "probe",
+        "hone",
+        "spar"
+      ],
+      "chain": "harden-tail",
+      "steps": [
+        "tech-debt-audit",
+        "review",
+        "design-review",
+        "user",
+        "probe",
+        "hone",
+        "spar"
+      ],
+      "delivery": "pathway"
+    },
+    {
+      "capability": "probe",
+      "canonical": [
+        "probe"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "spar",
+      "canonical": [
+        "spar"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "spec",
+      "canonical": [
+        "spec"
+      ],
+      "delivery": "vendored"
+    },
+    {
+      "capability": "correct",
+      "canonical": [
+        "correct"
+      ],
+      "delivery": "vendored"
+    }
+  ]
+}
