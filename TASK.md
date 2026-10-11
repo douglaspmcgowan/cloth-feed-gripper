@@ -16,10 +16,7 @@ Public site for the cloth-feed gripper: `/` landing page with the film, `/review
 
 ## Active
 
-- [ ] 4 Playwright tests (`npm test`) at 1440x900, 768x1024, 375x812, light and dark
-- [ ] 5 `AGENTS.md` project section, `README.md`, `SPEC.md`, screenshots in `docs/screens/`
-- [ ] 6 Three real-browser jobs (a) film with sound (b) failing requirements (c) servo-horn finding and back home
-- [ ] 7 Proving commands, merge `origin/main`, push `agent/site-v1`, open pull request
+- [~] 7 Proving commands, merge `origin/main`, push `agent/site-v1`, open pull request
 
 ## Queue
 
@@ -37,6 +34,9 @@ Public site for the cloth-feed gripper: `/` landing page with the film, `/review
 - [x] 1 `scripts/sync.py` + `scripts/extract_facts.mjs`: copy inputs at 996dce6, write `public/review/index.html`, `public/media/*`, `public/provenance.json`, `public/facts.json`
 - [x] 2 `public/index.html` landing page (hero teaser, full film, what it is, where it stands, doors, build log, credits, light and dark)
 - [x] 3 `vercel.json` and `scripts/check_public.py` with reviewed allowlist
+- [x] 4 Playwright tests: `npm test` 145 passed, 65 skipped (viewport-independent deploy checks run once), exit 0, 3 sizes x light and dark
+- [x] 5 `AGENTS.md` project section, `README.md`, `SPEC.md` (all boxes ticked against their proof), screenshots in `docs/screens/`
+- [x] 6 Real-browser jobs at 375 and 1440 (`node scripts/jobs.mjs`): film played to its end unmuted (62 s); 2 failing requirements read from the landing page; servo-horn finding reached and Home returns to `/`; no console errors
 
 <!-- Keep only current completion evidence here; durable history belongs in LOG.md. -->
 
