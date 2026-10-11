@@ -12,11 +12,17 @@
 
 ## Goal
 
-Record the active outcome when work begins.
+Public site for the cloth-feed gripper: `/` landing page with the film, `/review/` the design review app, built and proved locally, pull request `agent/site-v1` against `main`. No deploy, no merge (Douglas, 2026-10-10: "put the video in the website, make the website its own repo, put it on vercel, make it public").
 
 ## Active
 
-<!-- Move the item currently being worked here. -->
+- [~] 1 `scripts/sync.py` + `scripts/extract_facts.mjs`: copy inputs at 996dce6, write `public/review/index.html`, `public/media/*`, `public/provenance.json`, `public/facts.json`
+- [ ] 2 `public/index.html` landing page (hero teaser, full film, what it is, where it stands, doors, build log, credits, light and dark)
+- [ ] 3 `vercel.json` and `scripts/check_public.py` with reviewed allowlist
+- [ ] 4 Playwright tests (`npm test`) at 1440x900, 768x1024, 375x812, light and dark
+- [ ] 5 `AGENTS.md` project section, `README.md`, `SPEC.md`, screenshots in `docs/screens/`
+- [ ] 6 Three real-browser jobs (a) film with sound (b) failing requirements (c) servo-horn finding and back home
+- [ ] 7 Proving commands, merge `origin/main`, push `agent/site-v1`, open pull request
 
 ## Queue
 

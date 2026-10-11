@@ -1,0 +1,235 @@
+{
+  "requirements": {
+    "total": 27,
+    "counts": {
+      "pass": 13,
+      "risk": 9,
+      "fail": 2,
+      "open": 3
+    },
+    "items": [
+      {
+        "name": "At least one moving transmission",
+        "status": "open",
+        "evidence": "A 1:1 spur-sector pair is in CAD. The instructor must confirm that a 1:1 pair counts; the fallback is a pinion stage of 2:1 or more.",
+        "evidenceId": "gears-picks"
+      },
+      {
+        "name": "At least one DC motor",
+        "status": "open",
+        "evidence": "The servo has a brushed DC motor inside it, which needs the instructor's confirmation. Fallback: a gearmotor with an 8:1 stage that closes in 0.58 s.",
+        "evidenceId": "torque-shortlist"
+      },
+      {
+        "name": "At least one analog input",
+        "status": "pass",
+        "evidence": "Force sensor on finger B into an analog pin, sampled at 1 kHz. The bench read trace is still to be logged.",
+        "evidenceId": "firmware-faults"
+      },
+      {
+        "name": "At least one digital button",
+        "status": "pass",
+        "evidence": "Start button (a press advances, a 0.8 s hold stops) and the jaw-open limit, both debounced and logged.",
+        "evidenceId": "firmware-pins"
+      },
+      {
+        "name": "Microcontroller",
+        "status": "pass",
+        "evidence": "ESP32 DevKitC. The compile exits 0 at 24 % of flash.",
+        "evidenceId": "firmware-gates"
+      },
+      {
+        "name": "State machine and event-driven code",
+        "status": "pass",
+        "evidence": "12 states and a 68-row transition table with no blocking waits. The host test takes every row and passes 695 checks.",
+        "evidenceId": "firmware-states"
+      },
+      {
+        "name": "PWM actuator, not the arm's serial bus",
+        "status": "pass",
+        "evidence": "DS3218MG at 50 Hz, 500 to 2500 µs.",
+        "evidenceId": "torque-shortlist"
+      },
+      {
+        "name": "At most $50 per actuator",
+        "status": "pass",
+        "evidence": "DS3218MG, $12.99.",
+        "evidenceId": "parts-list"
+      },
+      {
+        "name": "Compact",
+        "status": "risk",
+        "evidence": "Keep-outs are clean in CAD. Roll gaps: 4.17 mm in the -2 to -1 mm band; 4.07 mm in the -1 to 0 mm band; 0.95 mm in the 0 to 1 mm band; 1.27 mm in the 1 to 2 mm band; 0.59 mm in the 2 to 5.3 mm band. Outside the stock envelope in 1 band.",
+        "evidenceId": "fit-findings"
+      },
+      {
+        "name": "Mass-moment within 43,720 g mm",
+        "status": "fail",
+        "evidence": "144.4 g with cloth, centred 38.1 mm past the horn: 50,131 g mm, 115 % of budget.",
+        "evidenceId": "mass-payload"
+      },
+      {
+        "name": "Public, cited sources only",
+        "status": "pass",
+        "evidence": "Every analysis document lists its sources and marks assumed numbers.",
+        "evidenceId": ""
+      },
+      {
+        "name": "Tip stiffness 0.88 to 1.63 N/mm",
+        "status": "pass",
+        "evidence": "1.101 N/mm in plane and 0.922 across layers. Bench test pending.",
+        "evidenceId": "finger-stiffness"
+      },
+      {
+        "name": "Gear strength at hold, cap and stall",
+        "status": "pass",
+        "evidence": "Printed PA6-CF pair: root safety factor 5.09, 2.82 and 1.61; shock 1.59.",
+        "evidenceId": "gears-picks"
+      },
+      {
+        "name": "Hold at least 5 N per pad",
+        "status": "risk",
+        "evidence": "The servo holds 0.819 N m against 0.792 needed. It fails if tension exceeds 2.07 N or friction drops below 0.386.",
+        "evidenceId": "torque-arm"
+      },
+      {
+        "name": "Pad force at most 10 N",
+        "status": "risk",
+        "evidence": "The firmware caps the squeeze at 5.14° past touch, which keeps any finger in the stiffness window at or under 10 N by position, behind a 7.5 N soft limit and an 8 N trip. The finger still folds at 8.88 N.",
+        "evidenceId": "finger-fold"
+      },
+      {
+        "name": "Hold at most 40 % of stall",
+        "status": "risk",
+        "evidence": "Needs 20.2 kg cm of stall; the servo gives 20.88 at 6.35 V. Datasheets differ by 0.4 kg cm.",
+        "evidenceId": "torque-arm"
+      },
+      {
+        "name": "Moment arm at most 65 mm",
+        "status": "pass",
+        "evidence": "65.0 mm in CAD.",
+        "evidenceId": "model-3d"
+      },
+      {
+        "name": "Jaw range −11° to +20°",
+        "status": "pass",
+        "evidence": "The jaw sweep in CAD is clash-free at −11.0, −7.4, 0.0, 10.0, 20.0° against every static part.",
+        "evidenceId": "fit-3d"
+      },
+      {
+        "name": "Full close within 0.5 s",
+        "status": "risk",
+        "evidence": "The firmware simulation touches at 0.50 to 0.51 s and reaches 4.5 N at 0.60 to 0.70 s. The torque model says 0.278 s. Needs a ruling and a timed video.",
+        "evidenceId": "firmware-step"
+      },
+      {
+        "name": "Back off a stall within 200 ms",
+        "status": "risk",
+        "evidence": "Host test: the back-off begins 140 ms after over-current starts and its command completes at 200 ms. The current threshold and the blocked-finger test are pending.",
+        "evidenceId": "firmware-faults"
+      },
+      {
+        "name": "Calibration stores the contact angle",
+        "status": "pass",
+        "evidence": "Calibration zeroes the sensor, closes at 20 °/s to 0.5 N and stores the contact angle. The simulation lands within 0.2° of the true angle.",
+        "evidenceId": "firmware-step"
+      },
+      {
+        "name": "Wrist interface",
+        "status": "risk",
+        "evidence": "A separate wrist-mount plate on the horn. The pilot fit reaches a capability of only 1.25, so a coupon is needed.",
+        "evidenceId": "tolerances-stacks"
+      },
+      {
+        "name": "Camera provision",
+        "status": "pass",
+        "evidence": "A wrist camera pad is modelled. The primary camera is fixed off the arm.",
+        "evidenceId": "camera-placements"
+      },
+      {
+        "name": "Work cell",
+        "status": "open",
+        "evidence": "The layout sketch has not been checked against the shoulder reach rule.",
+        "evidenceId": ""
+      },
+      {
+        "name": "Life of at least 100,000 grips",
+        "status": "risk",
+        "evidence": "Gears pass at 6.2e7 grips. The finger's pessimistic hot spot is 4.3e3 grips, rising to 3.1e6 with the printed knock-down.",
+        "evidenceId": "dyno-life"
+      },
+      {
+        "name": "Case at most 60 °C after 30 min",
+        "status": "fail",
+        "evidence": "The thermal model fails 9 of 12 cases, for example 115 °C at 40 °C ambient. Measure it.",
+        "evidenceId": "dyno-thermal"
+      },
+      {
+        "name": "6 V rail delivers 3 A",
+        "status": "risk",
+        "evidence": "The rail is specified at 6.5 V and 3 A. One motor fit implies a 3.77 A stall.",
+        "evidenceId": "dyno-current"
+      }
+    ],
+    "design_basis_total": 27
+  },
+  "mass": {
+    "total_g_incl_cloth": 144.4,
+    "com_mm_past_horn": 38.1,
+    "mass_moment_gmm": 50131,
+    "budget_gmm": 43720,
+    "budget_use": 1.147,
+    "within_budget": false,
+    "mass_limit_g": 125.9216589861751
+  },
+  "thermal": {
+    "cases_failing": 9,
+    "cases_total": 12
+  },
+  "tolerances": {
+    "stacks_total": 20,
+    "stacks_passing_as_designed": 1
+  },
+  "decisions": {
+    "total": 7,
+    "items": [
+      {
+        "id": "open-decision-mass",
+        "title": "Accept the mass budget miss, or cut weight"
+      },
+      {
+        "id": "open-decision-motor",
+        "title": "Does the servo count as the DC motor, and the 1:1 pair as the transmission"
+      },
+      {
+        "id": "open-decision-close",
+        "title": "Close time: contact or 5 N within 0.5 s"
+      },
+      {
+        "id": "open-decision-fold",
+        "title": "Squeeze cap has zero margin against a finger that folds early"
+      },
+      {
+        "id": "open-decision-horn",
+        "title": "The servo horn turns 0.2 mm from the housing wall"
+      },
+      {
+        "id": "open-decision-deck",
+        "title": "Three deck screws cannot go in as drawn"
+      },
+      {
+        "id": "open-decision-dogpin",
+        "title": "The dog pins in the BOM are too short for the CAD"
+      }
+    ]
+  },
+  "bench_checks": {
+    "total": 36,
+    "views": 8
+  },
+  "source": {
+    "repository": "https://github.com/douglaspmcgowan/berkeley-ai-tutor",
+    "commit": "996dce6fa1e48ac8f4e91e062196e3d8647586d0",
+    "committed": "2026-10-10T21:37:32-07:00"
+  }
+}
