@@ -16,10 +16,12 @@ const SIZES = [
 
 export default defineConfig({
   testDir: "tests",
-  timeout: 90_000,
+  timeout: 150_000,
   expect: { timeout: 20_000 },
   fullyParallel: true,
-  workers: process.env.CI ? 2 : 3,
+  // The review app is a 10 MB page with a 3D scene; three or more at once starve a shared machine
+  // (timeouts, crashed workers). Override with PW_WORKERS on a roomy one.
+  workers: Number(process.env.PW_WORKERS) || 2,
   reporter: [["list"]],
   use: {
     baseURL: `http://127.0.0.1:${PORT}`,
