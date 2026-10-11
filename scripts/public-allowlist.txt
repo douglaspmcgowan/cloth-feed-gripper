@@ -1,0 +1,8 @@
+# Reviewed exceptions for scripts/check_public.py. One line each:  path | rule | matched text | one-line reason
+# A line that matches no hit, or lacks a reason, fails the check. Reviewed 2026-10-10 against source commit 996dce6.
+index.html | handout | ME102B | The course number is named once, in "what it is", so a visitor knows the context; no handout text.
+index.html | person-name | by The Robot | Not a person: the SO-ARM100 credit names the organisation The Robot Studio, as its Apache-2.0 licence requires.
+provenance.json | person-name | douglaspmcgowan | Repository owner handle in the source URL, recorded so every figure can be traced to its commit; public GitHub account name, not a personal detail.
+provenance.json | person-name | berkeley-ai-tutor | Source repository name in the provenance record; the name is the only trace of the private source and reveals no content. Flagged for the owner's decision in the pull request.
+facts.json | person-name | douglaspmcgowan | Same source URL as provenance.json, carried into the figures file.
+facts.json | person-name | berkeley-ai-tutor | Same source repository name as provenance.json, carried into the figures file.
