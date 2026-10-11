@@ -36,7 +36,7 @@ try {
     await page.screenshot({ path: `${out}/landing-${scheme}-${w}.png`, fullPage: false });
     await page.screenshot({ path: `${out}/landing-${scheme}-${w}-full.png`, fullPage: true });
 
-    await page.goto(`http://127.0.0.1:${port}/review/#model`, { waitUntil: "load" });
+    await page.goto(`http://127.0.0.1:${port}/review/#model`, { waitUntil: "load", timeout: 120_000 });
     await page.waitForTimeout(5000);
     await page.screenshot({ path: `${out}/review-${scheme}-${w}.png`, fullPage: false });
     console.log(w, "console errors:", errors.length ? errors : "none");
