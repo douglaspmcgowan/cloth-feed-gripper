@@ -2,7 +2,7 @@
 
 ## Problem
 
-The cloth-feed gripper is a finished design with a film and an interactive design review, but they sit in a private repository where nobody else can see them.
+The cloth-feed gripper is a design that has been simulated but not built or measured, with a film and an interactive design review that show where it stands, but they sit in a private repository where nobody else can see them.
 
 ## Users and jobs
 

@@ -105,7 +105,7 @@
         li.append(b);
         li.append(el("span", null, i.evidence));
         if (i.evidenceId) {
-          var a = el("a", { href: "/review/#" + i.evidenceId }, "See the evidence in the review");
+          var a = el("a", { href: "/review/#" + i.evidenceId, "aria-label": "See the evidence in the review: " + i.name }, "See the evidence in the review");
           li.append(a);
         }
         ul.append(li);

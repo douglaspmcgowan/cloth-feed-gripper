@@ -122,6 +122,19 @@ test.describe("landing page", () => {
     await expect(page.locator("#provenance")).toContainText(facts.source.commit.slice(0, 7));
   });
 
+  test("each evidence link has its own accessible name", async ({ page }) => {
+    await page.goto("/");
+    const failing = facts.requirements.items.filter((i) => i.status === "fail" && i.evidenceId);
+    const links = page.locator("#fails li a");
+    await expect(links).toHaveCount(failing.length);
+    const labels = await links.evaluateAll((els) => els.map((e) => e.getAttribute("aria-label")));
+    expect(new Set(labels).size).toBe(failing.length);
+    failing.forEach((item, n) => {
+      expect(labels[n]).toContain(item.name);
+      expect(labels[n]).toContain("See the evidence in the review");
+    });
+  });
+
   test("credits name every third-party asset and serve its licence", async ({ page, request }) => {
     await page.goto("/");
     const credits = page.locator("#credits");
