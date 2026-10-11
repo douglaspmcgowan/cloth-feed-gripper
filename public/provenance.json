@@ -16,6 +16,16 @@
       "recipe": "document wrapper and one home link; viewer content unchanged"
     },
     {
+      "path": "cad/gripper/viewer.html",
+      "role": "served",
+      "sha256": "ca692b395318b70ed87e748e310982230913f5c484a13b131827d7f654551a94",
+      "bytes": 10998864,
+      "output": "public/tokens.css",
+      "output_sha256": "819dafb20e351807db871133e3c878a5ec049ba37ccb137c3cd2defaf05cbc7b",
+      "output_bytes": 2154,
+      "recipe": "the :root token blocks of the review app, verbatim"
+    },
+    {
       "path": "cad/so101/LICENSE",
       "role": "served",
       "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",

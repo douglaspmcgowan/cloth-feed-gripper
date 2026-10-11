@@ -1,0 +1,468 @@
+/* Landing page. Colour, type and spacing tokens come from tokens.css, which scripts/sync.py reads out of
+   the review app, so the two pages share one palette. Sizes: --fs-s, --fs-b, --fs-h and one larger
+   display step for the hero title, which is the only place it appears. */
+
+:root {
+  --fs-d: clamp(40px, 5.2vw, 64px); /* hero title only */
+  --measure: 66ch;
+  --wrap: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--s8);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--fs-b);
+  line-height: 1.5;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+h1,
+h2,
+p,
+dl,
+dd,
+ul {
+  margin: 0;
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--fs-d);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: var(--fs-h);
+  line-height: 1.15;
+}
+
+p {
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r1);
+}
+
+.wrap {
+  width: min(100% - 2 * var(--s4), var(--wrap));
+  margin-inline: auto;
+}
+
+/* top bar */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding-block: var(--s3);
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.top nav {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.top nav a:not(.btn) {
+  display: none;
+  align-items: center;
+  min-height: var(--tap);
+  padding-inline: var(--s3);
+  color: var(--ink2);
+  text-decoration: none;
+  font-size: var(--fs-s);
+  font-weight: 600;
+  border-radius: var(--r1);
+  transition: background-color var(--t) var(--ease), color var(--t) var(--ease);
+}
+
+.top nav a:not(.btn):hover {
+  background: var(--raised);
+  color: var(--ink);
+}
+
+@media (min-width: 720px) {
+  .top nav a:not(.btn) {
+    display: inline-flex;
+  }
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  min-height: var(--tap);
+  padding-inline: var(--s4);
+  border: 0;
+  border-radius: var(--r1);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-size: var(--fs-s);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--t) var(--ease), color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+
+.btn:hover {
+  box-shadow: inset 0 0 0 2px var(--accent-ink);
+}
+
+.btn.tonal {
+  background: var(--raised);
+  color: var(--ink);
+}
+
+.btn.tonal:hover {
+  background: var(--accent-soft);
+  box-shadow: none;
+}
+
+.btn svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* hero */
+.hero {
+  display: grid;
+  gap: var(--s5);
+  padding-block: var(--s4) var(--s7);
+}
+
+.hero-text {
+  display: grid;
+  gap: var(--s3);
+  align-items: end;
+}
+
+.lede {
+  color: var(--ink2);
+  max-width: 44ch;
+}
+
+@media (min-width: 900px) {
+  .hero-text {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 36ch);
+    gap: var(--s6);
+  }
+}
+
+.film {
+  margin: 0;
+  position: relative;
+  justify-self: center;
+  display: grid;
+  gap: var(--s3);
+  width: min(100%, calc((100svh - 220px) * 16 / 9));
+  min-width: min(100%, 320px);
+}
+
+.film .stage {
+  aspect-ratio: 16 / 9;
+  background: var(--mesh);
+  border-radius: var(--r2);
+  box-shadow: var(--elev);
+  overflow: hidden;
+}
+
+.film video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--mesh);
+}
+
+/* An author display rule beats the browser's [hidden], so each hidden-able element states it. */
+.film video[hidden],
+.btn[hidden],
+.film-actions[hidden] {
+  display: none;
+}
+
+.film.portrait {
+  width: min(100%, calc((100svh - 160px) * 9 / 16), 480px);
+}
+
+.film.portrait .stage {
+  aspect-ratio: 9 / 16;
+}
+
+.film-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.film-actions .btn {
+  flex: 1 1 auto;
+}
+
+/* Wide screens lay the controls over the lower left of the film; narrow ones keep the film clear. */
+@media (min-width: 720px) {
+  .film-actions {
+    position: absolute;
+    inset-inline-start: var(--s4);
+    inset-block-end: var(--s4);
+  }
+
+  .film-actions .btn {
+    flex: none;
+  }
+
+  .film-actions .btn.tonal {
+    background: var(--surface);
+    box-shadow: var(--elev);
+  }
+
+  .film-actions .btn.tonal:hover {
+    background: var(--accent-soft);
+  }
+}
+
+#facts {
+  display: grid;
+  gap: var(--s4);
+  align-content: start;
+}
+
+.film-back {
+  justify-self: center;
+  margin-top: calc(var(--s3) * -1);
+}
+
+/* sections */
+.band {
+  display: grid;
+  gap: var(--s5);
+  padding-block: var(--s7);
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 900px) {
+  .band {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--s7);
+  }
+}
+
+.prose {
+  display: grid;
+  gap: var(--s4);
+  align-content: start;
+}
+
+/* where it stands */
+.stands {
+  display: grid;
+  gap: var(--s5);
+  align-content: start;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.st {
+  display: inline-block;
+  font-size: var(--fs-s);
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 0 var(--s2);
+  border-radius: var(--r1);
+  white-space: nowrap;
+  background: var(--raised);
+  color: var(--ink2);
+}
+
+.st.pass {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.st.risk {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+.st.fail {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+
+.st.open {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.fails {
+  display: grid;
+  gap: var(--s3);
+  padding: 0;
+  list-style: none;
+}
+
+.fails li {
+  display: grid;
+  gap: var(--s1);
+  max-width: var(--measure);
+  padding: var(--s4);
+  background: var(--surface);
+  border-radius: var(--r2);
+  box-shadow: var(--elev);
+}
+
+.fails b {
+  font-weight: 600;
+}
+
+.note {
+  font-size: var(--fs-s);
+  color: var(--ink2);
+}
+
+/* doors */
+.doors {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.doors li {
+  max-width: none;
+  border-top: 1px solid var(--line);
+}
+
+.doors li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.door {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s1) var(--s4);
+  padding-block: var(--s4);
+  padding-inline: var(--s2);
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: var(--r1);
+  transition: background-color var(--t) var(--ease);
+}
+
+.door:hover {
+  background: var(--raised);
+}
+
+.door b {
+  font-weight: 700;
+}
+
+.door span {
+  grid-column: 1;
+  color: var(--ink2);
+  font-size: var(--fs-s);
+  max-width: 60ch;
+}
+
+.door svg {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  transition: transform var(--t) var(--ease);
+}
+
+.door:hover svg {
+  transform: translateX(4px);
+}
+
+/* credits */
+.credits {
+  display: grid;
+  gap: var(--s4);
+}
+
+.credits div {
+  display: grid;
+  gap: var(--s1);
+  max-width: var(--measure);
+}
+
+.credits dt {
+  font-weight: 600;
+}
+
+.credits dd {
+  color: var(--ink2);
+  font-size: var(--fs-s);
+}
+
+.foot {
+  padding-block: var(--s6) var(--s7);
+  border-top: 1px solid var(--line);
+}
+
+@media (pointer: coarse) {
+  .top nav a:not(.btn),
+  .door {
+    min-height: var(--tap);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s;
+    animation-duration: 0s;
+    scroll-behavior: auto;
+  }
+
+  .door:hover svg {
+    transform: none;
+  }
+}
