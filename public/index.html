@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cloth-feed gripper</title>
+<meta name="description" content="A gripper for the SO-101 robot arm that pinches one layer of cotton and feeds it to a sewing machine. A design that has not been built, with its film and an interactive design review.">
+<link rel="canonical" href="https://cloth-feed-gripper.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloth-feed gripper">
+<meta property="og:title" content="Cloth-feed gripper">
+<meta property="og:description" content="Two fingers pinch one layer of cotton and feed it to a sewing machine. Designed and simulated, not built.">
+<meta property="og:url" content="https://cloth-feed-gripper.vercel.app/">
+<meta property="og:image" content="https://cloth-feed-gripper.vercel.app/media/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cloth-feed gripper">
+<meta name="twitter:description" content="Two fingers pinch one layer of cotton and feed it to a sewing machine. Designed and simulated, not built.">
+<meta name="twitter:image" content="https://cloth-feed-gripper.vercel.app/media/og.jpg">
+<meta name="theme-color" content="#edf0f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1217" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/landing.css">
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="/">Cloth-feed gripper</a>
+  <nav aria-label="Page">
+    <a href="#what">What it is</a>
+    <a href="#stands">Where it stands</a>
+    <a href="#inside">Inside the review</a>
+    <a class="btn tonal" href="/review/">Design review</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" aria-labelledby="title">
+    <div class="hero-text">
+      <h1 id="title">A gripper that feeds cloth</h1>
+      <p class="lede">Two fingers pinch one layer of cotton and feed it to a sewing machine. Designed and simulated, not built.</p>
+    </div>
+
+    <figure class="film" id="film">
+      <div class="stage">
+        <video id="teaser" muted loop playsinline preload="none" poster="/media/poster.webp" width="1280" height="720" aria-label="Ten second teaser of the gripper, muted">
+          <source src="/media/teaser_10s.mp4" type="video/mp4">
+        </video>
+        <video id="full" controls playsinline preload="none" hidden width="1920" height="1080" aria-label="The full film about the gripper"></video>
+      </div>
+      <div class="film-actions" id="film-actions">
+        <button class="btn tonal" type="button" id="play-full">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
+          Play the full film
+        </button>
+        <a class="btn tonal" href="/review/">Open the design review</a>
+      </div>
+    </figure>
+    <button class="btn tonal film-back" type="button" id="film-back" hidden>Back to the teaser</button>
+  </section>
+
+  <section class="wrap band" id="what" aria-labelledby="what-h">
+    <h2 id="what-h">What it is</h2>
+    <div class="prose">
+      <p>The cloth-feed gripper is a hand for the SO-101 robot arm: two fingers that pinch one layer of cotton and hold it under light tension while a sewing machine pulls it through.</p>
+      <p>One small servo drives both fingers through a pair of gears, and a force sensor behind one finger tells the controller how hard it is squeezing.</p>
+      <p>It is a design for the ME102B course at UC Berkeley.</p>
+    </div>
+  </section>
+
+  <section class="wrap band" id="stands" aria-labelledby="stands-h">
+    <h2 id="stands-h">Where the design stands</h2>
+    <div class="stands">
+      <p>This design has not been built or measured. Every result comes from CAD, simulation and calculation, and the review marks which numbers are assumed.</p>
+      <div id="facts" aria-live="polite">
+        <p class="note">Loading the current requirement counts from the review.</p>
+      </div>
+      <noscript><p>Turn on JavaScript to see the current requirement counts here, or <a href="/review/#open-requirements">read them in the review</a>.</p></noscript>
+    </div>
+  </section>
+
+  <section class="wrap band" id="inside" aria-labelledby="inside-h">
+    <h2 id="inside-h">Inside the review</h2>
+    <div class="prose">
+      <p>The review is the working record of the design. Pick the job you came to do.</p>
+      <ul class="doors" id="doors">
+        <li>
+          <a class="door" id="door-model" href="/review/#model">
+            <b>See the model</b>
+            <span>Orbit the gripper on the arm wrist, explode it, and move the jaw through its range.</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="door" id="door-fit" href="/review/#fit-findings">
+            <b>Check the fits</b>
+            <span>Every gap measured between solid parts, including where the servo horn runs close to the housing wall.</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="door" id="door-assembly" href="/review/#assembly">
+            <b>Follow the assembly</b>
+            <span>Each step moves its parts into place along the direction they really go in, with the tool reach checked.</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="door" id="door-open" href="/review/#open-requirements">
+            <b>Read what is still open</b>
+            <span>Every requirement with its status, then the decisions that need a ruling and the bench checks to run.</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap band" id="log" aria-labelledby="log-h">
+    <h2 id="log-h">Build log</h2>
+    <div class="prose">
+      <p>The decisions, dead ends and measurements behind the design are written up in the <a id="build-log" href="https://build-log-eight.vercel.app/log/gripper-2026-09-22/" rel="noopener">gripper build log</a>.</p>
+    </div>
+  </section>
+
+  <section class="wrap band" id="credits" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits and licences</h2>
+    <dl class="credits">
+      <div>
+        <dt>Gripper design, review app and film</dt>
+        <dd>The project's own work: CAD, analysis, firmware simulation, renders and a synthesised soundtrack with no third-party audio.</dd>
+      </div>
+      <div>
+        <dt>SO-101 arm geometry</dt>
+        <dd>The wrist link and servo models in the 3D views come from the <a href="https://github.com/TheRobotStudio/SO-ARM100" rel="noopener">SO-ARM100 project</a> by The Robot Studio, under the Apache License 2.0. The meshes were tessellated and repositioned for the review. <a href="/licenses/so101-apache-2.0.txt">Licence text</a></dd>
+      </div>
+      <div>
+        <dt>Archivo typeface</dt>
+        <dd>Set in the film's titles and graphics. SIL Open Font License 1.1. <a href="/licenses/archivo-ofl.txt">Licence text</a></dd>
+      </div>
+      <div>
+        <dt>Public Sans typeface</dt>
+        <dd>Used on this page and in the review, loaded from Google Fonts. SIL Open Font License 1.1.</dd>
+      </div>
+      <div>
+        <dt>three.js</dt>
+        <dd>Draws the 3D views in the review, loaded from the jsDelivr network. MIT licence.</dd>
+      </div>
+      <div>
+        <dt>Blender and ffmpeg</dt>
+        <dd>Tools used to render and encode the film. The renders are the project's own output.</dd>
+      </div>
+    </dl>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p class="note" id="provenance">Figures on this page are read from the design review.</p>
+</footer>
+
+<script src="/landing.js" defer></script>
+</body>
+</html>

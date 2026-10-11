@@ -1,0 +1,17 @@
+# Reviewed exceptions for scripts/check_public.py. One line each:  path | rule | matched text | expected count | one-line reason
+# The count is the exact number of hits the line covers. A line that matches nothing, matches a different
+# number of times, or lacks a count or reason fails the check. Reviewed 2026-10-11 against source commit 996dce6.
+index.html | handout | ME102B | 1 | The course number is named once, in "what it is", so a visitor knows the context; no handout text.
+index.html | person-name | by The Robot | 1 | Not a person: the SO-ARM100 credit names the organisation The Robot Studio, as its Apache-2.0 licence requires.
+provenance.json | person-name | douglaspmcgowan | 1 | Repository owner handle in the source URL, recorded so the served files can be traced to a commit; public GitHub account name, not a personal detail.
+provenance.json | person-name | berkeley-ai-tutor | 1 | The private source repository's name, kept with the pinned commit so a served file can be traced; the file lists no source path, hash or size.
+facts.json | person-name | douglaspmcgowan | 1 | Same source URL as provenance.json, carried into the figures file.
+facts.json | person-name | berkeley-ai-tutor | 1 | Same source repository name as provenance.json, carried into the figures file.
+index.html | typed-figure | 101 | 2 | Product name SO-101 (the robot arm), twice in the static text; not a measured figure.
+index.html | typed-figure | 102 | 1 | Course number inside ME102B, named once; not a figure.
+index.html | typed-figure | 100 | 1 | Product name SO-ARM100 in the third-party credit; not a figure.
+index.html | typed-figure | 3 | 2 | The phrase 3D views, twice; not a figure.
+index.html | typed-figure | 2.0 | 1 | Version of the Apache License named in the credit; not a figure.
+index.html | typed-figure | 1.1 | 2 | Version of the SIL Open Font License named in the two font credits; not a figure.
+review/index.html | source-path | docs/gripper/DESIGN-BASIS.md | 3 | Evidence citations in the review's Sources panels and one data note: a relative file name inside the design repository, no personal detail, course text or credential. Reviewed 2026-10-11.
+review/index.html | source-path | cad/gripper/viewer_src/so101_mesh.py | 1 | Evidence citation in a Sources panel naming the script that builds the arm context mesh: a relative file name only. Reviewed 2026-10-11.

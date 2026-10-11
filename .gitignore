@@ -146,3 +146,11 @@ error.log
 # filename carries a timestamp and a GUID and the body carries nothing, so it records only that
 # some device cleared a lock at some time. Device-local debris, same class as lock-holder.json.
 .agents/archive/stale-locks/
+
+# Site tooling
+# sync.py's full record names source-side paths, so it is never served or committed.
+.sync/
+__pycache__/
+node_modules/
+test-results/
+playwright-report/

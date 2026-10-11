@@ -12,11 +12,10 @@
 
 ## Goal
 
-Record the active outcome when work begins.
+Public site for the cloth-feed gripper: `/` landing page with the film, `/review/` the design review app, built and proved locally, pull request `agent/site-v1` against `main`. No deploy, no merge (Douglas, 2026-10-10: "put the video in the website, make the website its own repo, put it on vercel, make it public").
 
 ## Active
 
-<!-- Move the item currently being worked here. -->
 
 ## Queue
 
@@ -31,6 +30,13 @@ Record the active outcome when work begins.
 <!-- Record items requiring a user decision here. -->
 
 ## Completed
+- [x] 1 `scripts/sync.py` + `scripts/extract_facts.mjs`: copy inputs at 996dce6, write `public/review/index.html`, `public/media/*`, `public/provenance.json`, `public/facts.json`
+- [x] 2 `public/index.html` landing page (hero teaser, full film, what it is, where it stands, doors, build log, credits, light and dark)
+- [x] 3 `vercel.json` and `scripts/check_public.py` with reviewed allowlist
+- [x] 4 Playwright tests: `npm test` 145 passed, 65 skipped (viewport-independent deploy checks run once), exit 0, 3 sizes x light and dark
+- [x] 5 `AGENTS.md` project section, `README.md`, `SPEC.md` (all boxes ticked against their proof), screenshots in `docs/screens/`
+- [x] 6 Real-browser jobs at 375 and 1440 (`node scripts/jobs.mjs`): film played to its end unmuted (62 s); 2 failing requirements read from the landing page; servo-horn finding reached and Home returns to `/`; no console errors
+- [x] 7 Proving commands run, `origin/main` merged (already up to date), branch pushed, PR https://github.com/douglaspmcgowan/cloth-feed-gripper/pull/1 open. `VerifyProject` fails on the whole-file AGENTS.md hash; queued to agent-harness as `verifyproject-hashes-project-owned-agents-md`.
 
 <!-- Keep only current completion evidence here; durable history belongs in LOG.md. -->
 

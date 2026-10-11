@@ -1,0 +1,59 @@
+{
+  "source": {
+    "repository": "https://github.com/douglaspmcgowan/berkeley-ai-tutor",
+    "commit": "996dce6fa1e48ac8f4e91e062196e3d8647586d0",
+    "synced": "2026-10-11"
+  },
+  "files": [
+    {
+      "path": "licenses/archivo-ofl.txt",
+      "sha256": "108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b",
+      "bytes": 4388
+    },
+    {
+      "path": "licenses/so101-apache-2.0.txt",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "media/gripper_hype_1080p.mp4",
+      "sha256": "e88ee1d99c749e7d8eb034afe1da42d1e93312b17cff042aed656c51797132a0",
+      "bytes": 17221534
+    },
+    {
+      "path": "media/gripper_hype_vertical.mp4",
+      "sha256": "6b0e44ba41a131742791e500b595ed9273bf90bafe5df1a6886a26ce4ed7fb33",
+      "bytes": 13521948
+    },
+    {
+      "path": "media/og.jpg",
+      "sha256": "f44b31b61061535b7165fdd0e84a5cbbb2787f158c6a3a5a8cde154ed72f8e81",
+      "bytes": 48764
+    },
+    {
+      "path": "media/poster.webp",
+      "sha256": "ec2ace3785f51111b560625974115b920b818f8b93a3b6bfedb121107a448ec7",
+      "bytes": 22032
+    },
+    {
+      "path": "media/poster_vertical.webp",
+      "sha256": "941839a218f04b068ec0f807b0ee224f04aa175cf30f7398da18b17d100d22c6",
+      "bytes": 20946
+    },
+    {
+      "path": "media/teaser_10s.mp4",
+      "sha256": "60c7e41cd61e86ce291efc1a3dad79b7cc7b818532fd7b109770c03fc725e852",
+      "bytes": 1001494
+    },
+    {
+      "path": "review/index.html",
+      "sha256": "8ddfd36d2ea5cedc68323cb95e0e96d62b8ee50ee0481ea0a2c01d179203634a",
+      "bytes": 11001404
+    },
+    {
+      "path": "tokens.css",
+      "sha256": "819dafb20e351807db871133e3c878a5ec049ba37ccb137c3cd2defaf05cbc7b",
+      "bytes": 2154
+    }
+  ]
+}

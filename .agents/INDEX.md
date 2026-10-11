@@ -10,7 +10,7 @@ reaches all three products; this file is how you check that it really did.
 Connected MCP servers are listed in the generated capability router under `probe.mcp_servers`; read that roster for this device and list a server's tools before choosing `make-mcp`.
 Project an explicit vault mirror with `Build-HarnessIndex.ps1 -ProjectVaultMirror`; verify both surfaces with `Build-HarnessIndex.ps1 -ProjectVaultMirror -Verify`.
 
-Counts: **108 canonical skills**, **370 repository tool routes**, and **no Claude command files** -- `<repo>\commands\` holds only its `RETIRED.md`. Everything a command used to do is a canonical skill now, which is what makes it reachable from Codex and Cursor as well.
+Counts: **108 canonical skills**, **371 repository tool routes**, and **no Claude command files** -- `<repo>\commands\` holds only its `RETIRED.md`. Everything a command used to do is a canonical skill now, which is what makes it reachable from Codex and Cursor as well.
 
 ## Search surfaces
 
@@ -688,6 +688,7 @@ runtimes carry their exact path because they have no shared, side-effect-free he
 | `Get-AgentMode.ps1` | Resolves the active usage mode across environment, session, project, and machine scopes. | `& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoProfile -NonInteractive -File <harness-root>/tools/Show-ToolHelp.ps1 -Tool Get-AgentMode.ps1` |
 | `Get-BwsInventory.ps1` | List every Bitwarden Secrets Manager project the host token can see, with each project's secret count and secret KEY NAMES. | `& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoProfile -NonInteractive -File <harness-root>/tools/Show-ToolHelp.ps1 -Tool Get-BwsInventory.ps1` |
 | `Get-CauseClusters.ps1` | (no comment-based synopsis) | `& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoProfile -NonInteractive -File <harness-root>/tools/Show-ToolHelp.ps1 -Tool Get-CauseClusters.ps1` |
+| `Get-ClaudeAccountUsage.ps1` | The per-account Claude usage ledger: how much of each pool account's five-hour and weekly window is used, when each resets, and whether the account... | `& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoProfile -NonInteractive -File <harness-root>/tools/Show-ToolHelp.ps1 -Tool Get-ClaudeAccountUsage.ps1` |
 | `Get-DpcLatencyTrace.ps1` | (no comment-based synopsis) | `& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoProfile -NonInteractive -File <harness-root>/tools/Show-ToolHelp.ps1 -Tool Get-DpcLatencyTrace.ps1` |
 | `Get-EnvironmentVariableMetadata.cmd` | (no comment-based synopsis) | `<harness-root>/tools/Get-EnvironmentVariableMetadata.cmd` |
 | `Get-EnvironmentVariableMetadata.ps1` | (no comment-based synopsis) | `& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoProfile -NonInteractive -File <harness-root>/tools/Show-ToolHelp.ps1 -Tool Get-EnvironmentVariableMetadata.ps1` |
