@@ -2,6 +2,8 @@
 # sha256 is recorded in public/provenance.json, so git must never convert it.
 * text=auto eol=lf
 public/** -text
+# Licence texts are copied verbatim from the upstream project; their own trailing spaces stay.
+public/licenses/* -whitespace
 *.mp4 binary
 *.webp binary
 *.jpg binary
