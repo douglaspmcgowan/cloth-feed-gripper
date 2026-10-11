@@ -148,6 +148,8 @@ error.log
 .agents/archive/stale-locks/
 
 # Site tooling
+# sync.py's full record names source-side paths, so it is never served or committed.
+.sync/
 __pycache__/
 node_modules/
 test-results/

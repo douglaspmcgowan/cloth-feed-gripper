@@ -10,7 +10,10 @@ Reads blobs at <ref> with `git show` (never the clone's working tree, never writ
     public/media/*               the three films (moov first), posters, social image
     public/licenses/*            licence texts the credits point to
     public/facts.json            every figure the landing page shows, read out of the review app
-    public/provenance.json       source repository, commit, date, sha256 and size of every file
+    public/provenance.json       source repository name, pinned commit, sync date, and for each served
+                                 file its public path, sha256 and byte count; nothing about the source layout
+    .sync/state.json             git-ignored, never served: the full record (source paths, input hashes,
+                                 recipes) that lets a second run skip unchanged work
 
 Running it twice with the same ref changes nothing: files are written only when their bytes differ,
 and a derived media file is rebuilt only when its input, its recipe or its recorded hash changed.
@@ -18,6 +21,7 @@ and a derived media file is rebuilt only when its input, its recipe or its recor
 from __future__ import annotations
 
 import argparse
+import datetime
 import hashlib
 import json
 import re
@@ -57,6 +61,14 @@ REQUIRED = [VIEWER, POSTER, *FILMS, *LICENCES, *READ_ONLY]
 PUBLIC_REVIEW = PUBLIC / "review" / "index.html"
 MEDIA = PUBLIC / "media"
 SITE_CONFIG = ROOT / "site.config.json"
+# The full record of what was read and how it was built. Outside public/ and git-ignored: it names
+# source-side paths, which the served provenance.json must not.
+STATE = ROOT / ".sync" / "state.json"
+
+
+def source_inputs() -> list[str]:
+    """Every source-repository path this script reads; check_public.py searches served files for them."""
+    return [VIEWER, VERTICAL, *FILMS, POSTER, *LICENCES, *READ_ONLY]
 
 
 def sha256(data: bytes) -> str:
@@ -265,8 +277,9 @@ def main() -> int:
     args = ap.parse_args()
 
     prov_path = PUBLIC / "provenance.json"
-    prov = json.loads(prov_path.read_text(encoding="utf-8")) if prov_path.exists() else None
-    ref = args.ref or (prov or {}).get("source", {}).get("commit")
+    served_prev = json.loads(prov_path.read_text(encoding="utf-8")) if prov_path.exists() else None
+    prov = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else None
+    ref = args.ref or (served_prev or {}).get("source", {}).get("commit")
     if not ref:
         sys.exit("--ref is required the first time")
 
@@ -396,7 +409,18 @@ def main() -> int:
             files.append({"path": src, "role": "read, not served", "sha256": sha256(data), "bytes": len(data)})
 
         files.sort(key=lambda f: (f["role"] != "served", f["path"], f.get("output", "")))
-        provenance = {"source": {"repository": SOURCE_URL, "commit": full, "committed": committed}, "files": files}
+        state = {"source": {"repository": SOURCE_URL, "commit": full, "committed": committed}, "files": files}
+        write_if_changed(STATE, (json.dumps(state, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
+
+        # Served record: public path, hash and size of each served file, plus the repository name,
+        # the pinned commit and the sync date. The date is kept while nothing else changed.
+        served = sorted(
+            ({"path": Path(f["output"]).relative_to("public").as_posix(), "sha256": f["output_sha256"], "bytes": f["output_bytes"]} for f in files if f["role"] == "served"),
+            key=lambda f: f["path"],
+        )
+        same = served_prev and served_prev.get("source", {}).get("commit") == full and served_prev.get("files") == served
+        synced = served_prev["source"]["synced"] if same and "synced" in served_prev["source"] else datetime.date.today().isoformat()
+        provenance = {"source": {"repository": SOURCE_URL, "commit": full, "synced": synced}, "files": served}
         note(prov_path, write_if_changed(prov_path, (json.dumps(provenance, indent=2, ensure_ascii=False) + "\n").encode("utf-8")))
 
         print(f"source {SOURCE_URL} @ {full} ({committed})")

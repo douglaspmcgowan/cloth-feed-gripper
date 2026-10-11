@@ -2,138 +2,58 @@
   "source": {
     "repository": "https://github.com/douglaspmcgowan/berkeley-ai-tutor",
     "commit": "996dce6fa1e48ac8f4e91e062196e3d8647586d0",
-    "committed": "2026-10-10T21:37:32-07:00"
+    "synced": "2026-10-11"
   },
   "files": [
     {
-      "path": "cad/gripper/viewer.html",
-      "role": "served",
-      "sha256": "ca692b395318b70ed87e748e310982230913f5c484a13b131827d7f654551a94",
-      "bytes": 10998864,
-      "output": "public/review/index.html",
-      "output_sha256": "8ddfd36d2ea5cedc68323cb95e0e96d62b8ee50ee0481ea0a2c01d179203634a",
-      "output_bytes": 11001404,
-      "recipe": "document wrapper and one home link; viewer content unchanged"
-    },
-    {
-      "path": "cad/gripper/viewer.html",
-      "role": "served",
-      "sha256": "ca692b395318b70ed87e748e310982230913f5c484a13b131827d7f654551a94",
-      "bytes": 10998864,
-      "output": "public/tokens.css",
-      "output_sha256": "819dafb20e351807db871133e3c878a5ec049ba37ccb137c3cd2defaf05cbc7b",
-      "output_bytes": 2154,
-      "recipe": "the :root token blocks of the review app, verbatim"
-    },
-    {
-      "path": "cad/so101/LICENSE",
-      "role": "served",
-      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
-      "bytes": 11357,
-      "output": "public/licenses/so101-apache-2.0.txt",
-      "output_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
-      "output_bytes": 11357,
-      "recipe": "copied"
-    },
-    {
-      "path": "video/gripper/assets/fonts/OFL.txt",
-      "role": "served",
+      "path": "licenses/archivo-ofl.txt",
       "sha256": "108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b",
-      "bytes": 4388,
-      "output": "public/licenses/archivo-ofl.txt",
-      "output_sha256": "108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b",
-      "output_bytes": 4388,
-      "recipe": "copied"
+      "bytes": 4388
     },
     {
-      "path": "video/gripper/renders/gripper_hype_1080p.mp4",
-      "role": "served",
+      "path": "licenses/so101-apache-2.0.txt",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "media/gripper_hype_1080p.mp4",
       "sha256": "e88ee1d99c749e7d8eb034afe1da42d1e93312b17cff042aed656c51797132a0",
-      "bytes": 17221534,
-      "output": "public/media/gripper_hype_1080p.mp4",
-      "output_sha256": "e88ee1d99c749e7d8eb034afe1da42d1e93312b17cff042aed656c51797132a0",
-      "output_bytes": 17221534,
-      "recipe": "copied (moov already first)"
+      "bytes": 17221534
     },
     {
-      "path": "video/gripper/renders/gripper_hype_vertical.mp4",
-      "role": "served",
+      "path": "media/gripper_hype_vertical.mp4",
       "sha256": "6b0e44ba41a131742791e500b595ed9273bf90bafe5df1a6886a26ce4ed7fb33",
-      "bytes": 13521948,
-      "output": "public/media/gripper_hype_vertical.mp4",
-      "output_sha256": "6b0e44ba41a131742791e500b595ed9273bf90bafe5df1a6886a26ce4ed7fb33",
-      "output_bytes": 13521948,
-      "recipe": "copied (moov already first)"
+      "bytes": 13521948
     },
     {
-      "path": "video/gripper/renders/gripper_hype_vertical.mp4",
-      "role": "served",
-      "sha256": "6b0e44ba41a131742791e500b595ed9273bf90bafe5df1a6886a26ce4ed7fb33",
-      "bytes": 13521948,
-      "output": "public/media/poster_vertical.webp",
-      "output_sha256": "941839a218f04b068ec0f807b0ee224f04aa175cf30f7398da18b17d100d22c6",
-      "output_bytes": 20946,
-      "recipe": "ffmpeg frame at 8.5 s, 720 wide, libwebp quality search under 240 KB"
+      "path": "media/og.jpg",
+      "sha256": "f44b31b61061535b7165fdd0e84a5cbbb2787f158c6a3a5a8cde154ed72f8e81",
+      "bytes": 48764
     },
     {
-      "path": "video/gripper/renders/poster.png",
-      "role": "served",
-      "sha256": "b639ec969289b111b3a003def0c576fac9c5d77c0146167976e7cc2483cc3801",
-      "bytes": 1132569,
-      "output": "public/media/og.jpg",
-      "output_sha256": "f44b31b61061535b7165fdd0e84a5cbbb2787f158c6a3a5a8cde154ed72f8e81",
-      "output_bytes": 48764,
-      "recipe": "ffmpeg cover-crop 1200x630, mjpeg quality search under 240 KB"
+      "path": "media/poster.webp",
+      "sha256": "ec2ace3785f51111b560625974115b920b818f8b93a3b6bfedb121107a448ec7",
+      "bytes": 22032
     },
     {
-      "path": "video/gripper/renders/poster.png",
-      "role": "served",
-      "sha256": "b639ec969289b111b3a003def0c576fac9c5d77c0146167976e7cc2483cc3801",
-      "bytes": 1132569,
-      "output": "public/media/poster.webp",
-      "output_sha256": "ec2ace3785f51111b560625974115b920b818f8b93a3b6bfedb121107a448ec7",
-      "output_bytes": 22032,
-      "recipe": "ffmpeg scale 1280 wide, libwebp quality search under 240 KB"
+      "path": "media/poster_vertical.webp",
+      "sha256": "941839a218f04b068ec0f807b0ee224f04aa175cf30f7398da18b17d100d22c6",
+      "bytes": 20946
     },
     {
-      "path": "video/gripper/renders/teaser_10s.mp4",
-      "role": "served",
+      "path": "media/teaser_10s.mp4",
       "sha256": "60c7e41cd61e86ce291efc1a3dad79b7cc7b818532fd7b109770c03fc725e852",
-      "bytes": 1001494,
-      "output": "public/media/teaser_10s.mp4",
-      "output_sha256": "60c7e41cd61e86ce291efc1a3dad79b7cc7b818532fd7b109770c03fc725e852",
-      "output_bytes": 1001494,
-      "recipe": "copied (moov already first)"
+      "bytes": 1001494
     },
     {
-      "path": "cad/gripper/viewer_src/so101_mesh.py",
-      "role": "read, not served",
-      "sha256": "0df815c721dd08f74ae3b814991e3dc62238dbff593e7fcff052ffc13803e991",
-      "bytes": 2696
+      "path": "review/index.html",
+      "sha256": "8ddfd36d2ea5cedc68323cb95e0e96d62b8ee50ee0481ea0a2c01d179203634a",
+      "bytes": 11001404
     },
     {
-      "path": "cad/so101/SOURCE.md",
-      "role": "read, not served",
-      "sha256": "bd70e15c45edb361e1b39e8ed0d200c46c680f38401218969bc9f2ee650cc5fd",
-      "bytes": 7080
-    },
-    {
-      "path": "docs/gripper/DESIGN-BASIS.md",
-      "role": "read, not served",
-      "sha256": "f9896cba387670e1bf74cfa85e28107f2d5255097e0d7f887c177ce2e6e59727",
-      "bytes": 32117
-    },
-    {
-      "path": "video/gripper/CREDITS.md",
-      "role": "read, not served",
-      "sha256": "11abbd10aa45610d05060f7b2f5e10ba9851944aa52dc1c6b5874010d7fcd7c0",
-      "bytes": 979
-    },
-    {
-      "path": "video/gripper/audio/README.md",
-      "role": "read, not served",
-      "sha256": "5814c6534b77b0dd69e3be39d8d680d761c751ddb775de5074c9b282e0f98309",
-      "bytes": 384
+      "path": "tokens.css",
+      "sha256": "819dafb20e351807db871133e3c878a5ec049ba37ccb137c3cd2defaf05cbc7b",
+      "bytes": 2154
     }
   ]
 }

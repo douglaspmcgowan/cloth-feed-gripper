@@ -1,5 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { readJson } from "./helpers.mjs";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { ROOT, readJson } from "./helpers.mjs";
 
 // Deployment shape. These do not depend on the viewport, so they run once.
 test.describe("deployment", () => {
@@ -41,10 +44,18 @@ test.describe("deployment", () => {
     }
   });
 
-  test("provenance records the source commit and a hash for every served file", async () => {
+  test("provenance names the source commit and verifies each served file, and maps nothing else", async () => {
     const p = readJson("public/provenance.json");
+    expect(Object.keys(p).sort()).toEqual(["files", "source"]);
+    expect(Object.keys(p.source).sort()).toEqual(["commit", "repository", "synced"]);
     expect(p.source.commit).toMatch(/^[0-9a-f]{40}$/);
+    expect(p.source.synced).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     expect(p.files.length).toBeGreaterThan(5);
-    for (const f of p.files) expect(f.sha256).toMatch(/^[0-9a-f]{64}$/);
+    for (const f of p.files) {
+      expect(Object.keys(f).sort()).toEqual(["bytes", "path", "sha256"]);
+      const bytes = readFileSync(resolve(ROOT, "public", f.path));
+      expect(bytes.length, `${f.path} size`).toBe(f.bytes);
+      expect(createHash("sha256").update(bytes).digest("hex"), `${f.path} sha256`).toBe(f.sha256);
+    }
   });
 });
