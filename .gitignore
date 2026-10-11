@@ -148,6 +148,7 @@ error.log
 .agents/archive/stale-locks/
 
 # Site tooling
+__pycache__/
 node_modules/
 test-results/
 playwright-report/
