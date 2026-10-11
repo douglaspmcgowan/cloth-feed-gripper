@@ -27,7 +27,7 @@ Source of every requirement below: Douglas, 2026-10-10, "put the video in the we
 ## Sync
 
 - [x] One command, `python scripts/sync.py --ref <sha>`, copies the inputs from a `berkeley-ai-tutor` clone, writes the site files and `public/provenance.json` (source repository name, commit, sync date, and for each served file its public path, sha256 and size). Running it twice with the same ref changes nothing. Proof: second run, then `git status --short` is empty.
-- [x] `public/provenance.json` lets a stranger verify the served bytes and reveals nothing else about the private source repository: no source-side path, hash or size, and no input that is read but not served. Proof: `npm test` (`deploy.spec.mjs`) rehashes every listed file and checks the key set; the `source-path` rule of `check_public.py` fails on any source path in a served file.
+- [x] `public/provenance.json` lets a stranger verify the served bytes and reveals nothing else about the private source repository: no source-side path, hash or size, and no input that is read but not served. Proof: `npm test` (`deploy.spec.mjs`) rehashes every listed file and checks the key set; the `source-path` rule of `check_public.py` fails on any path `sync.py` reads that appears in a served file without a reviewed allowlist line. The review app's other evidence citations (relative file names in its Sources panels) are kept on purpose and are outside this rule.
 
 ## Privacy and serving
 
@@ -35,7 +35,7 @@ Source of every requirement below: Douglas, 2026-10-10, "put the video in the we
 - [x] Nothing outside `public/` is served: `/AGENTS.md`, `/TASK.md`, `/.agents/INDEX.md` return not found. Proof: `npm test` against a server rooted at `public/`.
 - [x] `scripts/check_public.py` scans everything in `public/`, including text inside the review app, for email addresses, phone numbers, street addresses, student or account identifiers, local paths, credential-shaped strings, names of people, handout-style phrases (a keyword rule that runs on every check) and paths read from the source repository, and exits non-zero on any hit not in the reviewed allowlist or any allowlist line whose expected count differs from the real count. Proof: `python scripts/check_public.py` exit code and a planted-hit self-test.
 - [ ] No long passage of a course handout appears verbatim in a served file. Not yet shown: the shingle comparison exists (`python scripts/check_public.py --handout <file>`) but has not been run, because the handout text is in neither repository. Tick it after a run against the handout text exits 0.
-- [x] After a deploy, `node scripts/check_live.mjs <base-url>` exits non-zero unless the landing page, `/review/`, `/facts.json`, the full film (HEAD) and a licence text return 200 and each repository file outside `public/` it lists returns 404. Proof: run against the local server rooted at `public/`.
+- [x] After a deploy, `node scripts/check_live.mjs <base-url>` exits non-zero unless the landing page, `/review/`, `/facts.json`, the full film (HEAD) and a licence text return 200, the landing page carries its title, `/facts.json` parses with a requirement count, and each path in its hidden list (repository files outside `public/` and `public/`-prefixed copies) returns 404. Proof: run against the local server rooted at `public/`, then against the live address after each deploy.
 
 ## Quality
 

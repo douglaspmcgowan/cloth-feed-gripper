@@ -27,11 +27,11 @@ npm test                                  # Playwright, 3 sizes x light and dark
 npm run lint
 ```
 
-`sync.py` takes `--source <path to a clone>` to use a local checkout, and otherwise makes its own shallow clone with `gh`.
+`sync.py` takes `--source <path to a clone>` to use a local checkout, and otherwise makes its own shallow clone with `gh`. `.sync/state.json` is git-ignored, so the first run in a fresh clone has no record of the last sync and may rebuild every generated file; the result is the same bytes.
 
 ## Checks
 
-- `scripts/check_public.py` looks for emails, phones, addresses, student IDs, local paths, credential shapes, names of people, handout-style phrases and paths from the source repository (read from `scripts/sync.py`'s own input table), in every file including the text inside the review app, and for any digit typed into the landing page's text. A hit passes only with a reviewed line in `scripts/public-allowlist.txt` that also states how many times it occurs; a different count fails. `--self-test` plants one hit per rule. A shingle comparison against a course handout runs only with `--handout <file>` and has not been run.
+- `scripts/check_public.py` looks for emails, phones, addresses, student IDs, local paths, credential shapes, names of people, handout-style phrases and paths from the source repository (read from `scripts/sync.py`'s own input table), in every file including the text inside the review app, and for any digit typed into the landing page's text. A hit passes only with a reviewed line in `scripts/public-allowlist.txt` that also states how many times it occurs; a different count fails. `--self-test` plants one hit per rule. A shingle comparison against a course handout runs only with `--handout <file>` and has not been run. Two limits: the source-path rule knows only the paths `sync.py` reads, so the review app's other evidence citations (relative file names in its Sources panels, which point into the private design repository and are kept on purpose) are not counted; and the typed-digit rule covers the landing page's static text, not text a script writes.
 - `npm test` covers console errors, sideways scroll, broken text, the hero poster, film playback, the 3D canvas, each landing door, the Home link, and that nothing outside `public/` is served.
 
 ## Deploying
@@ -44,7 +44,7 @@ After a deploy, run the guard against the live address:
 npm run check:live -- https://cloth-feed-gripper.vercel.app
 ```
 
-It prints one line per path and ends with `check_live: N ok, M failed`. It exits non-zero unless the landing page, `/review/`, `/facts.json`, the full film (HEAD) and a licence text return 200, and every repository file outside `public/` (`/AGENTS.md`, `/TASK.md`, `/README.md`, `/SPEC.md`, `/package.json`, `/vercel.json`, `/.agents/INDEX.md`, `/scripts/sync.py`, `/tests/deploy.spec.mjs`, `/.gitignore`, `/site.config.json`) returns 404.
+It prints one line per path and ends with `check_live: N ok, M failed`. It exits non-zero unless the landing page, `/review/`, `/facts.json`, the full film (HEAD) and a licence text return 200, the landing page carries its title and `/facts.json` parses with a requirement count, and every path in its hidden list returns 404. The hidden list is in `scripts/check_live.mjs`: repository files outside `public/` (contract, task and spec files, `package.json`, `vercel.json`, `.git/config`, `.sync/state.json`, the scripts, the allowlist, a test, `node_modules`) and `public/`-prefixed copies of served files.
 
 ## Runtime dependencies
 
