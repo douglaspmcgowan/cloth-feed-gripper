@@ -54,7 +54,8 @@ for (const { path, method, want, body } of [...served, ...hidden]) {
   let status;
   let note = "";
   try {
-    const res = await fetch(new URL(path, base), { method, redirect: "manual" });
+    // A hidden path is judged where it ends: with clean URLs the host redirects any ".html" to its bare path first.
+    const res = await fetch(new URL(path, base), { method, redirect: want === 404 ? "follow" : "manual" });
     status = res.status;
     if (body && status === want) {
       let good = false;
