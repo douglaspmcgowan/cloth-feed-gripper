@@ -22,7 +22,7 @@ Source of every requirement below: Douglas, 2026-10-10, "put the video in the we
 
 ## Media
 
-- [ ] Three films in `public/media/` with the moov atom first, a compressed poster under 250 KB and a 1200x630 Open Graph image. Proof: `scripts/check_public.py` checks moov position, poster size and OG dimensions.
+- [ ] Three films in `public/media/` with the moov atom first, a compressed poster under 250 KB and a 1200x630 Open Graph image. Proof: `npm test` (`deploy.spec.mjs` and `landing.spec.mjs`) checks moov position, poster size and OG dimensions.
 
 ## Sync
 

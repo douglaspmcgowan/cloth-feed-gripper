@@ -16,9 +16,6 @@ Public site for the cloth-feed gripper: `/` landing page with the film, `/review
 
 ## Active
 
-- [~] 1 `scripts/sync.py` + `scripts/extract_facts.mjs`: copy inputs at 996dce6, write `public/review/index.html`, `public/media/*`, `public/provenance.json`, `public/facts.json`
-- [ ] 2 `public/index.html` landing page (hero teaser, full film, what it is, where it stands, doors, build log, credits, light and dark)
-- [ ] 3 `vercel.json` and `scripts/check_public.py` with reviewed allowlist
 - [ ] 4 Playwright tests (`npm test`) at 1440x900, 768x1024, 375x812, light and dark
 - [ ] 5 `AGENTS.md` project section, `README.md`, `SPEC.md`, screenshots in `docs/screens/`
 - [ ] 6 Three real-browser jobs (a) film with sound (b) failing requirements (c) servo-horn finding and back home
@@ -37,6 +34,9 @@ Public site for the cloth-feed gripper: `/` landing page with the film, `/review
 <!-- Record items requiring a user decision here. -->
 
 ## Completed
+- [x] 1 `scripts/sync.py` + `scripts/extract_facts.mjs`: copy inputs at 996dce6, write `public/review/index.html`, `public/media/*`, `public/provenance.json`, `public/facts.json`
+- [x] 2 `public/index.html` landing page (hero teaser, full film, what it is, where it stands, doors, build log, credits, light and dark)
+- [x] 3 `vercel.json` and `scripts/check_public.py` with reviewed allowlist
 
 <!-- Keep only current completion evidence here; durable history belongs in LOG.md. -->
 
