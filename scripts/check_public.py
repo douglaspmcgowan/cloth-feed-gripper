@@ -5,20 +5,27 @@
     python scripts/check_public.py --handout F     also compare against the text of a course handout
     python scripts/check_public.py --self-test     plant one hit per rule in a temp tree and prove each fires
 
-Rules: email, phone, address, student-id, local-path, credential, person-name, handout.
+Rules: email, phone, address, student-id, local-path, credential, person-name, handout, source-path.
 Text inside the 11 MB review app is scanned line by line, and every long base64 run in it is decoded
 and scanned too. Binary media is scanned for embedded strings (ffmpeg and EXIF metadata).
 
+source-path fires on any path the sync script reads from the private source repository. The list is
+read from scripts/sync.py's own input table at run time, so no private path is repeated here.
+
 Every hit prints as  file:line:col  rule  matched-text. A hit passes only when scripts/public-allowlist.txt
-has a line for it:   path | rule | matched text | one-line reason   (path may be a glob). An allowlist entry that
-matches nothing, or has no reason, is itself an error, so the file cannot rot.
+has a line for it:   path | rule | matched text | expected count | one-line reason   (path may be a glob).
+An allowlist entry fails when the number of hits it covers differs from its expected count, including
+zero, and when it has no reason, so the file cannot rot and "named once" is enforced.
 """
 from __future__ import annotations
 
 import argparse
 import base64
 import bisect
+import contextlib
 import fnmatch
+import io
+import importlib.util
 import re
 import subprocess
 import sys
@@ -28,6 +35,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
 ALLOWLIST = ROOT / "scripts" / "public-allowlist.txt"
+
+
+def sync_source_paths() -> list[str]:
+    """The private-repository paths scripts/sync.py reads, taken from its own table."""
+    spec = importlib.util.spec_from_file_location("gripper_sync", ROOT / "scripts" / "sync.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.source_inputs()
 
 TEXT_SUFFIXES = {".html", ".css", ".js", ".mjs", ".json", ".txt", ".svg", ".md", ".xml", ".webmanifest", ".map"}
 
@@ -77,13 +92,32 @@ RULES: dict[str, re.Pattern[str]] = {
         r"lab\s*\d+\s*(?:handout|report)|handout|office hours|due (?:on|by) (?:mon|tue|wed|thu|fri|sat|sun)\w*|"
         r"midterm|final exam|honor code|academic integrity|ME\s?102B)\b"
     ),
+    "source-path": re.compile("|".join(re.escape(p) for p in sorted(sync_source_paths(), key=len, reverse=True))),
 }
 # Rules that also run over decoded base64 blobs and binary strings. Prose rules stay out: mesh bytes are noise.
-BLOB_RULES = ("email", "local-path", "credential")
+BLOB_RULES = ("email", "local-path", "credential", "source-path")
 BASE64_RUN = re.compile(r"[A-Za-z0-9+/]{400,}={0,2}")
 PRINTABLE = re.compile(rb"[\x20-\x7e]{8,}")
 # Account and repository names that identify the maintainer or a private source; a hit needs a reviewed reason.
 ACCOUNT_TERMS = ("douglaspmcgowan", "berkeley-ai-tutor")
+
+
+# The landing page shows no figure of its own: every number comes from facts.json at run time. A digit run in
+# its static text is a hit, so a hand-typed count fails the check unless a reviewed allowlist line names it.
+FIGURE_FILE = "index.html"
+FIGURE_RULE = "typed-figure"
+FIGURE = re.compile(r"\d+(?:[.,]\d+)*")
+NON_TEXT = re.compile(r"<!--.*?-->|<(script|style|head)\b.*?</\1>|<[^>]*>", re.S | re.I)
+KNOWN_RULES = (*RULES, FIGURE_RULE)
+
+
+def scan_figures(rel: str, text: str, hits: list["Hit"]) -> None:
+    """Hit every digit run in the visible text of the landing page; markup and attributes are blanked first."""
+    visible = NON_TEXT.sub(lambda m: re.sub(r"[^\n]", " ", m.group(0)), text)
+    starts = line_index(text)
+    for m in FIGURE.finditer(visible):
+        line, col = locate(starts, m.start())
+        hits.append(Hit(rel, line, col, FIGURE_RULE, m.group(0)))
 
 
 class Hit:
@@ -115,7 +149,8 @@ def dynamic_terms() -> list[str]:
             terms += [name, name.replace(" ", "").lower()]
     except (OSError, subprocess.SubprocessError):
         pass
-    return terms
+    # Each term once, so a git user.name equal to the handle cannot multiply the hit count.
+    return list(dict.fromkeys(terms))
 
 
 def scan_text(rel: str, text: str, rules: tuple[str, ...], hits: list[Hit], offset_note: str = "", terms: list[str] | None = None) -> None:
@@ -139,6 +174,8 @@ def scan_file(path: Path, hits: list[Hit], terms: list[str]) -> None:
         blobs = [(m.start(), m.group(0)) for m in BASE64_RUN.finditer(text)]
         plain = BASE64_RUN.sub(lambda m: " " * len(m.group(0)), text)
         scan_text(rel, plain, tuple(RULES), hits, terms=terms)
+        if rel == FIGURE_FILE:
+            scan_figures(rel, text, hits)
         starts = line_index(text)
         for pos, blob in blobs:
             try:
@@ -197,14 +234,17 @@ def load_allowlist() -> tuple[list[dict], list[str]]:
         line = raw.strip()
         if not line or line.startswith("#"):
             continue
-        parts = [p.strip() for p in line.split("|", 3)]
-        if len(parts) != 4 or not all(parts):
-            errors.append(f"{ALLOWLIST.name}:{n}: need 'path | rule | matched text | reason', every field filled")
+        parts = [p.strip() for p in line.split("|", 4)]
+        if len(parts) != 5 or not all(parts):
+            errors.append(f"{ALLOWLIST.name}:{n}: need 'path | rule | matched text | expected count | reason', every field filled")
             continue
-        if parts[1] not in RULES:
+        if parts[1] not in KNOWN_RULES:
             errors.append(f"{ALLOWLIST.name}:{n}: unknown rule {parts[1]!r}")
             continue
-        entries.append({"path": parts[0], "rule": parts[1], "text": parts[2], "reason": parts[3], "line": n, "used": 0})
+        if not parts[3].isdigit() or int(parts[3]) < 1:
+            errors.append(f"{ALLOWLIST.name}:{n}: expected count must be a whole number of at least 1, got {parts[3]!r}")
+            continue
+        entries.append({"path": parts[0], "rule": parts[1], "text": parts[2], "count": int(parts[3]), "reason": parts[4], "line": n, "used": 0})
     return entries, errors
 
 
@@ -216,6 +256,9 @@ def run(handout: Path | None) -> int:
         scan_file(path, hits, terms)
     if handout:
         scan_handout(handout, hits)
+
+    # One hit per place: a term search and a rule that match the same text at the same spot are one hit.
+    hits = list({(h.file, h.line, h.col, h.rule, h.text): h for h in hits}.values())
 
     entries, errors = load_allowlist()
     open_hits: list[Hit] = []
@@ -232,6 +275,8 @@ def run(handout: Path | None) -> int:
     for e in entries:
         if not e["used"]:
             errors.append(f"{ALLOWLIST.name}:{e['line']}: stale entry matches nothing: {e['path']} | {e['rule']} | {e['text']}")
+        elif e["used"] != e["count"]:
+            errors.append(f"{ALLOWLIST.name}:{e['line']}: expected {e['count']} but found {e['used']}: {e['path']} | {e['rule']} | {e['text']}")
 
     for h in open_hits:
         where = f" ({h.where})" if h.where else ""
@@ -254,6 +299,7 @@ PLANTED = {
     "credential": "ghp_" + "a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8",
     "person-name": "built by Jennifer Alvarez",
     "handout": "see the Gradescope rubric",
+    "source-path": "read from " + sync_source_paths()[-1],
 }
 
 
@@ -281,15 +327,51 @@ def self_test() -> int:
             ok = any(h.file == file and h.rule == "local-path" for h in hits)
             print(f"self-test {label}: {'fires' if ok else 'MISSED'}")
             failures += not ok
-        ALLOWLIST.write_text("page.html | email | jo.example@example.org | planted by the self-test\n", encoding="utf-8")
+        page = Path(tmp) / "figure" / "public"
+        page.mkdir(parents=True)
+        (page / FIGURE_FILE).write_text('<head><title>Year 2026</title></head>\n<svg width="20"><path d="M4 10"/></svg>\n<p class="n9">13 pass</p>\n', encoding="utf-8")
+        PUBLIC = page
+        figs: list[Hit] = []
+        scan_file(page / FIGURE_FILE, figs, [])
+        got = [h.text for h in figs if h.rule == FIGURE_RULE]
+        ok = got == ["13"]
+        print(f"self-test hand-typed figure in the landing page fires, markup digits do not: {'ok' if ok else f'FAILED {got}'}")
+        failures += not ok
+        PUBLIC = Path(tmp) / "public"
+
+        ALLOWLIST.write_text("page.html | email | jo.example@example.org | 1 | planted by the self-test\n", encoding="utf-8")
         entries, errs = load_allowlist()
-        ok = len(entries) == 1 and not errs
+        ok = len(entries) == 1 and entries[0]["count"] == 1 and not errs
         print(f"self-test allowlist parse: {'ok' if ok else 'FAILED'}")
         failures += not ok
-        ALLOWLIST.write_text("page.html | email | jo.example@example.org |\n", encoding="utf-8")
-        _, errs = load_allowlist()
-        ok = bool(errs)
-        print(f"self-test allowlist without a reason is rejected: {'ok' if ok else 'FAILED'}")
+        for label, text in (
+            ("without a reason", "page.html | email | jo.example@example.org | 1 |\n"),
+            ("without a count", "page.html | email | jo.example@example.org | planted by the self-test\n"),
+            ("with a zero count", "page.html | email | jo.example@example.org | 0 | planted by the self-test\n"),
+        ):
+            ALLOWLIST.write_text(text, encoding="utf-8")
+            _, errs = load_allowlist()
+            ok = bool(errs)
+            print(f"self-test allowlist {label} is rejected: {'ok' if ok else 'FAILED'}")
+            failures += not ok
+
+        # The expected count is enforced: the planted tree has exactly one email in page.html.
+        for count, want_exit in ((1, 0), (2, 1)):
+            only = Path(tmp) / f"only-{count}"
+            (only / "public").mkdir(parents=True)
+            (only / "public" / "page.html").write_text("<p>jo.example@example.org</p>\n", encoding="utf-8")
+            PUBLIC = only / "public"
+            ALLOWLIST.write_text(f"page.html | email | jo.example@example.org | {count} | planted by the self-test\n", encoding="utf-8")
+            with contextlib.redirect_stdout(io.StringIO()):
+                code = run(None)
+            ok = code == want_exit
+            print(f"self-test allowlist count {count} against one real hit exits {want_exit}: {'ok' if ok else f'FAILED (exit {code})'}")
+            failures += not ok
+
+        # The term list has no repeats, so the hit count cannot depend on the machine's git user.name.
+        terms = dynamic_terms()
+        ok = len(terms) == len(set(terms))
+        print(f"self-test search terms are unique: {'ok' if ok else 'FAILED'}")
         failures += not ok
     PUBLIC, ALLOWLIST = saved
     print(f"self-test: {'passed' if not failures else f'{failures} failures'}")
