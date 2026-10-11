@@ -16,7 +16,6 @@ Public site for the cloth-feed gripper: `/` landing page with the film, `/review
 
 ## Active
 
-- [~] 7 Proving commands, merge `origin/main`, push `agent/site-v1`, open pull request
 
 ## Queue
 
@@ -37,6 +36,7 @@ Public site for the cloth-feed gripper: `/` landing page with the film, `/review
 - [x] 4 Playwright tests: `npm test` 145 passed, 65 skipped (viewport-independent deploy checks run once), exit 0, 3 sizes x light and dark
 - [x] 5 `AGENTS.md` project section, `README.md`, `SPEC.md` (all boxes ticked against their proof), screenshots in `docs/screens/`
 - [x] 6 Real-browser jobs at 375 and 1440 (`node scripts/jobs.mjs`): film played to its end unmuted (62 s); 2 failing requirements read from the landing page; servo-horn finding reached and Home returns to `/`; no console errors
+- [x] 7 Proving commands run, `origin/main` merged (already up to date), branch pushed, PR https://github.com/douglaspmcgowan/cloth-feed-gripper/pull/1 open. `VerifyProject` fails on the whole-file AGENTS.md hash; queued to agent-harness as `verifyproject-hashes-project-owned-agents-md`.
 
 <!-- Keep only current completion evidence here; durable history belongs in LOG.md. -->
 
