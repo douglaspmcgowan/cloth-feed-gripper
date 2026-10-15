@@ -22,7 +22,7 @@ No framework, build step, backend or analytics. No hand-typed figures. Not a pla
 
 ## Current product evidence
 
-Keep product intent and the system record here. Put interface rules in `DESIGN.md`, active work in `TASK.md`, and harness workflow discovery in `.agents/INDEX.md`.
+Keep product intent and the system record here. Put interface rules in `DESIGN.md` and the testable criteria in `SPEC.md`.
 
 ## System record
 
@@ -30,17 +30,10 @@ Keep product intent and the system record here. Put interface rules in `DESIGN.m
 
 | File | Owns |
 |---|---|
-| `AGENTS.md` | Portable project behavior |
-| `CLAUDE.md` | Claude import |
-| `.cursor/rules/00-project-contract.mdc` | Cursor project pointer |
-| `TASK.md`, `LOG.md`, `BACKBURNER.md` | Legacy task state when Work Scope is absent; generated views when enrolled |
-| `DESIGN.md` | Universal and project interface rules |
-| `PRODUCT.md` | Product intent, architecture, navigation, and durable capability state |
-| `MEMORY.md` | Lean durable-reference index |
-| `.agents/INDEX.md` | Canonical harness skills, tools, owners, and search routes |
-| `skills-manifest.json` | Canonical skill bindings |
-| `data-manifest.yaml` | External-data authorities, adapters, and restore rules |
-| `secret-manifest.json` | Value-free secret inventory and trust boundaries |
+| `README.md` | Entry point for a visitor or contributor |
+| `SPEC.md` | Testable criteria the project must meet |
+| `DESIGN.md` | Interface rules and the stack-selection record |
+| `PRODUCT.md` | Product intent and the system record |
 
 ### Architecture
 

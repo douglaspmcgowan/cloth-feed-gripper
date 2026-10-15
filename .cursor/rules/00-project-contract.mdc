@@ -1,6 +1,0 @@
----
-description: Load the portable repository contract
-alwaysApply: true
----
-
-Follow repository-root `AGENTS.md`; Cursor loads it natively, so read it only when it is not already in context. Read `PRODUCT.md` when present.

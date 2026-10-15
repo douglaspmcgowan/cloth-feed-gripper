@@ -154,3 +154,22 @@ __pycache__/
 node_modules/
 test-results/
 playwright-report/
+
+# Project-owned: agent harness files are not tracked on this repository.
+# A local harness install in a working copy stays untracked and cannot be committed by accident.
+/AGENTS.md
+/CLAUDE.md
+/TASK.md
+/LOG.md
+/BACKBURNER.md
+/MEMORY.md
+/skills-manifest.json
+/secret-manifest.json
+/secret-manifest.md
+/data-manifest.yaml
+/.env.example
+/.agents/
+/.codex/
+/.cursor/
+/.claude/settings.json
+/.claude/settings.local.json
