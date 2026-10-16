@@ -7,83 +7,32 @@ useDefault = true
 # ---------------------------------------------------------------------------------------
 # WHEN GITLEAKS FLAGS SOMETHING THAT IS ACTUALLY FINE
 #
-# There are exactly two supported ways to accept a finding, and which one to reach for
-# depends on whether the thing being accepted is a CATEGORY or a SPECIFIC finding.
+# This repository carries no path allowlist. Every path that once needed one (harness
+# test fixtures, worktrees, generated transcripts, dependency directories) is absent, and
+# the site has no vendored source: its Python tooling uses only the standard library, and
+# its Node dependencies live in node_modules, which is ignored. A path allowlist entry
+# for a path that does not exist would only hide a future file placed at that path, so
+# none is kept here.
 #
-# 1. A category -- "files of this shape never contain a real credential". Add a path
-#    regex to the [allowlist] below. Broad and durable, and it also suppresses FUTURE
-#    findings in those paths, so only use it where a real credential could not
-#    legitimately appear: vendored third-party source, duplicate checkouts, generated
-#    transcripts, deliberate scanner test fixtures.
+# To accept one specific reviewed finding, use a `.gitleaksignore` file at the repository
+# root, one fingerprint per line, in the form:
 #
-# 2. One specific reviewed finding -- "this exact line, in this exact commit, is fine."
-#    Put its fingerprint in a `.gitleaksignore` file at the repository root, one per
-#    line, in the form:
+#     <commit-sha>:<path>:<rule-id>:<start-line>
 #
-#        <commit-sha>:<path>:<rule-id>:<start-line>
+# Gitleaks prints that fingerprint for every finding, so generate them rather than typing
+# them:
 #
-#    Gitleaks prints that fingerprint for every finding, so generate them rather than
-#    typing them:
+#     gitleaks detect --redact --report-format json --report-path leaks.json
+#     # then take the .Fingerprint of each finding you have reviewed and accepted
 #
-#        gitleaks detect --redact --report-format json --report-path leaks.json
-#        # then take the .Fingerprint of each finding you have reviewed and accepted
-#
-#    This is the option to prefer when in doubt. It accepts exactly what you looked at
-#    and nothing else, so a genuine leak appearing later in the same file still fails.
+# That accepts exactly what you looked at and nothing else, so a genuine leak appearing
+# later in the same file still fails.
 #
 # Never accept a finding by loosening or deleting a rule, and never accept one you have
 # not actually looked at. If a real credential is found, the fix is to rotate it first
 # and remove it second -- an allowlist entry over a live credential hides it from every
 # future scan while leaving it exactly as exposed as it was.
+#
+# CI runs `gitleaks git --log-opts="--all"`, so the whole history is scanned, not only the
+# current tree. A finding in an old commit fails CI until it is accepted by fingerprint.
 # ---------------------------------------------------------------------------------------
-
-[[allowlists]]
-description = "Synthetic fixtures, vendored source, duplicate checkouts and generated transcripts"
-paths = [
-  # 1. Deliberate scanner test fixtures. These files are SUPPOSED to contain
-  #    credential-shaped strings: they are the controls that prove the secret-detection
-  #    hooks still fire. A scanner test with no fabricated key proves nothing. Every
-  #    value in them is invented and issued by nobody.
-  '''hooks/test-secret-hooks\.js''',
-  '''\.agents/task-hooks/tests/security-dispatch\.test\.js''',
-  '''\.agents/tools/Enable-Gitleaks\.test\.ps1''',
-
-  # 2. The Bitwarden Secrets command manifest. What the scanner matches here is a
-  #    secretId, resourceId and projectId -- Secrets Manager REFERENCE identifiers naming
-  #    which secret a broker should fetch, never the secret itself. The contract requires
-  #    this manifest to stay value-free, and it is.
-  '''\.agents/tools/bws-command-allowlist\.json''',
-
-  # 3. Vendored third-party source. A virtualenv or node_modules carries published source
-  #    whose own constants and test vectors trip generic-api-key. This repository does not
-  #    author them and cannot fix them, and scanning them says nothing about whether our
-  #    own files leak.
-  '''(^|/)\.venv/''',
-  '''(^|/)site-packages/''',
-
-  # 4. Duplicate checkouts. A worktree is a second checkout of files the scan already
-  #    reads once in the main tree, so every finding inside one is reported twice.
-  #    Excluding them removes the duplicate, never the original.
-  '''(^|/)\.worktrees/''',
-  '''(^|/)\.claude/worktrees/''',
-
-  # 5. Generated agent transcripts. A delegated run's captured stdout quotes guard refusal
-  #    text and command strings, and the credential-shaped fragments in that quoted text
-  #    are the scanner detecting its own vocabulary. Only GENERATED transcripts are
-  #    excluded -- run-<something>.log and _out_<something>.txt. Every authored document
-  #    under Outputs is still scanned.
-  '''(^|/)Outputs/run-[^/]*\.log$''',
-  '''(^|/)Outputs/_out_[^/]*\.txt$''',
-
-  # 6. Downloaded cloud diffs, which carry the same synthetic fixtures already allowlisted
-  #    above, arriving as a patch rather than as a file.
-  '''(^|/)Outputs/cloud-harvest[^/]*/[^/]*\.diff$''',
-]
-
-[[allowlists]]
-description = "SHA-256 digests in freshness manifests are hashes, including when a filename contains Key"
-targetRules = ["generic-api-key"]
-condition = "AND"
-regexTarget = "line"
-paths = ['''(^|/)freshness_baseline\.json$''']
-regexes = ['''(?i)"[^"/\\]+\.[a-z0-9]{1,12}"\s*:\s*"[0-9a-f]{64}"\s*,?''']
