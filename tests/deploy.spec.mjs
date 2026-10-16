@@ -10,7 +10,20 @@ test.describe("deployment", () => {
     test.skip(info.project.name !== "desktop-1440-light", "viewport-independent; runs once");
   });
 
-  for (const path of ["/AGENTS.md", "/TASK.md", "/SPEC.md", "/.agents/INDEX.md", "/.agents/AGENTS.md", "/package.json", "/vercel.json", "/scripts/sync.py", "/.git/config", "/../AGENTS.md"]) {
+  for (const path of [
+    "/README.md",
+    "/PRODUCT.md",
+    "/DESIGN.md",
+    "/SPEC.md",
+    "/package.json",
+    "/vercel.json",
+    "/scripts/sync.py",
+    "/.git/config",
+    "/.git/HEAD",
+    "/.gitignore",
+    "/.gitleaks.toml",
+    "/../README.md",
+  ]) {
     test(`${path} is not served`, async ({ request }) => {
       const res = await request.get(path);
       expect(res.status()).toBe(404);
