@@ -76,17 +76,51 @@ The one record of what this app is built out of.
 - Body: Public Sans, with `Segoe UI`, `system-ui` and `-apple-system` as fallbacks (`--sans` in `public/tokens.css`).
 - Display: the same sans face.
 - Monospace: none. Code is not shown on either page.
+- Type scale (`public/tokens.css`): `--fs-s` 13px (small), `--fs-b` 15px (body), `--fs-h` `clamp(30px,3.2vw,34px)` (heading).
 
 ### Tokens and components
 
-The tokens are defined in `public/tokens.css` for light and dark schemes. Use these and nothing else for colour.
+The tokens are defined in `public/tokens.css` for light and dark schemes. Use these and nothing else for colour. Values are light, then dark where the dark scheme redefines them.
 
-- Surface: `--bg`, `--surface`, `--raised`, `--paper`.
-- Text: `--ink` (primary), `--ink2` (secondary).
-- Line: `--line`.
-- Accent: `--accent`, with `--accent-ink` for text on the accent and `--accent-soft` for quiet fills. The accent is blue; it is the only accent.
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| `--bg` | `#edf0f3` | `#0d1217` | page background |
+| `--surface` | `#fbfcfd` | `#151c23` | cards and panels |
+| `--raised` | `#f1f4f7` | `#1b242d` | raised fills within a surface |
+| `--paper` | `#fdfdfc` | `#e9edf0` | document and picture backgrounds (inverted in dark) |
+| `--ink` | `#141d27` | `#e2e8ee` | primary text |
+| `--ink2` | `#4a5665` | `#a9b4c0` | secondary text |
+| `--line` | `#d2d9e0` | `#2d3945` | borders and rules |
+| `--accent` | `#1c5bb8` | `#7ca6fa` | the one accent: links, labels, active states |
+| `--accent-ink` | `#fbfcfd` | `#0d1217` | text on the accent |
+| `--accent-soft` | `#dce6f6` | `#1c2b44` | quiet accent fills |
+| `--ok` | `#1b7443` | `#5ec48b` | pass status text |
+| `--ok-soft` | `#dbeee2` | `#163324` | pass status fill |
+| `--warn` | `#855400` | `#e0a849` | caution status text |
+| `--warn-soft` | `#f5e8cc` | `#382b13` | caution status fill |
+| `--bad` | `#ad2a20` | `#ff8074` | fail status text and limit lines |
+| `--bad-soft` | `#f6dcd8` | `#3b1c19` | fail status fill |
+| `--c1` | `#1c5bb8` | `#7ca6fa` | chart series 1 |
+| `--c2` | `#c9601a` | `#f09a58` | chart series 2 |
+| `--c3` | `#17806a` | `#4fcfa5` | chart series 3 |
+| `--c4` | `#9c3a8a` | `#e17dd0` | chart series 4 |
+| `--c5` | `#6a7482` | `#8793a0` | chart series 5 and neutral marks |
+| `--grid` | `#e1e6eb` | `#222c36` | chart grid lines |
+| `--band` | `rgb(27 116 67 / .12)` | `rgb(94 196 139 / .14)` | translucent limit or target band on charts |
+| `--mesh` | `#e5e9ee` | `#10171d` | background of landing panels and the 3D viewer |
+| `--shade` | `rgb(20 32 46 / .08)` | `rgb(0 0 0 / .3)` | soft shadow colour (`--elev`) |
+| `--shade2` | `rgb(20 32 46 / .22)` | `rgb(0 0 0 / .6)` | deeper shadow colour (`--elev`) |
+| `--veil` | `rgb(20 32 46 / .35)` | `rgb(0 0 0 / .55)` | scrim behind an open panel |
 
 The gray family is the blue-gray set above. A new colour is a new token, not a literal value in a component.
+
+Spacing, radii, motion and touch targets, all from `public/tokens.css`:
+
+- Spacing: `--s1` 4px, `--s2` 8px, `--s3` 12px, `--s4` 16px, `--s5` 24px, `--s6` 32px, `--s7` 48px, `--s8` 64px.
+- Radii: `--r1` 6px, `--r2` 12px.
+- Motion: `--ease` `cubic-bezier(.2,.7,.2,1)`, `--t` 160ms.
+- Touch target: `--tap` 36px, or 44px on a coarse pointer (`@media (pointer:coarse)`).
+- Layout and elevation: `--rail` 248px (side rail width), `--stage-h` `clamp(320px,calc(100vh - 300px),720px)` (stage height), `--elev` `0 1px 2px var(--shade),0 14px 32px -18px var(--shade2)` (card shadow).
 
 ### Interaction and accessibility
 
