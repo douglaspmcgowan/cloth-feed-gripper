@@ -15,3 +15,4 @@ index.html | typed-figure | 2.0 | 1 | Version of the Apache License named in the
 index.html | typed-figure | 1.1 | 2 | Version of the SIL Open Font License named in the two font credits; not a figure.
 review/index.html | source-path | docs/gripper/DESIGN-BASIS.md | 3 | Evidence citations in the review's Sources panels and one data note: a relative file name inside the design repository, no personal detail, course text or credential. Reviewed 2026-10-11.
 review/index.html | source-path | cad/gripper/viewer_src/so101_mesh.py | 1 | Evidence citation in a Sources panel naming the script that builds the arm context mesh: a relative file name only. Reviewed 2026-10-11.
+media/gripper_hype_vertical.mp4 | email | n@aukg.wA | 1 | One random printable sequence in the encoded MP4 mdat payload, not format metadata or a contact address; reviewed at source commit f0e98c8.
