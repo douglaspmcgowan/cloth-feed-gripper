@@ -160,6 +160,7 @@ def test_ranking_is_byte_stable_on_near_ties():
             {"cfg": "A@1:1", "utilities": {"p": {"a": 0.5004, "b": 0.5}}}]
     sc = T.scores(cfgs, w, "p")
     assert sc["A@1:1"] == sc["B@1:1"] == 0.5
+    assert sorted(sc, key=lambda key: (-sc[key], key)) == ["A@1:1", "B@1:1"]
     assert T.top(sc, sc) == "A@1:1" and T.top(reversed(list(sc)), sc) == "A@1:1"
     assert T.top([], sc) is None
 
