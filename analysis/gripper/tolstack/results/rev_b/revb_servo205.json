@@ -3,21 +3,20 @@
  "label": "Rev B, A17 servo case 20.5 mm, pocket opened to 20.9",
  "tally": {
   "n": 26,
-  "pass": 22,
+  "pass": 23,
   "marginal": 2,
-  "fail": 2,
+  "fail": 1,
   "undecided": 0,
-  "own_fail": 2,
-  "thinnest": "T09T",
-  "thinnest_cpk": -0.239466102,
-  "thinnest_ex_horn": "T09T",
-  "thinnest_ex_horn_cpk": -0.239466102,
+  "own_fail": 1,
+  "thinnest": "T14B",
+  "thinnest_cpk": 0.982325086,
+  "thinnest_ex_horn": "T14B",
+  "thinnest_ex_horn_cpk": 0.982325086,
   "marginal_ids": [
    "T09H",
    "T16"
   ],
   "fail_ids": [
-   "T09T",
    "T14B"
   ]
  },
@@ -627,17 +626,17 @@
     0.551
    ],
    "spec": {
-    "usl": 0.5
+    "usl": 0.75
    },
    "units": "s (close command to first pad contact)",
    "method": "mc",
-   "verdict3": "fail",
-   "own_verdict3": "fail",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
    "verdict_band": [
-    "fail"
+    "pass"
    ],
    "verdict_decided": true,
-   "yield_pct": 24.039,
+   "yield_pct": 100.0,
    "dominant": {
     "name": "servo_angle_error",
     "var_pct": 69.5991091
@@ -652,9 +651,9 @@
     "std": 0.00997571382,
     "p0135": 0.477135476,
     "p99865": 0.536359169,
-    "out_pct": 75.961,
-    "cpk_percentile": -0.239466102,
-    "cpk_percentile_se": 0.00271920286,
+    "out_pct": 0.0,
+    "cpk_percentile": 8.28291037,
+    "cpk_percentile_se": 0.0973715251,
     "n": 100000
    }
   },
@@ -1311,7 +1310,7 @@
     0.426
    ],
    "spec": {
-    "usl": 0.5
+    "usl": 0.75
    },
    "units": "s (close command to first pad contact)",
    "method": "mc",
@@ -1337,15 +1336,15 @@
     "p0135": 0.352135476,
     "p99865": 0.411359169,
     "out_pct": 0.0,
-    "cpk_percentile": 4.02172213,
-    "cpk_percentile_se": 0.0474190579,
+    "cpk_percentile": 12.5440986,
+    "cpk_percentile_se": 0.147327304,
     "n": 100000
    }
   }
  ],
  "input_digest": {
   "algorithm": "sha256",
-  "digest": "fa035516e4ebb9de294fc9f9972df710db45e286c9cc6c7832f1f5936bef72e3",
+  "digest": "e9a684583b47c30148ef5ea7a6f32625d13d7254fd0b5fed376a852109daf2db",
   "files": [
    "stacks/basis.yaml",
    "stacks/rev_b.yaml",

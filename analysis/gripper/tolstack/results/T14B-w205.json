@@ -274,7 +274,7 @@
  ],
  "input_digest": {
   "algorithm": "sha256",
-  "digest": "fa035516e4ebb9de294fc9f9972df710db45e286c9cc6c7832f1f5936bef72e3",
+  "digest": "e9a684583b47c30148ef5ea7a6f32625d13d7254fd0b5fed376a852109daf2db",
   "files": [
    "stacks/basis.yaml",
    "stacks/rev_b.yaml",

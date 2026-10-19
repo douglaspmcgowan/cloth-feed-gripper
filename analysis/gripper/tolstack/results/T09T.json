@@ -1,21 +1,21 @@
 {
  "role": "baseline",
- "fix": "Accept R19 = 0.75 s (T09T-r19p075 passes). The requested JAW_SLOW_ZONE_DEG 6 -> 3 (T09T-slow3) was DECLINED by the firmware simulation (controls.md 6.4): contact by 0.5 s in every grip, but the jaw meets the cloth at up to 41 deg/s (R19's last 3 deg ask 20) and an 8 deg early contact on the stiff finger peaks at 10.48 N on the linear bound (shipped: 9.62 N at worst, 10 deg), past the 10 N cap; 4 and 5 deg zones also pass 10 N at 10 deg (12.03, 10.66 N).",
+ "fix": "No timing fix needed for first contact under the ruled 0.75 s limit. Retain the 6 deg slow zone: the 3 deg alternative (T09T-slow3) was declined after firmware simulation found excessive contact speed and early-contact force (controls.md 6.4).",
  "fix_variant": "T09T-slow3",
  "companion_of": "T09",
  "dominant": {
   "name": "servo_angle_error",
   "var_pct": 69.5991091
  },
- "yield_pct": 24.039,
+ "yield_pct": 100.0,
  "id": "T09T",
  "title": "Close time to first contact after calibration (R19)",
  "mode": "linear",
  "units": "s (close command to first pad contact)",
- "requirement": "R19 as written: full close in <= 0.5 s. The proposed 0.75 s is checked by T09T-r19p075 (requirement still open).",
+ "requirement": "DESIGN-BASIS R19: full close in <= 0.75 s (Douglas ruling 2026-10-12; supersedes 0.5 s). This stack measures time to first pad contact.",
  "notes": "The firmware simulation reaches contact in 503-511 ms with the calibrated contact angle (fw_sim.json). Any contact later than the calibrated angle adds (delta theta) / 20 deg/s, because the last part is at the near-contact speed. After calibration only the calibration repeatability and the servo repeatability remain.",
  "spec": {
-  "usl": 0.5
+  "usl": 0.75
  },
  "accept": {
   "method": "mc"
@@ -46,7 +46,7 @@
  "warnings": [],
  "requires": [],
  "blocked_by": [],
- "own_verdict": false,
+ "own_verdict": true,
  "mc": {
   "n": 100000,
   "mean": 0.507024243,
@@ -57,20 +57,20 @@
   "p50": 0.507024628,
   "p99865": 0.536359169,
   "out_lo_pct": 0.0,
-  "out_hi_pct": 75.961,
-  "out_pct": 75.961,
-  "out_pct_se": 0.135130547,
-  "cpk_normal": -0.23471145,
-  "cpk_percentile": -0.239466102,
-  "cpk_normal_se": 0.00109483166,
-  "cpk_percentile_se": 0.00271920286
+  "out_hi_pct": 0.0,
+  "out_pct": 0.0,
+  "out_pct_se": 3.16227766e-151,
+  "cpk_normal": 8.11890964,
+  "cpk_percentile": 8.28291037,
+  "cpk_normal_se": 0.0228066467,
+  "cpk_percentile_se": 0.0973715251
  },
  "pass": {
-  "wc": false,
-  "rss": false,
-  "mc": false
+  "wc": true,
+  "rss": true,
+  "mc": true
  },
- "verdict": false,
+ "verdict": true,
  "method": "mc",
  "cpk_min": 1.33,
  "contributors": [
@@ -133,15 +133,15 @@
   }
  ],
  "seed": 20260922,
- "own_verdict3": "fail",
- "verdict3": "fail",
+ "own_verdict3": "pass",
+ "verdict3": "pass",
  "verdict_decided": true,
  "verdict_band": [
-  "fail"
+  "pass"
  ],
  "input_digest": {
   "algorithm": "sha256",
-  "digest": "fa035516e4ebb9de294fc9f9972df710db45e286c9cc6c7832f1f5936bef72e3",
+  "digest": "e9a684583b47c30148ef5ea7a6f32625d13d7254fd0b5fed376a852109daf2db",
   "files": [
    "stacks/basis.yaml",
    "stacks/rev_b.yaml",

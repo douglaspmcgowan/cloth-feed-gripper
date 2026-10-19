@@ -2,8 +2,8 @@
 
 Variant of `T09T` (option): firmware: JAW_SLOW_ZONE_DEG 6 -> 3 (0.125 s less: 3 deg at 120 instead of 20 deg/s)
 
-- Requirement: R19 as written: full close in <= 0.5 s. The proposed 0.75 s is checked by T09T-r19p075 (requirement still open).
-- Spec: USL 0.500 s (close command to first pad contact)
+- Requirement: DESIGN-BASIS R19: full close in <= 0.75 s (Douglas ruling 2026-10-12; supersedes 0.5 s). This stack measures time to first pad contact.
+- Spec: USL 0.750 s (close command to first pad contact)
 - Acceptance: MC (Cpk ≥ 1.33, percentile method)
 - Model: linear; source file `T09T_close_time.yaml`; seed 20260922
 
@@ -27,7 +27,7 @@ The firmware simulation reaches contact in 503-511 ms with the calibrated contac
 | MC 0.135 % … 99.865 % | 0.352 … 0.411 |
 | MC min … max | 0.340 … 0.423 |
 | MC out of spec | <30 ppm (0 of 100,000 samples; 95% upper bound) |
-| Cpk percentile / normal | 4.02 ± 0.05 / 3.94 ± 0.01 |
+| Cpk percentile / normal | 12.54 ± 0.15 / 12.30 ± 0.03 |
 | Yield (MC) | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) |
 | Dominant contributor | servo_angle_error (70 %) |
 | Pass/fail by the declared method (MC) | PASS |
