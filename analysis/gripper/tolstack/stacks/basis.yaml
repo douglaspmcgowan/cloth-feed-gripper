@@ -188,8 +188,8 @@ constants:
   F_target:          {value: 5.0,   tag: D, source: "DB R14 hold force per pad"}
   F_cap:             {value: 8.0,   tag: D, source: "DESIGN-BASIS R15 force cap, ruled 8 N by Douglas 2026-10-12 (was 10.0 as written)"}
   F_cap_proposed:    {value: 8.0,   tag: D, source: "R15 ruled 8 N (Douglas 2026-10-12); kept as the r15p8 scenarios' cap, now equal to F_cap"}
-  close_max:         {value: 0.5,   tag: D, source: "DB R19 full close <= 0.5 s as written"}
-  close_max_proposed: {value: 0.75, tag: D, source: "R19 proposed value (open requirement)"}
+  close_max:         {value: 0.75,  tag: D, source: "DESIGN-BASIS R19: full close <= 0.75 s, ruled by Douglas 2026-10-12 (supersedes 0.5 s)"}
+  close_max_superseded: {value: 0.5, tag: D, source: "DESIGN-BASIS R19 superseded history: full close <= 0.5 s before Douglas's 2026-10-12 ruling"}
 
   # ================= Camera pad (front plate, params.json camera_pad; wrist UVC option only) =================
   cam_hole_spacing:  {value: 8.1,   tag: D, cad: camera_pad.bolt_pitch, source: "params.json camera_pad.bolt_pitch"}

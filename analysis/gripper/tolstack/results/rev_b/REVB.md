@@ -4,7 +4,7 @@ N = 100,000 Monte Carlo samples per stack, seed 20260922. Every rev B change is 
 
 ## revb
 
-**Rev B, all changes at once, servo case 20.1 mm** (`revb`). 26 checks: 22 PASS, 2 MARGINAL, 2 FAIL, 0 UNDECIDED (gated worse) (2 independent). MARGINAL: T09H, T16. FAIL: T09T, T14B. Thinnest by Cpk: T09T, Cpk -0.24.
+**Rev B, all changes at once, servo case 20.1 mm** (`revb`). 26 checks: 23 PASS, 2 MARGINAL, 1 FAIL, 0 UNDECIDED (gated worse) (1 independent). MARGINAL: T09H, T16. FAIL: T14B. Thinnest by Cpk: T14B, Cpk 0.98.
 
 | Stack | Run as | Verdict | Yield (MC) | Cpk | Worst case | Spec | Rev A as drawn |
 |---|---|---|---|---:|---|---|---|
@@ -22,7 +22,7 @@ N = 100,000 Monte Carlo samples per stack, seed 20260922. Every rev B change is 
 | T09F | T09F-relfloor8 | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.46 ± 0.00 | 4.865 … 8.031 (out) | USL 8.000 N | FAIL, Cpk -0.04 |
 | T09H | T09H-relfloor8 | **MARGINAL** | 99.996 % (<92 ppm (4 of 100,000 samples; 95% upper bound) out) | 1.28 ± 0.01 | 4.826 … 7.985 (out) | LSL 5.000 N | PASS, Cpk 2.44 |
 | T09P | T09P-floor49 | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.46 ± 0.00 | 4.865 … 8.031 (out) | USL 8.000 N | FAIL, Cpk -0.52 |
-| T09T | base stack | **FAIL** | 24.04 % | -0.24 ± 0.00 | 0.463 … 0.551 (out) | USL 0.500 s | FAIL, Cpk -0.24 |
+| T09T | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 8.28 ± 0.10 | 0.463 … 0.551 (in) | USL 0.750 s | PASS, Cpk 8.28 |
 | T10 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.67 ± 0.01 | -1.452 … 1.452 (out) | LSL -1.000, USL 1.000 mm root gap when the tips first touch | FAIL, Cpk 0.60 |
 | T10B | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.05 ± 0.01 | -2.397 … 2.397 (out) | LSL -2.000, USL 2.000 mm | PASS, Cpk 1.95 |
 | T11 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.17 ± 0.03 | 0.175 … 1.150 (in) | LSL 0.100 mm radial clearance, worst angle over 320 deg roll | PASS, Cpk 2.26 |
@@ -37,17 +37,17 @@ N = 100,000 Monte Carlo samples per stack, seed 20260922. Every rev B change is 
 | T05 | T05-deckpegs (alternative, not counted) | **MARGINAL** | 99.988 % (120 ppm out) | 1.31 ± 0.01 | -1.073 … 1.687 (out) | LSL -0.193, USL 0.807 mm | FAIL, Cpk 0.92 |
 | T09H | T09H (alternative, not counted) | **FAIL** | 99.85 % | 0.99 ± 0.00 | 2.910 … 6.858 (out) | LSL 5.000 N | PASS, Cpk 2.44 |
 | T09P | T09P-trip7 (alternative, not counted) | **FAIL** | 65.44 % | 0.18 ± 0.00 | 6.364 … 9.426 (out) | USL 8.000 N | FAIL, Cpk -0.52 |
-| T09T | T09T-slow3 (alternative, not counted) | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 4.02 ± 0.05 | 0.338 … 0.426 (in) | USL 0.500 s | FAIL, Cpk -0.24 |
+| T09T | T09T-slow3 (alternative, not counted) | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 12.54 ± 0.15 | 0.338 … 0.426 (in) | USL 0.750 s | PASS, Cpk 8.28 |
 
 ## revb_servo205
 
-**Rev B, A17 servo case 20.5 mm, pocket opened to 20.9** (`revb_servo205`). 26 checks: 22 PASS, 2 MARGINAL, 2 FAIL, 0 UNDECIDED (gated worse) (2 independent). MARGINAL: T09H, T16. FAIL: T09T, T14B. Thinnest by Cpk: T09T, Cpk -0.24. Only the checks that differ from the `revb` run are listed.
+**Rev B, A17 servo case 20.5 mm, pocket opened to 20.9** (`revb_servo205`). 26 checks: 23 PASS, 2 MARGINAL, 1 FAIL, 0 UNDECIDED (gated worse) (1 independent). MARGINAL: T09H, T16. FAIL: T14B. Thinnest by Cpk: T14B, Cpk 0.98. Only the checks that differ from the `revb` run are listed.
 
 Every check is identical to that run.
 
 ## revb_ungraded
 
-**Rev B with ungraded h8 pins (pin clearance 0.000-0.030)** (`revb_ungraded`). 26 checks: 22 PASS, 1 MARGINAL, 3 FAIL, 0 UNDECIDED (gated worse) (3 independent). MARGINAL: T09H. FAIL: T09T, T14B, T16. Thinnest by Cpk: T09T, Cpk -0.24. Only the checks that differ from the `revb` run are listed.
+**Rev B with ungraded h8 pins (pin clearance 0.000-0.030)** (`revb_ungraded`). 26 checks: 23 PASS, 1 MARGINAL, 2 FAIL, 0 UNDECIDED (gated worse) (2 independent). MARGINAL: T09H. FAIL: T14B, T16. Thinnest by Cpk: T14B, Cpk 0.97. Only the checks that differ from the `revb` run are listed.
 
 | Stack | Run as | Verdict | Yield (MC) | Cpk | Worst case | Spec | Rev A as drawn |
 |---|---|---|---|---:|---|---|---|
@@ -60,7 +60,7 @@ Every check is identical to that run.
 
 ## revb_hot
 
-**Rev B, hot seat (PETG relaxed)** (`revb_hot`). 26 checks: 21 PASS, 3 MARGINAL, 2 FAIL, 0 UNDECIDED (gated worse) (2 independent). MARGINAL: T09H, T14, T16. FAIL: T09T, T14B. Thinnest by Cpk: T09T, Cpk -0.24. Only the checks that differ from the `revb` run are listed.
+**Rev B, hot seat (PETG relaxed)** (`revb_hot`). 26 checks: 22 PASS, 3 MARGINAL, 1 FAIL, 0 UNDECIDED (gated worse) (1 independent). MARGINAL: T09H, T14, T16. FAIL: T14B. Thinnest by Cpk: T14B, Cpk 0.66. Only the checks that differ from the `revb` run are listed.
 
 | Stack | Run as | Verdict | Yield (MC) | Cpk | Worst case | Spec | Rev A as drawn |
 |---|---|---|---|---:|---|---|---|
@@ -70,7 +70,7 @@ Every check is identical to that run.
 
 ## drawn_hot
 
-**CAD rev A as drawn, hot seat (PETG relaxed)** (`drawn_hot`). 26 checks: 13 PASS, 2 MARGINAL, 11 FAIL, 0 UNDECIDED (gated worse) (10 independent). MARGINAL: T01, T02. FAIL: T03, T03B, T05, T09F, T09P, T09T, T10, T14, T14B, T15, T16B. Thinnest by Cpk: T03B, Cpk -1.55. Only the checks that differ from the rev A as drawn run are listed.
+**CAD rev A as drawn, hot seat (PETG relaxed)** (`drawn_hot`). 26 checks: 14 PASS, 2 MARGINAL, 10 FAIL, 0 UNDECIDED (gated worse) (9 independent). MARGINAL: T01, T02. FAIL: T03, T03B, T05, T09F, T09P, T10, T14, T14B, T15, T16B. Thinnest by Cpk: T03B, Cpk -1.55. Only the checks that differ from the rev A as drawn run are listed.
 
 | Stack | Run as | Verdict | Yield (MC) | Cpk | Worst case | Spec | Rev A as drawn |
 |---|---|---|---|---:|---|---|---|
@@ -80,18 +80,17 @@ Every check is identical to that run.
 
 ## Reference: rev A as drawn
 
-26 checks: 13 PASS, 2 MARGINAL, 11 FAIL, 0 UNDECIDED (gated worse) (10 independent). MARGINAL: T01, T02. FAIL: T03, T03B, T05, T09F, T09P, T09T, T10, T14, T14B, T15, T16B. Thinnest by Cpk: T03B, Cpk -1.55.
+26 checks: 14 PASS, 2 MARGINAL, 10 FAIL, 0 UNDECIDED (gated worse) (9 independent). MARGINAL: T01, T02. FAIL: T03, T03B, T05, T09F, T09P, T10, T14, T14B, T15, T16B. Thinnest by Cpk: T03B, Cpk -1.55.
 
 ## Release gate
 
-Do not print revision B parts in these loops: T09T, T14B
+Do not print revision B parts in these loops: T14B
 
 | Stack | Loop | Verdict | Cpk cold | Cpk hot | Parts in loop | What clears it |
 |---|---|---|---:|---:|---|---|
 | T09H | Largest hold force the firmware can reach on the softest finger (R14 under the R15 cap) | MARGINAL | 1.28 ± 0.01 | 1.28 | servo horn, knuckle A, knuckle B, finger A, finger B, TPU pads | Needed only once the dog slots open to 3.4 (rev B row 1): the 1.5 deg of dog lash moves the first contact toward the jaw floor, and the absolute floor then cuts the squeeze short (T09H falls to Cpk 0.99 in the combined rev B run). The floor relative to the calibrated contact angle (the T09F firmware request, APPLIED in config.h JAW_FLOOR_BELOW_C0_DEG 4.9 for the ruled 8 N; 6.2 in round 2): T09H-relfloor8. The 4.9 deg floor sits just past the 4.867 deg squeeze cap, so it is MARGINAL exactly as with 6.2 (T09H-relfloor); the softest pair at the cap is the limit, not the floor. |
-| T09T | Close time to first contact after calibration (R19) | FAIL | -0.24 ± 0.00 | -0.24 | servo horn, knuckle A, knuckle B, finger A, finger B | Accept R19 = 0.75 s (T09T-r19p075 passes). The requested JAW_SLOW_ZONE_DEG 6 -> 3 (T09T-slow3) was DECLINED by the firmware simulation (controls.md 6.4): contact by 0.5 s in every grip, but the jaw meets the cloth at up to 41 deg/s (R19's last 3 deg ask 20) and an 8 deg early contact on the stiff finger peaks at 10.48 N on the linear bound (shipped: 9.62 N at worst, 10 deg), past the 10 N cap; 4 and 5 deg zones also pass 10 N at 10 deg (12.03, 10.66 N). |
 | T14B | Dog coupling — servo shaft offset from pin A against the dog slot clearance | FAIL | 0.98 ± 0.00 | 0.66 | mid plate, servo cradle, gripper servo, servo horn, knuckle A, pin A | Locate the servo by its Ø9 output boss in a reamed bore in the 1.6 mm housing web at the case top (the boss is concentric with the shaft) and open the dog slots to 3.4 (lash about +/-1.5 deg [A: arithmetic here, (3.4 - 0.1 - 2.927) / (2 x 7 mm) rad]). With the web terms T14B-boss34 fails at Cpk 0.98. A 3.42 mm slot adds 0.010 mm half-clearance and restores about Cpk 1.05, but costs the closure window; the robust fix is a zero-lash coupling that takes offset, such as an Oldham disc. |
 | T16 | Pin axis tilt, centre-distance change across the 8 mm gear face | MARGINAL | 1.30 ± 0.01 | 1.30 | mid plate, front plate, knuckle A, knuckle B, pin A, pin B | none recorded |
 
-Clear to print on the assumed inputs: camera bracket, deck, front plate, M3 horn screws, pin B, servo 5, spider, TPU pads, wrist link, wrist mount.
+Clear to print on the assumed inputs: camera bracket, deck, finger A, finger B, front plate, knuckle B, M3 horn screws, pin B, servo 5, spider, TPU pads, wrist link, wrist mount.
 Every verdict rests on at least one assumed input until coupon measurements replace them.
