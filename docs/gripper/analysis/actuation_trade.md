@@ -101,7 +101,7 @@ Full comparison of the three rows plus the present servo:
 
 The aifitlab "DS3235 SG" (A34) is a different variant: gear ratio 342, and 30 kg·cm at 7.4 V against the datasheet's 35 [S]. It is treated as a vendor claim, not as the datasheet part.
 
-**Weighted score (section 6).** The DS3230 PRO (A39, $25) scores 0.652 and the MG (A32, $27) 0.646 under the proposed values, the top two eligible scores, because their listed figures are identical and the PRO is $2 cheaper. Under random weights 82 % of draws recommend the DS3230 and 18 % the DS3218MG with the 1.5:1 stage.
+**Weighted score (section 6).** The DS3230 PRO (A39, $25) scores 0.652 and the MG (A32, $27) 0.646 under the proposed values, the top two eligible scores, because their listed figures are identical and the PRO is $2 cheaper. Under random weights 81.4 % of draws recommend the DS3230 and 18.6 % the DS3218MG with the 1.5:1 stage.
 
 ## 1. What was compared
 
@@ -383,7 +383,7 @@ For the ranking itself, scores are rounded decimal half-even to three places bef
 
 **Stability of the result:**
 
-- **The winner does not change with the weights.** Halving or raising by half any single weight leaves the DS3230 on top. Over 4,000 random weight draws the tie rule recommends the DS3230 in 82 % and the DS3218MG with the 1.5:1 stage in 18 %.
+- **The winner does not change with the weights.** Halving or raising by half any single weight leaves the DS3230 on top. Over 4,000 random weight draws the tie rule recommends the DS3230 in 81.4 % and the DS3218MG with the 1.5:1 stage in 18.6 %.
 - **The winner does change with the gate.** At a P(R16 and simulated force) gate of 0.8 the DS3225 (A33) qualifies and wins. At 0.95 the FEETECH FT5330M (A37, marginal arm gate) wins: the DS3230's 8 N-cap value is 0.92–0.93 since the model carries the squeeze-cap margin (it was 0.95–0.96, and the PRO won).
 - **With no gates, the DS3218MG at 1:1 scores highest**, because it is cheap, in stock and a drop-in. It fails only on the hold-rule probability.
 
