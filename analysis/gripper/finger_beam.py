@@ -525,16 +525,21 @@ def analyse(G, label):
     return out
 
 
+_MISSING = object()
+
+
 def differing_keys(expected, actual, path=""):
     """Return paths of leaves that differ between a stored result and a fresh one."""
+    if expected is _MISSING or actual is _MISSING:
+        return [path]
     if isinstance(expected, dict) and isinstance(actual, dict):
         return [key for name in sorted(expected.keys() | actual.keys())
-                for key in differing_keys(expected.get(name), actual.get(name),
+                for key in differing_keys(expected.get(name, _MISSING), actual.get(name, _MISSING),
                                           f"{path}.{name}" if path else name)]
     if isinstance(expected, list) and isinstance(actual, list):
         return [key for index in range(max(len(expected), len(actual)))
-                for key in differing_keys(expected[index] if index < len(expected) else None,
-                                          actual[index] if index < len(actual) else None,
+                for key in differing_keys(expected[index] if index < len(expected) else _MISSING,
+                                          actual[index] if index < len(actual) else _MISSING,
                                           f"{path}[{index}]")]
     return [path] if expected != actual else []
 

@@ -27,7 +27,7 @@ Lane: drivetrain dynamics and life for the cloth-feed gripper. Dated 2026-09-22 
 | Shock | The worst event is the **finger-B jam in the 120 °/s pre-close: 2.69 N·m** at base rotor inertia and **3.60 N·m at 2.6×**. These are maxima over jam angle 10–13.6° and servo damping ζ 0.5–1.0; the range is 2.11–2.69 N·m, so a single angle sample understates it. Arm collision on the TPU tip: 2.53 N·m. Gear lane's shock: 2.155. At 20 °/s the jam is quasi-static (2.108). A 2× tension snag gives 0.40 N·m, but the grip **slips**: friction capacity 3.81 N vs 4 N |
 | Rail 6.5 / 6.35 V | Baseline stays 6.8 V (gear-lane LC3 basis, highest stall current). At 6.5 V: stall 2.05 N·m, so LC3 is −2.7 % and the 6.8 V gear verdicts are conservative. Hold is 38.6 % of stall at 6.5 V and 39.2 % at 6.35 V, against the 0.792 N·m requirement. Close is unchanged (0.36 / 0.66 s). Stall current is scaled from the 6.8 V datasheet values, because no source gives a 5 V current (section 5) |
 | TPU finger vs R25 (1e5 grips) | **Fails at the pessimistic knockdown.** Hot spot × 0.27: **4.3e3 grips**, set by the 1e3 LC2 cap events (10 N) and the tip collisions. At × 0.5: 3.1e6 (passes). p99 stress: 1.3e7 / 2.0e9 (passes). The hot spot is the max von Mises at a sharp rib corner (singular), so the × 0.27 max row is the worst case, not the expected one. **Assumption:** the new finger's linear FEA holds to its fold (10.6 N at E 67, 8.9 N at E 56). The 5 N hold is inside that range. The 10 N cap (at E 56) and every tip collision (28.5 N) are not. Collisions are therefore capped at the fold stress, 10.7 MPa [A], which assumes structure not modelled here carries the load above the fold. Uncapped (linear at 28.5 N): 1.0e3 grips at × 0.5, so the finger fails |
-| Weakest link, gear-lane options | 1. PETG best (m1.5 z21 x0.5 b10): **static root failure** at the jam (SF 0.90). 2. TPU hot spot × 0.27: 4.3e3. 3. POM CNC m1.5 z21 b9: 4.8e6. 4. PLA knuckle: 5.7e6 (SF 1.05 at the jam). 5. PA6-CF printed m1.5 z19 b8: **6.2e7**. 6. PA6-CF robust m1.5 z19 x0.25 b10: 8.4e7. Target: 1e5 grips = 972 h |
+| Weakest link, gear-lane options | 1. PETG best (m1.5 z21 x0.5 b10): **static root failure** at the jam (SF 0.90). 2. TPU hot spot × 0.27: 4.3e3. 3. POM CNC m1.5 z21 b9: 5.1e6. 4. PA6-CF printed m1.5 z19 b8: **6.3e7**. 5. PA6-CF robust m1.5 z19 x0.25 b10: 8.7e7. 6. PLA knuckle: 2.3e8 (SF 1.90 at the jam). Target: 1e5 grips = 972 h |
 | Gear SF at the worst event / jam at 2.6× inertia / DS3235 stall (root) | PA6-CF printed **1.33 / 1.04 / 1.12**; PA6-CF robust **1.47 / 1.18 / 1.26**; POM CNC 1.29 / **1.01** / 1.09; PETG best **0.90 / 0.71 / 0.76**. The withdrawn m1.25 z19 b10 PA6-CF: 1.04 / **0.83 / 0.89**. Every option passes the base events except PETG. None keeps the gear lane's 1.5× margin under the swept jam |
 | Static failures on the rare events | Every PLA and PETG geometry, including the PETG best. POM and PA6-CF at every b 6 named geometry except PA6-CF m1.5 z20 b6 (SF 1.16). The current CAD m1 z24 in every material. Al 6061 on the flank in a printed housing |
 | Recommendation | Gears: **PA6-CF**, as gears.md says. The printed pick passes every event but drops to 1.04 at 2.6× rotor inertia. **Take the robust PA6-CF m1.5 z19 x0.25 b10 (min SF 1.18 over all cases) if the 0.7 mm extra centre distance fits**; otherwise keep the printed pick and measure the rotor inertia first. If a_w 31.5 fits, PA6-CF on the CNC geometry (m1.5 z21 b9) gives 1.56 / 1.24 / 1.33. POM CNC has no margin at 2.6× (1.01). The life limiters are **servo heat in the hold** (M7) and the **TPU finger under the 10 N cap and tip collisions** (M10 and a TPU coupon or bench fatigue test), not the gears |
@@ -174,7 +174,7 @@ The peaks arrive within about 10 ms, so no current or firmware limit caps 4b or 
 - **TPU hot spot:** fea_summary recommended tip, 0.888 MPa/N (max vM at a sharp rib corner, singular) and 0.386 MPa/N (p99). Pad events at their linear stress. Tip collisions two ways:
   - **Capped** (headline): the nonlinear-FEA hot-spot stress at the fold, 10.7 MPa max / 5.3 MPa p99 [A: structure not modelled here carries the load above the fold].
   - **Linear, uncapped:** 25.3 MPa and 38 % strain at 28.5 N, outside the model's validity.
-- **Knuckle arm root:** 0.832 MPa/N incl. Kt 1.5 (`finger_beam.json` design_L45). All events, with stall and jam forces taken at the tip pad (T η / r_c) [A]. **K_f 1.14 is applied on top of Kt 1.5, so the notch is counted twice (conservative).**
+- **Knuckle arm root:** 0.460 MPa/N incl. Kt 1.5 (`finger_beam.json` design_L45). All events, with stall and jam forces taken at the tip pad (T η / r_c) [A]. **K_f 1.14 is applied on top of Kt 1.5, so the notch is counted twice (conservative).**
 
 | S-N curve (σ_max, R ≈ 0) | Basis |
 |---|---|
@@ -187,9 +187,9 @@ The peaks arrive within about 10 ms, so no current or firmware limit caps 4b or 
 
 | Geometry | PLA | PETG | PA6-CF | POM | Al 6061 |
 |---|---|---|---|---|---|
-| m1.5 z19 α25 b8, a 28.5 (printed pick) | S (0.44) | S (0.72) | **6.2e7*** flank, SF 1.33 | 3.3e6, 1.08 | S flank (0.66) |
-| m1.5 z19 α25 x0.25 b10, a 29.2 (robust) | S | S (0.82) | **8.4e7*** flank, SF 1.47 | 4.0e6, 1.23 | S flank |
-| m1.5 z21 α25 b9, a 31.5 (CNC pick) | S | S (0.86) | 1.1e8, 1.56 | **4.8e6*** flank, SF 1.29 | S flank |
+| m1.5 z19 α25 b8, a 28.5 (printed pick) | S (0.44) | S (0.72) | **6.3e7*** flank, SF 1.33 | 3.3e6, 1.08 | S flank (0.66) |
+| m1.5 z19 α25 x0.25 b10, a 29.2 (robust) | S | S (0.82) | **8.7e7*** flank, SF 1.47 | 4.0e6, 1.23 | S flank |
+| m1.5 z21 α25 b9, a 31.5 (CNC pick) | S | S (0.86) | 1.1e8, 1.56 | **5.1e6*** flank, SF 1.29 | S flank |
 | m1.5 z21 α25 x0.5 b10, a 32.9 (best PETG) | S | **S (0.90)*** | 1.7e8, 1.59 | 6.3e6, 1.35 | S flank |
 | m1.25 z19 α25 b10, a 23.75 (withdrawn pick) | S | S | 2.4e7, 1.04 | S (0.87) | S flank |
 | m1.5 z20 α20 b6 (DB / torque-note PETG proposal) | S | S (0.60) | 5.2e7, 1.16 | S (0.91) | S flank |
@@ -212,7 +212,7 @@ Flank SF is higher than root in every PA6-CF and POM case (PA6-CF printed: 1.46 
 
 **Other parts:**
 - **TPU finger hot spot** (collisions capped): 3.1e6 grips at × 0.5; **4.3e3 at × 0.27 (fails R25)**. The p99 stress gives 2.0e9 / 1.3e7. Damage at × 0.27 comes from the 1e3 LC2 cap events (8.9 MPa at 10 N, 1.3e-4 per grip) and the capped collisions (1.0e-4 per grip); the duty cycle adds 3e-6. Duty peak is 4.3 MPa and 6.3 % strain at 4.79 N, inside the linear range. **Validity:** the new finger folds at 10.6 N (E 67) / 8.9 N (E 56). The 10 N cap is above the E 56 fold and the 28.5 N collision is far above both. Uncapped collisions give 1.0e3 grips (× 0.5) and 8.8e2 (× 0.27): with nothing stopping the fold, one collision does most of a lifetime's damage. `fea_summary` itself rates the finger CONDITIONAL: it fails the R15 fold check at the 10 N cap and relies on the 8 N FSR trip.
-- **Knuckle arm root:** PLA 5.7e6 grips (5.6e4 h), PETG 3.8e7. Duty peak 4.0 MPa. Worst event (fast jam, 35 N at the tip) 29.3 MPa: SF 1.05 (PLA), 1.53 (PETG).
+- **Knuckle arm root:** PLA 2.3e8 grips (2.2e6 h), PETG 1.5e9. Duty peak 2.25 MPa. Worst event (fast jam, 35 N at the tip) 16.18 MPa: SF 1.90 (PLA), 2.77 (PETG).
 
 **Ranking, weakest first (`gears.json` options, finger, knuckle):**
 
@@ -225,11 +225,12 @@ Flank SF is higher than root in every PA6-CF and POM case (PA6-CF printed: 1.46 
 | 5 | TPU p99 × 0.27, uncapped | 7.6e3 | fails |
 | 6 | TPU hot spot × 0.5, capped | 3.1e6 | passes |
 | 7 | POM CNC | 4.8e6 | passes |
-| 8 | PLA knuckle | 5.7e6 | passes |
+| 8 | TPU p99 × 0.5, uncapped | 5.7e6 | passes |
 | 9 | TPU p99 × 0.27, capped | 1.3e7 | passes |
-| 10 | PETG knuckle | 3.8e7 | passes |
-| 11 | PA6-CF printed | 6.2e7 | passes |
-| 12 | PA6-CF robust | 8.4e7 | passes |
+| 10 | PA6-CF printed | 6.3e7 | passes |
+| 11 | PA6-CF robust | 8.7e7 | passes |
+| 12 | PLA knuckle | 2.3e8 | passes |
+| 13 | PETG knuckle | 1.5e9 | passes |
 
 **Against the 1e5 target (R25):** every PA6-CF and POM option and both knuckles pass. PETG fails. The TPU finger fails at the pessimistic knockdown and whenever tip collisions are not capped at the fold. The full ranking is in `dyno.json` → `fatigue.ranking_weakest_first`.
 
