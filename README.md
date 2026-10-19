@@ -27,7 +27,7 @@ npm test                                  # Playwright, 3 sizes x light and dark
 npm run lint
 ```
 
-`sync.py` takes `--source <path to a clone>` to use a local checkout, and otherwise makes its own shallow clone with `gh`. `.sync/state.json` is git-ignored, so the first run in a fresh clone has no record of the last sync and may rebuild every generated file; the result is the same bytes.
+`sync.py` reads this repository by default and takes `--source <path to a checkout>` when another checkout is needed. `.sync/state.json` is git-ignored, so the first run in a fresh clone has no record of the last sync and may rebuild every generated file; the result is the same bytes.
 
 ## Checks
 

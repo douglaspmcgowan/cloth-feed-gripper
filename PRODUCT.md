@@ -71,17 +71,17 @@ Keep product intent and the system record here. Put interface rules in `DESIGN.m
 
 ### Data flow
 
-1. **Input.** `scripts/sync.py --ref <sha>` reads files at that commit of the private source repository `berkeley-ai-tutor`, with `git show`. It reads from a clone given by `--source`, or else from a temporary clone it makes with `gh`. The files it reads are listed in its input table: the review app, the films, the poster, the licence texts and a few read-only files for checks and credits.
+1. **Input.** `scripts/sync.py --ref <sha>` reads files at that commit of this repository, with `git show`. `--source` can select another checkout. The files it reads are listed in its input table: the review app, the films, the poster, the licence texts and a few read-only files for checks and credits.
 2. **Transform.** `sync.py` wraps the review app in a document head with a Home link. It prepares the films and posters with `ffmpeg`, runs `scripts/extract_facts.mjs` to read the figures out of the review app, and copies the review app's `:root` token blocks.
 3. **Stores.** It writes the generated files under `public/`, only where their bytes differ, and writes `.sync/state.json`, which is git-ignored and never served.
-4. **Trust boundary.** The private source is read only at sync time, and nothing is fetched from it while the site is served. `scripts/check_public.py` scans `public/` for private content. `provenance.json` holds hashes and byte counts and nothing about the source layout.
+4. **Trust boundary.** Repository inputs are read only at sync time, and nothing is fetched from the repository while the site is served. `scripts/check_public.py` scans `public/` for private content. `provenance.json` holds hashes and byte counts and nothing about the source layout.
 5. **Output.** `public/` is served by Vercel under `vercel.json`, or by `scripts/serve.mjs` locally. Visitors' browsers then load the three.js module and the Public Sans font from third parties (see Integrations).
 
 ### Integrations
 
 | System | Direction | Credential name | Failure behavior |
 |---|---|---|---|
-| `berkeley-ai-tutor` (GitHub, private source repository) | in, at sync time only | none in the repository; the `gh` login of the machine that runs `sync.py`, used only when `--source` is not given | `sync.py` exits with an error naming the failure (`could not clone`, `ref ... not found`, or `missing at the pinned commit`) |
+| This repository (local Git checkout) | in, at sync time only | none | `sync.py` exits with an error naming the failure (`ref ... not found` or `missing at the pinned commit`) |
 | Vercel (hosts `public/`) | out | none in the repository; the Vercel project is linked outside it | `npm run check:live -- <base-url>` exits 1 and names each failed path |
 | GitHub Actions, `gitleaks` workflow (`.github/workflows/gitleaks.yml`) | in (reads this repository on push and pull request) | none; the job uses the default token with `contents: read` | the job fails on a checksum mismatch in the pinned download or on any finding in the history scan |
 | jsDelivr (three.js 0.186.1, loaded by the review app in the visitor's browser) | in, at view time | none | the 3D views do not draw without a network |

@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Bring the review app, the films and the figures for the site in from berkeley-ai-tutor.
+"""Refresh the review app, films and figures from this repository's pinned commit.
 
-    python scripts/sync.py --ref 996dce6                      # makes its own temporary clone
-    python scripts/sync.py --ref 996dce6 --source <clone>     # reads blobs from a clone you already have
+    python scripts/sync.py --ref HEAD
 
 Reads blobs at <ref> with `git show` (never the clone's working tree, never writes to it) and writes:
 
@@ -33,7 +32,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
-SOURCE_SLUG = "douglaspmcgowan/berkeley-ai-tutor"
+SOURCE_SLUG = "douglaspmcgowan/cloth-feed-gripper"
 SOURCE_URL = f"https://github.com/{SOURCE_SLUG}"
 
 VIEWER = "cad/gripper/viewer.html"
@@ -45,14 +44,13 @@ FILMS = {
 }
 POSTER = "video/gripper/renders/poster.png"
 LICENCES = {
-    "cad/so101/LICENSE": "so101-apache-2.0.txt",
+    "docs/gripper/licenses/so101-apache-2.0.txt": "so101-apache-2.0.txt",
     "video/gripper/assets/fonts/OFL.txt": "archivo-ofl.txt",
 }
 # Read for checks and credits, never served.
 READ_ONLY = [
     "docs/gripper/DESIGN-BASIS.md",
     "cad/gripper/viewer_src/so101_mesh.py",
-    "cad/so101/SOURCE.md",
     "video/gripper/CREDITS.md",
     "video/gripper/audio/README.md",
 ]
@@ -95,27 +93,13 @@ def write_if_changed(path: Path, data: bytes) -> bool:
 
 
 def acquire(source: str | None) -> tuple[Path, Path | None]:
-    """Return (clone, temp dir to delete). With no --source, make a blobless clone: history is not
-    needed and each blob is fetched only when read, so a short sha resolves and the 10 MB viewer is
-    the only large download."""
+    """Return the local repository, or an explicitly supplied clone."""
     if source:
         clone = Path(source).resolve()
         if not (clone / ".git").exists() and not (clone / "HEAD").exists():
             sys.exit(f"--source {clone} is not a git clone")
         return clone, None
-    tmp = Path(tempfile.mkdtemp(prefix="gripper-source-"))
-    clone = tmp / "src"
-    gh = shutil.which("gh")
-    cmd = (
-        [gh, "repo", "clone", SOURCE_SLUG, str(clone), "--", "--filter=blob:none", "--no-checkout"]
-        if gh
-        else ["git", "clone", "--filter=blob:none", "--no-checkout", f"{SOURCE_URL}.git", str(clone)]
-    )
-    done = run(cmd, check=False)
-    if done.returncode != 0:
-        shutil.rmtree(tmp, ignore_errors=True)
-        sys.exit(f"could not clone {SOURCE_SLUG}: {done.stderr.decode(errors='replace').strip()}")
-    return clone, tmp
+    return ROOT, None
 
 
 def resolve(clone: Path, ref: str) -> tuple[str, str]:
@@ -275,16 +259,14 @@ def encode_search(dst: Path, qualities: tuple[int, ...], limit: int, make) -> No
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--ref", help="commit in berkeley-ai-tutor to read (default: the commit in public/provenance.json)")
-    ap.add_argument("--source", help="path to an existing clone of berkeley-ai-tutor; without it a temporary clone is made")
+    ap.add_argument("--ref", help="commit in this repository to read (default: HEAD)")
+    ap.add_argument("--source", help="path to an existing clone; defaults to this repository")
     args = ap.parse_args()
 
     prov_path = PUBLIC / "provenance.json"
     served_prev = json.loads(prov_path.read_text(encoding="utf-8")) if prov_path.exists() else None
     prov = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else None
-    ref = args.ref or (served_prev or {}).get("source", {}).get("commit")
-    if not ref:
-        sys.exit("--ref is required the first time")
+    ref = args.ref or "HEAD"
 
     clone, tmp = acquire(args.source)
     try:
