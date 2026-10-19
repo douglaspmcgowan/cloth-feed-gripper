@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import json
 import math
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -191,7 +192,7 @@ def load_geometry(P=None, design=True, **over):
         m=m, z=z, r=r, a=a, rf=rf, rb=r * math.cos(math.radians(g["pressure_angle"])),
         b=g["face_width"], alpha=math.radians(g["pressure_angle"]),
         xf=a / 2 - f["closed_gap"] / 2, R0=k["root_offset"], t_root=k["root_thickness"],
-        y0=-k["root_offset"] - k["root_thickness"], w_arm=w_arm,
+        y0=-k["root_offset"] - k["root_thickness"] - k["root_tab"], w_arm=w_arm,
         h_arm_top=math.sqrt(rf ** 2 - w_arm ** 2 / 4),
         L=f["length"], W=f["base_width"], D=f["depth"], t=f["wall"], tr=f["rib_thickness"],
         n=int(f["ribs"]), beta=f["rib_angle"], gap=f["closed_gap"], lattice=f["lattice"],
@@ -523,7 +524,21 @@ def analyse(G, label):
     return out
 
 
-def main():
+def differing_keys(expected, actual, path=""):
+    """Return paths of leaves that differ between a stored result and a fresh one."""
+    if isinstance(expected, dict) and isinstance(actual, dict):
+        return [key for name in sorted(expected.keys() | actual.keys())
+                for key in differing_keys(expected.get(name), actual.get(name),
+                                          f"{path}.{name}" if path else name)]
+    if isinstance(expected, list) and isinstance(actual, list):
+        return [key for index in range(max(len(expected), len(actual)))
+                for key in differing_keys(expected[index] if index < len(expected) else None,
+                                          actual[index] if index < len(actual) else None,
+                                          f"{path}[{index}]")]
+    return [path] if expected != actual else []
+
+
+def main(check=False):
     P = load_params()
     used = apply_overrides(P)
     out = {"inputs": INPUTS, "overrides_from_params": used,
@@ -534,8 +549,24 @@ def main():
     out["cases"]["design_L45"] = analyse(Gd, f"design basis: L {Gd['L']:g}, r_c {Gd['rc_tip']:g} mm, CAD section")
     out["cases"]["cad_L60"] = analyse(Gc, f"current CAD: L {Gc['L']:g}, r_c {Gc['rc_tip']:g} mm (reference)")
     out["ejection_limit_deg"] = math.degrees(math.atan(INPUTS["grip"]["mu_pad_cloth"]))
+    result_path = RESULTS / "finger_beam.json"
+    serialized = json.dumps(out, indent=1, default=float, allow_nan=False)
+    if check:
+        try:
+            committed = json.loads(result_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            print(f"STALE: {result_path.name}: {exc}")
+            return 1
+        differences = differing_keys(committed, json.loads(serialized))
+        if differences:
+            print(f"STALE: {result_path.name} differs at {len(differences)} keys:")
+            for key in differences:
+                print(f"  {key}")
+            return 1
+        print(f"FRESH: {result_path.name} matches recomputed values")
+        return 0
     RESULTS.mkdir(parents=True, exist_ok=True)
-    (RESULTS / "finger_beam.json").write_text(json.dumps(out, indent=1, default=float, allow_nan=False), encoding="utf-8")
+    result_path.write_text(serialized, encoding="utf-8")
     plot(Gd, Gc, out)
     summary(out)
     return out
@@ -614,4 +645,9 @@ def summary(out):
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="compare computed values with the committed JSON without writing")
+    args = parser.parse_args()
+    result = main(check=args.check)
+    if args.check:
+        raise SystemExit(result)
