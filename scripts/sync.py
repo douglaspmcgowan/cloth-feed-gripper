@@ -197,8 +197,11 @@ HOME_LINK = """<script>
 
 def wrap_viewer(viewer: bytes, url: str) -> bytes:
     text = viewer.decode("utf-8")
-    if not text.startswith("<title>"):
-        sys.exit("review app no longer starts with <title>; the wrapper needs updating")
+    source_metadata = '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+    if text.startswith(source_metadata + "<title>"):
+        text = text[len(source_metadata) :]
+    elif not text.startswith("<title>"):
+        sys.exit("review app has an unsupported start structure; the wrapper needs updating")
     if not text.endswith("\n"):
         text += "\n"
     return (WRAPPER_HEAD.format(url=url) + text + HOME_LINK).encode("utf-8")

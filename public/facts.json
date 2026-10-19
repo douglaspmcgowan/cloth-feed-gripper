@@ -2,10 +2,10 @@
   "requirements": {
     "total": 27,
     "counts": {
-      "pass": 13,
+      "pass": 12,
       "risk": 9,
       "fail": 2,
-      "open": 3
+      "open": 4
     },
     "items": [
       {
@@ -34,26 +34,26 @@
       },
       {
         "name": "Microcontroller",
-        "status": "pass",
-        "evidence": "ESP32 DevKitC. The compile exits 0 at 24 % of flash.",
+        "status": "open",
+        "evidence": "ESP32 DevKitC firmware compile has not run; arduino-cli is needed to check it.",
         "evidenceId": "firmware-gates"
       },
       {
         "name": "State machine and event-driven code",
         "status": "pass",
-        "evidence": "12 states and a 68-row transition table with no blocking waits. The host test takes every row and passes 695 checks.",
+        "evidence": "12 states and a 69-row transition table with no blocking waits. The host test takes every row and passes 2124 checks.",
         "evidenceId": "firmware-states"
       },
       {
         "name": "PWM actuator, not the arm's serial bus",
         "status": "pass",
-        "evidence": "DS3218MG at 50 Hz, 500 to 2500 µs.",
+        "evidence": "DSServo DS3230 MG at 50 Hz, 500 to 2500 µs.",
         "evidenceId": "torque-shortlist"
       },
       {
         "name": "At most $50 per actuator",
         "status": "pass",
-        "evidence": "DS3218MG, $12.99.",
+        "evidence": "DSServo DS3230 MG, $27.00.",
         "evidenceId": "parts-list"
       },
       {
@@ -65,7 +65,7 @@
       {
         "name": "Mass-moment within 43,720 g mm",
         "status": "fail",
-        "evidence": "144.4 g with cloth, centred 38.1 mm past the horn: 50,131 g mm, 115 % of budget.",
+        "evidence": "152.9 g with cloth, centred 37.6 mm past the horn: 52,995 g mm, 121 % of budget.",
         "evidenceId": "mass-payload"
       },
       {
@@ -83,13 +83,13 @@
       {
         "name": "Gear strength at hold, cap and stall",
         "status": "pass",
-        "evidence": "Printed PA6-CF pair: root safety factor 5.09, 2.82 and 1.61; shock 1.59.",
+        "evidence": "Printed PA6-CF pair: root safety factor 5.11, 2.83 and 1.61; shock 1.59.",
         "evidenceId": "gears-picks"
       },
       {
         "name": "Hold at least 5 N per pad",
         "status": "risk",
-        "evidence": "The servo holds 0.819 N m against 0.792 needed. It fails if tension exceeds 2.07 N or friction drops below 0.386.",
+        "evidence": "The DSServo DS3230 MG holds 1.151 N m against 0.792 needed. Rev A's DS3218MG fails if tension exceeds 2.07 N or friction drops below 0.386.",
         "evidenceId": "torque-arm"
       },
       {
@@ -101,7 +101,7 @@
       {
         "name": "Hold at most 40 % of stall",
         "status": "risk",
-        "evidence": "Needs 20.2 kg cm of stall; the servo gives 20.88 at 6.35 V. Datasheets differ by 0.4 kg cm.",
+        "evidence": "Needs 20.2 kg cm of stall; the DSServo DS3230 MG gives 29.33 at 6.5 V, a vendor listing figure; not yet measured on the delivered part.",
         "evidenceId": "torque-arm"
       },
       {
@@ -119,7 +119,7 @@
       {
         "name": "Full close within 0.5 s",
         "status": "risk",
-        "evidence": "The firmware simulation touches at 0.50 to 0.51 s and reaches 4.5 N at 0.60 to 0.70 s. The torque model says 0.278 s. Needs a ruling and a timed video.",
+        "evidence": "The firmware simulation touches at 0.58 to 0.59 s and reaches 4.5 N at 0.67 to 0.72 s. The torque model says 0.278 s. Needs a ruling and a timed video.",
         "evidenceId": "firmware-step"
       },
       {
@@ -174,24 +174,24 @@
     "design_basis_total": 27
   },
   "mass": {
-    "total_g_incl_cloth": 144.4,
-    "com_mm_past_horn": 38.1,
-    "mass_moment_gmm": 50131,
+    "total_g_incl_cloth": 152.9,
+    "com_mm_past_horn": 37.6,
+    "mass_moment_gmm": 52995,
     "budget_gmm": 43720,
-    "budget_use": 1.147,
+    "budget_use": 1.212,
     "within_budget": false,
-    "mass_limit_g": 125.9216589861751
+    "mass_limit_g": 126.10325930199018
   },
   "thermal": {
     "cases_failing": 9,
     "cases_total": 12
   },
   "tolerances": {
-    "stacks_total": 20,
-    "stacks_passing_as_designed": 1
+    "stacks_total": 26,
+    "stacks_passing_as_designed": 13
   },
   "decisions": {
-    "total": 7,
+    "total": 6,
     "items": [
       {
         "id": "open-decision-mass",
@@ -210,16 +210,12 @@
         "title": "Squeeze cap has zero margin against a finger that folds early"
       },
       {
-        "id": "open-decision-horn",
-        "title": "The servo horn turns 0.2 mm from the housing wall"
-      },
-      {
         "id": "open-decision-deck",
-        "title": "Three deck screws cannot go in as drawn"
+        "title": "Deck screw access in revision B"
       },
       {
         "id": "open-decision-dogpin",
-        "title": "The dog pins in the BOM are too short for the CAD"
+        "title": "Dog set screws in revision B"
       }
     ]
   },
@@ -229,7 +225,7 @@
   },
   "source": {
     "repository": "https://github.com/douglaspmcgowan/berkeley-ai-tutor",
-    "commit": "996dce6fa1e48ac8f4e91e062196e3d8647586d0",
-    "committed": "2026-10-10T21:37:32-07:00"
+    "commit": "96d8762a0b72dcaa8840907079b3356c8831ca99",
+    "committed": "2026-10-18T19:50:27-07:00"
   }
 }

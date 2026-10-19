@@ -1,8 +1,8 @@
 {
   "source": {
     "repository": "https://github.com/douglaspmcgowan/berkeley-ai-tutor",
-    "commit": "996dce6fa1e48ac8f4e91e062196e3d8647586d0",
-    "synced": "2026-10-11"
+    "commit": "96d8762a0b72dcaa8840907079b3356c8831ca99",
+    "synced": "2026-10-18"
   },
   "files": [
     {
@@ -17,38 +17,38 @@
     },
     {
       "path": "media/gripper_hype_1080p.mp4",
-      "sha256": "e88ee1d99c749e7d8eb034afe1da42d1e93312b17cff042aed656c51797132a0",
-      "bytes": 17221534
+      "sha256": "083499c3fd2d4a235e32fa6099f0e71ec3063ab464e12907905872b1b394e2a5",
+      "bytes": 10319400
     },
     {
       "path": "media/gripper_hype_vertical.mp4",
-      "sha256": "6b0e44ba41a131742791e500b595ed9273bf90bafe5df1a6886a26ce4ed7fb33",
-      "bytes": 13521948
+      "sha256": "e6098898dbef87fb1b153babec1fd4ca342b8b0dcb85e28e2fd9847306e5c8e7",
+      "bytes": 8074475
     },
     {
       "path": "media/og.jpg",
-      "sha256": "f44b31b61061535b7165fdd0e84a5cbbb2787f158c6a3a5a8cde154ed72f8e81",
-      "bytes": 48764
+      "sha256": "88cf180ad67d0874668d7c903c361595b7d03835b72ea9e9f31689826042c1e2",
+      "bytes": 46010
     },
     {
       "path": "media/poster.webp",
-      "sha256": "ec2ace3785f51111b560625974115b920b818f8b93a3b6bfedb121107a448ec7",
-      "bytes": 22032
+      "sha256": "406142167087b9deeb1a811e41bbf210985db5f17c315a10ff90a12008ce8419",
+      "bytes": 20012
     },
     {
       "path": "media/poster_vertical.webp",
-      "sha256": "941839a218f04b068ec0f807b0ee224f04aa175cf30f7398da18b17d100d22c6",
-      "bytes": 20946
+      "sha256": "4923b10b155a1430160742f8cf09de4cad308f1a642339467068aea02b552351",
+      "bytes": 19316
     },
     {
       "path": "media/teaser_10s.mp4",
-      "sha256": "60c7e41cd61e86ce291efc1a3dad79b7cc7b818532fd7b109770c03fc725e852",
-      "bytes": 1001494
+      "sha256": "d403d5276f388f5c4d2eae042aead31fcd61831f1d12f0986113189763056b60",
+      "bytes": 797433
     },
     {
       "path": "review/index.html",
-      "sha256": "8ddfd36d2ea5cedc68323cb95e0e96d62b8ee50ee0481ea0a2c01d179203634a",
-      "bytes": 11001404
+      "sha256": "0099599f2c66242584936d3c07821da83a2242bfaa8488e66e63e7b099226dcf",
+      "bytes": 13389482
     },
     {
       "path": "tokens.css",
