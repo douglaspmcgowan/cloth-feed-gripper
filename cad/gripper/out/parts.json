@@ -53,9 +53,9 @@
     "fsr_sensor_b": 3,
     "fsr_puck_b": 3,
     "servo": 20,
-    "horn": 5,
+    "horn": 13,
     "fasteners": 187,
-    "fasteners_a": 19,
+    "fasteners_a": 23,
     "fasteners_b": 13
   },
   "r_c_nominal": 65.0,
@@ -67,14 +67,14 @@
   "parts": {
     "housing": {
       "material": "PETG",
-      "volume_cm3": 15.617,
-      "mass_g": 11.71,
+      "volume_cm3": 15.547,
+      "mass_g": 11.66,
       "com_G": [
-        -0.91,
-        9.53,
+        -0.81,
+        9.57,
         -4.98
       ],
-      "u_past_H": 21.47,
+      "u_past_H": 21.43,
       "bbox_G": [
         -34.0,
         34.0,
@@ -294,20 +294,20 @@
       ]
     },
     "horn": {
-      "material": "bought Al",
-      "volume_cm3": 0.873,
-      "mass_g": 2.36,
+      "material": "bought Al/steel",
+      "volume_cm3": 1.029,
+      "mass_g": 3.43,
       "com_G": [
         -14.25,
-        0.0,
-        -4.55
+        -0.0,
+        -4.54
       ],
       "u_past_H": 31.0,
       "bbox_G": [
-        -24.25,
-        -4.25,
-        -10.0,
-        10.0,
+        -25.25,
+        -3.25,
+        -11.0,
+        11.0,
         -6.0,
         -3.0
       ]
@@ -333,12 +333,12 @@
     },
     "fasteners_a": {
       "material": "steel",
-      "volume_cm3": 0.633,
+      "volume_cm3": 0.627,
       "mass_g": 4.55,
       "com_G": [
         -13.95,
         -9.46,
-        4.88
+        4.87
       ],
       "u_past_H": 40.46,
       "bbox_G": [
@@ -371,9 +371,9 @@
     }
   },
   "web_sizes_bytes": {
-    "gripper_closed.glb": 2960076
+    "gripper_closed.glb": 3047796
   },
-  "web_total_bytes": 2960076,
+  "web_total_bytes": 3047796,
   "invalid": [],
   "sector_A_vertices": [
     5487,

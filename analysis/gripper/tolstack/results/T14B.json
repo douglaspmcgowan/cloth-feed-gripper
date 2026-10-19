@@ -1,6 +1,6 @@
 {
  "role": "baseline",
- "fix": "Locate the servo by its \u00d89 output boss in a reamed bore in the 1.6 mm housing web at the case top (the boss is concentric with the shaft) and open the dog slots to 3.4 (lash about +/-1.5 deg [A: arithmetic here, (3.4 - 0.1 - 2.927) / (2 x 7 mm) rad]). With the web terms T14B-boss34 fails at Cpk 0.98. A 3.42 mm slot adds 0.010 mm half-clearance and restores about Cpk 1.05, but costs the closure window; the robust fix is a zero-lash coupling that takes offset, such as an Oldham disc.",
+ "fix": "B40 keeps the \u00d89 boss location and 3.4 mm slots. Custom hardened M3 shoulder dog screws (\u00d82.9 at the horn face) load two \u00d86 steel inserts in the horn. The chosen boss34 id is retained for the combined rev B overlay; its contributor now models the B40 shoulder. Verify insert retention, horn rim and lash on a coupon.",
  "fix_variant": "T14B-boss34",
  "companion_of": "T14",
  "dominant": {
@@ -13,7 +13,7 @@
  "mode": "expression",
  "units": "mm tangential interference at a dog (> 0 = the dogs force knuckle A sideways)",
  "requirement": "The servo shaft axis and pin A are two separate axes. The two M3 dogs on the horn sit in radial slots in knuckle A, so the slots absorb any offset along the slot, but an offset across the slot must fit inside the tangential half-clearance, or the coupling side-loads the servo bearing and pin A.",
- "notes": "Once the boss locates the servo (boss, boss34), the servo case width does not enter this stack at all; only the cradle-located layouts use servo_body_w. Offset across the slot = shaft in case + servo float in the cradle + cradle to pin A hole + spline play + dog screw position + knuckle A float on its pin. For boss variants, wall lean moves the web bore by boss_web_to_pinA * pin_perp_zone / pin_span = 6.30 * 0.10 / 15 = 0.042 mm. Servo-axis direction is set by the ear seats and cradle floor, not the 1.6 mm bore engagement; ear-seat flatness moves the dog plane by boss_to_dog_lever * mount_flatness / servo_ear_span = 3.05 * 0.20 / 54.5 = 0.011 mm. Both levers are CAD derived. Half-clearance = (printed slot width - screw major) / 2. Rev A has 0.06 nominal half-clearance against an offset that can reach 0.5.",
+ "notes": "Once the boss locates the servo (boss, boss34), the servo case width does not enter this stack at all; only the cradle-located layouts use servo_body_w. Offset across the slot = shaft in case + servo float in the cradle + cradle to pin A hole + spline play + dog screw position + knuckle A float on its pin. For boss variants, wall lean moves the web bore by boss_web_to_pinA * pin_perp_zone / pin_span = 6.30 * 0.10 / 15 = 0.042 mm. Servo-axis direction is set by the ear seats and cradle floor, not the 1.6 mm bore engagement; ear-seat flatness moves the dog plane by boss_to_dog_lever * mount_flatness / servo_ear_span = 3.05 * 0.20 / 54.5 = 0.011 mm. Both levers are CAD derived. Half-clearance = (printed slot width - screw major) / 2. Rev A has 0.06 nominal half-clearance against an offset that can reach 0.5. B40's smooth shoulder diameter limits 2.895..2.905 mm are [A] pending a pin gauge on the machined parts.",
  "spec": {
   "usl": 0.0
  },
@@ -274,7 +274,7 @@
  ],
  "input_digest": {
   "algorithm": "sha256",
-  "digest": "e9a684583b47c30148ef5ea7a6f32625d13d7254fd0b5fed376a852109daf2db",
+  "digest": "d88ad45b1da7ba1f922a77260589abe4919ffad7ace2fef365f1b3fe9ef0070e",
   "files": [
    "stacks/basis.yaml",
    "stacks/rev_b.yaml",

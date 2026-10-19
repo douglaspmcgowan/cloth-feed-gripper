@@ -6,17 +6,17 @@
     [
       -4.95,
       -4.95,
-      -0.0
-    ],
-    [
-      4.95,
-      -4.95,
-      -0.0
-    ],
-    [
-      -4.95,
-      4.95,
       0.0
+    ],
+    [
+      4.95,
+      -4.95,
+      -0.0
+    ],
+    [
+      -4.95,
+      4.95,
+      -0.0
     ],
     [
       4.95,
@@ -289,8 +289,8 @@
     "items": [
       {
         "name": "housing",
-        "g": 11.71,
-        "u_past_H": 21.5
+        "g": 11.66,
+        "u_past_H": 21.4
       },
       {
         "name": "front_plate",
@@ -349,7 +349,7 @@
       },
       {
         "name": "horn",
-        "g": 2.36,
+        "g": 3.43,
         "u_past_H": 31.0
       },
       {
@@ -378,17 +378,17 @@
         "u_past_H": 40.0
       }
     ],
-    "total_g_incl_cloth": 152.9,
-    "com_u_past_H": 37.6,
-    "mass_moment_gmm": 52995,
+    "total_g_incl_cloth": 153.9,
+    "com_u_past_H": 37.5,
+    "mass_moment_gmm": 53342,
     "budget_gmm": 43720.0,
-    "budget_use": 1.212,
+    "budget_use": 1.22,
     "stock_loading_gmm": 33380.0,
     "design_basis_estimate_gmm": 40507.0,
     "revision": "B",
     "rev_a_cad_gmm": 50131.0,
     "rev_a_note": "rev A as built (fitcheck.py on master 899265a, 144.4 g incl. cloth and wiring); DESIGN-BASIS 40,507 is the pre-CAD estimate (115.8 g)",
-    "with_wrist_uvc_16g_at_u30_gmm": 58505,
+    "with_wrist_uvc_16g_at_u30_gmm": 58852,
     "ok": false
   },
   "wrist_flex": {
