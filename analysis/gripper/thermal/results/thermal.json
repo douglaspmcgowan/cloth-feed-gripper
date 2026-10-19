@@ -302,7 +302,7 @@
    "note": "sha256 (first 16 hex) of every input file",
    "tag": "D",
    "value": {
-    "analysis/gripper/results/dyno.json": "f3a3877d4c718b61",
+    "analysis/gripper/results/dyno.json": "356b000c2e3cb9d6",
     "cad/gripper/params.json": "aed2f4cfc0a8ae54",
     "docs/gripper/DESIGN-BASIS.md": "39ed2d051b168c92",
     "firmware/gripper/config.h": "4c30527fd2157b4d"
