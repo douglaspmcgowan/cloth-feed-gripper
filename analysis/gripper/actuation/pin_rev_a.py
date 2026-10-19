@@ -15,7 +15,6 @@ Run from the repository root:  python analysis/gripper/actuation/pin_rev_a.py [-
 from __future__ import annotations
 
 import json
-import subprocess
 import sys
 from pathlib import Path
 
@@ -26,6 +25,11 @@ import fwconfig  # noqa: E402
 
 PIN_COMMIT = "7e1039ab7a26077e6d6c8f15673adca6bc907eae"   # master before rev B.1 (PR 54 base); DS3218MG config.h
 OUT = HERE / "rev_a"
+PINNED_INPUTS = {
+    "firmware/gripper/config.h": "config.h",
+    "analysis/gripper/firmware_sim/results/fw_sim.json": "fw_sim.json",
+    "analysis/gripper/thermal/results/thermal.json": "thermal.json",
+}
 FW_CASES = ("0.88 R12 min", "1.05 FEA E56+D7", "1.24 FEA E67+D7", "1.63 R12 max")
 FW_KEYS = ("c0_deg", "t_contact_s", "t_F90_s", "F_max_N", "F_hold_mean_N")
 FITS = ("A_mech", "B_elec")
@@ -33,8 +37,9 @@ CONDS = ("avg", "pwm")
 
 
 def _show(path: str) -> str:
-    return subprocess.run(["git", "-C", str(ROOT), "show", f"{PIN_COMMIT}:{path}"], check=True,
-                          capture_output=True, text=True, encoding="utf-8").stdout
+    # This repository does not contain the old source repository's Git history.
+    # Keep the three input blobs from that exact commit beside the generated pin.
+    return (OUT / "inputs" / PINNED_INPUTS[path]).read_text(encoding="utf-8")
 
 
 def _prov(path: str, what: str) -> dict:
