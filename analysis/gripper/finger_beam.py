@@ -9,9 +9,10 @@ It also sizes the PLA knuckle arm / root plate, the contact force the actuator t
 can make, and the over-travel needed to reach the grip target.
 
 Two geometries are run: the design-basis finger (DESIGN-BASIS.md D3/R17: L = 45 mm,
-r_c = 65 mm) and the current CAD finger (L = 60 mm, r_c = 80 mm) as a reference.
+r_c = 65 mm) and the current CAD finger from params.json as a reference.
 
     uv run --with numpy --with matplotlib python analysis/gripper/finger_beam.py
+    uv run --with numpy --with matplotlib python analysis/gripper/finger_beam.py --check
 
 Writes analysis/gripper/results/finger_beam.json and docs/gripper/figures/finger_beam.png.
 finger_fea.py imports INPUTS, load_geometry() and finger_profile() from here, so every
