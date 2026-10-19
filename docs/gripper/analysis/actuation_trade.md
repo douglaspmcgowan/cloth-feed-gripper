@@ -13,6 +13,7 @@ What this study does and does not fix:
 - **Script:** `analysis/gripper/actuation/actuation_trade.py`. The model is in `model.py`, the add-on calculations in `extras.py`, and the tests in `test_actuation.py`.
   - Inputs: `docs/gripper/research/actuators.csv`, `analysis/gripper/results/payload_torque.json`, `analysis/gripper/results/gears.json` and `gears.py`, and the rev A (DS3218MG, A17) `firmware/gripper/config.h`, `analysis/gripper/firmware_sim/results/fw_sim.json` and `analysis/gripper/thermal/results/thermal.json`, pinned from commit `7e1039a` into `analysis/gripper/actuation/rev_a/` by `pin_rev_a.py` (rev B.1 re-based the live files on the DS3230 MG this study chose; read live, they would make the winner the reference).
 - **Re-run** from the repository root: `python3 analysis/gripper/actuation/actuation_trade.py`.
+  - `python3 analysis/gripper/actuation/actuation_trade.py --check` recomputes without writing, prints differing JSON keys, and exits nonzero when the committed result is stale.
   - It is seeded and deterministic and takes about 12 min [A, one timed run]. A rerun leaves `git status` clean.
   - It writes `analysis/gripper/actuation/results/actuation_trade.json` and `actuation_trade_stdout.txt`. The JSON has a `definitions` block that says what each probability means.
   - Every number in this note is in that stdout file or the JSON (`decision`, `recommendation`, `configs[]`), unless it is tagged [S] or [A].
@@ -378,6 +379,7 @@ Every criterion is scored 0–1 by a written rule (`actuation_trade.json` → `s
 The score winner is the DS3230 (A39 first, A32 second) under both rules.
 
 **Tie rule:** within 0.02 of the top score, prefer datasheet torque evidence over a vendor claim, then availability.
+For the ranking itself, scores are rounded decimal half-even to three places before sorting and writing; equal rounded scores sort by candidate key in ascending lexical order.
 
 **Stability of the result:**
 
