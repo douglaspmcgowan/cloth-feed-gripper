@@ -1400,8 +1400,9 @@ def main():
     kin = baseline_kinematics()
     T = transmissions(kin)
     pm = pugh(T)
-    selected = pm["concepts"]["C0"]
-    selected_R19_check = {"concept": "C0", "close_time_s": selected["close_time_s"],
+    selected_id = P["ruled_selection"]["concept"]["id"]
+    selected = pm["concepts"][selected_id]
+    selected_R19_check = {"concept": selected_id, "close_time_s": selected["close_time_s"],
                           "limit_s": GR["close_time_max_s"],
                           "passes": selected["close_time_s"] <= GR["close_time_max_s"]}
     figs = [fig_baseline(kin, T), fig_T1(T), fig_T2(T), fig_T3(T), fig_T4(T), fig_T5(T), fig_T6(T), fig_design_space(T)]
@@ -1415,6 +1416,9 @@ def main():
                       "assumed": {k: {"value": v[0], "tag": "A", "note": v[1]} for k, v in ASSUMED.items()},
                       "hardware_deltas_A": HW, "actuator_d_past_H_mm_A": ACT_D},
            "baseline_kinematics": kin, "transmissions": T, "pugh": pm,
+           "selected_concept": selected_id,
+           "selection_source": P["ruled_selection"]["concept"]["source"],
+           "computed_rank": list(pm["rank"]), "computed_top": pm["rank"][0] if pm["rank"] else None,
            "selected_concept_R19_check": selected_R19_check, "figures": figs,
            "theta_contact_deg": r(TH_C, 3), "theta_overtravel_deg": r(TH_OVER, 3),
            "stock_status": {s["id"]: stock_status(s["id"]) for s in SERVOS},

@@ -14,8 +14,8 @@
    "theta_open_deg": 20,
    "theta_min_deg": -11.0,
    "theta_hold_deg": -4.7,
-   "gear_m": 1.0,
-   "gear_z": 24,
+   "gear_m": 1.5,
+   "gear_z": 19,
    "deadband_deg": 0.27,
    "lever_shoulder_lift_to_H_mm": 309.1,
    "budget_C001_7p4V_gmm": 43720.0
@@ -309,45 +309,45 @@
   "table": [
    {
     "theta_deg": 20,
-    "contact_gap_mm": 46.85,
-    "tip_gap_mm": 50.27,
-    "tip_rise_mm": 0.29,
+    "contact_gap_mm": 50.36,
+    "tip_gap_mm": 51.73,
+    "tip_rise_mm": -0.07,
     "pad_tilt_each_deg": 20
    },
    {
     "theta_deg": 10.0,
-    "contact_gap_mm": 23.92,
-    "tip_gap_mm": 25.66,
-    "tip_rise_mm": -0.93,
+    "contact_gap_mm": 27.39,
+    "tip_gap_mm": 28.08,
+    "tip_rise_mm": -1.07,
     "pad_tilt_each_deg": 10.0
    },
    {
     "theta_deg": 0.0,
-    "contact_gap_mm": 1.0,
-    "tip_gap_mm": 1.0,
+    "contact_gap_mm": 4.45,
+    "tip_gap_mm": 4.45,
     "tip_rise_mm": 0.0,
     "pad_tilt_each_deg": 0.0
    },
    {
     "theta_deg": -4.7,
-    "contact_gap_mm": -9.57,
-    "tip_gap_mm": -10.39,
-    "tip_rise_mm": 1.18,
+    "contact_gap_mm": -6.12,
+    "tip_gap_mm": -6.45,
+    "tip_rise_mm": 1.21,
     "pad_tilt_each_deg": -4.7
    },
    {
     "theta_deg": -11.0,
-    "contact_gap_mm": -23.38,
-    "tip_gap_mm": -25.29,
-    "tip_rise_mm": 3.48,
+    "contact_gap_mm": -19.91,
+    "tip_gap_mm": -20.68,
+    "tip_rise_mm": 3.53,
     "pad_tilt_each_deg": -11.0
    }
   ],
-  "per_jaw_tip_stroke_mm": 24.63,
+  "per_jaw_tip_stroke_mm": 23.64,
   "contact_resolution_mm_per_deadband": 0.306,
-  "a_mm": 24.0,
-  "x_f_mm": 11.5,
-  "root_mm": 25.0,
+  "a_mm": 28.5,
+  "x_f_mm": 12.025,
+  "root_mm": 22.0,
   "finger_length_mm": 45.0,
   "r_c_mm": 65.0
  },
@@ -381,8 +381,8 @@
     "margin": 0.046,
     "servo_class": "standard",
     "close": {
-     "t_s": 0.279,
-     "free_s": 0.056,
+     "t_s": 0.284,
+     "free_s": 0.06,
      "near_s": 0.15,
      "over_s": 0.073,
      "w_jaw_noload_deg_s": 405.4,
@@ -392,18 +392,18 @@
     "stock_tag": "S (verified in stock)"
    },
    "close": {
-    "t_s": 0.279,
-    "free_s": 0.056,
+    "t_s": 0.284,
+    "free_s": 0.06,
     "near_s": 0.15,
     "over_s": 0.073,
     "w_jaw_noload_deg_s": 405.4,
     "w_jaw_loaded_deg_s": 327.9,
     "passes_R19": true
    },
-   "close_time_s": 0.279,
+   "close_time_s": 0.284,
    "jaw_resolution_deg": 0.27,
    "pad_rotation_deg": 20,
-   "tip_rise_mm": 0.29,
+   "tip_rise_mm": -0.07,
    "classes": {
     "micro": [],
     "mini": [],
@@ -435,7 +435,7 @@
      "stock": "in",
      "mass_g": 58.0,
      "margin": 0.49,
-     "close_time_s": 0.307
+     "close_time_s": 0.314
     },
     {
      "i": 2.0,
@@ -445,7 +445,7 @@
      "stock": "in",
      "mass_g": 58.0,
      "margin": 0.987,
-     "close_time_s": 0.334
+     "close_time_s": 0.344
     },
     {
      "i": 2.5,
@@ -455,7 +455,7 @@
      "stock": "in",
      "mass_g": 58.0,
      "margin": 1.484,
-     "close_time_s": 0.362
+     "close_time_s": 0.374
     },
     {
      "i": 3.0,
@@ -465,7 +465,7 @@
      "stock": "in",
      "mass_g": 58.0,
      "margin": 1.981,
-     "close_time_s": 0.39
+     "close_time_s": 0.405
     },
     {
      "i": 3.5,
@@ -475,7 +475,7 @@
      "stock": "unverified",
      "mass_g": 43.0,
      "margin": 0.023,
-     "close_time_s": 0.368
+     "close_time_s": 0.381
     },
     {
      "i": 4.0,
@@ -485,7 +485,7 @@
      "stock": "unverified",
      "mass_g": 43.0,
      "margin": 0.17,
-     "close_time_s": 0.388
+     "close_time_s": 0.403
     },
     {
      "i": 4.5,
@@ -495,7 +495,7 @@
      "stock": "unverified",
      "mass_g": 43.0,
      "margin": 0.316,
-     "close_time_s": 0.409
+     "close_time_s": 0.425
     },
     {
      "i": 5.0,
@@ -505,7 +505,7 @@
      "stock": "unverified",
      "mass_g": 43.0,
      "margin": 0.462,
-     "close_time_s": 0.43
+     "close_time_s": 0.448
     },
     {
      "i": 5.5,
@@ -515,7 +515,7 @@
      "stock": "unverified",
      "mass_g": 43.0,
      "margin": 0.608,
-     "close_time_s": 0.45
+     "close_time_s": 0.47
     }
    ],
    "i_max_by_travel": 5.81,
@@ -547,8 +547,8 @@
     "margin": 0.17,
     "servo_class": "standard",
     "close": {
-     "t_s": 0.388,
-     "free_s": 0.165,
+     "t_s": 0.403,
+     "free_s": 0.18,
      "near_s": 0.15,
      "over_s": 0.073,
      "w_jaw_noload_deg_s": 136.4,
@@ -558,77 +558,79 @@
     "stock_tag": "A (stock not verified)"
    },
    "close": {
-    "t_s": 0.388,
-    "free_s": 0.165,
+    "t_s": 0.403,
+    "free_s": 0.18,
     "near_s": 0.15,
     "over_s": 0.073,
     "w_jaw_noload_deg_s": 136.4,
     "w_jaw_loaded_deg_s": 113.0,
     "passes_R19": true
    },
-   "close_time_s": 0.388,
+   "close_time_s": 0.403,
    "jaw_resolution_deg": 0.068,
    "jaw_resolution_tag": "A (not published; DS3218MG 3 us figure borrowed)",
    "pad_rotation_deg": 20,
-   "tip_rise_mm": 0.29,
+   "tip_rise_mm": -0.07,
    "LC3_AB_mesh_Nm": 2.236,
    "pinion_lewis": {
     "part": "pinion z12",
-    "m": 1.0,
+    "m": 1.5,
     "z": 12,
-    "b_mm": 6.0,
+    "b_mm": 10.5,
     "Y": 0.245,
     "cases": {
      "LC1": {
-      "F_t_N": 33.5,
-      "sigma_MPa": 22.8,
-      "PETG": false,
+      "F_t_N": 22.4,
+      "sigma_MPa": 5.8,
+      "PETG": true,
       "PA6-CF": true,
-      "POM": false
+      "POM": true
      },
      "LC2": {
-      "F_t_N": 67.1,
-      "sigma_MPa": 45.6,
-      "PETG": false,
+      "F_t_N": 44.7,
+      "sigma_MPa": 11.6,
+      "PETG": true,
       "PA6-CF": true,
       "POM": true
      },
      "LC3": {
-      "F_t_N": 98.1,
-      "sigma_MPa": 66.7,
-      "PETG": false,
+      "F_t_N": 65.4,
+      "sigma_MPa": 16.9,
+      "PETG": true,
       "PA6-CF": true,
       "POM": true
      }
     },
     "passes": [
-     "PA6-CF"
+     "PETG",
+     "PA6-CF",
+     "POM"
     ]
    },
    "sector_lewis": {
     "part": "sector A z48",
-    "m": 1.0,
+    "m": 1.5,
     "z": 48,
-    "b_mm": 6.0,
+    "b_mm": 10.5,
     "Y": 0.384,
     "cases": {
      "LC1": {
-      "F_t_N": 33.5,
-      "sigma_MPa": 14.6,
+      "F_t_N": 22.4,
+      "sigma_MPa": 3.7,
       "PETG": true,
       "PA6-CF": true,
       "POM": true
      },
      "LC2": {
-      "F_t_N": 67.1,
-      "sigma_MPa": 29.1,
+      "F_t_N": 44.7,
+      "sigma_MPa": 7.4,
       "PETG": true,
       "PA6-CF": true,
       "POM": true
      },
      "LC3": {
-      "F_t_N": 98.1,
-      "sigma_MPa": 42.6,
+      "F_t_N": 65.4,
+      "sigma_MPa": 10.8,
       "PETG": true,
       "PA6-CF": true,
       "POM": true
@@ -700,31 +702,31 @@
   },
   "T3": {
    "name": "rack-and-pinion parallel jaw",
-   "pinion_z": 19,
-   "pinion_r_mm": 9.5,
-   "per_jaw_stroke_mm": 24.63,
-   "i_equiv_servo_deg_per_jaw_deg": 7.43,
+   "pinion_z": 13,
+   "pinion_r_mm": 9.75,
+   "per_jaw_stroke_mm": 23.64,
+   "i_equiv_servo_deg_per_jaw_deg": 6.95,
    "layout_mm": {
     "y_strut_bottom": -11.0,
-    "y_pinion_centre": 3.5,
+    "y_pinion_centre": 3.75,
     "y_rack_A": -6.0,
-    "y_rack_B": 13.0,
+    "y_rack_B": 13.5,
     "y_pad_force": -54.0
    },
    "h_rack_to_pad_mm": {
     "A": 48.0,
-    "B": 67.0
+    "B": 67.5
    },
    "carriage_moment_Nmm": {
     "A": 240.0,
-    "B": 335.0
+    "B": 337.5
    },
    "friction_exceeds_F_if_mu_over": {
     "A": 0.312,
-    "B": 0.224
+    "B": 0.222
    },
    "friction_model": "carriage couple M = F h (h = rack line to pad line); two-point carriage: friction = 2 mu M / l; the friction-times-rail-offset term is neglected [A]. Drive force F (1 + 2 mu h / l) stays finite: no drive-direction jam. Once 2 mu h / l > 1 the pad force cannot back-drive the slide.",
-   "jaw_resolution_mm_per_deadband": 0.045,
+   "jaw_resolution_mm_per_deadband": 0.046,
    "pad_rotation_deg": 0.0,
    "tip_rise_mm": 0.0,
    "variants": {
@@ -732,15 +734,15 @@
      "mu": 0.3,
      "friction_N": {
       "A": 4.8,
-      "B": 6.7
+      "B": 6.75
      },
      "friction_over_F": {
       "A": 0.96,
-      "B": 1.34
+      "B": 1.35
      },
-     "rack_force_sum_N": 21.5,
-     "T_servo_LC1_Nm": 0.227,
-     "servo_sweep_deg": 148.5,
+     "rack_force_sum_N": 21.55,
+     "T_servo_LC1_Nm": 0.233,
+     "servo_sweep_deg": 138.9,
      "lightest_in_stock": "A12",
      "servo": {
       "id": "A12",
@@ -761,40 +763,40 @@
       "stock": "unverified",
       "deadband_us": null,
       "deadband_tag": "A (not published; DS3218MG 3 us figure borrowed)",
-      "margin": 0.037,
+      "margin": 0.008,
       "servo_class": "standard",
       "close": {
-       "t_s": 0.531,
-       "free_s": 0.306,
+       "t_s": 0.535,
+       "free_s": 0.312,
        "near_s": 0.15,
-       "over_s": 0.074,
-       "w_jaw_noload_deg_s": 73.4,
-       "w_jaw_loaded_deg_s": 59.3,
+       "over_s": 0.073,
+       "w_jaw_noload_deg_s": 78.5,
+       "w_jaw_loaded_deg_s": 62.9,
        "passes_R19": false
       },
       "stock_tag": "A (stock not verified)"
      },
      "close": {
-      "t_s": 0.531,
-      "free_s": 0.306,
+      "t_s": 0.535,
+      "free_s": 0.312,
       "near_s": 0.15,
-      "over_s": 0.074,
-      "w_jaw_noload_deg_s": 73.4,
-      "w_jaw_loaded_deg_s": 59.3,
+      "over_s": 0.073,
+      "w_jaw_noload_deg_s": 78.5,
+      "w_jaw_loaded_deg_s": 62.9,
       "passes_R19": false
      },
-     "close_time_s": 0.531,
+     "close_time_s": 0.535,
      "lightest_passing_R19": null,
      "pinion_lewis": {
-      "part": "pinion z19",
-      "m": 1.0,
-      "z": 19,
-      "b_mm": 6.0,
-      "Y": 0.316,
+      "part": "pinion z13",
+      "m": 1.5,
+      "z": 13,
+      "b_mm": 10.5,
+      "Y": 0.261,
       "cases": {
        "LC1": {
         "F_t_N": 23.9,
-        "sigma_MPa": 12.6,
+        "sigma_MPa": 5.8,
         "PETG": true,
         "PA6-CF": true
        }
@@ -834,15 +836,15 @@
      "mu": 0.01,
      "friction_N": {
       "A": 0.16,
-      "B": 0.22
+      "B": 0.23
      },
      "friction_over_F": {
       "A": 0.03,
       "B": 0.04
      },
      "rack_force_sum_N": 10.38,
-     "T_servo_LC1_Nm": 0.11,
-     "servo_sweep_deg": 148.5,
+     "T_servo_LC1_Nm": 0.113,
+     "servo_sweep_deg": 138.9,
      "lightest_in_stock": "A12",
      "servo": {
       "id": "A12",
@@ -863,40 +865,40 @@
       "stock": "unverified",
       "deadband_us": null,
       "deadband_tag": "A (not published; DS3218MG 3 us figure borrowed)",
-      "margin": 1.147,
+      "margin": 1.092,
       "servo_class": "standard",
       "close": {
-       "t_s": 0.53,
-       "free_s": 0.306,
+       "t_s": 0.535,
+       "free_s": 0.312,
        "near_s": 0.15,
        "over_s": 0.073,
-       "w_jaw_noload_deg_s": 73.4,
-       "w_jaw_loaded_deg_s": 66.6,
+       "w_jaw_noload_deg_s": 78.5,
+       "w_jaw_loaded_deg_s": 71.0,
        "passes_R19": false
       },
       "stock_tag": "A (stock not verified)"
      },
      "close": {
-      "t_s": 0.53,
-      "free_s": 0.306,
+      "t_s": 0.535,
+      "free_s": 0.312,
       "near_s": 0.15,
       "over_s": 0.073,
-      "w_jaw_noload_deg_s": 73.4,
-      "w_jaw_loaded_deg_s": 66.6,
+      "w_jaw_noload_deg_s": 78.5,
+      "w_jaw_loaded_deg_s": 71.0,
       "passes_R19": false
      },
-     "close_time_s": 0.53,
+     "close_time_s": 0.535,
      "lightest_passing_R19": null,
      "pinion_lewis": {
-      "part": "pinion z19",
-      "m": 1.0,
-      "z": 19,
-      "b_mm": 6.0,
-      "Y": 0.316,
+      "part": "pinion z13",
+      "m": 1.5,
+      "z": 13,
+      "b_mm": 10.5,
+      "Y": 0.261,
       "cases": {
        "LC1": {
         "F_t_N": 11.5,
-        "sigma_MPa": 6.1,
+        "sigma_MPa": 2.8,
         "PETG": true,
         "PA6-CF": true
        }
@@ -945,8 +947,8 @@
   "T4": {
    "name": "4-bar parallelogram, 1:1 synced",
    "link_mm": 40.0,
-   "psi_open_deg": 38.0,
-   "tip_rise_mm": 8.48,
+   "psi_open_deg": 36.2,
+   "tip_rise_mm": 7.73,
    "pad_rotation_deg": 0.0,
    "T_servo_LC1_Nm": 0.5,
    "lightest_in_stock": "A17",
@@ -972,17 +974,17 @@
     "margin": 0.6,
     "servo_class": "standard",
     "close": {
-     "t_s": 0.329,
-     "free_s": 0.105,
+     "t_s": 0.333,
+     "free_s": 0.109,
      "near_s": 0.15,
      "over_s": 0.073,
-     "w_jaw_noload_deg_s": 213.3,
-     "w_jaw_loaded_deg_s": 186.7,
+     "w_jaw_noload_deg_s": 223.8,
+     "w_jaw_loaded_deg_s": 195.8,
      "passes_R19": true
     },
     "stock_tag": "S (verified in stock)"
    },
-   "close_time_s": 0.329,
+   "close_time_s": 0.333,
    "extra_length_mm": 18.0,
    "note": "finger moment F*h is reacted as link axial force, so servo torque does not grow with finger length",
    "classes": {
@@ -1063,60 +1065,32 @@
    "pad_force_at_gearbox_limit_N": 7.14,
    "LC3_AB_mesh_Nm": 1.093,
    "wheel_torque_LC1_Nm": 0.765,
-   "worm_thrust_LC1_N": 76.5,
-   "worm_thrust_at_gearbox_limit_N": 109.3,
+   "worm_thrust_LC1_N": 51.0,
+   "worm_thrust_at_gearbox_limit_N": 72.8,
    "worm_thrust_note": "axial thrust = wheel tangential force; Pololu 5193 publishes no output-shaft axial rating, so the worm runs on its own shaft in 2 flanged bearings with a thrust washer (mass in HW T5) [A]",
    "wheel_lewis": {
     "b6": {
      "part": "worm wheel z20",
-     "m": 1.0,
+     "m": 1.5,
      "z": 20,
      "b_mm": 6.0,
      "Y": 0.322,
      "cases": {
       "LC1": {
-       "F_t_N": 76.5,
-       "sigma_MPa": 39.6,
-       "PETG": false,
-       "PA6-CF": false
-      },
-      "LC2": {
-       "F_t_N": 152.9,
-       "sigma_MPa": 79.2,
-       "PETG": false,
-       "PA6-CF": false
-      },
-      "LC3": {
-       "F_t_N": 109.3,
-       "sigma_MPa": 56.6,
-       "PETG": false,
-       "PA6-CF": true
-      }
-     },
-     "passes": []
-    },
-    "b8": {
-     "part": "worm wheel z20",
-     "m": 1.0,
-     "z": 20,
-     "b_mm": 8.0,
-     "Y": 0.322,
-     "cases": {
-      "LC1": {
-       "F_t_N": 76.5,
-       "sigma_MPa": 29.7,
-       "PETG": false,
+       "F_t_N": 51.0,
+       "sigma_MPa": 17.6,
+       "PETG": true,
        "PA6-CF": true
       },
       "LC2": {
-       "F_t_N": 152.9,
-       "sigma_MPa": 59.4,
+       "F_t_N": 102.0,
+       "sigma_MPa": 35.2,
        "PETG": false,
        "PA6-CF": true
       },
       "LC3": {
-       "F_t_N": 109.3,
-       "sigma_MPa": 42.4,
+       "F_t_N": 72.8,
+       "sigma_MPa": 25.1,
        "PETG": true,
        "PA6-CF": true
       }
@@ -1124,23 +1098,54 @@
      "passes": [
       "PA6-CF"
      ]
+    },
+    "b8": {
+     "part": "worm wheel z20",
+     "m": 1.5,
+     "z": 20,
+     "b_mm": 8.0,
+     "Y": 0.322,
+     "cases": {
+      "LC1": {
+       "F_t_N": 51.0,
+       "sigma_MPa": 13.2,
+       "PETG": true,
+       "PA6-CF": true
+      },
+      "LC2": {
+       "F_t_N": 102.0,
+       "sigma_MPa": 26.4,
+       "PETG": true,
+       "PA6-CF": true
+      },
+      "LC3": {
+       "F_t_N": 72.8,
+       "sigma_MPa": 18.9,
+       "PETG": true,
+       "PA6-CF": true
+      }
+     },
+     "passes": [
+      "PETG",
+      "PA6-CF"
+     ]
     }
    },
    "wheel_b_min_LC1_mm": {
-    "PETG": 11.64,
-    "PA6-CF": 6.25
+    "PETG": 5.17,
+    "PA6-CF": 2.78
    },
    "jaw_speed_noload_deg_s": 66.0,
    "close": {
-    "t_s": 0.594,
-    "free_s": 0.341,
+    "t_s": 0.624,
+    "free_s": 0.371,
     "near_s": 0.15,
     "over_s": 0.103,
     "w_jaw_noload_deg_s": 66.0,
     "w_jaw_loaded_deg_s": 42.9,
     "passes_R19": false
    },
-   "close_time_s": 0.594,
+   "close_time_s": 0.624,
    "counts_per_jaw_deg": 100.4,
    "hold_current_A": 0.0,
    "motor": "Pololu 150:1 Micro Metal Gearmotor HPCB 6V + 12 CPR encoder",
@@ -1148,7 +1153,7 @@
    "price_usd": 32.45,
    "pad_rotation_deg": 20,
    "name": "worm + DC gearmotor (Pololu HPCB 150:1, M01), 1-start, self-locking",
-   "tip_rise_mm": 0.29,
+   "tip_rise_mm": -0.07,
    "mass_moment": {
     "mass_g": 79.8,
     "mass_moment_gmm": 28287.0,
@@ -1211,60 +1216,32 @@
    "pad_force_at_gearbox_limit_N": 5.41,
    "LC3_AB_mesh_Nm": 0.828,
    "wheel_torque_LC1_Nm": 0.765,
-   "worm_thrust_LC1_N": 76.5,
-   "worm_thrust_at_gearbox_limit_N": 82.8,
+   "worm_thrust_LC1_N": 51.0,
+   "worm_thrust_at_gearbox_limit_N": 55.2,
    "worm_thrust_note": "axial thrust = wheel tangential force; Pololu 5193 publishes no output-shaft axial rating, so the worm runs on its own shaft in 2 flanged bearings with a thrust washer (mass in HW T5) [A]",
    "wheel_lewis": {
     "b6": {
      "part": "worm wheel z20",
-     "m": 1.0,
+     "m": 1.5,
      "z": 20,
      "b_mm": 6.0,
      "Y": 0.322,
      "cases": {
       "LC1": {
-       "F_t_N": 76.5,
-       "sigma_MPa": 39.6,
-       "PETG": false,
-       "PA6-CF": false
-      },
-      "LC2": {
-       "F_t_N": 152.9,
-       "sigma_MPa": 79.2,
-       "PETG": false,
-       "PA6-CF": false
-      },
-      "LC3": {
-       "F_t_N": 82.8,
-       "sigma_MPa": 42.9,
+       "F_t_N": 51.0,
+       "sigma_MPa": 17.6,
        "PETG": true,
        "PA6-CF": true
-      }
-     },
-     "passes": []
-    },
-    "b8": {
-     "part": "worm wheel z20",
-     "m": 1.0,
-     "z": 20,
-     "b_mm": 8.0,
-     "Y": 0.322,
-     "cases": {
-      "LC1": {
-       "F_t_N": 76.5,
-       "sigma_MPa": 29.7,
-       "PETG": false,
-       "PA6-CF": true
       },
       "LC2": {
-       "F_t_N": 152.9,
-       "sigma_MPa": 59.4,
+       "F_t_N": 102.0,
+       "sigma_MPa": 35.2,
        "PETG": false,
        "PA6-CF": true
       },
       "LC3": {
-       "F_t_N": 82.8,
-       "sigma_MPa": 32.1,
+       "F_t_N": 55.2,
+       "sigma_MPa": 19.1,
        "PETG": true,
        "PA6-CF": true
       }
@@ -1272,31 +1249,62 @@
      "passes": [
       "PA6-CF"
      ]
+    },
+    "b8": {
+     "part": "worm wheel z20",
+     "m": 1.5,
+     "z": 20,
+     "b_mm": 8.0,
+     "Y": 0.322,
+     "cases": {
+      "LC1": {
+       "F_t_N": 51.0,
+       "sigma_MPa": 13.2,
+       "PETG": true,
+       "PA6-CF": true
+      },
+      "LC2": {
+       "F_t_N": 102.0,
+       "sigma_MPa": 26.4,
+       "PETG": true,
+       "PA6-CF": true
+      },
+      "LC3": {
+       "F_t_N": 55.2,
+       "sigma_MPa": 14.3,
+       "PETG": true,
+       "PA6-CF": true
+      }
+     },
+     "passes": [
+      "PETG",
+      "PA6-CF"
+     ]
     }
    },
    "wheel_b_min_LC1_mm": {
-    "PETG": 11.64,
-    "PA6-CF": 6.25
+    "PETG": 5.17,
+    "PA6-CF": 2.78
    },
    "jaw_speed_noload_deg_s": 132.0,
    "close": {
-    "t_s": 0.394,
-    "free_s": 0.17,
+    "t_s": 0.409,
+    "free_s": 0.185,
     "near_s": 0.15,
     "over_s": 0.073,
     "w_jaw_noload_deg_s": 132.0,
     "w_jaw_loaded_deg_s": 71.1,
     "passes_R19": true
    },
-   "close_time_s": 0.394,
+   "close_time_s": 0.409,
    "counts_per_jaw_deg": 50.2,
    "hold_current_A": 0.0,
    "motor": "Pololu 150:1 Micro Metal Gearmotor HPCB 6V + 12 CPR encoder",
    "motor_mass_g": 11.0,
    "price_usd": 32.45,
    "pad_rotation_deg": 20,
-   "name": "worm + DC gearmotor (M01), 2-start (R19 fix)",
-   "tip_rise_mm": 0.29,
+   "name": "worm + DC gearmotor (M01), 2-start (selection-basis fix)",
+   "tip_rise_mm": -0.07,
    "mass_moment": {
     "mass_g": 79.8,
     "mass_moment_gmm": 28287.0,
@@ -1331,8 +1339,8 @@
     "margin": 0.13,
     "servo_class": "standard",
     "close": {
-     "t_s": 0.29,
-     "free_s": 0.067,
+     "t_s": 0.296,
+     "free_s": 0.072,
      "near_s": 0.15,
      "over_s": 0.073,
      "w_jaw_noload_deg_s": 337.8,
@@ -1342,7 +1350,7 @@
     "stock_tag": "S (verified in stock)"
    },
    "pad_rotation_deg": 20,
-   "close_time_s": 0.29,
+   "close_time_s": 0.296,
    "note": "whiffletree equalises the two finger forces; no sync gears",
    "classes": {
     "micro": [],
@@ -1421,10 +1429,10 @@
     "mass_moment_gmm": 40507.0,
     "mass_g": 115.8,
     "pct_budget": 92.7,
-    "close_time_s": 0.279,
+    "close_time_s": 0.284,
     "close": {
-     "t_s": 0.279,
-     "free_s": 0.056,
+     "t_s": 0.284,
+     "free_s": 0.06,
      "near_s": 0.15,
      "over_s": 0.073,
      "w_jaw_noload_deg_s": 405.4,
@@ -1446,10 +1454,10 @@
     "mass_moment_gmm": 36792.0,
     "mass_g": 104.8,
     "pct_budget": 84.2,
-    "close_time_s": 0.388,
+    "close_time_s": 0.403,
     "close": {
-     "t_s": 0.388,
-     "free_s": 0.165,
+     "t_s": 0.403,
+     "free_s": 0.18,
      "near_s": 0.15,
      "over_s": 0.073,
      "w_jaw_noload_deg_s": 136.4,
@@ -1464,21 +1472,21 @@
     "variant": "ball_rail",
     "actuator": "A12",
     "stock": "unverified",
-    "force_margin": 1.147,
-    "force_margin_instantaneous": 4.368,
-    "force_margin_40pct_of_stall": 1.147,
+    "force_margin": 1.092,
+    "force_margin_instantaneous": 4.23,
+    "force_margin_40pct_of_stall": 1.092,
     "force_margin_basis": "servo: 40 % continuous hold (R16); self-locking worm: LC1 peak vs the gearbox limit (hold is mechanical)",
     "mass_moment_gmm": 43403.0,
     "mass_g": 123.8,
     "pct_budget": 99.3,
-    "close_time_s": 0.53,
+    "close_time_s": 0.535,
     "close": {
-     "t_s": 0.53,
-     "free_s": 0.306,
+     "t_s": 0.535,
+     "free_s": 0.312,
      "near_s": 0.15,
      "over_s": 0.073,
-     "w_jaw_noload_deg_s": 73.4,
-     "w_jaw_loaded_deg_s": 66.6,
+     "w_jaw_noload_deg_s": 78.5,
+     "w_jaw_loaded_deg_s": 71.0,
      "passes_R19": false
     },
     "passes_R19": false
@@ -1489,21 +1497,21 @@
     "variant": "printed_slide",
     "actuator": "A12",
     "stock": "unverified",
-    "force_margin": 0.037,
-    "force_margin_instantaneous": 1.592,
-    "force_margin_40pct_of_stall": 0.037,
+    "force_margin": 0.008,
+    "force_margin_instantaneous": 1.52,
+    "force_margin_40pct_of_stall": 0.008,
     "force_margin_basis": "servo: 40 % continuous hold (R16); self-locking worm: LC1 peak vs the gearbox limit (hold is mechanical)",
     "mass_moment_gmm": 36461.0,
     "mass_g": 103.8,
     "pct_budget": 83.4,
-    "close_time_s": 0.531,
+    "close_time_s": 0.535,
     "close": {
-     "t_s": 0.531,
-     "free_s": 0.306,
+     "t_s": 0.535,
+     "free_s": 0.312,
      "near_s": 0.15,
-     "over_s": 0.074,
-     "w_jaw_noload_deg_s": 73.4,
-     "w_jaw_loaded_deg_s": 59.3,
+     "over_s": 0.073,
+     "w_jaw_noload_deg_s": 78.5,
+     "w_jaw_loaded_deg_s": 62.9,
      "passes_R19": false
     },
     "passes_R19": false
@@ -1521,10 +1529,10 @@
     "mass_moment_gmm": 28287.0,
     "mass_g": 79.8,
     "pct_budget": 64.7,
-    "close_time_s": 0.594,
+    "close_time_s": 0.624,
     "close": {
-     "t_s": 0.594,
-     "free_s": 0.341,
+     "t_s": 0.624,
+     "free_s": 0.371,
      "near_s": 0.15,
      "over_s": 0.103,
      "w_jaw_noload_deg_s": 66.0,
@@ -1534,7 +1542,7 @@
     "passes_R19": false
    },
    "C3b": {
-    "name": "2-start worm + DC gearmotor, 1:1 sync (R19 fix)",
+    "name": "2-start worm + DC gearmotor, 1:1 sync (selection-basis fix)",
     "transmission": "T5b",
     "variant": null,
     "actuator": "M01",
@@ -1546,10 +1554,10 @@
     "mass_moment_gmm": 28287.0,
     "mass_g": 79.8,
     "pct_budget": 64.7,
-    "close_time_s": 0.394,
+    "close_time_s": 0.409,
     "close": {
-     "t_s": 0.394,
-     "free_s": 0.17,
+     "t_s": 0.409,
+     "free_s": 0.185,
      "near_s": 0.15,
      "over_s": 0.073,
      "w_jaw_noload_deg_s": 132.0,
@@ -1559,29 +1567,30 @@
     "passes_R19": true
    }
   },
+  "screen_basis": "selection basis 0.5 s (R19 at selection; superseded 2026-10-12)",
   "R19_screen": {
    "C0": {
-    "close_time_s": 0.279,
+    "close_time_s": 0.284,
     "passes": true
    },
    "C1": {
-    "close_time_s": 0.388,
+    "close_time_s": 0.403,
     "passes": true
    },
    "C2": {
-    "close_time_s": 0.53,
+    "close_time_s": 0.535,
     "passes": false
    },
    "C2p": {
-    "close_time_s": 0.531,
+    "close_time_s": 0.535,
     "passes": false
    },
    "C3": {
-    "close_time_s": 0.594,
+    "close_time_s": 0.624,
     "passes": false
    },
    "C3b": {
-    "close_time_s": 0.394,
+    "close_time_s": 0.409,
     "passes": true
    }
   },
@@ -1651,7 +1660,7 @@
     },
     "K7": {
      "score": -1,
-     "why": "pinion z12 carries F_t = T_servo/r_p: Lewis 22.8 / 66.7 MPa at LC1 / LC3, fails PETG (20.4 / 51); needs PA6-CF (or Al) and profile shift x >= 0.29; A:B LC3 2.24 vs 2.00 N*m"
+     "why": "pinion z12 carries F_t = T_servo/r_p: Lewis 5.8 / 16.9 MPa at LC1 / LC3, fails PETG (20.4 / 51); needs PA6-CF (or Al) and profile shift x >= 0.29; A:B LC3 2.24 vs 2.00 N*m"
     },
     "K8": {
      "score": -1,
@@ -1669,7 +1678,7 @@
     },
     "K2": {
      "score": 2,
-     "why": "margin +1.15 vs datum +0.05 (force_margin)"
+     "why": "margin +1.09 vs datum +0.05 (force_margin)"
     },
     "K3": {
      "score": -1,
@@ -1707,7 +1716,7 @@
     },
     "K2": {
      "score": 0,
-     "why": "margin +0.04 vs datum +0.05 (force_margin)"
+     "why": "margin +0.01 vs datum +0.05 (force_margin)"
     },
     "K3": {
      "score": 2,
@@ -1719,7 +1728,7 @@
     },
     "K5": {
      "score": -1,
-     "why": "printed-slide friction 0.96-1.34 F sits between servo torque and pad force: stick-slip and a force estimate hidden by friction"
+     "why": "printed-slide friction 0.96-1.35 F sits between servo torque and pad force: stick-slip and a force estimate hidden by friction"
     },
     "K6": {
      "score": -1,
@@ -1727,7 +1736,7 @@
     },
     "K7": {
      "score": -1,
-     "why": "PETG slide wears under friction up to 1.34 F; the worst carriage lever is h 67 mm"
+     "why": "PETG slide wears under friction up to 1.35 F; the worst carriage lever is h 68 mm"
     },
     "K8": {
      "score": -1,
@@ -1753,7 +1762,7 @@
     },
     "K4": {
      "score": 0,
-     "why": "same finger kinematics as C0 (close time is screened by R19, not scored here)"
+     "why": "same finger kinematics as C0 (close time is screened by the superseded 0.5 s selection basis, not scored here)"
     },
     "K5": {
      "score": 1,
@@ -1765,7 +1774,7 @@
     },
     "K7": {
      "score": -2,
-     "why": "worm wheel carries the full knuckle torque: 76 N thrust at LC1, 109 N at the gearbox limit (needs its own thrust bearing); wheel z20 b6 Lewis 39.6 MPa fails PA6-CF LC1 38, so b >= 6.2 mm; printed worm wear-limited at eta 0.28"
+     "why": "worm wheel carries the full knuckle torque: 51 N thrust at LC1, 73 N at the gearbox limit (needs its own thrust bearing); wheel z20 b6 Lewis 17.6 MPa fails PA6-CF LC1 38, so b >= 2.8 mm; printed worm wear-limited at eta 0.28"
     },
     "K8": {
      "score": -2,
@@ -1803,7 +1812,7 @@
     },
     "K7": {
      "score": -2,
-     "why": "as C3, and thrust up to 83 N at the gearbox limit"
+     "why": "as C3, and thrust up to 55 N at the gearbox limit"
     },
     "K8": {
      "score": -2,
@@ -1841,8 +1850,8 @@
     "totals": {
      "C0": 0.0,
      "C1": 11.1,
-     "C2": -0.0,
-     "C2p": -0.0,
+     "C2": 0.0,
+     "C2p": 0.0,
      "C3": 55.6,
      "C3b": 22.2
     },
@@ -2007,6 +2016,20 @@
    "K2_K3_thresholds_x1.25": "C3b"
   }
  },
+ "selected_concept": "C0",
+ "selection_source": "Douglas 2026-10-12 ruling; selection held, not recomputed",
+ "computed_rank": [
+  "C3b",
+  "C1",
+  "C0"
+ ],
+ "computed_top": "C3b",
+ "selected_concept_R19_check": {
+  "concept": "C0",
+  "close_time_s": 0.284,
+  "limit_s": 0.75,
+  "passes": true
+ },
  "figures": [
   "docs/gripper/figures/concept_baseline_kinematics.svg",
   "docs/gripper/figures/concept_T1_spur_1to1.svg",
@@ -2017,7 +2040,7 @@
   "docs/gripper/figures/concept_T6_tendon.svg",
   "docs/gripper/figures/concept_design_space_rc.svg"
  ],
- "theta_contact_deg": -0.309,
+ "theta_contact_deg": -1.829,
  "theta_overtravel_deg": 4.407,
  "stock_status": {
   "A19": "out",

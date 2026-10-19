@@ -1038,19 +1038,23 @@ def dc_pick(fb):
                      for c in sorted(pool, key=lambda c: -c["score"])]}
 
 
-REC_RULE = ("pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule "
-            "(trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in "
-            "stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule")
+REC_RULE = ("primary and backup = params.json ruled_selection, held by Douglas's 2026-10-12 ruling; "
+            "computed_rank = the full trade_vendor_consistent rank on the superseded 0.5 s selection basis; "
+            "computed_top = its first entry; DC branch = dc_pick rule")
 
 
 def recommend(res, fb, tr_vc):
     allc = {c["id"]: c for c in res + fb}
     pool = tr_vc["rank"]
-    stocked = [i for i in pool if allc[i]["stock"] >= 1.0]
-    primary = stocked[0] if stocked else (pool[0] if pool else None)
+    selection = P["ruled_selection"]
+    primary = selection["primary_actuator"]["id"]
+    backup = selection["backup_actuator"]["id"]
+    computed_top = pool[0] if pool else None
     dc = dc_pick(fb)
-    return {"rule": REC_RULE, "primary": primary, "primary_in_stock": bool(stocked),
-            "backup": next((i for i in pool if i != primary), None), "dc_branch": dc["pick"], "dc": dc}
+    return {"rule": REC_RULE, "primary": primary, "primary_in_stock": allc[primary]["stock"] >= 1.0,
+            "backup": backup, "computed_rank": list(pool), "computed_top": computed_top,
+            "note": f"The refreshed catalogue ranks {computed_top} above ruled pick {primary}; Douglas's 2026-10-12 ruling holds {primary} primary and {backup} backup.",
+            "selection_source": selection["primary_actuator"]["source"], "dc_branch": dc["pick"], "dc": dc}
 
 
 def rollup(A, servo_g, name):
@@ -1272,10 +1276,12 @@ def main():
     roll = rollup(A, 58.0, "DS3218MG (A17)")
     rolls = {}
     rec = D["recommendation"]
-    selected = next(c for c in D["actuators"] + D["fallback_branch"] if c["id"] == rec["primary"])
-    selected_R19_check = {"actuator": rec["primary"], "close_time_s": selected["close_time_s"],
-                          "limit_s": GR["close_time_max_s"],
-                          "passes": selected["close_time_s"] <= GR["close_time_max_s"]}
+    selected_R19_check = {}
+    for role in ("primary", "backup"):
+        selected = next(c for c in D["actuators"] + D["fallback_branch"] if c["id"] == rec[role])
+        selected_R19_check[role] = {"actuator": rec[role], "close_time_s": selected["close_time_s"],
+                                    "limit_s": GR["close_time_max_s"],
+                                    "passes": selected["close_time_s"] <= GR["close_time_max_s"]}
     for cid in dict.fromkeys(x for x in (rec["primary"], rec["backup"], rec["dc_branch"]) if x):
         c = next(x for x in D["actuators"] + D["fallback_branch"] if x["id"] == cid)
         rolls[cid] = rollup(A, c["mass_g"], c["model"].split("(")[0].strip()[:24])

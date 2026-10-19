@@ -5873,10 +5873,23 @@
     "near_miss_servos": []
    },
    "recommendation": {
-    "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
-    "primary": "A39",
+    "rule": "primary and backup = params.json ruled_selection, held by Douglas's 2026-10-12 ruling; computed_rank = the full trade_vendor_consistent rank on the superseded 0.5 s selection basis; computed_top = its first entry; DC branch = dc_pick rule",
+    "primary": "A17",
     "primary_in_stock": true,
-    "backup": "A32",
+    "backup": "A19",
+    "computed_rank": [
+     "A39",
+     "A32",
+     "A33",
+     "A34",
+     "A19",
+     "A17",
+     "M09+15.75:1",
+     "A28"
+    ],
+    "computed_top": "A39",
+    "note": "The refreshed catalogue ranks A39 above ruled pick A17; Douglas's 2026-10-12 ruling holds A17 primary and A19 backup.",
+    "selection_source": "Douglas 2026-10-12 ruling; selection held, not recomputed",
     "dc_branch": "M09+15.75:1",
     "dc": {
      "rule": "best base-weight score among DC gearmotor/worm + printed-stage configurations that pass every selection-time hard constraint AND hold under their vendor's published rule; if none, best score among those (vendor-consistent) whose ONLY failure is the selection basis 0.5 s (R19 at selection; superseded 2026-10-12) with close <= 0.6 s (the historical near-miss rule; current R19 requirement is 0.75 s)",
@@ -9147,10 +9160,23 @@
     "near_miss_servos": []
    },
    "recommendation": {
-    "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
-    "primary": "A39",
+    "rule": "primary and backup = params.json ruled_selection, held by Douglas's 2026-10-12 ruling; computed_rank = the full trade_vendor_consistent rank on the superseded 0.5 s selection basis; computed_top = its first entry; DC branch = dc_pick rule",
+    "primary": "A17",
     "primary_in_stock": true,
-    "backup": "A32",
+    "backup": "A19",
+    "computed_rank": [
+     "A39",
+     "A32",
+     "A33",
+     "A34",
+     "A19",
+     "A17",
+     "M09+15.75:1",
+     "A28"
+    ],
+    "computed_top": "A39",
+    "note": "The refreshed catalogue ranks A39 above ruled pick A17; Douglas's 2026-10-12 ruling holds A17 primary and A19 backup.",
+    "selection_source": "Douglas 2026-10-12 ruling; selection held, not recomputed",
     "dc_branch": "M09+15.75:1",
     "dc": {
      "rule": "best base-weight score among DC gearmotor/worm + printed-stage configurations that pass every selection-time hard constraint AND hold under their vendor's published rule; if none, best score among those (vendor-consistent) whose ONLY failure is the selection basis 0.5 s (R19 at selection; superseded 2026-10-12) with close <= 0.6 s (the historical near-miss rule; current R19 requirement is 0.75 s)",
@@ -11608,10 +11634,16 @@
     ]
    },
    "recommendation": {
-    "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
-    "primary": "A19",
-    "primary_in_stock": false,
-    "backup": null,
+    "rule": "primary and backup = params.json ruled_selection, held by Douglas's 2026-10-12 ruling; computed_rank = the full trade_vendor_consistent rank on the superseded 0.5 s selection basis; computed_top = its first entry; DC branch = dc_pick rule",
+    "primary": "A17",
+    "primary_in_stock": true,
+    "backup": "A19",
+    "computed_rank": [
+     "A19"
+    ],
+    "computed_top": "A19",
+    "note": "The refreshed catalogue ranks A19 above ruled pick A17; Douglas's 2026-10-12 ruling holds A17 primary and A19 backup.",
+    "selection_source": "Douglas 2026-10-12 ruling; selection held, not recomputed",
     "dc_branch": "M01+20:1",
     "dc": {
      "rule": "best base-weight score among DC gearmotor/worm + printed-stage configurations that pass every selection-time hard constraint AND hold under their vendor's published rule; if none, best score among those (vendor-consistent) whose ONLY failure is the selection basis 0.5 s (R19 at selection; superseded 2026-10-12) with close <= 0.6 s (the historical near-miss rule; current R19 requirement is 0.75 s)",
@@ -14067,10 +14099,16 @@
     ]
    },
    "recommendation": {
-    "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
-    "primary": "A19",
-    "primary_in_stock": false,
-    "backup": null,
+    "rule": "primary and backup = params.json ruled_selection, held by Douglas's 2026-10-12 ruling; computed_rank = the full trade_vendor_consistent rank on the superseded 0.5 s selection basis; computed_top = its first entry; DC branch = dc_pick rule",
+    "primary": "A17",
+    "primary_in_stock": true,
+    "backup": "A19",
+    "computed_rank": [
+     "A19"
+    ],
+    "computed_top": "A19",
+    "note": "The refreshed catalogue ranks A19 above ruled pick A17; Douglas's 2026-10-12 ruling holds A17 primary and A19 backup.",
+    "selection_source": "Douglas 2026-10-12 ruling; selection held, not recomputed",
     "dc_branch": "M01+20:1",
     "dc": {
      "rule": "best base-weight score among DC gearmotor/worm + printed-stage configurations that pass every selection-time hard constraint AND hold under their vendor's published rule; if none, best score among those (vendor-consistent) whose ONLY failure is the selection basis 0.5 s (R19 at selection; superseded 2026-10-12) with close <= 0.6 s (the historical near-miss rule; current R19 requirement is 0.75 s)",
@@ -14146,10 +14184,23 @@
   }
  },
  "recommendation": {
-  "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
-  "primary": "A39",
+  "rule": "primary and backup = params.json ruled_selection, held by Douglas's 2026-10-12 ruling; computed_rank = the full trade_vendor_consistent rank on the superseded 0.5 s selection basis; computed_top = its first entry; DC branch = dc_pick rule",
+  "primary": "A17",
   "primary_in_stock": true,
-  "backup": "A32",
+  "backup": "A19",
+  "computed_rank": [
+   "A39",
+   "A32",
+   "A33",
+   "A34",
+   "A19",
+   "A17",
+   "M09+15.75:1",
+   "A28"
+  ],
+  "computed_top": "A39",
+  "note": "The refreshed catalogue ranks A39 above ruled pick A17; Douglas's 2026-10-12 ruling holds A17 primary and A19 backup.",
+  "selection_source": "Douglas 2026-10-12 ruling; selection held, not recomputed",
   "dc_branch": "M09+15.75:1",
   "dc": {
    "rule": "best base-weight score among DC gearmotor/worm + printed-stage configurations that pass every selection-time hard constraint AND hold under their vendor's published rule; if none, best score among those (vendor-consistent) whose ONLY failure is the selection basis 0.5 s (R19 at selection; superseded 2026-10-12) with close <= 0.6 s (the historical near-miss rule; current R19 requirement is 0.75 s)",
@@ -14175,16 +14226,30 @@
   }
  },
  "selected_actuator_R19_check": {
-  "actuator": "A39",
-  "close_time_s": 0.299,
-  "limit_s": 0.75,
-  "passes": true
+  "primary": {
+   "actuator": "A17",
+   "close_time_s": 0.282,
+   "limit_s": 0.75,
+   "passes": true
+  },
+  "backup": {
+   "actuator": "A19",
+   "close_time_s": 0.272,
+   "limit_s": 0.75,
+   "passes": true
+  }
  },
  "recommendation_25pct_rule": {
-  "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
-  "primary": "A19",
-  "primary_in_stock": false,
-  "backup": null,
+  "rule": "primary and backup = params.json ruled_selection, held by Douglas's 2026-10-12 ruling; computed_rank = the full trade_vendor_consistent rank on the superseded 0.5 s selection basis; computed_top = its first entry; DC branch = dc_pick rule",
+  "primary": "A17",
+  "primary_in_stock": true,
+  "backup": "A19",
+  "computed_rank": [
+   "A19"
+  ],
+  "computed_top": "A19",
+  "note": "The refreshed catalogue ranks A19 above ruled pick A17; Douglas's 2026-10-12 ruling holds A17 primary and A19 backup.",
+  "selection_source": "Douglas 2026-10-12 ruling; selection held, not recomputed",
   "dc_branch": "M01+20:1",
   "dc": {
    "rule": "best base-weight score among DC gearmotor/worm + printed-stage configurations that pass every selection-time hard constraint AND hold under their vendor's published rule; if none, best score among those (vendor-consistent) whose ONLY failure is the selection basis 0.5 s (R19 at selection; superseded 2026-10-12) with close <= 0.6 s (the historical near-miss rule; current R19 requirement is 0.75 s)",
@@ -15187,8 +15252,8 @@
   }
  },
  "rollup_top3": {
-  "A39": {
-   "actuator_part": "DSServo DS3230 PRO, 180 ",
+  "A17": {
+   "actuator_part": "DSServo DS3218MG",
    "no_camera": {
     "items": [
      {
@@ -15211,7 +15276,7 @@
      },
      {
       "name": "actuator",
-      "g": 60.0,
+      "g": 58.0,
       "d_mm": 29.0,
       "tag": "S mass"
      },
@@ -15234,12 +15299,12 @@
       "tag": "D"
      }
     ],
-    "mass_g": 118.2,
-    "com_mm": 40.5,
+    "mass_g": 116.2,
+    "com_mm": 40.7,
     "util": {
-     "C001_5V": 1.1646,
-     "C001_7p4V": 0.9855,
-     "C018_12V": 0.6405
+     "C001_5V": 1.1563,
+     "C001_7p4V": 0.9785,
+     "C018_12V": 0.6359
     },
     "worst_pose": {
      "C001_5V": [
@@ -15259,9 +15324,9 @@
      ]
     },
     "util_zero_pose_reference": {
-     "C001_5V": 1.1523,
-     "C001_7p4V": 0.9751,
-     "C018_12V": 0.6337
+     "C001_5V": 1.1441,
+     "C001_7p4V": 0.9682,
+     "C018_12V": 0.6292
     }
    },
    "with_camera": {
@@ -15286,7 +15351,7 @@
      },
      {
       "name": "actuator",
-      "g": 60.0,
+      "g": 58.0,
       "d_mm": 29.0,
       "tag": "S mass"
      },
@@ -15315,12 +15380,12 @@
       "tag": "A"
      }
     ],
-    "mass_g": 128.2,
-    "com_mm": 38.9,
+    "mass_g": 126.2,
+    "com_mm": 39.1,
     "util": {
-     "C001_5V": 1.2048,
-     "C001_7p4V": 1.0196,
-     "C018_12V": 0.6626
+     "C001_5V": 1.1966,
+     "C001_7p4V": 1.0126,
+     "C018_12V": 0.6581
     },
     "worst_pose": {
      "C001_5V": [
@@ -15340,36 +15405,36 @@
      ]
     },
     "util_zero_pose_reference": {
-     "C001_5V": 1.1921,
-     "C001_7p4V": 1.0088,
-     "C018_12V": 0.6556
+     "C001_5V": 1.1839,
+     "C001_7p4V": 1.0019,
+     "C018_12V": 0.6511
     }
    },
-   "hardware_g": 99.7,
-   "hardware_com_mm": 31.7,
+   "hardware_g": 97.7,
+   "hardware_com_mm": 31.8,
    "allowable_at_hardware_com_worst_pose": {
     "C001_5V": {
      "allowable_hw_g_no_camera": 60.2,
-     "margin_g_no_camera": -39.5,
+     "margin_g_no_camera": -37.5,
      "allowable_hw_g_with_camera": 50.6,
-     "margin_g_with_camera": -49.2
+     "margin_g_with_camera": -47.2
     },
     "C001_7p4V": {
      "allowable_hw_g_no_camera": 103.8,
-     "margin_g_no_camera": 4.1,
+     "margin_g_no_camera": 6.1,
      "allowable_hw_g_with_camera": 94.2,
-     "margin_g_with_camera": -5.6
+     "margin_g_with_camera": -3.6
     },
     "C018_12V": {
      "allowable_hw_g_no_camera": 256.6,
-     "margin_g_no_camera": 156.9,
+     "margin_g_no_camera": 158.8,
      "allowable_hw_g_with_camera": 246.9,
-     "margin_g_with_camera": 147.2
+     "margin_g_with_camera": 149.2
     }
    }
   },
-  "A32": {
-   "actuator_part": "DSServo DS3230 MG",
+  "A19": {
+   "actuator_part": "DSServo DS3235 coreless",
    "no_camera": {
     "items": [
      {
