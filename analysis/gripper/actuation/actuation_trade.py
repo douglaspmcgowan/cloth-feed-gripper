@@ -718,7 +718,7 @@ def gates(c, g):
 
 
 SCORE_DP = 3  # the same precision is used for ranking and for the written result
-SCORE_QUANT = Decimal("0.001")
+SCORE_QUANT = Decimal(1).scaleb(-SCORE_DP)
 
 
 def scores(configs, w, rs):
