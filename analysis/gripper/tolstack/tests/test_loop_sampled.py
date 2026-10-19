@@ -15,7 +15,10 @@ sys.path.insert(0, str(STACKS.parent))
 from tolcalc import run_all  # noqa: E402
 
 
-N = 75_000
+# The extreme-quantile cross-check uses two independent estimates. Its SE scales
+# with sqrt(1/N + 1/engine_n); 100k samples reduce the independent term
+# from 1/75k to 1/100k while retaining the three-SE comparison below.
+N = 100_000
 LIVE_N = 25_000
 SEED = 817_231
 QUANTILES = (0.00135, 0.99865)
