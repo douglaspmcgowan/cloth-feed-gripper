@@ -18,7 +18,7 @@
 
 - Ranges (`close_range`): contact 0.503-0.510 s; 4.5 N 0.589-0.643 s; 5.0 N 0.595-0.637 s at k ≥ 1.0 N/mm, 0.691 s at k 0.88; HOLD 0.718-0.853 s. Scatter between closes 7.6 ms (20 ms servo frame phase 5.8 ms [D], servo 5 ms [A]).
 - Jaw speed: 21 °/s at contact + 3°, ≤ 20 °/s from contact + 2° (the jaw trails the 120 °/s command by about 7°) [D] `controls.md` 4.2, `config.h` `JAW_SLOW_ZONE_DEG`.
-- Predicted verdicts: the historical limit (superseded 2026-10-12) fails on every finger (contact > {{tp03.written_limit}}); the ruled limit passes to 4.5 N and to 5.0 N on every finger in the R12 window. The latest is 5.0 N at k 0.88, 0.691 s; the 95/90 bound of ten closes is about 0.691 + 2.57 × 0.010 = 0.717 s (σ: 7.6 ms close scatter with the stream's u_c), under {{tp03.proposed_limit}}. What changed: the firmware now regulates its FSR reading 1 N above the setpoint (`F_HOLD_BIAS_N`), so the loop crosses 5.0 N on its way up instead of creeping to it; before, 5.0 N took 0.748 s at k 1.05 and 1.075 s at k 0.88.
+- Predicted verdicts: the historical comparison (superseded 2026-10-12) fails on every finger (contact > {{tp03.written_limit}}); the ruled requirement passes to 4.5 N and to 5.0 N on every finger in the R12 window. The latest is 5.0 N at k 0.88, 0.691 s; the 95/90 bound of ten closes is about 0.691 + 2.57 × 0.010 = 0.717 s (σ: 7.6 ms close scatter with the stream's u_c), under {{tp03.proposed_limit}}. What changed: the firmware now regulates its FSR reading 1 N above the setpoint (`F_HOLD_BIAS_N`), so the loop crosses 5.0 N on its way up instead of creeping to it; before, 5.0 N took 0.748 s at k 1.05 and 1.075 s at k 0.88.
 
 ## Equipment
 
@@ -53,7 +53,7 @@ Gripper on the bench (wrist plate in a vise) with its 6.5 V rail, laptop running
    `python docs/gripper/test/tools/gripper_log.py --port <port> --out TP-03_log.csv --sequence close --n 10 --hold 1`
    It sends `STREAM 50`, then ten times: `G 5`, wait for HOLD, hold 1 s, `R`, wait for IDLE (each close starts at +20° in IDLE).
 2. Stop the video. Check the log has ten `EVT ENTER_HOLD` and no `FAULT`.
-3. `python docs/gripper/test/tools/analyze_log.py close TP-03_log.csv`. It prints, per close, the contact, 4.5 N, 5.0 N and HOLD times from the `CMD_GRIP` event, using the firmware's own millisecond clock, with the 10.5 ms FSR lag (EMA 9.5 ms + 1 ms poll, `controls.md` 3) subtracted from the force times; then mean, s and the 95/90 bound with PASS/FAIL against ruled {{tp03.proposed_limit}} (contact, 4.5 N, 5.0 N), plus historical {{tp03.written_limit}} contact (superseded 2026-10-12).
+3. `python docs/gripper/test/tools/analyze_log.py close TP-03_log.csv`. It prints, per close, the contact, 4.5 N, 5.0 N and HOLD times from the `CMD_GRIP` event, using the firmware's own millisecond clock, with the 10.5 ms FSR lag (EMA 9.5 ms + 1 ms poll, `controls.md` 3) subtracted from the force times; then mean, s and the 95/90 bound with PASS/FAIL against ruled {{tp03.proposed_limit}} for all three arrival events, plus historical {{tp03.written_limit}} contact (superseded 2026-10-12).
 
 **B. Video (jaw speed and an independent close time).**
 

@@ -101,10 +101,10 @@ def test_squeeze_cap_matches_controls_note(out):
 
 
 def test_stall_requirement_hand_calc(out):
-    # R16: hold 0.792 N m at <= 40 % of stall -> stall >= 1.98 N m = 20.19 kg cm
+    # Refreshed payload evidence: hold 0.793 N m at <= 40 % of stall.
     st = out["expected"]["stall"]
-    assert st["stall_needed_Nm"] == pytest.approx(0.792 / 0.40)
-    assert st["stall_needed_kgcm"] == pytest.approx(0.792 / 0.40 / 0.0980665)
+    assert st["stall_needed_Nm"] == pytest.approx(0.793 / 0.40)
+    assert st["stall_needed_kgcm"] == pytest.approx(0.793 / 0.40 / 0.0980665)
     # Lever force at 50 mm: T / 0.05
     assert st["force_at_lever_N"] == pytest.approx(st["predicted_6p5V_Nm"] / 0.05)
 
