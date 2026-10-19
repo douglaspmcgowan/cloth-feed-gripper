@@ -41,7 +41,7 @@
       {
         "name": "State machine and event-driven code",
         "status": "pass",
-        "evidence": "12 states and a 69-row transition table with no blocking waits. The host test takes every row and passes 2123 checks.",
+        "evidence": "12 states and a 69-row transition table with no blocking waits. The host test takes every row and passes 2124 checks.",
         "evidenceId": "firmware-states"
       },
       {
@@ -225,7 +225,7 @@
   },
   "source": {
     "repository": "https://github.com/douglaspmcgowan/berkeley-ai-tutor",
-    "commit": "f0e98c8bad33b14bd9830dd94228dd6583b1da1f",
-    "committed": "2026-10-16T16:44:00-07:00"
+    "commit": "96d8762a0b72dcaa8840907079b3356c8831ca99",
+    "committed": "2026-10-18T19:50:27-07:00"
   }
 }
