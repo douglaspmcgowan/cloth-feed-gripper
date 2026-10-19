@@ -224,7 +224,7 @@ Flank SF is higher than root in every PA6-CF and POM case (PA6-CF printed: 1.46 
 | 4 | TPU hot spot × 0.27, capped | **4.3e3** | fails |
 | 5 | TPU p99 × 0.27, uncapped | 7.6e3 | fails |
 | 6 | TPU hot spot × 0.5, capped | 3.1e6 | passes |
-| 7 | POM CNC | 4.8e6 | passes |
+| 7 | POM CNC | 5.1e6 | passes |
 | 8 | TPU p99 × 0.5, uncapped | 5.7e6 | passes |
 | 9 | TPU p99 × 0.27, capped | 1.3e7 | passes |
 | 10 | PA6-CF printed | 6.3e7 | passes |
