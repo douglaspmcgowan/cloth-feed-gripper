@@ -45,6 +45,7 @@ G = 9.80665
 KGCM = G / 100.0  # 1 kg*cm in N*m
 P = json.loads(PARAMS.read_text(encoding="utf-8"))
 GR, PS, WC, DC = P["grip"], P["payload_scenarios"], P["work_cell"], P["duty_cycle"]
+SELECTION_BASIS_LABEL = "selection basis 0.5 s (R19 at selection; superseded 2026-10-12)"
 
 # ------------------------------------------------------------------ inputs (value, tag, note)
 INPUT = {
@@ -68,7 +69,8 @@ INPUT = {
     "theta_min_deg": (GR["theta_min_deg"], "D", "params.json grip.theta_min_deg"),
     "hold_frac": (GR["hold_fraction_of_stall"], "A", "40 % case: hold <= 40 % of stall (R16), applied to EVERY actuator driven by a brushed DC motor (servos and gearmotors alike)"),
     "hold_frac_25": (0.25, "S", "25 % case: Pololu 'a general recommendation for brushed DC motor operation is 25% or less of the stall current', https://www.pololu.com/category/60/micro-metal-gearmotors; applied to EVERY brushed-DC-driven actuator (hobby servos contain brushed or coreless brushed DC motors)"),
-    "close_time_s": (GR["close_time_max_s"], "A", "R19 full close"),
+    "close_time_s": (GR["close_time_selection_basis_s"], "A", SELECTION_BASIS_LABEL),
+    "close_time_requirement_s": (GR["close_time_max_s"], "D", "ruled R19 requirement: full close within 0.75 s (Douglas, 2026-10-12)"),
     "near_contact_deg": (3.0, "A", "R19: last 3 deg before contact"),
     "near_contact_speed": (GR["near_contact_speed_deg_s"], "A", "R19 deg/s"),
     "overtravel_speed_max": (60.0, "A", "deg/s ceiling while the FSR loop ramps force (firmware steps)"),
@@ -855,7 +857,7 @@ def actuators(gr, A, V_rail, V_hi, hold_frac):
             if cap and cap >= Th_req:
                 e["fail"].append("no speed data")
         elif tc > t_lim:
-            e["fail"].append(f"close {tc:.2f} s > {t_lim} s")
+            e["fail"].append(f"close {tc:.2f} s > {t_lim} s {SELECTION_BASIS_LABEL}")
         if e["mass_g"] is not None:
             ok, util = mass_ok(mass_items(e["mass_g"], FINGER_L))
             e["arm_util_C001_7p4V"] = r(util)
@@ -911,7 +913,7 @@ def actuators(gr, A, V_rail, V_hi, hold_frac):
             hm = cap * N * eta / Th_req
             hm_v = (e.get("hold_capacity_vendor_rule_Nm") or cap) * N * eta / Th_req
             ok_m, util = mass_ok(mass_items(ms, FINGER_L))
-            f = [] if tc <= t_lim else [f"close {tc:.2f} s > {t_lim} s"]
+            f = [] if tc <= t_lim else [f"close {tc:.2f} s > {t_lim} s {SELECTION_BASIS_LABEL}"]
             if hm < 1 - 1e-9:
                 f.append(f"hold margin {hm:.2f}")
             if N ** (1 / n_st) * 0.8 * V["stage_pinion_z"] > 45.0:
@@ -939,7 +941,7 @@ CRIT = {  # weight, description
     "sensing": (0.05, "pot or encoder feedback = extra analog input and stall detection"),
     "course_dc_motor": (0.05, "certainty it meets the DC-motor rule (servo 0.5 pending GSI, bare DC motor 1)"),
     "simplicity": (0.05, "parts count (servo 1, gearmotor + driver + printed stage 0.3)"),
-    "speed_margin": (0.05, "1 - close_time / 0.5 s"),
+    "speed_margin": (0.05, f"1 - close_time / {GR['close_time_selection_basis_s']} s; {SELECTION_BASIS_LABEL}"),
 }
 W0 = {k: v[0] for k, v in CRIT.items()}
 
@@ -1013,9 +1015,10 @@ def trade(res, fb, vendor_consistent=False):
             "near_miss_servos": [{"id": c["id"], "model": c["model"], "hold_margin": c["hold_margin"], "r_c_max_mm": c["r_c_max_mm"]} for c in near]}
 
 
-DC_RULE = ("best base-weight score among DC gearmotor/worm + printed-stage configurations that pass every hard constraint AND hold "
-           "under their vendor's published rule; if none, best score among those (vendor-consistent) whose ONLY failure is R19 "
-           "with close <= 0.6 s (then R19 must be relaxed to 0.6 s)")
+DC_RULE = ("best base-weight score among DC gearmotor/worm + printed-stage configurations that pass every selection-time "
+           "hard constraint AND hold under their vendor's published rule; if none, best score among those (vendor-consistent) "
+           "whose ONLY failure is the selection basis 0.5 s (R19 at selection; superseded 2026-10-12) with close <= 0.6 s "
+           "(the historical near-miss rule; current R19 requirement is 0.75 s)")
 
 
 def dc_pick(fb):
@@ -1269,6 +1272,10 @@ def main():
     roll = rollup(A, 58.0, "DS3218MG (A17)")
     rolls = {}
     rec = D["recommendation"]
+    selected = next(c for c in D["actuators"] + D["fallback_branch"] if c["id"] == rec["primary"])
+    selected_R19_check = {"actuator": rec["primary"], "close_time_s": selected["close_time_s"],
+                          "limit_s": GR["close_time_max_s"],
+                          "passes": selected["close_time_s"] <= GR["close_time_max_s"]}
     for cid in dict.fromkeys(x for x in (rec["primary"], rec["backup"], rec["dc_branch"]) if x):
         c = next(x for x in D["actuators"] + D["fallback_branch"] if x["id"] == cid)
         rolls[cid] = rollup(A, c["mass_g"], c["model"].split("(")[0].strip()[:24])
@@ -1278,7 +1285,8 @@ def main():
            "rail_band_V": {"low": V_LO, "nominal": V["V_rail_design"], "high": V_HI, "tag": "A (reversible)"},
            "csv_extended_this_run": csv_changed, "finger_length_mm": FINGER_L,
            "payload": pay, "grip": gr, "runs": runs, "datasheet_conflict_A17": conflict,
-           "recommendation": D["recommendation"], "recommendation_25pct_rule": runs["r25_design"]["recommendation"],
+           "recommendation": D["recommendation"], "selected_actuator_R19_check": selected_R19_check,
+           "recommendation_25pct_rule": runs["r25_design"]["recommendation"],
            "gear_LC3_check": gear_lc3, "breakeven_design_rail_low_end": thresholds,
            "rollup_design_point_A17": roll, "rollup_top3": rolls}
     OUT.parent.mkdir(parents=True, exist_ok=True)
