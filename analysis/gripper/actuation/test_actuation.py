@@ -3,6 +3,7 @@
 Each test fails if the physics or a reference number were wrong."""
 import json
 import math
+import subprocess
 import sys
 from pathlib import Path
 
@@ -153,15 +154,33 @@ def test_cap8_stiffness_floor():
 
 
 def test_ranking_is_byte_stable_on_near_ties():
-    """Scores are rounded before comparison and ties go to the lower configuration id, so a last-bit float
-    difference between machines cannot reorder two near-tied configurations or move a printed score."""
-    w = {"a": 1.0, "b": 2.0}
-    cfgs = [{"cfg": "B@1:1", "utilities": {"p": {"a": 0.1, "b": 0.2}}},
-            {"cfg": "A@1:1", "utilities": {"p": {"a": 0.1 + 1e-15, "b": 0.2}}}]
+    """A sub-precision score gap ties at the written precision, then candidate key orders the pair."""
+    w = {"a": 1.0, "b": 1.0}
+    cfgs = [{"cfg": "B@1:1", "utilities": {"p": {"a": 0.5, "b": 0.5}}},
+            {"cfg": "A@1:1", "utilities": {"p": {"a": 0.5004, "b": 0.5}}}]
     sc = T.scores(cfgs, w, "p")
-    assert sc["A@1:1"] == sc["B@1:1"]
+    assert sc["A@1:1"] == sc["B@1:1"] == 0.5
+    assert sorted(sc, key=lambda key: (-sc[key], key)) == ["A@1:1", "B@1:1"]
     assert T.top(sc, sc) == "A@1:1" and T.top(reversed(list(sc)), sc) == "A@1:1"
     assert T.top([], sc) is None
+
+
+def test_check_mode_reports_differing_keys_without_writing(tmp_path):
+    original_json = b'{"ranking": [{"cfg": "A@1:1", "score": 0.5}]}'
+    original_stdout = b"original\n"
+    (tmp_path / "actuation_trade.json").write_bytes(original_json)
+    (tmp_path / "actuation_trade_stdout.txt").write_bytes(original_stdout)
+    differences = T.result_differences(b'{"ranking": [{"cfg": "A@1:1", "score": 0.501}]}', b"updated\n", tmp_path)
+    assert differences == ["actuation_trade.json: $.ranking[0].score", "actuation_trade_stdout.txt: bytes differ"]
+    assert (tmp_path / "actuation_trade.json").read_bytes() == original_json
+    assert (tmp_path / "actuation_trade_stdout.txt").read_bytes() == original_stdout
+
+
+def test_check_mode_matches_committed_result():
+    result = subprocess.run([sys.executable, str(HERE / "actuation_trade.py"), "--check"], cwd=M.ROOT,
+                            capture_output=True, text=True, timeout=1200)
+    assert result.returncode == 0, result.stdout[-4000:] + result.stderr[-4000:]
+    assert result.stdout.rstrip().endswith("actuation trade: results current")
 
 
 def test_seeded_sampling_is_deterministic(cfgs):

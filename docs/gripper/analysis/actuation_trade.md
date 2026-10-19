@@ -13,6 +13,7 @@ What this study does and does not fix:
 - **Script:** `analysis/gripper/actuation/actuation_trade.py`. The model is in `model.py`, the add-on calculations in `extras.py`, and the tests in `test_actuation.py`.
   - Inputs: `docs/gripper/research/actuators.csv`, `analysis/gripper/results/payload_torque.json`, `analysis/gripper/results/gears.json` and `gears.py`, and the rev A (DS3218MG, A17) `firmware/gripper/config.h`, `analysis/gripper/firmware_sim/results/fw_sim.json` and `analysis/gripper/thermal/results/thermal.json`, pinned from commit `7e1039a` into `analysis/gripper/actuation/rev_a/` by `pin_rev_a.py` (rev B.1 re-based the live files on the DS3230 MG this study chose; read live, they would make the winner the reference).
 - **Re-run** from the repository root: `python3 analysis/gripper/actuation/actuation_trade.py`.
+  - `python3 analysis/gripper/actuation/actuation_trade.py --check` recomputes without writing, prints differing JSON keys, and exits nonzero when the committed result is stale.
   - It is seeded and deterministic and takes about 12 min [A, one timed run]. A rerun leaves `git status` clean.
   - It writes `analysis/gripper/actuation/results/actuation_trade.json` and `actuation_trade_stdout.txt`. The JSON has a `definitions` block that says what each probability means.
   - Every number in this note is in that stdout file or the JSON (`decision`, `recommendation`, `configs[]`), unless it is tagged [S] or [A].
@@ -100,7 +101,7 @@ Full comparison of the three rows plus the present servo:
 
 The aifitlab "DS3235 SG" (A34) is a different variant: gear ratio 342, and 30 kg·cm at 7.4 V against the datasheet's 35 [S]. It is treated as a vendor claim, not as the datasheet part.
 
-**Weighted score (section 6).** The DS3230 PRO (A39, $25) scores 0.652 and the MG (A32, $27) 0.646 under the proposed values, the top two eligible scores, because their listed figures are identical and the PRO is $2 cheaper. Under random weights 82 % of draws recommend the DS3230 and 18 % the DS3218MG with the 1.5:1 stage.
+**Weighted score (section 6).** The DS3230 PRO (A39, $25) scores 0.652 and the MG (A32, $27) 0.646 under the proposed values, the top two eligible scores, because their listed figures are identical and the PRO is $2 cheaper. Under random weights 81.4 % of draws recommend the DS3230 and 18.6 % the DS3218MG with the 1.5:1 stage.
 
 ## 1. What was compared
 
@@ -378,10 +379,11 @@ Every criterion is scored 0–1 by a written rule (`actuation_trade.json` → `s
 The score winner is the DS3230 (A39 first, A32 second) under both rules.
 
 **Tie rule:** within 0.02 of the top score, prefer datasheet torque evidence over a vendor claim, then availability.
+For the ranking itself, scores are rounded decimal half-even to three places before sorting and writing; equal rounded scores sort by candidate key in ascending lexical order.
 
 **Stability of the result:**
 
-- **The winner does not change with the weights.** Halving or raising by half any single weight leaves the DS3230 on top. Over 4,000 random weight draws the tie rule recommends the DS3230 in 82 % and the DS3218MG with the 1.5:1 stage in 18 %.
+- **The winner does not change with the weights.** Halving or raising by half any single weight leaves the DS3230 on top. Over 4,000 random weight draws the tie rule recommends the DS3230 in 81.4 % and the DS3218MG with the 1.5:1 stage in 18.6 %.
 - **The winner does change with the gate.** At a P(R16 and simulated force) gate of 0.8 the DS3225 (A33) qualifies and wins. At 0.95 the FEETECH FT5330M (A37, marginal arm gate) wins: the DS3230's 8 N-cap value is 0.92–0.93 since the model carries the squeeze-cap margin (it was 0.95–0.96, and the PRO won).
 - **With no gates, the DS3218MG at 1:1 scores highest**, because it is cheap, in stock and a drop-in. It fails only on the hold-rule probability.
 
