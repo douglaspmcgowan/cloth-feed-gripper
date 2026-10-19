@@ -4,8 +4,9 @@ simulation that mirrors the shipped firmware (fsm.cpp CLOSE, motion.cpp, force_c
 Every input is tagged [S] sourced, [D] derived by a repo script, or [A] assumed. The study is the rev A trade (it chose
 the DS3230 MG that rev B.1 builds); its reference servo is the DS3218MG (A17). The firmware constants are therefore the
 rev A firmware/gripper/config.h, pinned in rev_a/config.json by pin_rev_a.py and derived through
-analysis/gripper/firmware_sim/fwconfig.py, and the mirror is validated against the pinned rev A fw_sim cases; grip loads come from
-analysis/gripper/results/payload_torque.json (payload_torque.py). actuation_trade.py is the one command.
+analysis/gripper/firmware_sim/fwconfig.py, and the mirror is validated against the pinned rev A fw_sim cases. Geometry,
+grip loads and the arm fit come from rev_a/payload_reference.json at the same revision; reading the live payload
+result would silently mix current CAD geometry into this historical study. actuation_trade.py is the one command.
 """
 from __future__ import annotations
 
@@ -24,8 +25,8 @@ sys.path.insert(0, str(ROOT / "analysis/gripper/firmware_sim"))
 import fwconfig  # noqa: E402
 
 ACT_CSV = ROOT / "docs/gripper/research/actuators.csv"
-PT_JSON = ROOT / "analysis/gripper/results/payload_torque.json"
 REV_A = HERE / "rev_a"   # pin_rev_a.py: rev A (DS3218MG) config.h, fw_sim.json cases and thermal.json rows
+PT_JSON = REV_A / "payload_reference.json"
 FW_JSON = REV_A / "fw_sim_cases.json"
 
 G = 9.80665
