@@ -501,6 +501,20 @@
     "brass": 8.5,
     "Al": 2.7
   },
+  "ruled_selection": {
+    "primary_actuator": {
+      "id": "A17",
+      "source": "Douglas 2026-10-12 ruling; selection held, not recomputed"
+    },
+    "backup_actuator": {
+      "id": "A19",
+      "source": "Douglas 2026-10-12 ruling; selection held, not recomputed"
+    },
+    "concept": {
+      "id": "C0",
+      "source": "Douglas 2026-10-12 ruling; selection held, not recomputed"
+    }
+  },
   "grip": {
     "_doc": "Load cases LC1-LC4 in docs/gripper/DESIGN-BASIS.md. Contact = tip pad; r_c = perpendicular distance pivot -> pad-normal line of action (invariant with jaw angle).",
     "contact": "tip pad",
