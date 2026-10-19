@@ -1,39 +1,39 @@
-== design_L45 design basis: L 45, r_c 65 mm, CAD section mass g 3.7
+== design_L45 design basis: L 45, r_c 65 mm, CAD section mass g 3.64
   tip_solid_XY_67 k N/mm 5.051
-  tip_finray_XY_67 k N/mm 3.175
-  tip_finray_Z_56 k N/mm 2.653
-  mid_finray_XY_67 k N/mm 1.262
-  LC1_target_tip {'M_root_Nmm': 200.0, 'V_web_N': 0.18, 'sigma_chord_axial': 0.56, 'sigma_chord_axial_plus_bending': 0.63, 'sigma_rib_bending': 0.22, 'sigma_solid_wedge_root': 0.23} {'M_arm_top_Nmm': 277.42, 'sigma_arm_top': 2.77, 'sigma_arm_top_Kt': 4.16, 'M_arm_bottom_Nmm': 215.0, 'sigma_arm_bottom': 0.84, 'sigma_root_plate_overhang': 1.38, 'overhang_mm': 7.0}
-  LC2_cap_tip {'M_root_Nmm': 400.0, 'V_web_N': 0.37, 'sigma_chord_axial': 1.13, 'sigma_chord_axial_plus_bending': 1.25, 'sigma_rib_bending': 0.44, 'sigma_solid_wedge_root': 0.47} {'M_arm_top_Nmm': 554.84, 'sigma_arm_top': 5.55, 'sigma_arm_top_Kt': 8.32, 'M_arm_bottom_Nmm': 430.0, 'sigma_arm_bottom': 1.68, 'sigma_root_plate_overhang': 2.77, 'overhang_mm': 7.0}
-  tip_XY_67 {'c_finger': np.float64(0.315), 'c_arm': 0.013, 'c_mesh_B': 0.0284, 'arm_plus_mesh_fraction_of_pair': np.float64(0.0795), 'k_pair_N_per_mm': np.float64(1.4612), 'theta_target_deg': -1.8167, 'theta_cap_deg': -3.3248, 'dF_dtheta_N_per_deg': np.float64(3.3153)}
-  tip_Z_56 {'c_finger': np.float64(0.3769), 'c_arm': 0.013, 'c_mesh_B': 0.0284, 'arm_plus_mesh_fraction_of_pair': np.float64(0.0673), 'k_pair_N_per_mm': np.float64(1.2374), 'theta_target_deg': -2.0894, 'theta_cap_deg': -3.8702, 'dF_dtheta_N_per_deg': np.float64(2.8077)}
+  tip_finray_XY_67 k N/mm 1.966
+  tip_finray_Z_56 k N/mm 1.643
+  mid_finray_XY_67 k N/mm 1.039
+  LC1_target_tip {'M_root_Nmm': 200.0, 'V_web_N': 0.31, 'sigma_chord_axial': 0.82, 'sigma_chord_axial_plus_bending': 1.06, 'sigma_rib_bending': 0.3, 'sigma_solid_wedge_root': 0.23} {'M_arm_top_Nmm': 268.4, 'sigma_arm_top': 1.53, 'sigma_arm_top_Kt': 2.3, 'M_arm_bottom_Nmm': 230.0, 'sigma_arm_bottom': 0.51, 'sigma_root_plate_overhang': 0.62, 'overhang_mm': 4.75}
+  LC2_cap_tip {'M_root_Nmm': 400.0, 'V_web_N': 0.63, 'sigma_chord_axial': 1.65, 'sigma_chord_axial_plus_bending': 2.12, 'sigma_rib_bending': 0.61, 'sigma_solid_wedge_root': 0.47} {'M_arm_top_Nmm': 536.8, 'sigma_arm_top': 3.07, 'sigma_arm_top_Kt': 4.6, 'M_arm_bottom_Nmm': 460.0, 'sigma_arm_bottom': 1.03, 'sigma_root_plate_overhang': 1.24, 'overhang_mm': 4.75}
+  tip_XY_67 {'c_finger': np.float64(0.5087), 'c_arm': 0.0051, 'c_mesh_B': 0.0115, 'arm_plus_mesh_fraction_of_pair': np.float64(0.0209), 'k_pair_N_per_mm': np.float64(0.9624), 'theta_target_deg': -4.1189, 'theta_cap_deg': -6.4088, 'dF_dtheta_N_per_deg': np.float64(2.1836)}
+  tip_Z_56 {'c_finger': np.float64(0.6086), 'c_arm': 0.0051, 'c_mesh_B': 0.0115, 'arm_plus_mesh_fraction_of_pair': np.float64(0.0175), 'k_pair_N_per_mm': np.float64(0.8071), 'theta_target_deg': -4.5593, 'theta_cap_deg': -7.2896, 'dF_dtheta_N_per_deg': np.float64(1.8313)}
   tip_LC1_target_design_basis {'T_Nmm': 764.71, 'T_kgcm': 7.8, 'stall_needed_kgcm': 19.49}
   tip_LC1_target_lane {'T_Nmm': 707.35, 'T_kgcm': 7.21, 'stall_needed_kgcm': 18.03}
   tip_LC2_cap_design_basis {'T_Nmm': 1529.41, 'T_kgcm': 15.6, 'stall_needed_kgcm': 38.99}
   tip_LC2_cap_lane {'T_Nmm': 1414.71, 'T_kgcm': 14.43, 'stall_needed_kgcm': 36.06}
-  A17 DSServo DS3218MG @6.0V 20.4 kgcm (design point) {'stall_Nmm': 2000.56, 'F_tip_hold_N_design_basis': 5.23, 'F_tip_hold_N_lane_less_conservative': 5.66, 'F_mid_hold_N_design_basis': 7.16, 'F_tip_stall_N_design_basis': 13.08}
+  A17 DSServo DS3218MG @6.5V 21.08 kgcm (design point) {'stall_Nmm': 2067.24, 'F_tip_hold_N_design_basis': 5.41, 'F_tip_hold_N_lane_less_conservative': 5.85, 'F_mid_hold_N_design_basis': 7.4, 'F_tip_stall_N_design_basis': 13.52}
   A13 FS5115M-FB 15.5 kgcm {'stall_Nmm': 1520.03, 'F_tip_hold_N_design_basis': 3.98, 'F_tip_hold_N_lane_less_conservative': 4.3, 'F_mid_hold_N_design_basis': 5.44, 'F_tip_stall_N_design_basis': 9.94}
   A12 FS5106B-FB 6.0 kgcm {'stall_Nmm': 588.4, 'F_tip_hold_N_design_basis': 1.54, 'F_tip_hold_N_lane_less_conservative': 1.66, 'F_mid_hold_N_design_basis': 2.11, 'F_tip_stall_N_design_basis': 3.85}
   A17 DS3218MG @6.8V 21.5 kgcm {'stall_Nmm': 2108.43, 'F_tip_hold_N_design_basis': 5.51, 'F_tip_hold_N_lane_less_conservative': 5.96, 'F_mid_hold_N_design_basis': 7.55, 'F_tip_stall_N_design_basis': 13.79}
-  back-flank buckling, tip load, Z_56 {'s0_mm': 3.849, 's1_mm': 10.707, 'panel_len_mm': 7.279, 'chord_force_per_N': 2.852, 'P_cr_pinned_N': 30.041, 'F_cr_pinned_N': 10.532, 'F_cr_fixed_N': 42.128}
-  back-flank buckling, tip load, XY_67 {'s0_mm': 3.849, 's1_mm': 10.707, 'panel_len_mm': 7.279, 'chord_force_per_N': 2.852, 'P_cr_pinned_N': 35.942, 'F_cr_pinned_N': 12.601, 'F_cr_fixed_N': 50.403}
-== cad_L60 current CAD: L 60, r_c 80 mm (reference) mass g 4.49
-  tip_solid_XY_67 k N/mm 1.766
-  tip_finray_XY_67 k N/mm 1.177
-  tip_finray_Z_56 k N/mm 0.984
-  mid_finray_XY_67 k N/mm 0.673
-  LC1_target_tip {'M_root_Nmm': 275.0, 'V_web_N': 0.04, 'sigma_chord_axial': 0.78, 'sigma_chord_axial_plus_bending': 0.79, 'sigma_rib_bending': 0.06, 'sigma_solid_wedge_root': 0.32} {'M_arm_top_Nmm': 352.42, 'sigma_arm_top': 3.52, 'sigma_arm_top_Kt': 5.29, 'M_arm_bottom_Nmm': 290.0, 'sigma_arm_bottom': 1.13, 'sigma_root_plate_overhang': 1.9, 'overhang_mm': 7.0}
-  LC2_cap_tip {'M_root_Nmm': 550.0, 'V_web_N': 0.08, 'sigma_chord_axial': 1.55, 'sigma_chord_axial_plus_bending': 1.58, 'sigma_rib_bending': 0.12, 'sigma_solid_wedge_root': 0.64} {'M_arm_top_Nmm': 704.84, 'sigma_arm_top': 7.05, 'sigma_arm_top_Kt': 10.57, 'M_arm_bottom_Nmm': 580.0, 'sigma_arm_bottom': 2.27, 'sigma_root_plate_overhang': 3.8, 'overhang_mm': 7.0}
-  tip_XY_67 {'c_finger': np.float64(0.8493), 'c_arm': 0.0218, 'c_mesh_B': 0.0431, 'arm_plus_mesh_fraction_of_pair': np.float64(0.0485), 'k_pair_N_per_mm': np.float64(0.5601), 'theta_target_deg': -3.4471, 'theta_cap_deg': -6.6436, 'dF_dtheta_N_per_deg': np.float64(1.5642)}
-  tip_Z_56 {'c_finger': np.float64(1.0161), 'c_arm': 0.0218, 'c_mesh_B': 0.0431, 'arm_plus_mesh_fraction_of_pair': np.float64(0.0409), 'k_pair_N_per_mm': np.float64(0.4719), 'theta_target_deg': -4.0445, 'theta_cap_deg': -7.8384, 'dF_dtheta_N_per_deg': np.float64(1.3179)}
-  tip_LC1_target_design_basis {'T_Nmm': 941.18, 'T_kgcm': 9.6, 'stall_needed_kgcm': 23.99}
-  tip_LC1_target_lane {'T_Nmm': 870.59, 'T_kgcm': 8.88, 'stall_needed_kgcm': 22.19}
-  tip_LC2_cap_design_basis {'T_Nmm': 1882.35, 'T_kgcm': 19.19, 'stall_needed_kgcm': 47.99}
-  tip_LC2_cap_lane {'T_Nmm': 1741.18, 'T_kgcm': 17.76, 'stall_needed_kgcm': 44.39}
-  A17 DSServo DS3218MG @6.0V 20.4 kgcm (design point) {'stall_Nmm': 2000.56, 'F_tip_hold_N_design_basis': 4.25, 'F_tip_hold_N_lane_less_conservative': 4.6, 'F_mid_hold_N_design_basis': 6.18, 'F_tip_stall_N_design_basis': 10.63}
-  A13 FS5115M-FB 15.5 kgcm {'stall_Nmm': 1520.03, 'F_tip_hold_N_design_basis': 3.23, 'F_tip_hold_N_lane_less_conservative': 3.49, 'F_mid_hold_N_design_basis': 4.7, 'F_tip_stall_N_design_basis': 8.08}
-  A12 FS5106B-FB 6.0 kgcm {'stall_Nmm': 588.4, 'F_tip_hold_N_design_basis': 1.25, 'F_tip_hold_N_lane_less_conservative': 1.35, 'F_mid_hold_N_design_basis': 1.82, 'F_tip_stall_N_design_basis': 3.13}
-  A17 DS3218MG @6.8V 21.5 kgcm {'stall_Nmm': 2108.43, 'F_tip_hold_N_design_basis': 4.48, 'F_tip_hold_N_lane_less_conservative': 4.84, 'F_mid_hold_N_design_basis': 6.52, 'F_tip_stall_N_design_basis': 11.2}
-  back-flank buckling, tip load, Z_56 {'s0_mm': 6.034, 's1_mm': 15.028, 'panel_len_mm': 9.309, 'chord_force_per_N': 3.845, 'P_cr_pinned_N': 18.37, 'F_cr_pinned_N': 4.778, 'F_cr_fixed_N': 19.112}
-  back-flank buckling, tip load, XY_67 {'s0_mm': 6.034, 's1_mm': 15.028, 'panel_len_mm': 9.309, 'chord_force_per_N': 3.845, 'P_cr_pinned_N': 21.978, 'F_cr_pinned_N': 5.717, 'F_cr_fixed_N': 22.867}
+  back-flank buckling, tip load, Z_56 {'s0_mm': 4.278, 's1_mm': 11.877, 'panel_len_mm': 7.864, 'chord_force_per_N': 2.535, 'P_cr_pinned_N': 7.626, 'F_cr_pinned_N': 3.008, 'F_cr_fixed_N': 12.033}
+  back-flank buckling, tip load, XY_67 {'s0_mm': 4.278, 's1_mm': 11.877, 'panel_len_mm': 7.864, 'chord_force_per_N': 2.535, 'P_cr_pinned_N': 9.125, 'F_cr_pinned_N': 3.599, 'F_cr_fixed_N': 14.397}
+== cad_L60 current CAD: L 45, r_c 65 mm (reference) mass g 3.64
+  tip_solid_XY_67 k N/mm 5.051
+  tip_finray_XY_67 k N/mm 1.966
+  tip_finray_Z_56 k N/mm 1.643
+  mid_finray_XY_67 k N/mm 1.039
+  LC1_target_tip {'M_root_Nmm': 200.0, 'V_web_N': 0.31, 'sigma_chord_axial': 0.82, 'sigma_chord_axial_plus_bending': 1.06, 'sigma_rib_bending': 0.3, 'sigma_solid_wedge_root': 0.23} {'M_arm_top_Nmm': 268.4, 'sigma_arm_top': 1.53, 'sigma_arm_top_Kt': 2.3, 'M_arm_bottom_Nmm': 230.0, 'sigma_arm_bottom': 0.51, 'sigma_root_plate_overhang': 0.62, 'overhang_mm': 4.75}
+  LC2_cap_tip {'M_root_Nmm': 400.0, 'V_web_N': 0.63, 'sigma_chord_axial': 1.65, 'sigma_chord_axial_plus_bending': 2.12, 'sigma_rib_bending': 0.61, 'sigma_solid_wedge_root': 0.47} {'M_arm_top_Nmm': 536.8, 'sigma_arm_top': 3.07, 'sigma_arm_top_Kt': 4.6, 'M_arm_bottom_Nmm': 460.0, 'sigma_arm_bottom': 1.03, 'sigma_root_plate_overhang': 1.24, 'overhang_mm': 4.75}
+  tip_XY_67 {'c_finger': np.float64(0.5087), 'c_arm': 0.0051, 'c_mesh_B': 0.0115, 'arm_plus_mesh_fraction_of_pair': np.float64(0.0209), 'k_pair_N_per_mm': np.float64(0.9624), 'theta_target_deg': -4.1189, 'theta_cap_deg': -6.4088, 'dF_dtheta_N_per_deg': np.float64(2.1836)}
+  tip_Z_56 {'c_finger': np.float64(0.6086), 'c_arm': 0.0051, 'c_mesh_B': 0.0115, 'arm_plus_mesh_fraction_of_pair': np.float64(0.0175), 'k_pair_N_per_mm': np.float64(0.8071), 'theta_target_deg': -4.5593, 'theta_cap_deg': -7.2896, 'dF_dtheta_N_per_deg': np.float64(1.8313)}
+  tip_LC1_target_design_basis {'T_Nmm': 764.71, 'T_kgcm': 7.8, 'stall_needed_kgcm': 19.49}
+  tip_LC1_target_lane {'T_Nmm': 707.35, 'T_kgcm': 7.21, 'stall_needed_kgcm': 18.03}
+  tip_LC2_cap_design_basis {'T_Nmm': 1529.41, 'T_kgcm': 15.6, 'stall_needed_kgcm': 38.99}
+  tip_LC2_cap_lane {'T_Nmm': 1414.71, 'T_kgcm': 14.43, 'stall_needed_kgcm': 36.06}
+  A17 DSServo DS3218MG @6.5V 21.08 kgcm (design point) {'stall_Nmm': 2067.24, 'F_tip_hold_N_design_basis': 5.41, 'F_tip_hold_N_lane_less_conservative': 5.85, 'F_mid_hold_N_design_basis': 7.4, 'F_tip_stall_N_design_basis': 13.52}
+  A13 FS5115M-FB 15.5 kgcm {'stall_Nmm': 1520.03, 'F_tip_hold_N_design_basis': 3.98, 'F_tip_hold_N_lane_less_conservative': 4.3, 'F_mid_hold_N_design_basis': 5.44, 'F_tip_stall_N_design_basis': 9.94}
+  A12 FS5106B-FB 6.0 kgcm {'stall_Nmm': 588.4, 'F_tip_hold_N_design_basis': 1.54, 'F_tip_hold_N_lane_less_conservative': 1.66, 'F_mid_hold_N_design_basis': 2.11, 'F_tip_stall_N_design_basis': 3.85}
+  A17 DS3218MG @6.8V 21.5 kgcm {'stall_Nmm': 2108.43, 'F_tip_hold_N_design_basis': 5.51, 'F_tip_hold_N_lane_less_conservative': 5.96, 'F_mid_hold_N_design_basis': 7.55, 'F_tip_stall_N_design_basis': 13.79}
+  back-flank buckling, tip load, Z_56 {'s0_mm': 4.278, 's1_mm': 11.877, 'panel_len_mm': 7.864, 'chord_force_per_N': 2.535, 'P_cr_pinned_N': 7.626, 'F_cr_pinned_N': 3.008, 'F_cr_fixed_N': 12.033}
+  back-flank buckling, tip load, XY_67 {'s0_mm': 4.278, 's1_mm': 11.877, 'panel_len_mm': 7.864, 'chord_force_per_N': 2.535, 'P_cr_pinned_N': 9.125, 'F_cr_pinned_N': 3.599, 'F_cr_fixed_N': 14.397}
 ejection limit deg 21.8

@@ -7,11 +7,11 @@ Lane: finger stiffness, stress, fold limit, grip force and jaw motion for the cl
 1. **Recommended finger (L 45, r_c 65):** rib angle 30°, 6 ribs, wall 0.8 mm, rib 1.0 mm, blunt tip 4 mm wide. Mass 3.64 g bare [D]. k_tip 0.92 (E 56) to 1.10 (E 67) N/mm bare, and 1.07-1.29 N/mm with the D7 nail (A) or FSR backing (B). All of these sit inside the R12 window of 0.88-1.63 N/mm [D].
 2. **Verdict: CONDITIONAL.** The linear window, stress and strain checks pass. PLA stress in the nail and backing is 8.1-8.4 MPa at the cap, against an LC2 allowable of 23.3 MPa [D]. The nonlinear check fails, though. **The finger folds at 8.88 N at E 56** (bisection bracket 8.88-8.92 N) [D]. That is above the 8 N FSR trip but **below the 10 N R15 cap**. In practice, only the 8 N FSR trip keeps the finger from folding.
 3. **The mechanism is back-flank buckling, not a tip fold.** The compressed back flank bows outward by 2.3 mm between the root and the first rib, peaking at s = 9.6 mm (section 5.3) [D]. A hand Euler estimate for that same panel (s 4.3-11.9 mm) gives 3.0 N pinned and 12.0 N fixed, which brackets the FEA result [D]. **The PLA nail does not fix it.** With the nail, finger A folds *earlier*, at 8.41 N at E 56 [D].
-4. **The CAD section is far too stiff at L 45.** Keeping 10°, 6 ribs, wall 1.2 and rib 0.9 at the governing L 45 gives k_tip 2.38-2.85 N/mm, which fails the window [D]. The CAD L 60 finger is in the window (1.09 N/mm at E 67), but it folds at 6.52 N at E 56 and its r_c of 80 mm is too long for the design-point servo (item 6).
+4. **The CAD section is far too stiff at L 45.** Keeping 10°, 6 ribs, wall 1.2 and rib 0.9 at the governing L 45 gives k_tip 2.38-2.85 N/mm, which fails the window [D]. The earlier L 60 FEA reference was in the window (1.09 N/mm at E 67), but folded at 6.52 N at E 56; that historical geometry had r_c 80 mm. The current CAD params use L 45 and r_c 64.9 mm.
 5. **θ_min = −11° does not cap the force for this finger. This conflicts with R15/R18 (section 6.3).** At θ_min the linear pinch is 12.4 N (E 56) and 14.7 N (E 67). The cap is reached at −8.7° (E 56) and −7.4° (E 67) [D]. **Recommended θ_min ≈ −7.4°**, which still leaves 2.9° of margin to reach the 5 N target at E 56 (−4.5°) [D].
 6. **Servo force, using the governing DESIGN-BASIS convention T = 2·F·r_c/η:**
-   - At r_c 65, the design-point DS3218MG at 6.0 V (20.4 kg·cm) held at 40 % of stall makes **5.23 N** at the tip pad [D]. It needs 7.80 kg·cm, i.e. 19.5 kg·cm stall.
-   - At r_c 80 (CAD), the same servo makes only 4.25 N. For 5 N it would need 9.60 kg·cm, i.e. 24.0 kg·cm stall. At mid-length (r_c 55) it makes 6.18 N [D].
+   - At r_c 65, the current params design-point DS3218MG at 6.5 V (21.08 kg·cm) held at 40 % of stall makes **5.41 N** at the tip pad [D]. It needs 7.80 kg·cm, i.e. 19.49 kg·cm stall.
+   - The current CAD case in `finger_beam.json` also uses L 45 and r_c 65, giving the same tip force. At mid-length (r_c 47.5) it makes 7.40 N [D]. The output key `cad_L60` is retained for compatibility with the older FEA record.
 7. **There is no Fin Ray wrap in the recommended finger.** Under a mid-length load the tip moves away from the object, with a wrap ratio of −0.61 [D]. 71 of the 289 sweep designs wrap; the best reaches +0.11, and all of them are 3-rib designs that fail the mid-length stress or the fold check [D]. For a one-ply tip pinch, wrap is not needed (section 6).
 
 **Next step before printing:** add stiffness to the first back-flank panel only, either with a thicker back wall (1.0-1.2 mm on the back flank, keeping 0.8 on the pad face) or with an extra rib near the root. Then re-run the fold check. The closest screened design is 30°, 4 ribs, wall 1.0, rib 1.0, tip 4 at 3.68 g; it folds at 9.38 N [D]. The sweep varies both walls together, so the back-wall-only variant has not been run yet (section 7). The one screened design that holds 10 N is 45°, 3 ribs, 0.8/0.6, 2.49 g. It fails the mid-length stress check (5.9 against 4.5 MPa at the cap), and with the D7 parts it is too stiff (1.76-1.82 N/mm) [D].
@@ -23,13 +23,13 @@ Lane: finger stiffness, stress, fold limit, grip force and jaw motion for the cl
 | Input | Value | Tag |
 |---|---|---|
 | Finger length / tip pad | L 45 mm (D3/R17); tip-pad centroid 5 mm above the tip (s 40); r_c 65 mm | [D] DESIGN-BASIS |
-| CAD section (reference) | W 16, depth 20, wall 1.2, rib 0.9, 6 ribs at 10°, L 60 (r_c 80) | [S] `params.json` finger |
+| CAD section (current params) | W 16, depth 20, wall 1.2, rib 0.9, 6 ribs at 10°, L 45 (r_c 64.9 face measurement; 65 in the beam model) | [S] `params.json` finger |
 | TPU 95A | **E 67 X-Y (nominal) / 56 Z (low)** MPa, ν 0.45, ρ 1.22 | [S] [Ultimaker TDS v5.00](https://um-support-files.ultimaker.com/materials/2.85mm/tds/TPU-95A/Ultimaker-TPU95A-TDS-v5.00.pdf); ν [A] |
 | TPU sensitivity only | 26 MPa (NinjaTek Cheetah) and 9.8 MPa (Bambu TPU 95A HF) | [S] [Cheetah TDS](https://ninjatek.com/wp-content/uploads/Cheetah-TDS.pdf), [Bambu TDS](https://store.bblcdn.eu/s8/default/16df21baf482453999b3dbb61cc110e7/Bambu_TPU_95A_HF_Technical_Data_Sheet.pdf) |
 | TPU limits | Strain ≤ 10 % at F_target (LC1); p99 von Mises ≤ 4.5 MPa at F_cap | [A] DESIGN-BASIS LC1; stress [A], near the flexural 4.1 MPa at 9.4 % [S] |
 | PLA | E 2580 MPa; LC1 15.0 / LC2 23.3 MPa | [S]/[D] DESIGN-BASIS section 4 |
 | Grip | F_target 5 N, F_cap 10 N, FSR trip 8 N, μ 0.4, one 0.3 mm ply, stiffness window 0.88-1.63 N/mm, θ ∈ [−11°, +20°] | [D]/[A] DESIGN-BASIS R12, R14, R15, R18, section 8 |
-| Drive | η 0.85; T = 2·F·r_c/η (governing); hold 40 % of stall; design-point servo DS3218MG at 6.0 V, 20.4 kg·cm | [A]/[D] DESIGN-BASIS section 2, R16, D4 |
+| Drive | η 0.85; T = 2·F·r_c/η (governing); hold 40 % of stall; current params design-point servo DS3218MG at 6.5 V, 21.08 kg·cm | [A]/[D] `params.json` grip.servo_design_point; DESIGN-BASIS D4 supersession |
 | D7 parts | Nail on A: 1.0 × 12 mm PLA. FSR backing on B: 1.0 × 14 mm PLA | [A] |
 | Contact patches | Tip pad 6 mm (the FSR puck); mid 10 mm at s = L/2 | [A] |
 | θ = 0 | Rigid pads 1 mm apart after R21 CALIBRATE (backlash taken up, lag 0). Sensitivity: centred mesh, lag jt/2 = 0.68 mm at the pad | [A] |
@@ -190,15 +190,15 @@ A negative opening means rigid-body overlap, which the fingers take up as compre
 
 Governing convention T = 2·F·r_c/η, 40 % of stall [D]:
 
-| Servo | r_c 65 (design) | r_c 80 (CAD) | Lane convention T = F·r_c·(1+1/η), comparison only, r_c 65 / 80 |
-|---|---|---|---|
-| DS3218MG at 6.0 V, 20.4 kg·cm (design point) | **5.23 N** | 4.25 N | 5.66 / 4.60 N |
-| DS3218MG at 6.8 V, 21.5 kg·cm | 5.51 N | 4.48 N | 5.96 / 4.84 N |
-| A13 FS5115M-FB, 15.5 kg·cm | 3.98 N | 3.23 N | 4.30 / 3.49 N |
-| A12 FS5106B-FB, 6.0 kg·cm | 1.54 N | 1.25 N | 1.66 / 1.35 N |
+| Servo | r_c 65 (design and current CAD beam model) | Lane convention T = F·r_c·(1+1/η), comparison only |
+|---|---:|---:|
+| DS3218MG at 6.5 V, 21.08 kg·cm (current design point) | **5.41 N** | 5.85 N |
+| DS3218MG at 6.8 V, 21.5 kg·cm | 5.51 N | 5.96 N |
+| A13 FS5115M-FB, 15.5 kg·cm | 3.98 N | 4.30 N |
+| A12 FS5106B-FB, 6.0 kg·cm | 1.54 N | 1.66 N |
 
-- **Torque for 5 N (governing convention):** 7.80 kg·cm at r_c 65, i.e. 19.5 kg·cm stall; 9.60 kg·cm at r_c 80, i.e. 24.0 kg·cm stall [D]. The lane convention would give 7.21 and 8.88 kg·cm, about 8 % non-conservative.
-- **The hold limit, not the finger, caps the steady grip.** The design-point servo holds 5.23 N, above the 5 N target but below the 8 N trip. The fold limit (8.9 N) matters for transients and over-commands up to stall: the tip-pad force at stall is 13.1 N [D].
+- **Torque for 5 N (governing convention):** 7.80 kg·cm at r_c 65, i.e. 19.49 kg·cm stall [D]. The lane convention gives 7.21 kg·cm, about 8 % less conservative.
+- **The hold limit, not the finger, caps the steady grip.** The current design-point servo holds 5.41 N, above the 5 N target but below the 8 N trip. The fold limit (8.9 N) matters for transients and over-commands up to stall: the tip-pad force at stall is 13.52 N [D].
 - **Pad tilt.** Tilt equals θ. The ejection limit is atan 0.4 = 21.8°, above the +20° open angle [D].
 - **Servo angle** = θ + the horn offset (1:1; the horn is on A's shaft).
 
@@ -220,6 +220,7 @@ Governing convention T = 2·F·r_c/η, 40 % of stall [D]:
 
 ```
 uv run --with numpy --with matplotlib python analysis/gripper/finger_beam.py > analysis/gripper/results/finger_beam_stdout.txt
+uv run --with numpy --with matplotlib python analysis/gripper/finger_beam.py --check
 uv run --with gmsh --with scikit-fem --with meshio --with numpy --with scipy --with matplotlib python analysis/gripper/finger_fea.py > analysis/gripper/results/fea_stdout.txt
 uv run --with gmsh --with scikit-fem --with meshio --with numpy --with scipy --with matplotlib python analysis/gripper/finger_fea.py --motion-only > analysis/gripper/results/fea_motion_stdout.txt
 ```
