@@ -11,6 +11,8 @@ The 1,294 moved files retain their source bytes except for these seven public-sa
 - `analysis/gripper/finger_beam.py`: record the parameter file as a repository-relative path while loading it from the destination root.
 - `analysis/gripper/results/finger_beam.json`: replace the source machine's absolute parameter path with `cad/gripper/params.json`; computed results are unchanged.
 
+An additional 47 files under `cad/so101/` were copied byte-identically from that same commit to satisfy the moved CAD and analysis dependencies. The source retains its SO-101 tree. Its `LICENSE`, `SOURCE.md`, and `.gitattributes` accompany the assets; the latter keeps the vendored STEP, STL, and PART files byte-exact and outside Git LFS, matching the source's committed form. `measure_interface.py` is included because the moved CAD code imports it.
+
 Held back: `docs/gripper/process/program-loop.md` remains in the source repository as a private conductor process file in use.
 
 `SYSTEMATICCHAOS` in `video/gripper/STORYBOARD.md` and `video/gripper/README.md` names the laptop used to time the renders. It is hardware provenance, not a network-reachable host, and remains in the moved record.

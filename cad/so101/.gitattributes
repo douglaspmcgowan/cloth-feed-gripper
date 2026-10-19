@@ -1,0 +1,5 @@
+# Vendored upstream files: keep byte-exact, exempt from whitespace lint
+* -text -diff
+SOURCE.md text diff
+measure_interface.py text diff
+.gitattributes text diff

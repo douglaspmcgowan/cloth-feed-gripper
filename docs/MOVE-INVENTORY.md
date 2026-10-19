@@ -7,7 +7,8 @@ Source: `douglaspmcgowan/berkeley-ai-tutor` at commit `1d7cff460da4783e492abb3a9
 - Tracked files in the six gripper folders: **1295** (124,881,664 bytes).
 - Counts: `cad/gripper/` 140, `firmware/gripper/` 23, `docs/gripper/` 228, `analysis/gripper/` 640, `ecad/gripper/` 148, `video/gripper/` 116.
 - Additional gripper-named path outside the six folders: `acd/handoffs/cloth-gripper-restyle.md`. Review whether this handoff belongs in the new repository.
-- Copied 1,294 files to this repository. Five files were sanitized before entering public history; the private conductor process file stays in berkeley-ai-tutor.
+- Copied 1,294 gripper-folder files to this repository. Five files were sanitized before entering public history; the private conductor process file stays in berkeley-ai-tutor.
+- Also copied all 47 tracked `cad/so101/` files byte-identically from source commit `1d7cff4`, including `LICENSE`, `SOURCE.md`, `measure_interface.py`, the simulation assets, and the local `.gitattributes`. The SO-101 files remain in berkeley-ai-tutor too. `fit3d.py`, `camera.py`, `payload_torque.py`, and the CAD integrity checks require these local inputs.
 - The scan checked text for email addresses, credential-like assignments, private-key headers, local hostnames, private IP addresses and absolute local user paths. This is a screening result, not a clearance to publish the other files; run gitleaks and inspect exceptions before the move resumes.
 
 ## Public-safety holdbacks
@@ -29,7 +30,7 @@ Source: `douglaspmcgowan/berkeley-ai-tutor` at commit `1d7cff460da4783e492abb3a9
 | `INTENT.md` | Gripper intent and design-basis links; preserve the decision record and point to the new repository. |
 | `LOG.md` | Gripper log link; point to the new repository. |
 | `TASK.md` | Gripper task entries; generated task view, not an authored source in this lane. |
-| `cad/so101/measure_interface.py` | Uses gripper parameter and analysis paths; update after the move. |
+| `cad/so101/measure_interface.py` | Imported by moved CAD code; copied byte-identically into this repository, while the source retains its own copy and pointer edits. |
 
 Other tracked files containing `gripper` but no literal path into the six folders: `acd/README.md`, `acd/ROSTER.md`, `acd/TASK-archive.md`, `acd/handoffs/cloth-gripper-restyle.md`, `acd/viz/acd-review.html`, `cad/so101/SOURCE.md`, `cad/so101/Simulation/SO101/so101_new_calib.xml`, `cad/so101/Simulation/SO101/so101_old_calib.xml`, `cad/so101/Simulation_README.md`, `cad/so101/WristCam_README.md`, `cad/so101/so101_new_calib.urdf`, and `cad/so101/so101_old_calib.urdf`. These are mentions or shared SO-101 assets, not automatically moved files. `data-manifest.yaml` has no assets declared and no gripper reference.
 
