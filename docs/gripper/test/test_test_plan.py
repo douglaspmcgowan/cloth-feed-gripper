@@ -386,10 +386,10 @@ def _close_summary(tmp_path, capsys, t_contact_ms):
 
 
 def test_close_contact_pass_fail_indeterminate(tmp_path, capsys):
-    # contact time printed = event time − 10.5 ms of FSR lag; limit 0.50 s, U 3.6 ms
-    out_pass = _close_summary(tmp_path, capsys, 480 + 10)   # 0.480 s: clear below
-    out_fail = _close_summary(tmp_path, capsys, 520 + 10)   # 0.520 s: clear above
-    out_ind = _close_summary(tmp_path, capsys, 500 + 10)    # 0.500 s: exactly on the limit
+    # contact time printed = event time − 10.5 ms of FSR lag; ruled limit 0.75 s, U 3.6 ms
+    out_pass = _close_summary(tmp_path, capsys, 730 + 10)   # 0.730 s: clear below
+    out_fail = _close_summary(tmp_path, capsys, 770 + 10)   # 0.770 s: clear above
+    out_ind = _close_summary(tmp_path, capsys, 750 + 10)    # 0.750 s: exactly on the limit
     line = lambda o: next(l for l in o.splitlines() if l.startswith("contact (R19"))
     assert line(out_pass).endswith("PASS")
     assert line(out_fail).endswith("FAIL")

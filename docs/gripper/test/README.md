@@ -15,8 +15,8 @@ Test plan for the built ME102B cloth-feed gripper. Dated 2026-10-11. `DESIGN-BAS
 | Time | Core afternoon about 4.8 h decides R14, R15, R19 and R20. The whole plan is about 12.1 h of bench time in four sessions (session 1 includes about 1.5 h to build and calibrate the probe board) plus one unattended overnight run (table below) |
 | Cost | US$98.14 to buy (US$77.20 without the spares), against a US$100 budget [A]; the rest is borrowed from the teaching lab ([EQUIPMENT.md](EQUIPMENT.md)) |
 | Key instrument | A pinch-force probe: a 10 kg bar load cell (TAL220) on an HX711, held between the pads. Expanded uncertainty about 0.10 N at 5-10 N, so it resolves the 5 N and 10 N limits about 50 to 90 times over ([MEASUREMENT-SIZING.md](MEASUREMENT-SIZING.md)) |
-| Expected to fail on the bench, from the analysis | **R10 fails at full reach:** CAD revision B predicts 52,995 g·mm, 121.2 % of budget; this settles the older BOM/design-basis disagreement. The disposition is no holds beyond 285.9 mm COM reach, with TP-14 enforcing the tighter 300 mm fingertip rule; **R19 as written** (contact at 0.50-0.51 s); **R26 likely** (servo case model 43-167 °C over the 12 dyno cases at 25-40 °C ambient, an upper bound); R25 is not provable in an afternoon (a zero-failure 1e5 demo needs about 2.6e5 cycles) |
-| Too close to call with any affordable instrument | R16 stall at 6.35 V (2.02 against 1.98 N·m). Since the firmware regulates 1 N above the setpoint (`F_HOLD_BIAS_N`), R14 on the softest R12 finger (5.22 N, margin 0.22 N = 2.2 U), R15 with the FSR reading half (9.66 N against 10 N) and R19-proposed to 5.0 N (latest 0.691 s against 0.75 s) are decidable; the softest-finger R14 hold is still too close for a 95/90 bound at a bench-sized n, so TP-01 judges it as a zero-failure run |
+| Expected to fail on the bench, from the analysis | **R10 fails at full reach:** CAD revision B predicts 52,995 g·mm, 121.2 % of budget; this settles the older BOM/design-basis disagreement. The disposition is no holds beyond 285.9 mm COM reach, with TP-14 enforcing the tighter 300 mm fingertip rule; **historical R19, superseded 2026-10-12** (contact at 0.50-0.51 s); **R26 likely** (servo case model 43-167 °C over the 12 dyno cases at 25-40 °C ambient, an upper bound); R25 is not provable in an afternoon (a zero-failure 1e5 demo needs about 2.6e5 cycles) |
+| Too close to call with any affordable instrument | R16 stall at 6.35 V (2.02 against 1.98 N·m). Since the firmware regulates 1 N above the setpoint (`F_HOLD_BIAS_N`), R14 on the softest R12 finger (5.22 N, margin 0.22 N = 2.2 U), R15 with the FSR reading half (9.66 N against 10 N) and ruled R19 to 5.0 N (latest 0.691 s against 0.75 s) are decidable; the softest-finger R14 hold is still too close for a 95/90 bound at a bench-sized n, so TP-01 judges it as a zero-failure run |
 
 ## Three words, one rule
 
@@ -76,10 +76,10 @@ Build and calibrate the pinch probe (TP-01 parts A and the probe build) during s
 
 ## 2. The two open requirements
 
-Douglas ruled on R15 and R19 on 2026-10-12: pad force <= 8 N and full close <= 0.75 s (the second, proposed value of each pair is the requirement; the written 10 N and 0.50 s are superseded and kept as a history column). Every procedure that touches them still records the result against both values, so the 10 N and 0.50 s columns are informational only; [VERIFICATION-MATRIX.md](VERIFICATION-MATRIX.md) section 1 lists what each value changes in the design.
+Douglas ruled on R15 and R19 on 2026-10-12: pad force <= 8 N and full close <= 0.75 s (the second, ruled value of each pair is the requirement; the written 10 N and 0.50 s are superseded 2026-10-12 and kept as a history column). Every procedure that touches them still records the result against both values, so the 10 N and 0.50 s columns are informational only; [VERIFICATION-MATRIX.md](VERIFICATION-MATRIX.md) section 1 lists what each value changes in the design.
 
 - **R15 force cap: 10 N as written, about 8 N proposed.** The finger folds at 8.4-8.9 N (`finger.md`), so a written 10 N cap has no margin. At 8 N the firmware must change before TP-04 can pass (trip 7 N, soft limit 6.5 N, squeeze cap 3.79°), and the softest finger R12 allows (0.88 N/mm) can then no longer reach 5 N.
-- **R19 close time: 0.5 s as written, 0.75 s proposed.** As written it fails on contact by about 10 ms. At 0.75 s it passes to 4.5 N and to 5.0 N on every finger in the R12 window (latest 5.0 N 0.691 s at 0.88 N/mm).
+- **R19 close time: 0.75 s ruled; 0.5 s superseded 2026-10-12.** As written it fails on contact by about 10 ms. At 0.75 s it passes to 4.5 N and to 5.0 N on every finger in the R12 window (latest 5.0 N 0.691 s at 0.88 N/mm).
 
 ## 3. What a failure means, and whom to tell
 

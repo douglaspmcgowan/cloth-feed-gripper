@@ -122,7 +122,7 @@ def line(vid, r):
             f" contact {min(wtc):.3f}-{max(wtc):.3f} s, HOLD by {max(wth):.3f} s, v@+3 max {max(x['v3_dps'] or 0 for x in w):.0f} deg/s,"
             f" false trips {sum(x['trip'] for x in w)}/{len(w)}, states {sorted({x['final_state'] for x in w})}"
             f" | mc n={a['n']}: R14 {a['R14']:.3f} R19 5N<=0.75 {a['R19_0.75s_F5']:.3f} contact<=0.5 {a['R19_contact_0.5s']:.3f}"
-            f" 4.5N<=0.5 {a['R19_0.5s_F90']:.3f} last3<=20 {a['P_v3_le_20']:.2f} peak max {a['peak_max_N']:.2f}"
+            f" 4.5N<=0.5 {a['R19_0.5s_F90']:.3f} (0.5s superseded 2026-10-12) last3<=20 {a['P_v3_le_20']:.2f} peak max {a['peak_max_N']:.2f}"
             f" R15<=8 {a['R15_8N']:.3f} grip_ok {a['grip_ok']:.3f} false trips {a['trips']} (true peak<=8 N: {a['trips_true_peak_le_8N']})"
             f" hold min p05/p50 {a['hold_min_p05_N']:.2f}/{a['hold_min_p50_N']:.2f}"
             f" | G 7 n={g['n']}: false trips {g['trips']} grip_ok {g['grip_ok']:.3f} peak max {g['peak_max_N']:.2f}"
@@ -136,7 +136,7 @@ def line(vid, r):
 def md_table(rows):
     """The controls.md section 6.4 table (between <!-- requests:begin --> and <!-- requests:end -->)."""
     out = ["| Variant | Window: false trips of 17, peak max (N), contact (s), jaw speed at touch + 3° max (°/s) | Drawn: R14 "
-           "| R19 5 N ≤ 0.75 s | Contact ≤ 0.5 s | 4.5 N ≤ 0.5 s | Last 3° ≤ 20 °/s | False trips of 1,000 "
+           "| R19 5 N ≤ 0.75 s (ruled) | Contact ≤ 0.5 s (superseded 2026-10-12) | 4.5 N ≤ 0.5 s (superseded 2026-10-12) | Last 3° ≤ 20 °/s | False trips of 1,000 "
            "| G 7: false trips of 300 | Early 0–10°: max (N), P(≤ 8 N) | Linear bound k 1.63: early 6 / 8 / 10° (N); FSR 50 % (N) |",
            "|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
@@ -160,7 +160,8 @@ def replace_block(path, name, body):
 
 
 def main():
-    rows, lines = [], [f"firmware requests, seed {mc.SEED}; mc n={N_MC}, G 7 and early n={N_SIDE}"]
+    rows, lines = [], [f"firmware requests, seed {mc.SEED}; mc n={N_MC}, G 7 and early n={N_SIDE}",
+                      "Historical 0.5 s metrics are superseded 2026-10-12; ruled R19 is 0.75 s."]
     for vid, label, ovr in VARIANTS:
         r = run(ovr)
         rows.append({"id": vid, "label": label, "overrides": ovr, **r})

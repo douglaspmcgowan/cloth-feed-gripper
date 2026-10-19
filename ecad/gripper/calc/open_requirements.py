@@ -1,4 +1,4 @@
-"""The two open requirements as parameters: R15 pad-force cap {10, 8} N and R19 close time {0.5, 0.75} s.
+"""Ruled requirements and historical comparisons: R15 pad-force cap {10, 8} N and R19 close time {0.5, 0.75} s.
 
 Run from the repository root:  python ecad/gripper/calc/open_requirements.py
 
@@ -8,7 +8,7 @@ Jargon.
   Fit A / Fit B: servo electrical fits of docs/gripper/analysis/dyno.md.
   Duty cycle: DESIGN-BASIS section 7: approach and touchdown 4.0 s, close R19, lift and move 5.0 s, feed hold 20.0 s,
     release 0.5 s, return 5.0 s.
-Neither requirement is settled here. Every number below is given for both values.
+Douglas ruled R15 = 8 N and R19 = 0.75 s on 2026-10-12. The 10 N and 0.5 s comparisons are superseded 2026-10-12; both remain evaluated as history.
 Tags: [S] sourced, [D] derived here, [A] assumed.
 """
 import itertools
@@ -75,13 +75,14 @@ def changes(cap, close, c):
     if close == 0.75:
         ch.append('close time 0.75 s: none on the board (cycle %.2f s instead of 35.00 s; mean current changes under 0.5 %%)' % c['A']['cycle_s'])
     else:
-        ch.append('close time 0.5 s: none on the board')
+        ch.append('close time 0.5 s (superseded 2026-10-12): none on the board')
     return ch
 
 
 def report(r):
-    print('Open requirements as parameters: pad-force cap R15 in {10, 8} N, full-close time R19 in {0.5, 0.75} s (neither is settled here)')
-    cols = ['R15 %g N / R19 %g s' % (c['cap_N'], c['close_s']) for c in r['combos']]
+    print('Ruled R15 = 8 N and R19 = 0.75 s; historical comparisons 10 N and 0.5 s are superseded 2026-10-12')
+    cols = ['R15 %g N / R19 %g s (%s)' % (c['cap_N'], c['close_s'],
+            'superseded 2026-10-12' if c['close_s'] == 0.5 else 'ruled 2026-10-12') for c in r['combos']]
     rows = []
 
     def row(label, f):

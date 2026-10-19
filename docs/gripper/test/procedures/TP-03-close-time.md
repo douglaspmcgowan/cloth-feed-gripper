@@ -5,12 +5,12 @@
 <!-- hardware-scope:end -->
 
 <!-- procedure-body:begin -->
-**What it proves:** how long the jaw takes from the `G 5` command at the open stop to touch the cloth, to reach 4.5 N and 5.0 N, and to enter HOLD; how fast the jaw moves over the last 3° before contact; and that one full cycle steps through the states in the design-basis order. R19 was ruled on 2026-10-12, so the requirement is **0.75 s to 4.5 N and to 5.0 N**; every time is still also judged against the superseded **0.5 s to contact (written)**. The analysis predicts a fail as written and a pass as ruled except to 5.0 N on the softest fingers (`test_plan_out.json` → `expected.close`). About 25 min. Data sheet: [`../datasheets/TP-03.html`](../datasheets/TP-03.html) (CSV: `TP-03.csv`).
+**What it proves:** how long the jaw takes from the `G 5` command at the open stop to touch the cloth, to reach 4.5 N and 5.0 N, and to enter HOLD; how fast the jaw moves over the last 3° before contact; and that one full cycle steps through the states in the design-basis order. R19 was ruled on 2026-10-12, so the requirement is **0.75 s to 4.5 N and to 5.0 N**; every time is still also judged against the superseded 2026-10-12 **0.5 s to contact (written)**. The analysis predicts a fail as written and a pass as ruled except to 5.0 N on the softest fingers (`test_plan_out.json` → `expected.close`). About 25 min. Data sheet: [`../datasheets/TP-03.html`](../datasheets/TP-03.html) (CSV: `TP-03.csv`).
 
 | | |
 |---|---|
 | Requirements | R19 (close time, last 3° at ≤ 20 °/s), R6 (event-driven state machine: event order of one full cycle) |
-| Pass | Written: upper 95 %/90 % tolerance bound of contact time ≤ 0.5 s. Proposed: bounds of the 4.5 N and 5.0 N times each ≤ 0.75 s. Both: last 3° before contact: commanded speed 20 °/s (inspected, `JAW_SPEED_NEAR_DPS`) and the video fit v + 2.2 °/s ≤ 25 °/s. R6: `ENTER_` events in the DB section 8 order |
+| Pass | Ruled R19: upper 95 %/90 % tolerance bounds of the 4.5 N and 5.0 N times each ≤ 0.75 s. Historical contact bound ≤ 0.5 s is superseded 2026-10-12. Both: last 3° before contact: commanded speed 20 °/s (inspected, `JAW_SPEED_NEAR_DPS`) and the video fit v + 2.2 °/s ≤ 25 °/s. R6: `ENTER_` events in the DB section 8 order |
 | Instrument | Firmware event log, U = 3.6 ms (contact); `STREAM 50` lines, U = 12.9 ms (force crossings); 240 fps video, U = 6.8 ms [D `test_plan.py`] |
 | Sample size | 10 closes: the bound clears 0.75 s at n = 3 on the predicted 7.6 ms scatter; 10 estimate the scatter itself (`MEASUREMENT-SIZING.md` section 3) |
 
@@ -25,7 +25,7 @@
 
 - Ranges (`close_range`): contact 0.503-0.510 s; 4.5 N 0.589-0.643 s; 5.0 N 0.595-0.637 s at k ≥ 1.0 N/mm, 0.691 s at k 0.88; HOLD 0.718-0.853 s. Scatter between closes 7.6 ms (20 ms servo frame phase 5.8 ms [D], servo 5 ms [A]).
 - Jaw speed: 21 °/s at contact + 3°, ≤ 20 °/s from contact + 2° (the jaw trails the 120 °/s command by about 7°) [D] `controls.md` 4.2, `config.h` `JAW_SLOW_ZONE_DEG`.
-- Predicted verdicts: written fails on every finger (contact > 0.5 s); proposed passes to 4.5 N and to 5.0 N on every finger in the R12 window. The latest is 5.0 N at k 0.88, 0.691 s; the 95/90 bound of ten closes is about 0.691 + 2.57 × 0.010 = 0.717 s (σ: 7.6 ms close scatter with the stream's u_c), under 0.75 s. What changed: the firmware now regulates its FSR reading 1 N above the setpoint (`F_HOLD_BIAS_N`), so the loop crosses 5.0 N on its way up instead of creeping to it; before, 5.0 N took 0.748 s at k 1.05 and 1.075 s at k 0.88.
+- Predicted verdicts: the historical limit (superseded 2026-10-12) fails on every finger (contact > 0.5 s); the ruled limit passes to 4.5 N and to 5.0 N on every finger in the R12 window. The latest is 5.0 N at k 0.88, 0.691 s; the 95/90 bound of ten closes is about 0.691 + 2.57 × 0.010 = 0.717 s (σ: 7.6 ms close scatter with the stream's u_c), under 0.75 s. What changed: the firmware now regulates its FSR reading 1 N above the setpoint (`F_HOLD_BIAS_N`), so the loop crosses 5.0 N on its way up instead of creeping to it; before, 5.0 N took 0.748 s at k 1.05 and 1.075 s at k 0.88.
 
 ## Equipment
 
@@ -60,7 +60,7 @@ Gripper on the bench (wrist plate in a vise) with its 6.5 V rail, laptop running
    `python docs/gripper/test/tools/gripper_log.py --port <port> --out TP-03_log.csv --sequence close --n 10 --hold 1`
    It sends `STREAM 50`, then ten times: `G 5`, wait for HOLD, hold 1 s, `R`, wait for IDLE (each close starts at +20° in IDLE).
 2. Stop the video. Check the log has ten `EVT ENTER_HOLD` and no `FAULT`.
-3. `python docs/gripper/test/tools/analyze_log.py close TP-03_log.csv`. It prints, per close, the contact, 4.5 N, 5.0 N and HOLD times from the `CMD_GRIP` event, using the firmware's own millisecond clock, with the 10.5 ms FSR lag (EMA 9.5 ms + 1 ms poll, `controls.md` 3) subtracted from the force times; then mean, s and the 95/90 bound with PASS/FAIL against 0.5 s (contact) and 0.75 s (4.5 N, 5.0 N).
+3. `python docs/gripper/test/tools/analyze_log.py close TP-03_log.csv`. It prints, per close, the contact, 4.5 N, 5.0 N and HOLD times from the `CMD_GRIP` event, using the firmware's own millisecond clock, with the 10.5 ms FSR lag (EMA 9.5 ms + 1 ms poll, `controls.md` 3) subtracted from the force times; then mean, s and the 95/90 bound with PASS/FAIL against ruled 0.75 s (contact, 4.5 N, 5.0 N), plus historical 0.5 s contact (superseded 2026-10-12).
 
 **B. Video (jaw speed and an independent close time).**
 
@@ -92,14 +92,14 @@ Per close: trial, start state (IDLE or TOUCHDOWN), `CMD_GRIP` time in ms, contac
 
 | Reading | Limit | Pass | Indeterminate | Fail |
 |---|---|---|---|---|
-| R19 written: contact (U 3.6 ms) | 0.5 s | B ≤ 0.4964 s | B between 0.4964 and 0.5036 s, **including exactly 0.500 s** | B ≥ 0.5036 s |
-| R19 proposed: 4.5 N (U 12.9 ms) | 0.75 s | B ≤ 0.737 s | between 0.737 and 0.763 s | B ≥ 0.763 s |
-| R19 proposed: 5.0 N (U 12.9 ms) | 0.75 s | B ≤ 0.737 s | between 0.737 and 0.763 s | B ≥ 0.763 s |
+| Historical R19 (superseded 2026-10-12): contact (U 3.6 ms) | 0.5 s | B ≤ 0.4964 s | B between 0.4964 and 0.5036 s, **including exactly 0.500 s** | B ≥ 0.5036 s |
+| Ruled R19: 4.5 N (U 12.9 ms) | 0.75 s | B ≤ 0.737 s | between 0.737 and 0.763 s | B ≥ 0.763 s |
+| Ruled R19: 5.0 N (U 12.9 ms) | 0.75 s | B ≤ 0.737 s | between 0.737 and 0.763 s | B ≥ 0.763 s |
 | Both: jaw speed, last 3°, command | 20 °/s | `JAW_SPEED_NEAR_DPS` ≤ 20.0 | (constant: U = 0) | > 20.0 |
 | Both: jaw speed, last 3°, video fit v (U 2.2 °/s) | 25 °/s | v ≤ 22.8 °/s | 22.8-27.2 °/s | v ≥ 27.2 °/s |
 | R6: event order | DB section 8 | `ENTER_APPROACH, TOUCHDOWN, CLOSE, HOLD, FEED, RELEASE, RETRACT, IDLE` in that order, no other `ENTER_` between | | any other order or a `FAULT` |
 
-`analyze_log.py close` prints the same word (PASS, FAIL or INDETERMINATE) next to each bound, with the same U. A close time measured at exactly the limit is INDETERMINATE in the procedure and in the tool: add closes or time with a better instrument. Record R19 at both values on the sign-off; do not pick one. Report contact time against 0.75 s and the force times against 0.5 s too, as information.
+`analyze_log.py close` prints the same word (PASS, FAIL or INDETERMINATE) next to each bound, with the same U. A close time measured at exactly the limit is INDETERMINATE in the procedure and in the tool: add closes or time with a better instrument. Record the ruled R19 value on the sign-off; keep the superseded 2026-10-12 value as a separate historical comparison. Report contact time against 0.75 s and the force times against 0.5 s too, as information.
 
 ## Hazards
 

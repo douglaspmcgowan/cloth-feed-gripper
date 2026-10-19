@@ -178,7 +178,8 @@ def cmd_close(path: Path, slow_zone_deg: float = 6.0):
     for r in rows:
         print("%5d  %s  %s  %s  %s  %s" % (r["trial"], fmt(r["t_contact_s"]), fmt(r["t_F4p5_s"]), fmt(r["t_F5_s"]),
                                           fmt(r["t_hold_s"]), fmt(r["cmd_speed_last3_dps"])))
-    print(summarize("contact (R19 0.50 s)", [r["t_contact_s"] for r in rows], 0.50, "upper", U["contact_s"]))
+    print(summarize("contact (R19 0.75 s, ruled)", [r["t_contact_s"] for r in rows], 0.75, "upper", U["contact_s"]))
+    print(summarize("historical contact (0.50 s, superseded 2026-10-12)", [r["t_contact_s"] for r in rows], 0.50, "upper", U["contact_s"]))
     print(summarize("4.5 N (R19 0.75 s)", [r["t_F4p5_s"] for r in rows], 0.75, "upper", U["force_time_s"]))
     print(summarize("5.0 N (R19 0.75 s)", [r["t_F5_s"] for r in rows], 0.75, "upper", U["force_time_s"]))
     print(summarize("HOLD entry", [r["t_hold_s"] for r in rows]))

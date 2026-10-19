@@ -116,11 +116,12 @@ def r10_work_cell_rule(cad_mass: dict) -> dict:
     }
 
 # R15 and R19 were open with Douglas; he ruled 2026-10-12 for the "proposed" values (8 N, 0.75 s). "written" is the
-# superseded history column. Every result is still reported at both.
+# history column superseded 2026-10-12. Every result is still reported at both; legacy keys stay stable.
 OPEN = {
     "R15_cap_N": {"written": 10.0, "proposed": 8.0},
     "R19_close_s": {"written": 0.50, "proposed": 0.75},
 }
+R19_LABELS = {"written": "written (superseded 2026-10-12)", "proposed": "proposed (ruled 2026-10-12)"}
 
 # One hardware-scope source for every procedure. ``arm`` is absent, off, or gated;
 # ``gripper`` is none, bench, or on-arm. The checker consumes this table too.
@@ -591,7 +592,7 @@ def _r19_proposed_change(e, lim):
 
 
 def _r19_k1_note(e, lim, U):
-    """Note for the latest 5.0 N arrival among fingers k >= 1.0 against the proposed R19."""
+    """Note for the latest 5.0 N arrival among fingers k >= 1.0 against the ruled R19."""
     c = max((c for c in e["close"].values() if c["k_N_per_mm"] >= 1.0), key=lambda c: c["t_F5p0_s"])
     m_ms = 1000 * (lim - c["t_F5p0_s"])
     return "k %.2f lands %.0f ms %s %.2f s: %s" % (c["k_N_per_mm"], abs(m_ms), "under" if m_ms >= 0 else "over", lim,
@@ -628,14 +629,14 @@ def resolvability(e, b) -> list[dict]:
     add("TP-02", "R14", "pull to slip (SF 2 at mu 0.4)", e["slip"]["capacity_N"], "lower", e["slip"]["capacity_N"],
         b["pull_force_4N"]["U_k2"], "N", "predicted equals the limit by construction; the measured mu (M2) decides")
     for label, lim in OPEN["R19_close_s"].items():
-        add("TP-03", "R19", "contact time, event log (R19 %s %.2f s)" % (label, lim), lim, "upper",
+        add("TP-03", "R19", "contact time, event log (R19 %s %.2f s)" % (R19_LABELS[label], lim), lim, "upper",
             e["close_range"]["t_contact_s"][1], b["close_time_eventlog_s"]["U_k2"], "s")
-        add("TP-03", "R19", "time to 4.5 N, stream (R19 %s %.2f s)" % (label, lim), lim, "upper",
+        add("TP-03", "R19", "time to 4.5 N, stream (R19 %s %.2f s)" % (R19_LABELS[label], lim), lim, "upper",
             e["close_range"]["t_F4p5_s"][1], b["force_time_stream_s"]["U_k2"], "s")
-        add("TP-03", "R19", "time to 5.0 N, k ≥ 1.0 (R19 %s %.2f s)" % (label, lim), lim, "upper",
+        add("TP-03", "R19", "time to 5.0 N, k ≥ 1.0 (R19 %s %.2f s)" % (R19_LABELS[label], lim), lim, "upper",
             e["close_range"]["t_F5p0_s_k_ge_1"][1], b["force_time_stream_s"]["U_k2"], "s",
             _r19_k1_note(e, lim, b["force_time_stream_s"]["U_k2"]) if label == "proposed" else "")
-        add("TP-03", "R19", "time to 5.0 N, k 0.88 (R19 %s %.2f s)" % (label, lim), lim, "upper",
+        add("TP-03", "R19", "time to 5.0 N, k 0.88 (R19 %s %.2f s)" % (R19_LABELS[label], lim), lim, "upper",
             e["close_range"]["t_F5p0_s"][1], b["force_time_stream_s"]["U_k2"], "s")
     add("TP-07", "R26", "case temperature after 30 min (Fit B, 25 °C, Rth2 ×1)", 60.0, "upper",
         e["thermal"]["B_elec_amb25_Rth2x1.0"], b["case_temp_C"]["U_k2"], "°C", "model is an upper bound; spans 43-115 °C")
@@ -972,7 +973,7 @@ def matrix_rows(e, b, ss):
         ("R18", "Motion range", "Test + inspection", "TP-08, TP-10",
          "Open stop +20 ± 1° (TP-08). Floor θ ≥ θ_c0 − %.1f° in the force loop (config.h JAW_FLOOR_BELOW_C0_DEG) and θ ≥ %.1f° absolute (JAW_MIN_DEG, inside DB R18's −11°) checked by inspection of the firmware clamp in TP-10; the bench closes never reach it (squeeze cap about −3°), so it is not exercised" % (e["jaw_floor"]["below_c0_deg"], e["jaw_floor"]["min_deg"]), "Protractor on video ±%.1f°" % b["jaw_angle_deg"]["U_k2"], "3 sweeps", "simulated"),
         ("R19", "Close time", "Test", "TP-03",
-         "From `G 5` at the open stop (+20°): written, full close (contact) ≤ %.2f s; proposed, 4.5 N and 5.0 N each ≤ %.2f s. Both: last 3° before contact: commanded speed JAW_SPEED_NEAR_DPS = %.0f °/s (DB limit 20, inspected, U = 0) and the video fit v + U ≤ %.0f °/s (U = %.1f °/s). Each time: %s, on the upper 95 %%/90 %% tolerance bound of the closes" % (t_w, t_p, e["jaw_speed"]["cmd_dps"], e["jaw_speed"]["screening_limit_dps"], e["jaw_speed"]["U_fit_dps"], rule(0.5, Ut, "s", "upper", 4).replace("value", "bound")),
+         "From `G 5` at the open stop (+20°): historical contact ≤ %.2f s (superseded 2026-10-12); ruled R19, 4.5 N and 5.0 N each ≤ %.2f s. Both: last 3° before contact: commanded speed JAW_SPEED_NEAR_DPS = %.0f °/s (DB limit 20, inspected, U = 0) and the video fit v + U ≤ %.0f °/s (U = %.1f °/s). Ruled limit: %s, on the upper 95 %%/90 %% tolerance bound of the closes" % (t_w, t_p, e["jaw_speed"]["cmd_dps"], e["jaw_speed"]["screening_limit_dps"], e["jaw_speed"]["U_fit_dps"], rule(t_p, Ut, "s", "upper", 4).replace("value", "bound")),
          "Event log U = %.1f ms; video 240 fps U = %.1f ms" % (1000 * Ut, 1000 * b["close_time_video_s"]["U_k2"]),
          "%d closes: the 95/90 tolerance bound clears 0.75 s at n = %d on the predicted %.0f ms scatter; 10 gives a scatter estimate" % (10, ss["R19_proposed_F4p5"]["n"], 1000 * e["close_sigma_s"]["total"]), "simulated"),
         ("R20", "Stall back-off ≤ 200 ms", "Test", "TP-05, TP-16",
@@ -1201,7 +1202,7 @@ def main():
     for label, lim in OPEN["R19_close_s"].items():
         pf = lambda x: "pass" if x <= lim else "FAIL"
         say("  R19 %-8s %.2f s: contact %.3f-%.3f s (%s); 4.5 N %.3f-%.3f s (%s); 5.0 N %.3f-%.3f s at k >= 1.0 (%s), %.3f s at k 0.88 (%s); HOLD %.3f-%.3f s" %
-            (label, lim, cr["t_contact_s"][0], cr["t_contact_s"][1], pf(cr["t_contact_s"][1]),
+            (R19_LABELS[label], lim, cr["t_contact_s"][0], cr["t_contact_s"][1], pf(cr["t_contact_s"][1]),
              cr["t_F4p5_s"][0], cr["t_F4p5_s"][1], pf(cr["t_F4p5_s"][1]),
              cr["t_F5p0_s_k_ge_1"][0], cr["t_F5p0_s_k_ge_1"][1], pf(cr["t_F5p0_s_k_ge_1"][1]),
              cr["t_F5p0_s"][1], pf(cr["t_F5p0_s"][1]), cr["t_HOLD_s"][0], cr["t_HOLD_s"][1]))
@@ -1271,14 +1272,14 @@ def main():
                            % (c["suggested_trip_N"], c["suggested_soft_limit_N"], c["suggested_F_SET_MAX_N"], c["U_max_deg"],
                               c["k_min_to_reach_5N_N_per_mm"], c["k_min_to_reach_5N_with_0p64deg_lag_N_per_mm"], c["fold_E56_N"]))})
     for label, lim in OPEN["R19_close_s"].items():
-        open_rows.append({"item": "R19 close, %s" % label, "value": "%.2f s" % lim, "procedure": "TP-03",
+        open_rows.append({"item": "R19 close, %s" % R19_LABELS[label], "value": "%.2f s" % lim, "procedure": "TP-03",
                           "instrument": "Event log U %.1f ms; video U %.1f ms" % (1000 * b["close_time_eventlog_s"]["U_k2"], 1000 * b["close_time_video_s"]["U_k2"]),
                           "pass": ("contact ≤ %.2f s; 4.5 N arrives %.2f-%.2f s after the limit" % (lim, cr["t_F4p5_s"][0] - lim, cr["t_F4p5_s"][1] - lim)) if label == "written"
                           else ("4.5 N (target band) ≤ %.2f s and 5.0 N ≤ %.2f s" % (lim, lim)),
                           "predicted": "contact %.3f-%.3f s; 4.5 N %.3f-%.3f s; 5.0 N %.3f-%.3f s (k ≥ 1.0), %.3f s (k 0.88)" %
                                        (cr["t_contact_s"][0], cr["t_contact_s"][1], cr["t_F4p5_s"][0], cr["t_F4p5_s"][1],
                                         cr["t_F5p0_s_k_ge_1"][0], cr["t_F5p0_s_k_ge_1"][1], cr["t_F5p0_s"][1]),
-                          "changes": ("the 3° slow zone of controls.md 6.3 (contact by 0.5 s; the last-3° rule restated as a jaw-speed limit, controls.md O1); or R19 is read as contact only"
+                          "changes": ("historical comparison superseded 2026-10-12: the 3° slow zone of controls.md 6.3 (contact by 0.5 s; the last-3° rule restated as a jaw-speed limit, controls.md O1); or the former R19 was read as contact only"
                                       if label == "written" else _r19_proposed_change(e, lim))})
     replace_block(HERE / "VERIFICATION-MATRIX.md", "open",
                   md_table(open_rows, ["item", "value", "procedure", "instrument", "pass", "predicted", "changes"],
@@ -1511,12 +1512,12 @@ Repository names the ESP32 pins but does not name physical connector families or
                     "" if r["id"] in ("R15", "R19") else "n/a") for r in mx)
     write_text_lf(ds / "SIGNOFF.html",
         "<!doctype html><html><head><meta charset='utf-8'><title>Requirement sign-off</title><style>%s td{font-size:8.5pt}</style></head><body>"
-        "<h1>Cloth-feed gripper: requirement sign-off</h1>%s<p>Result: PASS / FAIL / INDETERMINATE (inside ± U of the limit) / NOT RUN. Douglas ruled R15 and R19 on 2026-10-12: the requirement is the proposed value (8 N, 0.75 s), recorded in the second result column. The first column keeps the superseded written value (10 N, 0.50 s) for history only.</p>"
-        "<table><tr><th>ID</th><th>Requirement</th><th>Procedure</th><th>Pass criterion</th><th>Measured</th><th>Result (written value)</th><th>Result at proposed value</th><th>Initials</th></tr>%s</table></body></html>"
+        "<h1>Cloth-feed gripper: requirement sign-off</h1>%s<p>Result: PASS / FAIL / INDETERMINATE (inside ± U of the limit) / NOT RUN. Douglas ruled R15 and R19 on 2026-10-12: the requirement is 8 N and 0.75 s, recorded in the second result column. The first column keeps the written value (10 N, 0.50 s), superseded 2026-10-12, for history only.</p>"
+        "<table><tr><th>ID</th><th>Requirement</th><th>Procedure</th><th>Pass criterion</th><th>Measured</th><th>Historical result (superseded 2026-10-12)</th><th>Result at ruled value</th><th>Initials</th></tr>%s</table></body></html>"
         % (PAGE_CSS, session_header_html(), srow))
 
     result = {
-        "_doc": "Generated by docs/gripper/test/test_plan.py. Do not hand-edit.",
+        "_doc": "Generated by docs/gripper/test/test_plan.py. Do not hand-edit. R19 is 0.75 s ruled; legacy written 0.5 s metrics are historical, superseded 2026-10-12.",
         "seed": SEED, "retrieved": RETRIEVED,
         "inputs_sha256_16": {k: sha16(p) for k, p in INPUT_FILES.items()},
         "open_requirements": OPEN,

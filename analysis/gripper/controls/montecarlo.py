@@ -9,8 +9,8 @@ and results/worst_cases.json (the named worst draws that test_regression.py repl
 Requirements are scored at both values of each open one (controls.md section 0):
   R14 hold >= 5.0 N, through the hold including the compressed 25.5 s FSR creep [DB R14]
   R15 peak pad force <= 10 N as written, and <= 8.0 N as proposed (fold 8.4-8.9 N, finger.md); fold itself
-  R19 time to 90 % of the setpoint (4.5 N) <= 0.5 s as written, and to the setpoint (5 N) <= 0.75 s as proposed;
-      the contact time against 0.5 s is reported too.
+  R19 time to setpoint (5 N) <= 0.75 s as ruled; 4.5 N <= 0.5 s is historical (superseded 2026-10-12);
+      the contact time against 0.5 s is reported too (superseded 2026-10-12). Legacy metric keys retain their explicit limits.
 """
 import argparse
 import json

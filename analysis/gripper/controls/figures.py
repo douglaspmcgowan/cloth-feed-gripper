@@ -8,7 +8,7 @@ HERE = Path(__file__).resolve().parent
 RES = HERE / "results"
 SETS = [("before", "W2b-1 settings", "#6a7482", (0, (4, 3))), ("", "shipped firmware", "#1c5bb8", "-"),
         ("bench", "shipped, after M8/M10/M11", "#c9601a", (0, (6, 2)))]
-PANELS = [("t_90_s", "time to 4.5 N after G (s)", (0.5, 0.75), "R19: 0.5 s written, 0.75 s proposed"),
+PANELS = [("t_90_s", "time to 4.5 N after G (s)", (0.5, 0.75), "R19 0.75 s ruled\n0.5 s superseded 2026-10-12"),
           ("F_peak_N", "peak true pad force (N)", (8.0, 10.0), "R15: 8 N proposed, 10 N written"),
           ("F_hold_min_N", "lowest true force in the hold (N)", (5.0,), "R14: 5 N")]
 
