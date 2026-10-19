@@ -1,0 +1,33 @@
+Monte Carlo n=2000 seed=20261011
+  P(grip_ok           ) = 1.0000  (2000/2000, 95 % CI 0.9981-1.0000)
+  P(R14               ) = 0.5530  (1106/2000, 95 % CI 0.5311-0.5747)
+  P(R15_10N           ) = 1.0000  (2000/2000, 95 % CI 0.9981-1.0000)
+  P(R15_8N            ) = 1.0000  (2000/2000, 95 % CI 0.9981-1.0000)
+  P(R19_0.5s_F90      ) = 0.0000  (0/2000, 95 % CI 0.0000-0.0019)
+  P(R19_0.75s_F5      ) = 0.4025  (805/2000, 95 % CI 0.3812-0.4242)
+  P(R19_0.75s_F90     ) = 0.9310  (1862/2000, 95 % CI 0.9190-0.9413)
+  P(R19_contact_0.5s  ) = 0.0000  (0/2000, 95 % CI 0.0000-0.0019)
+  P(fold              ) = 0.0000  (0/2000, 95 % CI 0.0000-0.0019)
+  P(peak_le_8N        ) = 1.0000  (2000/2000, 95 % CI 0.9981-1.0000)
+  P(peak_le_10N       ) = 1.0000  (2000/2000, 95 % CI 0.9981-1.0000)
+  P(fault             ) = 0.0000  (0/2000, 95 % CI 0.0000-0.0019)
+  t_contact_s    p01 0.547  p05 0.557  p50 0.579  p95 0.598  p99 0.603  max 0.608  min 0.539
+  t_90_s         p01 0.660  p05 0.668  p50 0.701  p95 0.748  p99 0.786  max 0.839  min 0.646
+  t_sp_s         p01 0.680  p05 0.689  p50 0.731  p95 0.804  p99 0.850  max 0.925  min 0.672
+  t_hold_s       p01 0.762  p05 0.766  p50 0.790  p95 0.815  p99 0.822  max 0.842  min 0.761
+  F_peak_N       p01 4.402  p05 4.574  p50 5.058  p95 5.580  p99 5.806  max 6.040  min 4.200
+  F_hold_min_N   p01 4.391  p05 4.562  p50 5.047  p95 5.558  p99 5.777  max 6.040  min 4.200
+  F_end_N        p01 4.391  p05 4.562  p50 5.047  p95 5.558  p99 5.777  max 6.040  min 4.200
+  sse_N          p01 -0.601  p05 -0.426  p50 0.052  p95 0.567  p99 0.777  max 1.040  min -0.800
+  v_touch3_dps   p01 17.184  p05 18.003  p50 20.604  p95 22.982  p99 23.581  max 23.798  min 16.464
+  c0_deg         p01 -1.480  p05 -1.480  p50 -1.080  p95 -1.080  p99 -0.680  max -0.680  min -1.480
+  c0_err_deg     p01 -0.452  p50 -0.010  p99 0.372
+  final states {'HOLD': 2000}
+  event counts {'FORCE_SAT': 1907}
+  drivers of F_peak_N: droop_deg_at_stall -0.69, k_tip_n_per_mm +0.29, plies +0.28, ply_mm +0.19, f_fold_n +0.17, frame_phase_ms +0.16
+  drivers of t_90_s: plies -0.49, droop_deg_at_stall +0.40, ply_mm -0.30, k_tip_n_per_mm -0.23, frame_phase_ms +0.10, tstall_nm_at_6v5 -0.10
+  drivers of F_hold_min_N: droop_deg_at_stall -0.64, k_tip_n_per_mm +0.28, plies +0.25, ply_mm +0.16, tau_s +0.16, tstall_nm_at_6v5 +0.16
+  worst peak_force: run 1970  peak 6.04 N  t90 0.659  hold_min 6.039948904183495  state HOLD
+  worst slowest_to_90pct: run 893  peak 4.50 N  t90 0.839  hold_min 4.504910380167749  state HOLD
+  worst lowest_hold: run 903  peak 4.20 N  t90 None  hold_min 4.200124296751769  state HOLD
+  worst fastest_jaw_at_touch_plus_3: run 1598  peak 5.12 N  t90 0.684  hold_min 5.120777376706736  state HOLD

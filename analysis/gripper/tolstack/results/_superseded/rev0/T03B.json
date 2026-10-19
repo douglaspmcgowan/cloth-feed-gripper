@@ -1,0 +1,162 @@
+{
+ "id": "T03B",
+ "title": "Axial stack \u2014 screw tip clear of the horn hole floor",
+ "mode": "linear",
+ "units": "mm (hole depth minus screw protrusion below H)",
+ "requirement": "Screw tip stops >= 0.2 mm above the blind-hole floor so the head, not the tip, takes the clamp load.",
+ "notes": "CAD horn holes are 2.5 deep but M3x6 through a 3.0 clamp protrudes 3.0; measure the real horn hole depth first.",
+ "spec": {
+  "lsl": 0.2
+ },
+ "accept": {
+  "method": "wc"
+ },
+ "variant_of": null,
+ "variant_label": "",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T03B_screw_bottoming.yaml",
+ "nominal": -0.5,
+ "mid": -0.4,
+ "wc": [
+  -0.965,
+  0.16499999999999992
+ ],
+ "rss_classic": [
+  -0.697026934805583,
+  -0.10297306519441707
+ ],
+ "rss_dist": [
+  -0.7580851853958777,
+  -0.04191481460412244
+ ],
+ "rss_dist_unclipped": [
+  -0.7580851853958777,
+  -0.04191481460412244
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": -0.40020080196565416,
+  "std": 0.11917105395534379,
+  "min": -0.8601488669573893,
+  "max": 0.047855010889387165,
+  "p0135": -0.7516012601291728,
+  "p50": -0.40017943470015005,
+  "p99865": -0.0566627776946281,
+  "out_lo_pct": 100.0,
+  "out_hi_pct": 0.0,
+  "out_pct": 100.0,
+  "out_pct_se": 3.162277660168379e-151,
+  "cpk_normal": -1.6788215539615954,
+  "cpk_percentile": -1.7078604436916776
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "wc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "horn_hole_depth",
+   "kind": "linear",
+   "nominal": 2.5,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 2.5,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.03333333333333333,
+   "tag": "A",
+   "source": "2.5 CAD (so101.md row 4) [D]; tol [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 7.798791187365957
+  },
+  {
+   "name": "screw_length",
+   "kind": "linear",
+   "nominal": 6.0,
+   "bias": 0.0,
+   "upper": 0.24,
+   "lower": -0.24,
+   "mid": 6.0,
+   "half": 0.24,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.08,
+   "tag": "A",
+   "source": "M3x6",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 44.921037239227914
+  },
+  {
+   "name": "clamp_thickness",
+   "kind": "linear",
+   "nominal": 3.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 3.0,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "A",
+   "source": "so101.md row 8",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 23.396373562097875
+  },
+  {
+   "name": "datum_A_flatness_lift",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.2,
+   "lower": 0.0,
+   "mid": 0.1,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "A",
+   "source": "flatness 0.2 on A",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 23.396373562097875
+  },
+  {
+   "name": "horn_face_runout",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.025,
+   "lower": -0.025,
+   "mid": 0.0,
+   "half": 0.025,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.008333333333333333,
+   "tag": "A",
+   "source": "horn face FIM 0.05; same term and sign as T03 (a high face spot shortens the protrusion)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.4874244492103723
+  }
+ ],
+ "seed": 20260922
+}

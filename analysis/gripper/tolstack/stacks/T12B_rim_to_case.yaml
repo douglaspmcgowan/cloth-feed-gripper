@@ -1,0 +1,13 @@
+id: T12B
+title: Axial gap, gripper rim to servo-5 case top
+parts: ["wrist mount", "servo 5"]
+constants: basis.yaml
+companion_of: T12
+units: mm
+requirement: Rim clears the servo-5 case by >= 0.5 mm.
+spec: {lsl: 0.5}
+accept: {method: wc}
+contributors:
+  - {name: horn_above_case, nominal: "=horn_above_case", tol: "=horn_height_tol", dist: normal, tag: D, source: "so101.md row 3"}
+  - {name: rim_below_H, nominal: "=rim_below_H", tol: "=fdm_z_tol", direction: -1, dist: uniform, tag: D, source: "params.json rim_below_H 1.0 [D]; Z band [S]"}
+  - {name: servo5_axial_play, nominal: 0, tol: "=servo5_axial_play", dist: uniform, tag: A, source: ""}

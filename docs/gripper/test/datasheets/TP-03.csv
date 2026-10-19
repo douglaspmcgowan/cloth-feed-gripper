@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+trial,start_state,t_cmd_ms,t_contact_ms,t_F4p5_ms,t_F5_ms,t_hold_ms,video_start_frame,video_contact_frame,speed_last3deg_dps,theta_c0_bare_deg,finger_k_N_per_mm,event_order_ok,notes

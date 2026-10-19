@@ -1,0 +1,20 @@
+id: T11
+title: Radial keep-out, r 11.6 hub band (H-1..H+1) vs wrist-link lip r 12.6
+parts: ["wrist mount", "wrist link"]
+constants: basis.yaml
+units: mm radial clearance, worst angle over 320 deg roll
+requirement: Rolling hub clears the stationary lip by >= 0.1 mm at every roll angle.
+spec: {lsl: "=keepout_min_clear"}
+accept: {method: mc}
+notes: Roll sweeps every angle, so hub offset (T04) and lip eccentricity add as magnitudes. This band starts on the bed, so it carries first-layer flare.
+contributors:
+  - {name: lip_radius, nominal: "=r_stat_1", tol: "=lip_r_tol", dist: normal, tag: D, source: "so101.md keep-out table [D]; tol [A]"}
+  - {name: hub_radius, nominal: "=r_keepout_1", bias: "=efc_hub_bias_r", tol: "=fdm_xy_tol_short/2", direction: -1, dist: normal, tag: S, source: "params.json hub_r_low 11.6; first-layer flare [A]; XY band / 2 on a radius [S]"}
+  - {name: hub_offset, from_stack: T04, direction: -1, tag: D, source: "T04 radial"}
+  - {name: lip_eccentricity, nominal: 0, unilateral: "=lip_r_ecc", direction: -1, dist: uniform, tag: A, source: ""}
+variants:
+  - id: band2
+    role: scenario
+    label: "second band: hub r 14.6 (H+1..H+5.0) vs lip r 15.4, not a first layer"
+    set: {r_stat_1: 15.4, r_keepout_1: 14.6, efc_hub_bias_r: 0.0}
+  - {id: stock12, role: rejected, label: "pre-rev-A hub r 12.0", set: {r_keepout_1: 12.0}}

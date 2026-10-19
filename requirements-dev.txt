@@ -1,0 +1,14 @@
+# Analysis, CAD, and moved Python test dependencies. Use Python 3.12 for CadQuery wheels.
+cadquery
+matplotlib
+mujoco
+numpy
+packaging
+Pillow
+playwright
+pylife
+Pygments
+pytest
+PyYAML
+scipy
+shapely

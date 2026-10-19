@@ -1,0 +1,110 @@
+Power budget of the gripper controller board
+Tags: [S] constants.py, [D] derived here, [A] assumed
+Wiring: R_cable (20 AWG, 1.2 m out and back) = 79.9 mohm, 26 AWG = 321.4 mohm, servo lead 30 mohm [D, A]
+
+(a) Load table (A; stall is at 6.8 V for the servo, as in dyno.md)
+load                                        V range     typ A (idle / hold)     peak A                 stall A
+------------------------------------------  ----------  ----------------------  ---------------------  -------
+DS3218MG servo, Fit A                       4.8 to 6.8  0.005 idle / 1.35 hold  3.77 at 6.8 V          3.77
+DS3218MG servo, Fit B                       4.8 to 6.8  0.005 idle / 0.80 hold  2.20 at 6.8 V          2.20
+ESP32 + DevKitC on +5V, no Wi-Fi            4.5 to 5.5  0.094                   0.266 (Wi-Fi TX peak)  -
+74AHCT1G125 + R12 on +5V                    4.5 to 5.5  0.001                   0.001                  -
+INA219, LED, FSR divider, pull-ups on +3V3  3.0 to 3.6  0.010                   0.010                  -
+TPS54560B quiescent                         4.5 to 60   0.0001                  0.0001                 -
+
+(b) Input current and power at the adapter (U1 losses, F1 50 mohm worst, Q1 13 mohm worst, 10 ns switching transitions [A])
+Vin V  fit  case   servo A  buck out W  input W  input A  efficiency  F1 margin A (2.6 hold)
+-----  ---  -----  -------  ----------  -------  -------  ----------  ----------------------
+10.8   A    idle   0.005    0.65        0.68     0.06     96 %        +2.54
+10.8   A    hold   1.350    9.70        10.21    0.95     96 %        +1.65
+10.8   A    stall  3.486    24.81       26.87    2.49     94 %        +0.11
+10.8   B    idle   0.005    0.65        0.68     0.06     96 %        +2.54
+10.8   B    hold   0.800    5.96        6.22     0.58     96 %        +2.02
+10.8   B    stall  2.081    14.77       15.69    1.45     95 %        +1.15
+12.0   A    idle   0.005    0.65        0.68     0.06     96 %        +2.54
+12.0   A    hold   1.350    9.70        10.24    0.85     95 %        +1.75
+12.0   A    stall  3.486    24.81       26.84    2.24     94 %        +0.36
+12.0   B    idle   0.005    0.65        0.68     0.06     96 %        +2.54
+12.0   B    hold   0.800    5.96        6.25     0.52     96 %        +2.08
+12.0   B    stall  2.081    14.77       15.72    1.31     95 %        +1.29
+13.2   A    idle   0.005    0.65        0.68     0.05     96 %        +2.55
+13.2   A    hold   1.350    9.70        10.26    0.78     95 %        +1.82
+13.2   A    stall  3.486    24.81       26.83    2.03     93 %        +0.57
+13.2   B    idle   0.005    0.65        0.68     0.05     96 %        +2.55
+13.2   B    hold   0.800    5.96        6.27     0.47     95 %        +2.13
+13.2   B    stall  2.081    14.77       15.74    1.19     94 %        +1.41
+Worst input: 2.49 A (26.9 W) at 10.8 V, Fit A stall. Adapter rating with 25 % margin: 3.11 A (37 W at 12 V). Sustained hold needs 1.18 A with margin.
+Recommended: 12 V, 3.5 A (42 W) minimum for a sustained Fit A stall; 12 V 2 A would carry hold and any Fit B case
+F1 (hold 2.6 A at 23 C [S]) trips only above 5.0 A or after seconds above 2.6 A; a negative margin above means a stall longer than a few seconds can open F1.
+
+(c) Voltage at the servo terminals (set point low / nom / high = 6.504 / 6.581 / 6.659 V; band 6.35 to 6.65 V, rating 6.8 V)
+AWG  fit  case   servo A  plug low V  plug nom V  plug high V  inside 6.35-6.65  <= 6.8 V
+---  ---  -----  -------  ----------  ----------  -----------  ----------------  --------
+20   A    idle   0.01     6.504       6.581       6.658        NO                yes
+20   A    hold   1.35     6.356       6.433       6.511        yes               yes
+20   A    stall  3.45     6.130       6.203       6.276        NO                yes
+20   B    idle   0.01     6.504       6.581       6.658        NO                yes
+20   B    hold   0.80     6.416       6.493       6.571        yes               yes
+20   B    stall  2.06     6.281       6.355       6.430        NO                yes
+26   A    idle   0.01     6.502       6.580       6.657        NO                yes
+26   A    hold   1.35     6.030       6.107       6.185        NO                yes
+26   A    stall  3.06     5.442       5.507       5.571        NO                yes
+26   B    idle   0.01     6.502       6.580       6.657        NO                yes
+26   B    hold   0.80     6.223       6.300       6.378        NO                yes
+26   B    stall  1.91     5.840       5.909       5.979        NO                yes
+
+(d) Dissipation (set point high, ESP32 100 mA load on +5V)
+Vin V  fit  case   servo A  RS1 W (of 2 W)  D2 W  Q1 W   F1 W   U1 cond + switch W  U1 rise K (42 K/W)  L1 W   U3 W  U3 rise K (62 K/W)
+-----  ---  -----  -------  --------------  ----  -----  -----  ------------------  ------------------  -----  ----  ------------------
+12.0   A    hold   1.35     0.18 (9 %)      0.31  0.010  0.037  0.11 + 0.03         6                   0.031  0.17  10
+12.0   A    stall  3.49     1.22 (61 %)     0.73  0.066  0.255  0.70 + 0.08         33                  0.192  0.19  12
+12.0   B    hold   0.80     0.06 (3 %)      0.20  0.004  0.014  0.04 + 0.02         3                   0.012  0.16  10
+12.0   B    stall  2.08     0.43 (22 %)     0.46  0.023  0.088  0.25 + 0.05         13                  0.071  0.18  11
+13.2   A    hold   1.35     0.18 (9 %)      0.35  0.008  0.031  0.10 + 0.04         6                   0.031  0.17  10
+13.2   A    stall  3.49     1.22 (61 %)     0.83  0.055  0.211  0.63 + 0.09         31                  0.192  0.19  12
+13.2   B    hold   0.80     0.06 (3 %)      0.22  0.003  0.012  0.04 + 0.02         3                   0.012  0.16  10
+13.2   B    stall  2.08     0.43 (22 %)     0.52  0.019  0.073  0.23 + 0.06         12                  0.071  0.18  11
+
+(e) ESP32 supply chain with V_BUCK at its lowest in a stall (droop_sim.py, Vin 10.8 V): 6.58 V
+board power case                  +5V A  +5V V (LDO -3 %)  D7 drop V  DevKit 5V pin V  AMS1117 dropout V (max)  headroom to 3.267 V reg  3V3 V  margin to BOD 2.43 V  +5V load > 250 mA
+--------------------------------  -----  ----------------  ---------  ---------------  -----------------------  -----------------------  -----  --------------------  -----------------
+esp32 board, no Wi-Fi             0.094  4.85              0.30       4.55             1.18                     +0.10                    3.267  +0.84                 no
+esp32 board, Wi-Fi receive        0.126  4.85              0.31       4.54             1.19                     +0.09                    3.267  +0.84                 no
+esp32 board, Wi-Fi transmit peak  0.266  4.85              0.32       4.53             1.21                     +0.05                    3.267  +0.84                 yes
+USB power (D7 reverse-biased, DevKitC diode drop 0.30 V [A]):
+USB V  DevKit 5V pin V  AMS1117 dropout V (max)  headroom to 3.267 V reg  3V3 V  margin to BOD 2.43 V
+-----  ---------------  -----------------------  -----------------------  -----  --------------------
+4.75   4.45             1.18                     +0.00                    3.267  +0.84
+5.00   4.70             1.18                     +0.25                    3.267  +0.84
+5.25   4.95             1.18                     +0.50                    3.267  +0.84
+
+(f) FSR force reading error: the ESP32 ADC is absolute, the firmware assumes 3300 mV
+true force N  cause                                                                                          reads N  error N
+------------  ---------------------------------------------------------------------------------------------  -------  -------
+5.0           3V3 -1 %                                                                                       4.841    -0.159
+5.0           3V3 +1 %                                                                                       5.165    +0.165
+5.0           3V3 -3 %                                                                                       4.541    -0.459
+5.0           3V3 = 3.267 V (AMS1117 low, board power)                                                       4.841    -0.159
+5.0           ground offset 137.9 mV: shared 20 AWG return, Fit A stall                                      6.247    +1.247
+5.0           ground offset 54.0 mV: shared 20 AWG return, Fit A hold                                        5.448    +0.448
+5.0           ground offset 17.4 mV: separate 26 AWG FSR return (0.9 mA) + 5 mohm board plane at 3.45 A [A]  5.139    +0.139
+8.0           3V3 -1 %                                                                                       7.674    -0.326
+8.0           3V3 +1 %                                                                                       8.344    +0.344
+8.0           3V3 -3 %                                                                                       7.074    -0.926
+8.0           3V3 = 3.267 V (AMS1117 low, board power)                                                       7.674    -0.326
+8.0           ground offset 137.9 mV: shared 20 AWG return, Fit A stall                                      10.362   +2.362
+8.0           ground offset 54.0 mV: shared 20 AWG return, Fit A hold                                        8.826    +0.826
+8.0           ground offset 17.4 mV: separate 26 AWG FSR return (0.9 mA) + 5 mohm board plane at 3.45 A [A]  8.254    +0.254
+
+(g) Bulk capacitor (C12 1000 uF + forearm 470 uF + ceramic 56 uF = 1526 uF total on the rail)
+Stall step (Fit A, 10 us rise): the bulk capacitor delivers 122 uC and 0.80 mJ; SERVO_V dips 0.12 V before the loop catches up (droop_sim.py).
+Verdict on 1000 uF for the stall step: ADEQUATE (plug minimum 470 uF 6.09 V, 1000 uF 6.09 V, 2200 uF 6.10 V).
+Regen onto the rail. Basis: assumed energy returned by a back-driven servo: 20 mJ = half of stall torque 2.1 N*m x 1 deg backlash (0.0175 rad) [A]; 174 mJ = whole reflected rotor kinetic energy 0.5 x 6.5e-3 kg*m2 x (7.31 rad/s)^2 [D from dyno.md]; nothing in the board sinks energy (non-synchronous buck, diode D2), so the rail rises by the capacitors alone.
+energy mJ  rail peak V  rise V  capacitance to stay <= 6.8 V uF
+---------  -----------  ------  -------------------------------
+2          6.78         +0.20   1368
+5          7.06         +0.48   3419
+20         8.34         +1.76   13677
+50         10.43        +3.85   34192
+174        16.47        +9.89   118989
+Energy the present capacitance absorbs before the rail reaches 6.8 V: 2.2 mJ. Any larger regen needs a clamp or a sink; capacitance alone is not the answer.

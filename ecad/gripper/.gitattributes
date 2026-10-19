@@ -1,0 +1,5 @@
+# Captured tool output (KiCad exports, build logs, script stdout). The bytes are whatever the tool
+# wrote, so whitespace checks do not apply; rewriting them would make the capture differ from a re-run.
+kicad/out/** -whitespace
+kicad/fab/** -whitespace
+calc/out/** -whitespace

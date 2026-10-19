@@ -1,0 +1,106 @@
+
+<section class="view" id="tolerances" data-title="Tolerance stacks" hidden>
+  <div class="fig" id="tolerances-stacks" data-fig="Stacks" data-info="Every stack is run three ways: worst case, statistical, and a 100,000-sample simulation whose band covers 99.73 % of parts. Green and red show which of the three meet the limit.|The verdict uses the stack's own method: worst case for fits that must always assemble, simulation otherwise. Capability is from the simulation and the target is 1.33."><div class="stage">
+    <div class="ctrl"><label>Show <select id="tolShow"><option value="all">all results</option><option value="base">as designed</option><option value="fix">with a fix</option><option value="fail" selected>failing only</option></select></label><label>Find <input type="search" id="tolQ" placeholder="pilot, backlash"></label><span class="note" id="tolCount" aria-live="polite"></span></div>
+    <div class="tw"><table id="tolTable"></table></div></div></div>
+  <div class="fig" id="tolerances-fixes" data-fig="Fixes" data-info="Each fix is a design change the stacks support. The result column is read from the stack run with that change applied."><div class="stage"><div class="tw"><table id="fixTable"></table></div></div></div>
+  <div class="detail" id="tolerances-method" hidden>
+    <p>The failures are driven by assumed print scatter, not by measured parts, so a printed test coupon decides them. A stack whose verdict depends on another stack inherits that stack's failure.</p>
+    <p>The datum scheme and the drawing callouts that came out of this study are in <a href="#drawings-datums">Drawings</a>.</p>
+  </div>
+  <div class="detail" id="tolerances-sources" hidden><ul class="paths"><li>docs/gripper/analysis/tolerance_stacks.md</li><li>analysis/gripper/tolstack/results/summary.json <span>71 results</span></li><li>analysis/gripper/tolstack/results/*.json <span>one file per stack</span></li></ul></div>
+</section>
+
+<section class="view" id="camera" data-title="Camera" hidden>
+  <div class="fig" id="camera-placements" data-fig="Placements" data-info="Each dot is one camera in one position. Further right sees more of the cloth edge that matters during the feed; higher resolves it better. Filled dots pass the feed check."><div class="fig-in two"><div class="stage">
+    <div class="ctrl"><label>Camera <select id="camSel"><option value="">all</option></select></label></div><div class="chart" id="camChart"></div></div>
+    <aside class="nums"><dl class="kv" id="camNums"></dl></aside></div></div>
+  <div class="fig" id="camera-options" data-fig="Options" data-info="The four placements considered. Edge seen is the share of the critical cloth edge visible at the worst feed pose."><div class="stage"><div class="tw full"><table><thead><tr><th>Option</th><th>Where</th><th class="n">Pixels per mm</th><th class="n">Edge seen</th><th class="n">Mass on the wrist</th><th>Role</th></tr></thead><tbody>
+    <tr class="hl"><td><b>Primary</b>, Pi Camera 3</td><td>Fixed post, lens 200 mm up, pointing 53&deg; down</td><td class="n">5.5</td><td class="n">100 %</td><td class="n">0 g</td><td>Feed and approach</td></tr>
+    <tr><td><b>Backup</b>, Pi Camera 3 Wide</td><td>Side of the machine throat</td><td class="n">5.2</td><td class="n">passes</td><td class="n">0 g</td><td>If the machine head blocks the primary</td></tr>
+    <tr><td><b>Wrist option</b>, USB module</td><td>On the gripper front plate</td><td class="n">&ndash;</td><td class="n">pick only</td><td class="n">16.3 g</td><td>Pushes the mass budget further over</td></tr>
+    <tr><td>Straight overhead</td><td>Above the needle</td><td class="n">&ndash;</td><td class="n">0 %</td><td class="n">0 g</td><td>Rejected: the machine head hides the edge</td></tr>
+  </tbody></table></div></div></div>
+  <div class="fig" id="camera-top" data-fig="Top ten" data-info="The ten best-scoring placements of the 486 tried."><div class="stage"><div class="tw"><table id="camTop"></table></div></div></div>
+  <div class="fig" id="camera-views" data-fig="Views" data-info="What the cameras see, and the layout from above and from the side."><div class="stage plain"><div class="pics" id="camPics"></div></div></div>
+  <div class="detail" id="camera-method" hidden>
+    <p>Placement only; the vision software comes later. Rays are cast against the modelled machine head, arm and gripper for 486 camera and position pairs, scoring edge visibility during the feed, resolution at the edge, depth of field, blur and added wrist mass.</p>
+    <p>Because the primary camera is off the arm, the gripper carries only a reserved wrist pad: two M3 inserts 8.1 mm apart and a locating slot on the front plate. The camera study assumed a pivot-to-horn distance of 40.7 mm and has not been rerun on the CAD value of <span class="yhTxt2"></span> mm.</p>
+  </div>
+  <div class="detail" id="camera-sources" hidden><ul class="paths"><li>docs/gripper/analysis/camera.md</li><li>analysis/gripper/results/camera.json</li><li>docs/gripper/figures/camera_*.png</li><li>cad/gripper/params.json <span>wrist pad</span></li></ul></div>
+</section>
+
+<section class="view" id="firmware" data-title="Firmware and controls" hidden>
+  <div class="fig" id="firmware-states" data-fig="State machine" data-info="Boxes are states; arrows are the events that move between them. A short press on the start button advances one step when no host is connected; a 0.8 s press stops.|Not drawn: a grip command from the host jumps from Idle, Approach or Touchdown straight to Close, and a release command or a long press aborts to Release. Fault latches until a long press or the home command, then re-homes."><div class="stage"><div class="chart" id="fsmChart"></div></div></div>
+  <div class="fig" id="firmware-step" data-fig="Step response" data-info="The compiled firmware runs against a model of the servo, the finger and the force sensor at 1 kHz: boot, calibration with no cloth, then a 5 N grip on one ply.|Each line is one finger stiffness inside the allowed window. The servo lag of 40 ms and the 10 ms decode delay are assumed until measured."><div class="fig-in two"><div class="stage"><div class="chart" id="fwStep"></div></div>
+    <aside class="nums"><dl class="kv" id="fwNums"></dl></aside></div>
+    <div class="stage"><div class="tw full"><table id="fwCases"></table></div></div></div>
+  <div class="fig" id="firmware-stiffness" data-fig="Stiffness sweep" data-info="The shaded band is the allowed tip stiffness, 0.88 to 1.63 N/mm. Below about 0.80 N/mm the squeeze cap stops the grip short of 5 N, because the cap is sized for the stiff end."><div class="stage"><div class="chart" id="fwPeak"></div><div class="chart" id="fwTime"></div></div></div>
+  <div class="fig" id="firmware-noise" data-fig="Noise and slip" data-info="Both runs use a 1.0 N/mm finger. The first adds 20 mV of sensor noise; the second steps the setpoint to 7, 3 and 5 N, then slips the cloth by 0.5°."><div class="fig-in two"><div class="stage"><div class="chart" id="fwNoise"></div><div class="chart" id="fwSteps"></div></div>
+    <aside class="nums"><dl class="kv" id="fwStepNums"></dl></aside></div></div>
+  <div class="fig" id="firmware-faults" data-fig="Sensor faults" data-info="With a failed or mis-scaled force sensor, only the position cap on the squeeze bounds the true force. Reading low loses the 8 N trip; reading high under-grips."><div class="stage"><div class="chart" id="fwFaults"></div><div class="tw full"><table id="fwFaultTable"></table></div></div></div>
+  <div class="fig" id="firmware-transitions" data-fig="Transitions" data-info="Printed from the firmware's own table. The first matching row wins. Events that match no row are ignored and still logged to the host."><div class="stage"><div class="tw"><table id="fsmTable"><thead><tr><th>From</th><th>Event</th><th>Guarded</th><th>To</th><th>Why</th></tr></thead><tbody></tbody></table></div><p class="cap" id="fwTimeouts"></p></div></div>
+  <div class="fig" id="firmware-gates" data-fig="Proving commands" data-info="The three commands run to prove the firmware. Exit 0 means the command passed."><div class="stage"><div class="tw full"><table id="fwGates"><thead><tr><th>Gate</th><th>Command</th><th>Exit</th><th>Result</th></tr></thead><tbody></tbody></table></div><p class="cap" id="fwGateNote"></p></div></div>
+  <div class="fig" id="firmware-thresholds" data-fig="Thresholds" data-info="Every value is a constant in the firmware configuration. The squeeze cap is measured from the touch reference."><div class="stage"><div class="tw"><table><thead><tr><th>Setting</th><th class="n">Value</th></tr></thead><tbody>
+    <tr><td>Force: touch, grip setpoint, slip, soft limit, trip</td><td class="n">0.5, 5.0, 3.0, 7.5, 8.0 N</td></tr>
+    <tr><td>Squeeze cap past the touch reference</td><td class="n">5.14&deg;</td></tr>
+    <tr><td>Jaw floor and open limit</td><td class="n">&minus;7.4&deg; and +20&deg;</td></tr>
+    <tr><td>Pre-grasp park and slow zone above contact</td><td class="n">6&deg; and 6&deg;</td></tr>
+    <tr><td>Speed: fast and near contact</td><td class="n">120 and 20 &deg;/s</td></tr>
+    <tr><td>Search past contact before calling a miss</td><td class="n">3&deg;</td></tr>
+    <tr><td>Calibrated contact angle window</td><td class="n">&minus;4&deg; to +4&deg;</td></tr>
+    <tr><td>Over-current trip</td><td class="n">1.8 A for 100 ms</td></tr>
+    <tr><td>Fault back-off</td><td class="n">open 5&deg;</td></tr>
+    <tr><td>Servo pulse clamp</td><td class="n">1200 to 1900 &micro;s</td></tr>
+  </tbody></table></div></div></div>
+  <div class="fig" id="firmware-pins" data-fig="Pins and protocol" data-info="Pin numbers are for the ESP32 DevKitC. The host talks to the board in text lines over USB serial; the word in brackets is what the host sends."><div class="stage"><div class="tw full"><table><thead><tr><th>Signal</th><th>ESP32 pin or format</th></tr></thead><tbody>
+    <tr><td>Servo PWM</td><td>GPIO 18</td></tr><tr><td>Force sensor, analog</td><td>GPIO 34</td></tr><tr><td>Optional servo pot, analog</td><td>GPIO 32</td></tr>
+    <tr><td>Start button and jaw-open limit</td><td>GPIO 25 and 26</td></tr><tr><td>Current sensor, I&sup2;C data and clock</td><td>GPIO 21 and 22</td></tr><tr><td>Status LED</td><td>GPIO 2</td></tr>
+    <tr><td>Host to board, USB serial at 115200</td><td>Grip with a force in newtons (G), release (R), home (H), calibrate (C), status (S), approach (A), arm at pose (ARM_AT_POSE), feed (FEED), feed done (FEED_DONE), stream readings (STREAM), calibrate the force sensor with a known weight (CALF)</td></tr>
+    <tr><td>Board to host</td><td>One line per event with its name and the time in milliseconds (EVT), status lines (ST) and warnings (WARN)</td></tr>
+  </tbody></table></div></div></div>
+  <p class="stage" id="firmware-decisions">Two decisions are open: <a href="#open-decision-close">close time</a> and <a href="#open-decision-fold">the squeeze cap</a>.</p>
+  <div class="detail" id="firmware-method" hidden>
+    <p>An ESP32 DevKitC runs a table-driven state machine with no blocking waits. Inputs, the force loop, motion, serial and timeouts post events into a 16-slot queue; the last 4 slots are kept for faults and timeouts, and the main loop hands at most 8 events per pass to the state machine.</p>
+    <p>The force sensor is sampled at 1 kHz and the force loop runs at 50 Hz, one servo frame. The loop is feedforward plus a proportional and integral term, tuned on the stiffest finger in the allowed window, with a cap on the squeeze that keeps any finger in the window at or under 10 N by position alone.</p>
+    <h2>Control law</h2>
+    <div class="tw"><table><tbody id="fwLaw"></tbody></table></div>
+    <h2>Readings of the design basis</h2>
+    <ul>
+      <li>Jaw floor: the design basis says &minus;11&deg;, where the finger analysis shows 12.4 to 14.7 N. The firmware floor is &minus;7.4&deg;, and the squeeze cap is the real limit.</li>
+      <li>Servo rail: 6.5 &plusmn; 0.15 V, from the torque analysis and the owner's ruling, not the 6.0 V in the design basis.</li>
+      <li>Pre-close speed: 120 &deg;/s, the basis of the dyno's shock numbers.</li>
+      <li>Grip control: the design basis describes stepping toward the hold angle; the firmware uses the continuous loop above, which integrates below 5.0 N instead of re-stepping below 4.5 N.</li>
+      <li>The dyno analysis still models the earlier loop, so its close and hold numbers are stale against this firmware.</li>
+    </ul>
+  </div>
+  <div class="detail" id="firmware-sources" hidden><ul class="paths" id="fwSources"><li>docs/gripper/analysis/controls.md</li><li>firmware/gripper/ <span>sketch, state machine, force loop, motion, events, protocol; every constant in config.h</span></li><li>firmware/gripper/test/test_fsm.cpp <span>host test</span></li><li>analysis/gripper/firmware_sim/results/fw_sim.json, gates.json</li><li>docs/gripper/DESIGN-BASIS.md <span>section 8</span></li></ul></div>
+</section>
+
+<section class="view" id="open" data-title="Open items" hidden>
+  <div class="fig" id="open-requirements" data-fig="Requirements" data-info="Pass means the analysis or the CAD shows it; a bench check may still be listed. At risk passes on a thin or disputed margin. Fails means the current design does not meet it. Open needs a ruling, firmware or a measurement first."><div class="stage">
+    <div class="ctrl"><label>Show <select id="reqShow"><option value="">all</option><option value="fail">fails</option><option value="risk">at risk</option><option value="open">open</option><option value="pass">pass</option></select></label><span class="note" id="reqCount" aria-live="polite"></span></div>
+    <div class="tw"><table id="reqTable"><thead><tr><th>Requirement</th><th>Status</th><th>Evidence</th></tr></thead><tbody></tbody></table></div></div></div>
+  <div class="fig" id="open-decisions" data-fig="Decisions" data-info="Each decision needs a ruling from the owner or the instructor. The recommended option is under each one."><div class="stage"><div class="items">
+    <section id="open-decision-mass"><h2>Accept the mass budget miss, or cut weight</h2><p id="decMass"></p><p class="note">Recommended: accept the miss at the 7.4 V kit by explicit ruling and keep the 12 V kit as the fallback. <a href="#mass">Mass budget</a></p></section>
+    <section id="open-decision-motor"><h2>Does the servo count as the DC motor, and the 1:1 pair as the transmission</h2><p>A hobby servo has a brushed DC motor inside it. If the instructor says no, the fallback is a gearmotor with an 8:1 printed stage, which closes in 0.58 s and needs the close limit relaxed to 0.6 s.</p><p class="note">Recommended: ask now; the answer decides whether the fallback is built. <a href="#torque-shortlist">Shortlist</a></p></section>
+    <section id="open-decision-close"><h2>Close time: contact or 5 N within 0.5 s</h2><p>The firmware simulation touches at 0.50 to 0.51 s and reaches 4.5 N at 0.60 to 0.70 s. The torque model alone says 0.278 s.</p><p class="note">Recommended: relax the limit to 0.75 s to reach 5 N, keep the 120 &deg;/s pre-close, and prove it with a timed video. <a href="#firmware-step">Step response</a></p></section>
+    <section id="open-decision-fold"><h2>Squeeze cap has zero margin against a finger that folds early</h2><p>The tip folds at 8.88 N across layers, or 8.41 N with the nail fitted. The firmware's position cap allows 10.0 N on the stiffest finger if the force sensor reads half.</p><p class="note">Recommended: keep 10 N as the written limit, lower the cap to a 9 N basis after the bench results, and treat 8.4 N as the working ceiling. <a href="#firmware-faults">Sensor faults</a></p></section>
+    <section id="open-decision-horn">
+      <h2>Horn running clearance</h2>
+      <p>Revision B.1 recesses the housing face around the &Oslash;20 aluminium horn. B18 calls for at least 0.6 mm axially and 1.0 mm radially.</p>
+      <p>The fit card shows the measured minimum through jaw travel and the separate dimensional worst case.</p>
+      <p class="note">Confirm the printed relief and delivered horn before releasing the print. <a href="#fit-findings">Fit findings</a></p>
+    </section>
+    <section id="open-decision-deck"><h2>Deck screw access in revision B</h2><p>The deck screws moved to x &plusmn;30.5, z 6 and &minus;7.5; the side standoffs moved to x &plusmn;23, z 13. Revision B specifies a &Oslash;6 &times; 40 mm driver path to every screw. The fit audit above shows the rerun result.</p><p class="note"><a href="#assembly-steps" data-step="6">Assembly step 7</a></p></section>
+    <section id="open-decision-dogpin"><h2>Dog set screws in revision B</h2><p>Two M3&times;10 ISO 4026 headless set screws thread into the horn through the mid-plate arc slots. The design calls for 3.0 mm engagement in the slot and 0.5 mm floor clearance. The fit audit above shows the rerun result.</p><p class="note"><a href="#assembly-steps" data-step="8">Assembly step 9</a></p></section>
+  </div></div></div>
+  <div class="fig" id="open-checks" data-fig="Bench checks" data-info="The measurements each analysis asked for, grouped by view. Each heading links back to its view."><div class="stage"><div class="items" id="checks"></div></div></div>
+  <div class="detail" id="open-method" hidden>
+    <p>Requirement status is read from the CAD and the analysis results where a number decides it, and written by hand where it needs a ruling or a measurement. Bench checks are the measurements each analysis asked for.</p>
+  </div>
+  <div class="detail" id="open-sources" hidden><ul class="paths"><li>docs/gripper/DESIGN-BASIS.md <span>requirements and measurements</span></li><li>cad/gripper/out/fitcheck.json</li><li>docs/gripper/analysis/*.md</li></ul></div>
+</section>
+
+</main>
+</div>

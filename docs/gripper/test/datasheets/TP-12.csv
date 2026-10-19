@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+finger,run,branch_load_or_unload,load_N,deflection_mm,k_secant_N_per_mm,folded,notes

@@ -1,0 +1,139 @@
+<script>
+"use strict";
+/* ---------- parts: one list of every BOM line; a row opens that part alone in 3D, where it sits, its drawing and every place it appears ---------- */
+const BX=D.bomx;
+const SHEET={housing:"draw_housing",knuckle_a:"draw_knuckle_a",knuckle_b:"draw_knuckle_b",finger_a:"draw_finger_a",finger_b:"draw_finger_a",wrist_mount:"draw_wrist_mount"};
+const SHEETFIG={housing:"drawings-housing",knuckle_a:"drawings-knuckle-a",knuckle_b:"drawings-knuckle-b",finger_a:"drawings-finger",finger_b:"drawings-finger",wrist_mount:"drawings-wrist-mount"};
+/* thumbnails come with the page (make_thumbs.py renders them from this same model); the page draws any that are missing */
+const THUMB=Object.assign({},D.thumbs||{});
+const rowName=r=>r.kind==="fastener"?r.name.replace(/\s*\((?:PTFE\/steel|face to 7\.7)\)/,"").replace(/ ISO 7045/,"").replace(/^./,c=>c.toUpperCase()):(PLABEL[r.part]||r.name);
+const rowKey=r=>r.kind==="fastener"||!r.part?r.k:r.part;
+const rowParts=r=>r.part;
+const matTxt=r=>r.kind==="fastener"?(/bronze/.test(r.name)?"sintered bronze":/insert/.test(r.name)?"brass":/PTFE/.test(r.name)?"PTFE or steel":"steel"):r.mat==="-"||!r.mat?"bought":r.mat;
+const TOLPART={T01:"wrist_mount",T01H:"wrist_mount",T02:"wrist_mount",T03:"wrist_mount",T03B:"wrist_mount",T04:"wrist_mount",T05:"finger_a",T06:"housing",T07:"knuckle_a",T08:"knuckle_a",
+  T09:"finger_a",T10:"finger_a",T10B:"finger_a",T11:"wrist_mount",T12:"housing",T12B:"housing",T13:"front_plate",T14:"servo",T15:"front_plate",T16:"housing"};
+const tolPart=id=>TOLPART[String(id).split("-")[0]]||"";
+function partUses(k){
+  const out=[];
+  if(SHEETFIG[k])out.push(`<a href="#${SHEETFIG[k]}">Drawing sheet</a>`);
+  const fp=(F3.pairs||[]).filter(p=>p.a===k||p.b===k).sort((a,b)=>a.dmin-b.dmin);
+  if(fp.length)out.push(`<a href="#fit-3d" data-fitpart="${k}">Fit check</a>: closest ${gapTxt(fp[0].dmin)} to ${esc(pn(fp[0].a===k?fp[0].b:fp[0].a))}`);
+  out.push(`<a href="#mass-rollup">Mass roll-up</a>`);
+  const tl=[...new Set(D.tol.filter(r=>tolPart(r.id)===k||(k==="finger_b"&&tolPart(r.id)==="finger_a")).map(r=>r.t))];
+  if(tl.length)out.push(`<a href="#tolerances-stacks" data-tolpart="${k}">${tl.length} tolerance stack${tl.length>1?"s":""}</a>`);
+  const steps=((D.asm&&D.asm.steps)||[]).map((s,i)=>[s,i]).filter(([s])=>(s.parts||[]).includes(k));
+  if(steps.length)out.push(`Assembly ${steps.map(([s,i])=>`<a href="#assembly-steps" data-step="${i}">step ${i+1}</a>`).join(", ")}`);
+  return out;
+}
+function partInfo(r){
+  const k=rowKey(r),P=D.parts.parts[r.part]||{},bb=P.bbox_G;
+  const sz=bb?`${fmt(bb[1]-bb[0],1)} × ${fmt(bb[3]-bb[2],1)} × ${fmt(bb[5]-bb[4],1)} mm`:"";
+  const dl=[["Quantity",String(r.qty)],["Material",esc(matTxt(r))],["Mass",r.kind==="fastener"?`${fmt(r.g,2)} g for ${r.qty}`:`${fmt(r.g,2)} g`],
+    [r.kind==="printed"?"Print settings":"Source",esc(r.proc+(r.kind==="fastener"?`, about $${fmt(r.each,2)} each`:""))],["Cost",`$${fmt(r.usd,2)}`]];
+  if(sz&&r.kind!=="fastener")dl.push(["Size, X × Y × Z",sz]);
+  const uses=r.kind==="fastener"?(()=>{const st=((D.asm&&D.asm.steps)||[]).map((s,i)=>[s,i]).filter(([s])=>(s.items||[]).some(id=>(r.items||[]).includes(id)));return st.length?[`Assembly ${st.map(([s,i])=>`<a href="#assembly-steps" data-step="${i}">step ${i+1}</a>`).join(", ")}`]:[];})():partUses(r.part);
+  return `<h2>${esc(rowName(r))}</h2><dl class="kv">${dl.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl>`+(uses.length?`<h3>Appears in</h3><ul class="uses">${uses.map(u=>`<li>${u}</li>`).join("")}</ul>`:"");
+}
+const rowItems=r=>new Set(r.items||[]);
+function partRows(){const m=$("#partsShow").value;return BX.filter(r=>m==="all"||r.kind===m||(m==="fasteners"&&r.kind==="fastener"));}
+function thumbHTML(r){const k=r.part.split(" ")[0],src=THUMB[r.kind==="fastener"?r.k:k];const c=PCOL[k]||0x888888;
+  return src?`<img class="th" src="${src}" alt="" width="56" height="56">`:`<span class="th ph" style="--sw:#${c.toString(16).padStart(6,"0")}" aria-hidden="true"></span>`;}
+function renderPartsList(){
+  const R=partRows();
+  $("#partsList").innerHTML=R.map(r=>`<li><button type="button" class="prow2" data-k="${rowKey(r)}" data-part="${r.part}" aria-current="${PARTS_CUR===rowKey(r)}">${thumbHTML(r)}<span class="pt"><b>${esc(rowName(r))}</b><small>${r.qty} × ${esc(matTxt(r))}, ${fmt(r.g,r.g<1?2:1)} g</small><small>${esc(r.proc)}</small></span></button></li>`).join("");
+  $("#partsCount").textContent=`${R.length} of ${BX.length} lines`;
+}
+function frameBox(box){const T=THREE,c=box.getCenter(new T.Vector3()),s=box.getSize(new T.Vector3()).length();V3.home(c,Math.max(70,s*2.4));}
+function partBox(r){const T=THREE,box=new T.Box3();
+  if(r.kind==="fastener"&&V3.selItems&&V3.selItems.size){V3.selItems.forEach(id=>(V3.items[id]||[]).forEach(o=>box.expandByObject(o)));}
+  if(box.isEmpty()){r.part.split(" ").forEach(k=>{const p=V3.parts[k];if(p)box.expandByObject(p.node);});}return box;}
+function drawDims(r){
+  V3.overlay.clear();V3.labels=[];$$(".lbls").forEach(l=>l.innerHTML="");
+  if($("#partDims").getAttribute("aria-pressed")!=="true"||!V3.ready)return;
+  const T=THREE,b=partBox(r);if(b.isEmpty())return;const a=b.min,z=b.max,off=Math.max(2,b.getSize(new T.Vector3()).length()*0.06);
+  const col=0x2d6fd6,mat=new T.LineBasicMaterial({color:col,depthTest:false,transparent:true});
+  const dim=(p,q,txt)=>{V3.overlay.add(new T.Line(new T.BufferGeometry().setFromPoints([p,q]),mat));addLabel(p.clone().add(q).multiplyScalar(0.5),txt,"lb-dim");};
+  dim(new T.Vector3(a.x,a.y-off,z.z),new T.Vector3(z.x,a.y-off,z.z),fmt(z.x-a.x,1)+" mm");
+  dim(new T.Vector3(z.x+off,a.y,z.z),new T.Vector3(z.x+off,z.y,z.z),fmt(z.y-a.y,1)+" mm");
+  dim(new T.Vector3(z.x+off,a.y-off,a.z),new T.Vector3(z.x+off,a.y-off,z.z),fmt(z.z-a.z,1)+" mm");
+  const bh=new T.Box3Helper(b,0x2d6fd6);bh.material.transparent=true;bh.material.opacity=0.35;V3.overlay.add(bh);V3.dirty=true;
+}
+function openPartRow(k,user){
+  const r=BX.find(x=>rowKey(x)===k)||BX.find(x=>x.part===k)||BX.find(x=>x.kind==="fastener"&&x.part.split(" ").includes(k));if(!r)return;
+  PARTS_CUR=rowKey(r);
+  $$("#partsList .prow2").forEach(b=>b.setAttribute("aria-current",String(b.dataset.k===PARTS_CUR)));
+  const btn=$(`#partsList .prow2[data-k="${PARTS_CUR}"]`);if(!btn&&$("#partsShow").value!=="all"){$("#partsShow").value="all";renderPartsList();}
+  $("#partInfo").innerHTML=partInfo(r);
+  const sk=SHEET[r.part];$("#ptabDraw").disabled=!sk;$("#ptabDraw").title=sk?"":"No drawing sheet for this part";
+  if(sk){const im=$("#partSheet");im.src=D.img[sk];im.alt=(PLABEL[r.part]||r.part)+" drawing";}else showPartTab("3d");
+  V3.sel=r.part?r.part.split(" ")[0]:null;V3.selItems=r.kind==="fastener"?rowItems(r):null;
+  if(V3.selItems&&!V3.selItems.size)V3.selItems=null;
+  if(V3.sel)selectPart(V3.sel,"parts");V3.selItems=r.kind==="fastener"?rowItems(r):null;
+  const go=()=>{if(CUR!=="parts")return;setMode("part",$("#part3d"));V3.sel=r.part?r.part.split(" ")[0]:null;V3.selItems=r.kind==="fastener"?rowItems(r):null;
+    V3.partCtx=$("#partCtx").value;V3.explode=V3.explodeTarget=V3.partCtx==="explode"?1:0;V3.theta=0;applyPose();applyVis();if(r.part){frameBox(partBox(r));drawDims(r);}
+    V3.clip=r.part&&$("#partCut").getAttribute("aria-pressed")==="true"?new THREE.Plane(new THREE.Vector3(0,0,-1),partBox(r).getCenter(new THREE.Vector3()).z):null;applyVis();
+    $("#parthud").textContent=r.part?`${rowName(r)}, ${fmt(r.g,2)} g`:`${rowName(r)} has no CAD solid`;};
+  if(V3.ready)go();else (V3.onready=V3.onready||[]).push(go);
+  if(user)setHash(r.part&&PSLUG(r.part.split(" ")[0])===PSLUG(PARTS_CUR)?PSLUG(PARTS_CUR):PARTS_CUR);
+}
+function showPartTab(w){const d=w==="draw";$("#ptab3d").setAttribute("aria-selected",String(!d));$("#ptabDraw").setAttribute("aria-selected",String(d));$("#part3dWrap").hidden=d;$("#partDrawWrap").hidden=!d;if(!d&&V3.resize)V3.resize();}
+/* thumbnails: each part drawn alone in a corner of the shared canvas and copied out in the same frame, one per frame so the page stays responsive */
+function thumbJobs(){const jobs=Object.keys(V3.parts).map(k=>[k,()=>[V3.parts[k].node],null]);
+  BX.filter(b=>b.kind==="fastener").forEach(b=>jobs.push([b.k,()=>[...rowItems(b)].slice(0,1).flatMap(id=>V3.items[id]||[]),b.part.split(" ")[0]]));return jobs;}
+function shootThumb(key,objs){
+  const T=THREE,r=V3.renderer,cv=V3.cv,S=112,pr=r.getPixelRatio();
+  if(!objs.length||cv.width<S*pr||cv.height<S*pr||V3.lost)return false;
+  const out=V3.thumbCv||(V3.thumbCv=Object.assign(document.createElement("canvas"),{width:S,height:S})),g=out.getContext("2d");
+  const vis=new Map();V3.grip.traverse(o=>vis.set(o,o.visible));const armV=V3.arm.visible,stV=V3.stock.visible,ovV=V3.overlay.visible,grV=V3.ground.visible,bg=V3.scene.background;
+  const save={th:V3.theta,ex:V3.explode,off:V3.offset,mats:Object.values(V3.parts).map(p=>[p.mat,p.mat.opacity,p.mat.emissiveIntensity])};
+  try{
+    V3.arm.visible=false;V3.stock.visible=false;V3.overlay.visible=false;V3.ground.visible=false;V3.scene.background=new T.Color(cssVar("--raised")||"#f1f4f7");
+    V3.theta=0;V3.explode=0;V3.offset=null;applyPose();
+    Object.values(V3.parts).forEach(p=>{p.mat.opacity=1;p.mat.emissiveIntensity=0;});
+    const keep=new Set();objs.forEach(o=>{let n=o;while(n){keep.add(n);n=n.parent;}o.traverse(c=>keep.add(c));});
+    V3.grip.traverse(o=>{o.visible=keep.has(o);});
+    const box=new T.Box3();objs.forEach(o=>box.expandByObject(o));const c=box.getCenter(new T.Vector3()),sz=box.getSize(new T.Vector3()).length();
+    const cam=new T.PerspectiveCamera(30,1,0.5,4000);cam.position.copy(c).add(new T.Vector3(0.62,0.42,0.66).multiplyScalar(sz*1.75));cam.lookAt(c);cam.updateProjectionMatrix();
+    r.setScissorTest(true);r.setViewport(0,0,S,S);r.setScissor(0,0,S,S);r.render(V3.scene,cam);
+    g.clearRect(0,0,S,S);g.drawImage(cv,0,cv.height-S*pr,S*pr,S*pr,0,0,S,S);THUMB[key]=out.toDataURL("image/png");
+  }finally{
+    r.setScissorTest(false);V3.resize();vis.forEach((v,o)=>{o.visible=v;});V3.arm.visible=armV;V3.stock.visible=stV;V3.overlay.visible=ovV;V3.ground.visible=grV;V3.scene.background=bg;
+    V3.theta=save.th;V3.explode=save.ex;V3.offset=save.off;save.mats.forEach(([m,o,e])=>{m.opacity=o;m.emissiveIntensity=e;});applyPose();V3.dirty=true;}
+  return true;
+}
+function makeThumbs(){
+  if(V3.thumbsBusy||V3.thumbsDone||!V3.ready||!V3.host)return;const jobs=thumbJobs().filter(j=>!THUMB[j[0]]||window.__forceThumbs);
+  if(!jobs.length||(V3.soft&&!window.__forceThumbs)){V3.thumbsDone=true;return;}V3.thumbsBusy=true;
+  const next=()=>{if(CUR!=="parts"||V3.lost){V3.thumbsBusy=false;return;}
+    const j=jobs.shift();if(!j){V3.thumbsBusy=false;V3.thumbsDone=true;renderPartsList();renderBomTable();return;}
+    const [key,get,fallback]=j;const objs=get();if(!shootThumb(key,objs)&&fallback&&THUMB[fallback])THUMB[key]=THUMB[fallback];
+    $$(`#partsList .prow2[data-k="${key}"] .th`).forEach(el=>{if(THUMB[key]){const im=new Image(56,56);im.className="th";im.alt="";im.src=THUMB[key];el.replaceWith(im);}});
+    setTimeout(()=>requestAnimationFrame(next),30);};
+  requestAnimationFrame(next);
+}
+let BOMTB=null;
+function renderBomTable(){
+  const m=$("#bomShow").value,R=BX.filter(r=>m==="all"||(m==="buy"?r.kind!=="printed":m==="fasteners"?r.kind==="fastener":r.kind===m));
+  const cols=[{k:"name",t:"Part",f:r=>`<span class="pcell">${thumbHTML(r)}<a href="#${r.kind==="fastener"||!r.part?r.k:PSLUG(r.part)}">${esc(rowName(r))}</a></span>`,v:r=>rowName(r)},
+    {k:"kind",t:"Kind",f:r=>r.kind==="fastener"?"fastener":r.kind},{k:"qty",t:"Qty",n:1},{k:"mat",t:"Material",f:r=>esc(matTxt(r)),v:r=>matTxt(r)},
+    {k:"proc",t:"How it is made",f:r=>esc(r.proc)},{k:"g",t:"Mass (g)",n:1,f:r=>fmt(r.g,2)},{k:"usd",t:"Cost ($)",n:1,f:r=>fmt(r.usd,2)}];
+  const foot=rows=>{const q=rows.reduce((a,b)=>a+b.qty,0),g=rows.reduce((a,b)=>a+Math.round(b.g*100)/100,0),u=rows.reduce((a,b)=>a+b.usd,0);
+    return `<tfoot><tr class="hl tot"><td><b>Total, ${rows.length} line${rows.length===1?"":"s"}</b></td><td></td><td class="n" id="bomQty"><b>${q}</b></td><td></td><td>${m==="all"?"on the arm, without cloth or wiring":""}</td><td class="n" id="bomG"><b>${fmt(g+1e-8,1)}</b></td><td class="n" id="bomUsd"><b>${fmt(u,2)}</b></td></tr></tfoot>`;};
+  if(!BOMTB)BOMTB=sortableTable($("#bomTable"),cols,R,{attr:r=>`data-part="${r.part}"`,foot});else BOMTB.set(R);
+  $("#bomCount").textContent=`${R.length} of ${BX.length} lines`;
+}
+function renderParts(){
+  renderPartsList();renderBomTable();
+  $("#offList").innerHTML=D.bom.off.map(o=>`<li>${esc(o.charAt(0).toUpperCase()+o.slice(1))}</li>`).join("");
+  $("#partsShow").addEventListener("change",renderPartsList);$("#bomShow").addEventListener("change",renderBomTable);
+  $("#partsList").addEventListener("click",e=>{const b=e.target.closest(".prow2");if(b){openPartRow(b.dataset.k,true);if(window.innerWidth<=900)$("#part3d").scrollIntoView({block:"start",behavior:reduceMotion()?"auto":"smooth"});}});
+  $("#partCtx").addEventListener("change",()=>PARTS_CUR&&openPartRow(PARTS_CUR,false));
+  ["#partDims","#partCut"].forEach(id=>$(id).addEventListener("click",e=>{e.target.setAttribute("aria-pressed",String(e.target.getAttribute("aria-pressed")!=="true"));if(PARTS_CUR)openPartRow(PARTS_CUR,false);}));
+  $("#partReset").addEventListener("click",()=>PARTS_CUR&&openPartRow(PARTS_CUR,false));
+  $("#ptab3d").addEventListener("click",()=>showPartTab("3d"));$("#ptabDraw").addEventListener("click",()=>{if(!$("#ptabDraw").disabled)showPartTab("draw");});
+}
+ENTER.parts=()=>{attach3D($("#part3d"));const k=PARTS_CUR||V3.sel||"housing";openPartRow(k,false);
+  const th=()=>{if(CUR==="parts")requestAnimationFrame(()=>{makeThumbs();});};if(V3.ready)th();else (V3.onready=V3.onready||[]).push(th);};
+VIEWS.parts={v:`${BX.length} lines: ${BX.filter(r=>r.kind==="printed").length} printed, ${BX.filter(r=>r.kind==="bought").length} bought and ${BX.filter(r=>r.kind==="fastener").length} fastener lines; ${fmt(D.bom.total.g,1)} g on the arm, $${fmt(D.bom.total.usd,2)}.`};
+RENDER.parts=renderParts;
+</script>

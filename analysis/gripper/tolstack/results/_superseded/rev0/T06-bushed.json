@@ -1,0 +1,125 @@
+{
+ "id": "T06-bushed",
+ "title": "Gear centre distance a (servo shaft A to idler pin B)",
+ "mode": "linear",
+ "units": "mm",
+ "requirement": "a stays inside the band that keeps backlash between jt_min and jt_max for the design jt0 (T07).",
+ "notes": "",
+ "spec": {
+  "lsl": 23.72525225805454,
+  "usl": 24.27474774194546
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T06",
+ "variant_label": "fix-9 layout: pinned + plate holes line-reamed together (+/-0.03) + bronze sleeve in each knuckle (clearance 0.02)",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T06_gear_center_distance.yaml",
+ "nominal": 24.0,
+ "mid": 24.0,
+ "wc": [
+  23.95,
+  24.05
+ ],
+ "rss_classic": [
+  23.966833752096445,
+  24.033166247903555
+ ],
+ "rss_dist": [
+  23.961270166537926,
+  24.038729833462074
+ ],
+ "rss_dist_unclipped": [
+  23.961270166537926,
+  24.038729833462074
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": true,
+ "mc": {
+  "n": 100000,
+  "mean": 24.00001931573757,
+  "std": 0.012938529131939991,
+  "min": 23.944680093999327,
+  "max": 24.04978448074267,
+  "p0135": 23.96255969007551,
+  "p50": 24.000051180495852,
+  "p99865": 24.03862345477473,
+  "out_lo_pct": 0.0,
+  "out_hi_pct": 0.0,
+  "out_pct": 0.0,
+  "out_pct_se": 3.162277660168379e-151,
+  "cpk_normal": 7.07778613283269,
+  "cpk_percentile": 7.121606557693624
+ },
+ "pass": {
+  "wc": true,
+  "rss": true,
+  "mc": true
+ },
+ "verdict": true,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "pin_float",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.01,
+   "lower": -0.01,
+   "mid": 0.0,
+   "half": 0.01,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.005773502691896258,
+   "tag": "D",
+   "source": "knuckle B reamed 3.075 bore on the m6 pin (pin pressed into the plates: no plate float)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 20.0
+  },
+  {
+   "name": "pinA_to_pinB_holes",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.03,
+   "lower": -0.03,
+   "mid": 0.0,
+   "half": 0.03,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.01,
+   "tag": "A",
+   "source": "pin A and pin B holes line-reamed together, 24 mm apart",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 59.99999999999999
+  },
+  {
+   "name": "pinA_float",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.01,
+   "lower": -0.01,
+   "mid": 0.0,
+   "half": 0.01,
+   "sensitivity": -1.0,
+   "dist": "uniform",
+   "sigma": 0.005773502691896258,
+   "tag": "A",
+   "source": "bronze sleeve in knuckle A on its pin",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 20.0
+  }
+ ],
+ "seed": 20260922
+}

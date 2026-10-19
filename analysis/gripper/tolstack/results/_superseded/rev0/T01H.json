@@ -1,0 +1,168 @@
+{
+ "id": "T01H",
+ "title": "M3 pan head clears its 6.0 counterbore",
+ "mode": "radial",
+ "units": "mm radial interference (> 0 = head rubs counterbore wall)",
+ "requirement": "Screw head (located by the horn thread) seats without touching the counterbore wall.",
+ "notes": "",
+ "spec": {
+  "usl": 0.0
+ },
+ "accept": {
+  "method": "wc"
+ },
+ "variant_of": null,
+ "variant_label": "",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T01H_screw_head_counterbore.yaml",
+ "nominal": -0.27500000000000036,
+ "mid": -0.15000000000000036,
+ "wc": [
+  -0.2750000000000003,
+  0.14999999999999958
+ ],
+ "rss_classic": [
+  -0.24013878188660004,
+  -0.004226202628867859
+ ],
+ "rss_dist": [
+  -0.2750000000000003,
+  0.09122381569393209
+ ],
+ "rss_dist_unclipped": [
+  -0.2891941090707508,
+  0.09122381569393209
+ ],
+ "rss_clipped": true,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": -0.07560724862233782,
+  "std": 0.05650807715480712,
+  "min": -0.257663396907046,
+  "max": 0.1087177027942337,
+  "p0135": -0.2206672612614443,
+  "p50": -0.07561008712969605,
+  "p99865": 0.07275416488041714,
+  "out_lo_pct": 0.0,
+  "out_hi_pct": 9.756,
+  "out_pct": 9.756,
+  "out_pct_se": 0.09383072332663751,
+  "cpk_normal": 0.44599670483216897,
+  "cpk_percentile": 0.5096246980340124
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "wc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "cbore_d_printed",
+   "kind": "linear",
+   "nominal": 6.0,
+   "bias": -0.25,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 5.75,
+   "half": 0.1,
+   "sensitivity": -0.5,
+   "dist": "normal",
+   "sigma": 0.03333333333333333,
+   "tag": "A",
+   "source": "CAD 6.0 (so101.md row 9) + the sourced small-hole bias -0.25 (CNC Kitchen, holes of similar size) [S]; review fix: was the assumed -0.15 large-hole bias (non-conservative)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 3.1872509960159365
+  },
+  {
+   "name": "head_dk",
+   "kind": "linear",
+   "nominal": 5.449999999999999,
+   "bias": 0.0,
+   "upper": 0.15000000000000036,
+   "lower": -0.14999999999999947,
+   "mid": 5.449999999999999,
+   "half": 0.1499999999999999,
+   "sensitivity": 0.5,
+   "dist": "uniform",
+   "sigma": 0.08660254037844382,
+   "tag": "A",
+   "source": "ISO 7045 M3 dk max 5.6 assumed, min 5.3",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 21.513944223107554
+  },
+  {
+   "name": "cbore_position",
+   "kind": "radial",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 0.0,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "disk",
+   "sigma": 0.05,
+   "tag": "A",
+   "source": "counterbore to A|B|C, printed",
+   "note": "",
+   "from_stack": null,
+   "gdt": {
+    "type": "position",
+    "zone": "=fdm_pos_dia"
+   },
+   "var_pct": 57.37051792828687
+  },
+  {
+   "name": "horn_thread_position",
+   "kind": "radial",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.025,
+   "lower": -0.025,
+   "mid": 0.0,
+   "half": 0.025,
+   "sensitivity": 1.0,
+   "dist": "disk",
+   "sigma": 0.0125,
+   "tag": "A",
+   "source": "W1 assumption 4",
+   "note": "",
+   "from_stack": null,
+   "gdt": {
+    "type": "position",
+    "zone": "=horn_thread_pos_dia"
+   },
+   "var_pct": 3.5856573705179295
+  },
+  {
+   "name": "head_on_shank",
+   "kind": "radial",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": 1.0,
+   "dist": "disk",
+   "sigma": 0.025,
+   "tag": "A",
+   "source": "head concentric to shank",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 14.342629482071718
+  }
+ ],
+ "seed": 20260922
+}

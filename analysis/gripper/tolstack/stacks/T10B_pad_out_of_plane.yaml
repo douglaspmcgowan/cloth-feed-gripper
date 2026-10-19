@@ -1,0 +1,25 @@
+id: T10B
+title: Fingertip out-of-plane mismatch (Z) from pin perpendicularity and knuckle wobble
+parts: ["mid plate", "front plate", "knuckle A", "knuckle B", "finger A", "finger B"]
+constants: basis.yaml
+companion_of: T10
+units: mm (tip A z - tip B z)
+requirement: Tips within +/-2.0 mm in Z (pads keep >= 90 % of the 20 mm depth overlapping).
+spec: {lsl: "=-oop_tip_max", usl: "=oop_tip_max"}
+accept: {method: mc}
+notes: >-
+  Frame G, Z = pivot-axis direction, normal to datum D. Rev A: each knuckle runs in a bronze sleeve on its own
+  pressed pin, so the terms are the gear mid-plane offset (T08), each pin's perpendicularity to D, each knuckle's
+  wobble in its sleeve, and each finger's seat on its root block.
+contributors:
+  - {name: mesh_axial_offset, from_stack: T08, tag: D, source: "T08"}
+  - {name: pinA_perpendicularity, nominal: 0, gdt: {type: perpendicularity, zone: "=pin_perp_zone", length: "=pin_span", lever: "=L_tip"}, dist: normal, tag: A, source: "perp dia 0.1 to D over 12.5 mm"}
+  - {name: pinB_perpendicularity, nominal: 0, gdt: {type: perpendicularity, zone: "=pin_perp_zone", length: "=pin_span", lever: "=L_tip"}, direction: -1, dist: normal, tag: A, source: "same"}
+  - {name: knuckleA_wobble_on_pin, nominal: 0, tol: "=pin_clear/knuckle_bore_len*L_tip", dist: uniform, tag: D, source: "sleeve clearance over sleeve length"}
+  - {name: knuckleB_wobble_on_pin, nominal: 0, tol: "=pin_clear/knuckle_bore_len*L_tip", direction: -1, dist: uniform, tag: D, source: "same"}
+  - {name: finger_A_root_float, kind: radial, project: second, radius: "=finger_hole_float", dist: disk, sensitivity: 1, tag: A, source: "Z component of the T05/T09/T10 float disk"}
+  - {name: finger_B_root_float, kind: radial, project: second, radius: "=finger_hole_float", dist: disk, sensitivity: -1, tag: A, source: "same"}
+  - {name: finger_A_root_twist, nominal: 0, tol: "=finger_root_twist*finger_twist_arm", dist: uniform, tag: A, source: "twist about Y moves the pad face 8 mm off the pegs in Z"}
+  - {name: finger_B_root_twist, nominal: 0, tol: "=finger_root_twist*finger_twist_arm", direction: -1, dist: uniform, tag: A, source: "same"}
+  - {name: finger_A_z_on_root, nominal: 0, tol: "=fdm_z_tol", dist: uniform, tag: S, source: "Z band"}
+  - {name: finger_B_z_on_root, nominal: 0, tol: "=fdm_z_tol", direction: -1, dist: uniform, tag: S, source: "Z band"}

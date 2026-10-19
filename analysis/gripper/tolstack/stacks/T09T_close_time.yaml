@@ -1,0 +1,29 @@
+id: T09T
+title: Close time to first contact after calibration (R19)
+parts: ["servo horn", "knuckle A", "knuckle B", "finger A", "finger B"]
+constants: basis.yaml
+companion_of: T09
+units: s (close command to first pad contact)
+requirement: "R19 as written: full close in <= 0.5 s. The proposed 0.75 s is checked by T09T-r19p075 (requirement still open)."
+spec: {usl: "=close_max"}
+accept: {method: mc}
+fix: >-
+  Accept R19 = 0.75 s (T09T-r19p075 passes). The requested JAW_SLOW_ZONE_DEG 6 -> 3 (T09T-slow3) was DECLINED by the
+  firmware simulation (controls.md 6.4): contact by 0.5 s in every grip, but the jaw meets the cloth at up to 41 deg/s
+  (R19's last 3 deg ask 20) and an 8 deg early contact on the stiff finger peaks at 10.48 N on the linear bound (shipped:
+  9.62 N at worst, 10 deg), past the 10 N cap; 4 and 5 deg zones also pass 10 N at 10 deg (12.03, 10.66 N).
+fix_variant: slow3
+notes: >-
+  The firmware simulation reaches contact in 503-511 ms with the calibrated contact angle (fw_sim.json). Any
+  contact later than the calibrated angle adds (delta theta) / 20 deg/s, because the last part is at the
+  near-contact speed. After calibration only the calibration repeatability and the servo repeatability remain.
+contributors:
+  - {name: t_contact_sim, limits: ["=t_contact_min", "=t_contact_max"], dist: uniform, tag: D, source: "firmware_sim fw_sim.json, k 0.88-1.63"}
+  - {name: cal_repeat, nominal: 0, tol: "=cal_rep_deg", sensitivity: "=1/near_speed_dps", dist: normal, tag: A, source: "deg -> s at 20 deg/s"}
+  - {name: servo_angle_error, nominal: 0, tol: "=servo_angle_rep_deg", sensitivity: "=1/near_speed_dps", dist: normal, tag: A, source: "deg -> s at 20 deg/s"}
+variants:
+  - {id: r19p075, role: scenario, label: "R19 proposed: close in <= 0.75 s", spec: {usl: "=close_max_proposed"}}
+  - id: slow3
+    label: "firmware: JAW_SLOW_ZONE_DEG 6 -> 3 (0.125 s less: 3 deg at 120 instead of 20 deg/s)"
+    add:
+      - {name: slow_zone_cut, nominal: "=-(slow_zone_deg - 3)*(1/near_speed_dps - 1/fast_speed_dps)", tol: 0, tag: D, source: "3 deg move from the 20 deg/s slow zone to the 120 deg/s command: 3/20 - 3/120 = 0.125 s; confirm in firmware_sim"}

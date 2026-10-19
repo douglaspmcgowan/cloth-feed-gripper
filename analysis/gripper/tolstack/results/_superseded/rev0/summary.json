@@ -1,0 +1,3386 @@
+[
+ {
+  "id": "T01",
+  "title": "Horn-to-mount bolt pattern fit (4x M3 on the 14.0 BC)",
+  "nominal": -0.13650000000000007,
+  "wc": [
+   -0.08800000000000004,
+   0.1899999999999999
+  ],
+  "rss_classic": [
+   -0.06808842637854498,
+   0.10608932774703658
+  ],
+  "rss_dist": [
+   -0.07937304324987944,
+   0.17830924602209308
+  ],
+  "spec": {
+   "usl": 0.0
+  },
+  "method": "wc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.05654991811444476,
+   "std": 0.034277602345563284,
+   "min": -0.07256238904534343,
+   "max": 0.18076446620252545,
+   "p0135": -0.04212268969117341,
+   "p50": 0.05764727788378753,
+   "p99865": 0.14825790956848728,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 94.485,
+   "out_pct": 94.485,
+   "out_pct_se": 0.07218620193638119,
+   "cpk_normal": -0.5499209809012433,
+   "cpk_percentile": -0.6362087628346342
+  }
+ },
+ {
+  "id": "T01-cad36",
+  "title": "Horn-to-mount bolt pattern fit (4x M3 on the 14.0 BC)",
+  "nominal": -0.3365,
+  "wc": [
+   -0.288,
+   -0.010000000000000064
+  ],
+  "rss_classic": [
+   -0.26808842637854496,
+   -0.09391067225296337
+  ],
+  "rss_dist": [
+   -0.2793730432498794,
+   -0.021690753977906874
+  ],
+  "spec": {
+   "usl": 0.0
+  },
+  "method": "wc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -0.14345008188555522,
+   "std": 0.034277602345563284,
+   "min": -0.27256238904534336,
+   "max": -0.019235533797474502,
+   "p0135": -0.24212268969117337,
+   "p50": -0.14235272211621242,
+   "p99865": -0.05174209043151267,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.3949836245778402,
+   "cpk_percentile": 1.5710377410408198
+  }
+ },
+ {
+  "id": "T01-drill33",
+  "title": "Horn-to-mount bolt pattern fit (4x M3 on the 14.0 BC)",
+  "nominal": -0.1864999999999999,
+  "wc": [
+   -0.24299999999999977,
+   -0.03499999999999981
+  ],
+  "rss_classic": [
+   -0.23195077995717,
+   -0.0940186062613624
+  ],
+  "rss_dist": [
+   -0.24299999999999977,
+   -0.03499999999999981
+  ],
+  "spec": {
+   "usl": 0.0
+  },
+  "method": "wc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": true,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -0.13341716246606639,
+   "std": 0.030344901691015985,
+   "min": -0.23343861396549556,
+   "max": -0.045942664532047914,
+   "p0135": -0.2174833508457477,
+   "p50": -0.13206044380747123,
+   "p99865": -0.059734957929962584,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.4655637359291707,
+   "cpk_percentile": 1.8259185155165147
+  }
+ },
+ {
+  "id": "T01H",
+  "title": "M3 pan head clears its 6.0 counterbore",
+  "nominal": -0.27500000000000036,
+  "wc": [
+   -0.2750000000000003,
+   0.14999999999999958
+  ],
+  "rss_classic": [
+   -0.24013878188660004,
+   -0.004226202628867859
+  ],
+  "rss_dist": [
+   -0.2750000000000003,
+   0.09122381569393209
+  ],
+  "spec": {
+   "usl": 0.0
+  },
+  "method": "wc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": true,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -0.07560724862233782,
+   "std": 0.05650807715480712,
+   "min": -0.257663396907046,
+   "max": 0.1087177027942337,
+   "p0135": -0.2206672612614443,
+   "p50": -0.07561008712969605,
+   "p99865": 0.07275416488041714,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 9.756,
+   "out_pct": 9.756,
+   "out_pct_se": 0.09383072332663751,
+   "cpk_normal": 0.44599670483216897,
+   "cpk_percentile": 0.5096246980340124
+  }
+ },
+ {
+  "id": "T01H-cb65",
+  "title": "M3 pan head clears its 6.0 counterbore",
+  "nominal": -0.5250000000000004,
+  "wc": [
+   -0.5250000000000004,
+   -0.10000000000000042
+  ],
+  "rss_classic": [
+   -0.49013878188660004,
+   -0.25422620262886786
+  ],
+  "rss_dist": [
+   -0.5250000000000004,
+   -0.1587761843060679
+  ],
+  "spec": {
+   "usl": 0.0
+  },
+  "method": "wc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": true,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -0.3256072486223378,
+   "std": 0.05650807715480712,
+   "min": -0.507663396907046,
+   "max": -0.1412822972057663,
+   "p0135": -0.47066726126144426,
+   "p50": -0.3256100871296961,
+   "p99865": -0.17724583511958286,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.9207121354251597,
+   "cpk_percentile": 2.194666725428582
+  }
+ },
+ {
+  "id": "T02",
+  "title": "Horn pilot recess radial fit (\u00d819.2 horn in the printed recess)",
+  "nominal": 0.8000000000000007,
+  "wc": [
+   0.40000000000000213,
+   0.9000000000000021
+  ],
+  "rss_classic": [
+   0.5000000000000021,
+   0.8000000000000022
+  ],
+  "rss_dist": [
+   0.44384471871911907,
+   0.8561552812808852
+  ],
+  "spec": {
+   "lsl": 0.02,
+   "usl": 0.3
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.6497398761178973,
+   "std": 0.06875652131192815,
+   "min": 0.4104114668530947,
+   "max": 0.8780866494065762,
+   "p0135": 0.4720958773353848,
+   "p50": 0.6494785021998002,
+   "p99865": 0.8287939394636425,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 100.0,
+   "out_pct": 100.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": -1.6955476583388611,
+   "cpk_percentile": -1.9489593731162262
+  }
+ },
+ {
+  "id": "T02-db1945",
+  "title": "Horn pilot recess radial fit (\u00d819.2 horn in the printed recess)",
+  "nominal": 0.25,
+  "wc": [
+   -0.0499999999999986,
+   0.25000000000000144
+  ],
+  "rss_classic": [
+   -0.011803398874988075,
+   0.21180339887499092
+  ],
+  "rss_dist": [
+   -0.011803398874988075,
+   0.21180339887499092
+  ],
+  "spec": {
+   "lsl": 0.02,
+   "usl": 0.3
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.09996701351266289,
+   "std": 0.037394187805029955,
+   "min": -0.057423723117327796,
+   "max": 0.29567257362645805,
+   "p0135": -0.011777859477619819,
+   "p50": 0.1000448853640421,
+   "p99865": 0.21242471450895875,
+   "out_lo_pct": 1.6660000000000001,
+   "out_hi_pct": 0.0,
+   "out_pct": 1.6660000000000001,
+   "out_pct_se": 0.040475232426756984,
+   "cpk_normal": 0.7128292586502475,
+   "cpk_percentile": 0.7158193574785127
+  }
+ },
+ {
+  "id": "T02-cad1951",
+  "title": "Horn pilot recess radial fit (\u00d819.2 horn in the printed recess)",
+  "nominal": 0.3100000000000023,
+  "wc": [
+   0.010000000000003673,
+   0.3100000000000037
+  ],
+  "rss_classic": [
+   0.0481966011250142,
+   0.27180339887499316
+  ],
+  "rss_dist": [
+   0.0481966011250142,
+   0.27180339887499316
+  ],
+  "spec": {
+   "lsl": 0.02,
+   "usl": 0.3
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.15996701351266515,
+   "std": 0.037394187805029955,
+   "min": 0.0025762768826744775,
+   "max": 0.3556725736264603,
+   "p0135": 0.04822214052238245,
+   "p50": 0.16004488536404438,
+   "p99865": 0.272424714508961,
+   "out_lo_pct": 0.005,
+   "out_hi_pct": 0.01,
+   "out_pct": 0.015000000000000001,
+   "out_pct_se": 0.003872692861562869,
+   "cpk_normal": 1.2476717348200475,
+   "cpk_percentile": 1.2453757556036142
+  }
+ },
+ {
+  "id": "T03",
+  "title": "Axial stack horn face to clamp to screw \u2014 thread engagement",
+  "nominal": 2.0,
+  "wc": [
+   1.9,
+   2.1
+  ],
+  "rss_classic": [
+   1.899999999999789,
+   2.100000000000211
+  ],
+  "rss_dist": [
+   1.9,
+   2.1
+  ],
+  "spec": {
+   "lsl": 1.5
+  },
+  "method": "wc",
+  "verdict": false,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [
+   "T03B"
+  ],
+  "rss_clipped": true,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 2.000100116980716,
+   "std": 0.03337444700994883,
+   "min": 1.855970678557601,
+   "max": 2.1357815518300702,
+   "p0135": 1.8997993681572374,
+   "p50": 2.0001212085217333,
+   "p99865": 2.1017683932474247,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 4.994840482117327,
+   "cpk_percentile": 4.98516780298946
+  }
+ },
+ {
+  "id": "T03-m3x5",
+  "title": "Axial stack horn face to clamp to screw \u2014 thread engagement",
+  "nominal": 1.5,
+  "wc": [
+   0.9349999999999998,
+   1.8650000000000002
+  ],
+  "rss_classic": [
+   1.120312674581169,
+   1.679687325418831
+  ],
+  "rss_dist": [
+   1.056161375060888,
+   1.7438386249391118
+  ],
+  "spec": {
+   "lsl": 1.5
+  },
+  "method": "wc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [
+   "T03B-m3x5"
+  ],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 1.4003044473345985,
+   "std": 0.11451414369066056,
+   "min": 0.9546199071819113,
+   "max": 1.8759804380362173,
+   "p0135": 1.0712509185035162,
+   "p50": 1.4005587765396823,
+   "p99865": 1.7347246994257715,
+   "out_lo_pct": 80.46799999999999,
+   "out_hi_pct": 0.0,
+   "out_pct": 80.46799999999999,
+   "out_pct_se": 0.1253674988184737,
+   "cpk_normal": -0.2901986585887335,
+   "cpk_percentile": -0.30197039345898813
+  }
+ },
+ {
+  "id": "T03B",
+  "title": "Axial stack \u2014 screw tip clear of the horn hole floor",
+  "nominal": -0.5,
+  "wc": [
+   -0.965,
+   0.16499999999999992
+  ],
+  "rss_classic": [
+   -0.697026934805583,
+   -0.10297306519441707
+  ],
+  "rss_dist": [
+   -0.7580851853958777,
+   -0.04191481460412244
+  ],
+  "spec": {
+   "lsl": 0.2
+  },
+  "method": "wc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -0.40020080196565416,
+   "std": 0.11917105395534379,
+   "min": -0.8601488669573893,
+   "max": 0.047855010889387165,
+   "p0135": -0.7516012601291728,
+   "p50": -0.40017943470015005,
+   "p99865": -0.0566627776946281,
+   "out_lo_pct": 100.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 100.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": -1.6788215539615954,
+   "cpk_percentile": -1.7078604436916776
+  }
+ },
+ {
+  "id": "T03B-m3x5",
+  "title": "Axial stack \u2014 screw tip clear of the horn hole floor",
+  "nominal": 0.5,
+  "wc": [
+   0.03500000000000003,
+   1.165
+  ],
+  "rss_classic": [
+   0.302973065194417,
+   0.8970269348055829
+  ],
+  "rss_dist": [
+   0.2419148146041224,
+   0.9580851853958776
+  ],
+  "spec": {
+   "lsl": 0.2
+  },
+  "method": "wc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.5997991980343458,
+   "std": 0.11917105395534379,
+   "min": 0.13985113304261065,
+   "max": 1.0478550108893872,
+   "p0135": 0.24839873987082706,
+   "p50": 0.59982056529985,
+   "p99865": 0.9433372223053719,
+   "out_lo_pct": 0.02,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.02,
+   "out_pct_se": 0.004471688719041163,
+   "cpk_normal": 1.1182782640717435,
+   "cpk_percentile": 1.1377226352169245
+  }
+ },
+ {
+  "id": "T04",
+  "title": "Gripper datum B axis vs wrist-roll axis (concentricity)",
+  "nominal": 0.0,
+  "wc": [
+   0.0,
+   0.5500000000000012
+  ],
+  "rss_classic": [
+   0.0,
+   0.455521678957216
+  ],
+  "rss_dist": [
+   0.0,
+   0.5500000000000012
+  ],
+  "spec": {
+   "usl": 0.3
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": true,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.2207223139562439,
+   "std": 0.08491295147516248,
+   "min": 0.0012081177292075978,
+   "max": 0.4834695232137339,
+   "p0135": 0.011760173123659219,
+   "p50": 0.22682398751246283,
+   "p99865": 0.4273482454544264,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 18.756,
+   "out_pct": 18.756,
+   "out_pct_se": 0.12344279906094159,
+   "cpk_normal": 0.31121159833489503,
+   "cpk_percentile": 0.36492349224259946
+  }
+ },
+ {
+  "id": "T04-db1945",
+  "title": "Gripper datum B axis vs wrist-roll axis (concentricity)",
+  "nominal": 0.0,
+  "wc": [
+   0.0,
+   0.2250000000000007
+  ],
+  "rss_classic": [
+   0.0,
+   0.14361406616345135
+  ],
+  "rss_dist": [
+   0.0,
+   0.15234060031189942
+  ],
+  "spec": {
+   "usl": 0.3
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.05588515195740205,
+   "std": 0.02791997859306487,
+   "min": 0.0001708201297938223,
+   "max": 0.18409764369582268,
+   "p0135": 0.0023478465804641973,
+   "p50": 0.053324967789890196,
+   "p99865": 0.14656885932185365,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 2.914458395552333,
+   "cpk_percentile": 2.6454819523008757
+  }
+ },
+ {
+  "id": "T04-cad1951",
+  "title": "Gripper datum B axis vs wrist-roll axis (concentricity)",
+  "nominal": 0.0,
+  "wc": [
+   0.0,
+   0.25500000000000184
+  ],
+  "rss_classic": [
+   0.0,
+   0.1703672503740099
+  ],
+  "rss_dist": [
+   0.0,
+   0.18638309063661115
+  ],
+  "spec": {
+   "usl": 0.3
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.0687213092947914,
+   "std": 0.03361959636908432,
+   "min": 0.00023662569739105513,
+   "max": 0.21293010809591867,
+   "p0135": 0.0031529058760967465,
+   "p50": 0.06612046427867063,
+   "p99865": 0.17298389279867984,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 2.293094065002778,
+   "cpk_percentile": 2.1885834935338755
+  }
+ },
+ {
+  "id": "T05",
+  "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+  "nominal": 0.3645833333333333,
+  "wc": [
+   -1.9218927009624391,
+   2.651059367629106
+  ],
+  "rss_classic": [
+   -0.2506421738426012,
+   0.9798088405092678
+  ],
+  "rss_dist": [
+   -0.34985464273692074,
+   1.0790213094035874
+  ],
+  "spec": {
+   "lsl": -0.13541666666666669,
+   "usl": 0.8645833333333333
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.365413121451235,
+   "std": 0.21223483398140527,
+   "min": -0.4177175707929597,
+   "max": 1.1527147565347524,
+   "p0135": -0.21234744781494733,
+   "p50": 0.36517519221938843,
+   "p99865": 0.9562084384538726,
+   "out_lo_pct": 0.633,
+   "out_hi_pct": 0.649,
+   "out_pct": 1.282,
+   "out_pct_se": 0.03557477701968067,
+   "cpk_normal": 0.7839903917089509,
+   "cpk_percentile": 0.844974702008238
+  }
+ },
+ {
+  "id": "T05-slotted",
+  "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+  "nominal": 0.3645833333333333,
+  "wc": [
+   -1.3850686602349196,
+   2.114235326901586
+  ],
+  "rss_classic": [
+   -0.07019157493696254,
+   0.7993582416036291
+  ],
+  "rss_dist": [
+   -0.15028349633418298,
+   0.8794501630008495
+  ],
+  "spec": {
+   "lsl": -0.13541666666666669,
+   "usl": 0.8645833333333333
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.3652707317176202,
+   "std": 0.16843655560202417,
+   "min": -0.44106603298773883,
+   "max": 1.0146491939638589,
+   "p0135": -0.13144504073999605,
+   "p50": 0.3647166096004265,
+   "p99865": 0.8553756042223003,
+   "out_lo_pct": 0.127,
+   "out_hi_pct": 0.11299999999999999,
+   "out_pct": 0.24000000000000002,
+   "out_pct_se": 0.015473331897170694,
+   "cpk_normal": 0.9881319009227247,
+   "cpk_percentile": 1.008004701540205
+  }
+ },
+ {
+  "id": "T05-spring",
+  "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+  "nominal": 0.0,
+  "wc": [
+   -1.3225000000000016,
+   1.3225000000000016
+  ],
+  "rss_classic": [
+   -0.405870977035807,
+   0.405870977035807
+  ],
+  "rss_dist": [
+   -0.4738268282291114,
+   0.4738268282291114
+  ],
+  "spec": {
+   "lsl": -0.5,
+   "usl": 0.5
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.0004399138138536025,
+   "std": 0.15796481199737078,
+   "min": -0.6935359095333616,
+   "max": 0.6810599258557157,
+   "p0135": -0.4656517013899987,
+   "p50": 0.0005928774517212536,
+   "p99865": 0.46999334814558624,
+   "out_lo_pct": 0.055999999999999994,
+   "out_hi_pct": 0.068,
+   "out_pct": 0.124,
+   "out_pct_se": 0.011128622556273532,
+   "cpk_normal": 1.05415900302839,
+   "cpk_percentile": 1.0639254830956137
+  }
+ },
+ {
+  "id": "T05-slotted-pegs",
+  "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+  "nominal": 0.3645833333333333,
+  "wc": [
+   -1.2250686602349197,
+   1.9542353269015862
+  ],
+  "rss_classic": [
+   -0.045574222809966536,
+   0.7747408894766332
+  ],
+  "rss_dist": [
+   -0.10262952211039184,
+   0.8317961887770584
+  ],
+  "spec": {
+   "lsl": -0.13541666666666669,
+   "usl": 0.8645833333333333
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.3650475978711652,
+   "std": 0.15228433447644485,
+   "min": -0.41316588675541166,
+   "max": 0.9708306432683265,
+   "p0135": -0.08808557919648446,
+   "p50": 0.3647774503895327,
+   "p99865": 0.8144096717078352,
+   "out_lo_pct": 0.051000000000000004,
+   "out_hi_pct": 0.034999999999999996,
+   "out_pct": 0.08600000000000001,
+   "out_pct_se": 0.009269629981827754,
+   "cpk_normal": 1.0934277146312679,
+   "cpk_percentile": 1.104515238334756
+  }
+ },
+ {
+  "id": "T05-spring-pegs",
+  "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+  "nominal": 0.0,
+  "wc": [
+   -1.1625000000000016,
+   1.1625000000000016
+  ],
+  "rss_classic": [
+   -0.37938272232667714,
+   0.37938272232667714
+  ],
+  "rss_dist": [
+   -0.4215588489756321,
+   0.4215588489756321
+  ],
+  "spec": {
+   "lsl": -0.5,
+   "usl": 0.5
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.00021677996739866644,
+   "std": 0.14049175181342657,
+   "min": -0.6188773327158158,
+   "max": 0.6038773441689474,
+   "p0135": -0.41265563390673,
+   "p50": 9.458613133837878e-05,
+   "p99865": 0.4133850399372955,
+   "out_lo_pct": 0.016,
+   "out_hi_pct": 0.016,
+   "out_pct": 0.032,
+   "out_pct_se": 0.00565594908039314,
+   "cpk_normal": 1.185794927653629,
+   "cpk_percentile": 1.2095740641117516
+  }
+ },
+ {
+  "id": "T05-pinned",
+  "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+  "nominal": 0.3645833333333333,
+  "wc": [
+   -0.8804869774914656,
+   1.6096536441581322
+  ],
+  "rss_classic": [
+   0.010877118516335937,
+   0.7182895481503306
+  ],
+  "rss_dist": [
+   -0.023657106157153995,
+   0.7528237728238206
+  ],
+  "spec": {
+   "lsl": -0.13541666666666669,
+   "usl": 0.8645833333333333
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.365200259784621,
+   "std": 0.12970066797708021,
+   "min": -0.1687049067414193,
+   "max": 1.0032429186785865,
+   "p0135": -0.016529109054767267,
+   "p50": 0.3653048499785234,
+   "p99865": 0.7492269999839263,
+   "out_lo_pct": 0.002,
+   "out_hi_pct": 0.005,
+   "out_pct": 0.007000000000000001,
+   "out_pct_se": 0.002645658708148124,
+   "cpk_normal": 1.2834245737705317,
+   "cpk_percentile": 1.3004680332921235
+  }
+ },
+ {
+  "id": "T05-pinned-pegs",
+  "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+  "nominal": 0.3645833333333333,
+  "wc": [
+   -0.720486977491466,
+   1.4496536441581325
+  ],
+  "rss_classic": [
+   0.041615708949451935,
+   0.6875509577172148
+  ],
+  "rss_dist": [
+   0.04220058122682441,
+   0.6869660854398423
+  ],
+  "spec": {
+   "lsl": -0.13541666666666669,
+   "usl": 0.8645833333333333
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.3649771259381661,
+   "std": 0.10790702983260146,
+   "min": -0.08929510702733327,
+   "max": 0.8700833531503022,
+   "p0135": 0.04249383887287926,
+   "p50": 0.3652045850781699,
+   "p99865": 0.6883393179339592,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.001,
+   "out_pct": 0.001,
+   "out_pct_se": 0.0009999949999874998,
+   "cpk_normal": 1.543323013555333,
+   "cpk_percentile": 1.545419595850222
+  }
+ },
+ {
+  "id": "T06",
+  "title": "Gear centre distance a (servo shaft A to idler pin B)",
+  "nominal": 24.0,
+  "wc": [
+   23.44,
+   24.56
+  ],
+  "rss_classic": [
+   23.731951496926396,
+   24.268048503073604
+  ],
+  "rss_dist": [
+   23.66007353736433,
+   24.33992646263567
+  ],
+  "spec": {
+   "lsl": 23.72525225805454,
+   "usl": 24.27474774194546
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 23.999954421746022,
+   "std": 0.11346023038882688,
+   "min": 23.544183370587145,
+   "max": 24.48051529326462,
+   "p0135": 23.6709788194282,
+   "p50": 24.000018002719116,
+   "p99865": 24.326627925996053,
+   "out_lo_pct": 0.641,
+   "out_hi_pct": 0.604,
+   "out_pct": 1.2449999999999999,
+   "out_pct_se": 0.035064223219686476,
+   "cpk_normal": 0.8070439094241273,
+   "cpk_percentile": 0.8350547856230431
+  }
+ },
+ {
+  "id": "T06-slotted",
+  "title": "Gear centre distance a (servo shaft A to idler pin B)",
+  "nominal": 24.0,
+  "wc": [
+   23.835,
+   24.165
+  ],
+  "rss_classic": [
+   23.91559028491933,
+   24.08440971508067
+  ],
+  "rss_dist": [
+   23.853798084827865,
+   24.146201915172135
+  ],
+  "spec": {
+   "lsl": 23.72525225805454,
+   "usl": 24.27474774194546
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 24.000064260842855,
+   "std": 0.04877210303821635,
+   "min": 23.84545397248369,
+   "max": 24.157287777037123,
+   "p0135": 23.869576851958456,
+   "p50": 23.999926021851067,
+   "p99865": 24.13117247422986,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.8773264768958362,
+   "cpk_percentile": 2.0939363701902245
+  }
+ },
+ {
+  "id": "T06-pinned",
+  "title": "Gear centre distance a (servo shaft A to idler pin B)",
+  "nominal": 24.0,
+  "wc": [
+   23.83,
+   24.17
+  ],
+  "rss_classic": [
+   23.88842043197789,
+   24.11157956802211
+  ],
+  "rss_dist": [
+   23.868280601276805,
+   24.131719398723195
+  ],
+  "spec": {
+   "lsl": 23.72525225805454,
+   "usl": 24.27474774194546
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 24.000066593303274,
+   "std": 0.04400129461028806,
+   "min": 23.81259958842921,
+   "max": 24.168798410502216,
+   "p0135": 23.87313093061048,
+   "p50": 24.000172153138912,
+   "p99865": 24.13071268516858,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 2.0808565677820132,
+   "cpk_percentile": 2.1033742128778
+  }
+ },
+ {
+  "id": "T06-bushed",
+  "title": "Gear centre distance a (servo shaft A to idler pin B)",
+  "nominal": 24.0,
+  "wc": [
+   23.95,
+   24.05
+  ],
+  "rss_classic": [
+   23.966833752096445,
+   24.033166247903555
+  ],
+  "rss_dist": [
+   23.961270166537926,
+   24.038729833462074
+  ],
+  "spec": {
+   "lsl": 23.72525225805454,
+   "usl": 24.27474774194546
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 24.00001931573757,
+   "std": 0.012938529131939991,
+   "min": 23.944680093999327,
+   "max": 24.04978448074267,
+   "p0135": 23.96255969007551,
+   "p50": 24.000051180495852,
+   "p99865": 24.03862345477473,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 7.07778613283269,
+   "cpk_percentile": 7.121606557693624
+  }
+ },
+ {
+  "id": "T07",
+  "title": "Gear backlash jt (circumferential)",
+  "nominal": 0.25,
+  "wc": [
+   -0.33044070923138613,
+   0.8304407092313861
+  ],
+  "rss_classic": [
+   0.03617154192639932,
+   0.4638284580736007
+  ],
+  "rss_dist": [
+   -0.01276009741888845,
+   0.5127600974188884
+  ],
+  "spec": {
+   "lsl": 0.05,
+   "usl": 0.45
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.2500897473818277,
+   "std": 0.0875748930440784,
+   "min": -0.08403735374852372,
+   "max": 0.6275118402206898,
+   "p0135": -0.005012810437230535,
+   "p50": 0.2500637254074737,
+   "p99865": 0.5033315920472227,
+   "out_lo_pct": 0.9990000000000001,
+   "out_hi_pct": 1.002,
+   "out_pct": 2.001,
+   "out_pct_se": 0.04428272789700291,
+   "cpk_normal": 0.760911587287744,
+   "cpk_percentile": 0.7843282203317854
+  }
+ },
+ {
+  "id": "T07-slotted",
+  "title": "Gear backlash jt (circumferential)",
+  "nominal": 0.25,
+  "wc": [
+   -0.04290422416108658,
+   0.5429042241610866
+  ],
+  "rss_classic": [
+   0.14311218463060416,
+   0.35688781536939584
+  ],
+  "rss_dist": [
+   0.11218210001530854,
+   0.38781789998469146
+  ],
+  "spec": {
+   "lsl": 0.05,
+   "usl": 0.45
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.25016970370543995,
+   "std": 0.04604224595225778,
+   "min": 0.029114134232801812,
+   "max": 0.43095305081006996,
+   "p0135": 0.11556824765600907,
+   "p50": 0.2502447847317898,
+   "p99865": 0.38373716665102786,
+   "out_lo_pct": 0.001,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.001,
+   "out_pct_se": 0.0009999949999874998,
+   "cpk_normal": 1.4467169745351438,
+   "cpk_percentile": 1.4868572438799394
+  }
+ },
+ {
+  "id": "T07-pinned",
+  "title": "Gear backlash jt (circumferential)",
+  "nominal": 0.25,
+  "wc": [
+   -0.046543926503750443,
+   0.5465439265037504
+  ],
+  "rss_classic": [
+   0.13064042420509614,
+   0.36935957579490386
+  ],
+  "rss_dist": [
+   0.12006555129435986,
+   0.37993444870564014
+  ],
+  "spec": {
+   "lsl": 0.05,
+   "usl": 0.45
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.25017140159777107,
+   "std": 0.04343572300541859,
+   "min": 0.07110574000300274,
+   "max": 0.4325863428857004,
+   "p0135": 0.12033892101002786,
+   "p50": 0.25006124059824786,
+   "p99865": 0.3814777743285401,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.5335196053357616,
+   "cpk_percentile": 1.5214125173327806
+  }
+ },
+ {
+  "id": "T07-bushed",
+  "title": "Gear backlash jt (circumferential)",
+  "nominal": 0.25,
+  "wc": [
+   0.040808929720138776,
+   0.4591910702798612
+  ],
+  "rss_classic": [
+   0.15926757091901586,
+   0.3407324290809841
+  ],
+  "rss_dist": [
+   0.15808777914962308,
+   0.3419122208503769
+  ],
+  "spec": {
+   "lsl": 0.05,
+   "usl": 0.45
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.25013698634443643,
+   "std": 0.030719290558225653,
+   "min": 0.11223426097072964,
+   "max": 0.3873258361161211,
+   "p0135": 0.15754772366111802,
+   "p50": 0.2500262303137802,
+   "p99865": 0.34285004206879033,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 2.1687025755227127,
+   "cpk_percentile": 2.154336973512901
+  }
+ },
+ {
+  "id": "T08",
+  "title": "Gear mesh axial alignment (gear A vs gear B mid-planes, Z)",
+  "nominal": 0.0,
+  "wc": [
+   -1.5,
+   1.5
+  ],
+  "rss_classic": [
+   -1.0222524150130436,
+   1.0222524150130436
+  ],
+  "rss_dist": [
+   -1.5,
+   1.5
+  ],
+  "spec": {
+   "lsl": -0.6,
+   "usl": 0.6
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": true,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.0027693871621184167,
+   "std": 0.5845310727428075,
+   "min": -1.2880537509247123,
+   "max": 1.2654987194544869,
+   "p0135": -1.137300596473008,
+   "p50": 0.0036286807159097677,
+   "p99865": 1.1387615558753166,
+   "out_lo_pct": 19.792,
+   "out_hi_pct": 20.072000000000003,
+   "out_pct": 39.864,
+   "out_pct_se": 0.1548309240429702,
+   "cpk_normal": 0.3405753436029122,
+   "cpk_percentile": 0.5253757796419576
+  }
+ },
+ {
+  "id": "T08-shimmed",
+  "title": "Gear mesh axial alignment (gear A vs gear B mid-planes, Z)",
+  "nominal": 0.0,
+  "wc": [
+   -0.6499999999999999,
+   0.6499999999999999
+  ],
+  "rss_classic": [
+   -0.2598076211353316,
+   0.2598076211353316
+  ],
+  "rss_dist": [
+   -0.3840572873934305,
+   0.3840572873934305
+  ],
+  "spec": {
+   "lsl": -0.6,
+   "usl": 0.6
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.00043607854924842583,
+   "std": 0.1282230775487436,
+   "min": -0.4727635323831799,
+   "max": 0.4573440568654055,
+   "p0135": -0.350731240670647,
+   "p50": 0.00046225341949384866,
+   "p99865": 0.35447742042123476,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.5586479774485973,
+   "cpk_percentile": 1.69353689464259
+  }
+ },
+ {
+  "id": "T09",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": 1.7291666666666665,
+  "wc": [
+   -2.6655158783209054,
+   6.123849211654239
+  ],
+  "rss_classic": [
+   0.2777414857929119,
+   3.180591847540421
+  ],
+  "rss_dist": [
+   0.16100854590660463,
+   3.2973247874267284
+  ],
+  "spec": {
+   "lsl": 0.7291666666666665,
+   "usl": 2.7291666666666665
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 1.7285086778053222,
+   "std": 0.570866871300275,
+   "min": -0.6489489362146157,
+   "max": 4.14817057497396,
+   "p0135": 0.03336379490454539,
+   "p50": 1.7285304310890366,
+   "p99865": 3.4398886299174,
+   "out_lo_pct": 3.975,
+   "out_hi_pct": 3.972,
+   "out_pct": 7.947,
+   "out_pct_se": 0.08553041511649526,
+   "cpk_normal": 0.5835230952431076,
+   "cpk_percentile": 0.5847029781741131
+  }
+ },
+ {
+  "id": "T09-forceclose",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": -25.148903814046005,
+  "wc": [
+   -29.543586359033576,
+   -20.754221269058434
+  ],
+  "rss_classic": [
+   -26.60032899491976,
+   -23.69747863317225
+  ],
+  "rss_dist": [
+   -26.71706193480607,
+   -23.58074569328594
+  ],
+  "spec": {
+   "usl": -12.237762237762237
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -25.14956180290735,
+   "std": 0.570866871300275,
+   "min": -27.52701941692729,
+   "max": -22.729899905738712,
+   "p0135": -26.844706685808127,
+   "p50": -25.149540049623635,
+   "p99865": -23.438181850795274,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 7.539294018898923,
+   "cpk_percentile": 7.544754698753967
+  }
+ },
+ {
+  "id": "T09-hold47",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": -9.755099811456022,
+  "wc": [
+   -14.149782356443595,
+   -5.36041726646845
+  ],
+  "rss_classic": [
+   -11.206524992329776,
+   -8.303674630582268
+  ],
+  "rss_dist": [
+   -11.323257932216084,
+   -8.18694169069596
+  ],
+  "spec": {
+   "usl": -12.237762237762237
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -9.755757800317365,
+   "std": 0.570866871300275,
+   "min": -12.133215414337304,
+   "max": -7.336095903148728,
+   "p0135": -11.45090268321814,
+   "p50": -9.75573604703365,
+   "p99865": -8.044377848205288,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 100.0,
+   "out_pct": 100.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": -1.449260509017079,
+   "cpk_percentile": -1.4503253570338703
+  }
+ },
+ {
+  "id": "T09-capcheck",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": -25.148903814046005,
+  "wc": [
+   -29.543586359033576,
+   -20.754221269058434
+  ],
+  "rss_classic": [
+   -26.60032899491976,
+   -23.69747863317225
+  ],
+  "rss_dist": [
+   -26.71706193480607,
+   -23.58074569328594
+  ],
+  "spec": {
+   "lsl": -13.21378008494573
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -25.14956180290735,
+   "std": 0.570866871300275,
+   "min": -27.52701941692729,
+   "max": -22.729899905738712,
+   "p0135": -26.844706685808127,
+   "p50": -25.149540049623635,
+   "p99865": -23.438181850795274,
+   "out_lo_pct": 100.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 100.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": -6.969390073249623,
+   "cpk_percentile": -7.0410540827674035
+  }
+ },
+ {
+  "id": "T09-hold47-rigidB",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": -9.755099811456022,
+  "wc": [
+   -14.149782356443595,
+   -5.36041726646845
+  ],
+  "rss_classic": [
+   -11.206524992329776,
+   -8.303674630582268
+  ],
+  "rss_dist": [
+   -11.323257932216084,
+   -8.18694169069596
+  ],
+  "spec": {
+   "usl": -6.118881118881118
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -9.755757800317365,
+   "std": 0.570866871300275,
+   "min": -12.133215414337304,
+   "max": -7.336095903148728,
+   "p0135": -11.45090268321814,
+   "p50": -9.75573604703365,
+   "p99865": -8.044377848205288,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 2.123598842553524,
+   "cpk_percentile": 2.1251278257482342
+  }
+ },
+ {
+  "id": "T09-forceclose-rigidB",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": -25.148903814046005,
+  "wc": [
+   -29.543586359033576,
+   -20.754221269058434
+  ],
+  "rss_classic": [
+   -26.60032899491976,
+   -23.69747863317225
+  ],
+  "rss_dist": [
+   -26.71706193480607,
+   -23.58074569328594
+  ],
+  "spec": {
+   "usl": -6.118881118881118
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -25.14956180290735,
+   "std": 0.570866871300275,
+   "min": -27.52701941692729,
+   "max": -22.729899905738712,
+   "p0135": -26.844706685808127,
+   "p50": -25.149540049623635,
+   "p99865": -23.438181850795274,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 11.112153370469525,
+   "cpk_percentile": 11.120207881536077
+  }
+ },
+ {
+  "id": "T09-capcheck-rigidB",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": -25.148903814046005,
+  "wc": [
+   -29.543586359033576,
+   -20.754221269058434
+  ],
+  "rss_classic": [
+   -26.60032899491976,
+   -23.69747863317225
+  ],
+  "rss_dist": [
+   -26.71706193480607,
+   -23.58074569328594
+  ],
+  "spec": {
+   "lsl": -6.606890042472865
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -25.14956180290735,
+   "std": 0.570866871300275,
+   "min": -27.52701941692729,
+   "max": -22.729899905738712,
+   "p0135": -26.844706685808127,
+   "p50": -25.149540049623635,
+   "p99865": -23.438181850795274,
+   "out_lo_pct": 100.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 100.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": -10.827201397644876,
+   "cpk_percentile": -10.938541150672277
+  }
+ },
+ {
+  "id": "T09-pinned",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": 1.7291666666666665,
+  "wc": [
+   -2.47270443137896,
+   5.931037764712293
+  ],
+  "rss_classic": [
+   -0.18837282511845488,
+   3.6467061584517877
+  ],
+  "rss_dist": [
+   -1.0474917764271514,
+   4.505825109760485
+  ],
+  "spec": {
+   "lsl": 0.7291666666666665,
+   "usl": 2.7291666666666665
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 1.7286259874377605,
+   "std": 0.9228589772016291,
+   "min": -1.2267421553789462,
+   "max": 4.616711943090106,
+   "p0135": -0.5684771891489655,
+   "p50": 1.7299820366537824,
+   "p99865": 3.9990309312560797,
+   "out_lo_pct": 15.881,
+   "out_hi_pct": 15.811,
+   "out_pct": 31.691999999999997,
+   "out_pct_se": 0.1471331755927262,
+   "cpk_normal": 0.36100110109337935,
+   "cpk_percentile": 0.43542881194143274
+  }
+ },
+ {
+  "id": "T09-pinned-forceclose",
+  "title": "Finger closure gap at theta = 0 (at the fingertip pinch point)",
+  "nominal": -25.148903814046005,
+  "wc": [
+   -29.35077491209163,
+   -20.94703271600038
+  ],
+  "rss_classic": [
+   -27.066443305831125,
+   -23.231364322260884
+  ],
+  "rss_dist": [
+   -27.925562257139823,
+   -22.372245370952186
+  ],
+  "spec": {
+   "usl": -12.237762237762237
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -25.149444493274913,
+   "std": 0.9228589772016291,
+   "min": -28.10481263609162,
+   "max": -22.261358537622566,
+   "p0135": -27.446547669861637,
+   "p50": -25.148088444058892,
+   "p99865": -22.879039549456593,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 4.663653051543718,
+   "cpk_percentile": 5.689752317373255
+  }
+ },
+ {
+  "id": "T10",
+  "title": "Finger pad parallelism in the closing plane (root gap at tip contact)",
+  "nominal": 0.6428571428571423,
+  "wc": [
+   -1.2782142857142853,
+   2.56392857142857
+  ],
+  "rss_classic": [
+   0.0005086833997018925,
+   1.2852056023145828
+  ],
+  "rss_dist": [
+   -0.047332282148763394,
+   1.333046567863048
+  ],
+  "spec": {
+   "lsl": -1.0,
+   "usl": 1.0
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.6433778894688695,
+   "std": 0.23015168343738396,
+   "min": -0.2965083163402885,
+   "max": 1.7057975190439636,
+   "p0135": -0.04724892413858592,
+   "p50": 0.642888953777921,
+   "p99865": 1.3326604407201148,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 6.010999999999999,
+   "out_pct": 6.010999999999999,
+   "out_pct_se": 0.07516434520435869,
+   "cpk_normal": 0.5165030082261012,
+   "cpk_percentile": 0.5177236997794411
+  }
+ },
+ {
+  "id": "T10-pegs",
+  "title": "Finger pad parallelism in the closing plane (root gap at tip contact)",
+  "nominal": 0.0,
+  "wc": [
+   -1.7153571428571417,
+   1.7153571428571417
+  ],
+  "rss_classic": [
+   -0.6150023332459473,
+   0.6150023332459473
+  ],
+  "rss_dist": [
+   -0.6316630249459442,
+   0.6316630249459442
+  ],
+  "spec": {
+   "lsl": -1.0,
+   "usl": 1.0
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.00048485123796445945,
+   "std": 0.2105567783617809,
+   "min": -0.9465213135690062,
+   "max": 0.894431543322069,
+   "p0135": -0.6379149466171106,
+   "p50": 0.0001508989779223282,
+   "p99865": 0.634547528275398,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.582336692488487,
+   "cpk_percentile": 1.5674728648815617
+  }
+ },
+ {
+  "id": "T10B",
+  "title": "Fingertip out-of-plane mismatch (Z) from pivot perpendicularity and wobble",
+  "nominal": 0.0,
+  "wc": [
+   -5.24666666666667,
+   5.24666666666667
+  ],
+  "rss_classic": [
+   -1.806431411497389,
+   1.806431411497389
+  ],
+  "rss_dist": [
+   -2.936370635384788,
+   2.936370635384788
+  ],
+  "spec": {
+   "lsl": -2.0,
+   "usl": 2.0
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.00546535309758459,
+   "std": 0.9782193493414651,
+   "min": -3.4266705445588195,
+   "max": 3.511716388690633,
+   "p0135": -2.688067595101975,
+   "p50": 0.009102917362899407,
+   "p99865": 2.6911835493857432,
+   "out_lo_pct": 1.8399999999999999,
+   "out_hi_pct": 1.862,
+   "out_pct": 3.702,
+   "out_pct_se": 0.05970721865905328,
+   "cpk_normal": 0.6796480592500824,
+   "cpk_percentile": 0.742295760562408
+  }
+ },
+ {
+  "id": "T10B-shimmed",
+  "title": "Fingertip out-of-plane mismatch (Z) from pivot perpendicularity and wobble",
+  "nominal": 0.0,
+  "wc": [
+   -4.396666666666668,
+   4.396666666666668
+  ],
+  "rss_classic": [
+   -1.511851330139458,
+   1.511851330139458
+  ],
+  "rss_dist": [
+   -2.386452126458435,
+   2.386452126458435
+  ],
+  "spec": {
+   "lsl": -2.0,
+   "usl": 2.0
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.0031320444847145997,
+   "std": 0.7939429376049802,
+   "min": -2.8118585622780894,
+   "max": 2.9147557422586177,
+   "p0135": -2.137570162866553,
+   "p50": 0.003692331613878712,
+   "p99865": 2.1590890760798476,
+   "out_lo_pct": 0.32,
+   "out_hi_pct": 0.316,
+   "out_pct": 0.636,
+   "out_pct_se": 0.025138715957661803,
+   "cpk_normal": 0.8383759339762571,
+   "cpk_percentile": 0.9261903515033544
+  }
+ },
+ {
+  "id": "T10B-bushed",
+  "title": "Fingertip out-of-plane mismatch (Z) from pivot perpendicularity and wobble",
+  "nominal": 0.0,
+  "wc": [
+   -3.7618181818181813,
+   3.7618181818181813
+  ],
+  "rss_classic": [
+   -1.2852267703559825,
+   1.2852267703559825
+  ],
+  "rss_dist": [
+   -1.9476893931691595,
+   1.9476893931691595
+  ],
+  "spec": {
+   "lsl": -2.0,
+   "usl": 2.0
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.0021200970783714006,
+   "std": 0.6475682051391689,
+   "min": -2.2766484299897156,
+   "max": 2.288816591922901,
+   "p0135": -1.718806871522648,
+   "p50": 0.0017464412559596715,
+   "p99865": 1.7436463976963863,
+   "out_lo_pct": 0.012,
+   "out_hi_pct": 0.013,
+   "out_pct": 0.025,
+   "out_pct_se": 0.0049993749609326165,
+   "cpk_normal": 1.0284012747312405,
+   "cpk_percentile": 1.14716895844436
+  }
+ },
+ {
+  "id": "T10B-bushed-pegs",
+  "title": "Fingertip out-of-plane mismatch (Z) from pivot perpendicularity and wobble",
+  "nominal": 0.0,
+  "wc": [
+   -3.015151515151515,
+   3.015151515151515
+  ],
+  "rss_classic": [
+   -1.1919298385930936,
+   1.1919298385930936
+  ],
+  "rss_dist": [
+   -1.7783589735850058,
+   1.7783589735850058
+  ],
+  "spec": {
+   "lsl": -2.0,
+   "usl": 2.0
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.0017131296411434117,
+   "std": 0.5915787321342787,
+   "min": -1.8871799957763815,
+   "max": 1.9066894650871973,
+   "p0135": -1.4972408673262878,
+   "p50": 0.0010607181532653887,
+   "p99865": 1.5099741359997507,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.125962762470912,
+   "cpk_percentile": 1.3247541298291403
+  }
+ },
+ {
+  "id": "T10B-pinned",
+  "title": "Fingertip out-of-plane mismatch (Z) from pivot perpendicularity and wobble",
+  "nominal": 0.0,
+  "wc": [
+   -4.8633333333333395,
+   4.8633333333333395
+  ],
+  "rss_classic": [
+   -1.6267725375383308,
+   1.6267725375383308
+  ],
+  "rss_dist": [
+   -2.420431177540758,
+   2.420431177540758
+  ],
+  "spec": {
+   "lsl": -2.0,
+   "usl": 2.0
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.005723714408092641,
+   "std": 0.807382480516023,
+   "min": -2.907504656575062,
+   "max": 2.9357340354351003,
+   "p0135": -2.244058708311893,
+   "p50": 0.010519692367031208,
+   "p99865": 2.2879072261307236,
+   "out_lo_pct": 0.43499999999999994,
+   "out_hi_pct": 0.46299999999999997,
+   "out_pct": 0.8979999999999998,
+   "out_pct_se": 0.02983179444820576,
+   "cpk_normal": 0.8233504911316646,
+   "cpk_percentile": 0.873580046495241
+  }
+ },
+ {
+  "id": "T10B-pinned-bushed",
+  "title": "Fingertip out-of-plane mismatch (Z) from pivot perpendicularity and wobble",
+  "nominal": 0.0,
+  "wc": [
+   -3.593636363636363,
+   3.593636363636363
+  ],
+  "rss_classic": [
+   -1.174144668462681,
+   1.174144668462681
+  ],
+  "rss_dist": [
+   -1.4335855488887492,
+   1.4335855488887492
+  ],
+  "spec": {
+   "lsl": -2.0,
+   "usl": 2.0
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.0030801494361169857,
+   "std": 0.47800851370834957,
+   "min": -1.9059204529832399,
+   "max": 1.9579847303782048,
+   "p0135": -1.4117328114188095,
+   "p50": 0.0048660336984755435,
+   "p99865": 1.4206723839998117,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.3925273945938381,
+   "cpk_percentile": 1.409185631832267
+  }
+ },
+ {
+  "id": "T10B-pinned-bushed-pegs",
+  "title": "Fingertip out-of-plane mismatch (Z) from pivot perpendicularity and wobble",
+  "nominal": 0.0,
+  "wc": [
+   -2.8469696969696967,
+   2.8469696969696967
+  ],
+  "rss_classic": [
+   -1.0712164073464463,
+   1.0712164073464463
+  ],
+  "rss_dist": [
+   -1.1934128341229295,
+   1.1934128341229295
+  ],
+  "spec": {
+   "lsl": -2.0,
+   "usl": 2.0
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.0026731819988889977,
+   "std": 0.39619769758908113,
+   "min": -1.7217219645288606,
+   "max": 1.840946006269357,
+   "p0135": -1.1835869266556591,
+   "p50": 0.004059971296522774,
+   "p99865": 1.1875256091024229,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.6804126072708367,
+   "cpk_percentile": 1.6865213192027049
+  }
+ },
+ {
+  "id": "T11",
+  "title": "Radial keep-out, r <= 12 hub band (z 0..+1) vs wrist-link lip",
+  "nominal": 0.5999999999999996,
+  "wc": [
+   -0.5000000000000011,
+   0.75
+  ],
+  "rss_classic": [
+   -0.1980711995830031,
+   0.4480711995830019
+  ],
+  "rss_dist": [
+   -0.24566411203947183,
+   0.4956641120394707
+  ],
+  "spec": {
+   "lsl": 0.1
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.17887618077641393,
+   "std": 0.12377804095897149,
+   "min": -0.34137778139714475,
+   "max": 0.6605312820718476,
+   "p0135": -0.17051531427513017,
+   "p50": 0.1772533806834653,
+   "p99865": 0.5382910735046215,
+   "out_lo_pct": 26.771,
+   "out_hi_pct": 0.0,
+   "out_pct": 26.771,
+   "out_pct_se": 0.14001476918525416,
+   "cpk_normal": 0.2124129615811227,
+   "cpk_percentile": 0.22214012302821823
+  }
+ },
+ {
+  "id": "T11-r15band",
+  "title": "Radial keep-out, r <= 12 hub band (z 0..+1) vs wrist-link lip",
+  "nominal": 0.40000000000000036,
+  "wc": [
+   -0.6000000000000008,
+   0.6500000000000004
+  ],
+  "rss_classic": [
+   -0.29807119958300277,
+   0.34807119958300226
+  ],
+  "rss_dist": [
+   -0.34566411203947145,
+   0.39566411203947105
+  ],
+  "spec": {
+   "lsl": 0.1
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.07887618077641428,
+   "std": 0.12377804095897149,
+   "min": -0.4413777813971444,
+   "max": 0.560531282071848,
+   "p0135": -0.27051531427512987,
+   "p50": 0.07725338068346566,
+   "p99865": 0.4382910735046219,
+   "out_lo_pct": 57.041,
+   "out_hi_pct": 0.0,
+   "out_pct": 57.041,
+   "out_pct_se": 0.15653831221141998,
+   "cpk_normal": -0.05688628629097897,
+   "cpk_percentile": -0.0654073228737351
+  }
+ },
+ {
+  "id": "T11-cad1951",
+  "title": "Radial keep-out, r <= 12 hub band (z 0..+1) vs wrist-link lip",
+  "nominal": 0.5999999999999996,
+  "wc": [
+   -0.20500000000000185,
+   0.75
+  ],
+  "rss_classic": [
+   0.02804908468160605,
+   0.5169509153183921
+  ],
+  "rss_dist": [
+   -0.015028251377463553,
+   0.5600282513774617
+  ],
+  "spec": {
+   "lsl": 0.1
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.33087718543786643,
+   "std": 0.09579146248121838,
+   "min": -0.10311277995641628,
+   "max": 0.696085997976831,
+   "p0135": 0.049322424775636226,
+   "p50": 0.3313660446281911,
+   "p99865": 0.6054574148131944,
+   "out_lo_pct": 0.735,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.735,
+   "out_pct_se": 0.027011067176252034,
+   "cpk_normal": 0.8034020967965839,
+   "cpk_percentile": 0.820320079387519
+  }
+ },
+ {
+  "id": "T11-hub116",
+  "title": "Radial keep-out, r <= 12 hub band (z 0..+1) vs wrist-link lip",
+  "nominal": 1.0,
+  "wc": [
+   0.1949999999999985,
+   1.1500000000000004
+  ],
+  "rss_classic": [
+   0.4280490846816064,
+   0.9169509153183925
+  ],
+  "rss_dist": [
+   0.3849717486225368,
+   0.9600282513774621
+  ],
+  "spec": {
+   "lsl": 0.1
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.7308771854378667,
+   "std": 0.09579146248121838,
+   "min": 0.2968872200435841,
+   "max": 1.0960859979768314,
+   "p0135": 0.44932242477563655,
+   "p50": 0.7313660446281913,
+   "p99865": 1.0054574148131947,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 2.1953145896189565,
+   "cpk_percentile": 2.2385404249110596
+  }
+ },
+ {
+  "id": "T11-r15band146",
+  "title": "Radial keep-out, r <= 12 hub band (z 0..+1) vs wrist-link lip",
+  "nominal": 0.8000000000000007,
+  "wc": [
+   0.09499999999999886,
+   1.0500000000000007
+  ],
+  "rss_classic": [
+   0.32804908468160676,
+   0.8169509153183928
+  ],
+  "rss_dist": [
+   0.28497174862253716,
+   0.8600282513774624
+  ],
+  "spec": {
+   "lsl": 0.1
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.6308771854378672,
+   "std": 0.09579146248121838,
+   "min": 0.19688722004358444,
+   "max": 0.9960859979768317,
+   "p0135": 0.3493224247756369,
+   "p50": 0.6313660446281917,
+   "p99865": 0.9054574148131951,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.8473364664133654,
+   "cpk_percentile": 1.8839853385301761
+  }
+ },
+ {
+  "id": "T12",
+  "title": "Axial keep-out, gripper widens above the wrist-link lip top",
+  "nominal": 0.20000000000000018,
+  "wc": [
+   -0.3500000000000003,
+   0.95
+  ],
+  "rss_classic": [
+   0.012771867673098347,
+   0.5872281323269013
+  ],
+  "rss_dist": [
+   -0.05707142142714272,
+   0.6570714214271424
+  ],
+  "spec": {
+   "lsl": 0.1
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.30027045750015385,
+   "std": 0.1190127594253065,
+   "min": -0.23253570839367665,
+   "max": 0.7966966948262237,
+   "p0135": -0.04057900247775317,
+   "p50": 0.3006564981918187,
+   "p99865": 0.6397522511482352,
+   "out_lo_pct": 4.585999999999999,
+   "out_hi_pct": 0.0,
+   "out_pct": 4.585999999999999,
+   "out_pct_se": 0.06614896854826989,
+   "cpk_normal": 0.5609215305071146,
+   "cpk_percentile": 0.5880293750154681
+  }
+ },
+ {
+  "id": "T12-widen50",
+  "title": "Axial keep-out, gripper widens above the wrist-link lip top",
+  "nominal": 0.7000000000000002,
+  "wc": [
+   0.1499999999999997,
+   1.45
+  ],
+  "rss_classic": [
+   0.5127718676730983,
+   1.0872281323269013
+  ],
+  "rss_dist": [
+   0.4429285785728573,
+   1.1570714214271423
+  ],
+  "spec": {
+   "lsl": 0.1
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.8002704575001539,
+   "std": 0.1190127594253065,
+   "min": 0.2674642916063234,
+   "max": 1.296696694826224,
+   "p0135": 0.4594209975222468,
+   "p50": 0.8006564981918187,
+   "p99865": 1.139752251148235,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.961331599742323,
+   "cpk_percentile": 2.053293097631962
+  }
+ },
+ {
+  "id": "T12B",
+  "title": "Axial gap, gripper rim to servo-5 case top",
+  "nominal": 3.8,
+  "wc": [
+   3.55,
+   4.05
+  ],
+  "rss_classic": [
+   3.65,
+   3.9499999999999997
+  ],
+  "rss_dist": [
+   3.582055052822966,
+   4.017944947177034
+  ],
+  "spec": {
+   "lsl": 0.5
+  },
+  "method": "wc",
+  "verdict": true,
+  "pass": {
+   "wc": true,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 3.7996123462734364,
+   "std": 0.07288287886797583,
+   "min": 3.557114941999922,
+   "max": 4.071804751367924,
+   "p0135": 3.6102293097406846,
+   "p50": 3.799900499963402,
+   "p99865": 3.9898167690305617,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 15.090934924284669,
+   "cpk_percentile": 17.398005970693628
+  }
+ },
+ {
+  "id": "T13",
+  "title": "Wrist-camera aim angle error (pitch of the optical axis)",
+  "nominal": 0.0,
+  "wc": [
+   -10.703904244517279,
+   10.703904244517279
+  ],
+  "rss_classic": [
+   -8.259897233122421,
+   8.259897233122421
+  ],
+  "rss_dist": [
+   -10.703904244517279,
+   10.703904244517279
+  ],
+  "spec": {
+   "lsl": -3.0,
+   "usl": 3.0
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": true,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.013601705077727896,
+   "std": 4.716393045695483,
+   "min": -9.746580496901405,
+   "max": 9.845349764463183,
+   "p0135": -8.782764270169364,
+   "p50": 0.0016263226543495324,
+   "p99865": 8.797252251005311,
+   "out_lo_pct": 31.356,
+   "out_hi_pct": 31.578,
+   "out_pct": 62.934,
+   "out_pct_se": 0.15273217224933325,
+   "cpk_normal": 0.21106512724081755,
+   "cpk_percentile": 0.34089372396806755
+  }
+ },
+ {
+  "id": "T13-tab",
+  "title": "Wrist-camera aim angle error (pitch of the optical axis)",
+  "nominal": 0.0,
+  "wc": [
+   -3.4039975213690097,
+   3.4039975213690097
+  ],
+  "rss_classic": [
+   -1.595166945711597,
+   1.595166945711597
+  ],
+  "rss_dist": [
+   -2.078593325801826,
+   2.078593325801826
+  ],
+  "spec": {
+   "lsl": -3.0,
+   "usl": 3.0
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.002491577123939615,
+   "std": 0.6909601261374893,
+   "min": -2.491811570992163,
+   "max": 2.5921226319502333,
+   "p0135": -1.922997523445952,
+   "p50": 0.002018285865510658,
+   "p99865": 1.9280723961109305,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": 1.446059528611934,
+   "cpk_percentile": 1.5565407525090162
+  }
+ },
+ {
+  "id": "T14",
+  "title": "Gripper servo body in cradle fit (20.0 width)",
+  "nominal": 0.25,
+  "wc": [
+   -0.2000000000000014,
+   0.49999999999999856
+  ],
+  "rss_classic": [
+   -0.056155281280884456,
+   0.3561552812808816
+  ],
+  "rss_dist": [
+   -0.10000000000000142,
+   0.3999999999999986
+  ],
+  "spec": {
+   "lsl": 0.0,
+   "usl": 0.3
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.15018425122326734,
+   "std": 0.0832601572030807,
+   "min": -0.1641082846958497,
+   "max": 0.4675056888097835,
+   "p0135": -0.08452113781390383,
+   "p50": 0.15047637986338813,
+   "p99865": 0.38319520239116317,
+   "out_lo_pct": 3.3579999999999997,
+   "out_hi_pct": 3.408,
+   "out_pct": 6.766,
+   "out_pct_se": 0.07942425599273814,
+   "cpk_normal": 0.5997896785586393,
+   "cpk_percentile": 0.6403317845681602
+  }
+ },
+ {
+  "id": "T14-clear35",
+  "title": "Gripper servo body in cradle fit (20.0 width)",
+  "nominal": 0.3500000000000014,
+  "wc": [
+   -0.09999999999999998,
+   0.6
+  ],
+  "rss_classic": [
+   0.043844718719116965,
+   0.456155281280883
+  ],
+  "rss_dist": [
+   0.0,
+   0.5
+  ],
+  "spec": {
+   "lsl": 0.0,
+   "usl": 0.3
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.25018425122326876,
+   "std": 0.0832601572030807,
+   "min": -0.06410828469584828,
+   "max": 0.5675056888097849,
+   "p0135": 0.015478862186097595,
+   "p50": 0.25047637986338955,
+   "p99865": 0.4831952023911646,
+   "out_lo_pct": 0.061,
+   "out_hi_pct": 28.386,
+   "out_pct": 28.447,
+   "out_pct_se": 0.1426698353191732,
+   "cpk_normal": 0.19943812442897157,
+   "cpk_percentile": 0.21280453209022138
+  }
+ },
+ {
+  "id": "T14-clamp40",
+  "title": "Gripper servo body in cradle fit (20.0 width)",
+  "nominal": 0.3999999999999986,
+  "wc": [
+   -0.05000000000000282,
+   0.6499999999999971
+  ],
+  "rss_classic": [
+   0.09384471871911412,
+   0.5061552812808802
+  ],
+  "rss_dist": [
+   0.04999999999999716,
+   0.5499999999999972
+  ],
+  "spec": {
+   "lsl": 0.0
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.300184251223266,
+   "std": 0.0832601572030807,
+   "min": -0.014108284695851125,
+   "max": 0.6175056888097821,
+   "p0135": 0.06547886218609475,
+   "p50": 0.3004763798633867,
+   "p99865": 0.5331952023911618,
+   "out_lo_pct": 0.001,
+   "out_hi_pct": 0.0,
+   "out_pct": 0.001,
+   "out_pct_se": 0.0009999949999874998,
+   "cpk_normal": 1.2017923150248344,
+   "cpk_percentile": 1.2786363993683243
+  }
+ },
+ {
+  "id": "T15",
+  "title": "Standoff length / plate parallelism, knuckle B end play at pin B",
+  "nominal": 2.0,
+  "wc": [
+   1.65,
+   2.35
+  ],
+  "rss_classic": [
+   1.846743175287403,
+   2.1532568247125967
+  ],
+  "rss_dist": [
+   1.7644942400641483,
+   2.2355057599358514
+  ],
+  "spec": {
+   "lsl": 0.05,
+   "usl": 0.5
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 2.000100185520377,
+   "std": 0.07856591441204153,
+   "min": 1.714619920902548,
+   "max": 2.2553785101722905,
+   "p0135": 1.7934386713139867,
+   "p50": 2.00043688407404,
+   "p99865": 2.202398703278968,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 100.0,
+   "out_pct": 100.0,
+   "out_pct_se": 3.162277660168379e-151,
+   "cpk_normal": -6.364508055631064,
+   "cpk_percentile": -7.429309609018549
+  }
+ },
+ {
+  "id": "T15-shimmed",
+  "title": "Standoff length / plate parallelism, knuckle B end play at pin B",
+  "nominal": 0.30000000000000004,
+  "wc": [
+   -0.04999999999999999,
+   0.6500000000000001
+  ],
+  "rss_classic": [
+   0.14674317528740313,
+   0.453256824712597
+  ],
+  "rss_dist": [
+   0.06449424006414844,
+   0.5355057599358517
+  ],
+  "spec": {
+   "lsl": 0.05,
+   "usl": 0.5
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 0.30010018552037726,
+   "std": 0.07856591441204153,
+   "min": 0.014619920902547934,
+   "max": 0.5553785101722903,
+   "p0135": 0.09343867131398681,
+   "p50": 0.30043688407404,
+   "p99865": 0.5023987032789681,
+   "out_lo_pct": 0.003,
+   "out_hi_pct": 0.167,
+   "out_pct": 0.17,
+   "out_pct_se": 0.013027317452184852,
+   "cpk_normal": 0.848119340198183,
+   "cpk_percentile": 0.9881229863723195
+  }
+ },
+ {
+  "id": "T16",
+  "title": "Axis tilt between plates, centre-distance change across the gear face",
+  "nominal": 0.0,
+  "wc": [
+   -0.40324489795918395,
+   0.40324489795918395
+  ],
+  "rss_classic": [
+   -0.18371428231368092,
+   0.18371428231368092
+  ],
+  "rss_dist": [
+   -0.29419880612611427,
+   0.29419880612611427
+  ],
+  "spec": {
+   "lsl": -0.07,
+   "usl": 0.07
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -0.0004711480293425897,
+   "std": 0.09829545725611104,
+   "min": -0.312038250334501,
+   "max": 0.3243831596362909,
+   "p0135": -0.25706213427719393,
+   "p50": -0.000511595244649116,
+   "p99865": 0.2571362042233576,
+   "out_lo_pct": 25.252000000000002,
+   "out_hi_pct": 24.917,
+   "out_pct": 50.169,
+   "out_pct_se": 0.15811297982771685,
+   "cpk_normal": 0.23578184218455597,
+   "cpk_percentile": 0.2708565923010433
+  }
+ },
+ {
+  "id": "T16-dowelled",
+  "title": "Axis tilt between plates, centre-distance change across the gear face",
+  "nominal": 0.0,
+  "wc": [
+   -0.27724489795918394,
+   0.27724489795918394
+  ],
+  "rss_classic": [
+   -0.13369718593160762,
+   0.13369718593160762
+  ],
+  "rss_dist": [
+   -0.19729403824249467,
+   0.19729403824249467
+  ],
+  "spec": {
+   "lsl": -0.07,
+   "usl": 0.07
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -8.641242409161278e-05,
+   "std": 0.06568628231034104,
+   "min": -0.2288370146847118,
+   "max": 0.2273257000596923,
+   "p0135": -0.17581199088696617,
+   "p50": -0.00022406941611995243,
+   "p99865": 0.17549448168442877,
+   "out_lo_pct": 15.369,
+   "out_hi_pct": 15.151,
+   "out_pct": 30.520000000000003,
+   "out_pct_se": 0.1456203831886182,
+   "cpk_normal": 0.3547853276558569,
+   "cpk_percentile": 0.39738456950448797
+  }
+ },
+ {
+  "id": "T16-linereamed",
+  "title": "Axis tilt between plates, centre-distance change across the gear face",
+  "nominal": 0.0,
+  "wc": [
+   -0.19324489795918398,
+   0.19324489795918398
+  ],
+  "rss_classic": [
+   -0.10640929247970245,
+   0.10640929247970245
+  ],
+  "rss_dist": [
+   -0.17992481075724645,
+   0.17992481075724645
+  ],
+  "spec": {
+   "lsl": -0.07,
+   "usl": 0.07
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -8.143532422236084e-05,
+   "std": 0.05995078366223866,
+   "min": -0.16978727741427543,
+   "max": 0.16847565728188837,
+   "p0135": -0.14385532117614752,
+   "p50": -0.00014818382810557681,
+   "p99865": 0.1436313313643428,
+   "out_lo_pct": 13.588000000000001,
+   "out_hi_pct": 13.531,
+   "out_pct": 27.119000000000003,
+   "out_pct_se": 0.1405866223721162,
+   "cpk_normal": 0.38875535566917263,
+   "cpk_percentile": 0.4860706118076896
+  }
+ },
+ {
+  "id": "T16-shaftA",
+  "title": "Axis tilt between plates, centre-distance change across the gear face",
+  "nominal": 0.0,
+  "wc": [
+   -0.13882931354359926,
+   0.13882931354359926
+  ],
+  "rss_classic": [
+   -0.08164442133507101,
+   0.08164442133507101
+  ],
+  "rss_dist": [
+   -0.1356523481306319,
+   0.1356523481306319
+  ],
+  "spec": {
+   "lsl": -0.07,
+   "usl": 0.07
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": 2.2900263331634568e-05,
+   "std": 0.045217200848382676,
+   "min": -0.11553986138204994,
+   "max": 0.11449030888904796,
+   "p0135": -0.09748609609262374,
+   "p50": 5.922973767655065e-05,
+   "p99865": 0.09766561817912309,
+   "out_lo_pct": 5.362,
+   "out_hi_pct": 5.442,
+   "out_pct": 10.804,
+   "out_pct_se": 0.09816687750967737,
+   "cpk_normal": 0.5158589977835194,
+   "cpk_percentile": 0.7165593500499251
+  }
+ },
+ {
+  "id": "T16-pinned",
+  "title": "Axis tilt between plates, centre-distance change across the gear face",
+  "nominal": 0.0,
+  "wc": [
+   -0.21200000000000058,
+   0.21200000000000058
+  ],
+  "rss_classic": [
+   -0.10533755265810991,
+   0.10533755265810991
+  ],
+  "rss_dist": [
+   -0.17520273970460692,
+   0.17520273970460692
+  ],
+  "spec": {
+   "lsl": -0.07,
+   "usl": 0.07
+  },
+  "method": "mc",
+  "verdict": false,
+  "pass": {
+   "wc": false,
+   "rss": false,
+   "mc": false
+  },
+  "own_verdict": false,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -0.00046455122345814457,
+   "std": 0.058378475389113324,
+   "min": -0.17421515391174175,
+   "max": 0.16331490913290303,
+   "p0135": -0.1420622081149064,
+   "p50": -0.0006100692967895491,
+   "p99865": 0.14205249711553133,
+   "out_lo_pct": 13.014999999999999,
+   "out_hi_pct": 12.711,
+   "out_pct": 25.726,
+   "out_pct_se": 0.13823071019133196,
+   "cpk_normal": 0.3970381681094121,
+   "cpk_percentile": 0.49055412864724496
+  }
+ },
+ {
+  "id": "T16-bushed",
+  "title": "Axis tilt between plates, centre-distance change across the gear face",
+  "nominal": 0.0,
+  "wc": [
+   -0.10316883116883117,
+   0.10316883116883117
+  ],
+  "rss_classic": [
+   -0.042210757138619895,
+   0.042210757138619895
+  ],
+  "rss_dist": [
+   -0.05247136413937275,
+   0.05247136413937275
+  ],
+  "spec": {
+   "lsl": -0.07,
+   "usl": 0.07
+  },
+  "method": "mc",
+  "verdict": true,
+  "pass": {
+   "wc": false,
+   "rss": true,
+   "mc": true
+  },
+  "own_verdict": true,
+  "blocked_by": [],
+  "rss_clipped": false,
+  "warnings": [],
+  "mc": {
+   "n": 100000,
+   "mean": -0.00012584151712370761,
+   "std": 0.017443464863068466,
+   "min": -0.0681787524938809,
+   "max": 0.07216834732699835,
+   "p0135": -0.04996688686075181,
+   "p50": -0.0001507062339866994,
+   "p99865": 0.04965744289646291,
+   "out_lo_pct": 0.0,
+   "out_hi_pct": 0.001,
+   "out_pct": 0.001,
+   "out_pct_se": 0.0009999949999874998,
+   "cpk_normal": 1.3352499829475735,
+   "cpk_percentile": 1.402140687768521
+  }
+ }
+]

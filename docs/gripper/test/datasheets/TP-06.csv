@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+checkpoint_cycles,backlash_tip_mm,theta_c0_deg,hold_N_probe,finger_k_N_per_mm,visible_damage,faults_since_last,peak_case_C,cutoff_checks_1to4_ok,notes

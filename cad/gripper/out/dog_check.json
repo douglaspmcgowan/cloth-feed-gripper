@@ -1,0 +1,50 @@
+{
+  "T_stall_6p5V_Nm": 2.876,
+  "dog_r_mm": 7.0,
+  "lever_L_mm": 5.5,
+  "engagement_mm": 3.0,
+  "horn_t_mm": 3.0,
+  "rows": {
+    "M3 set screw 45H (as drawn), 1 dog": {
+      "F_N": 410.9,
+      "bending_MPa": 1693,
+      "bending_allow_MPa": 1400.0,
+      "SF_bending": 0.83,
+      "horn_bearing_MPa": 685,
+      "horn_allow_MPa": 386.0,
+      "SF_horn": 0.56
+    },
+    "M3 set screw 45H (as drawn), 2 dogs": {
+      "F_N": 205.4,
+      "bending_MPa": 846,
+      "bending_allow_MPa": 1400.0,
+      "SF_bending": 1.65,
+      "horn_bearing_MPa": 342,
+      "horn_allow_MPa": 386.0,
+      "SF_horn": 1.13
+    },
+    "hardened Ø3 dowel (ISO 8734 class), 1 dog": {
+      "F_N": 410.9,
+      "bending_MPa": 853,
+      "bending_allow_MPa": 1700.0,
+      "SF_bending": 1.99,
+      "horn_bearing_MPa": 685,
+      "horn_allow_MPa": 386.0,
+      "SF_horn": 0.56
+    },
+    "hardened Ø3 dowel (ISO 8734 class), 2 dogs": {
+      "F_N": 205.4,
+      "bending_MPa": 426,
+      "bending_allow_MPa": 1700.0,
+      "SF_bending": 3.99,
+      "horn_bearing_MPa": 342,
+      "horn_allow_MPa": 386.0,
+      "SF_horn": 1.13
+    }
+  },
+  "one_dog_T_allow_Nm": 1.62,
+  "one_dog_T_allow_over_stall": 0.56,
+  "T_servo_LC1_Nm": 0.765,
+  "T_servo_LC2_Nm": 1.529,
+  "basis": "D: geometry from gripper_concept.derive and params.json; A: D3_M3, SIGMA_45H, SIGMA_DOWEL, P_HORN"
+}

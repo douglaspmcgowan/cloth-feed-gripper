@@ -1,0 +1,132 @@
+
+<script>
+"use strict";
+/* ---------- firmware and controls: drawn from the firmware simulation, its proving gates and the transition table in controls.md ---------- */
+const FW=D.fw;
+const FWEV={TIMEOUT:"timeout",LIMIT_HIT:"open limit hit",POSITION_REACHED:"position reached",FSR_CONTACT:"force contact",NO_CONTACT:"no contact",BUTTON_PRESS:"button press",BUTTON_LONG:"long press",
+  CMD_APPROACH:"approach command",CMD_GRIP:"grip command",CMD_HOME:"home command",CMD_CAL:"calibrate command",CMD_AT_POSE:"arm at pose",CMD_RELEASE:"release command",CMD_FEED:"feed command",CMD_FEED_DONE:"feed done",
+  TABLE_TOUCH:"table touch",FSR_TARGET:"force at target",FORCE_SAT:"squeeze cap reached",FSR_LOST:"force lost",FSR_SLIP:"force slip",FSR_OVER:"force over 8 N",FAULT_OVERCURRENT:"over-current",FAULT_STALL:"stall",FAULT_SENSOR:"sensor fault"};
+const FWSRC={"R12 min":"window minimum","R12 max":"window maximum","FEA E56+D7":"simulated finger, softer print","FEA E67+D7":"simulated finger, stiffer print"};
+const FWFAULT={fsr_open:"Sensor open",fsr_reads_50pct:"Sensor reads half",fsr_reads_150pct:"Sensor reads 1.5 times",early_contact_6deg:"Contact 6° early",early_contact_8deg:"Contact 8° early",early_contact_10deg:"Contact 10° early"};
+const cap1=t=>t.charAt(0).toUpperCase()+t.slice(1);
+function fwState(n){return n==="ACTIVE"?"Any but Boot and Fault":n==="(same)"?"same state":n.charAt(0)+n.slice(1).toLowerCase();}
+function fwEvent(e){return FWEV[e]||e.toLowerCase().replace(/_/g," ");}
+const FWCMD={ARM_AT_POSE:"host reports the arm is at the pose",A:"approach command","G <N>":"grip command with a force",H:"home command",C:"calibrate command",R:"release command",FEED:"feed command",FEED_DONE:"feed-done command"};
+function fwWhy(t){return cap1(String(t||"").replace(/"([^"]+)"/g,(m,k)=>FWCMD[k]||k).replace(/^START \(host-less demo: advance one step\)/,"start button with no host: advance one step").replace(/^START\b/,"start button").replace(/^STOP held\b/,"long press").replace(/^STOP\b/,"long press").replace(/BOOT_SETTLE_MS elapsed/,"settle time elapsed").replace(/theta_c0 inside \[CAL_C0_MIN, CAL_C0_MAX\]/,"contact angle inside its window").replace(/theta_c0/g,"contact angle")
+  .replace(/reached CAL_C0_MIN/,"reached the bottom of the window").replace(/TIMEOUT_\w+_MS/,"timed out").replace(/\s*\((?:LIMIT_REQUIRED|D8|R20|arg = FaultCode)\)/g,"").replace(/, R26\)/,")")
+  .replace(/F within F_BAND of the setpoint for F_SETTLE_MS/,"force within the band around the setpoint for 100 ms").replace(/NO_CONTACT_MARGIN/,"3°").replace(/F >= F_SLIP/,"force at least 3 N").replace(/F < F_SLIP/,"force under 3 N")
+  .replace(/F < 3 N/,"force under 3 N").replace(/F > 8 N for F_TRIP_MS/,"force over 8 N for 20 ms").replace(/report SLIP/,"report a slip").replace(/\(FB builds\)/,"(builds with position feedback)").replace(/\bFSR\b/g,"force sensor"));}
+function fwRange(k,d=2){const v=Object.values(FW.cases).map(c=>c[k]);return `${fmt(Math.min(...v),d)} to ${fmt(Math.max(...v),d)}`;}
+function fwK(key){const m=key.match(/^([\d.]+)\s+(.*)$/);return m?`${m[1]} N/mm, ${FWSRC[m[2]]||m[2]}`:key;}
+function fwGate(n){return FW.gates.gates.find(g=>g.name===n)||{};}
+const FW_HOST=(fwGate("host FSM test").summary||[]).join(" "),FW_CHK=FW_HOST.match(/(PASS|FAIL) (\d+) \/ (\d+) checks/),FW_ROWS=FW_HOST.match(/rows covered: (\d+) \/ (\d+)/),FW_BACKOFF=(FW_HOST.match(/begins (\d+) ms/)||[])[1];
+const FW_PCT=((fwGate("arduino-cli compile").summary||[]).join(" ").match(/\((\d+)%\)/g)||[]).map(x=>x.replace(/\D/g,""));
+
+function renderFirmware(){
+  const C=FW.cases,keys=Object.keys(C),G=FW.gates.gates,comp=fwGate("arduino-cli compile"),host=fwGate("host FSM test"),pyt=fwGate("simulation pytest");
+  const exitTxt=g=>g.exit===0?"passes":g.exit==null?"not run":"fails",pySum=((pyt.summary||["–"])[0]).replace(/ in .*$/,"");
+  const gateRes={"arduino-cli compile":()=>`${FW_PCT[0]||"–"} % of flash and ${FW_PCT[1]||"–"} % of memory; ${comp.sketch_warnings||0} warnings from the sketch, ${(comp.library_warnings||[]).length} from the servo library`,
+    "host FSM test":()=>FW_CHK?`${FW_CHK[2]} of ${FW_CHK[3]} checks pass${FW_ROWS?`; ${FW_ROWS[1]} of ${FW_ROWS[2]} table rows taken`:""}`:"–","simulation pytest":()=>pySum};
+  const pkMax=Math.max(...keys.map(k=>C[k].F_max_N)),t90Max=Math.max(...keys.map(k=>C[k].t_F90_s)),tcMax=Math.max(...keys.map(k=>C[k].t_contact_s));
+  kv($("#fwNums"),[["Compile for the ESP32",exitTxt(comp),FW_PCT[0]?`${FW_PCT[0]} % of flash`:"",comp.exit===0?"cell-ok":"cell-bad"],
+    ["Host test",FW_CHK?`${FW_CHK[2]} of ${FW_CHK[3]} checks`:exitTxt(host),FW_ROWS?`all ${FW_ROWS[2]} table rows taken`:"",host.exit===0?"cell-ok":"cell-bad"],
+    ["Simulation tests",pySum,"",pyt.exit===0?"cell-ok":"cell-bad"],
+    ["Peak force",fwRange("F_max_N")+" N","across the stiffness window; trip 8 N, cap 10 N",pkMax<=8?"cell-ok":"cell-bad"],
+    ["Close to contact",fwRange("t_contact_s")+" s","limit 0.5 s",tcMax<=0.5?"cell-ok":"cell-warn"],
+    ["Close to 4.5 N",fwRange("t_F90_s")+" s","hold settles at "+fwRange("t_hold_s")+" s",t90Max<=0.5?"cell-ok":"cell-bad"],
+    ["Stall back-off begins",FW_BACKOFF?FW_BACKOFF+" ms":"–","limit 200 ms; the command reaches its target at 200 ms","cell-warn"]]);
+  /* state diagram: rows on a wide stage, one column on a narrow one */
+  const box=$("#fsmChart");let mode=null;
+  const draw=()=>{const w=box.clientWidth||window.innerWidth-80,m=w<860?"tall":"wide";if(m===mode)return;mode=m;box.classList.toggle("tall",m==="tall");box.innerHTML="";box.appendChild(m==="tall"?fsmTall():fsmWide());};
+  draw();if(window.ResizeObserver)new ResizeObserver(draw).observe(box);else window.addEventListener("resize",draw);
+
+  /* transitions and gates */
+  $("#fsmTable tbody").innerHTML=FW.table.map(r=>`<tr><td><b>${esc(fwState(r[0]))}</b></td><td>${esc(fwEvent(r[1]))}</td><td>${r[2]?"yes":""}</td><td><b>${esc(fwState(r[3]))}</b></td><td class="w">${esc(fwWhy(r[4]))}</td></tr>`).join("");
+  $("#fwTimeouts").textContent="State timeouts: "+FW.timeouts.filter(t=>t[1]).map(t=>`${fwState(t[0])} ${fmt(t[1]/1000,1)} s`).join(", ")+". "+FW.timeouts.filter(t=>!t[1]).map(t=>fwState(t[0])).join(" and ")+" have none. A timeout is a fault in Home, Calibrate, Close and Release, and a normal exit elsewhere.";
+  $("#fwGates tbody").innerHTML=G.map(g=>`<tr><td><b>${esc({"arduino-cli compile":"Compile","host FSM test":"Host test of the state machine","simulation pytest":"Simulation tests"}[g.name]||g.name)}</b></td><td class="w">${esc(g.cmd)}</td><td>${g.exit===0?st("pass","exit 0"):g.exit==null?st("open","not run"):st("fail","exit "+g.exit)}</td><td class="w">${esc(gateRes[g.name]?gateRes[g.name]():(g.summary||[]).join("; "))}</td></tr>`).join("");
+  $("#fwGateNote").textContent=FW.gates.date?`Recorded on ${FW.gates.date} by analysis/gripper/firmware_sim/gates.py.`:"Results from analysis/gripper/firmware_sim/gates.py; no run date is recorded.";
+
+  /* simulated responses */
+  const DASH=[null,"6 3","2 2","8 3 2 3"],REF="var(--c5)";
+  const refs=P=>[[5,"5 N target"],[8,"8 N trip"],[10,"10 N cap"]].forEach(([y,l])=>P.hline(y,REF,"4 3",l,"start"));
+  const ser=(q,key,tmax)=>q.t.map((t,j)=>[t,q[key][j]]).filter(p=>tmax===undefined||p[0]<=tmax);
+  let P=plot($("#fwStep"),{w:760,h:400,x:{min:0,max:1,label:"Time after the grip command (s)"},y:{min:0,max:11,label:"Pad force (N)"},aria:"Step response for four finger stiffnesses"});
+  refs(P);keys.forEach((k,i)=>P.line(ser(FW.ser[k],"F",1),col(i),2,DASH[i]));
+  P.legend(keys.map((k,i)=>[fwK(k),col(i),DASH[i]]),{x:P.m.l+12,y:P.y(4)});
+  $("#fwCases").innerHTML=`<thead><tr><th>Finger stiffness</th><th class="n">Contact angle (°)</th><th class="n">Contact (s)</th><th class="n">4.5 N reached (s)</th><th class="n">Hold (s)</th><th class="n">Peak (N)</th><th class="n">Hold force (N)</th><th>Ends in</th></tr></thead><tbody>`+
+    keys.map(k=>{const c=C[k];return `<tr><td>${esc(fwK(k))}</td><td class="n">${fmt(c.c0_deg,2)}</td><td class="n ${c.t_contact_s<=0.5?"cell-ok":"cell-warn"}">${fmt(c.t_contact_s,3)}</td><td class="n ${c.t_F90_s<=0.5?"cell-ok":"cell-bad"}">${fmt(c.t_F90_s,3)}</td><td class="n">${fmt(c.t_hold_s,3)}</td><td class="n ${c.F_max_N<=8?"cell-ok":"cell-bad"}">${fmt(c.F_max_N,2)}</td><td class="n">${fmt(c.F_hold_mean_N,2)}</td><td>${st(c.final_state==="HOLD"?"pass":"fail",fwState(c.final_state).toLowerCase())}</td></tr>`;}).join("")+"</tbody>";
+  const SW=FW.sweep;
+  P=plot($("#fwPeak"),{w:640,h:300,x:{min:0.6,max:1.8,label:"Tip stiffness (N/mm)"},y:{min:0,max:11,label:"Peak force (N)"},aria:"Peak force against finger stiffness"});
+  P.vband(0.88,1.63,"var(--band)");refs(P);P.line(SW.map(r=>[r.k,r.F_max_N]),col(0),2);SW.forEach(r=>P.dot(r.k,r.F_max_N,col(0),3,`${fmt(r.k,2)} N/mm: peak ${fmt(r.F_max_N,2)} N`));P.text(0.9,0.6,"stiffness window");
+  P=plot($("#fwTime"),{w:640,h:300,x:{min:0.6,max:1.8,label:"Tip stiffness (N/mm)"},y:{min:0,max:1,label:"Time after the grip command (s)"},aria:"Close time against finger stiffness"});
+  P.vband(0.88,1.63,"var(--band)");P.hline(0.5,"var(--bad)","4 3");P.text(0.6,0.5,"0.5 s limit","var(--bad)","start",4,16);
+  [["t_contact_s","contact"],["t_F90_s","4.5 N reached"],["t_hold_s","hold"]].forEach(([key,l],i)=>{const pts=SW.filter(r=>r[key]!=null).map(r=>[r.k,r[key]]);P.line(pts,col(i),2,DASH[i]);pts.forEach(p=>P.dot(p[0],p[1],col(i),2.6,`${fmt(p[0],2)} N/mm: ${l} at ${fmt(p[1],3)} s`));});
+  P.legend([["contact",col(0)],["4.5 N reached",col(1),DASH[1]],["hold",col(2),DASH[2]]],{x:P.m.l+8,y:P.y(0.3)});
+  let q=FW.ser.noise20;
+  P=plot($("#fwNoise"),{w:640,h:300,x:{min:0,max:1.5,label:"Time after the grip command (s)"},y:{min:0,max:11,label:"Pad force (N)"},aria:"Grip with 20 mV of sensor noise"});
+  refs(P);P.line(ser(q,"F_fw"),col(1),1.2);P.line(ser(q,"F"),col(0),2);P.legend([["true force",col(0)],["sensor reading",col(1)]],{x:P.m.l+P.pw-140,y:P.y(3.2)});
+  q=FW.ser.steps;
+  P=plot($("#fwSteps"),{w:640,h:300,x:{min:0,max:3.2,label:"Time after the first grip command (s)"},y:{min:0,max:10,label:"Pad force (N)"},aria:"Setpoint steps and a cloth slip"});
+  [[0.7,"to 7 N"],[1.3,"to 3 N"],[1.9,"to 5 N"],[2.5,"slip"]].forEach(([x,l])=>P.vline(x,REF,"2 3",l));
+  P.line(ser(q,"F_fw"),col(1),1.2,"6 3");P.line(ser(q,"F"),col(0),2);P.legend([["true force",col(0)],["sensor reading",col(1),"6 3"]],{x:P.m.l+P.pw-140,y:P.m.t+P.ph-26});
+  const s7=FW.steps||{};
+  kv($("#fwStepNums"),[["Peak with 20 mV of noise",fmt(Math.max(...FW.noise.filter(n=>n.sigma_mv>=20).map(n=>n.F_max_N)),2)+" N","2.5 times the assumed noise"],["Asked for 7 N",fmt(s7.F_at_7_mean,2)+" N","the squeeze cap is reached first"],["Asked for 3 N",fmt(s7.F_at_3_mean,2)+" N"],["After a 0.5° slip",fmt(s7.F_after_slip_min,2)+" N","restored to "+fmt(s7.F_recovered_mean,2)+" N"]]);
+  P=plot($("#fwFaults"),{w:900,h:360,x:{min:0,max:1.5,label:"Time after the grip command (s)"},y:{min:0,max:11,label:"True pad force (N)"},aria:"True pad force under four sensor faults"});
+  refs(P);const FL=[["fsr_open@1.63","sensor open, 1.63 N/mm"],["fsr_reads_50pct@1.63","reads half, 1.63 N/mm"],["fsr_reads_50pct@1.0","reads half, 1.0 N/mm"],["fsr_reads_150pct@1.63","reads 1.5 times, 1.63 N/mm"]].filter(([k])=>FW.ser[k]);
+  FL.forEach(([k],i)=>P.line(ser(FW.ser[k],"F"),col(i),2,DASH[i]));P.legend(FL.map(([k,l],i)=>[l,col(i),DASH[i]]),{x:P.m.l+P.pw-230,y:P.y(2.6)});
+  $("#fwFaultTable").innerHTML=`<thead><tr><th>Fault, after a good calibration</th><th class="n">Finger stiffness (N/mm)</th><th class="n">Peak true force (N)</th><th>Ends in</th></tr></thead><tbody>`+
+    Object.entries(FW.faults).map(([k,v])=>{const [n,kk]=k.split("@");return `<tr><td>${esc(FWFAULT[n]||n.replace(/_/g," "))}</td><td class="n">${esc(kk)}</td><td class="n ${v.F_max_N>10?"cell-bad":v.F_max_N>8?"cell-warn":"cell-ok"}">${fmt(v.F_max_N,2)}</td><td>${esc(fwState(v.final_state))}</td></tr>`;}).join("")+"</tbody>";
+
+  /* method: control law */
+  const d=FW.derived,cf=FW.config;
+  $("#fwLaw").innerHTML=[["Feedforward",`Squeeze = (ramped force − 0.5 N) ÷ ${fmt(d.K_STIFF_N_PER_DEG,3)} N/°, the stiffest finger in the window (1.63 N/mm at 65 mm)`],
+    ["Proportional and integral terms, after the ramp",`${fmt(d.CTRL_KP_DEG_PER_N,3)} °/N with an integral time of ${fmt(d.CTRL_TI_S,3)} s, tuned on a 40 ms servo lag and 30 ms of delay`],
+    ["Setpoint ramp",`${fmt(cf.F_RAMP_NPS,0)} N/s; feedforward only while ramping`],
+    ["Integrator band",`from the setpoint to ${fmt(cf.CTRL_I_DB_HI_N,1)} N above it, so the hold stays at or over 5 N and the ${fmt(d.DEADBAND_DEG,2)}° servo deadband cannot hunt`],
+    ["Touch reference",`commanded angle plus ${fmt(d.CTRL_LAG_COMP_DEG,2)}° (20 °/s over 76 ms of lag)`],
+    ["Squeeze cap",`${fmt(d.CTRL_U_MAX_DEG,2)}° past the touch reference, at most ${fmt(cf.F_CAP_N,0)} N on the stiffest finger`],
+    ["Limits",`soft limit ${fmt(cf.F_SOFT_LIMIT_N,1)} N, trip ${fmt(cf.F_TRIP_N,0)} N for 20 ms, rate ${fmt(cf.CTRL_RATE_LIMIT_DPS,0)} °/s, jaw floor ${fmt(cf.JAW_MIN_DEG,1)}°`],
+    ["Close profile",`${fmt(cf.JAW_SPEED_FAST_DPS,0)} °/s to ${fmt(cf.JAW_SLOW_ZONE_DEG,0)}° above contact, then ${fmt(cf.JAW_SPEED_NEAR_DPS,0)} °/s`]]
+    .map(([a,b])=>`<tr><td>${esc(a)}</td><td class="w">${esc(b)}</td></tr>`).join("");
+}
+RENDER.firmware=renderFirmware;
+
+/* the state diagram is drawn twice; every label sits clear of every edge */
+function fsmKit(W,H){
+  const svg=s("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"State machine: twelve states and the events between them"});
+  const defs=s("defs",null,svg);[["arr","var(--ink2)"],["arrb","var(--bad)"]].forEach(([id,c])=>{const mk=s("marker",{id,viewBox:"0 0 10 10",refX:"9",refY:"5",markerWidth:"7",markerHeight:"7",orient:"auto-start-reverse"},defs);s("path",{d:"M0,0L10,5L0,10z"},mk,"fill:"+c);});
+  return {svg,
+    ln(d,o={}){s("path",{d,"marker-end":o.bad?"url(#arrb)":"url(#arr)"},svg,`fill:none;stroke:${o.bad?"var(--bad)":"var(--ink2)"};stroke-width:1.6;${o.dash?"stroke-dasharray:5 4":""}`);},
+    tx(x,y,str,anchor,o={}){const t=s("text",Object.assign({x,y,"text-anchor":anchor||"middle"},o.rot?{transform:`rotate(-90 ${x} ${y})`}:{}),svg,o.bad?"fill:var(--bad)":"");t.textContent=str;},
+    node(n,x,y,bw,bh){const f=n==="Fault";s("rect",{x:x-bw/2,y:y-bh/2,width:bw,height:bh,rx:6},svg,`fill:${f?"var(--bad-soft)":"var(--raised)"}`);
+      const t=s("text",{x,y:y+4.5,"text-anchor":"middle"},svg,`fill:${f?"var(--bad)":"var(--ink)"};font-weight:700`);t.textContent=n;}};
+}
+const FSM_FAULT=["from any state but Boot: force over 8 N,","over-current, stall, sensor fault, timeout"];
+function fsmWide(){
+  const K=fsmKit(1000,420),bw=124,bh=40,hw=bw/2,hh=bh/2,X=[90,300,510,720],Y=[76,206,336];
+  const row=(xs,y,labs)=>labs.forEach((t,i)=>{const d=Math.sign(xs[i+1]-xs[i]);K.ln(`M${xs[i]+d*hw},${y}L${xs[i+1]-d*hw},${y}`);K.tx((xs[i]+xs[i+1])/2,y-8,t);});
+  row(X,Y[0],["settled","limit hit","calibrated"]);
+  row([X[3],X[2],X[1],X[0]],Y[1],["arm at cloth","table touch","at target"]);
+  row(X,Y[2],["feed done","jaw open"]);
+  K.ln(`M${X[3]},${Y[0]+hh}L${X[3]},${Y[1]-hh}`);K.tx(X[3]-8,(Y[0]+Y[1])/2+4,"approach or button","end");
+  K.ln(`M${X[0]},${Y[1]+hh}L${X[0]},${Y[2]-hh}`);K.tx(X[0]+8,(Y[1]+Y[2])/2+4,"feed","start");
+  K.ln(`M${X[1]},${Y[1]+hh}L${X[1]},${Y[2]-hh}`,{dash:1});K.tx(X[1]+8,(Y[1]+Y[2])/2+4,"no contact","start");
+  K.ln(`M${X[2]+hw},${Y[2]}L${X[3]+hw+14},${Y[2]}L${X[3]+hw+14},${Y[0]}L${X[3]+hw},${Y[0]}`);K.tx((X[2]+hw+X[3]+hw+14)/2,Y[2]-8,"arm clear");
+  K.ln(`M${X[0]-22},${Y[1]-hh}C${X[0]-34},${Y[1]-64} ${X[0]+34},${Y[1]-64} ${X[0]+22},${Y[1]-hh}`);K.tx(X[0]+40,Y[1]-46,"slip: re-squeeze","start");
+  const fx=880;K.ln(`M${fx+40},${Y[2]-hh}L${fx+40},24L${X[1]},24L${X[1]},${Y[0]-hh}`,{bad:1});K.tx((X[1]+fx+40)/2,17,"long press or home","middle",{bad:1});
+  [["Boot",X[0],Y[0]],["Home",X[1],Y[0]],["Calibrate",X[2],Y[0]],["Idle",X[3],Y[0]],["Approach",X[3],Y[1]],["Touchdown",X[2],Y[1]],["Close",X[1],Y[1]],["Hold",X[0],Y[1]],["Feed",X[0],Y[2]],["Release",X[1],Y[2]],["Retract",X[2],Y[2]],["Fault",fx,Y[2]]].forEach(([n,x,y])=>K.node(n,x,y,bw,bh));
+  FSM_FAULT.forEach((t,i)=>K.tx(fx,Y[2]+44+i*14,t,"middle",{bad:1}));
+  return K.svg;
+}
+function fsmTall(){
+  const N=["Boot","Home","Calibrate","Idle","Approach","Touchdown","Close","Hold","Feed","Release","Retract"],L=["settled","limit hit","calibrated","approach or button","arm at cloth","table touch","at target","feed","feed done","jaw open"];
+  const bw=132,bh=36,hw=bw/2,hh=bh/2,cx=158,lx=cx-hw,y=i=>28+64*i,yF=y(10)+92,K=fsmKit(328,yF+70);
+  L.forEach((t,i)=>{K.ln(`M${cx},${y(i)+hh}L${cx},${y(i+1)-hh}`);K.tx(cx+8,(y(i)+y(i+1))/2+4,t,"start");});
+  const elbow=(a,b,x,t,o)=>{K.ln(`M${lx},${a}L${x},${a}L${x},${b}L${lx},${b}`,o);K.tx(x-6,(a+b)/2,t,"middle",Object.assign({rot:1},o));};
+  elbow(y(6),y(9),68,"no contact",{dash:1});elbow(y(10),y(3),44,"arm clear",{});elbow(yF,y(1),20,"long press or home",{bad:1});
+  K.ln(`M${cx+hw},${y(7)-8}C${cx+hw+36},${y(7)-24} ${cx+hw+36},${y(7)+24} ${cx+hw},${y(7)+8}`);K.tx(cx+hw+32,y(7)-2,"slip:","start");K.tx(cx+hw+32,y(7)+12,"re-squeeze","start");
+  N.forEach((n,i)=>K.node(n,cx,y(i),bw,bh));K.node("Fault",cx,yF,bw,bh);
+  FSM_FAULT.forEach((t,i)=>K.tx(cx,yF+40+i*14,t,"middle",{bad:1}));
+  return K.svg;
+}
+</script>

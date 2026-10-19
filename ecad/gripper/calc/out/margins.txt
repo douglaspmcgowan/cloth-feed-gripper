@@ -1,0 +1,36 @@
+id                   limit     demand       margin       unit  uncertainty  status                                      case
+-------------------  --------  -----------  -----------  ----  -----------  ------------------------------------------  ----------------------------------------------------------------------------------
+input-fuse-hold      2.6       2.487525     0.1124745    A     0            margin positive, uncertainty not evidenced  Fit A worst input
+input-fuse-trip      5.0       2.487525     2.512475     A     0            margin positive, uncertainty not evidenced  Fit A worst input
+buck-current-limit   6.3       4.076937     2.223063     A     0            margin positive, uncertainty not evidenced  Fit A fastest stall step
+buck-thermal         85.0      32.91171     52.08829     C     0            margin positive, uncertainty not evidenced  Fit A stall at 12 V
+trace-current        3.953113  3.77         0.1831129    A     0            margin positive, uncertainty not evidenced  Fit A stall
+trace-neck-current   1.651399  3.77         -2.118601    A     0            not met pending measurement                 Fit A stall
+trace-temperature    10.0      8.978146     1.021854     C     0            margin positive, uncertainty not evidenced  Fit A stall
+trace-drop           100.0     71.19011     28.80989     mV    0            margin positive, uncertainty not evidenced  Fit A stall
+shunt-power          2.0       1.215541     0.7844592    W     0.01215541   margin positive, uncertainty not evidenced  Fit A stall at 12 V
+sense-range          3.2       3.77         -0.57        A     0            not met pending measurement                 Fit A stall
+current-error        0.05      0.06384375   -0.01384375  A     0            not met pending measurement                 worst-case trip reading
+detection-time       0.2       0.120586     0.079414     s     0            margin positive, uncertainty not evidenced  five-sample window
+fsr-node-high        2450.0    2457.457     -7.456691    mV    0            not met pending measurement                 10 N firmware cap
+force-reading-error  0.1       0.002821666  0.09717833   N     0            margin positive, uncertainty not evidenced  8 N harness wire error
+adc-charge           1         0.608316     0.391684     mV    0            margin positive, uncertainty not evidenced  2450 mV ADC input
+filter-delay         0.076     0.001241461  0.07475854   s     0            margin positive, uncertainty not evidenced  open FSR worst RC
+firmware-trip-10N    3.0       2.245949     0.7540514    A     0            margin positive, uncertainty not evidenced  10 N cap Fit A
+firmware-trip-8N     3.0       1.890685     1.109315     A     0            margin positive, uncertainty not evidenced  8 N cap Fit A
+adapter-current      3.0       3.109407     -0.1094069   A     0            not met pending measurement                 Fit A worst plus 25 percent
+droop-servo-min      6.093385  4.8          1.293385     V     0            margin positive, uncertainty not evidenced  Fit A fastest stall step
+servo-voltage-max    6.8       6.658945     0.1410554    V     0            margin positive, uncertainty not evidenced  idle high setpoint
+plug-band-low        6.381966  6.35         0.03196618   V     0            margin positive, uncertainty not evidenced  Fit A hold low setpoint
+plug-band-high       6.65      6.536721     0.113279     V     0            margin positive, uncertainty not evidenced  Fit A hold high setpoint
+loop-phase           91.06384  45.0         46.06384     deg   0            margin positive, uncertainty not evidenced  Vin 13.2 V, load 0.05 A, bulk x0.8, ceramic x0.65, ESR 0.02 ohm, crossover 2907 Hz
+loop-gain            19.50081  10.0         9.50081      dB    0            margin positive, uncertainty not evidenced  Vin 13.2 V, load 4 A, bulk x0.8, ceramic x0.3, ESR 0.2 ohm, crossover 18490 Hz
+uvlo-range           12.0      9.976702     2.023298     V     0            margin positive, uncertainty not evidenced  UVLO upper tolerance
+regulator-headroom   6.577689  5.6916       0.8860886    V     0            margin positive, uncertainty not evidenced  Fit A stall minimum buck
+limit-switch-low     825.0     0.2256357    824.7744     mV    0            margin positive, uncertainty not evidenced  closed limit switch
+regen-energy-2mJ     6.8       6.777603     0.02239736   V     0            margin positive, uncertainty not evidenced  2 mJ returned energy
+regen-energy-5mJ     6.8       7.061637     -0.2616369   V     0            not met pending measurement                 5 mJ returned energy
+regen-energy-20mJ    6.8       8.337914     -1.537914    V     0            not met pending measurement                 20 mJ returned energy
+regen-energy-50mJ    6.8       10.43211     -3.632113    V     0            not met pending measurement                 50 mJ returned energy
+regen-energy-174mJ   6.8       16.47127     -9.671271    V     0            not met pending measurement                 174 mJ returned energy
+counts: {'met': 0, 'at risk': 0, 'not met': 0, 'not evidenced': 1, 'not met pending measurement': 9, 'margin positive, uncertainty not evidenced': 24}

@@ -1,0 +1,63 @@
+{
+  "stages": [
+    "fab"
+  ],
+  "failed": null,
+  "steps": [
+    {
+      "step": "drc",
+      "exit": 0,
+      "last_line": "Saved board"
+    },
+    {
+      "step": "board_stats",
+      "exit": 0,
+      "last_line": "  SERVO_V  {'0.25': 30.31, '0.60': 9.47, '2.00': 28.12} vias 0"
+    },
+    {
+      "step": "gerbers",
+      "exit": 0,
+      "last_line": "Plotted to 'ecad\\gripper\\kicad\\fab\\gerber\\gripper-Edge_Cuts.gm1'."
+    },
+    {
+      "step": "drill",
+      "exit": 0,
+      "last_line": "Done."
+    },
+    {
+      "step": "position",
+      "exit": 0,
+      "last_line": "Wrote position data to 'ecad\\gripper\\kicad\\fab\\gripper-pos.csv'."
+    },
+    {
+      "step": "board_pdf",
+      "exit": 0,
+      "last_line": "Done."
+    },
+    {
+      "step": "step",
+      "exit": 0,
+      "last_line": "Export time 9.804 s"
+    },
+    {
+      "step": "render_top",
+      "exit": 0,
+      "last_line": "Successfully created 3D render image"
+    },
+    {
+      "step": "render_bottom",
+      "exit": 0,
+      "last_line": "Successfully created 3D render image"
+    },
+    {
+      "step": "bom",
+      "exit": 0,
+      "last_line": "total for one gripper $85.83"
+    },
+    {
+      "step": "fab_check",
+      "exit": 0,
+      "last_line": "fabrication outputs: COMPLETE"
+    }
+  ]
+}

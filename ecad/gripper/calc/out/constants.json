@@ -1,0 +1,2196 @@
+{
+ "adapter_current_a": {
+  "note": "margins.py adapter-current row limit default; assumed, not sourced: adapter current rating",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 3.0
+ },
+ "adapter_min_v": {
+  "note": "margins.py uvlo-range row limit; assumed, not sourced: lowest adapter voltage the UVLO start must stay under",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 12.0
+ },
+ "ams_dropout_max": {
+  "note": "usual published maximum at 800 mA; not fetched this session",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 1.3
+ },
+ "ams_dropout_typ": {
+  "note": "datasheet fetch failed (SSL handshake error on the vendor server). Value is the usual published typical at 800 mA; a 1.0 V typical is used at 100 mA. Verify on the vendor PDF",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 1.1
+ },
+ "ams_vout_tol": {
+  "note": "3.3 V fixed version output tolerance, +/-1 % assumed (not fetched)",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.01
+ },
+ "awg20_ohm_m": {
+  "note": "AWG 20",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm/m",
+  "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
+  "value": 0.03331
+ },
+ "awg22_ohm_m": {
+  "note": "AWG 22",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm/m",
+  "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
+  "value": 0.05296
+ },
+ "awg24_ohm_m": {
+  "note": "AWG 24",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm/m",
+  "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
+  "value": 0.08422
+ },
+ "awg26_ohm_m": {
+  "note": "AWG 26",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm/m",
+  "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
+  "value": 0.1339
+ },
+ "awg28_ohm_m": {
+  "note": "AWG 28",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm/m",
+  "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
+  "value": 0.2129
+ },
+ "buck_bulk_esr_max_ohm": {
+  "note": "assumed, not sourced: bulk-capacitor ESR sweep corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.2
+ },
+ "buck_bulk_esr_min_ohm": {
+  "note": "assumed, not sourced: bulk-capacitor ESR sweep corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.02
+ },
+ "buck_bulk_scale_max": {
+  "note": "c12_tol upper capacitance factor",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 1.2
+ },
+ "buck_bulk_scale_min": {
+  "note": "c12_tol lower capacitance factor",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.8
+ },
+ "buck_candidate_c_f": {
+  "note": "assumed, not sourced: compensation capacitor candidates",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "F",
+  "url": "",
+  "value": [
+   1e-08,
+   2.2e-08,
+   4.7e-08,
+   1e-07
+  ]
+ },
+ "buck_candidate_pole_f": {
+  "note": "assumed, not sourced: compensation pole capacitor candidates",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "F",
+  "url": "",
+  "value": [
+   4.7e-11,
+   1e-10,
+   2.2e-10,
+   4.7e-10,
+   1e-09
+  ]
+ },
+ "buck_candidate_r_ohm": {
+  "note": "assumed, not sourced: compensation resistor candidates",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": [
+   4700.0,
+   8200.0,
+   12000.0,
+   18000.0,
+   27400.0,
+   39000.0
+  ]
+ },
+ "buck_ceramic_factor_mid": {
+  "note": "assumed, not sourced: ceramic bias sweep midpoint",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.65
+ },
+ "buck_ceramic_factor_min": {
+  "note": "assumed, not sourced: ceramic bias sweep corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.3
+ },
+ "buck_feedback_resistor_tolerance": {
+  "note": "design.py resistor value text specifies 0.1 percent",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.001
+ },
+ "buck_gain_margin_min_db": {
+  "note": "assumed, not sourced: loop stability acceptance limit",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "dB",
+  "url": "",
+  "value": 10.0
+ },
+ "buck_gain_score_cap_db": {
+  "note": "assumed, not sourced: compensation ranking cap",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "dB",
+  "url": "",
+  "value": 30
+ },
+ "buck_input_max_v": {
+  "note": "assumed, not sourced: adapter high-voltage corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 13.2
+ },
+ "buck_input_min_v": {
+  "note": "assumed, not sourced: adapter low-voltage corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 10.8
+ },
+ "buck_junction_rise_limit_c": {
+  "note": "margins.py buck-thermal row limit; assumed, not sourced: allowed U1 junction rise",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "C",
+  "url": "",
+  "value": 85.0
+ },
+ "buck_load_half_a": {
+  "note": "assumed, not sourced: loop sweep load corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.5
+ },
+ "buck_load_light_a": {
+  "note": "assumed, not sourced: loop sweep load corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.15
+ },
+ "buck_load_max_a": {
+  "note": "assumed, not sourced: loop sweep load corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 4.0
+ },
+ "buck_load_min_a": {
+  "note": "assumed, not sourced: loop sweep load corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.05
+ },
+ "buck_load_resistance_floor_ohm": {
+  "note": "assumed, not sourced: numerical load-resistance floor",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.001
+ },
+ "buck_load_two_a": {
+  "note": "assumed, not sourced: loop sweep load corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 2.0
+ },
+ "buck_nominal_input_v": {
+  "note": "assumed, not sourced: nominal adapter voltage",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 12.0
+ },
+ "buck_nominal_load_a": {
+  "note": "assumed, not sourced: nominal loop-analysis load",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 1.0
+ },
+ "buck_phase_margin_min_deg": {
+  "note": "assumed, not sourced: loop stability acceptance limit",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "deg",
+  "url": "",
+  "value": 45.0
+ },
+ "buck_phase_score_cap_deg": {
+  "note": "assumed, not sourced: compensation ranking cap",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "degree",
+  "url": "",
+  "value": 90
+ },
+ "buck_servo_lead_resistance_ohm": {
+  "note": "assumed, not sourced: servo lead and plug resistance",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.03
+ },
+ "c12_esr": {
+  "note": "1000 uF 16 V low-ESR aluminium electrolytic, ESR near 100 kHz about 20 to 40 mohm; no datasheet fetched",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.03
+ },
+ "c12_tol": {
+  "note": "electrolytic capacitance tolerance +/-20 %",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.2
+ },
+ "c_wrist_esr": {
+  "note": "470 uF general-purpose electrolytic at the forearm end, assumed",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.1
+ },
+ "cable_l_per_m": {
+  "note": "loop inductance of a twisted power pair, typical 0.5 to 1 uH/m",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "H/m",
+  "url": "",
+  "value": 8e-07
+ },
+ "cer_derate_6v6": {
+  "note": "47 uF 16 V 1210 X5R retains roughly 50 to 70 % at 6.6 V bias; swept 30 to 100 % in buck_design.py",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.6
+ },
+ "cer_esr": {
+  "note": "47 uF 1210 X5R/X7R ceramic ESR, order of a few mohm",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.003
+ },
+ "ctrl_lag_budget_s": {
+  "note": "fsr_frontend.py: firmware config.h CTRL_LAG_COMP_S; assumed, not sourced (repo file, no vendor document)",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 0.076
+ },
+ "cu_rho": {
+  "note": "annealed copper resistivity at 20 C, standard value",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm*m",
+  "url": "",
+  "value": 1.724e-08
+ },
+ "cu_tc": {
+  "note": "copper temperature coefficient of resistance",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1/K",
+  "url": "",
+  "value": 0.00393
+ },
+ "d2_vf": {
+  "note": "B540C forward drop at about 3 to 5 A, 25 C; datasheet fetch returned 404. Verify",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 0.5
+ },
+ "d7_vf_100ma": {
+  "note": "BAT60A-class Schottky forward drop at 100 mA, about 0.3 V; not fetched",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 0.3
+ },
+ "d7_vf_slope": {
+  "note": "forward drop change per decade of current",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V/decade",
+  "url": "",
+  "value": 0.05
+ },
+ "devkit_diode_drop": {
+  "note": "DevKitC V4 puts a Schottky between the USB 5 V and its 5V rail; drop at 0.1 A assumed",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 0.3
+ },
+ "devkit_overhead_a": {
+  "note": "DevKitC V4 board overhead (USB bridge, LED, AMS1117 ground current) on the 5 V rail",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.015
+ },
+ "droop_5v_load_a": {
+  "note": "droop_sim.py: constant 5 V and ESP32 load",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.1
+ },
+ "droop_comp_zero_v": {
+  "note": "droop_sim.py: COMP voltage at zero peak current",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 0.6
+ },
+ "droop_default_rise_s": {
+  "note": "droop_sim.py: default servo-current rise time",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 0.001
+ },
+ "droop_default_vin_v": {
+  "note": "droop_sim.py: nominal input voltage",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 12.0
+ },
+ "droop_diode_v": {
+  "note": "droop_sim.py: freewheel diode drop",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 0.5
+ },
+ "droop_end_time_s": {
+  "note": "droop_sim.py: simulation end time",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 0.015
+ },
+ "droop_fast_rise_s": {
+  "note": "droop_sim.py: fast load-step scenario",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 1e-05
+ },
+ "droop_fsw_hz": {
+  "note": "droop_sim.py: implemented switching frequency",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "Hz",
+  "url": "",
+  "value": 399800.0
+ },
+ "droop_low_vin_v": {
+  "note": "droop_sim.py: low-input-voltage scenario",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 10.8
+ },
+ "droop_no_wrist_cap_f": {
+  "note": "droop_sim.py: numerical stand-in when wrist capacitance is absent",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "F",
+  "url": "",
+  "value": 1e-06
+ },
+ "droop_recovery_band_v": {
+  "note": "droop_sim.py: recovery-time voltage band",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 0.15
+ },
+ "droop_servo_idle_a": {
+  "note": "droop_sim.py: moving no-load servo current",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.15
+ },
+ "droop_step_time_s": {
+  "note": "droop_sim.py: load-step start time",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 0.003
+ },
+ "droop_sweep_cap_1000_f": {
+  "note": "droop_sim.py: bulk-capacitance sweep point",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "F",
+  "url": "",
+  "value": 0.001
+ },
+ "droop_sweep_cap_2200_f": {
+  "note": "droop_sim.py: bulk-capacitance sweep point",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "F",
+  "url": "",
+  "value": 0.0022
+ },
+ "droop_sweep_cap_220_f": {
+  "note": "droop_sim.py: bulk-capacitance sweep point",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "F",
+  "url": "",
+  "value": 0.00022
+ },
+ "droop_sweep_cap_470_f": {
+  "note": "droop_sim.py: bulk-capacitance sweep point",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "F",
+  "url": "",
+  "value": 0.00047
+ },
+ "droop_voltage_floor_v": {
+  "note": "droop_sim.py: averaged-model switching voltage floor",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 0.1
+ },
+ "ema_alpha": {
+  "note": "fsr_frontend.py: firmware config.h FSR_EMA_ALPHA; assumed, not sourced (repo file, no vendor document)",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.1
+ },
+ "esp_adc_cs_pf": {
+  "note": "SAR sampling capacitor, not published in the datasheet; 20 pF assumed (a few pF to tens of pF)",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "pF",
+  "url": "",
+  "value": 20.0
+ },
+ "esp_adc_err_mv": {
+  "note": "total ADC error after eFuse-Vref calibration at 11 dB, +/-60 mV; +/-6 % chip to chip uncalibrated",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mV",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 60.0
+ },
+ "esp_adc_max_mv": {
+  "note": "effective ADC range with 11 dB attenuation, high end",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mV",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 2450.0
+ },
+ "esp_adc_min_mv": {
+  "note": "effective ADC range with 11 dB attenuation, low end",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mV",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 150.0
+ },
+ "esp_adc_resolution_bits": {
+  "note": "fsr_frontend.py and harness.py: ESP32 ADC resolution as used here; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "bit",
+  "url": "",
+  "value": 12
+ },
+ "esp_adc_rsw_ohm": {
+  "note": "sampling switch + mux resistance, assumed",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 1000.0
+ },
+ "esp_bod_default": {
+  "note": "default brown-out detector level in the Arduino-ESP32 / ESP-IDF default sdkconfig (level 7); the datasheet fetched does not state it, verify in the core in use",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 2.43
+ },
+ "esp_i_active_nowifi": {
+  "note": "CPU powered, 240 MHz dual core, radio off: 30 to 68 mA; top of the range is used",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 0.068
+ },
+ "esp_i_wifi_rx": {
+  "note": "receive 802.11b/g/n: 95 to 100 mA",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 0.1
+ },
+ "esp_i_wifi_tx_peak": {
+  "note": "transmit 802.11b 1 Mbps at +19.5 dBm, typ 240 mA (peak of the Wi-Fi cases)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 0.24
+ },
+ "esp_vdd_max": {
+  "note": "chip supply maximum",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 3.6
+ },
+ "esp_vdd_min": {
+  "note": "chip supply minimum (3.0 V when the module has a 3.3 V in-package flash, as the WROOM-32 does)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 2.3
+ },
+ "esp_vdd_min_flash": {
+  "note": "minimum when a 3.3 V flash is in the package",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 3.0
+ },
+ "f1_hold": {
+  "note": "MF-MSMF260/16X hold current at 23 C",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "value": 2.6
+ },
+ "f1_r1max": {
+  "note": "R1max (max resistance one hour after trip or reflow); used as the worst-case resistance",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm",
+  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "value": 0.05
+ },
+ "f1_rmin": {
+  "note": "resistance min",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm",
+  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "value": 0.015
+ },
+ "f1_trip": {
+  "note": "trip current at 23 C (5.2 A for the /6X /8X /12X parts)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "value": 5.0
+ },
+ "f1_ttrip": {
+  "note": "maximum time to trip at 8 A (column read from the part table)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "s",
+  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "value": 5.0
+ },
+ "f1_vmax": {
+  "note": "maximum operating voltage of the /16X; the 13.2 V adapter top needs this version, not /6X or /8X",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "value": 16.0
+ },
+ "fit_a_hold_a": {
+  "note": "_common.py: dyno hold row",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 1.35
+ },
+ "fit_a_resistance_ohm": {
+  "note": "_common.py: dyno motor fit A",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 1.8
+ },
+ "fit_a_torque_nm_per_a": {
+  "note": "_common.py: dyno motor fit A",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N*m/A",
+  "url": "",
+  "value": 0.861
+ },
+ "fit_b_hold_a": {
+  "note": "_common.py: dyno hold row",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.8
+ },
+ "fit_b_resistance_ohm": {
+  "note": "_common.py: dyno motor fit B",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 3.09
+ },
+ "fit_b_stall_a": {
+  "note": "_common.py: dyno motor fit B",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 2.2
+ },
+ "fit_b_torque_nm_per_a": {
+  "note": "_common.py: dyno motor fit B",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N*m/A",
+  "url": "",
+  "value": 1.474
+ },
+ "fsr_adc_droop_limit_mv": {
+  "note": "margins.py adc-charge row limit; assumed, not sourced: acceptable ADC reservoir droop at 2450 mV",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mV",
+  "url": "",
+  "value": 1
+ },
+ "fsr_adc_max_mv": {
+  "note": "_common.py: effective ADC range upper endpoint",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mV",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 2450.0
+ },
+ "fsr_adc_min_mv": {
+  "note": "_common.py: effective ADC range lower endpoint",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mV",
+  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "value": 150.0
+ },
+ "fsr_default_vcc_mv": {
+  "note": "_common.py: default divider supply",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mV",
+  "url": "",
+  "value": 3300.0
+ },
+ "fsr_e96_search_hi_ohm": {
+  "note": "fsr_frontend.py: upper edge of the R15 E96 search window; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 6000.0
+ },
+ "fsr_e96_search_lo_ohm": {
+  "note": "fsr_frontend.py: lower edge of the R15 E96 search window; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 1500.0
+ },
+ "fsr_filter_gain_freqs_hz": {
+  "note": "fsr_frontend.py: frequencies at which filter gain is tabulated; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "Hz",
+  "url": "",
+  "value": [
+   50.0,
+   500.0,
+   1000.0
+  ]
+ },
+ "fsr_fit_exponent": {
+  "note": "_common.py: firmware config.h FSR_FIT_EXP",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.8195
+ },
+ "fsr_fit_r1n_ohm": {
+  "note": "_common.py: firmware config.h FSR_FIT_R1N_OHM",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 6109.0
+ },
+ "fsr_resolution_force_n": {
+  "note": "fsr_frontend.py: force at which resolution is reported; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": 5.0
+ },
+ "fsr_sample_rate_hz": {
+  "note": "fsr_frontend.py: firmware FSR sampling and EMA rate (config.h: EMA at 1 kHz); assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "Hz",
+  "url": "",
+  "value": 1000.0
+ },
+ "fsr_table_forces_n": {
+  "note": "fsr_frontend.py: force points tabulated; analysis choice; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": [
+   0.2,
+   0.5,
+   3.0,
+   5.0,
+   8.0,
+   10.0
+  ]
+ },
+ "fsr_unloaded_force_n": {
+  "note": "fsr_frontend.py: unloaded FSR (open circuit) case of the filter table; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": 0.0
+ },
+ "gripper_pad_radius_m": {
+  "note": "_common.py: firmware config.h R_C_MM",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "m",
+  "url": "",
+  "value": 0.065
+ },
+ "gripper_train_efficiency": {
+  "note": "_common.py: firmware config.h ETA_TRAIN",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.85
+ },
+ "harness_adapter_cord_mm": {
+  "note": "harness.py: Pololu WPA-1774 cord, 1.5 m (sourcing.HARNESS entry)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mm",
+  "url": "https://www.pololu.com/product/1774",
+  "value": 1500.0
+ },
+ "harness_awg_pigtail": {
+  "note": "harness.py: servo extension lead pigtail gauge, not stated by the seller; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "AWG",
+  "url": "",
+  "value": 22
+ },
+ "harness_awg_power": {
+  "note": "harness.py: trunk gauge of the servo power pair; design choice; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "AWG",
+  "url": "",
+  "value": 20
+ },
+ "harness_awg_signal": {
+  "note": "harness.py: signal conductor gauge; design choice; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "AWG",
+  "url": "",
+  "value": 26
+ },
+ "harness_bend_factor": {
+  "note": "harness.py: dynamic minimum bend radius in outer diameters; sourcing.EVIDENCE flex_wire (secondary page, tagged A there); assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 10.0
+ },
+ "harness_bend_factor_abs": {
+  "note": "harness.py: absolute minimum bend radius in outer diameters (Parker Trilogy per sourcing.EVIDENCE flex_wire, tagged A there); assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 5.0
+ },
+ "harness_cap_lead_mm": {
+  "note": "harness.py: capacitor lead length left after trimming; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mm",
+  "url": "",
+  "value": 10.0
+ },
+ "harness_cycle_s": {
+  "note": "harness.py: grip cycle length, DESIGN-BASIS section 7; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 35.0
+ },
+ "harness_design_life_cycles": {
+  "note": "harness.py: design life in grips, DESIGN-BASIS section 7 R25; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 100000.0
+ },
+ "harness_force_error_limit_n": {
+  "note": "margins.py force-reading-error row limit; assumed, not sourced: acceptable FSR force-reading error",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": 0.1
+ },
+ "harness_fsr_error_forces_n": {
+  "note": "harness.py: forces at which the series-wire FSR error is reported; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": [
+   5.0,
+   8.0
+  ]
+ },
+ "harness_fsr_force_cap_n": {
+  "note": "harness.py: R15 force cap at which FSR current is sized, DESIGN-BASIS R15, ruled 8 N by Douglas 2026-10-12",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": 8.0
+ },
+ "harness_fsr_run_mm": {
+  "note": "harness.py: SM receptacle to the Clincher on finger B, with the service loop; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mm",
+  "url": "",
+  "value": 150.0
+ },
+ "harness_jaw_max_deg": {
+  "note": "harness.py: open end of the jaw range, DESIGN-BASIS R18; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "deg",
+  "url": "",
+  "value": 20.0
+ },
+ "harness_limit_run_mm": {
+  "note": "harness.py: SM receptacle to the microswitch; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mm",
+  "url": "",
+  "value": 120.0
+ },
+ "harness_od_26awg_mm": {
+  "note": "harness.py: 26 AWG silicone wire OD, upper value of 1.4 to 1.5 mm (sourcing.HARNESS entry)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mm",
+  "url": "https://www.adafruit.com/product/1877",
+  "value": 1.5
+ },
+ "harness_pigtail_mm": {
+  "note": "harness.py: extension lead cut-off length kept with the male plug; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mm",
+  "url": "",
+  "value": 100.0
+ },
+ "harness_plug_band_v": {
+  "note": "the one home of the servo plug band (low, high): harness.py, power_budget.py and margins.py rows; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": [
+   6.35,
+   6.65
+  ]
+ },
+ "harness_plug_rating_v": {
+  "note": "harness.py: servo voltage rating, power_budget.py; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 6.8
+ },
+ "harness_pwm_current_a": {
+  "note": "harness.py: SERVO_PWM wire current, 5 V into the servo input behind R13 100 ohm; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.001
+ },
+ "harness_semester_fraction": {
+  "note": "harness.py: a semester is about 1/10 of the design life, DESIGN-BASIS section 7; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.1
+ },
+ "harness_servo_lead_ohm": {
+  "note": "harness.py: selected servo lead resistance, not recorded and excluded from the path; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.0
+ },
+ "harness_servo_v_min": {
+  "note": "harness.py: servo minimum supply, droop_sim.py figure and dyno.md; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 4.8
+ },
+ "harness_spare_fraction": {
+  "note": "harness.py: spare wire length bought (brief); assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.15
+ },
+ "harness_unwired_length_mm": {
+  "note": "harness.py: wire length of a connector row with no wire; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mm",
+  "url": "",
+  "value": 0
+ },
+ "harness_usb_cable_mm": {
+  "note": "harness.py: Adafruit 592 USB cable, 3 ft rounded to 914 mm (sourcing.HARNESS entry)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mm",
+  "url": "https://www.adafruit.com/product/592",
+  "value": 914.0
+ },
+ "harness_vil_fraction": {
+  "note": "harness.py: ESP32 input-low threshold as a fraction of VDD, from memory, to verify; assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.25
+ },
+ "ibus_5v_idle": {
+  "note": "74AHCT1G125 supply current is microamps; 1 mA allowed for the buffer plus R12",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.001
+ },
+ "ina_average_codes_samples": {
+  "note": "SADC averaging codes and sample counts",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "code,count",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": [
+   [
+    8,
+    1
+   ],
+   [
+    9,
+    2
+   ],
+   [
+    10,
+    4
+   ],
+   [
+    11,
+    8
+   ],
+   [
+    12,
+    16
+   ],
+   [
+    13,
+    32
+   ],
+   [
+    14,
+    64
+   ],
+   [
+    15,
+    128
+   ]
+  ]
+ },
+ "ina_average_fit_limit_s": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 0.0195
+ },
+ "ina_chop_duty": {
+  "note": "assumed, not sourced: chopped-current duty cycle",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.5
+ },
+ "ina_chop_frequencies_hz": {
+  "note": "assumed, not sourced: unpublished servo-drive chop frequencies",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "Hz",
+  "url": "",
+  "value": [
+   300.0,
+   1000.0,
+   3000.0,
+   20000.0
+  ]
+ },
+ "ina_control_period_s": {
+  "note": "firmware current-reading period",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 0.02
+ },
+ "ina_conv_12bit": {
+  "note": "12-bit shunt conversion time, typ (586 us max)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "s",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.000532
+ },
+ "ina_conv_12bit_max": {
+  "note": "12-bit conversion time, max",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "s",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.000586
+ },
+ "ina_current_error_limit_a": {
+  "note": "margins.py current-error row limit; assumed, not sourced: allowed current-reading error",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.05
+ },
+ "ina_default_cfg": {
+  "note": "configuration register reset value: bus 32 V, PGA /8 (+/-320 mV), 12-bit, continuous",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "code",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 14751
+ },
+ "ina_detection_limit_s": {
+  "note": "firmware detection requirement R20",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 0.2
+ },
+ "ina_filter_note": {
+  "note": "datasheet advice on input filters (section Filtering and Input Considerations)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "text",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": "series R as small as possible; 10 ohm per input protects against dV/dt and has no significant accuracy effect; caps 0.1 to 1 uF"
+ },
+ "ina_force_caps_n": {
+  "note": "force caps swept by fsr_frontend.py and ina219_budget.py: element 0 is firmware F_CAP_N 10 (squeeze-cap sizing constant, config.h), element 1 is the R15 cap, 8 N (Douglas 2026-10-12, DESIGN-BASIS R15)",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": [
+   10.0,
+   8.0
+  ]
+ },
+ "ina_fs_pga8": {
+  "note": "shunt full scale at the default PGA /8",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.32
+ },
+ "ina_gain_err_typ": {
+  "note": "current-sense gain error, typ (40 m%)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "1",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.0004
+ },
+ "ina_gain_tc": {
+  "note": "gain temperature drift, typ 1 m%/C",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "1/K",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 1e-05
+ },
+ "ina_gain_temperature_span_c": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "C",
+  "url": "",
+  "value": 40.0
+ },
+ "ina_ibias": {
+  "note": "IN+ and IN- input bias current, active mode, typ (IN- also 320 kohm to ground)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 2e-05
+ },
+ "ina_input_impedance_ohm": {
+  "note": "INA219 input impedance",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 320000.0
+ },
+ "ina_lsb": {
+  "note": "shunt-voltage LSB",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 1e-05
+ },
+ "ina_meas_err_max": {
+  "note": "current measurement error, max at 25 C (includes offset and gain; +/-1 % over -25 to 85 C)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "1",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.005
+ },
+ "ina_recommended_sadc_code": {
+  "note": "selected 32-sample SADC setting",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "code",
+  "url": "",
+  "value": 13
+ },
+ "ina_sadc_mask": {
+  "note": "four-bit SADC field mask",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "code",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 15
+ },
+ "ina_sadc_shift": {
+  "note": "SADC field starts at configuration bit 3",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "bit",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 3
+ },
+ "ina_saturation_error_fraction": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.01
+ },
+ "ina_shunt_temperature_rise_c": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "C",
+  "url": "",
+  "value": 45.0
+ },
+ "ina_trip_current_a": {
+  "note": "firmware/gripper/config.h STALL_CURRENT_A",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 3.0
+ },
+ "ina_trip_window_s": {
+  "note": "firmware STALL_CURRENT_MS",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 0.1
+ },
+ "ina_vos_pga1": {
+  "note": "INA219A shunt offset max, PGA /1 (typ 10 uV)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.0001
+ },
+ "ina_vos_pga2": {
+  "note": "INA219A offset max, PGA /2",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.000125
+ },
+ "ina_vos_pga4": {
+  "note": "INA219A offset max, PGA /4",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.00015
+ },
+ "ina_vos_pga8": {
+  "note": "INA219A offset max, PGA /8 (typ 40 uV; the B grade is 100 uV). Part is INA219AIDR",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/ina219.pdf",
+  "value": 0.0002
+ },
+ "ipc_b": {
+  "note": "exponent on temperature rise",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "1",
+  "url": "https://www.advancedpcb.com/en-us/tools/trace-width-calculator/",
+  "value": 0.44
+ },
+ "ipc_c": {
+  "note": "exponent on cross-section area",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "1",
+  "url": "https://www.advancedpcb.com/en-us/tools/trace-width-calculator/",
+  "value": 0.725
+ },
+ "ipc_k_ext": {
+  "note": "IPC-2221 curve-fit constant k, external layers",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "1",
+  "url": "https://www.advancedpcb.com/en-us/tools/trace-width-calculator/",
+  "value": 0.048
+ },
+ "ipc_mil_per_oz": {
+  "note": "copper thickness per ounce",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mil/oz",
+  "url": "https://www.advancedpcb.com/en-us/tools/trace-width-calculator/",
+  "value": 1.378
+ },
+ "l1_dcr": {
+  "note": "Bourns SRP1245A-100M DCR order of 10 to 15 mohm; not fetched",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.015
+ },
+ "mc_ridley": {
+  "note": "ramp factor mc = 1 + Se/Sn for the sampled current-loop term (Ridley), internal slope not published",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 1.5
+ },
+ "mcp_dropout_max": {
+  "note": "dropout at 250 mA, 5.0 V output, max",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "value": 0.65
+ },
+ "mcp_dropout_typ": {
+  "note": "dropout at 250 mA, 5.0 V output, typ",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "value": 0.33
+ },
+ "mcp_iout_max": {
+  "note": "rated output current for a 5.0 V part",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "value": 0.25
+ },
+ "mcp_isc": {
+  "note": "output short-circuit current, typ (rated output 250 mA)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "value": 0.4
+ },
+ "mcp_rth_sot223": {
+  "note": "SOT-223 junction-to-ambient, JESD51-7 4-layer board",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "K/W",
+  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "value": 62.0
+ },
+ "mcp_vin_max": {
+  "note": "input operating range top (2.7 to 16 V)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "value": 16.0
+ },
+ "mcp_vout_tol": {
+  "note": "output tolerance over temperature, max (typ 0.4 % at 25 C)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "1",
+  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "value": 0.03
+ },
+ "power_3v3_minus_1pct_mv": {
+  "note": "derived from nominal 3.3 V rail and assumed one-percent tolerance",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mV",
+  "url": "",
+  "value": 3267.0
+ },
+ "power_3v3_minus_3pct_mv": {
+  "note": "derived from nominal 3.3 V and MCP1703A three-percent tolerance",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "mV",
+  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "value": 3201.0
+ },
+ "power_3v3_plus_1pct_mv": {
+  "note": "derived from nominal 3.3 V rail and assumed one-percent tolerance",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mV",
+  "url": "",
+  "value": 3333.0
+ },
+ "power_3v3_rail_v": {
+  "note": "DevKitC regulated rail nominal voltage",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 3.3
+ },
+ "power_board_plane_resistance_ohm": {
+  "note": "assumed, not sourced: board ground-plane resistance",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "ohm",
+  "url": "",
+  "value": 0.005
+ },
+ "power_diode_reference_current_a": {
+  "note": "d7_vf_100ma reference current",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.1
+ },
+ "power_external_3v3_load_a": {
+  "note": "assumed, not sourced: INA219, LED, FSR divider, pull-up and miscellaneous load",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.01
+ },
+ "power_fit_a_stall_current_a": {
+  "note": "docs/gripper/analysis/dyno.md Fit A stall at regulated voltage",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 3.45
+ },
+ "power_five_volt_rail_v": {
+  "note": "MCP1703A fixed output selected in design.py",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 5.0
+ },
+ "power_fsr_force_high_n": {
+  "note": "assumed, not sourced: FSR error high-force scenario",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": 8.0
+ },
+ "power_fsr_force_low_n": {
+  "note": "firmware force-control setpoint",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N",
+  "url": "",
+  "value": 5.0
+ },
+ "power_fsr_return_current_a": {
+  "note": "assumed, not sourced: FSR return current",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.0009
+ },
+ "power_ground_wire_length_m": {
+  "note": "design.py cable length",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "m",
+  "url": "",
+  "value": 1.2
+ },
+ "power_ldo_dropout_scale_cap": {
+  "note": "assumed, not sourced: linear dropout extrapolation cap",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 1.6
+ },
+ "power_ldo_full_load_dropout_ratio": {
+  "note": "assumed, not sourced: AMS1117 full-load to light-load dropout ratio",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 1.1
+ },
+ "power_ldo_light_load_a": {
+  "note": "assumed, not sourced: AMS1117 light-load interpolation point",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.1
+ },
+ "power_ldo_load_span_a": {
+  "note": "assumed, not sourced: AMS1117 dropout interpolation span",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.7
+ },
+ "power_log_current_floor_a": {
+  "note": "assumed, not sourced: diode logarithm current floor",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.001
+ },
+ "power_rating_margin_factor": {
+  "note": "assumed, not sourced: adapter rating margin",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 1.25
+ },
+ "power_regen_basis_mj": {
+  "note": "assumed, not sourced: half stall torque through one degree backlash",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mJ",
+  "url": "",
+  "value": 20.0
+ },
+ "power_regen_high_mj": {
+  "note": "assumed, not sourced: regeneration sweep point",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mJ",
+  "url": "",
+  "value": 50.0
+ },
+ "power_regen_low_mj": {
+  "note": "assumed, not sourced: regeneration sweep point",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mJ",
+  "url": "",
+  "value": 5.0
+ },
+ "power_regen_min_mj": {
+  "note": "assumed, not sourced: regeneration sweep point",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mJ",
+  "url": "",
+  "value": 2.0
+ },
+ "power_regen_rotor_mj": {
+  "note": "docs/gripper/analysis/dyno.md reflected rotor kinetic energy",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mJ",
+  "url": "",
+  "value": 174.0
+ },
+ "power_starting_efficiency": {
+  "note": "assumed, not sourced: fixed-point iteration starting efficiency",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.85
+ },
+ "power_switch_transition_time_s": {
+  "note": "assumed, not sourced: total TPS54560B switching transition time",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "s",
+  "url": "",
+  "value": 1e-08
+ },
+ "power_usb_max_v": {
+  "note": "assumed, not sourced: USB supply high corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 5.25
+ },
+ "power_usb_min_v": {
+  "note": "assumed, not sourced: USB supply low corner",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 4.75
+ },
+ "q1_rds": {
+  "note": "AO4407A RDS(on) max at VGS -10 V (11 mohm at -20 V, 17 mohm at -6 V); VDS -30 V, ID -12 A",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm",
+  "url": "https://www.aosmd.com/res/data_sheets/AO4407A.pdf",
+  "value": 0.013
+ },
+ "q1_rds_6v": {
+  "note": "AO4407A RDS(on) max at VGS -6 V",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm",
+  "url": "https://www.aosmd.com/res/data_sheets/AO4407A.pdf",
+  "value": 0.017
+ },
+ "rs1_rating": {
+  "note": "design.py value text \"0.1R 1% 2W\"",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "W",
+  "url": "",
+  "value": 2.0
+ },
+ "rs1_tcr": {
+  "note": "2512 metal-element shunt TCR, 50 to 100 ppm/K typical; not fetched",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1/K",
+  "url": "",
+  "value": 0.0001
+ },
+ "rs1_tol": {
+  "note": "RS1 0.1R 1 % (design.py value text)",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "1",
+  "url": "",
+  "value": 0.01
+ },
+ "servo_hold_torque_nm": {
+  "note": "_common.py: dyno.md section 0, 5 N setpoint plus 2 N tension",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "N*m",
+  "url": "",
+  "value": 0.758
+ },
+ "servo_idle_a": {
+  "note": "idle 5 mA from actuators.csv row A17 (Miuzei); moving-no-load current of 0.15 A is a separate assumption in droop_sim.py",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 0.005
+ },
+ "servo_stall_a": {
+  "note": "stall 2.2 A at 6.8 V from docs/gripper/research/actuators.csv row A17 (Miuzei datasheet; Annimos says 1.8 A). The vendor page above does not list current",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 2.2
+ },
+ "servo_vmax": {
+  "note": "operating voltage high end (vendor page)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://speedyfpv.com/products/ds3218mg-digital-servo-high-speed-high-torque-metal-gear-waterproof-20kg-torque-180-degrees-w-accessories",
+  "value": 6.8
+ },
+ "servo_vmin": {
+  "note": "operating voltage low end (vendor page)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://speedyfpv.com/products/ds3218mg-digital-servo-high-speed-high-torque-metal-gear-waterproof-20kg-torque-180-degrees-w-accessories",
+  "value": 4.8
+ },
+ "tps_ea_gain": {
+  "note": "error-amplifier dc gain; output resistance = gain / gm = 28.6 Mohm",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V/V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 10000.0
+ },
+ "tps_ea_gm": {
+  "note": "error-amplifier transconductance in normal operation (78 uA/V in soft start)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A/V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 0.00035
+ },
+ "tps_ea_imax": {
+  "note": "error-amplifier source/sink limit at 100 mV overdrive",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 3e-05
+ },
+ "tps_en_i1": {
+  "note": "EN pull-up current below threshold (0.58 to 1.8 uA)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 1.2e-06
+ },
+ "tps_en_i1_max": {
+  "note": "EN pull-up current maximum",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 1.8e-06
+ },
+ "tps_en_i1_min": {
+  "note": "EN pull-up current minimum",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 5.8e-07
+ },
+ "tps_en_ihys": {
+  "note": "extra EN current once above threshold (2.2 to 4.5 uA)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 3.4e-06
+ },
+ "tps_en_ihys_max": {
+  "note": "EN hysteresis current maximum",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 4.5e-06
+ },
+ "tps_en_ihys_min": {
+  "note": "EN hysteresis current minimum",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 2.2e-06
+ },
+ "tps_en_thresh": {
+  "note": "EN threshold, rising and falling (1.1 to 1.3)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 1.2
+ },
+ "tps_en_thresh_max": {
+  "note": "EN threshold, max",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 1.3
+ },
+ "tps_en_thresh_min": {
+  "note": "EN threshold, min",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 1.1
+ },
+ "tps_ilim_min": {
+  "note": "high-side current limit, min over VIN and temperature (typ 7.9, max 9.5)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 6.3
+ },
+ "tps_ilim_typ": {
+  "note": "high-side current limit, typ",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 7.9
+ },
+ "tps_iq": {
+  "note": "operating non-switching supply current",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 0.000146
+ },
+ "tps_ps_gm": {
+  "note": "COMP-to-switch-current transconductance (power stage)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "A/V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 17.0
+ },
+ "tps_rds_max": {
+  "note": "high-side MOSFET on-resistance, max",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 0.19
+ },
+ "tps_rds_typ": {
+  "note": "high-side MOSFET on-resistance, typ (VIN 12 V)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "ohm",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 0.092
+ },
+ "tps_rt_coeff": {
+  "note": "fsw[kHz] = 92471 * RT[kohm]^-0.991",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "kHz*kohm^0.991",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 92471.0
+ },
+ "tps_rt_exp": {
+  "note": "RT exponent in the same equation",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "1",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": -0.991
+ },
+ "tps_rth_ja": {
+  "note": "DDA (HSOIC-8) junction-to-ambient, JEDEC board",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "K/W",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 42.0
+ },
+ "tps_ton_min": {
+  "note": "typical minimum controllable on-time",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "s",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 1.35e-07
+ },
+ "tps_uvlo_hyst": {
+  "note": "internal UVLO hysteresis",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 0.325
+ },
+ "tps_uvlo_rise": {
+  "note": "internal VIN UVLO, rising (4.1 to 4.48)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 4.3
+ },
+ "tps_vin_max": {
+  "note": "operating input voltage, max",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 60.0
+ },
+ "tps_vin_min": {
+  "note": "operating input voltage, min (60 V max)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 4.5
+ },
+ "tps_vref": {
+  "note": "feedback reference, typ",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 0.8
+ },
+ "tps_vref_max": {
+  "note": "reference, max over temperature (+1 %)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 0.808
+ },
+ "tps_vref_min": {
+  "note": "reference, min over temperature (-1 %)",
+  "retrieved": "2026-10-11",
+  "tag": "S",
+  "unit": "V",
+  "url": "https://www.ti.com/lit/ds/symlink/tps54560b.pdf",
+  "value": 0.792
+ },
+ "trace_ambient_temperature_c": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "C",
+  "url": "",
+  "value": 25.0
+ },
+ "trace_auxiliary_current_a": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 5.0
+ },
+ "trace_hold_current_a": {
+  "note": "docs/gripper/analysis/dyno.md Fit A hold current",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 1.35
+ },
+ "trace_mm_per_mil": {
+  "note": "standard unit conversion",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mm/mil",
+  "url": "",
+  "value": 0.0254
+ },
+ "trace_reference_length_mm": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mm",
+  "url": "",
+  "value": 10.0
+ },
+ "trace_reference_temperature_c": {
+  "note": "cu_rho reference temperature",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "C",
+  "url": "",
+  "value": 20.0
+ },
+ "trace_servo_drop_limit_mv": {
+  "note": "margins.py trace-drop row limit; assumed, not sourced: allowed servo path drop at stall",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mV",
+  "url": "",
+  "value": 100.0
+ },
+ "trace_supply_current_a": {
+  "note": "servo_stall_a design input",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "A",
+  "url": "",
+  "value": 2.2
+ },
+ "trace_temp_rise_limit_c": {
+  "note": "margins.py trace-temperature row limit; assumed, not sourced: allowed wide-trace temperature rise",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "C",
+  "url": "",
+  "value": 10.0
+ },
+ "trace_temperature_rises_c": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "C",
+  "url": "",
+  "value": [
+   10.0,
+   20.0
+  ]
+ },
+ "trace_via_drill_mm": {
+  "note": "assumed, not sourced",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "mm",
+  "url": "",
+  "value": 0.4
+ },
+ "trace_via_plating_um": {
+  "note": "assumed, not sourced: typical 1 oz class fab",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "um",
+  "url": "",
+  "value": 25.0
+ },
+ "tvs_vc": {
+  "note": "SMBJ16A maximum clamping voltage at its peak pulse current (about 23 A, 600 W class); datasheet fetch returned 404. Verify",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 26.0
+ },
+ "tvs_vwm": {
+  "note": "SMBJ16A stand-off voltage",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "V",
+  "url": "",
+  "value": 16.0
+ },
+ "wire_gauges_awg": {
+  "note": "assumed, not sourced: compared harness gauges",
+  "retrieved": "2026-10-11",
+  "tag": "A",
+  "unit": "AWG",
+  "url": "",
+  "value": [
+   20,
+   26
+  ]
+ }
+}

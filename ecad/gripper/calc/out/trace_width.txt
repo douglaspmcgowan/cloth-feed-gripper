@@ -1,0 +1,22 @@
+External 1 oz trace width (k 0.048, b 0.44, c 0.725 from the cited calculator page; 1 oz = 1.378 mil) [S]
+current A  rise C  min width mm  R per 10 mm mohm  drop mV / 10 mm at that width  drop mV / 10 mm at 2.0 mm
+---------  ------  ------------  ----------------  -----------------------------  -------------------------
+2.2        10.0    0.89          5.85              12.9                           5.7
+2.2        20.0    0.59          9.24              20.3                           6.0
+3.77       10.0    1.87          2.78              10.5                           9.8
+3.77       20.0    1.23          4.40              16.6                           10.2
+5.0        10.0    2.77          1.89              9.4                            13.0
+5.0        20.0    1.82          2.98              14.9                           13.5
+Routed width of the servo rail and the 12 V path: 2.0 mm (needs 1.87 mm for 3.77 A at 10 C rise; carries 3.95 A at 10 C).
+Rise at 2.0 mm: 0.9 C at the 1.35 A hold current, 9.0 C at the 3.77 A stall current (steady state; the stall lasts 0.1 s before the trip).
+Necks onto pads are 0.6 mm wide: 6.3 C rise at hold as a long trace; 65 C at stall is the long-trace bound, not reached by a neck a few mm long between wide copper [A].
+As routed (kicad/out/board_stats.json): power nets 104.0 mm at 2.0 mm, 14.3 mm of neck, 0 vias in any power net.
+Servo path copper (V_BUCK + SERVO_V, every branch counted, so an upper bound): 40.8 mm wide + 9.5 mm neck = 18.9 mohm, 71 mV at stall.
+Ground: 50 vias to the bottom plane, which covers 89.3 % of the board.
+
+0.4 mm drill via, 25 um plating [A]: 
+rise C  barrel area mm2  area mil2  current A
+------  ---------------  ---------  ---------
+10.0    0.0295           45.7       2.11
+20.0    0.0295           45.7       2.86
+Vias in parallel for 3.77 A at 10 C: 2; for 5 A: 3 (use at least 4 for each layer change in the servo path; the external-layer relation is applied to a barrel, a conservative use [A]).

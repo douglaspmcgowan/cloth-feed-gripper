@@ -1,0 +1,163 @@
+{
+ "id": "T13",
+ "title": "Wrist-camera aim angle error (pitch of the optical axis)",
+ "mode": "linear",
+ "units": "deg",
+ "requirement": "Optical axis within +/-3 deg of nominal so the fingertips stay in view without re-aiming (extrinsics are calibrated anyway).",
+ "notes": "Bracket held by 2x M3 + hex nuts through clearance holes in both parts (floating fastener, T = H - F each part). Each part can float f = (H - F)/2 on each screw, so the relative float per screw is up to 2f, and with the two screws moving in opposite directions the rotation reaches 4f/s. f is built from limits (review fix): largest printed hole (CAD 3.6 - 0.25 bias + 0.10 scatter = 3.45) less the smallest 6g screw (2.874), f = 0.288, so the WC column is a true worst case (+/-8.15 deg). The MC treats that full float as uniform, which is conservative.",
+ "spec": {
+  "lsl": -3.0,
+  "usl": 3.0
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": null,
+ "variant_label": "",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T13_camera_aim.yaml",
+ "nominal": 0.0,
+ "mid": 0.0,
+ "wc": [
+  -10.703904244517279,
+  10.703904244517279
+ ],
+ "rss_classic": [
+  -8.259897233122421,
+  8.259897233122421
+ ],
+ "rss_dist": [
+  -10.703904244517279,
+  10.703904244517279
+ ],
+ "rss_dist_unclipped": [
+  -14.190298952637523,
+  14.190298952637523
+ ],
+ "rss_clipped": true,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": 0.013601705077727896,
+  "std": 4.716393045695483,
+  "min": -9.746580496901405,
+  "max": 9.845349764463183,
+  "p0135": -8.782764270169364,
+  "p50": 0.0016263226543495324,
+  "p99865": 8.797252251005311,
+  "out_lo_pct": 31.356,
+  "out_hi_pct": 31.578,
+  "out_pct": 62.934,
+  "out_pct_se": 0.15273217224933325,
+  "cpk_normal": 0.21106512724081755,
+  "cpk_percentile": 0.34089372396806755
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "bracket_rotation_float",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 8.148733086305043,
+   "lower": -8.148733086305043,
+   "mid": 0.0,
+   "half": 8.148733086305043,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 4.704673240932627,
+   "tag": "D",
+   "source": "2 holes 8.1 apart, CAD 3.6, f from hole and screw limits (basis cam_float), float in both parts",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 98.92779972381736
+  },
+  {
+   "name": "housing_boss_perpendicularity",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.5729577951308232,
+   "lower": -0.5729577951308232,
+   "mid": 0.0,
+   "half": 0.5729577951308232,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.19098593171027442,
+   "tag": "A",
+   "source": "perp 0.2 over 20 to A",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.16302799026752116
+  },
+  {
+   "name": "bracket_face_perpendicularity",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.5729577951308232,
+   "lower": -0.5729577951308232,
+   "mid": 0.0,
+   "half": 0.5729577951308232,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.19098593171027442,
+   "tag": "A",
+   "source": "",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.16302799026752116
+  },
+  {
+   "name": "board_float",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.40925556795058804,
+   "lower": -0.40925556795058804,
+   "mid": 0.0,
+   "half": 0.40925556795058804,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.2362838123236252,
+   "tag": "A",
+   "source": "4x M2",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.24953263816457324
+  },
+  {
+   "name": "lens_tilt",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 1.0,
+   "lower": -1.0,
+   "mid": 0.0,
+   "half": 1.0,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.3333333333333333,
+   "tag": "A",
+   "source": "",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.4966116574830493
+  }
+ ],
+ "seed": 20260922
+}

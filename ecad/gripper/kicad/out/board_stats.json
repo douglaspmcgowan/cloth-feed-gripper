@@ -1,0 +1,416 @@
+{
+  "board_area_mm2": 8500.0,
+  "board_h_mm": 85.0,
+  "board_w_mm": 100.0,
+  "bottom_ground_coverage_pct": 89.3,
+  "bottom_track_mm": 241.8,
+  "copper_layers": 2,
+  "footprints": 90,
+  "ground_fill_mm2": {
+    "bottom": 7594.3,
+    "top": 5446.1
+  },
+  "ground_vias": 50,
+  "nets": {
+    "+3V3": {
+      "bottom_mm": 11.63,
+      "by_width_mm": {
+        "0.40": 169.21
+      },
+      "top_mm": 157.57,
+      "vias": 4
+    },
+    "+5V": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.40": 63.35
+      },
+      "top_mm": 63.35,
+      "vias": 0
+    },
+    "BOOT": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 2.63
+      },
+      "top_mm": 2.63,
+      "vias": 0
+    },
+    "BTN_IN": {
+      "bottom_mm": 11.08,
+      "by_width_mm": {
+        "0.25": 58.35
+      },
+      "top_mm": 47.26,
+      "vias": 2
+    },
+    "BTN_SW": {
+      "bottom_mm": 7.32,
+      "by_width_mm": {
+        "0.25": 15.22
+      },
+      "top_mm": 7.9,
+      "vias": 1
+    },
+    "COMP": {
+      "bottom_mm": 2.16,
+      "by_width_mm": {
+        "0.25": 13.35
+      },
+      "top_mm": 11.19,
+      "vias": 2
+    },
+    "COMP_RC": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 2.61
+      },
+      "top_mm": 2.61,
+      "vias": 0
+    },
+    "DEVKIT_5V": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.40": 14.49
+      },
+      "top_mm": 14.49,
+      "vias": 0
+    },
+    "DRV_AIN1": {
+      "bottom_mm": 21.39,
+      "by_width_mm": {
+        "0.25": 90.97
+      },
+      "top_mm": 69.57,
+      "vias": 2
+    },
+    "DRV_AIN2": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 87.56
+      },
+      "top_mm": 87.56,
+      "vias": 0
+    },
+    "DRV_NFAULT": {
+      "bottom_mm": 13.37,
+      "by_width_mm": {
+        "0.25": 81.47
+      },
+      "top_mm": 68.1,
+      "vias": 1
+    },
+    "DRV_NSLEEP": {
+      "bottom_mm": 20.44,
+      "by_width_mm": {
+        "0.25": 78.31
+      },
+      "top_mm": 57.86,
+      "vias": 3
+    },
+    "EN": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 5.83
+      },
+      "top_mm": 5.83,
+      "vias": 0
+    },
+    "ENC_A": {
+      "bottom_mm": 6.97,
+      "by_width_mm": {
+        "0.25": 85.61
+      },
+      "top_mm": 78.64,
+      "vias": 1
+    },
+    "ENC_B": {
+      "bottom_mm": 6.1,
+      "by_width_mm": {
+        "0.25": 64.51
+      },
+      "top_mm": 58.42,
+      "vias": 3
+    },
+    "FB": {
+      "bottom_mm": 1.78,
+      "by_width_mm": {
+        "0.25": 16.08
+      },
+      "top_mm": 14.31,
+      "vias": 2
+    },
+    "FB_ADC": {
+      "bottom_mm": 5.68,
+      "by_width_mm": {
+        "0.25": 48.43
+      },
+      "top_mm": 42.75,
+      "vias": 1
+    },
+    "FB_IN": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 3.43
+      },
+      "top_mm": 3.43,
+      "vias": 0
+    },
+    "FB_MID": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 2.61
+      },
+      "top_mm": 2.61,
+      "vias": 0
+    },
+    "FSR_ADC": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 14.35
+      },
+      "top_mm": 14.35,
+      "vias": 0
+    },
+    "FSR_SIG": {
+      "bottom_mm": 4.63,
+      "by_width_mm": {
+        "0.25": 57.86
+      },
+      "top_mm": 53.23,
+      "vias": 1
+    },
+    "GND": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 23.79,
+        "0.40": 1.96,
+        "0.50": 19.66
+      },
+      "top_mm": 45.42,
+      "vias": 50
+    },
+    "LED_A": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 1.78
+      },
+      "top_mm": 1.78,
+      "vias": 0
+    },
+    "LED_DRV": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 41.95
+      },
+      "top_mm": 41.95,
+      "vias": 0
+    },
+    "LIM_IN": {
+      "bottom_mm": 2.06,
+      "by_width_mm": {
+        "0.25": 7.38
+      },
+      "top_mm": 5.32,
+      "vias": 1
+    },
+    "LIM_SIG": {
+      "bottom_mm": 37.49,
+      "by_width_mm": {
+        "0.25": 72.14
+      },
+      "top_mm": 34.65,
+      "vias": 3
+    },
+    "PWM_3V3": {
+      "bottom_mm": 7.62,
+      "by_width_mm": {
+        "0.25": 67.45
+      },
+      "top_mm": 59.83,
+      "vias": 4
+    },
+    "PWM_5V": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 1.8
+      },
+      "top_mm": 1.8,
+      "vias": 0
+    },
+    "Q1_G": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 3.52
+      },
+      "top_mm": 3.52,
+      "vias": 0
+    },
+    "RT": {
+      "bottom_mm": 4.71,
+      "by_width_mm": {
+        "0.25": 10.0
+      },
+      "top_mm": 5.29,
+      "vias": 2
+    },
+    "SCL": {
+      "bottom_mm": 53.85,
+      "by_width_mm": {
+        "0.25": 110.72
+      },
+      "top_mm": 56.87,
+      "vias": 4
+    },
+    "SDA": {
+      "bottom_mm": 21.78,
+      "by_width_mm": {
+        "0.25": 122.33
+      },
+      "top_mm": 100.55,
+      "vias": 6
+    },
+    "SERVO_PWM": {
+      "bottom_mm": 1.78,
+      "by_width_mm": {
+        "0.25": 59.78
+      },
+      "top_mm": 58.0,
+      "vias": 2
+    },
+    "SERVO_V": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 30.31,
+        "0.60": 9.47,
+        "2.00": 28.12
+      },
+      "top_mm": 67.9,
+      "vias": 0
+    },
+    "SNS_N": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 6.83
+      },
+      "top_mm": 6.83,
+      "vias": 0
+    },
+    "SNS_P": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 8.0
+      },
+      "top_mm": 8.0,
+      "vias": 0
+    },
+    "SW": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 2.41,
+        "0.60": 1.03,
+        "2.00": 9.4
+      },
+      "top_mm": 12.83,
+      "vias": 0
+    },
+    "VIN_F": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "2.00": 8.16
+      },
+      "top_mm": 8.16,
+      "vias": 0
+    },
+    "VIN_P": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 17.84,
+        "0.60": 3.79,
+        "2.00": 26.03
+      },
+      "top_mm": 47.66,
+      "vias": 0
+    },
+    "VIN_RAW": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "2.00": 19.57
+      },
+      "top_mm": 19.57,
+      "vias": 0
+    },
+    "V_BUCK": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 81.33,
+        "2.00": 12.72
+      },
+      "top_mm": 94.05,
+      "vias": 0
+    }
+  },
+  "power_neck_mm": 14.29,
+  "power_net_vias": 0,
+  "power_nets": {
+    "SERVO_V": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 30.31,
+        "0.60": 9.47,
+        "2.00": 28.12
+      },
+      "top_mm": 67.9,
+      "vias": 0
+    },
+    "SW": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 2.41,
+        "0.60": 1.03,
+        "2.00": 9.4
+      },
+      "top_mm": 12.83,
+      "vias": 0
+    },
+    "VIN_F": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "2.00": 8.16
+      },
+      "top_mm": 8.16,
+      "vias": 0
+    },
+    "VIN_P": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 17.84,
+        "0.60": 3.79,
+        "2.00": 26.03
+      },
+      "top_mm": 47.66,
+      "vias": 0
+    },
+    "VIN_RAW": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "2.00": 19.57
+      },
+      "top_mm": 19.57,
+      "vias": 0
+    },
+    "V_BUCK": {
+      "bottom_mm": 0.0,
+      "by_width_mm": {
+        "0.25": 81.33,
+        "2.00": 12.72
+      },
+      "top_mm": 94.05,
+      "vias": 0
+    }
+  },
+  "power_wide_mm": 104.0,
+  "top_track_mm": 1543.6,
+  "track_segments": 1018,
+  "vias": 95
+}

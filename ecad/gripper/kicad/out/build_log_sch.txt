@@ -1,0 +1,30 @@
+### custom_lib (exit 0)
+wrote gripper.kicad_sym and gripper.pretty
+
+### lib_tables (exit 0)
+sym libs ['74xGxx', 'Connector', 'Connector_Generic', 'Device', 'Mechanical', 'Regulator_Linear', 'Regulator_Switching', 'Sensor_Energy', 'Switch', 'Transistor_FET', 'power']
+fp libs ['Button_Switch_THT', 'Capacitor_SMD', 'Capacitor_THT', 'Connector_BarrelJack', 'Connector_JST', 'Connector_PinHeader_2.54mm', 'Diode_SMD', 'Fuse', 'Inductor_SMD', 'LED_SMD', 'MountingHole', 'Package_SO', 'Package_TO_SOT_SMD', 'Resistor_SMD', 'TerminalBlock_Phoenix', 'TestPoint']
+
+### project (exit 0)
+wrote gripper.kicad_pro
+
+### schematic (exit 0)
+parts 93 nets 41 single-pin nets []
+
+### erc (exit 0)
+Found 0 violations
+Saved ERC Report to ecad/gripper/kicad/out/erc.rpt
+
+### netlist (exit 0)
+
+### netlist_check (exit 0)
+{"nets_design": 41, "nets_kicad": 41, "pins_design": 207, "pins_kicad": 207, "unconnected_pins": 20}
+
+### sch_pdf (exit 0)
+Plotted to 'ecad\gripper\kicad\out\gripper-schematic.pdf'.
+Done.
+
+### sch_svg (exit 0)
+Plotted to 'ecad\gripper\kicad\out\gripper.svg'.
+Done.
+

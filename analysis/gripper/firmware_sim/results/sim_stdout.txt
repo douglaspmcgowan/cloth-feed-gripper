@@ -1,0 +1,20 @@
+0.88 R12 min       c0 -1.08 (err -0.64)  contact 0.59  F90 0.723  v@+3/+2/+1 21/20/21  hold 0.798  Fmax 5.22  hold 5.22±0.000  HOLD []
+1.05 FEA E56+D7    c0 -0.68 (err -0.24)  contact 0.59  F90 0.701  v@+3/+2/+1 21/20/21  hold 0.802  Fmax 6.09  hold 6.09±0.000  HOLD []
+1.24 FEA E67+D7    c0 -0.68 (err -0.24)  contact 0.587  F90 0.687  v@+3/+2/+1 21/20/21  hold 0.817  Fmax 7.11  hold 6.03±0.073  HOLD []
+1.63 R12 max       c0 -0.68 (err -0.24)  contact 0.583  F90 0.669  v@+3/+2/+1 21/20/21  hold 0.929  Fmax 7.41  hold 6.14±0.000  HOLD []
+noise {'k': 1.0, 'sigma_mv': 2.0, 'F_max_N': 5.825472708377469, 'F_hold_std_N': 0.0001431715703596674, 'F_hold_mean_N': 5.82541076495215, 'F_hold_min_N': 5.824696836142783, 't_F90_s_max': 0.707, 'states': ['HOLD'], 'faults': []}
+noise {'k': 1.0, 'sigma_mv': 8.0, 'F_max_N': 5.825472708377469, 'F_hold_std_N': 0.0001431715703596674, 'F_hold_mean_N': 5.82541076495215, 'F_hold_min_N': 5.824696836142783, 't_F90_s_max': 0.707, 'states': ['HOLD'], 'faults': []}
+noise {'k': 1.0, 'sigma_mv': 20.0, 'F_max_N': 5.825472708377469, 'F_hold_std_N': 0.0001431715703596674, 'F_hold_mean_N': 5.82541076495215, 'F_hold_min_N': 5.824696836142783, 't_F90_s_max': 0.707, 'states': ['HOLD'], 'faults': []}
+noise {'k': 1.63, 'sigma_mv': 2.0, 'F_max_N': 7.414439165761218, 'F_hold_std_N': 0.001347906045360292, 'F_hold_mean_N': 6.00087350232192, 'F_hold_min_N': 5.997685066190592, 't_F90_s_max': 0.669, 'states': ['HOLD'], 'faults': []}
+noise {'k': 1.63, 'sigma_mv': 8.0, 'F_max_N': 7.414439165761218, 'F_hold_std_N': 0.0007037290321712005, 'F_hold_mean_N': 6.022754032627337, 'F_hold_min_N': 6.000577252348253, 't_F90_s_max': 0.669, 'states': ['HOLD'], 'faults': []}
+noise {'k': 1.63, 'sigma_mv': 20.0, 'F_max_N': 7.478308749008269, 'F_hold_std_N': 0.001743214727797561, 'F_hold_mean_N': 6.039249396691365, 'F_hold_min_N': 5.985119540736924, 't_F90_s_max': 0.669, 'states': ['HOLD'], 'faults': []}
+steps {'F_max_N': 5.825472572689412, 'F_at_7_mean': 5.825460698187418, 'F_at_3_mean': 4.044662916576017, 'F_after_slip_min': 5.258239479411148, 'F_recovered_mean': 5.258240703945141, 'final_state': 'HOLD'}
+fault fsr_open@1.0 {'F_max_N': 3.6548061973343433, 'final_state': 'FAULT'} ['CMD_GRIP', 'NO_CONTACT']
+fault fsr_open@1.63 {'F_max_N': 5.957334101654979, 'final_state': 'FAULT'} ['CMD_GRIP', 'NO_CONTACT']
+fault fsr_reads_50pct@1.0 {'F_max_N': 6.335981514945264, 'final_state': 'HOLD'} ['CMD_GRIP', 'FSR_CONTACT', 'FORCE_SAT']
+fault fsr_reads_50pct@1.63 {'F_max_N': 9.661946385717812, 'final_state': 'HOLD'} ['CMD_GRIP', 'FSR_CONTACT', 'FORCE_SAT']
+fault fsr_reads_150pct@1.0 {'F_max_N': 4.773250935936572, 'final_state': 'HOLD'} ['CMD_GRIP', 'FSR_CONTACT', 'FSR_TARGET']
+fault fsr_reads_150pct@1.63 {'F_max_N': 6.039099920064549, 'final_state': 'FAULT'} ['CMD_GRIP', 'FSR_CONTACT', 'FSR_OVER']
+fault early_contact_6deg@1.63 {'F_max_N': 7.3897827908310445, 'final_state': 'HOLD'} ['CMD_GRIP', 'FSR_CONTACT', 'FSR_TARGET']
+fault early_contact_8deg@1.63 {'F_max_N': 7.877476160380665, 'final_state': 'FAULT'} ['CMD_GRIP', 'FSR_CONTACT', 'FSR_OVER']
+fault early_contact_10deg@1.63 {'F_max_N': 6.748870604725191, 'final_state': 'HOLD'} ['CMD_GRIP', 'FSR_CONTACT', 'FSR_TARGET']

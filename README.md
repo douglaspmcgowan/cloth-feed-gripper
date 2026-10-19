@@ -27,7 +27,13 @@ npm test                                  # Playwright, 3 sizes x light and dark
 npm run lint
 ```
 
-`sync.py` takes `--source <path to a clone>` to use a local checkout, and otherwise makes its own shallow clone with `gh`. `.sync/state.json` is git-ignored, so the first run in a fresh clone has no record of the last sync and may rebuild every generated file; the result is the same bytes.
+The moved CAD, analysis, electronics and firmware checks use Python 3.12 and the
+dependencies in `requirements-dev.txt`. For example, run
+`uv run --python 3.12 --no-project --with-requirements requirements-dev.txt python -m pytest -q cad/gripper analysis/gripper docs/gripper/test ecad/gripper firmware/gripper/test`
+from this repository's root. Some committed analysis outputs are already stale;
+the move does not regenerate their computed values.
+
+`sync.py` reads this repository by default and takes `--source <path to a checkout>` when another checkout is needed. `.sync/state.json` is git-ignored, so the first run in a fresh clone has no record of the last sync and may rebuild every generated file; the result is the same bytes.
 
 ## Checks
 

@@ -1,0 +1,19 @@
+id: T04
+title: Gripper datum B axis vs wrist-roll axis (concentricity)
+parts: ["wrist mount", "servo horn", "servo 5"]
+constants: basis.yaml
+mode: radial
+units: mm radial offset
+requirement: Gripper axis (datum B) within 0.30 mm radial of the wrist-roll axis.
+spec: {usl: "=conc_max"}
+accept: {method: mc}
+notes: >-
+  Screws clamp but do not locate; the part sits anywhere inside the pilot clearance (area-uniform disk). The disk
+  radius is each T02 clearance sample / 2 (clipped at 0), so clearance scatter is carried and WC uses T02's WC.
+contributors:
+  - {name: pilot_float, kind: radial, from_stack: T02, radius_scale: 0.5, dist: disk, tag: D, source: "T02 clearance samples / 2"}
+  - {name: horn_od_eccentricity, kind: radial, radius: "=horn_ecc_r", dist: disk, tag: A, source: "horn OD vs spline"}
+  - {name: servo5_radial_play, kind: radial, radius: "=servo5_radial_play", dist: disk, tag: A, source: "unpublished"}
+variants:
+  - {id: relax40, role: scenario, label: "recess CAD 19.56, clearance up to 0.40 (T02-relax40)", replace_from: {T02: T02-relax40}}
+  - {id: stock20, role: rejected, label: "stock Ø20.0 recess (T02-stock20)", replace_from: {T02: T02-stock20}}

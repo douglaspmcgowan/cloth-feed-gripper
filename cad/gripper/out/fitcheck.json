@@ -1,0 +1,489 @@
+{
+  "frame": "I (research/so101.md)",
+  "H_z_I": 1.0,
+  "Y_H_in_G": 31.0,
+  "horn_holes_I": [
+    [
+      -4.95,
+      -4.95,
+      -0.0
+    ],
+    [
+      4.95,
+      -4.95,
+      -0.0
+    ],
+    [
+      -4.95,
+      4.95,
+      0.0
+    ],
+    [
+      4.95,
+      4.95,
+      -0.0
+    ]
+  ],
+  "frame_check_follower_z_I": [
+    -0.0,
+    105.43
+  ],
+  "r_method": "BRep: slab boolean (band ends inset 0.01 mm) + ring-volume bisection, tol 0.02 mm (upper bound for r_max, lower bound for r_min); replaces tessellation-vertex sampling",
+  "keepout_params": [
+    {
+      "z_from_H": [
+        -1.0,
+        1.0
+      ],
+      "r_max_allowed": 11.6,
+      "r_max_new": 11.62,
+      "ok": true,
+      "brep_volume_outside_mm3": 0.0
+    },
+    {
+      "z_from_H": [
+        1.0,
+        5.0
+      ],
+      "r_max_allowed": 14.6,
+      "r_max_new": 14.61,
+      "ok": true,
+      "brep_volume_outside_mm3": 0.0
+    }
+  ],
+  "keepout_tolerance_fix5": [
+    {
+      "z_from_H": [
+        -1.0,
+        1.0
+      ],
+      "r_max_fix5": 11.6,
+      "r_max_new": 11.62,
+      "ok": true,
+      "brep_volume_outside_mm3": 0.0
+    },
+    {
+      "z_from_H": [
+        1.0,
+        5.0
+      ],
+      "r_max_fix5": 14.6,
+      "r_max_new": 14.61,
+      "ok": true,
+      "brep_volume_outside_mm3": 0.0
+    }
+  ],
+  "roll_ring_clearance": [
+    {
+      "z_I": [
+        -4.0,
+        -3.0
+      ],
+      "gripper_r_max": null,
+      "stationary_r_min": 1.23,
+      "radial_gap": null
+    },
+    {
+      "z_I": [
+        -3.0,
+        -2.0
+      ],
+      "gripper_r_max": null,
+      "stationary_r_min": 12.41,
+      "radial_gap": null
+    },
+    {
+      "z_I": [
+        -2.0,
+        -1.0
+      ],
+      "gripper_r_max": 8.5,
+      "stationary_r_min": 12.67,
+      "radial_gap": 4.17
+    },
+    {
+      "z_I": [
+        -1.0,
+        0.0
+      ],
+      "gripper_r_max": 8.5,
+      "stationary_r_min": 12.57,
+      "radial_gap": 4.07
+    },
+    {
+      "z_I": [
+        0.0,
+        1.0
+      ],
+      "gripper_r_max": 11.62,
+      "stationary_r_min": 12.57,
+      "radial_gap": 0.95
+    },
+    {
+      "z_I": [
+        1.0,
+        2.0
+      ],
+      "gripper_r_max": 11.62,
+      "stationary_r_min": 12.89,
+      "radial_gap": 1.27
+    },
+    {
+      "z_I": [
+        2.0,
+        5.3
+      ],
+      "gripper_r_max": 14.61,
+      "stationary_r_min": 15.2,
+      "radial_gap": 0.59
+    },
+    {
+      "z_I": [
+        5.3,
+        12.0
+      ],
+      "gripper_r_max": 37.51,
+      "stationary_r_min": null,
+      "radial_gap": null
+    }
+  ],
+  "roll_min_radial_gap_mm": 0.59,
+  "envelope_vs_stock": [
+    {
+      "z_I": [
+        0,
+        6
+      ],
+      "new_r_max": 14.7,
+      "stock_r_max": 26.5,
+      "inside": true
+    },
+    {
+      "z_I": [
+        6,
+        12
+      ],
+      "new_r_max": 37.6,
+      "stock_r_max": 37.6,
+      "inside": true
+    },
+    {
+      "z_I": [
+        12,
+        25
+      ],
+      "new_r_max": 52.5,
+      "stock_r_max": 88.5,
+      "inside": true
+    },
+    {
+      "z_I": [
+        25,
+        40
+      ],
+      "new_r_max": 52.5,
+      "stock_r_max": 102.2,
+      "inside": true
+    },
+    {
+      "z_I": [
+        40,
+        60
+      ],
+      "new_r_max": 52.5,
+      "stock_r_max": 37.3,
+      "inside": false
+    },
+    {
+      "z_I": [
+        60,
+        80
+      ],
+      "new_r_max": 23.9,
+      "stock_r_max": 30.2,
+      "inside": true
+    },
+    {
+      "z_I": [
+        80,
+        125
+      ],
+      "new_r_max": 20.3,
+      "stock_r_max": 22.8,
+      "inside": true
+    }
+  ],
+  "envelope_inside_stock_all_bands": false,
+  "jaw_sweep_parts": {
+    "static": [
+      "housing",
+      "front_plate",
+      "wrist_mount",
+      "servo",
+      "fasteners"
+    ],
+    "moving_A": [
+      "knuckle_a",
+      "finger_a",
+      "nail_a",
+      "fasteners_a"
+    ],
+    "moving_B": [
+      "knuckle_b",
+      "finger_b",
+      "fsr_backing_b",
+      "fsr_sensor_b",
+      "fsr_puck_b",
+      "fasteners_b"
+    ]
+  },
+  "jaw_sweep": [
+    {
+      "theta_deg": -11.0,
+      "clash_mm3": {},
+      "gear_mesh_overlap_mm3": 0.0,
+      "pad_interference_mm3": 736.299,
+      "pad_min_dist_mm": 0.0,
+      "knuckle_a_to_front_plate_mm": 1.0,
+      "knuckle_a_to_housing_mm": 1.0
+    },
+    {
+      "theta_deg": -7.4,
+      "clash_mm3": {},
+      "gear_mesh_overlap_mm3": 0.0,
+      "pad_interference_mm3": 599.589,
+      "pad_min_dist_mm": 0.0,
+      "knuckle_a_to_front_plate_mm": 1.0,
+      "knuckle_a_to_housing_mm": 1.0
+    },
+    {
+      "theta_deg": 0.0,
+      "clash_mm3": {},
+      "gear_mesh_overlap_mm3": 0.0,
+      "pad_interference_mm3": 0.0,
+      "pad_min_dist_mm": 0.939,
+      "knuckle_a_to_front_plate_mm": 1.0,
+      "knuckle_a_to_housing_mm": 1.0
+    },
+    {
+      "theta_deg": 10.0,
+      "clash_mm3": {},
+      "gear_mesh_overlap_mm3": 0.0,
+      "pad_interference_mm3": 0.0,
+      "pad_min_dist_mm": 22.237,
+      "knuckle_a_to_front_plate_mm": 1.0,
+      "knuckle_a_to_housing_mm": 1.0
+    },
+    {
+      "theta_deg": 20.0,
+      "clash_mm3": {},
+      "gear_mesh_overlap_mm3": 0.0,
+      "pad_interference_mm3": 0.0,
+      "pad_min_dist_mm": 43.416,
+      "knuckle_a_to_front_plate_mm": 1.0,
+      "knuckle_a_to_housing_mm": 1.0
+    }
+  ],
+  "jaw_sweep_static_clash_free": true,
+  "mass": {
+    "items": [
+      {
+        "name": "housing",
+        "g": 11.71,
+        "u_past_H": 21.5
+      },
+      {
+        "name": "front_plate",
+        "g": 4.14,
+        "u_past_H": 28.4
+      },
+      {
+        "name": "wrist_mount",
+        "g": 9.25,
+        "u_past_H": 5.3
+      },
+      {
+        "name": "knuckle_a",
+        "g": 6.11,
+        "u_past_H": 36.3
+      },
+      {
+        "name": "knuckle_b",
+        "g": 6.37,
+        "u_past_H": 36.0
+      },
+      {
+        "name": "finger_a",
+        "g": 4.6,
+        "u_past_H": 70.6
+      },
+      {
+        "name": "finger_b",
+        "g": 4.6,
+        "u_past_H": 70.6
+      },
+      {
+        "name": "nail_a",
+        "g": 0.3,
+        "u_past_H": 95.0
+      },
+      {
+        "name": "fsr_backing_b",
+        "g": 0.53,
+        "u_past_H": 91.4
+      },
+      {
+        "name": "fsr_sensor_b",
+        "g": 0.6,
+        "u_past_H": 92.0
+      },
+      {
+        "name": "fsr_puck_b",
+        "g": 0.04,
+        "u_past_H": 95.0
+      },
+      {
+        "name": "servo",
+        "g": 60.0,
+        "u_past_H": 31.0
+      },
+      {
+        "name": "horn",
+        "g": 2.36,
+        "u_past_H": 31.0
+      },
+      {
+        "name": "fasteners",
+        "g": 15.51,
+        "u_past_H": 20.7
+      },
+      {
+        "name": "fasteners_a",
+        "g": 4.55,
+        "u_past_H": 40.5
+      },
+      {
+        "name": "fasteners_b",
+        "g": 3.69,
+        "u_past_H": 42.7
+      },
+      {
+        "name": "cloth at the pad [D DB]",
+        "g": 13.5,
+        "u_past_H": 96.0
+      },
+      {
+        "name": "FSR + servo wiring [A DB]",
+        "g": 5.0,
+        "u_past_H": 40.0
+      }
+    ],
+    "total_g_incl_cloth": 152.9,
+    "com_u_past_H": 37.6,
+    "mass_moment_gmm": 52995,
+    "budget_gmm": 43720.0,
+    "budget_use": 1.212,
+    "stock_loading_gmm": 33380.0,
+    "design_basis_estimate_gmm": 40507.0,
+    "revision": "B",
+    "rev_a_cad_gmm": 50131.0,
+    "rev_a_note": "rev A as built (fitcheck.py on master 899265a, 144.4 g incl. cloth and wiring); DESIGN-BASIS 40,507 is the pre-CAD estimate (115.8 g)",
+    "with_wrist_uvc_16g_at_u30_gmm": 58505,
+    "ok": false
+  },
+  "wrist_flex": {
+    "axis": "parallel to Y_I through (x 0, z_I -60.55)",
+    "forearm_parts": [
+      "Under_arm_SO101 v12:1",
+      "Motor_holder_SO101_Wrist v8:1",
+      "ST3215 Servo v2:4"
+    ],
+    "phi_deg": [
+      -95,
+      -70,
+      -45,
+      -20,
+      0,
+      20,
+      45,
+      70,
+      95
+    ],
+    "roll_angles_deg": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "new_gripper_pose": "jaw open +20 deg",
+    "per_case": {
+      "new_open@roll0": {
+        "clear_phi_deg": [
+          -95,
+          95
+        ],
+        "clash_phi_deg": [],
+        "max_clash_mm3": 0.0
+      },
+      "new_open@roll90": {
+        "clear_phi_deg": [
+          -95,
+          95
+        ],
+        "clash_phi_deg": [],
+        "max_clash_mm3": 0.0
+      },
+      "new_open@roll180": {
+        "clear_phi_deg": [
+          -95,
+          95
+        ],
+        "clash_phi_deg": [],
+        "max_clash_mm3": 0.0
+      },
+      "new_open@roll270": {
+        "clear_phi_deg": [
+          -95,
+          95
+        ],
+        "clash_phi_deg": [],
+        "max_clash_mm3": 0.0
+      },
+      "stock@roll0": {
+        "clear_phi_deg": [
+          -95,
+          95
+        ],
+        "clash_phi_deg": [],
+        "max_clash_mm3": 0.0
+      },
+      "stock@roll90": {
+        "clear_phi_deg": [
+          -95,
+          95
+        ],
+        "clash_phi_deg": [],
+        "max_clash_mm3": 0.0
+      },
+      "stock@roll180": {
+        "clear_phi_deg": [
+          -95,
+          95
+        ],
+        "clash_phi_deg": [],
+        "max_clash_mm3": 0.0
+      },
+      "stock@roll270": {
+        "clear_phi_deg": [
+          -95,
+          95
+        ],
+        "clash_phi_deg": [],
+        "max_clash_mm3": 0.0
+      }
+    },
+    "phi_where_new_clashes_and_stock_does_not": [],
+    "ok_vs_stock": true,
+    "limits": "bounding-box prefilter + boolean volume at the listed angles only; forearm = Under_arm, wrist motor holder and servo-4 body (servo-4 horn and Wrist_Roll_Pitch move with flex)"
+  }
+}

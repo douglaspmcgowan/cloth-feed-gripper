@@ -1,0 +1,321 @@
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"}}</script>
+<script type="module">
+/* three.js as ES modules from one pinned version; the page's classic scripts wait for "three-ready" */
+import * as T3 from "three";
+import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
+import {RoomEnvironment} from "three/addons/environments/RoomEnvironment.js";
+window.THREE=Object.assign({},T3,{OrbitControls,GLTFLoader,RoomEnvironment});
+window.dispatchEvent(new Event("three-ready"));
+/* ambient occlusion is loaded after the model, and only where it will be used */
+window.loadPost=async()=>{const [a,b,c,d]=await Promise.all([import("three/addons/postprocessing/EffectComposer.js"),import("three/addons/postprocessing/RenderPass.js"),import("three/addons/postprocessing/GTAOPass.js"),import("three/addons/postprocessing/OutputPass.js")]);
+  Object.assign(window.THREE,{EffectComposer:a.EffectComposer,RenderPass:b.RenderPass,GTAOPass:c.GTAOPass,OutputPass:d.OutputPass});};
+</script>
+<script>
+/*__DATA__*/
+const GLB_B64="__GLB_B64__";
+const CTX_B64="__CTX_B64__";
+</script>
+<script>
+"use strict";
+/* ---------- utilities ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const NS="http://www.w3.org/2000/svg";
+const KGCM=9.80665/100;
+const NM="N m",GMM="g mm",KGCMU="kg cm";
+function fmt(v,d=2){if(v===null||v===undefined||Number.isNaN(v))return "–";if(!Number.isFinite(v))return v>0?"∞":"−∞";
+  const s=Math.abs(v).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});return (v<0?"−":"")+s;}
+function fmtE(v){if(v===null||v===undefined)return "–";if(v<1e4)return fmt(v,0);const e=Math.floor(Math.log10(v));return (v/10**e).toFixed(1)+"e"+e;}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+const STW={pass:"pass",risk:"at risk",fail:"fails",open:"open"};
+function st(s,txt){if(s==="met")s="pass";return `<span class="st ${s}">${txt||STW[s]||s}</span>`;}
+function h(tagName,attrs,parent,html){const e=document.createElement(tagName);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);if(html!==undefined)e.innerHTML=html;if(parent)parent.appendChild(e);return e;}
+function s(tagName,attrs,parent,style){const e=document.createElementNS(NS,tagName);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);if(style)e.setAttribute("style",style);if(parent)parent.appendChild(e);return e;}
+function kv(el,rows){el.innerHTML=rows.map(([l,v,sub,c])=>`<dt>${l}</dt><dd${c?` class="${c}"`:""}>${v}${sub?`<small>${sub}</small>`:""}</dd>`).join("");}
+function niceTicks(min,max,n=5){const span=max-min;if(!(span>0))return [min];const step0=span/n;const mag=10**Math.floor(Math.log10(step0));const err=step0/mag;
+  const step=(err>=7.5?10:err>=3.5?5:err>=1.5?2:1)*mag;const t=[];for(let v=Math.ceil(min/step-1e-9)*step;v<=max+step*1e-9;v+=step)t.push(Math.abs(v)<step*1e-9?0:v);return t;}
+function tfmt(v){const a=Math.abs(v);if(a>=1e4)return fmtE(v);if(a>=100||v===Math.round(v))return fmt(v,0);if(a>=10)return fmt(v,1);return (Math.round(v*100)/100).toString().replace("-","−");}
+/* tick labels: the default format, unless two neighbouring labels would read the same; then the decimals come from the tick step */
+function tickFmt(ticks){const labels=ticks.map(tfmt);if(new Set(labels).size===labels.length)return tfmt;
+  const step=ticks.length>1?Math.abs(ticks[1]-ticks[0]):1,d=Math.max(0,Math.ceil(-Math.log10(step)-1e-9));return v=>fmt(v,d);}
+/* plot(): one scale places marks, ticks and labels */
+function plot(container,o){
+  /* on a narrow screen the drawing is laid out narrower, so its text renders at 11 px or more instead of shrinking with the chart */
+  const narrow=window.innerWidth<=900&&!container.classList.contains("wide");
+  const W=narrow?Math.min(o.w||640,Math.max(300,Math.floor((window.innerWidth-64)*13/11.5))):(o.w||640),H=o.h||300,m=Object.assign({l:54,r:16,t:12,b:42},o.m||{});
+  const svg=s("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":o.aria||container.closest(".fig")?.dataset.fig||"chart"});
+  const X=o.x,Y=o.y,pw=W-m.l-m.r,ph=H-m.t-m.b;
+  const lx=v=>X.log?Math.log10(v):v,ly=v=>Y.log?Math.log10(v):v;
+  const x=v=>m.l+(lx(v)-lx(X.min))/(lx(X.max)-lx(X.min))*pw;
+  const y=v=>m.t+ph-(ly(v)-ly(Y.min))/(ly(Y.max)-ly(Y.min))*ph;
+  const xt=X.ticks||(X.log?logTicks(X.min,X.max):niceTicks(X.min,X.max,X.n||(W<460?4:6)));
+  const yt=Y.ticks||(Y.log?logTicks(Y.min,Y.max):niceTicks(Y.min,Y.max,Y.n||5));
+  const g=s("g",null,svg);
+  const yfmt=Y.fmt||tickFmt(yt);
+  yt.forEach(v=>{if(v<Y.min-1e-9||v>Y.max+1e-9)return;s("line",{x1:m.l,x2:m.l+pw,y1:y(v),y2:y(v),class:"gr"},g);const t=s("text",{x:m.l-6,y:y(v)+3.5,"text-anchor":"end"},g);t.textContent=yfmt(v);});
+  xt.forEach(v=>{if(v<X.min-1e-9||v>X.max+1e-9)return;s("line",{x1:x(v),x2:x(v),y1:m.t,y2:m.t+ph,class:"gr"},g);const t=s("text",{x:x(v),y:m.t+ph+15,"text-anchor":"middle"},g);t.textContent=(X.fmt||tfmt)(v);});
+  s("rect",{x:m.l,y:m.t,width:pw,height:ph,class:"ax"},g);
+  if(X.label){const t=s("text",{x:m.l+pw/2,y:H-6,"text-anchor":"middle",class:"lbl"},g);t.textContent=X.label;}
+  if(Y.label){const t=s("text",{x:12,y:m.t+ph/2,"text-anchor":"middle",class:"lbl",transform:`rotate(-90 12 ${m.t+ph/2})`},g);t.textContent=Y.label;}
+  const P={svg,x,y,m,pw,ph,W,H,narrow,
+    line(pts,color,w=2,dash){const d=pts.filter(p=>p&&Number.isFinite(p[0])&&Number.isFinite(p[1])).map((p,i)=>(i?"L":"M")+x(p[0]).toFixed(1)+","+y(p[1]).toFixed(1)).join("");
+      return s("path",{d},svg,`fill:none;stroke:${color};stroke-width:${w};stroke-linejoin:round;${dash?"stroke-dasharray:"+dash:""}`);},
+    dot(px,py,color,r=3.5,title,stroke){const c=s("circle",{cx:x(px),cy:y(py),r},svg,`fill:${color};${stroke?"stroke:"+stroke+";stroke-width:1.5":""}`);if(title){const t=s("title",null,c);t.textContent=title;}return c;},
+    hband(y0,y1,color){return s("rect",{x:m.l,width:pw,y:y(Math.min(y1,Y.max)),height:Math.max(0,y(Math.max(y0,Y.min))-y(Math.min(y1,Y.max)))},svg,`fill:${color}`);},
+    vband(x0,x1,color){return s("rect",{y:m.t,height:ph,x:x(Math.max(x0,X.min)),width:Math.max(0,x(Math.min(x1,X.max))-x(Math.max(x0,X.min)))},svg,`fill:${color}`);},
+    hline(v,color,dash,label,anchor="end"){s("line",{x1:m.l,x2:m.l+pw,y1:y(v),y2:y(v)},svg,`stroke:${color};stroke-width:1.5;${dash?"stroke-dasharray:"+dash:""}`);if(label){const t=s("text",{x:anchor==="end"?m.l+pw-4:m.l+4,y:y(v)-4,"text-anchor":anchor},svg,`fill:${color};font-weight:600`);t.textContent=label;}},
+    vline(v,color,dash,label){s("line",{y1:m.t,y2:m.t+ph,x1:x(v),x2:x(v)},svg,`stroke:${color};stroke-width:1.5;${dash?"stroke-dasharray:"+dash:""}`);if(label){const t=s("text",{x:x(v)+4,y:m.t+12},svg,`fill:${color};font-weight:600`);t.textContent=label;}},
+    text(px,py,str,color,anchor="start",dx=0,dy=0,cls){const t=s("text",{x:x(px)+dx,y:y(py)+dy,"text-anchor":anchor,class:cls||""},svg,color?`fill:${color}`:"");t.textContent=str;return t;},
+    legend(items,pos){
+      if(narrow){const d=h("div",{class:"lgd"},container);items.forEach(([lab,c,dash])=>{const sp=h("span",null,d),k=s("svg",{viewBox:"0 0 20 8","aria-hidden":"true"},sp);
+        s("line",{x1:0,x2:20,y1:4,y2:4},k,`stroke:${c};stroke-width:2.5;${dash?"stroke-dasharray:"+dash:""}`);sp.appendChild(document.createTextNode(lab));});return;}
+      const lg=s("g",null,svg);let xx=pos&&pos.x!==undefined?pos.x:m.l+8,yy=pos&&pos.y!==undefined?pos.y:m.t+14;
+      items.forEach(([lab,col,dash])=>{s("line",{x1:xx,x2:xx+16,y1:yy-4,y2:yy-4},lg,`stroke:${col};stroke-width:2.5;${dash?"stroke-dasharray:"+dash:""}`);const t=s("text",{x:xx+20,y:yy},lg);t.textContent=lab;yy+=15;});}
+  };
+  container.innerHTML="";container.appendChild(svg);return P;
+}
+function logTicks(a,b){const t=[];for(let e=Math.floor(Math.log10(a));e<=Math.ceil(Math.log10(b));e++){const v=10**e;if(v>=a*0.999&&v<=b*1.001)t.push(v);}return t;}
+function col(i){return `var(--c${(i%5)+1})`;}
+function sortableTable(table,cols,rows,opt={}){
+  let key=opt.key||null,dir=opt.dir||1;
+  function render(focusKey){
+    const r=[...rows];if(key!==null){const c=cols.find(c=>c.k===key);r.sort((a,b)=>{const va=c.v?c.v(a):a[key],vb=c.v?c.v(b):b[key];
+      if(va===vb)return 0;if(va===null||va===undefined)return 1;if(vb===null||vb===undefined)return -1;return (va>vb?1:-1)*dir;});}
+    let html="<thead><tr>"+cols.map(c=>`<th class="${c.n?"n":""}"${key===c.k?` aria-sort="${dir>0?"ascending":"descending"}"`:""}>${c.nosort?c.t:`<button type="button" class="sortb" data-k="${c.k}">${c.t}</button>`}</th>`).join("")+"</tr></thead><tbody>";
+    html+=r.map(row=>`<tr${opt.hl&&opt.hl(row)?' class="hl"':""}${opt.attr?" "+opt.attr(row):""}>`+cols.map(c=>`<td class="${c.n?"n":""} ${c.cls?c.cls(row):""}">${c.f?c.f(row):esc(row[c.k])}</td>`).join("")+"</tr>").join("");
+    if(!r.length)html+=`<tr><td colspan="${cols.length}" class="note">Nothing matches. Clear the filter to see every row.</td></tr>`;
+    table.innerHTML=html+"</tbody>"+(opt.foot?opt.foot(r):"");if(opt.after)opt.after();
+    $$(".sortb",table).forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.k;if(key===k)dir=-dir;else{key=k;dir=1;}render(k);}));
+    if(focusKey){const b=$(`.sortb[data-k="${focusKey}"]`,table);if(b)b.focus();}
+  }
+  render();return {set(r){rows=r;render();}};
+}
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+/* plain names for the codes the analysis files use */
+const CN={C0:"Baseline",C1:"Geared-down servo",C2:"Rack jaw, ball rail",C2p:"Rack jaw, printed slide",C3:"1-start worm",C3b:"2-start worm"};
+const RN={1:"the transmission requirement",2:"the DC motor requirement",5:"the microcontroller requirement",12:"the stiffness window",20:"the stall back-off limit",21:"the calibration requirement",8:"the $50 cap",9:"compactness",10:"the mass budget",14:"the 5 N hold",15:"the 10 N cap",16:"the 40 % hold rule",17:"the moment-arm limit",18:"the jaw range",19:"the 0.5 s close limit",25:"the life target",26:"the 60 °C limit",27:"the 3 A rail"};
+function decode(t){return String(t??"")
+  .replace(/\bC(0|1|2p|2|3b|3)\b/g,(m,k)=>CN["C"+k].toLowerCase()).replace(/\(?\bDB D7\)?/g,"").replace(/\bD7\b/g,"single-ply pickup")
+  .replace(/\bR(\d+)\b/g,(m,n)=>RN[n]||"a requirement").replace(/\bM20\b/g,"the instructor's ruling").replace(/\bGSI\b/g,"instructor")
+  .replace(/\bA17\b/g,"DS3218MG").replace(/\bA19\b/g,"DS3235").replace(/\bM0[12]\b/g,"gearmotor").replace(/\bLC1\b/g,"hold").replace(/\bLC2\b/g,"cap").replace(/\bLC3\b/g,"stall")
+  .replace(/g\*mm/g,GMM).replace(/N\*m/g,NM).replace(/kg\*cm|kg-cm/g,KGCMU).replace(/\s+\(\s*\)/g,"").replace(/_/g," ").trim();}
+
+/* ---------- facts shared by several views ---------- */
+const FIT=D.fit,MASS=FIT.mass;
+const SWEEP_CLASH=FIT.jaw_sweep.filter(j=>Object.keys(j.clash_mm3).length);
+const SWEEP_TXT=SWEEP_CLASH.length?`clashes at ${SWEEP_CLASH.map(j=>fmt(j.theta_deg,1)+"°").join(", ")}`:`clash-free at ${FIT.jaw_sweep.map(j=>fmt(j.theta_deg,1)).join(", ")}° against every static part`;
+const ROLL_TXT=FIT.roll_ring_clearance.filter(r=>r.radial_gap!==null).map(r=>`${fmt(r.radial_gap,2)} mm in the ${r.z_I.join(" to ")} mm band`).join("; ");
+const ENV_OUT=FIT.envelope_vs_stock.filter(e=>!e.inside);
+const WF=FIT.wrist_flex||null;
+const R9_ST=!(FIT.keepout_params.every(k=>k.ok)&&FIT.roll_min_radial_gap_mm>0)?"fail":((WF&&WF.ok_vs_stock&&FIT.roll_min_radial_gap_mm>=1.0&&!ENV_OUT.length)?"pass":"risk");
+const A17=D.acts.find(a=>a.id==="A17"),A19=D.acts.find(a=>a.id==="A19");
+/* limits from Douglas's ruling of 12 October 2026: close within 0.75 s, pad force capped at about 8 N */
+const R19_CLOSE_S=0.75, R15_CAP_N=8;
+/* the build servo is the one params.json names; the DS3218MG (A17) is the rev A comparison only */
+const BUILD=D.params.servo.models[D.parts.servo_model], BUILD_STALL=BUILD.stall_torque_kgcm["6.5V"];
+const HOLD_FRAC=D.params.grip.hold_fraction_of_stall, T_HOLD=D.grip.T_hold_Nm;
+const BUILD_CAP=BUILD_STALL*KGCM*HOLD_FRAC, A17CAP=A17.stall*KGCM*HOLD_FRAC;
+const TOLB=D.tol.filter(r=>!r.id.includes("-")),TOLF=D.tol.filter(r=>r.id.includes("-"));
+const THERM_FAIL=Object.values(D.therm_cases).filter(c=>!c.R26_pass).length,THERM_N=Object.keys(D.therm_cases).length;
+const GP=D.gears.rec.printed;
+const FWC=Object.values(D.fw.cases),fwr=(k,d=2)=>`${fmt(Math.min(...FWC.map(c=>c[k])),d)} to ${fmt(Math.max(...FWC.map(c=>c[k])),d)}`;
+const FWG=n=>((D.fw.gates.gates.find(g=>g.name===n)||{}).summary||[]).join(" "),FWN=(FWG("host FSM test").match(/(\d+) \/ \d+ checks/)||[])[1],FWB=(FWG("host FSM test").match(/begins (\d+) ms/)||[])[1];
+const COMPILE_GATE=D.fw.gates.gates.find(g=>g.name==="arduino-cli compile"),SERVO_COST=(D.bomx.find(r=>r.part==="servo")||{}).usd;
+const LIMIT_G=MASS.budget_gmm/(309.1+MASS.com_u_past_H);
+const REQ=[
+ ["At least one moving transmission","open","A 1:1 spur-sector pair is in CAD. The instructor must confirm that a 1:1 pair counts; the fallback is a pinion stage of 2:1 or more."],
+ ["At least one DC motor","open","The servo has a brushed DC motor inside it, which needs the instructor's confirmation. Fallback: a gearmotor with an 8:1 stage that closes in 0.58 s."],
+ ["At least one analog input","pass","Force sensor on finger B into an analog pin, sampled at 1 kHz. The bench read trace is still to be logged."],
+ ["At least one digital button","pass","Start button (a press advances, a 0.8 s hold stops) and the jaw-open limit, both debounced and logged."],
+ ["Microcontroller",COMPILE_GATE?.exit===0?"pass":"open",COMPILE_GATE?.exit===0?"ESP32 DevKitC firmware compiled successfully.":"ESP32 DevKitC firmware compile has not run; arduino-cli is needed to check it."],
+ ["State machine and event-driven code","pass",`12 states and a ${D.fw.table.length}-row transition table with no blocking waits. The host test takes every row and passes ${FWN} checks.`],
+ ["PWM actuator, not the arm's serial bus","pass",`${D.parts.servo_model} at 50 Hz, 500 to 2500 µs.`],
+ ["At most $50 per actuator","pass",`${D.parts.servo_model}, $${fmt(SERVO_COST,2)}.`],
+ ["Compact",R9_ST,`Keep-outs are clean in CAD. Roll gaps: ${ROLL_TXT}. ${ENV_OUT.length?"Outside the stock envelope in "+ENV_OUT.length+" band"+(ENV_OUT.length>1?"s":"")+".":"Inside the stock envelope everywhere."}`],
+ [`Mass-moment within ${fmt(MASS.budget_gmm,0)} ${GMM}`,MASS.ok?"pass":"fail",`${fmt(MASS.total_g_incl_cloth,1)} g with cloth, centred ${fmt(MASS.com_u_past_H,1)} mm past the horn: ${fmt(MASS.mass_moment_gmm,0)} ${GMM}, ${fmt(MASS.budget_use*100,0)} % of budget.`],
+ ["Public, cited sources only","pass","Every analysis document lists its sources and marks assumed numbers."],
+ ["Tip stiffness 0.88 to 1.63 N/mm","pass","1.101 N/mm in plane and 0.922 across layers. Bench test pending."],
+ ["Gear strength at hold, cap and stall","pass",`Printed PA6-CF pair: root safety factor ${fmt(GP.SF.F_LC1,2)}, ${fmt(GP.SF.F_LC2,2)} and ${fmt(GP.SF.F_LC3,2)}; shock ${fmt(GP.SF.F_shock,2)}.`],
+ ["Hold at least 5 N per pad","risk",`The ${BUILD.model} holds ${fmt(BUILD_CAP,3)} ${NM} against ${fmt(T_HOLD,3)} needed. Rev A's DS3218MG fails if tension exceeds 2.07 N or friction drops below 0.386.`],
+ ["Pad force at most 10 N","risk","The firmware caps the squeeze at 5.14° past touch, which keeps any finger in the stiffness window at or under 10 N by position, behind a 7.5 N soft limit and an 8 N trip. The finger still folds at 8.88 N."],
+ ["Hold at most 40 % of stall","risk",`Needs 20.2 ${KGCMU} of stall; the ${BUILD.model} gives ${fmt(BUILD_STALL,2)} at 6.5 V, a vendor listing figure; not yet measured on the delivered part.`],
+ ["Moment arm at most 65 mm","pass","65.0 mm in CAD."],
+ ["Jaw range −11° to +20°",SWEEP_CLASH.length?"fail":"pass",`The jaw sweep in CAD is ${SWEEP_TXT}.`],
+ ["Full close within 0.5 s","risk",`The firmware simulation touches at ${fwr("t_contact_s")} s and reaches 4.5 N at ${fwr("t_F90_s")} s. The torque model says 0.278 s. Needs a ruling and a timed video.`],
+ ["Back off a stall within 200 ms","risk",`Host test: the back-off begins ${FWB} ms after over-current starts and its command completes at 200 ms. The current threshold and the blocked-finger test are pending.`],
+ ["Calibration stores the contact angle","pass","Calibration zeroes the sensor, closes at 20 °/s to 0.5 N and stores the contact angle. The simulation lands within 0.2° of the true angle."],
+ ["Wrist interface","risk","A separate wrist-mount plate on the horn. The pilot fit reaches a capability of only 1.25, so a coupon is needed."],
+ ["Camera provision","pass","A wrist camera pad is modelled. The primary camera is fixed off the arm."],
+ ["Work cell","open","The layout sketch has not been checked against the shoulder reach rule."],
+ ["Life of at least 100,000 grips","risk","Gears pass at 6.2e7 grips. The finger's pessimistic hot spot is 4.3e3 grips, rising to 3.1e6 with the printed knock-down."],
+ ["Case at most 60 °C after 30 min","fail",`The thermal model fails ${THERM_FAIL} of ${THERM_N} cases, for example 115 °C at 40 °C ambient. Measure it.`],
+ ["6 V rail delivers 3 A","risk","The rail is specified at 6.5 V and 3 A. One motor fit implies a 3.77 A stall."],
+];
+/* where each requirement's evidence is shown */
+const REQEV=["gears-picks", "torque-shortlist", "firmware-faults", "firmware-pins", "firmware-gates", "firmware-states", "torque-shortlist", "parts-list", "fit-findings", "mass-payload", "", "finger-stiffness", "gears-picks", "torque-arm", "finger-fold", "torque-arm", "model-3d", "fit-3d", "firmware-step", "firmware-faults", "firmware-step", "tolerances-stacks", "camera-placements", "", "dyno-life", "dyno-thermal", "dyno-current"];
+REQ.forEach((r,i)=>{r[3]=REQEV[i]||"";});
+const REQC={pass:0,risk:0,fail:0,open:0};REQ.forEach(r=>REQC[r[1]]++);
+const CHECKS={
+ mass:["Mass budget",["Confirm the arm kit's servo variant and supply voltage. The 5 V kit fails the budget outright; the 12 V kit leaves room.",`Weigh the gripper and find its centre on a knife edge. CAD says ${fmt(MASS.total_g_incl_cloth,1)} g with cloth, centred ${fmt(MASS.com_u_past_H,1)} mm past the horn.`]],
+ torque:["Torque and actuator",["Pad-to-cloth friction on an incline, 5 trials. Below 0.386 the servo fails the hold rule.","Feed tension with a spring scale at demo speed. Above 2.07 N the servo fails the hold rule.",`Servo stall torque, stall current and no-load speed at 6.5 and 6.8 V, with a lever on the horn and a kitchen scale. Datasheets disagree by 0.4 ${KGCMU}.`,"Mesh and pivot efficiency, from servo current against sensor force at a known moment arm.","The instructor's ruling on the servo as the DC motor."]],
+ finger:["Finger",["Clamp a printed finger at its root, hang 0.5 to 10 N at the tip pad and log the deflection. Pass is 0.88 to 1.63 N/mm and no fold below 10 N.","Tip bend fatigue at 10 N and at the collision load. Predicted life spans 4.3e3 to 3.1e6 grips.","The force sensor's curve behind the 1.0 mm backing and the 6 mm puck."]],
+ gears:["Gears",[`Step-load printed PA6-CF sector pairs: start at the hold torque and add 20 % per step, then a static stall at 2.1 ${NM} and 20 drop-jams at 120 °/s. Repeat on one PETG pair.`,"Flank contact across the face as built, with feelers or a dye pattern.","Wear and backlash after 10,000 grips.","Moisture state of the PA6-CF: weigh a dried coupon over a week."]],
+ dyno:["Dyno",["Scope the motor current in the hold. This picks the motor fit, which sizes the rail.","Case temperature over 30 min of the duty cycle, and the cool-down time constant.","Time the close to contact and to 5 N. The prediction is 0.36 and 0.64 s.",`Rotor inertia by coast-down, which sets the jam peak of 2.26 to 3.60 ${NM}.`]],
+ tolerances:["Tolerance stacks, on a test coupon printed 5 times with the housing's settings",["Hole sizes Ø3.0 to 3.8 and counterbores Ø6.0 and 6.5, checked with pin gauges and an M3 screw.","Recess Ø19.40 to 20.0, with and without the chamfer, fitted on the real wrist horn.","The 4-hole pattern screwed onto the real horn; hub diameter at the first layer; servo pocket widths 20.2 to 20.5.","Pin tilt on the reamed plate pair, and knuckle rock on the sleeved bores.","The real horn hole depth, screw lengths, servo shaft offset and shaft play."]],
+ camera:["Camera",["Machine-head underside height, right-face offset from the needle and presser-foot toe position. The primary passes if the underside is at least 33 mm above the bed and the right face at most 64 mm right of the needle.","The seam guide used for the demo; 15.9 mm assumed.","USB module resolution, field of view, mass and lens position.","Edge contrast and bed glare at the primary angle, the exposure needed under the work light, and arm speed while imaging."]],
+ firmware:["Firmware and controls",["Servo lag, decode delay and deadband: step the pulse by 1 µs and watch a 100 mm pointer. These set the 76 ms lag compensation and the gains.","Finger stiffness with the nail and backing fitted: confirm at least 0.9 N/mm, because the cap leaves 0.64° for lag error at the soft end.","Force sensor span against a known weight at bring-up. Reading low defeats the 8 N trip; reading high under-grips.","Hold and stall current. The 1.8 A trip rests on a 2.2 A stall figure, so keep grips at or under 6 N until it is measured.","Whether the 3.3 V board output drives the servo. If not, add a level shifter.","Loop timing on the board: toggle a pin per task and scope it.","Block a finger and log the time to back off, 200 ms or less. Rule whether the limit means the back-off begins or completes.","A timed video of the close, to contact and to 5 N.","The boot log shows the calibrated contact angle."]],
+};
+const NCHECK=Object.values(CHECKS).reduce((a,c)=>a+c[1].length,0);
+/* level 1: status word and one sentence per view */
+const VIEWS={
+ model:{v:`A ${D.parts.servo_model} servo drives two geared fingers through a 1:1 printed sector pair; ${fmt(MASS.total_g_incl_cloth,1)} g with cloth.`},
+ drawings:{v:"Five part sheets projected from the CAD, with the proposed datums and callouts."},
+ fit:{st:R9_ST,v:`Keep-outs and the jaw sweep are clear. The tightest roll gap is ${fmt(FIT.roll_min_radial_gap_mm,2)} mm${ENV_OUT.length?" and one band sits outside the stock envelope":""}.`},
+ concepts:{v:"Keep the baseline, which is in CAD; iterate the geared-down servo; bench-test the 2-start worm."},
+ mass:{st:MASS.ok?"pass":"fail",v:`${fmt(MASS.mass_moment_gmm,0)} ${GMM} against a budget of ${fmt(MASS.budget_gmm,0)} (${fmt(MASS.budget_use*100,0)} %). It needs a ruling or about ${fmt(MASS.total_g_incl_cloth-LIMIT_G,0)} g cut.`},
+ torque:{st:"risk",v:`The ${BUILD.model} holds ${fmt(BUILD_CAP,3)} ${NM} against ${fmt(T_HOLD,3)} needed, a ${fmt((BUILD_CAP/T_HOLD-1)*100,0)} % margin. Rev A's DS3218MG holds ${fmt(A17CAP,3)} ${NM} and fails above 2.07 N of tension or below 0.386 friction.`},
+ finger:{st:"risk",v:"Tip stiffness of 1.10 N/mm is inside the window, but the tip folds at 8.9 N, below the 10 N cap."},
+ gears:{st:GP.pass?"pass":"fail",v:`The printed PA6-CF pair keeps a root safety factor of ${fmt(GP.SF.F_LC3,2)} at full stall and ${fmt(GP.SF.F_shock,2)} in shock.`},
+ dyno:{st:"fail",v:`The servo case passes 60 °C in ${THERM_FAIL} of ${THERM_N} thermal cases, and the close reaches 5 N at ${fmt(D.dyno_close.A_mech.close_to_5N_s,2)} s against a 0.5 s limit.`},
+ tolerances:{st:"fail",v:`${TOLB.filter(r=>r.v).length} of ${TOLB.length} stacks pass as designed with the assumed printer; ${TOLF.filter(r=>r.v).length} of ${TOLF.length} fixes pass. A printed coupon decides.`},
+ camera:{st:"pass",v:"A fixed Pi Camera 3 off the arm sees all of the critical cloth edge at 5.5 pixels per mm and adds no wrist mass."},
+ firmware:{st:"risk",w:(D.fw.verdict||"conditional").toLowerCase(),v:`The host tests pass ${FWN} checks; the ESP32 compile has not run. Simulated grips peak at ${fwr("F_max_N")} N, but 4.5 N arrives at ${fwr("t_F90_s")} s against the 0.5 s limit, and two decisions are open.`},
+ open:{st:"open",v:`${REQC.pass} requirements pass, ${REQC.risk} are at risk, ${REQC.fail} fail and ${REQC.open} are open. ${document.querySelectorAll('#open-decisions section').length} decisions and ${NCHECK} bench checks are waiting.`},
+};
+const VLINK={model:[[/[\d.,]+ g with cloth/,"mass-rollup"]],fit:[[/tightest gap between a moving part and the body is [\d.]+ mm/,"fit-f-horn-housing"],[/\d+ findings? fails?/,"fit-findings"]],
+ parts:[[/[\d.]+ g on the arm/,"parts-list"]],assembly:[[/\d+ steps? cannot be done as drawn/,"assembly-findings"]],
+ mass:[[/[\d,]+\sg\smm/,"mass-payload"],[/about \d+ g cut/,"mass-rollup"]],torque:[[/holds [\d.]+\sN\sm against [\d.]+ needed/,"torque-arm"],[/above [\d.]+ N of tension or below [\d.]+ friction/,"torque-sensitivity"]],
+ finger:[[/[\d.]+ N\/mm/,"finger-stiffness"],[/folds at [\d.]+ N/,"finger-fold"]],gears:[[/safety factor of [\d.]+/,"gears-picks"]],
+ dyno:[[/\d+ of \d+ thermal cases/,"dyno-thermal"],[/5 N at [\d.]+ s/,"dyno-speed"]],tolerances:[[/\d+ of \d+ stacks pass/,"tolerances-stacks"],[/\d+ of \d+ fixes pass/,"tolerances-fixes"]],
+ camera:[[/[\d.]+ pixels per mm/,"camera-placements"]],firmware:[[/passes \d+ host checks/,"firmware-gates"],[/4\.5 N arrives at [\d.–\sto]+ s/,"firmware-step"],[/two decisions are open/,"open-decisions"]],
+ open:[[/\d+ requirements pass[^.]*open/,"open-requirements"],[/\d+ decisions/,"open-decisions"],[/\d+ bench checks/,"open-checks"]]};
+const ALIAS={overview:"open",actuators:"torque",fea:"finger",controls:"firmware",bom:"parts","bom-parts":"parts-list","bom-fasteners":"parts-list"};
+const ENTER={},THREE_VIEWS=new Set(["model","fit","parts","assembly"]);let PARTS_CUR=null;
+
+/* ---------- shell: the same header, figure tabs and disclosure controls in every view ---------- */
+const RENDER={},DONE={};let CUR=null;
+function buildShell(){
+  const sb=h("div",{id:"selbar",class:"selbar",hidden:"",role:"status","aria-live":"polite"},$("#rail"),`<span>Selected</span><b id="selName"></b><a id="selOpen" href="#parts">Open part</a><button type="button" id="selClear">Clear</button>`);
+  $("#selClear").addEventListener("click",()=>selectPart(null,"clear"));
+  $$("#rail a.nav").forEach(a=>{const i=VIEWS[a.getAttribute("href").slice(1)];if(i&&i.st)a.insertAdjacentHTML("beforeend",st(i.st,i.w));});
+  $$(".sheet").forEach(sh=>{const im=$("img",sh);im.draggable=false;sh.tabIndex=0;sh.setAttribute("role","group");sh.setAttribute("aria-label",im.alt+"; zoom with the buttons, a pinch or the plus and minus keys");
+    sh.insertAdjacentHTML("afterend",`<div class="ctrl zoomer"><button type="button" data-z="out" aria-label="Zoom out" disabled>−</button><output class="zlevel">100 %</output><button type="button" data-z="in" aria-label="Zoom in">+</button><button type="button" data-z="fit" disabled>Fit</button><span class="note">Pinch or use the buttons to zoom, then drag to pan</span></div>`);sheetGestures(sh);});
+  $$(".view").forEach(v=>{
+    const id=v.id,info=VIEWS[id]||{},figs=$$(":scope > .fig",v);
+    const vh=h("header",{class:"vh"},null,`<h1>${esc(v.dataset.title)}</h1><p class="verdict">${info.st?st(info.st,info.w):""}<span>${esc(info.v||"")}</span></p>`);
+    v.insertBefore(vh,v.firstChild);
+    /* numbers in the verdict link to the figure they come from */
+    (VLINK[id]||[]).forEach(([re,href])=>{const sp=$(".verdict span:last-child",vh);sp.innerHTML=sp.innerHTML.replace(re,m=>`<a href="#${href}">${m}</a>`);});
+    if(figs.length>1){const tl=h("div",{class:"tabs",role:"tablist","aria-label":v.dataset.title+" figures"});
+      figs.forEach((f,i)=>{h("button",{type:"button",role:"tab",id:"tab-"+f.id,"aria-controls":f.id,"aria-selected":i?"false":"true",tabindex:i?"-1":"0"},tl,esc(f.dataset.fig));f.setAttribute("role","tabpanel");f.setAttribute("aria-labelledby","tab-"+f.id);f.hidden=i>0;});
+      vh.after(tl);
+      tl.addEventListener("click",e=>{const b=e.target.closest("[role=tab]");if(b)selectFig(document.getElementById(b.getAttribute("aria-controls")),true);});
+      tl.addEventListener("keydown",e=>{const t=$$("[role=tab]",tl),i=t.indexOf(document.activeElement);if(i<0)return;let n=null;
+        if(e.key==="ArrowRight")n=(i+1)%t.length;else if(e.key==="ArrowLeft")n=(i-1+t.length)%t.length;else if(e.key==="Home")n=0;else if(e.key==="End")n=t.length-1;
+        if(n===null)return;e.preventDefault();selectFig(document.getElementById(t[n].getAttribute("aria-controls")),true);t[n].focus();});}
+    figs.forEach(f=>{const bar=h("div",{class:"figbar"});
+      if(f.dataset.info){h("button",{type:"button",class:"ibtn","aria-label":"How to read "+f.dataset.fig,"aria-expanded":"false"},bar,"i");
+        h("div",{class:"pop",hidden:"",role:"note"},bar,f.dataset.info.split("|").map(p=>`<p>${esc(p)}</p>`).join(""));}
+      h("button",{type:"button",class:"fullb"},bar,"Full screen");f.insertBefore(bar,f.firstChild);});
+    const dets=$$(":scope > .detail",v);if(dets.length){const bar=h("div",{class:"depth"});
+      dets.forEach(d=>{h("button",{type:"button","aria-expanded":"false","aria-controls":d.id},bar,d.id.endsWith("-sources")?"Sources":"Method and assumptions");});
+      if(CHECKS[id]){const n=CHECKS[id][1].length;h("a",{href:"#open-"+id,class:"benchlink"},bar,`${n} bench check${n>1?"s":""}`);}
+      dets[0].before(bar);}
+  });
+  document.addEventListener("click",e=>{
+    const ib=e.target.closest(".ibtn"),fb=e.target.closest(".fullb"),db=e.target.closest(".depth button"),zb=e.target.closest("button[data-z]");
+    $$(".pop").forEach(p=>{if(!ib||p!==ib.nextElementSibling){p.hidden=true;p.previousElementSibling.setAttribute("aria-expanded","false");}});
+    if(ib){const p=ib.nextElementSibling;p.hidden=!p.hidden;ib.setAttribute("aria-expanded",String(!p.hidden));}
+    if(fb)setFull(fb.closest(".fig"),!fb.closest(".fig").classList.contains("is-full"));
+    if(db)openDetail(document.getElementById(db.getAttribute("aria-controls")),db.getAttribute("aria-expanded")!=="true",true);
+    if(zb){const sh=zb.closest(".zoomer").previousElementSibling,z=+sh.dataset.zoom||1,k=zb.dataset.z;setZoom(sh,k==="in"?z*1.5:k==="out"?z/1.5:1);}
+    if(e.target.closest("#menuBtn"))setMenu(!$("#rail").classList.contains("open"));else if(!e.target.closest("#railList")||e.target.closest("a"))setMenu(false);
+  });
+  document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;const f=$(".fig.is-full");
+    const p=$$(".pop").find(p=>!p.hidden);if(p){p.hidden=true;p.previousElementSibling.setAttribute("aria-expanded","false");p.previousElementSibling.focus();}
+    else if(f)setFull(f,false);else if($("#rail").classList.contains("open")){setMenu(false);$("#menuBtn").focus();}});
+}
+/* drawing sheets: zoom by button, pinch, key or ctrl-wheel; pan by scroll or drag */
+function setZoom(sh,z,cx,cy){z=Math.max(1,Math.min(6,z));const z0=+sh.dataset.zoom||1;if(z===z0)return;
+  if(cx===undefined){cx=sh.clientWidth/2;cy=sh.clientHeight/2;}
+  const fx=(sh.scrollLeft+cx)/sh.scrollWidth,fy=(sh.scrollTop+cy)/sh.scrollHeight;
+  if(z0===1)sh.style.setProperty("--zh",sh.clientHeight+"px");
+  sh.dataset.zoom=z;sh.classList.toggle("zoomed",z>1);sh.style.setProperty("--zw",(z*100)+"%");
+  sh.scrollLeft=fx*sh.scrollWidth-cx;sh.scrollTop=fy*sh.scrollHeight-cy;
+  const c=sh.nextElementSibling;$(".zlevel",c).textContent=Math.round(z*100)+" %";$('[data-z="out"]',c).disabled=z<=1;$('[data-z="fit"]',c).disabled=z<=1;$('[data-z="in"]',c).disabled=z>=6;}
+function sheetGestures(sh){let d0=0,z0=1,drag=null;
+  const dist=t=>Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
+  sh.addEventListener("touchstart",e=>{if(e.touches.length===2){d0=dist(e.touches);z0=+sh.dataset.zoom||1;}},{passive:true});
+  sh.addEventListener("touchmove",e=>{if(e.touches.length!==2||!d0)return;e.preventDefault();const r=sh.getBoundingClientRect();
+    setZoom(sh,z0*dist(e.touches)/d0,(e.touches[0].clientX+e.touches[1].clientX)/2-r.left,(e.touches[0].clientY+e.touches[1].clientY)/2-r.top);},{passive:false});
+  sh.addEventListener("touchend",e=>{if(e.touches.length<2)d0=0;});
+  sh.addEventListener("wheel",e=>{if(!e.ctrlKey)return;e.preventDefault();const r=sh.getBoundingClientRect();setZoom(sh,(+sh.dataset.zoom||1)*(e.deltaY<0?1.2:1/1.2),e.clientX-r.left,e.clientY-r.top);},{passive:false});
+  sh.addEventListener("keydown",e=>{const z=+sh.dataset.zoom||1;if(e.key==="+"||e.key==="=")setZoom(sh,z*1.5);else if(e.key==="-")setZoom(sh,z/1.5);else if(e.key==="0")setZoom(sh,1);});
+  sh.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"||!sh.classList.contains("zoomed"))return;drag=[e.clientX,e.clientY,sh.scrollLeft,sh.scrollTop];sh.setPointerCapture(e.pointerId);e.preventDefault();sh.focus();});
+  sh.addEventListener("pointermove",e=>{if(!drag)return;sh.scrollLeft=drag[2]-(e.clientX-drag[0]);sh.scrollTop=drag[3]-(e.clientY-drag[1]);});
+  const end=()=>{drag=null;};sh.addEventListener("pointerup",end);sh.addEventListener("pointercancel",end);}
+/* one cue under anything that scrolls sideways */
+function cardify(){$$("table.cards").forEach(t=>{const hd=$$("thead th",t).map(th=>th.textContent.trim());$$("tbody tr, tfoot tr",t).forEach(tr=>[...tr.cells].forEach((c,i)=>{if(hd[i]&&!c.dataset.l)c.dataset.l=hd[i];}));});}
+function cues(){cardify();$$(".view:not([hidden]) .tw, .view:not([hidden]) .chart.wide").forEach(el=>{if(!el.offsetParent)return;const sx=el.scrollWidth>el.clientWidth+2,sy=el.scrollHeight>el.clientHeight+2,on=sx||sy,n=$$("tbody tr",el).length;
+  const txt=sx&&sy?`Scroll the table sideways and down for all ${n} rows, or open full screen`:sy?`Scroll the table for all ${n} rows, or open full screen`:"Scroll sideways, or open full screen";
+  let c=el.nextElementSibling;if(c&&c.classList.contains("scrollcue")){c.hidden=!on;c.textContent=txt;}else if(on)el.after(h("p",{class:"note scrollcue"},null,txt));});}
+function cueSoon(){setTimeout(cues,0);}
+function setMenu(on){$("#rail").classList.toggle("open",on);$("#menuBtn").setAttribute("aria-expanded",String(on));}
+function setFull(fig,on){$$(".fig.is-full").forEach(f=>{f.classList.remove("is-full");$(".fullb",f).textContent="Full screen";});$$(".sheet",fig).forEach(sh=>setZoom(sh,1));
+  document.documentElement.classList.toggle("noscroll",on);if(on){fig.classList.add("is-full");fig.scrollTop=0;}
+  const b=$(".fullb",fig);b.textContent=on?"Exit full screen":"Full screen";b.focus();if(typeof V3!=="undefined"&&V3)V3.dirty=true;window.dispatchEvent(new Event("resize"));}
+function setHash(id){try{history.replaceState(null,"","#"+id);}catch(e){}}
+function selectFig(fig,user){const v=fig.closest(".view");
+  $$(":scope > .fig",v).forEach(f=>{const on=f===fig;if(!on&&f.classList.contains("is-full"))setFull(f,false);f.hidden=!on;const t=document.getElementById("tab-"+f.id);if(t){t.setAttribute("aria-selected",String(on));t.tabIndex=on?0:-1;}});
+  if(v.id==="finger"&&DONE.finger)drawFEA();cueSoon();if(user){setHash(fig.id);store("gripperFig-"+v.id,fig.id);}}
+function openDetail(d,on,user){d.hidden=!on;const b=$(`.depth button[aria-controls="${d.id}"]`);if(b)b.setAttribute("aria-expanded",String(on));cueSoon();
+  if(on&&user){const r=d.getBoundingClientRect();if(r.top>window.innerHeight-80)d.scrollIntoView({block:"start",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});}
+  if(user)setHash(on?d.id:(($$(":scope > .fig",d.closest(".view")).find(f=>!f.hidden)||d.closest(".view")).id));}
+function showView(id){
+  if(CUR===id)return;CUR=id;const f=$(".fig.is-full");if(f)setFull(f,false);
+  $$(".view").forEach(v=>{v.hidden=v.id!==id;});
+  $$("#rail a.nav").forEach(a=>{if(a.getAttribute("href")==="#"+id){a.setAttribute("aria-current","page");$("#here").textContent=a.firstChild.textContent;}else a.removeAttribute("aria-current");});
+  const v=document.getElementById(id);
+  if(!DONE[id]){DONE[id]=true;$$("img[data-img]",v).forEach(im=>{im.src=D.img[im.dataset.img]||"";});
+    $$("[data-notes]",v).forEach(u=>{u.innerHTML=((D.sheet_notes||{})[u.dataset.notes]||[]).map(n=>`<li>${esc(n)}</li>`).join("");});
+    try{RENDER[id]&&RENDER[id]();}catch(err){console.error("render "+id,err);h("p",{class:"err"},$(".vh",v),"This view could not be drawn ("+esc(err.message)+"). Rebuild the page with viewer_build.py.");}}
+  if(THREE_VIEWS.has(id)&&typeof init3D==="function")init3D();
+  try{ENTER[id]&&ENTER[id]();}catch(err){console.error("enter "+id,err);}
+  pause3D(THREE_VIEWS.has(id));store("gripperView",id);cueSoon();
+}
+function go(raw,scroll){
+  /* a fit-check deep link carries its pose and camera after a "~"; the element id is what comes before it */
+  let id=String(raw||"").replace(/^#/,"").split("~")[0];id=ALIAS[id]||id;
+  let el=id?document.getElementById(id):null,view=el&&el.closest(".view");
+  const pk=!view&&PKEY(id);if(pk){showView("parts");if(typeof openPartRow==="function")openPartRow(pk,true);if(scroll)window.scrollTo(0,0);return;}
+  if(!view){view=$("#model");el=view;}
+  const first=CUR!==view.id;showView(view.id);
+  let fig=el.closest(".fig");
+  if(!fig&&el===view&&first){const r=store("gripperFig-"+view.id),rf=r&&document.getElementById(r);if(rf&&rf.closest(".view")===view)selectFig(rf,false);}
+  if(fig)selectFig(fig,false);
+  const det=el.closest(".detail");if(det)openDetail(det,true,false);
+  if(!scroll)return;
+  if(el===view||el===fig)window.scrollTo(0,0);else el.scrollIntoView({block:"start"});
+}
+
+/* ---------- open items ---------- */
+function renderOpen(){
+  const sel=$("#reqShow");
+  const ORD={fail:0,risk:1,open:2,pass:3};const draw=()=>{const r=REQ.filter(q=>!sel.value||q[1]===sel.value).sort((a,b)=>ORD[a[1]]-ORD[b[1]]);
+    $("#reqTable tbody").innerHTML=r.map(q=>`<tr><td>${esc(q[0])}</td><td>${st(q[1])}</td><td class="w">${esc(q[2])}${q[3]?` <a href="#${q[3]}">Evidence</a>`:""}</td></tr>`).join("");
+    $("#reqCount").textContent=`${r.length} of ${REQ.length} shown`;};
+  sel.addEventListener("change",()=>{draw();cardify();});draw();$("#reqTable").classList.add("cards");cardify();
+  $("#decMass").textContent=`The CAD gripper is ${fmt(MASS.total_g_incl_cloth,1)} g with cloth, centred ${fmt(MASS.com_u_past_H,1)} mm past the horn: ${fmt(MASS.mass_moment_gmm,0)} ${GMM} against ${fmt(MASS.budget_gmm,0)}. The lever to the shoulder dominates, so the limit is mass: about ${fmt(LIMIT_G,0)} g in total.`;
+  $("#checks").innerHTML=Object.entries(CHECKS).map(([id,[t,items]])=>`<section id="open-${id}"><h2><a href="#${id}">${esc(t)}</a></h2><ul>${items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></section>`).join("");
+}
+RENDER.open=renderOpen;
+function fillStatic(){ /* spans inside method text, filled once from D */
+  $$(".cadM").forEach(e=>e.textContent=fmt(MASS.total_g_incl_cloth,1));$$(".cadMM").forEach(e=>e.textContent=fmt(MASS.mass_moment_gmm,0));
+  const cl=MASS.items.find(i=>i.name.startsWith("cloth at the pad"));$$(".cadCloth").forEach(e=>e.textContent=fmt(cl?cl.u_past_H:null,1));
+  $$(".yhTxt2").forEach(e=>e.textContent=fmt(D.parts.pivot_to_H,2));$("#yhTxt").textContent=fmt(D.parts.Y_H,2);
+  $("#sweepTxt").textContent=`The jaw sweep is ${SWEEP_TXT}. Pad overlap below 0° is intentional: ${fmt(FIT.jaw_sweep[0].pad_interference_mm3,0)} mm³ at ${fmt(FIT.jaw_sweep[0].theta_deg,1)}°.`;
+  $("#decR10txt").textContent=MASS.ok?"The CAD meets the budget.":`After turning the servo's long axis across the jaw and using catalogue fastener masses, the CAD is still over. The lever from the shoulder to the horn is 309 mm, so the limit is mass: about ${fmt(LIMIT_G,0)} g in total against ${fmt(MASS.total_g_incl_cloth,1)} g now.`;
+  $("#breakTxt").textContent=`For rev A, at the low end of the rail, the DS3218MG fails above 2.07 N of tension or below a friction of 0.386. The DS3235 backup holds to 3.25 N or down to 0.243.`;
+}
+</script>

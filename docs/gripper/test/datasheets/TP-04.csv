@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+trial,case,spacer_mm,fsr_span_set,probe_peak_N,fsr_at_trip_N,t_cross_8N_ms,t_fsr_over_ms,t_enter_fault_ms,backoff_deg,fault_event,theta_min_reached_deg,notes

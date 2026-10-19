@@ -1,0 +1,22 @@
+id: T14
+title: Gripper servo body in cradle fit (20.4 pocket, DS3218MG 20.1 wide)
+parts: ["servo cradle", "gripper servo"]
+constants: basis.yaml
+units: mm clearance (pocket - body)
+requirement: Servo drops in (>= 0) and floats <= 0.30 (in rev A the float feeds the dog coupling, T14B).
+spec: {lsl: 0.0, usl: "=cradle_float_max"}
+accept: {method: mc}
+fix: >-
+  Locate the servo by its output boss (the T14B fix) so the cradle no longer has to locate it, then open the
+  pocket to CAD 20.5 so it always drops in (T14-boss205). The listed DS3218MG width is 20.1, not the CAD 20.0.
+fix_variant: boss205
+contributors:
+  - {name: pocket_width, nominal: "=cradle_pocket_w", bias: "=fdm_pocket_bias", tol: "=fdm_cavity_tol", dist: normal, tag: A, source: "README pocket 20.4 [D]; pocket bias and scatter [A]"}
+  - {name: servo_body_width, nominal: "=servo_body_w", tol: "=servo_body_w_tol", direction: -1, dist: normal, tag: S, source: "DS3218MG 20.1 [S servodatabase]; tol [A]"}
+  - {name: hot_seat_creep, nominal: 0, tol: "=hot_servo_float", dist: uniform, tag: A, source: "hot scenario only (0 when cold): PETG seat relaxes, servo shifts in its pocket"}
+variants:
+  - {id: w205, role: scenario, label: "servo body 20.5 (actuators.csv A17) in the rev A 20.4 pocket: it does not fit", set: {servo_body_w: 20.5}}
+  - {id: w205p209, role: scenario, label: "servo body 20.5 in a pocket opened to 20.9 while the cradle still locates it: float over the 0.30 limit", set: {servo_body_w: 20.5, cradle_pocket_w: 20.9}}
+  - {id: boss, label: "boss-located servo: only drop-in matters; pocket width from the case constants", spec: {lsl: 0.0}}
+  - {id: boss205, label: "boss-located servo (T14B-boss34) + pocket CAD 20.5: only drop-in matters", set: {cradle_pocket_w: 20.5}, spec: {lsl: 0.0}}
+  - {id: cad205, role: rejected, label: "pocket CAD 20.5 while the cradle still locates the servo", set: {cradle_pocket_w: 20.5}}

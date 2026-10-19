@@ -1,0 +1,188 @@
+{
+ "id": "T03-m3x5",
+ "title": "Axial stack horn face to clamp to screw \u2014 thread engagement",
+ "mode": "expression",
+ "units": "mm full-thread engagement below horn face H",
+ "requirement": "M3 engages >= 1.5 mm (3 pitches) of full horn thread. The screw reaches min(protrusion below H, hole depth), and its incomplete tip thread is inside the hole either way, so engagement = min(L - t - lift - runout, depth) - tip chamfer. Conditional on T03B: a screw that bottoms does not clamp.",
+ "notes": "",
+ "spec": {
+  "lsl": 1.5
+ },
+ "accept": {
+  "method": "wc",
+  "requires": [
+   "T03B-m3x5"
+  ]
+ },
+ "variant_of": "T03",
+ "variant_label": "M3x5 screws",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T03_thread_engagement.yaml",
+ "nominal": 1.5,
+ "mid": 1.4,
+ "wc": [
+  0.9349999999999998,
+  1.8650000000000002
+ ],
+ "rss_classic": [
+  1.120312674581169,
+  1.679687325418831
+ ],
+ "rss_dist": [
+  1.056161375060888,
+  1.7438386249391118
+ ],
+ "rss_dist_unclipped": [
+  1.056161375060888,
+  1.7438386249391118
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [
+  "T03B-m3x5"
+ ],
+ "blocked_by": [
+  "T03B-m3x5"
+ ],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": 1.4003044473345985,
+  "std": 0.11451414369066056,
+  "min": 0.9546199071819113,
+  "max": 1.8759804380362173,
+  "p0135": 1.0712509185035162,
+  "p50": 1.4005587765396823,
+  "p99865": 1.7347246994257715,
+  "out_lo_pct": 80.46799999999999,
+  "out_hi_pct": 0.0,
+  "out_pct": 80.46799999999999,
+  "out_pct_se": 0.1253674988184737,
+  "cpk_normal": -0.2901986585887335,
+  "cpk_percentile": -0.30197039345898813
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "wc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "screw_length",
+   "kind": "linear",
+   "nominal": 5.0,
+   "bias": 0.0,
+   "upper": 0.24,
+   "lower": -0.24,
+   "mid": 5.0,
+   "half": 0.24,
+   "sensitivity": 0.9999999999991497,
+   "dist": "normal",
+   "sigma": 0.08,
+   "tag": "A",
+   "source": "M3x6 [S LeRobot]; tol [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 48.72065975884348
+  },
+  {
+   "name": "clamp_thickness",
+   "kind": "linear",
+   "nominal": 3.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 3.0,
+   "half": 0.1,
+   "sensitivity": -1.0000000000021103,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "A",
+   "source": "3.0 (so101.md row 8) [D]; Z quantisation [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 25.375343624547906
+  },
+  {
+   "name": "datum_A_flatness_lift",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.2,
+   "lower": 0.0,
+   "mid": 0.1,
+   "half": 0.1,
+   "sensitivity": -0.9999999999998899,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "A",
+   "source": "flatness 0.2 on A: part rests on high points",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 25.375343624435224
+  },
+  {
+   "name": "horn_face_runout",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.025,
+   "lower": -0.025,
+   "mid": 0.0,
+   "half": 0.025,
+   "sensitivity": -0.9999999999976694,
+   "dist": "normal",
+   "sigma": 0.008333333333333333,
+   "tag": "A",
+   "source": "horn face FIM 0.05",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.5286529921733859
+  },
+  {
+   "name": "horn_hole_depth",
+   "kind": "linear",
+   "nominal": 2.5,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 2.5,
+   "half": 0.1,
+   "sensitivity": 0.0,
+   "dist": "normal",
+   "sigma": 0.03333333333333333,
+   "tag": "A",
+   "source": "2.5 CAD (so101.md row 4) [D]; tol [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.0
+  },
+  {
+   "name": "screw_tip_chamfer",
+   "kind": "linear",
+   "nominal": 0.5,
+   "bias": 0.0,
+   "upper": 0.0,
+   "lower": -0.0,
+   "mid": 0.5,
+   "half": 0.0,
+   "sensitivity": -1.000000082740371,
+   "dist": "normal",
+   "sigma": 0.0,
+   "tag": "A",
+   "source": "incomplete thread at the point",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.0
+  }
+ ],
+ "seed": 20260922
+}

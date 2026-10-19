@@ -1,0 +1,642 @@
+<script>
+"use strict";
+/* ---------- fit check: one finding at a time, flown to, cut through its two closest points and dimensioned ----------
+   Every number comes from fit3d.json (gaps, sections, overlap solids, nearness, tolerances, insertion sweeps) and the
+   files it cites; nothing here is typed by hand. */
+const F3=D.fit3d||{th:[0],pairs:[],static:[],roll:[]};
+const DET=F3.detail||{},OVL=F3.overlaps||[],BLD=F3.builds||[];
+const STATICP=new Set(["housing","front_plate","wrist_mount","servo","fasteners"]);
+const FITREQ=D.fitreq||{requirements:{},sampling:{allowance_mm:{}}},DISPLAY_TIGHT=F3.tight_mm||0.5,NEAR_T=F3.near_threshold_mm||1;
+/* contacts the design means to have: the bushes run on the pivot pins, the gears mesh, and the pads meet in the grip */
+const DESIGNED=[["fasteners_a","fasteners","bush on pivot pin A"],["fasteners_b","fasteners","bush on pivot pin B"],["horn","servo","horn on the servo spline"],
+  ["knuckle_a","fasteners","knuckle A running on its shims"],["knuckle_b","fasteners","knuckle B running on its shims"]];
+const FLOOR=-7.4; /* the firmware never drives the jaw below this angle */
+const designedWhy=p=>p.kind==="pad"?"pads meet in the grip below 0°":p.kind==="gear"?"gear teeth in mesh":(DESIGNED.find(d=>d[0]===p.a&&d[1]===p.b)||[])[2]||"";
+const pn=k=>(PLABEL[k]||k).replace(/ with gear sector/,"");
+/* a part name inside a sentence: lower the first word only, so "Knuckle B" reads "knuckle B", not "knuckle b" */
+const lc=s=>String(s).replace(/^\S+/,w=>w.toLowerCase());
+const thIdx=th=>{let b=0;F3.th.forEach((t,i)=>{if(Math.abs(t-th)<Math.abs(F3.th[b]-th))b=i;});return b;};
+const gapTxt=d=>d==null?"more than 6 mm":fmt(d,2)+" mm";
+/* a tolerance stack is named by what it checks, never by its file id */
+const stackName=s=>s&&s.title?lc(String(s.title).split(/[,(]/)[0].trim()):"tolerance";
+/* notes quoted from the tolerance files: comparisons, source tags and stack ids are put in words */
+const codeWords=s=>String(s||"").replace(/\s*>=\s*/g," at least ").replace(/\s*<=\s*/g," at most ").replace(/\s*\[[A-Z]\]/g,"").replace(/\bstack T\d+[A-Z]?(-[\w-]+)?\b/g,"stack")
+  .replace(/\bT\d+[A-Z]?(-[\w-]+)?\b/g,id=>{const r=(D.tol||[]).find(x=>x.id===id);return r?`the ${stackName({title:r.t})} stack,`:"another stack,";}).replace(/\s+/g," ").trim();
+/* angles: whole degrees as integers, a non-integer pose such as the -7.4° floor to one decimal */
+const deg=v=>fmt(v,Number.isInteger(Math.round(v*1e6)/1e6)?0:1);
+/* a requirement id (B4) stays; a tolerance stack id (T07) is named by what it checks */
+const checkId=id=>{if(!/^T\d/.test(id))return id;const r=(D.tol||[]).find(x=>x.id===id);return (r?stackName({title:r.t}).replace(/ jt$/,""):"tolerance")+" check";};
+function requirementFor(p){return FITREQ.requirements[p.a+"|"+p.b]||null;}
+function requirementStatus(p){if(p.status==="governed elsewhere"){
+  const checks=p.governing_checks||[];
+  if(!checks.length||checks.some(c=>c.status!=="met"&&c.status!=="at risk"))return "fail";
+  return checks.some(c=>c.status==="at risk")?"risk":"pass";}
+  return ({"fail":"fail","at risk":"risk","met":"pass","no requirement":"none"})[p.status]||"fail";}
+function pairStatus(p){return requirementStatus(p);}
+/* worst gap at or above the firmware floor */
+function inRange(p){let w=null;F3.th.forEach((t,i)=>{if(t<FLOOR-1e-6||p.d[i]==null)return;if(!w||p.d[i]<w.d)w={d:p.d[i],th:t,v:p.v[i]};});return w;}
+const FCK=[
+  {id:"body",name:"Moving parts to the body",pairs:F3.pairs.filter(p=>!p.kind&&STATICP.has(p.b)&&!designedWhy(p))},
+  {id:"cross",name:"Side A to side B",pairs:F3.pairs.filter(p=>!p.kind&&!STATICP.has(p.b))},
+  {id:"gear",name:"Gear mesh",pairs:F3.pairs.filter(p=>p.kind==="gear")},
+  {id:"pads",name:"Pads",pairs:F3.pairs.filter(p=>p.kind==="pad")},
+  {id:"design",name:"Running fits",pairs:F3.pairs.filter(p=>!p.kind&&designedWhy(p))},
+  {id:"roll",name:"Roll gap to the wrist link"},
+  {id:"keep",name:"Keep-out bands near the horn"},
+  {id:"env",name:"Stock gripper envelope"},
+  {id:"press",name:"Overlaps in the body"},
+];
+function worstPair(list){let w=null;list.forEach(p=>{if(p.dmin==null)return;if(!w||p.dmin<w.dmin||(p.dmin===w.dmin&&p.vmax>w.vmax))w=p;});return w;}
+function rollRows(psi,th){const R=F3.roll||[];return (R.find(r=>r.psi===psi&&r.theta===th)||R.find(r=>r.psi===psi)||{rows:[]}).rows;}
+function rollWorst(){let w=null;(F3.roll||[]).forEach(r=>r.rows.forEach(x=>{if(!w||x.d<w.d)w=Object.assign({psi:r.psi,theta:r.theta},x);}));return w;}
+const RW=rollWorst();
+const RING=FIT.roll_ring_clearance.filter(r=>r.radial_gap!==null);
+function checkSummary(c){
+  if(c.pairs){const w=worstPair(c.pairs);if(!w)return {txt:"nothing within 6 mm",st:"pass"};
+    if(c.id==="pads"){const vm=Math.max(...c.pairs.map(p=>p.vmax||0));return {txt:`${fmt(vm,0)} mm³ overlap at ${deg(F3.th[0])}°, by design`,st:"pass",w};}
+    if(c.id==="gear"||c.id==="design")return {txt:`${gapTxt(w.dmin)}, ${pn(w.a)} to ${pn(w.b)}`,st:"none",w};
+    const st=pairStatus(w,w.dmin,w.vmax,w.thmin),dd=(w.d||[]).filter(x=>x!=null),cst=dd.length>1&&Math.max(...dd)-Math.min(...dd)<0.01;
+    return {txt:`${w.vmax>0.001?fmt(w.vmax,2)+" mm³ overlap":gapTxt(w.dmin)} ${cst?"at every jaw angle":`at ${deg(w.thmin)}°`}, ${pn(w.a)} to ${pn(w.b)}`,st,w};}
+  if(c.id==="roll"){const rg=FIT.roll_min_radial_gap_mm;return {txt:RW?`${fmt(RW.d,2)} mm in 3D at every roll angle; ${fmt(rg,2)} mm by the ring method`:`${fmt(rg,2)} mm by the ring method`,st:(RW?RW.d:rg)<1?"risk":"pass"};}
+  if(c.id==="keep"){const ko=FIT.keepout_params;return {txt:ko.map(k=>`radius ${fmt(k.r_max_new,2)} of ${fmt(k.r_max_allowed,0)}`).join("; "),st:ko.every(k=>k.ok)?"pass":"fail"};}
+  if(c.id==="env")return {txt:ENV_OUT.length?ENV_OUT.map(e=>`radius ${fmt(e.new_r_max,1)} against ${fmt(e.stock_r_max,1)} in the ${e.z_I.join(" to ")} mm band`).join("; "):"inside in every band",st:ENV_OUT.length?"risk":"pass"};
+  if(c.id==="press"){const so=OVL.filter(o=>o.theta===undefined),ne=so.filter(o=>o.cls==="error").length;
+    return {txt:`${F3.static.length} overlaps, 0.00 mm apart; ${ne} not intended`,st:ne?"fail":"pass"};}
+}
+
+/* ---------- findings: every gap, overlap and part that cannot be fitted, worst first ---------- */
+const slug=t=>String(t).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+const ASMI=(D.asm&&D.asm.fastener_items)||[];
+function nearItem(at,pre){let b=null,bd=8;ASMI.forEach(i=>{if(pre&&!i.id.startsWith(pre))return;const d=Math.hypot(i.centroid[0]-at[0],i.centroid[1]-at[1],i.centroid[2]-at[2]);if(d<bd){bd=d;b=i;}});return b;}
+const iname=id=>id.replace(/_(\d+)$/," $1").replace(/_/g," ").replace(/^./,c=>c.toUpperCase());
+function overlapPosition(at){const x=at[0]<-0.05?"left":at[0]>0.05?"right":"centre";
+  const y=at[1]<-0.05?"rear":at[1]>0.05?"front":"midline",z=at[2]<-0.05?"lower":at[2]>0.05?"upper":"mid-height";return `${x}, ${y}, ${z}`;}
+const FNAME={"horn|housing":"Horn rim to housing wall","horn|fasteners":"Horn face to pivot pin A","knuckle_a|knuckle_b":"Gear teeth, knuckle A to knuckle B"};
+const SEV={fail:0,risk:1,tight:2,none:3,design:4,pass:5,integration:6};
+const CLS={fail:"fail",risk:"risk",tight:"risk",none:"open",design:"pass",pass:"pass",integration:"open"};
+const mid3=(p,q)=>[(p[0]+q[0])/2,(p[1]+q[1])/2,(p[2]+q[2])/2];
+/* a travel direction in words; frame G has +Y up toward the arm */
+function dirWord(d){if(!d)return "in";const a=d.map(Math.abs),i=a.indexOf(Math.max(...a));if(a[i]<0.99)return "along its axis";
+  return i===1?(d[1]>0?"straight up (+Y)":"straight down (−Y)"):`along ${d[i]>0?"+":"−"}${"XYZ"[i]}`;}
+function makePairFinding(p){const key=p.a+"|"+p.b,d=DET[key]||{theta:p.thmin,d:p.dmin,const:false,section:null};
+    /* a contact the design means to have (gear teeth in mesh) is an intentional contact */
+    const dg=designedWhy(p),t=dg?Object.assign({},d.tol,{req:null}):(d.tol||{}),req=t.req&&t.req.min,ir=inRange(p);let st="pass",word="clear",why="",gist="";
+    if(requirementFor(p)){
+      const r=requirementFor(p),margin=p.dmin-r.minimum_clearance_mm,allowance=p.allowance_mm;
+      st=requirementStatus(p);
+      word=p.status;
+      gist=`${fmt(margin,3)} mm margin; ${fmt(allowance,4)} mm sampling allowance`;
+      why=`Requirement: at least ${fmt(r.minimum_clearance_mm,2)} mm, ${r.direction_or_feature}; source ${r.source}. Margin ${fmt(margin,3)} mm.`;}
+    else if(p.status==="governed elsewhere"){
+      const checks=p.governing_checks||[];
+      st=requirementStatus(p);word=st==="pass"?"governed elsewhere":st==="risk"?"feature at risk":"feature failed";
+      gist=checks.map(c=>`${checkId(c.requirement_id)} ${fmt(c.measured_mm,3)} mm ${c.status}`).join("; ");
+      why=`The whole-solid gap is ${fmt(p.dmin,3)} mm. Feature checks: ${checks.map(c=>
+        `${checkId(c.requirement_id)} ${c.feature}: ${fmt(c.measured_mm,3)} mm, ${c.status}, margin ${fmt(c.margin_mm,4)} mm`).join("; ")}.`;
+    } else {
+      st=requirementStatus(p);
+      word=p.status;
+      why=p.no_requirement_reason||"No governing clearance requirement is recorded for this pair.";
+      if(dg)why=dg[0].toUpperCase()+dg.slice(1)+". "+why;
+      if(p.dmin===0&&p.thmin<FLOOR)gist=`${ir?fmt(ir.d,2):"–"} mm at the lowest driven angle`;}
+    const measured=`${fmt(p.dmin,2)} mm`;
+    const value=requirementFor(p)?`${measured}; ${p.requirement_id} at least ${fmt(p.required_mm,2)} mm`:
+      p.status==="governed elsewhere"?`${measured} gap; ${gist}`:measured;
+    return {id:slug(p.a+"-"+p.b),kind:"gap",title:FNAME[key]||`${pn(p.a)} to ${lc(pn(p.b))}`,st,word,val:value,n:p.dmin,gist,
+      when:d.const?"the same at every jaw angle":p.dmin===0?`touching at ${deg(p.thmin)}°`:`smallest at ${deg(d.theta)}°`,
+      why,pair:p,det:d,tol:t,req:requirementFor(p),
+      margin:requirementFor(p)?p.dmin-requirementFor(p).minimum_clearance_mm:null,
+      allowance:FITREQ.sampling.allowance_mm[key],solid:[p.a,p.b],th:d.theta,psi:0};
+}
+
+function buildFindings(){
+  const L=[],so=OVL.filter(o=>o.theta===undefined),err=so.filter(o=>o.cls==="error");
+  err.forEach(o=>{const it=o.b==="fasteners"?(nearItem(o.at,"deck_screw")||nearItem(o.at)):null,nm=it?iname(it.id):pn(o.b);
+    L.push({id:"overlap-"+o.id+"-"+slug(nm),kind:"overlap",title:`${nm} at ${overlapPosition(o.at)} overlaps the ${lc(pn(o.a))}`,st:"fail",word:"error",val:fmt(o.v,2)+" mm³",n:-o.v,
+      when:"seated; the parts do not move",gist:lc(o.why),why:`The ${nm} (${o.b}) and the ${lc(pn(o.a))} share ${fmt(o.v,2)} mm³${o.size?`, a block ${o.size.map(x=>fmt(x,1)).join(" by ")} mm`:""}, centred at x ${fmt(o.at[0],1)}, y ${fmt(o.at[1],1)}, z ${fmt(o.at[2],1)}. ${o.why[0].toUpperCase()+o.why.slice(1)}.`,
+      ov:o,solid:[o.a,"fasteners"],th:0,psi:0});});
+  if(so.length)L.push({id:"overlaps-body",kind:"overlaps",title:`${so.length} overlaps in the body, ${err.length} not intended`,/* the error has its own row above, so this summary does not count it a second time */
+    st:"design",word:err.length?`${so.length-err.length} by design`:"by design",
+    val:String(so.length),n:err.length?-Math.max(...err.map(o=>o.v))+0.01:0,when:"seated; the parts do not move",
+    why:`${so.length-err.length} are by design: ${[...new Set(so.filter(o=>o.cls!=="error").map(o=>o.why))].join("; ")}. ${err.length?`Not intended: ${err.map(o=>(o.b==="fasteners"&&nearItem(o.at,"deck_screw")?iname(nearItem(o.at,"deck_screw").id).toLowerCase():lc(pn(o.b)))+", "+fmt(o.v,2)+" mm³").join("; ")}.`:""}`,
+    solid:[],th:0,psi:0,err:err[0]});
+  const boss=so.find(o=>o.a==="housing"&&o.b==="servo");
+  if(boss)L.push({id:"boss-bore-finish",kind:"overlaps",title:"Printed and reamed servo boss bore",st:"design",word:"clearance",
+    val:`printed ${fmt(boss.v,2)} mm³; finished ${fmt(boss.finished_v,2)} mm³`,n:0,
+    when:"3D model: printed Ø8.8 mm; finished Ø9.0 H7",why:boss.why+
+      " The finished overlap is measured after cutting the housing model to the reamed bore.",solid:["housing","servo"],th:0,psi:0});
+  BLD.filter(b=>!b.ok).forEach(b=>{
+    if(b.id==="dog_screw"){L.push({id:"build-dog-screw",kind:"dog",title:"Dog set screw engagement",st:"fail",word:"below drawn engagement",val:`${fmt(b.engage,1)} mm in the slot`,n:b.engage-b.engage_cad,
+      when:`the CAD screw reaches ${fmt(b.engage_cad,1)} mm into the ${fmt(b.slot_depth,1)} mm slot`,why:`The BOM lists ${b.type}: ${fmt(b.screw_len,0)} mm long through the ${fmt(b.horn_t,0)} mm horn leaves ${fmt(b.proud,0)} mm beyond the horn face. The modelled screw ends at z ${fmt(b.pin_z[1],1)}.`,
+      gist:"the listed screw engagement is below the CAD geometry",b,solid:["horn","knuckle_a","fasteners_a"],th:0,psi:0});return;}
+    const nm=iname(b.id),dv=b.driver,so=b.seated_overlap||0,bl=b.blocker&&lc(pn(b.blocker));
+    /* blocked at the start of the checked approach means blocked all the way, not "30 mm short" */
+    const whole=b.first_touch_mm!=null&&b.first_touch_mm>=b.path_len-1e-6;
+    /* the assembly check names the feature in the way; say it in words with the clash it implies */
+    const sm=/diameter ([\d.]+) mm standoff at x (-?[\d.]+), y (-?[\d.]+) reaches x (-?[\d.]+) while the screw head reaches x (-?[\d.]+)/.exec(b.evidence||"");
+    const feat=sm?`The ${bl}'s ${fmt(+sm[1],1)} mm standoff beside the seat reaches x ${fmt(+sm[4],2)} and the screw head reaches x ${fmt(+sm[5],2)}, so the head runs into the standoff by ${fmt(Math.abs(+sm[4]-+sm[5]),2)} mm on the way up. `:"";
+    L.push({id:"build-"+slug(nm),kind:"build",title:`${nm} cannot be fitted`,st:"fail",word:"cannot be fitted",val:b.first_touch_mm==null?"overlaps seated":whole?"blocked all the way":`hits ${fmt(b.first_touch_mm,1)} mm short`,n:-0.6,
+      when:b.blocker?(whole?`pushed ${dirWord(b.dir)} into its insert, it is inside the ${bl} over the whole ${fmt(b.path_len,0)} mm approach checked`:`pushed ${dirWord(b.dir)} into its insert, it hits the ${bl} ${fmt(b.first_touch_mm,1)} mm before it is seated`):"",
+      why:`${feat}${b.blocker&&!whole?`The screw cannot travel the last ${fmt(b.first_touch_mm,1)} mm (found in 0.5 mm steps, so the figure under Assembly check notes can differ by one step): the ${bl} is in its path (red in 3D). `:""}${b.blocker&&whole?`The ${bl} is in its path from the start of the approach (red in 3D). `:""}${so>0.01?`Seated, it would still share ${fmt(so,1)} mm³ with the housing. `:""}${dv&&dv.free_mm!=null?`A screwdriver from below has ${fmt(dv.free_mm,1)} mm of clear length against the ${fmt(dv.need_mm,0)} mm it needs.`:""}`,
+      ev:b.evidence,b,solid:[b.blocker||"housing"],th:0,psi:0});});
+  L.push(...F3.pairs.map(makePairFinding));
+  if(DET.roll){const d=DET.roll;
+    L.push({id:"roll-wrist",kind:"roll",title:"Wrist plate to the arm's wrist link",st:"none",word:"no requirement",val:fmt(d.d,2)+" mm",n:d.d,
+      when:d.const?"the same at every roll angle and both jaw angles":`smallest at ${deg(d.psi)}° roll`,
+      why:(d.const?"Turning the wrist does not change this gap. ":"")+"The running-clearance basis is shown below.",
+      det:d,tol:d.tol,solid:[d.a],arm:true,th:d.theta,psi:d.psi});}
+  const pads=OVL.filter(o=>o.theta!==undefined&&o.cls==="design");
+  if(pads.length){const w=pads.reduce((a,b)=>b.v>a.v?b:a);L.push({id:"pads",kind:"padov",title:"Pads overlap in the grip",st:"design",word:"by design",val:fmt(w.v,0)+" mm³",n:9,when:`at ${deg(w.theta)}°, past touch`,
+    why:"Below 0° the soft pads press into each other; the overlap is the squeeze, not a clash.",ovs:pads.filter(o=>o.theta===w.theta),solid:[],th:w.theta,psi:0});}
+  ENV_OUT.forEach((e,i)=>L.push({id:"envelope"+(i?"-"+i:""),kind:"band",
+    title:"Unverified arm clearance",st:"integration",word:"check on arm",
+    val:fmt(e.new_r_max,1)+" mm",n:i,
+    when:`radius in the ${e.z_I.join(" to ")} mm band from the interface`,why:`The stock gripper reaches ${fmt(e.stock_r_max,1)} mm here, so the arm has not been shown to clear this.`,env:e,solid:null,th:0,psi:0}));
+  return L.sort((a,b)=>SEV[a.st]-SEV[b.st]||a.n-b.n);
+}
+const FF=buildFindings();
+/* an anchor per finding at the top of the 3D check, so a deep link resolves before the view is drawn */
+{const fig=$("#fit-3d");if(fig){const an=h("div",{class:"fanch","aria-hidden":"true"});FF.forEach(f=>h("span",{id:"fit-f-"+f.id},an));fig.insertBefore(an,$(".fbar",fig));}}
+
+/* ---------- state ---------- */
+const FST={th:0,roll:0};
+const FS={cur:null,whole:false,cut:{on:false,mode:"f",flip:false,off:0},zoom:1,caps:{},geo:{},plane:null};
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+const FCOL={pass:0x1b7443,risk:0xb37400,fail:0xc0392b};
+const CAPCOL=[0x2f6fd0,0xd2691e];
+const vec=a=>new THREE.Vector3(a[0],a[1],a[2]);
+
+/* ---------- meshes sent by fit3d.py: 16-bit positions on a fine grid, 16- or 32-bit indices ---------- */
+function meshGeo(m,key){
+  if(key&&FS.geo[key])return FS.geo[key];const T=THREE,q=new Int16Array(b64buf(m.v)),pos=new Float32Array(q.length);
+  for(let i=0;i<q.length;i+=3){pos[i]=q[i]*m.s+m.o[0];pos[i+1]=q[i+1]*m.s+m.o[1];pos[i+2]=q[i+2]*m.s+m.o[2];}
+  const g=new T.BufferGeometry();g.setAttribute("position",new T.BufferAttribute(pos,3));const ib=b64buf(m.t);
+  g.setIndex(new T.BufferAttribute(m.ti===2?new Uint16Array(ib):new Uint32Array(ib),1));g.computeVertexNormals();
+  if(m.d){const d=new Uint8Array(b64buf(m.d)),c=new Float32Array(d.length*4),col=new T.Color();
+    d.forEach((x,i)=>{const t=x/255,[r,gg,b]=ramp(t);col.setRGB(r,gg,b,T.SRGBColorSpace);c[i*4]=col.r;c[i*4+1]=col.g;c[i*4+2]=col.b;c[i*4+3]=1-0.8*t;});
+    g.setAttribute("color",new T.BufferAttribute(c,4));}
+  if(key)FS.geo[key]=g;return g;}
+/* distance colours: touching is red, the threshold fades out */
+const RAMP=[[0,[0.84,0.17,0.12]],[0.4,[0.94,0.54,0.14]],[0.75,[0.96,0.83,0.37]],[1,[0.96,0.83,0.37]]];
+function ramp(t){for(let i=1;i<RAMP.length;i++){const [t1,c1]=RAMP[i],[t0,c0]=RAMP[i-1];if(t<=t1){const k=(t-t0)/(t1-t0||1);return c0.map((v,j)=>v+(c1[j]-v)*k);}}return RAMP[RAMP.length-1][1];}
+function clipList(){return FS.cut.on&&V3.clip?[V3.clip]:null;}
+function nearMesh(m,key){const T=THREE,mat=new T.MeshBasicMaterial({vertexColors:true,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-4,polygonOffsetUnits:-4,side:T.DoubleSide,toneMapped:false});
+  mat.clippingPlanes=clipList();const me=new T.Mesh(meshGeo(m,key),mat);me.renderOrder=3;return me;}
+function solidMesh(m,key,color,clip){const T=THREE,mat=new T.MeshStandardMaterial({color,roughness:0.5,metalness:0,emissive:color,emissiveIntensity:0.35,side:T.DoubleSide});
+  if(clip)mat.clippingPlanes=clipList();const me=new T.Mesh(meshGeo(m,key),mat);me.renderOrder=2;
+  /* x-ray: a small body buried inside a part stays visible through whatever is in front of it */
+  if(clip==="xray"){mat.clippingPlanes=null;mat.depthTest=false;mat.transparent=true;mat.opacity=0.92;me.renderOrder=4;}return me;}
+
+/* ---------- capped section: the cut face of each solid part is filled, one colour per part ---------- */
+function capFor(k){
+  if(FS.caps[k])return FS.caps[k];const T=THREE,root=k==="ctx"?V3.ctx:V3.parts[k].node;
+  const base={depthWrite:false,depthTest:false,colorWrite:false,stencilWrite:true,stencilFunc:T.AlwaysStencilFunc};
+  const mb=new T.MeshBasicMaterial(Object.assign({side:T.BackSide,stencilFail:T.IncrementWrapStencilOp,stencilZFail:T.IncrementWrapStencilOp,stencilZPass:T.IncrementWrapStencilOp},base));
+  const mf=new T.MeshBasicMaterial(Object.assign({side:T.FrontSide,stencilFail:T.DecrementWrapStencilOp,stencilZFail:T.DecrementWrapStencilOp,stencilZPass:T.DecrementWrapStencilOp},base));
+  mb.clippingPlanes=mf.clippingPlanes=[FS.plane];
+  const src=[];root.traverse(o=>{if(o.isMesh&&!o.userData.stencil&&(k!=="ctx"||o.userData.ctx))src.push(o);});
+  const st=[];src.forEach(o=>[mb,mf].forEach(m=>{const s=new T.Mesh(o.geometry,m);s.userData.stencil=true;s.raycast=()=>{};s.visible=false;o.add(s);st.push(s);}));
+  const cm=new T.MeshStandardMaterial({color:0x888888,roughness:0.85,metalness:0,side:T.DoubleSide,stencilWrite:true,stencilRef:0,stencilFunc:T.NotEqualStencilFunc,
+    stencilFail:T.ReplaceStencilOp,stencilZFail:T.ReplaceStencilOp,stencilZPass:T.ReplaceStencilOp});
+  const cap=new T.Mesh(new T.PlaneGeometry(800,800),cm);cap.onAfterRender=r=>r.clearStencil();cap.raycast=()=>{};cap.visible=false;V3.scene.add(cap);
+  return FS.caps[k]={st,cap,cm};}
+/* a cut face takes the colour its part has in the inset key: first part blue, second orange (the blocker of a screw, the arm's wrist link) */
+function capIdx(f,k){if(!f)return -1;if(f.kind==="build")return k===(f.b.blocker||"housing")?1:-1;if(f.kind==="roll"&&k==="ctx")return 1;return f.solid?f.solid.indexOf(k):-1;}
+const shade=c=>{const T=THREE,x=new T.Color(c);x.multiplyScalar(0.72);return x.getHex();};
+function updateCaps(){
+  if(!V3.ready||!FS.plane)return;const on=V3.mode==="fit"&&FS.cut.on&&V3.clip===FS.plane;
+  const f=on&&!FS.whole?FS.cur:null;
+  const solid=on?Object.keys(V3.parts).filter(k=>V3.parts[k].node.visible&&!(V3.fitSolid&&!V3.fitSolid.has(k))):[];
+  if(on&&V3.arm&&V3.arm.visible&&(FS.whole||FS.armSolid))solid.push("ctx");
+  for(const k in FS.caps){if(!solid.includes(k)){FS.caps[k].st.forEach(s=>s.visible=false);FS.caps[k].cap.visible=false;}}
+  solid.forEach((k,i)=>{const c=capFor(k),j=capIdx(f,k);c.st.forEach(s=>{s.visible=true;s.renderOrder=100+i*2;});
+    c.cap.visible=true;c.cap.renderOrder=101+i*2;c.cm.color.setHex(j===0||j===1?CAPCOL[j]:k==="ctx"?0x9aa0a6:shade(PCOL[k]||0x888888));
+    FS.plane.coplanarPoint(c.cap.position);c.cap.lookAt(c.cap.position.clone().sub(FS.plane.normal));});
+  V3.noPost=on;}
+/* the arm's wrist link fades with the other parts unless the finding is the roll gap */
+function armVis(){if(!V3.ctx)return;const g=V3.mode==="fit"&&V3.fitSolid&&!FS.armSolid&&!FS.whole;
+  V3.ctx.traverse(o=>{if(!o.isMesh||!o.userData.ctx)return;if(!o.userData.m0)o.userData.m0=o.material;o.material=g?ghostMat():o.userData.m0;});}
+V3.afterVis=()=>{if(V3.mode!=="fit"){if(FS.plane){for(const k in FS.caps){FS.caps[k].st.forEach(s=>s.visible=false);FS.caps[k].cap.visible=false;}}V3.noPost=false;
+  if(V3.ctx)V3.ctx.traverse(o=>{if(o.isMesh&&o.userData.m0)o.material=o.userData.m0;});return;}armVis();updateCaps();};
+
+/* ---------- where each finding is cut ---------- */
+function secPlane(f){
+  if(!f)return null;
+  if(f.kind==="gap"){const d=f.det,s=d.section,pq=f.pair.p[thIdx(FST.th)];
+    /* the cut follows the closest points as the jaw moves; at the worst pose it is exactly the cut the inset draws */
+    const o=s&&Math.abs(FST.th-d.theta)<1e-6?s.o:pq?mid3(pq[0],pq[1]):mid3(d.p,d.q);return {o,m:s?s.m:[0,0,1]};}
+  if(f.kind==="roll"){const s=f.det.section;return s?{o:s.o,m:s.m}:{o:mid3(f.det.p,f.det.q),m:[0,0,1]};}
+  if(f.kind==="overlap"){const s=f.ov.section;return s?{o:s.o,m:s.m}:{o:f.ov.at,m:[0,0,1]};}
+  if(f.kind==="build"){const s=f.b.section;return s?{o:s.o,m:s.m}:{o:f.b.touch_at||f.b.seat,m:[0,0,1]};}
+  if(f.kind==="dog")return {o:[f.b.xy[0],f.b.xy[1],0],m:[1,0,0]};
+  return null;}
+function setCut(){
+  const T=THREE,c=FS.cut;if(!T)return;if(!FS.plane)FS.plane=new T.Plane(new T.Vector3(0,0,1),0);
+  if(!c.on)V3.clip=null;
+  else{const f=FS.whole?null:FS.cur,sp=secPlane(f);let m;
+    if(c.mode==="f"&&sp)m=vec(sp.m);else{const a=c.mode==="f"?"z":c.mode;m=new T.Vector3(a==="x"?1:0,a==="y"?1:0,a==="z"?1:0);}
+    const o=vec(sp?sp.o:[0,15,0]).addScaledVector(m,c.off);FS.plane.setFromNormalAndCoplanarPoint(m.clone().multiplyScalar(c.flip?-1:1),o);V3.clip=FS.plane;FS.cutO=o;FS.cutM=m;}
+  syncCutUI();applyVis();}
+function syncCutUI(){const c=FS.cut;$("#fitCutOn").setAttribute("aria-pressed",String(c.on));$$("#fit-3d [data-cut]").forEach(b=>b.setAttribute("aria-pressed",String(c.on&&b.dataset.cut===c.mode)));
+  $("#fitFlip").disabled=!c.on;$("#fitCutL").hidden=!c.on;$("#fitCutPos").value=c.off;$("#fitCutv").textContent=fmt(c.off,1)+" mm";
+  const fb=$('#fit-3d [data-cut="f"]');if(fb)fb.disabled=!secPlane(FS.whole?null:FS.cur);}
+
+/* ---------- camera ---------- */
+/* the link in the address bar records where the camera ends up, not where it started */
+const relink=()=>{if(CUR==="fit"&&FS.cur&&!FS.whole&&/^#fit-f-/.test(location.hash))setHash(linkHash());};
+function flyTo(pos,tgt,anim){const c=V3.cam,ctl=V3.ctl;if(!c)return;stopSweep();
+  if(!anim||reduceMotion()){c.position.copy(pos);ctl.target.copy(tgt);ctl.update();V3.dirty=true;relink();return;}
+  const p0=c.position.clone(),t0=ctl.target.clone();let st=null;
+  V3.anim=t=>{if(st===null)st=t;const k=Math.min(1,(t-st)/520),e=1-Math.pow(1-k,3);c.position.lerpVectors(p0,pos,e);ctl.target.lerpVectors(t0,tgt,e);ctl.update();V3.dirty=true;if(k>=1){V3.anim=null;relink();}};}
+const HOME_T=[0,22,0],HOME_D=310,HOME_DIR=[210,95,300];
+function frameFinding(f,anim){
+  if(!V3.ready)return;const T=THREE;const sp=secPlane(f);
+  if(!f||!sp){const t=vec(f&&f.kind==="padov"?[0,-30,0]:HOME_T),dir=vec(HOME_DIR).normalize();flyTo(t.clone().addScaledVector(dir,f&&f.kind!=="band"?200:HOME_D),t,anim);return;}
+  const tgt=vec(sp.o),n=FS.cut.on?FS.plane.normal.clone():vec(sp.m);
+  /* a portrait stage is narrower than it is tall, so the camera stands further back to keep the same width of the gripper in view */
+  const asp=V3.cam&&V3.cam.aspect||1,dist=(f.kind==="build"||f.kind==="dog"?70:f.kind==="overlap"?60:f.kind==="roll"?60:55)/Math.sqrt(Math.min(1,Math.max(0.36,asp)));
+  /* look at the cut face from the side that is cut away, a little off square so depth reads */
+  const up=Math.abs(n.y)>0.9?new T.Vector3(0,0,1):new T.Vector3(0,1,0),side=new T.Vector3().crossVectors(n,up).normalize();
+  const dir=n.clone().negate().addScaledVector(side,0.35).addScaledVector(up,0.3).normalize();
+  flyTo(tgt.clone().addScaledVector(dir,dist),tgt,anim);}
+function preset(v){if(!V3.ready)return;const T=THREE;
+  if(v==="fit"){if(FS.cur&&!FS.whole)frameFinding(FS.cur,true);else preset("reset");return;}
+  if(v==="reset"){const t=vec(HOME_T);flyTo(t.clone().addScaledVector(vec(HOME_DIR).normalize(),HOME_D),t,true);return;}
+  const D0={front:[0,0,1],side:[1,0,0],top:[0,1,0.0001],iso:[1,0.8,1]}[v];const tgt=V3.ctl.target.clone(),d=V3.cam.position.distanceTo(tgt);
+  flyTo(tgt.clone().addScaledVector(vec(D0).normalize(),d),tgt,true);}
+
+/* ---------- overlays ---------- */
+function gapLine(p,q,cls,text){const T=THREE,g=new T.BufferGeometry().setFromPoints([vec(p),vec(q)]);
+  V3.overlay.add(new T.Line(g,new T.LineBasicMaterial({color:FCOL[cls]||FCOL.risk,depthTest:false,transparent:true})));
+  [p,q].forEach(x=>{const m=new T.Mesh(new T.SphereGeometry(0.35,12,8),new T.MeshBasicMaterial({color:FCOL[cls]||FCOL.risk,depthTest:false,transparent:true}));m.position.copy(vec(x));m.renderOrder=5;V3.overlay.add(m);});
+  if(text)addLabel(vec(mid3(p,q)),text,"lb-"+(cls||"risk"));}
+/* a label set on a small solid hides it; a flag stands off to one side on a leader, so the place stays in view */
+function flag(at,text,cls,dot){const T=THREE,p=vec(at),q=p.clone().add(new T.Vector3(-16,12,0)),col=FCOL[cls]||FCOL.fail;
+  const ln=new T.Line(new T.BufferGeometry().setFromPoints([p,q]),new T.LineBasicMaterial({color:col,depthTest:false,transparent:true}));ln.renderOrder=6;ln.userData.leader=true;V3.overlay.add(ln);
+  if(dot){const m=new T.Mesh(new T.SphereGeometry(1.1,12,8),new T.MeshBasicMaterial({color:col,depthTest:false,transparent:true}));m.position.copy(p);m.renderOrder=5;V3.overlay.add(m);}
+  addLabel(q,text,"lb-"+cls);}
+function bandCyl(r,y0,y1,color,op){const T=THREE,g=new T.CylinderGeometry(r,r,Math.abs(y1-y0),64,1,true),m=new T.Mesh(g,new T.MeshBasicMaterial({color,transparent:true,opacity:op,side:T.DoubleSide,depthWrite:false}));
+  m.position.set(0,(y0+y1)/2,0);V3.overlay.add(m);return m;}
+function planeFrame(sp,s){/* the cut plane, drawn as the window the inset shows */
+  const T=THREE,o=vec(sp.o),u=s&&s.u?vec(s.u):null,v=s&&s.v?vec(s.v):null,w=s?s.win:6;if(!u||!v)return;
+  const pts=[[-1,-1],[1,-1],[1,1],[-1,1],[-1,-1]].map(([a,b])=>o.clone().addScaledVector(u,a*w).addScaledVector(v,b*w));
+  V3.overlay.add(new T.Line(new T.BufferGeometry().setFromPoints(pts),new T.LineBasicMaterial({color:0x1c5bb8,transparent:true,opacity:0.9,depthTest:false})));
+  const q=new T.Mesh(new T.PlaneGeometry(2*w,2*w),new T.MeshBasicMaterial({color:0x1c5bb8,transparent:true,opacity:0.07,depthWrite:false,side:T.DoubleSide}));
+  q.position.copy(o);q.quaternion.setFromRotationMatrix(new T.Matrix4().makeBasis(u,v,new T.Vector3().crossVectors(u,v)));V3.overlay.add(q);}
+function arrow(from,dir,len,color){const T=THREE,a=new T.ArrowHelper(vec(dir).normalize(),vec(from),len,color,Math.min(4,len*0.25),Math.min(2,len*0.12));
+  a.traverse(o=>{if(o.material){o.material.depthTest=false;o.material.transparent=true;}o.renderOrder=6;});V3.overlay.add(a);return a;}
+/* a handle on the cut plane: drag it to slide the section along its normal */
+function cutHandle(){if(!FS.cut.on||!FS.cutO)return;const n=FS.plane.normal,d=V3.cam?V3.cam.position.distanceTo(FS.cutO):60,L=Math.max(4,d*0.12);
+  FS.handle=arrow([FS.cutO.x,FS.cutO.y,FS.cutO.z],[n.x,n.y,n.z],L,0x1c5bb8);FS.handle.userData.handle=true;FS.handleTip=[FS.cutO.x+n.x*L,FS.cutO.y+n.y*L,FS.cutO.z+n.z*L];}
+function poseMatches(f){return Math.abs(FST.th-f.th)<1e-6&&Math.abs(FST.roll-(f.psi||0))<1e-6;}
+function addNearFaces(detail,id){
+  const sides=["a","b"].filter(s=>detail.near&&detail.near[s]);
+  sides.forEach(s=>V3.overlay.add(nearMesh(detail.near[s],id+"-n"+s)));
+  return sides.length>0;
+}
+function drawFit(){
+  if(!V3.ready||V3.mode!=="fit")return;const T=THREE;V3.overlay.clear();V3.labels=[];$$(".lbls").forEach(l=>l.innerHTML="");FS.handle=null;
+  if(V3.arm)V3.arm.rotation.y=-FST.roll*Math.PI/180;
+  const f=FS.whole?null:FS.cur,i=thIdx(FST.th);let lg="",hud="";
+  if(!f){/* whole assembly: every finding that needs a look, at this pose */
+    FF.forEach(x=>{if(x.kind==="gap"&&x.st!=="pass"&&x.st!=="design"){const pq=x.pair.p[i],d=x.pair.d[i];if(pq)gapLine(pq[0],pq[1],d<DISPLAY_TIGHT?"risk":"pass",fmt(d,2)+" mm");}
+      if(x.kind==="overlap")flag(x.ov.at,x.val+" overlap","fail",true);});
+    const rr=rollRows(FST.roll,FST.th>10?20:0);rr.slice(0,1).forEach(x=>gapLine(x.p,x.q,x.d<1?"risk":"pass",fmt(x.d,2)+" mm"));
+    hud=`jaw ${deg(FST.th)}°, roll ${deg(FST.roll)}°; whole assembly`;}
+  else{
+    const sp=secPlane(f);
+    if(f.kind==="gap"){const p=f.pair,pq=p.p[i],d=p.d[i],n=pq&&d>1e-4?vec(pq[1]).sub(vec(pq[0])).normalize():null;
+      if(pq){gapLine(pq[0],pq[1],CLS[f.st],d<1e-4?"touching":fmt(d,2)+" mm");
+        if(n){addLabel(vec(pq[0]).addScaledVector(n,-2.5),pn(p.a),"lb-dim");addLabel(vec(pq[1]).addScaledVector(n,2.5),pn(p.b),"lb-dim");}}
+      if(poseMatches(f)&&addNearFaces(f.det,f.id))lg="near";
+      planeFrame(sp,f.det.section);hud=`jaw ${deg(FST.th)}°: ${d==null?"more than 6 mm":fmt(d,2)+" mm"}`;}
+    else if(f.kind==="roll"){const d=f.det;const rr=rollRows(FST.roll,FST.th>10?20:0).filter(x=>x.a===d.a&&x.b===d.b);const x=rr[0]||d;
+      gapLine(x.p,x.q,CLS[f.st],fmt(x.d,2)+" mm");const n=vec(x.q).sub(vec(x.p)).normalize();addLabel(vec(x.p).addScaledVector(n,-3),pn(d.a),"lb-dim");addLabel(vec(x.q).addScaledVector(n,3),"Arm wrist link","lb-dim");
+      if(poseMatches(f)&&addNearFaces(d,f.id))lg="near";
+      planeFrame(sp,d.section);hud=`roll ${deg(FST.roll)}°, jaw ${deg(FST.th)}°: ${fmt(x.d,2)} mm`;}
+    else if(f.kind==="overlap"){const o=f.ov;if(o.mesh)V3.overlay.add(solidMesh(o.mesh,f.id+"-ov",0xd62b1f,false));addLabel(vec(o.at),`${f.val}, not intended`,"lb-fail");planeFrame(sp,o.section);lg="ovl";hud="seated";}
+    else if(f.kind==="overlaps"||f.kind==="padov"){const L=f.kind==="padov"?f.ovs:OVL.filter(o=>o.theta===undefined);
+      L.forEach((o,j)=>{if(o.mesh)V3.overlay.add(solidMesh(o.mesh,"ov-"+(o.id||j),o.cls==="error"?0xd62b1f:0x2e9e5b,o.cls==="error"?"xray":false));if(o.cls==="error"){const it=nearItem(o.at,"deck_screw");flag(o.at,`${it?iname(it.id):o.b}: ${fmt(o.v,2)} mm³, error`,"fail",false);}});
+      if(f.kind==="padov"&&L[0])addLabel(vec(L[0].at),f.val+" by design","lb-pass");lg="ovl";hud=f.kind==="padov"?`jaw ${deg(FST.th)}°`:"seated";}
+    else if(f.kind==="build"){const b=f.b,dir=vec(b.dir),seat=vec(b.seat),start=seat.clone().addScaledVector(dir,-b.path_len);
+      arrow([start.x,start.y,start.z],b.dir,b.path_len,0x1c5bb8);addLabel(start,"start of the push","lb-dim");
+      if(b.screw)V3.overlay.add(solidMesh(b.screw,f.id+"-s",0x2f6fd0,false));if(b.contact)V3.overlay.add(solidMesh(b.contact,f.id+"-c",0xd62b1f,"xray"));
+      if(b.touch_at)addLabel(vec(b.touch_at),`hits the ${lc(pn(b.blocker))}, ${fmt(b.first_touch_mm,1)} mm short`,"lb-fail");addLabel(seat,"seated position","lb-dim");
+      planeFrame(sp,b.section);lg="build";hud=`pushed ${dirWord(b.dir)}`;}
+    else if(f.kind==="dog"){const b=f.b,x=b.xy[0],y=b.xy[1];arrow([x,y,b.top_z+12],[0,0,-1],12,0x1c5bb8);
+      addLabel(vec([x,y,b.top_z]),`screw top z ${fmt(b.top_z,1)}`,"lb-fail");addLabel(vec([x,y,b.pin_z[1]]),`drawn pin top z ${fmt(b.pin_z[1],1)}`,"lb-dim");
+      gapLine([x,y,b.slot_z[0]],[x,y,b.slot_z[1]],"risk",`slot ${fmt(b.slot_depth,1)} deep`);hud="dog set screw in its slot";}
+    else if(f.kind==="band"){const e=f.env,YH=D.parts.Y_H,[a,b2]=e.z_I,y0=YH+1-a,y1=YH+1-b2;bandCyl(e.stock_r_max,y0,y1,FCOL.fail,0.2);
+      addLabel(new T.Vector3(-e.stock_r_max,(y0+y1)/2,0),`servo ${fmt(e.new_r_max,1)} against stock ${fmt(e.stock_r_max,1)}`,"lb-risk");hud="stock envelope";}
+    cutHandle();}
+  legend(lg);
+  $("#fithud").textContent=hud;V3.dirty=true;}
+function legend(k){const el=$("#fitLegend");if(!k){el.hidden=true;return;}el.hidden=false;
+  if(k==="near")el.innerHTML=`<span>Faces within ${fmt(NEAR_T,1)} mm of the other part</span><span class="ramp"></span><span class="ends"><span>touching</span><span>${fmt(NEAR_T,1)} mm</span></span>`;
+  else if(k==="ovl")el.innerHTML=`<span><i class="sw" style="background:#d62b1f"></i>overlap, not intended</span><span><i class="sw" style="background:#2e9e5b"></i>overlap, by design</span>`;
+  else if(k==="build"){const b=FS.cur&&FS.cur.b;el.innerHTML=`<span><i class="sw" style="background:#2f6fd0"></i>screw where it first hits</span><span><i class="sw" style="background:#d2691e"></i>${esc(pn(b&&b.blocker||"housing"))}, cut</span><span><i class="sw" style="background:#d62b1f"></i>where it hits</span>`;}}
+
+/* ---------- locator: the whole gripper, small, in a corner of the same canvas, with a dot where the finding is ---------- */
+function locPoint(f){const sp=f&&secPlane(f);return sp?sp.o:null;}
+V3.afterRender=r=>{
+  const el=$("#fitLoc");if(!el)return;const f=V3.mode==="fit"&&!FS.whole?FS.cur:null,at=locPoint(f);
+  if(!at||V3.lost||V3.host!==$("#fit3d")){el.hidden=true;return;}el.hidden=false;
+  const T=THREE,cr=V3.cv.getBoundingClientRect(),er=el.getBoundingClientRect(),w=er.width,ht=er.height;if(w<8||cr.width<w*2)return;
+  if(!FS.loc){const box=new T.Box3().setFromObject(V3.grip),dot=new T.Mesh(new T.SphereGeometry(1,16,12),new T.MeshBasicMaterial({color:FCOL.fail,depthTest:false,transparent:true}));
+    dot.renderOrder=20;dot.visible=false;dot.raycast=()=>{};V3.scene.add(dot);
+    FS.loc={cam:new T.PerspectiveCamera(30,1,1,4000),dot,c:box.getCenter(new T.Vector3()),sz:box.getSize(new T.Vector3()).length()};}
+  const L=FS.loc,x=er.left-cr.left,y=cr.bottom-er.bottom,ac=r.autoClear,lc0=r.localClippingEnabled,off=[];
+  L.cam.position.copy(L.c).addScaledVector(vec(HOME_DIR).normalize(),L.sz*1.75);L.cam.lookAt(L.c);L.cam.updateProjectionMatrix();
+  L.dot.position.copy(vec(at));L.dot.scale.setScalar(L.sz*0.04);L.dot.material.color.setHex(FCOL[CLS[f.st]]||FCOL.risk);
+  /* the small picture is the uncut gripper: the section, its caps and the overlays belong to the main view */
+  for(const k in FS.caps){const cp=FS.caps[k];[cp.cap,...cp.st].forEach(o=>{if(o.visible){off.push(o);o.visible=false;}});}
+  [V3.overlay,V3.ground].forEach(o=>{if(o&&o.visible){off.push(o);o.visible=false;}});
+  L.dot.visible=true;r.autoClear=true;r.localClippingEnabled=false;r.setScissorTest(true);r.setViewport(x,y,w,ht);r.setScissor(x,y,w,ht);
+  try{r.render(V3.scene,L.cam);FS.locDrawn=(FS.locDrawn||0)+1;}
+  finally{const s=r.getSize(new T.Vector2());r.setScissorTest(false);r.setViewport(0,0,s.x,s.y);r.setScissor(0,0,s.x,s.y);r.autoClear=ac;r.localClippingEnabled=lc0;L.dot.visible=false;off.forEach(o=>{o.visible=true;});}};
+
+/* ---------- the finding card ---------- */
+function tolDetails(t,req){
+  const li=(t.contrib||[]).map(c=>`<li>${esc(c.name.replace(/_/g," "))}: ${fmt(c.pm,3)} mm; `+
+    `${esc(codeWords(c.why))}${c.tag==="A"?" (assumed)":""}</li>`).join("");
+  const mi=(t.missing||[]).map(m=>`<li>Not stated: ${esc(codeWords(m))}</li>`).join("");
+  if(!li&&!mi)return "";
+  const src=[...new Set([req.src,...(t.contrib||[]).map(c=>c.src),t.stack&&t.stack.src].filter(Boolean))].join(", ");
+  const stack=t.stack?`; the ${esc(stackName(t.stack))} stack, ${fmt(t.stack.nominal,3)} mm nominal, `+
+    `${fmt(t.stack.wc[0],3)} to ${fmt(t.stack.wc[1],3)} mm worst case`:"";
+  return `<details><summary>Tolerances used</summary><ul>${li}${mi}</ul>`+
+    `<p class="note">From ${esc(src)}${stack}.</p></details>`;
+}
+function tolHtml(f){const t=f.tol;if(!t)return "";const req=t.req||{},rows=[];
+  const worstNote=t.worst==null?"No complete tolerance stack is stated for this pair.":"From listed dimensional variations; separate from sampling allowance.";
+  if(f.req)return `<dl class="kv"><dt>Requirement ${esc(f.req.source)}</dt>`+
+    `<dd>at least ${fmt(f.req.minimum_clearance_mm,2)} mm<small>${esc(f.req.direction_or_feature)}</small></dd>`+
+    `<dt>Nominal margin</dt><dd>${fmt(f.margin,3)} mm<small>${fmt(f.allowance,4)} mm between-sample allowance</small></dd>`+
+    `<dt>Worst case</dt><dd>${t.worst==null?"Not stated":fmt(t.worst,2)+" mm"}`+
+    `<small>${worstNote}${t.worst!=null&&t.worst<f.req.minimum_clearance_mm?
+      " Below the requirement under these listed variations; manufacturing clearance remains unverified.":""}</small></dd></dl>`+
+    tolDetails(t,req);
+  if(f.kind==="gap")return `<dl class="kv"><dt>Requirement</dt><dd>None recorded</dd>`+
+    `<dt>Tolerance</dt><dd>Not stated<small>Nominal only; measured value is not a pass.</small></dd></dl>`;
+  rows.push(["Nominal",fmt(t.nominal,2)+" mm",f.det&&f.det.const?(f.kind==="roll"?"the same at every roll angle":"the same at every jaw angle"):""]);
+  rows.push(["Worst case",t.worst==null?"nominal only":fmt(t.worst,2)+" mm",t.worst==null?"no tolerance is stated for this pair":`${fmt(t.loss,2)} mm off for the stated tolerances${t.worst<0?"; below 0 the parts overlap":""}`,t.worst==null?"":t.worst<req.min?"cell-bad":"cell-ok"]);
+  if(req.min!=null)rows.push([f.kind==="roll"?"Running clearance":"Tolerance-stack basis",`at least ${fmt(req.min,2)} mm`,esc(codeWords(req.why))]);
+  return `<dl class="kv">${rows.map(([l,v,n,c])=>`<dt>${l}</dt><dd${c?` class="${c}"`:""}>${v}`+
+    `${n?`<small>${n}</small>`:""}</dd>`).join("")}</dl>`+tolDetails(t,req);}
+function renderCard(){
+  const el=$("#fitCard"),f=FS.whole?null:FS.cur,an=$("#fitAns");
+  /* the answer in one line above the stage, for layouts where the card sits under it */
+  if(an){an.className="fans"+(f?" "+CLS[f.st]:"");an.innerHTML=f?`<b>${esc(f.val)}</b>${st(CLS[f.st],f.word)}<span>${esc(f.when)}${f.gist?"; "+esc(f.gist):""}</span>`:"";}
+  if(!f){const nf=FF.filter(x=>x.st==="fail").length,nr=FF.filter(x=>x.st==="risk").length;
+    el.innerHTML=`<h2>Whole assembly</h2><p>${nf} finding${nf===1?"":"s"} fail and ${nr} ${nr===1?"is":"are"} at risk. Pick one in the finding picker or the list below the view to fly to it, or step with [ and ].</p>`;return;}
+  const faces=f.tol&&f.tol.features?`<p class="note">Faces: ${esc(f.tol.features)}${f.tol.axis?`, ${esc(f.tol.axis)}`:""}.</p>`:"";
+  const live=(f.kind==="gap"&&!poseMatches(f))?`<p class="note" id="fitLive">At ${deg(FST.th)}°: ${gapTxt(f.pair.d[thIdx(FST.th)])}</p>`:"";
+  const dec=f.kind==="overlap"||f.kind==="build"?["open-decision-deck","Deck screw access"]:f.kind==="dog"?["open-decision-dogpin","Dog set screws"]:f.id==="horn-housing"?["open-decision-horn","Horn clearance"]:f.kind==="roll"?["tolerances-stacks","Tolerance stacks"]:null;
+  const decL=dec&&document.getElementById(dec[0])?`<p><a href="#${dec[0]}">${dec[1]}</a></p>`:"";
+  el.innerHTML=`<p class="fv ${CLS[f.st]}"><b>${esc(f.val)}</b>${st(CLS[f.st],f.word)}</p><p>${esc(f.when)}</p>${f.why?`<p class="why">${esc(f.why)}</p>`:""}${f.more?`<p class="note">${esc(f.more)}</p>`:""}${faces}${tolHtml(f)}${decL}${f.ev?`<details><summary>Assembly check notes</summary><p class="note">${esc(f.ev)}</p></details>`:""}${live}`;}
+
+/* ---------- the magnified section ---------- */
+function nice(x){const e=10**Math.floor(Math.log10(x)),m=x/e;return (m>=5?5:m>=2?2:1)*e;}
+function secSvg(sec,o){
+  const W=320,H=220,cx=(sec.p2[0]+sec.q2[0])/2,cy=(sec.p2[1]+sec.q2[1])/2;
+  const hw=Math.max(0.15,Math.min(sec.win,(o.hw||sec.win)/FS.zoom)),k=W/2/hw,X=u=>W/2+(u-cx)*k,Y=v=>H/2-(v-cy)*k;
+  let g="";const d=o.d;
+  if(o.req!=null&&d>1e-4)g+=`<rect class="req" x="${X(sec.p2[0]).toFixed(1)}" y="0" width="${(o.req*k).toFixed(1)}" height="${H}"/>`;
+  if(o.loss!=null&&d>1e-4)g+=`<rect class="wc" x="${X(sec.q2[0]-o.loss).toFixed(1)}" y="0" width="${(o.loss*k).toFixed(1)}" height="${H}"/>`;
+  const pts=l=>l.map(p=>X(p[0]).toFixed(1)+","+Y(p[1]).toFixed(1)).join(" ");
+  g+=(sec.a||[]).map(l=>`<polyline class="ga" points="${pts(l)}"/>`).join("")+(sec.b||[]).map(l=>`<polyline class="gb" points="${pts(l)}"/>`).join("");
+  if(sec.x)g+=`<path class="gx" fill-rule="evenodd" d="${loops(sec.x).map(l=>"M"+pts(l).replace(/ /g,"L")+"Z").join("")}"/>`;
+  if(d!=null){const x0=X(sec.p2[0]),x1=X(sec.q2[0]),y=Y(sec.p2[1]),wpx=Math.abs(x1-x0),out=wpx<18,a=6;
+    g+=`<line class="dim" x1="${x0}" y1="${y-26}" x2="${x0}" y2="${y+4}"/><line class="dim" x1="${x1}" y1="${y-26}" x2="${x1}" y2="${y+4}"/>`;
+    const ay=y-18;
+    if(d>1e-4){if(out)g+=`<path class="dim" d="M${x0-22},${ay}H${x0}M${x0-a},${ay-3}L${x0},${ay}L${x0-a},${ay+3}M${x1+22},${ay}H${x1}M${x1+a},${ay-3}L${x1},${ay}L${x1+a},${ay+3}"/>`;
+      else g+=`<path class="dim" d="M${x0},${ay}H${x1}M${x0+a},${ay-3}L${x0},${ay}L${x0+a},${ay+3}M${x1-a},${ay-3}L${x1},${ay}L${x1-a},${ay+3}"/>`;}
+    g+=`<text class="dimt" x="${(x0+x1)/2}" y="${ay-8}" text-anchor="middle">${d>1e-4?fmt(d,2)+" mm":"touching"}</text>`;}
+  const L=nice(hw/2.2);g+=`<line class="sb" x1="12" x2="${(12+L*k).toFixed(1)}" y1="${H-12}" y2="${H-12}"/><text class="halo" x="12" y="${H-18}">${tfmt(L)} mm</text>`;
+  /* the key is HTML under the drawing, so no label sits on an outline */
+  const key=[`<span><i class="sw" style="background:#1d6fd6"></i>${esc(o.la)}</span>`,`<span><i class="sw" style="background:#c9601a"></i>${esc(o.lb)}</span>`];
+  if(sec.x)key.push(`<span><i class="sw" style="background:#d62b1f"></i>${o.xl?esc(o.xl):`overlap, ${o.v!=null?fmt(o.v,2)+" mm³ in all":"shared material"}`}</span>`);
+  if(o.req!=null&&d>1e-4)key.push(`<span><i class="sw" style="background:rgb(27 116 67 / .35)"></i>${esc(o.reqLab||fmt(o.req,2)+" mm required")}, measured from the ${esc(lc(o.la))}</span>`);
+  if(o.loss!=null&&d>1e-4)key.push(`<span><i class="sw" style="background:rgb(214 43 31 / .3)"></i>worst case can take ${fmt(o.loss,2)} mm off the gap${o.loss>d?", more than the gap itself":""}</span>`);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Section through ${esc(o.la)} and ${esc(o.lb)}: ${d!=null?(d>1e-4?fmt(d,2)+" mm apart":"touching"):""}">${g}</svg><p class="skey">${key.join("")}</p>`;}
+/* the cut returns each edge as its own polyline; chain the ones that meet end to end into closed outlines so an overlap can be filled */
+function loops(L){const P=L.map(l=>l.slice()),out=[],eq=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1])<0.02;
+  while(P.length){let c=P.shift(),grew=true;while(grew){grew=false;for(let i=0;i<P.length;i++){const q=P[i],e=c[c.length-1];
+    if(eq(e,q[0])){c=c.concat(q.slice(1));}else if(eq(e,q[q.length-1])){c=c.concat(q.slice(0,-1).reverse());}else continue;P.splice(i,1);grew=true;break;}}out.push(c);}
+  return out.filter(c=>c.length>2);}
+function axisWord(m){const a=m.map(Math.abs),i=a.indexOf(Math.max(...a));return a[i]>0.99?["x","y","z"][i]:null;}
+function dogSvg(b){/* side elevation along the pin, to scale: horn, the slot in knuckle A, the drawn pin and the listed screw */
+  const W=320,H=220,z0=Math.min(b.horn_top_z-b.horn_t,b.pin_z[0])-1,z1=Math.max(b.slot_z[1],b.pin_z[1],b.top_z)+1,k=(H-30)/(z1-z0),Y=z=>H-14-(z-z0)*k,r=b.r*k;
+  const x=W*0.42;let g="";
+  g+=`<rect x="${x-60}" y="${Y(b.horn_top_z)}" width="120" height="${b.horn_t*k}" style="fill:rgb(201 204 209 / .6);stroke:#6a7482"/><text x="${x+66}" y="${Y(b.horn_top_z-b.horn_t/2)+4}">horn, ${fmt(b.horn_t,0)} mm</text>`;
+  g+=`<line class="dim" x1="${x-60}" x2="${x+60}" y1="${Y(b.slot_z[0])}" y2="${Y(b.slot_z[0])}"/><line class="dim" x1="${x-60}" x2="${x+60}" y1="${Y(b.slot_z[1])}" y2="${Y(b.slot_z[1])}" style="stroke-dasharray:4 3"/>`;
+  g+=`<rect class="req" x="${x-60}" y="${Y(b.slot_z[1])}" width="120" height="${b.slot_depth*k}"/><text x="${x+66}" y="${Y((b.slot_z[0]+b.slot_z[1])/2)+4}">slot in knuckle A, ${fmt(b.slot_depth,1)} deep</text>`;
+  g+=`<rect x="${x-r-14}" y="${Y(b.pin_z[1])}" width="${2*r}" height="${(b.pin_z[1]-b.pin_z[0])*k}" style="fill:none;stroke:#c9601a;stroke-width:2;stroke-dasharray:4 3"/>`;
+  g+=`<rect x="${x+14-r}" y="${Y(b.top_z)}" width="${2*r}" height="${(b.top_z-(b.top_z-b.screw_len))*k}" style="fill:rgb(214 43 31 / .25);stroke:#d62b1f;stroke-width:2"/>`;
+  g+=`<text x="10" y="18" style="fill:#c9601a;font-weight:700">drawn pin, ${fmt(b.engage_cad,1)} mm in the slot</text><text x="10" y="34" style="fill:#d62b1f;font-weight:700">${esc((b.type||"listed screw").split(" (")[0])}, ${fmt(b.engage,1)} mm in the slot</text>`;
+  const L=nice((z1-z0)/4);g+=`<line class="sb" x1="${W-16-L*k}" x2="${W-16}" y1="${H-8}" y2="${H-8}"/><text x="${W-16}" y="${H-14}" text-anchor="end">${tfmt(L)} mm</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Dog set screw against its slot: the CAD screw enters ${fmt(b.engage_cad,1)} mm, the listed screw ${fmt(b.engage,1)} mm">${g}</svg>`;}
+function renderSec(){
+  const el=$("#fitSec"),f=FS.whole?null:FS.cur,P=el.closest(".fpanel");let sec=null,o={},cap="";
+  if(f&&(f.kind==="gap"||f.kind==="roll")){
+    sec=f.det.section;
+    const t=f.tol||{};
+    o={d:f.det.d,req:f.req?f.req.minimum_clearance_mm:f.kind==="roll"&&t.req?t.req.min:null,
+      reqLab:f.req?`${fmt(f.req.minimum_clearance_mm,2)} mm required, ${f.req.source}`:null,
+      loss:t.worst!=null?t.loss:null,la:f.kind==="roll"?pn(f.det.a):pn(f.pair.a),
+      lb:f.kind==="roll"?"Arm wrist link":pn(f.pair.b),hw:Math.max(0.6,Math.min(6,f.det.d*5+0.6))};
+    $("#fitSecH").textContent=f.det.d>1e-4?"Section through the gap":"Section where they touch";}
+  else if(f&&f.kind==="overlap"){sec=f.ov.section;o={v:f.ov.v,la:pn(f.ov.a),lb:iname(nearItem(f.ov.at,"deck_screw")?nearItem(f.ov.at,"deck_screw").id:f.ov.b),hw:Math.max(1.5,Math.max(...(f.ov.size||[3]))*0.8)};$("#fitSecH").textContent="Section through the overlap";}
+  else if(f&&f.kind==="build"){sec=f.b.section;o={la:iname(f.b.id),lb:pn(f.b.blocker||"housing"),hw:5,xl:`where they hit: shared material 1 mm past first touch, ${fmt(f.b.contact_v,2)} mm³ in all`};$("#fitSecH").textContent="Section where it first hits";}
+  if(f&&f.kind==="dog"){P.hidden=false;$("#fitSecH").textContent="Dog set screw against its slot";el.innerHTML=dogSvg(f.b)+`<p class="note">Elevation along the screw axis, to scale; heights are z in mm.</p>`;return;}
+  if(!sec){P.hidden=!f||!["gap","roll","overlap","build"].includes(f.kind);el.innerHTML=f?`<p class="note">No section could be cut for this finding.</p>`:"";return;}
+  P.hidden=false;const aw=axisWord(sec.m),ref=f.kind==="gap"?`; drawn at ${deg(f.det.theta)}°`:"";
+  cap=aw?`Cut on ${aw} = ${fmt(sec.o[["x","y","z"].indexOf(aw)],2)} mm${ref}.`:`Cut on the plane through ${f.kind==="roll"?"the roll axis and ":""}the closest points${ref}.`;
+  el.innerHTML=`<div class="zbtn"><button type="button" data-z="-" aria-label="Zoom the section out">−</button><button type="button" data-z="+" aria-label="Zoom the section in">+</button></div>`+secSvg(sec,o)+`<p class="note">${esc(cap)} Use + and − to zoom; the scale bar keeps the size.</p>`;}
+
+/* ---------- gap against motion ---------- */
+function chartData(f){
+  if(f.kind==="gap")return {xs:F3.th,lines:[{pts:F3.th.map((t,i)=>[t,f.pair.d[i]]),lab:"gap"}],x:{min:F3.th[0],max:F3.th[F3.th.length-1],label:"Jaw angle, °"},cur:FST.th,floor:true};
+  if(f.kind==="roll"){const R=(F3.roll||[]),ths=[...new Set(R.map(r=>r.theta))].sort((a,b)=>a-b),d=f.det;
+    const lines=ths.map(t=>({pts:R.filter(r=>r.theta===t).sort((a,b)=>a.psi-b.psi).map(r=>[r.psi,((r.rows.find(x=>x.a===d.a&&x.b===d.b)||{}).d)]),lab:`jaw ${deg(t)}°`}));
+    return {xs:F3.rolls||R.map(r=>r.psi),lines,x:{min:0,max:350,label:"Wrist roll, °"},cur:FST.roll,roll:true};}
+  return null;}
+function renderChart(){
+  const P=$("#fitChartP"),el=$("#fitChart"),f=FS.whole?null:FS.cur,cd=f&&chartData(f);
+  if(!cd){P.hidden=true;el.innerHTML="";return;}P.hidden=false;el.classList.add("fchart");
+  $("#fitChartH").textContent=cd.roll?"Gap against wrist roll":"Gap against jaw angle";
+  const t=f.tol||{},req=f.req?f.req.minimum_clearance_mm:t.req&&t.req.min,loss=t.worst!=null?t.loss:null;
+  const all=cd.lines.flatMap(l=>l.pts.map(p=>p[1])).filter(v=>v!=null);
+  const hi=Math.min(Math.max(...all),Math.max(1,(req||0)*3,Math.min(...all)*3+0.5)),lo=Math.min(0,loss!=null?Math.min(...all)-loss:0);
+  const ymax=nice(hi)*Math.ceil(hi/nice(hi)*1.0001),ymin=lo<0?-nice(-lo)*Math.ceil(-lo/nice(-lo)):0;
+  const pl=plot(el,{w:340,h:220,m:{l:46,r:12,t:12,b:38},x:cd.x,y:{min:ymin,max:ymax,label:"Gap, mm"},aria:`${f.title}: gap against ${cd.roll?"wrist roll":"jaw angle"}`});
+  const clampY=v=>v==null?null:Math.max(ymin,Math.min(ymax,v));
+  if(ymin<0)pl.hband(ymin,0,"rgb(214 43 31 / .10)");
+  if(cd.floor){pl.vband(cd.x.min,FLOOR,"var(--grid)");pl.vline(FLOOR,"var(--ink2)","3 3");}
+  if(req!=null)pl.hline(req,"var(--ok)","5 4");
+  if(loss!=null)cd.lines.slice(0,1).forEach(l=>pl.line(l.pts.map(([x,y])=>[x,clampY(y==null?null:y-loss)]),"var(--bad)",1.5,"4 3"));
+  cd.lines.forEach((l,j)=>pl.line(l.pts.map(([x,y])=>[x,clampY(y)]),j?"var(--c2)":"var(--c1)",j?1.5:2.5,j?"2 3":""));
+  /* the worst point, and where the pose is now */
+  /* a flat line has no worst point, so it gets no dot and the note gives the range instead */
+  const flat=Math.max(...all)-Math.min(...all)<0.01;
+  let w=null;cd.lines[0].pts.forEach(p=>{if(p[1]!=null&&(!w||p[1]<w[1]))w=p;});if(w&&!flat)pl.dot(w[0],clampY(w[1]),"var(--bad)",4.5,`smallest: ${fmt(w[1],2)} mm at ${deg(w[0])}°`);
+  pl.vline(cd.cur,"var(--accent)","",`${deg(cd.cur)}°`);
+  /* the key sits under the plot, so it never covers the curve or the worst point */
+  const keys=[[cd.lines[0].lab,"var(--c1)"],...cd.lines.slice(1).map(l=>[l.lab,"var(--c2)","2 3"])];
+  if(loss!=null)keys.push(["worst case","var(--bad)","4 3"]);
+  if(req!=null){
+    const label=f.req?`${fmt(req,2)} mm required, ${f.req.source}`:`Running clearance at least ${fmt(req,2)} mm`;
+    keys.push([label,"var(--ok)","5 4"]);
+  }
+  if(cd.floor)keys.push([`firmware floor ${fmt(FLOOR,1)}°, the lowest driven angle; shaded beyond it`,"var(--ink2)","3 3"]);
+  if(ymin<0)keys.push(["below 0: the parts overlap","rgb(214 43 31 / .35)","",8]);
+  keyRow(el,keys);
+  const span=`${deg(cd.x.min)}° to ${deg(cd.x.max)}°`;
+  if(w)h("p",{class:"note",id:"fitChartW"},el).textContent=flat?`Smallest: ${fmt(w[1],2)} mm, the same ${cd.roll?"all the way round":`over the whole travel, ${span}`}; it changes by less than 0.01 mm.`
+    :`Smallest (red dot): ${fmt(w[1],2)} mm at ${deg(w[0])}°${cd.roll?" roll":""}; largest ${fmt(Math.max(...all),2)} mm.`;
+  const svg=pl.svg;svg.setAttribute("tabindex","0");svg.setAttribute("aria-label",svg.getAttribute("aria-label")+". Drag across the chart, or use the arrow keys, to move the "+(cd.roll?"wrist":"jaw"));
+  const pick=e=>{const r=svg.getBoundingClientRect(),sx=(e.clientX-r.left)/r.width*pl.W,v=cd.x.min+(sx-pl.m.l)/pl.pw*(cd.x.max-cd.x.min);
+    const xs=cd.xs;let b=xs[0];xs.forEach(x=>{if(Math.abs(x-v)<Math.abs(b-v))b=x;});setPose(cd.roll?null:b,cd.roll?b:null);};
+  svg.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"&&e.button!==0)return;svg.setPointerCapture(e.pointerId);pick(e);svg.onpointermove=pick;});
+  svg.addEventListener("pointerup",()=>{svg.onpointermove=null;});svg.addEventListener("pointercancel",()=>{svg.onpointermove=null;});
+  svg.addEventListener("keydown",e=>{const xs=cd.xs,i=xs.indexOf(cd.cur);if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;e.preventDefault();const j=Math.max(0,Math.min(xs.length-1,(i<0?0:i)+(e.key==="ArrowRight"?1:-1)));
+    setPose(cd.roll?null:xs[j],cd.roll?xs[j]:null);requestAnimationFrame(()=>{const s=$("#fitChart svg");if(s)s.focus();});});}
+
+/* ---------- pose, selection and links ---------- */
+function setPose(th,psi){if(th!=null)FST.th=th;if(psi!=null)FST.roll=psi;fitSync();}
+function fitSync(){
+  $("#fitJaw").value=FST.th;$("#fitRoll").value=FST.roll;$("#fitJawv").textContent=deg(FST.th)+"°";$("#fitRollv").textContent=deg(FST.roll)+"°";
+  V3.theta=FST.th;if(V3.ready){applyPose();setCut();drawFit();}renderChart();renderCardLive();
+  if(CUR==="fit"&&FS.cur&&!FS.whole&&/^#fit-f-/.test(location.hash))setHash(linkHash());}
+function renderCardLive(){const f=FS.cur;if(!f||FS.whole||f.kind!=="gap")return;let el=$("#fitLive");
+  if(poseMatches(f)){if(el)el.remove();return;}if(!el)el=h("p",{class:"note",id:"fitLive"},$("#fitCard"));el.textContent=`At ${deg(FST.th)}°: ${gapTxt(f.pair.d[thIdx(FST.th)])}`;}
+function linkHash(){const f=FS.cur;if(!f||FS.whole)return "fit-3d";let s=`fit-f-${f.id}~j=${FST.th}~r=${FST.roll}`;
+  if(V3.ready&&V3.cam){const c=V3.cam.position,t=V3.ctl.target;s+="~c="+[c.x,c.y,c.z,t.x,t.y,t.z].map(v=>v.toFixed(1)).join(",");}
+  s+="~s="+(FS.cut.on?`${FS.cut.mode},${FS.cut.flip?1:0},${FS.cut.off}`:"off");return s;}
+function parseHash(hs){const m=/^#?fit-f-([a-z0-9-]+)(.*)$/.exec(hs||"");if(!m)return null;const o={id:m[1]};
+  m[2].split("~").forEach(kv=>{const i=kv.indexOf("="),k=kv.slice(0,i),v=kv.slice(i+1);if(k==="j"&&Number.isFinite(+v))o.th=+v;if(k==="r"&&Number.isFinite(+v))o.psi=+v;
+    if(k==="c"){const a=v.split(",").map(Number);if(a.length===6&&a.every(Number.isFinite))o.cam=a;}if(k==="s")o.s=v;});return o;}
+function stopSweep(){const b=$("#fitPlay");if(b&&b.getAttribute("aria-pressed")==="true"){b.setAttribute("aria-pressed","false");b.textContent="Sweep the jaw";V3.anim=null;}}
+function syncPick(){const f=FS.whole?null:FS.cur,full=f?f.title+(f.title.includes(f.val)?"":": "+f.val):"";$("#fitPick").value=f?f.id:"";$("#fitPick").title=full;$("#fitPickRead").textContent=f?full:"Whole assembly";$("#fitAll").setAttribute("aria-pressed",String(!f));
+  $("#fitCount").textContent=f?`Finding ${FF.indexOf(f)+1} of ${FF.length}`:`${FF.length} findings`;
+  $$("#fitList li").forEach(li=>li.setAttribute("aria-current",String(!!f&&li.dataset.f===f.id)));}
+function selectFinding(id,opt={}){
+  const f=FF.find(x=>x.id===id)||FF[0];if(!f)return;FS.cur=f;FS.whole=false;FS.zoom=1;stopSweep();
+  FST.th=opt.th!=null?opt.th:f.th||0;FST.roll=opt.psi!=null?opt.psi:f.psi||0;
+  V3.fitSolid=f.solid?new Set(f.solid):null;FS.armSolid=!!f.arm;
+  FS.cut={on:!!secPlane(f),mode:"f",flip:false,off:0};
+  if(opt.s){if(opt.s==="off")FS.cut.on=false;else{const [md,fl,of]=opt.s.split(",");if(/^[xyzf]$/.test(md)){FS.cut={on:true,mode:md,flip:fl==="1",off:Number.isFinite(+of)?+of:0};}}}
+  syncPick();renderCard();renderSec();fitSync();
+  if(V3.ready){if(opt.cam){V3.cam.position.set(opt.cam[0],opt.cam[1],opt.cam[2]);V3.ctl.target.set(opt.cam[3],opt.cam[4],opt.cam[5]);V3.ctl.update();V3.dirty=true;}else frameFinding(f,!opt.instant);}
+  if(opt.hash!==false)setHash(linkHash());}
+function wholeView(anim=true){FS.whole=true;V3.fitSolid=null;FS.armSolid=true;FS.cut.on=false;stopSweep();syncPick();renderCard();renderSec();fitSync();
+  if(V3.ready){const t=vec(HOME_T);flyTo(t.clone().addScaledVector(vec(HOME_DIR).normalize(),HOME_D),t,anim);}setHash("fit-3d");}
+function step(d){const i=FS.whole||!FS.cur?(d>0?-1:0):FF.indexOf(FS.cur);selectFinding(FF[(i+d+FF.length)%FF.length].id);}
+function toggleCut(){FS.cut.on=!FS.cut.on;if(FS.cut.on&&!secPlane(FS.whole?null:FS.cur)&&FS.cut.mode==="f")FS.cut.mode="z";setCut();drawFit();}
+
+/* ---------- lists ---------- */
+const FCHK={body:"horn-housing",cross:"finger-a-knuckle-b",gear:"knuckle-a-knuckle-b",pads:"pads",roll:"roll-wrist",env:"envelope",press:"overlaps-body"};
+function renderLists(){
+  const groups=[["fail","Fails"],["risk","At risk"],["none","No requirement"],["design","By design"],
+    ["pass","Met"],["integration","Unverified arm clearance"]];
+  $("#fitPick").innerHTML=groups.map(([k,t])=>{const L=FF.filter(f=>f.st===k);return L.length?`<optgroup label="${t}">${L.map(f=>`<option value="${f.id}">${esc(f.title)}</option>`).join("")}</optgroup>`:"";}).join("");
+  $("#fitList").innerHTML=FF.map((f,i)=>{
+    const heading=f.st==="integration"&&(i===0||FF[i-1].st!=="integration")?
+      '<li class="integration-heading"><h3>Unverified arm clearance</h3></li>':"";
+    return heading+`<li data-f="${f.id}" aria-current="false"><button type="button"><span>`+
+      `<b>${esc(f.title)}</b><small>${esc(f.when)}</small></span><span class="n">${esc(f.val)}</span>`+
+      `${st(CLS[f.st],f.word)}</button></li>`;}).join("");
+  $("#fitChecks").innerHTML=FCK.map(c=>{
+    const s=checkSummary(c);
+    const pairFinding=s.w&&FF.find(f=>f.pair&&f.pair.a===s.w.a&&f.pair.b===s.w.b);
+    const lf=pairFinding||FF.find(f=>f.id===FCHK[c.id]);
+    const fid=lf&&lf.id,ok=!!lf;
+    c.sum=s;
+    /* a check with a finding wears that finding's status word, so the list and the card never disagree */
+    return `<div class="chk" data-c="${c.id}"${s.w?` data-part="${s.w.a} ${s.w.b}"`:""}>`+
+      `<span><b>${esc(c.name)}</b><small>Worst: ${esc(s.txt)}</small></span>`+
+      `${lf?st(CLS[lf.st],lf.word):st(s.st,s.st==="risk"?"at risk":s.st==="pass"?"met":"no requirement")}`+
+      `${ok?`<button type="button" class="show3d" data-f="${fid}">Show</button>`:""}</div>`;}).join("");
+  $("#fitFind tbody").innerHTML=FF.length?FF.map((f,i)=>`<tr data-part="${(f.solid||[]).join(" ")||"housing"}"><td>${esc(f.title)}</td><td class="n">${esc(f.val)}</td><td class="w">${esc(f.when)}${f.why?". "+esc(f.why):""}</td><td>${st(CLS[f.st],f.word)}</td><td><button type="button" class="show3d" data-f="${f.id}">Show in 3D</button></td></tr>`).join("")
+    :`<tr><td colspan="5" class="note">No fit findings.</td></tr>`;}
+function showIn3D(id){selectFig($("#fit-3d"),false);selectFinding(id);const s=$(".fbar");if(s&&s.getBoundingClientRect().top<0)s.scrollIntoView({block:"start"});}
+/* the old checks table and key numbers, kept */
+function renderFitTables(){
+  const r=[];
+  FIT.keepout_params.forEach(k=>r.push([`Keep-out, ${k.z_from_H.join(" to ")} mm from the horn`,`radius ${k.r_max_new} mm, ${k.r_max_allowed} allowed`,k.ok]));
+  RING.forEach(x=>r.push([`Roll gap, ${x.z_I.join(" to ")} mm band`,`${fmt(x.radial_gap,2)} mm between radius ${x.gripper_r_max} and the fixed ${x.stationary_r_min}`,x.radial_gap>0]));
+  FIT.envelope_vs_stock.forEach(e=>r.push([`Stock envelope, ${e.z_I.join(" to ")} mm band`,`radius ${e.new_r_max} mm, stock ${e.stock_r_max}`,e.inside]));
+  FIT.jaw_sweep.forEach(j=>r.push([`Jaw at ${fmt(j.theta_deg,1)}°`,`${Object.keys(j.clash_mm3).length?"clash: "+Object.entries(j.clash_mm3).map(([k,v])=>decode(k)+" "+fmt(v,2)+" mm³").join(", "):"no part clash"}; pad overlap ${fmt(j.pad_interference_mm3,0)} mm³; pad gap ${fmt(j.pad_min_dist_mm,1)} mm`,Object.keys(j.clash_mm3).length===0]));
+  if(WF){Object.entries(WF.per_case).forEach(([k,v])=>r.push([`Wrist flex, ${k.startsWith("stock")?"stock gripper":"new gripper, open"}, roll ${k.split("@roll")[1]}°`,v.clash_phi_deg.length?`clash at ${v.clash_phi_deg.join(", ")}°, up to ${fmt(v.max_clash_mm3,1)} mm³`:`clear from ${v.clear_phi_deg.join(" to ")}°`,k.startsWith("stock")||v.clash_phi_deg.every(p=>(WF.per_case[k.replace("new_open","stock")].clash_phi_deg||[]).includes(p))]));}
+  r.push(["Mass-moment",`${fmt(MASS.mass_moment_gmm,0)} of ${fmt(MASS.budget_gmm,0)} ${GMM}; ${fmt(MASS.with_wrist_uvc_16g_at_u30_gmm,0)} with a 16 g wrist camera`,MASS.ok]);
+  $("#fitTable tbody").innerHTML=r.map(x=>`<tr><td>${esc(x[0])}</td><td>${esc(x[1])}</td><td>${x[2]?st("pass","clear"):st(x[0].startsWith("Stock")?"risk":"fail",x[0].startsWith("Stock")?"outside":"fails")}${x[0]==="Mass-moment"?` <a href="#mass">Mass budget</a>`:""}</td></tr>`).join("");
+  const ko=FIT.keepout_params,body=checkSummary(FCK[0]),cross=checkSummary(FCK[1]);
+  kv($("#fitNums"),[["Tightest moving gap",body.w?fmt(body.w.dmin,2)+" mm":"–",body.w?`${pn(body.w.a)} to ${pn(body.w.b)}, at every jaw angle`:"",body.st==="pass"?"cell-ok":"cell-warn"],
+    ["Side A to side B",cross.w?fmt(cross.w.dmin,2)+" mm":"–",cross.w?`${pn(cross.w.a)} to ${pn(cross.w.b)}, past the floor only`:"",cross.st==="pass"?"cell-ok":"cell-warn"],
+    ["Tightest roll gap",RW?fmt(RW.d,2)+" mm":fmt(FIT.roll_min_radial_gap_mm,2)+" mm",`measured in 3D at every roll angle; ${fmt(FIT.roll_min_radial_gap_mm,2)} mm by the ring method`,(RW?RW.d:FIT.roll_min_radial_gap_mm)<1?"cell-warn":"cell-ok"],
+    ["Keep-out radii",ko.map(k=>k.r_max_new).join(" and ")+" mm",ko.map(k=>k.r_max_allowed).join(" and ")+" allowed"],
+    ["Stock envelope",ENV_OUT.length?"outside in "+ENV_OUT.length+" band":"inside",ENV_OUT.map(e=>`radius ${e.new_r_max} against ${e.stock_r_max} mm`).join("; ")||"",ENV_OUT.length?"cell-warn":"cell-ok"],
+    ["Jaw sweep",SWEEP_CLASH.length?"clash":"clear",`${F3.th.length} angles from ${deg(F3.th[0])}° to +${deg(F3.th[F3.th.length-1])}°`,SWEEP_CLASH.length?"cell-bad":"cell-ok"],
+    ["Wrist flex",WF?(WF.ok_vs_stock?"no new clash":"new clash"):"not run","against the stock gripper, ±95°",WF&&WF.ok_vs_stock?"cell-ok":"cell-warn"]]);
+}
+
+/* ---------- controls ---------- */
+function renderFit(){
+  renderLists();renderFitTables();
+  $("#fitPick").addEventListener("change",e=>selectFinding(e.target.value));
+  $("#fitPrev").addEventListener("click",()=>step(-1));$("#fitNext").addEventListener("click",()=>step(1));
+  $("#fitAll").addEventListener("click",()=>wholeView());  $("#fitList").addEventListener("click",e=>{const li=e.target.closest("li[data-f]");if(li){selectFinding(li.dataset.f);const s=$(".fbar");if(s)s.scrollIntoView({block:"start",behavior:reduceMotion()?"auto":"smooth"});}});
+  $("#fitChecks").addEventListener("click",e=>{const b=e.target.closest(".show3d");if(b)showIn3D(b.dataset.f);});
+  $("#fitFind").addEventListener("click",e=>{const b=e.target.closest(".show3d");if(b)showIn3D(b.dataset.f);});
+  $("#fitJaw").addEventListener("input",e=>setPose(+e.target.value,null));
+  $("#fitRoll").addEventListener("input",e=>setPose(null,+e.target.value));
+  $("#fitCutOn").addEventListener("click",toggleCut);
+  $$("#fit-3d [data-cut]").forEach(b=>b.addEventListener("click",()=>{FS.cut.mode=b.dataset.cut;FS.cut.on=true;FS.cut.off=0;setCut();drawFit();}));
+  $("#fitFlip").addEventListener("click",()=>{FS.cut.flip=!FS.cut.flip;setCut();drawFit();});
+  $("#fitCutPos").addEventListener("input",e=>{FS.cut.off=+e.target.value;setCut();drawFit();});
+  $$("#fit-3d [data-view]").forEach(b=>b.addEventListener("click",()=>preset(b.dataset.view)));
+  $("#fitSec").addEventListener("click",e=>{const b=e.target.closest("[data-z]");if(!b)return;FS.zoom=Math.max(0.25,Math.min(16,FS.zoom*(b.dataset.z==="+"?2:0.5)));renderSec();});
+  $("#fitLink").addEventListener("click",async e=>{const url=location.href.split("#")[0]+"#"+linkHash();setHash(linkHash());const b=e.currentTarget;
+    try{await navigator.clipboard.writeText(url);b.textContent="Link copied";}catch(err){b.textContent="Link in the address bar";}setTimeout(()=>{b.textContent="Copy link";},1800);});
+  $("#fitPlay").addEventListener("click",e=>{const on=e.target.getAttribute("aria-pressed")!=="true";if(!on){stopSweep();return;}
+    e.target.setAttribute("aria-pressed","true");e.target.textContent="Stop the sweep";let dir=1,last=0;const stp=reduceMotion()?400:90;
+    V3.anim=t=>{if(t-last<stp)return;last=t;let th=FST.th+dir;if(th>20){th=20;dir=-1;}if(th<-11){th=-11;dir=1;}setPose(th,null);};});
+  document.addEventListener("keydown",e=>{if(CUR!=="fit"||e.ctrlKey||e.metaKey||e.altKey||$("#fit-3d").hidden)return;if(e.target.closest&&e.target.closest("input,select,textarea,[contenteditable]"))return;
+    const k=e.key;if(k==="]")step(1);else if(k==="[")step(-1);else if(k==="f"||k==="F")preset("fit");else if(k==="0")wholeView();
+    else if(k.length===1&&"1234".includes(k))preset(["front","side","top","iso"][+k-1]);else if(k==="s"||k==="S")toggleCut();else if((k==="x"||k==="X")&&FS.cut.on){FS.cut.flip=!FS.cut.flip;setCut();drawFit();}else return;e.preventDefault();});
+  /* drag the arrow on the cut plane to slide the section along its normal */
+  const hookDrag=()=>{if(FS.dragHooked||!V3.cv)return;FS.dragHooked=true;const T=THREE;let drag=null;
+    V3.cv.addEventListener("pointerdown",e=>{if(V3.mode!=="fit"||!FS.handle)return;const r=V3.cv.getBoundingClientRect();
+      /* only a press that ray-hits the arrow's head mesh slides the section; a press anywhere else falls through to the orbit controls */
+      const rc=new T.Raycaster(),ndc=new T.Vector2((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);rc.setFromCamera(ndc,V3.cam);rc.params.Line.threshold=0.6;
+      FS.handle.updateMatrixWorld(true);if(!rc.intersectObject(FS.handle.cone,false).length)return;
+      e.stopImmediatePropagation();e.preventDefault();V3.ctl.enabled=false;V3.cv.setPointerCapture(e.pointerId);
+      const a=FS.cutO.clone().project(V3.cam),b=FS.cutO.clone().add(FS.plane.normal).project(V3.cam),sd=[(b.x-a.x)*r.width/2,-(b.y-a.y)*r.height/2];
+      drag={x:e.clientX,y:e.clientY,off:FS.cut.off,sd,l2:Math.max(1e-6,sd[0]*sd[0]+sd[1]*sd[1]),sgn:FS.cut.flip?-1:1};},{capture:true});
+    V3.cv.addEventListener("pointermove",e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y,mm=(dx*drag.sd[0]+dy*drag.sd[1])/drag.l2;
+      FS.cut.off=Math.max(-40,Math.min(40,Math.round((drag.off+mm*drag.sgn)*10)/10));setCut();drawFit();});
+    const end=()=>{if(!drag)return;drag=null;V3.ctl.enabled=true;};V3.cv.addEventListener("pointerup",end);V3.cv.addEventListener("pointercancel",end);
+    V3.ctl.addEventListener("end",()=>{if(CUR==="fit"&&FS.cur&&!FS.whole&&/^#fit-f-/.test(location.hash))setHash(linkHash());});};
+  (V3.onready=V3.onready||[]).push(hookDrag);if(V3.ready)hookDrag();
+  /* the panels do not wait for the model */
+  if(!FS.cur&&FF.length){FS.cur=FF[0];syncPick();renderCard();renderSec();renderChart();}
+}
+/* open on the finding the link names, else on the worst one */
+ENTER.fit=()=>{
+  const hp=parseHash(location.hash),own=!location.hash||/^#(fit|fit-3d|fit-f-.*)$/.test(location.hash);
+  const go=()=>{setMode("fit",$("#fit3d"));
+    if(hp&&FF.some(f=>f.id===hp.id))selectFinding(hp.id,{th:hp.th,psi:hp.psi,cam:hp.cam,s:hp.s,instant:true,hash:false});
+    else if(FS.whole)wholeView(false);else if(FF.length)selectFinding(FS.cur?FS.cur.id:FF[0].id,{instant:true,hash:own});else drawFit();};
+  if(V3.ready)go();else (V3.onready=V3.onready||[]).push(()=>{if(CUR==="fit")go();});attach3D($("#fit3d"));stopSweep();};
+window.addEventListener("hashchange",()=>{const hp=parseHash(location.hash);if(!hp)return;
+  setTimeout(()=>{if(CUR==="fit"&&FF.some(f=>f.id===hp.id)&&(!FS.cur||FS.whole||FS.cur.id!==hp.id||hp.cam))selectFinding(hp.id,{th:hp.th,psi:hp.psi,cam:hp.cam,s:hp.s,hash:false});},0);});
+{const counts=F3.pair_status_counts||{},nf=counts.fail||0,nr=counts["at risk"]||0;
+  const nn=counts["no requirement"]||0,nm=counts.met||0,ng=counts["governed elsewhere"]||0;
+  const failed=F3.verdict&&F3.verdict.pass===false;
+  const atRisk=F3.verdict&&F3.verdict.at_risk&&F3.verdict.at_risk.length?` Feature checks at risk: ${F3.verdict.at_risk.join("; ")}.`:"";
+  const reasons=(failed?` Full audit failed: ${F3.verdict.reasons.join("; ")}.`:"")+atRisk;
+  VIEWS.fit={st:failed||nf?"fail":nr?"risk":"pass",
+    v:`Nominal pairs: ${nf} fail, ${nr} at risk, ${nm} met, `+
+      `${ng} governed elsewhere, and ${nn} no requirement pairs.${reasons}`};}
+RENDER.fit=renderFit;
+</script>

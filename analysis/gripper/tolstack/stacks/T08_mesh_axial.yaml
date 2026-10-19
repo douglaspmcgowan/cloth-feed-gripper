@@ -1,0 +1,20 @@
+id: T08
+title: Gear mesh axial alignment (gear A vs gear B mid-planes, Z)
+parts: ["mid plate", "front plate", "knuckle A", "knuckle B"]
+constants: basis.yaml
+units: mm (z_mid A - z_mid B)
+requirement: Face mid-planes within +/-0.8 mm (10 % of the 8 mm face width).
+spec: {lsl: "=-mesh_z_max", usl: "=mesh_z_max"}
+accept: {method: mc}
+notes: >-
+  Rev A: both knuckles sit on datum D (mid-plate front face) through one 0.85 shim each and float axially inside
+  their own 0.3 end play (T15). z_mid = shim + hub/2 + float. The servo no longer sets gear A's height: the dog
+  pins slide axially in their 3.5 deep slots.
+constant: 0
+contributors:
+  - {name: shim_A, nominal: "=shim_t", tol: "=shim_tol", dist: normal, tag: A, source: "params.json knuckle.shim_t [D]; tol [A]"}
+  - {name: shim_B, nominal: "=shim_t", tol: "=shim_tol", direction: -1, dist: normal, tag: A, source: "same"}
+  - {name: hub_A_half, nominal: "=knuckle_hub_len/2", tol: "=fdm_z_tol/2", dist: normal, tag: S, source: "knuckle hub length 8 printed in Z (basis Z band), half of it"}
+  - {name: hub_B_half, nominal: "=knuckle_hub_len/2", tol: "=fdm_z_tol/2", direction: -1, dist: normal, tag: S, source: "same"}
+  - {name: float_A, nominal: 0, tol: "=endplay_nom/2", dist: uniform, tag: D, source: "knuckle A end play 0.3 / 2"}
+  - {name: float_B, nominal: 0, tol: "=endplay_nom/2", direction: -1, dist: uniform, tag: D, source: "knuckle B end play 0.3 / 2"}

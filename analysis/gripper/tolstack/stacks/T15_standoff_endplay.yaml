@@ -1,0 +1,37 @@
+id: T15
+title: Knuckle end play at pin B (three standoffs, shims 0.85 per side)
+parts: ["mid plate", "front plate", "knuckle B"]
+constants: basis.yaml
+units: mm axial end play
+requirement: Knuckle B turns freely (>= 0.05) with <= 0.5 axial float.
+spec: {lsl: "=endplay_min", usl: "=endplay_max"}
+accept: {method: mc}
+fix: >-
+  Pick the shims at assembly: measure the gap at each pin with feeler gauges and stack shims from a 0.05-step set
+  so the end play lands at 0.3 +/- 0.05 (T15-shimselect). No CAD change; buy a shim assortment.
+fix_variant: shimselect
+notes: >-
+  The front plate sits on three standoff tops at (-24.5, 13), (24.5, 13) and (0, 15.5). Both pins are at y 0,
+  outside that triangle, so the plate plane is extrapolated: a top-height error moves the gap at pin B by
+  3.39 (near standoff), 2.81 (far standoff) and -5.2 (centre standoff) times itself. The three tops share one
+  print height (common term); only their differences tilt the plate.
+constant: "=plate_gap"
+contributors:
+  - {name: standoff_common, nominal: 0, tol: "=standoff_common_tol", dist: normal, tag: S, source: "all three tops, one print height (Z band)"}
+  - {name: standoff_near, nominal: 0, tol: "=plate_flat", sensitivity: "=w_near", dist: normal, tag: A, source: "top-height difference on one layer (basis plate_flat)"}
+  - {name: standoff_far, nominal: 0, tol: "=plate_flat", sensitivity: "=w_far", dist: normal, tag: A, source: ""}
+  - {name: standoff_top, nominal: 0, tol: "=plate_flat", sensitivity: "=w_top", dist: normal, tag: A, source: ""}
+  - {name: mid_plate_flatness, nominal: 0, tol: "=plate_flat", dist: normal, tag: A, source: "at the pin boss"}
+  - {name: front_plate_flatness, nominal: 0, tol: "=plate_flat", dist: normal, tag: A, source: "at the pin boss"}
+  - {name: knuckle_B_hub, nominal: "=knuckle_hub_len", tol: "=fdm_z_tol", direction: -1, dist: normal, tag: S, source: "hub 8 printed in Z (Z band)"}
+  - {name: shim_B_back, nominal: "=shim_t", tol: "=shim_tol", direction: -1, dist: normal, tag: A, source: "params.json shim_t"}
+  - {name: shim_B_front, nominal: "=shim_t", tol: "=shim_tol", direction: -1, dist: normal, tag: A, source: "params.json shim_t"}
+  - {name: hot_endplay, nominal: 0, tol: "=hot_endplay", dist: uniform, tag: A, source: "hot scenario only (0 when cold): warm PETG plates against PA6-CF knuckles, stand-in amount"}
+variants:
+  - id: shimselect
+    label: "shims picked at assembly from a 0.05-step set"
+    drop: [standoff_common, standoff_near, standoff_far, standoff_top, mid_plate_flatness, front_plate_flatness, knuckle_B_hub, shim_B_back, shim_B_front]
+    constant: 0
+    add:
+      - {name: endplay_set, nominal: "=endplay_nom", tol: 0.025, dist: uniform, tag: A, source: "half a 0.05 shim step"}
+      - {name: feeler_error, nominal: 0, tol: 0.03, dist: normal, tag: A, source: "feeler gauge reading"}

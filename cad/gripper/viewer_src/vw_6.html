@@ -1,0 +1,291 @@
+<script>
+"use strict";
+/* ---------- one 3D engine for every view that shows the model (3D model, Fit check, Parts, Assembly) ----------
+   One WebGL context and one canvas, moved into the stage of whichever view is open. Each view sets a mode that
+   decides what is drawn: the arm context, fit overlays, one part isolated, or the assembly animation. */
+const SIDE={knuckle_a:"A",finger_a:"A",nail_a:"A",fasteners_a:"A",horn:"A",knuckle_b:"B",finger_b:"B",fsr_backing_b:"B",fsr_sensor_b:"B",fsr_puck_b:"B",fasteners_b:"B"};
+const PCOL={housing:0x8fa7c2,front_plate:0x9fb6cf,wrist_mount:0x7d97b8,knuckle_a:0x34373c,knuckle_b:0x34373c,finger_a:0xe0873a,finger_b:0xe0873a,nail_a:0xf2efe6,
+  fsr_backing_b:0xeae4d2,fsr_sensor_b:0x2a2a2a,fsr_puck_b:0xd6b44a,servo:0x1d222a,horn:0xc9ccd1,fasteners:0xb4b9bf,fasteners_a:0xb4b9bf,fasteners_b:0xb4b9bf};
+const PMAT={housing:"PETG",front_plate:"PETG",wrist_mount:"PETG",knuckle_a:"PA6CF",knuckle_b:"PA6CF",finger_a:"TPU",finger_b:"TPU",nail_a:"PLA",fsr_backing_b:"PLA",fsr_puck_b:"PLA",
+  fsr_sensor_b:"FSR",servo:"SERVO",horn:"AL",fasteners:"STEEL",fasteners_a:"STEEL",fasteners_b:"STEEL"};
+const EXPL={housing:[0,0,0],front_plate:[0,0,38],wrist_mount:[0,38,0],servo:[0,0,-48],horn:[0,24,-22],knuckle_a:[-14,-12,12],knuckle_b:[14,-12,12],
+  finger_a:[-24,-30,12],finger_b:[24,-30,12],nail_a:[-36,-44,12],fsr_backing_b:[34,-36,14],fsr_sensor_b:[42,-40,16],fsr_puck_b:[50,-44,18],fasteners:[0,16,58],fasteners_a:[-22,-10,44],fasteners_b:[22,-10,44]};
+const PLABEL={housing:"Housing",front_plate:"Front plate",wrist_mount:"Wrist mount plate",knuckle_a:"Knuckle A with gear sector",knuckle_b:"Knuckle B with gear sector",
+  finger_a:"Finger A",finger_b:"Finger B",nail_a:"Nail on finger A",fsr_backing_b:"Sensor backing",fsr_sensor_b:"Force sensor FSR 402",fsr_puck_b:"Sensor puck",servo:D.parts.servo_model||"Servo",horn:"Servo horn",
+  fasteners:"Fasteners, body",fasteners_a:"Fasteners, side A",fasteners_b:"Fasteners, side B"};
+const MATNAME={PETG:"PETG",PA6CF:"PA6-CF",TPU:"TPU 95A",PLA:"PLA",FSR:"bought",SERVO:"bought",AL:"aluminium",STEEL:"steel"};
+const PSLUG=k=>k.replace(/_/g,"-");
+const PKEY=s=>{const key=String(s||""),part=key.replace(/-/g,"_");return D.parts.parts[part]?part:(D.bomx||[]).some(r=>r.k===key)?key:null;};
+const V3={ready:false,parts:{},theta:0,explode:0,explodeTarget:0,unit:1,visible:{},mode:"model",host:null,roll:0,sel:null,labels:[],lost:false,quality:1,ft:[]};
+function b64buf(b64){const bin=atob(b64),n=bin.length,u=new Uint8Array(n);for(let i=0;i<n;i++)u[i]=bin.charCodeAt(i);return u.buffer;}
+const cssVar=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function massState(){
+  const P=D.parts.parts;let m=0,mm=0;const L0=MASS.mass_moment_gmm/MASS.total_g_incl_cloth-MASS.com_u_past_H;
+  const U={};MASS.items.forEach(it=>{U[it.name]=it.u_past_H;});
+  for(const k in P){if(V3.visible[k]===false)continue;const u=k in U?U[k]:P[k].u_past_H;m+=P[k].mass_g;mm+=P[k].mass_g*(L0+u);}
+  MASS.items.filter(it=>!(it.name in P)).forEach(it=>{m+=it.g;mm+=it.g*(L0+it.u_past_H);});
+  return {m,mm,com:mm/m-L0,L0};
+}
+function renderMassPanel(){
+  const P=D.parts.parts;const pl=$("#plist");
+  if(!pl.childElementCount){
+    Object.keys(P).forEach(k=>{V3.visible[k]=true;const c=PCOL[k]||0x888888;
+      h("div",{class:"prow","data-part":k},pl,`<label><input type="checkbox" data-p="${k}" checked aria-label="Show ${esc(PLABEL[k]||k)}"><span class="sw" style="background:#${c.toString(16).padStart(6,"0")}"></span></label><button type="button" class="nm">${esc(PLABEL[k]||k)}</button><span class="m">${fmt(P[k].mass_g,2)} g</span><a class="open" href="#${PSLUG(k)}" aria-label="Open ${esc(PLABEL[k]||k)}">Open</a>`);});
+    pl.addEventListener("change",e=>{const k=e.target.dataset.p;if(!k)return;V3.visible[k]=e.target.checked;applyVis();renderMassPanel();});
+  }
+  const ms=massState();
+  /* with every part shown, quote the mass report's own total so the two views agree to the digit */
+  if(Object.keys(P).every(k=>V3.visible[k])&&Math.abs(ms.mm-MASS.mass_moment_gmm)<0.001*MASS.mass_moment_gmm)ms.mm=MASS.mass_moment_gmm;
+  const over=ms.mm>MASS.budget_gmm;
+  $("#massLive").innerHTML=`${fmt(ms.m,1)} g with cloth and wiring, centred ${fmt(ms.com,1)} mm past the horn: <a href="#mass-payload" class="${over?"cell-bad":"cell-ok"}">${fmt(ms.mm,0)} ${GMM}</a>, ${fmt(ms.mm/MASS.budget_gmm*100,0)} % of the ${fmt(MASS.budget_gmm,0)} budget.`;
+  const hud=$("#v3dhud");if(hud)hud.textContent=`jaw ${fmt(V3.theta,1)}°, ${fmt(ms.m,1)} g`;
+}
+
+/* ---------- materials: one physically based look per material ---------- */
+function makeMat(k){
+  const T=window.THREE,m=PMAT[k],c=PCOL[k];
+  const base={color:c,side:T.DoubleSide};
+  let mat;
+  switch(m){
+    case "PETG":mat=new T.MeshPhysicalMaterial(Object.assign(base,{roughness:0.32,metalness:0,clearcoat:0.35,clearcoatRoughness:0.25,sheen:0.15,sheenColor:0xffffff}));break;
+    case "PA6CF":mat=new T.MeshPhysicalMaterial(Object.assign(base,{roughness:0.78,metalness:0.05,sheen:0.6,sheenRoughness:0.45,sheenColor:0x6b7078}));break;
+    case "TPU":mat=new T.MeshPhysicalMaterial(Object.assign(base,{roughness:0.6,metalness:0,sheen:0.8,sheenRoughness:0.6,sheenColor:0xffc89a,clearcoat:0.05}));break;
+    case "PLA":mat=new T.MeshPhysicalMaterial(Object.assign(base,{roughness:0.55,metalness:0}));break;
+    case "AL":mat=new T.MeshPhysicalMaterial(Object.assign(base,{roughness:0.32,metalness:1}));break;
+    case "STEEL":mat=new T.MeshPhysicalMaterial(Object.assign(base,{roughness:0.3,metalness:1}));break;
+    case "SERVO":mat=new T.MeshPhysicalMaterial(Object.assign(base,{roughness:0.42,metalness:0,clearcoat:0.5,clearcoatRoughness:0.3}));break;
+    default:mat=new T.MeshPhysicalMaterial(Object.assign(base,{roughness:0.5,metalness:0}));
+  }
+  if(V3.lite){const m2=new T.MeshStandardMaterial({color:c,side:T.DoubleSide,roughness:mat.roughness,metalness:mat.metalness});mat.dispose();mat=m2;}
+  mat.userData.base={color:c,opacity:1};return mat;
+}
+/* one shared see-through material for faded parts, so fading never builds new shaders */
+function ghostMat(){const T=window.THREE;if(!V3.ghost)V3.ghost=new T.MeshStandardMaterial({color:0x9aa7b5,transparent:true,opacity:0.16,depthWrite:false,roughness:0.6,side:T.DoubleSide});
+  const cp=V3.clip?[V3.clip]:null;if(V3.ghost.clippingPlanes!==cp){V3.ghost.clippingPlanes=cp;V3.ghost.needsUpdate=true;}return V3.ghost;}
+/* quality: 2 = shadows and ambient occlusion, 1 = shadows only, 0 = plain (phones, slow machines) */
+function wantQuality(gl){
+  /* software rendering (no GPU) cannot afford shadows or occlusion */
+  try{const e=gl&&gl.getExtension("WEBGL_debug_renderer_info"),r=e?String(gl.getParameter(e.UNMASKED_RENDERER_WEBGL)):"";if(/swiftshader|llvmpipe|software/i.test(r)){V3.soft=true;return 0;}}catch(err){}
+  return matchMedia("(max-width:600px)").matches||(navigator.hardwareConcurrency||8)<=2?0:2;}
+
+function init3D(){
+  if(V3.started)return;V3.started=true;
+  renderMassPanel();
+  const msg=$("#v3dmsg");
+  if(!window.THREE){/* the library loads as a module after this script; wait for it, or say it failed */
+    if(!V3.waiting){V3.waiting=true;window.addEventListener("three-ready",()=>{V3.started=false;init3D();},{once:true});
+      setTimeout(()=>{if(!window.THREE){V3.failed=true;$$(".v3dmsg").forEach(m=>{m.textContent="The 3D library did not load, so the model cannot be shown. Check the connection and reload; the parts list and every other view still work.";m.hidden=false;});fireReady();}},20000);}
+    V3.started=false;return;}
+  const T=window.THREE;
+  let renderer;
+  try{renderer=new T.WebGLRenderer({antialias:true,alpha:false,stencil:true,powerPreference:"high-performance"});}catch(err){V3.failed=true;$$(".v3dmsg").forEach(m=>{m.textContent="This browser has 3D graphics turned off, so the model cannot be shown. The drawings show the same parts.";m.hidden=false;});console.warn(err);fireReady();return;}
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.outputColorSpace=T.SRGBColorSpace;
+  renderer.toneMapping=T.NeutralToneMapping||T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.VSMShadowMap;
+  renderer.localClippingEnabled=true;
+  V3.cv=renderer.domElement;V3.cv.setAttribute("aria-label","3D model. Drag to orbit, scroll or pinch to zoom, click a part to select it.");V3.cv.setAttribute("role","img");
+  /* a lost graphics context (phone under memory pressure, tab in the background) is kept restorable, and the model is drawn again when it returns */
+  V3.cv.addEventListener("webglcontextlost",e=>{e.preventDefault();V3.lost=true;},false);
+  V3.cv.addEventListener("webglcontextrestored",()=>{V3.lost=false;makeEnv();resize();V3.dirty=true;V3.warm=12;V3.thumbsDone=false;if(V3.loop&&!V3.running&&V3.host)pause3D(true);},false);
+  const scene=new T.Scene();V3.scene=scene;
+  const cam=new T.PerspectiveCamera(30,1,1,6000);V3.cam=cam;
+  function makeEnv(){const pm=new T.PMREMGenerator(renderer);const env=pm.fromScene(new T.RoomEnvironment(),0.04).texture;if(scene.environment)scene.environment.dispose();scene.environment=env;scene.environmentIntensity=0.9;pm.dispose();}
+  makeEnv();
+  const key=new T.DirectionalLight(0xffffff,1.6);key.position.set(120,260,220);key.castShadow=true;key.shadow.mapSize.set(2048,2048);
+  Object.assign(key.shadow.camera,{left:-160,right:160,top:160,bottom:-160,near:10,far:900});key.shadow.bias=-0.0004;key.shadow.normalBias=0.4;key.shadow.radius=6;scene.add(key);V3.key=key;
+  const fill=new T.DirectionalLight(0xdfe8ff,0.35);fill.position.set(-200,-40,-160);scene.add(fill);
+  const ground=new T.Mesh(new T.PlaneGeometry(900,900),new T.ShadowMaterial({opacity:0.16}));ground.rotation.x=-Math.PI/2;ground.position.y=-64;ground.receiveShadow=true;scene.add(ground);V3.ground=ground;
+  const ctl=new T.OrbitControls(cam,V3.cv);ctl.enableDamping=true;ctl.dampingFactor=0.12;ctl.screenSpacePanning=true;V3.ctl=ctl;
+  V3.home=(target,dist)=>{const t=target||new T.Vector3(0,22,0),d=dist||370;const dir=new T.Vector3(210,95,300).normalize();cam.position.copy(t).addScaledVector(dir,d);ctl.target.copy(t);cam.updateProjectionMatrix();ctl.update();V3.dirty=true;};
+  V3.home();
+  ctl.addEventListener("change",()=>V3.dirty=true);
+  function resize(){if(!V3.host)return;const box=V3.host,w=box.clientWidth,hh=box.clientHeight;if(!w||!hh)return;renderer.setSize(w,hh,false);cam.aspect=w/hh;cam.updateProjectionMatrix();if(V3.composer)V3.composer.setSize(w,hh);V3.dirty=true;}
+  V3.resize=resize;V3.ro=new ResizeObserver(resize);
+  /* post-processing: ambient occlusion through the effect composer when the machine can afford it */
+  function setQuality(q){V3.quality=q;key.castShadow=q>0;ground.visible=q>0;
+    if(q>=2&&!T.GTAOPass&&window.loadPost&&!V3.postLoading){V3.postLoading=true;window.loadPost().then(()=>{if(V3.quality>=2)setQuality(V3.quality);}).catch(err=>console.warn("ambient occlusion unavailable",err));}
+    if(q>=2&&T.EffectComposer&&T.GTAOPass&&!V3.composer){try{const c=new T.EffectComposer(renderer);c.addPass(new T.RenderPass(scene,cam));const ao=new T.GTAOPass(scene,cam,256,256);ao.output=T.GTAOPass.OUTPUT.Default;ao.blendIntensity=0.85;
+        ao.updateGtaoMaterial({radius:6,distanceExponent:1.2,thickness:3,scale:1});ao.updatePdMaterial({lumaPhi:10,depthPhi:2,normalPhi:3,radius:6});c.addPass(ao);c.addPass(new T.OutputPass());V3.composer=c;V3.ao=ao;resize();}catch(err){console.warn("ambient occlusion off",err);V3.composer=null;}}
+    V3.useComposer=q>=2&&!!V3.composer;V3.dirty=true;}
+  V3.setQuality=setQuality;setQuality(wantQuality(renderer.getContext()));V3.lite=V3.quality===0;
+  /* SO-101 context meshes, frame G, mm */
+  const ctxGroup=new T.Group(),stockGroup=new T.Group(),armGroup=new T.Group();scene.add(armGroup);armGroup.add(ctxGroup);scene.add(stockGroup);stockGroup.visible=false;V3.ctx=ctxGroup;V3.arm=armGroup;V3.stock=stockGroup;
+  try{
+    const buf=b64buf(CTX_B64),sc=D.ctx.scale;
+    const PM=(o,cc)=>V3.lite?new T.MeshStandardMaterial(o):new T.MeshPhysicalMaterial(Object.assign(o,{clearcoat:cc}));
+    const mWrist=PM({color:0xe6e8ea,roughness:0.55,metalness:0,side:T.DoubleSide},0.2);
+    const mMotor=PM({color:0x26292e,roughness:0.45,metalness:0,side:T.DoubleSide},0.4);
+    const mGhost=new T.MeshBasicMaterial({color:0xd0681b,transparent:true,opacity:0.16,depthWrite:false,side:T.DoubleSide});
+    const mGhostW=new T.MeshBasicMaterial({color:0xd0681b,wireframe:true,transparent:true,opacity:0.25});
+    V3.ctxMats=[mWrist,mMotor];
+    for(const [name,p] of Object.entries(D.ctx.parts)){
+      if(name==="stock_moving_jaw")continue;
+      const q=new Int16Array(buf,p.voff,p.nv*3),pos=new Float32Array(p.nv*3);for(let i=0;i<pos.length;i++)pos[i]=q[i]*sc;
+      const idx=new Uint32Array(buf,p.ioff,p.nt*3).slice();
+      const g=new T.BufferGeometry();g.setAttribute("position",new T.BufferAttribute(pos,3));g.setIndex(new T.BufferAttribute(idx,1));g.computeVertexNormals();
+      if(name.startsWith("stock")||name==="motor6_sts3215"){stockGroup.add(new T.Mesh(g,mGhost));stockGroup.add(new T.Mesh(g,mGhostW));}
+      else{const me=new T.Mesh(g,name.startsWith("motor5")?mMotor:mWrist);me.castShadow=true;me.receiveShadow=true;me.userData.ctx=name;ctxGroup.add(me);}
+    }
+    const hm=new T.MeshBasicMaterial({color:0x1c5bb8});
+    D.ctx.holes_G.forEach(pt=>{const sp=new T.Mesh(new T.SphereGeometry(0.9,12,8),hm);sp.position.set(pt[0],pt[1],pt[2]);ctxGroup.add(sp);});
+  }catch(err){console.error("SO-101 context mesh failed",err);}
+  V3.overlay=new T.Group();scene.add(V3.overlay);
+  /* the gripper GLB */
+  const loader=new T.GLTFLoader();
+  loader.parse(b64buf(GLB_B64),"",gltf=>{
+    const root=gltf.scene;const top=root.getObjectByName("gripper_closed")||root.children[0]||root;
+    top.quaternion.identity();top.position.set(0,0,0);top.updateMatrixWorld(true);
+    const bb=new T.Box3().setFromObject(root),sz=new T.Vector3();bb.getSize(sz);
+    const unit=Math.max(sz.x,sz.y,sz.z)<2?0.001:1;V3.unit=unit;
+    const grip=new T.Group();grip.scale.setScalar(1/unit);grip.add(root);scene.add(grip);V3.grip=grip;
+    top.children.slice().forEach(n=>{const key=(n.name||"").replace(/[-_.]\d+$/,"");const pk=key in D.parts.parts?key:(Object.keys(D.parts.parts).find(k=>key.startsWith(k))||key);
+      if(!(pk in PCOL))return;
+      const mat=makeMat(pk);
+      n.traverse(o=>{if(o.isMesh){o.material=mat;o.castShadow=true;o.receiveShadow=true;o.userData.part=pk;if(o.geometry&&!o.geometry.attributes.normal)o.geometry.computeVertexNormals();}});
+      V3.parts[pk]={node:n,p0:n.position.clone(),q0:n.quaternion.clone(),qz:new T.Quaternion(),mat};
+      if(V3.visible[pk]===false)n.visible=false;});
+    /* fastener items: the GLB keeps every face of a fastener as its own mesh; the assembly data names which meshes make one item */
+    V3.items={};const byName={};grip.traverse(o=>{if(o.isMesh){const nm=(o.name||o.parent&&o.parent.name||"");byName[nm]=o;if(o.parent&&o.parent.name)byName[o.parent.name]=o;}});
+    ((D.asm&&D.asm.fastener_items)||[]).forEach(it=>{V3.items[it.id]=it.nodes.map(n=>byName[n]).filter(Boolean);});
+    /* the export keeps every CAD face as its own mesh (about 1,300 draw calls); merge them into one mesh per part, and one per fastener item */
+    grip.updateMatrixWorld(true);
+    const itemOf=new Map();for(const id in V3.items)V3.items[id].forEach(o=>itemOf.set(o,id));
+    for(const pk in V3.parts){const node=V3.parts[pk].node,inv=new T.Matrix4().copy(node.matrixWorld).invert(),groups=new Map();
+      node.traverse(o=>{if(o.isMesh){const g=itemOf.get(o)||"";if(!groups.has(g))groups.set(g,[]);groups.get(g).push(o);}});
+      groups.forEach((list,id)=>{let n=0;const geos=list.map(o=>{const g=(o.geometry.index?o.geometry.toNonIndexed():o.geometry.clone());g.applyMatrix4(new T.Matrix4().multiplyMatrices(inv,o.matrixWorld));if(!g.attributes.normal)g.computeVertexNormals();n+=g.attributes.position.count;return g;});
+        const pos=new Float32Array(n*3),nor=new Float32Array(n*3);let k=0;geos.forEach(g=>{pos.set(g.attributes.position.array,k*3);nor.set(g.attributes.normal.array,k*3);k+=g.attributes.position.count;g.dispose();});
+        const geo=new T.BufferGeometry();geo.setAttribute("position",new T.BufferAttribute(pos,3));geo.setAttribute("normal",new T.BufferAttribute(nor,3));geo.computeBoundingSphere();
+        const me=new T.Mesh(geo,V3.parts[pk].mat);me.castShadow=true;me.receiveShadow=true;me.userData.part=pk;me.name=id||pk;
+        list.forEach(o=>{o.parent.remove(o);o.geometry.dispose();});node.add(me);if(id)V3.items[id]=[me];});}
+    V3.ready=true;$$(".v3dmsg").forEach(m=>m.hidden=true);applyPose();renderMassPanel();applyVis();
+    if(V3.onready)V3.onready.forEach(f=>{try{f();}catch(err){console.error(err);}});fireReady();
+  },err=>{$$(".v3dmsg").forEach(m=>{m.textContent="The embedded model could not be read.";m.hidden=false;});console.error(err);fireReady();});
+  /* picking: a click (not a drag) on a part selects it everywhere */
+  const ray=new T.Raycaster();let down=null;
+  V3.cv.addEventListener("pointerdown",e=>{down=[e.clientX,e.clientY];});
+  V3.cv.addEventListener("pointerup",e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>4||!V3.ready)return;down=null;
+    const r=V3.cv.getBoundingClientRect(),p=new T.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(p,cam);
+    const hits=ray.intersectObject(V3.grip,true).filter(h=>h.object.visible&&h.object.userData.part&&!(h.object.material.transparent&&h.object.material.opacity<0.3)&&isShown(h.object));
+    const cut=V3.clip&&V3.clip.constant!==undefined?hits.filter(h=>V3.clip.distanceToPoint(h.point)>=0):hits;
+    if(cut.length)selectPart(cut[0].object.userData.part,"3d");});
+  V3.loop=()=>{
+    const t0=performance.now();
+    if(Math.abs(V3.explode-V3.explodeTarget)>1e-3){V3.explode+=(V3.explodeTarget-V3.explode)*0.18;if(Math.abs(V3.explode-V3.explodeTarget)<2e-3)V3.explode=V3.explodeTarget;applyPose();}
+    if(V3.anim)V3.anim(t0);
+    ctl.update();if(V3.dirty||V3.warm>0){if(V3.warm>0)V3.warm--;const gl=renderer.getContext();if(gl&&gl.isContextLost())return;
+      /* a capped section needs the stencil buffer, which the occlusion pass does not carry */
+      if(V3.useComposer&&!V3.noPost)V3.composer.render();else renderer.render(scene,cam);V3.dirty=false;placeLabels();
+      /* frame-time guard: drop to a cheaper look if the machine cannot keep up */
+      const dt=performance.now()-t0;V3.ft.push(dt);if(V3.ft.length>=6){const s=[...V3.ft].sort((a,b)=>a-b),med=s[3];V3.ft=[];V3.lastMed=med;if(med>50&&V3.quality>0)setQuality(V3.quality-1);}
+      /* a view may draw a second, small picture into a corner of the same canvas; it is kept out of the frame-time guard */
+      if(V3.afterRender)V3.afterRender(renderer);}
+  };
+  V3.renderer=renderer;
+  window.addEventListener("theme-change",()=>{scene.background=new T.Color(cssVar("--mesh")||"#e5e9ee");V3.dirty=true;});
+  scene.background=new T.Color(cssVar("--mesh")||"#e5e9ee");
+  attach3D(V3.pendingHost||document.querySelector(".view:not([hidden]) .v3d"));
+  if(THREE_VIEWS.has(CUR))pause3D(true);
+}
+function fireReady(){window.__v3ready=true;}
+function isShown(o){while(o){if(!o.visible)return false;o=o.parent;}return true;}
+/* move the one canvas into a view's stage */
+function attach3D(box){
+  if(!box)return;V3.pendingHost=box;if(!V3.renderer)return;
+  if(V3.host!==box){if(V3.host)V3.ro.unobserve(V3.host);V3.host=box;box.insertBefore(V3.cv,box.firstChild);V3.ro.observe(box);
+    $$(".lbls").forEach(l=>l.innerHTML="");V3.labels.forEach(l=>{l.el=null;});}
+  V3.resize();V3.dirty=true;V3.warm=2;if(!V3.ready)return;
+}
+function applyPose(){
+  if(!V3.ready)return;const T=window.THREE,a=D.parts.a,u=V3.unit,th=V3.theta*Math.PI/180,e=V3.explode;
+  for(const k in V3.parts){const p=V3.parts[k],sd=SIDE[k];let ang=0,px=0;
+    if(sd==="A"){ang=-th;px=-a/2*u;}else if(sd==="B"){ang=th;px=a/2*u;}
+    const c=Math.cos(ang),sn=Math.sin(ang),ox=p.p0.x-px,oy=p.p0.y;
+    const off=V3.offset&&V3.offset[k]||[0,0,0];
+    const ex=(EXPL[k]||[0,0,0]).map((v,i)=>v*u*e+off[i]*u);
+    p.node.position.set(px+c*ox-sn*oy+ex[0],sn*ox+c*oy+ex[1],p.p0.z+ex[2]);
+    p.node.quaternion.copy(p.qz.setFromAxisAngle(new T.Vector3(0,0,1),ang)).multiply(p.q0);
+  }
+  V3.dirty=true;
+}
+/* what is drawn: the view's mode, the parts ticked in the 3D model view, the selection and the section plane */
+function applyVis(){
+  if(!V3.ready)return;const mode=V3.mode,sel=V3.sel;
+  for(const k in V3.parts){const p=V3.parts[k];let show=true,ghost=false;
+    if(mode==="model")show=V3.visible[k]!==false;
+    else if(mode==="part"){show=k===sel||V3.partCtx!=="alone";ghost=k!==sel;}
+    else if(mode==="asm"){show=!V3.asmHide||!V3.asmHide.has(k);ghost=!!(V3.asmGhost&&V3.asmGhost.has(k));}
+    else if(mode==="fit"&&V3.fitSolid)ghost=!V3.fitSolid.has(k);
+    p.node.visible=show;
+    const m=p.mat,gm=ghost?ghostMat():null;p.node.traverse(o=>{if(!o.isMesh||o.userData.stencil)return;if(!o.userData.own)o.material=gm||m;else o.material=gm||o.userData.own;});
+    const hi=sel===k&&mode!=="part"||(V3.hiParts&&V3.hiParts.has(k));
+    m.emissive&&m.emissive.set(hi?(V3.hiColor||0x2d6fd6):0x000000);m.emissiveIntensity=hi?0.45:0;
+    setClip(m,false);
+  }
+  /* selected fastener items carry their own highlighted copy of the steel material */
+  if(V3.items){const want=V3.selItems||new Set();for(const id in V3.items)V3.items[id].forEach(o=>{const pm=V3.parts[o.userData.part];if(!pm)return;
+    if(want.has(id)){if(!V3.hiSteel){V3.hiSteel=pm.mat.clone();V3.hiSteel.emissive.set(0x2d6fd6);V3.hiSteel.emissiveIntensity=0.6;}setClip(V3.hiSteel,false);o.userData.own=V3.hiSteel;}else o.userData.own=null;
+    if(o.material!==V3.ghost)o.material=o.userData.own||pm.mat;});}
+  (V3.ctxMats||[]).forEach(m=>setClip(m,false));
+  if(V3.afterVis)V3.afterVis();
+  V3.dirty=true;
+}
+/* a material's shader is rebuilt only when its clipping or transparency changes; rebuilding on every slider move stalls slow machines */
+function setClip(m,ghost){const cp=V3.clip?[V3.clip]:null;const k=(cp?1:0)+"|"+(ghost?1:0);if(m.clippingPlanes!==cp)m.clippingPlanes=cp;if(m.userData.k!==k){m.userData.k=k;m.needsUpdate=true;}}
+function setMode(mode,box){V3.mode=mode;V3.hiParts=null;V3.selItems=V3.selItems||null;if(V3.overlay)V3.overlay.clear();V3.labels=[];$$(".lbls").forEach(l=>l.innerHTML="");
+  V3.clip=null;V3.anim=null;V3.offset=null;V3.asmHide=null;V3.asmGhost=null;V3.fitSolid=null;
+  if(V3.arm){V3.arm.visible=mode==="model"?$("#ctxBtn").getAttribute("aria-pressed")==="true":mode==="fit"||(mode==="asm"&&!!V3.asmArm);V3.arm.rotation.set(0,0,0);}
+  if(V3.stock)V3.stock.visible=mode==="model"&&$("#stockBtn").getAttribute("aria-pressed")==="true";
+  if(mode!=="model"){V3.explode=V3.explodeTarget=0;}
+  if(box)attach3D(box);applyPose();applyVis();}
+/* labels drawn as page text over the canvas, so they stay sharp and readable at any size */
+function addLabel(pos,text,cls){const l={pos,text,cls,el:null};V3.labels.push(l);return l;}
+function placeLabels(){
+  if(!V3.host||!V3.labels.length)return;let layer=$(".lbls",V3.host);if(!layer)layer=h("div",{class:"lbls","aria-hidden":"true"},V3.host);
+  const w=V3.host.clientWidth,hh=V3.host.clientHeight,T=window.THREE,v=new T.Vector3();
+  V3.labels.forEach(l=>{if(!l.el||l.el.parentNode!==layer){l.el=h("span",{class:"lb "+(l.cls||"")},layer);}l.el.textContent=l.text;
+    v.copy(l.pos).project(V3.cam);const off=v.z>1||(V3.clip&&V3.clip.distanceToPoint(l.pos)<-0.5);l.el.hidden=off||l.hide;
+    l.x=(v.x+1)/2*w;l.y=(1-v.y)/2*hh;});
+  /* labels that would overlap are pushed apart vertically */
+  const vis=V3.labels.filter(l=>!l.el.hidden).sort((a,b)=>a.y-b.y),placed=[];
+  vis.forEach(l=>{const lw=l.el.offsetWidth||60,lh=(l.el.offsetHeight||18)+2;let y=l.y;
+    for(let k=0;k<12;k++){const hit=placed.find(p=>Math.abs(p.x-l.x)<(p.w+lw)/2&&Math.abs(p.y-y)<lh);if(!hit)break;y=hit.y+lh;}
+    placed.push({x:l.x,y,w:lw});l.el.style.transform=`translate(${Math.round(l.x)}px,${Math.round(y)}px) translate(-50%,-50%)`;});
+}
+
+/* ---------- 3D model view ---------- */
+function renderModel(){
+  init3D();
+  $("#jaw").addEventListener("input",e=>{V3.theta=+e.target.value;$("#jawv").textContent=fmt(V3.theta,1)+"°";applyPose();renderMassPanel();});
+  $("#explode").addEventListener("click",e=>{V3.explodeTarget=V3.explodeTarget?0:1;e.target.setAttribute("aria-pressed",String(!!V3.explodeTarget));});
+  $("#ctxBtn").addEventListener("click",e=>{const on=e.target.getAttribute("aria-pressed")!=="true";e.target.setAttribute("aria-pressed",String(on));if(V3.arm)V3.arm.visible=on;V3.dirty=true;});
+  $("#stockBtn").addEventListener("click",e=>{const on=e.target.getAttribute("aria-pressed")!=="true";e.target.setAttribute("aria-pressed",String(on));if(V3.stock)V3.stock.visible=on;V3.dirty=true;});
+  $("#resetCam").addEventListener("click",()=>V3.home&&V3.home());
+  $("#lookBtn").addEventListener("click",e=>{if(!V3.setQuality)return;const q=V3.quality>=2?0:2;V3.setQuality(q);e.target.setAttribute("aria-pressed",String(V3.quality>=2));});
+}
+ENTER.model=()=>{setMode("model",$("#model .v3d"));const lb=$("#lookBtn");if(lb)lb.setAttribute("aria-pressed",String(V3.quality>=2));};
+RENDER.model=renderModel;
+function tick3D(){if(!V3.running)return;try{V3.loop();}catch(err){console.error(err);V3.running=false;return;}requestAnimationFrame(tick3D);}
+function pause3D(on){if(!V3.loop){V3.running=false;return;}if(on&&!V3.running){V3.running=true;V3.dirty=true;V3.warm=12;requestAnimationFrame(tick3D);}else if(!on)V3.running=false;}
+
+/* ---------- selection: one part selected anywhere is highlighted everywhere ---------- */
+function selectPart(k,origin){
+  k=k&&D.parts.parts[k]?k:null;V3.sel=k;V3.selItems=null;
+  $$("[data-part]:not(.prow2)").forEach(e=>{const on=!!k&&(e.dataset.part===k||e.dataset.part.split(" ").includes(k));e.classList.toggle("selp",on);if(e.matches("tr,li,.prow,button.step"))e.setAttribute("aria-current",on?"true":"false");});
+  const bar=$("#selbar");
+  document.documentElement.classList.toggle("has-sel",!!k);
+  if(k){bar.hidden=false;$("#selName").textContent=PLABEL[k]||k;$("#selOpen").href="#"+PSLUG(k);$("#selOpen").hidden=CUR==="parts"&&PARTS_CUR===k;}else bar.hidden=true;
+  if(origin!=="parts"&&CUR==="parts"&&k&&typeof openPartRow==="function")openPartRow(k,false);
+  applyVis();
+}
+/* any row, chip or link that names a part selects it; links into the assembly, fit check and tolerance views carry what to show */
+document.addEventListener("click",e=>{
+  const a=e.target.closest("a[data-step],a[data-fitpart],a[data-tolpart]");
+  if(a){if(a.dataset.step!==undefined)setTimeout(()=>{if(typeof asmGo==="function")asmGo(+a.dataset.step,true);},0);
+    if(a.dataset.fitpart){selectPart(a.dataset.fitpart,"link");}
+    if(a.dataset.tolpart){setTimeout(()=>{const q=$("#tolQ");const r=D.tol.find(r=>tolPart(r.id)===a.dataset.tolpart);if(q&&r){q.value=tolClean(r.t).split(/[,(]/)[0].trim().split(" ").slice(0,3).join(" ");q.dispatchEvent(new Event("input"));}},0);}}
+  const el=e.target.closest("main [data-part]");if(!el)return;
+  if(e.target.closest("input,select,label,.show3d,.prow2,button.sortb")||(e.target.closest("a")&&!e.target.closest("a[data-part]")))return;
+  selectPart(el.dataset.part.split(" ")[0],"row");
+});
+</script>

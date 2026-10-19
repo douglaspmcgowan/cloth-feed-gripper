@@ -1,0 +1,67 @@
+{
+  "requirements": {
+    "horn|housing": {"minimum_clearance_mm": 0.6, "direction_or_feature": "axial, horn face to housing face", "source": "B18"},
+    "finger_a|knuckle_b": {"minimum_clearance_mm": 0.7, "direction_or_feature": "cross-side moving solids through jaw travel", "source": "B19"},
+    "knuckle_a|finger_b": {"minimum_clearance_mm": 0.7, "direction_or_feature": "cross-side moving solids through jaw travel", "source": "B19"},
+    "fasteners_a|housing": {"minimum_clearance_mm": 0.0, "direction_or_feature": "dog set screw in mid-plate arc slot, no rub or stop contact through -11..+20 (F09, R18)", "source": "F09"}
+  },
+  "sampling": {
+    "method": "Half the largest absolute change from the stored minimum to an adjacent sampled pose, plus 0.0005 mm for rounding.",
+    "rounding_allowance_mm": 0.0005,
+    "allowance_mm": {"horn|housing": 0.0005, "finger_a|knuckle_b": 0.4155, "knuckle_a|finger_b": 0.4155, "fasteners_a|housing": 0.001}
+  },
+  "no_requirement": {
+    "finger_a|finger_b": "TPU gripping surfaces intentionally meet below contact angle; pad interference is checked separately.",
+    "finger_a|fsr_backing_b": "The grip closes onto the backed sensor; compliant-pad contact is intended.",
+    "finger_a|fsr_puck_b": "The grip closes onto the sensor puck; compliant-pad contact is intended.",
+    "finger_a|fsr_sensor_b": "The grip closes onto the sensor; compliant-pad contact is intended.",
+    "horn|servo": "The bought horn seats on the servo spline and output boss.",
+    "nail_a|finger_b": "The nail presses cloth against the compliant finger in service.",
+    "nail_a|fsr_backing_b": "The nail presses against the backed FSR stack in service.",
+    "nail_a|fsr_puck_b": "The nail presses against the FSR puck in service.",
+    "nail_a|fsr_sensor_b": "The nail presses against the FSR sensor in service.",
+    "fasteners_a|servo": "No design-basis row assigns a clearance for this dog-fastener gap.",
+    "horn|fasteners": "No whole-solid clearance minimum is assigned to the horn centre fastener.",
+    "fasteners_a|finger_b": "No design-basis row assigns a cross-side fastener clearance; monitored without a pass verdict.",
+    "finger_a|fasteners_b": "No design-basis row assigns a cross-side fastener clearance; monitored without a pass verdict.",
+    "finger_a|front_plate": "Separated moving finger and fixed plate; no adjacent assembly fit is defined.",
+    "finger_a|housing": "Separated moving finger and fixed housing; no adjacent assembly fit is defined.",
+    "finger_b|front_plate": "Separated moving finger and fixed plate; no adjacent assembly fit is defined.",
+    "finger_b|housing": "Separated moving finger and fixed housing; no adjacent assembly fit is defined.",
+    "horn|knuckle_b": "The horn drives knuckle A; no direct interface exists with knuckle B.",
+    "knuckle_a|servo": "The knuckle is separated from the servo case by the housing and horn stack.",
+    "knuckle_b|wrist_mount": "The knuckle and wrist mount have no adjacent interface.",
+    "knuckle_b|servo": "The knuckle and servo case have no adjacent interface.",
+    "fasteners_a|knuckle_b": "Side-A hardware has no intended interface with knuckle B.",
+    "knuckle_a|fasteners_b": "Knuckle A has no intended interface with side-B hardware.",
+    "fasteners_b|servo": "Side-B hardware has no adjacent interface with the servo case."
+  },
+  "governed_elsewhere": {
+    "fasteners_a|fasteners": ["B4"],
+    "fasteners_b|fasteners": ["B4"],
+    "knuckle_a|fasteners": ["B38"],
+    "knuckle_b|fasteners": ["B38"],
+    "knuckle_a|front_plate": ["B38"],
+    "knuckle_a|housing": ["B38"],
+    "knuckle_b|front_plate": ["B38"],
+    "knuckle_b|housing": ["B38"],
+    "fasteners_a|front_plate": ["B4", "B38"],
+    "fasteners_b|front_plate": ["B4", "B38"],
+    "fasteners_b|housing": ["B4", "B38"],
+    "knuckle_a|knuckle_b": ["T07"]
+  },
+  "feature_requirements": {
+    "B4": {"minimum_mm": 0.0, "maximum_mm": 0.02, "feature": "drawn pin/bush diametral running clearance"},
+    "B38": {"minimum_mm": 0.25, "maximum_mm": 0.35, "feature": "drawn knuckle axial end play"},
+    "T07": {"minimum_mm": 0.05, "maximum_mm": 0.45, "feature": "gear backlash jt, circumferential, 2 d / cos(alpha) from the mesh gap d, alpha from params.json gear.pressure_angle"}
+  },
+  "interface_intents": {
+    "housing|servo": {"intent": "clearance", "feature": "boss in reamed web", "hole_printed_mm": 8.8, "hole_finished_mm": 9.0, "pin_mm": 9.0, "engagement_mm": 1.6, "source": "B1"},
+    "housing|pin h8 3x16": {"intent": "slip", "feature": "knuckle pin in line-reamed mid plate", "hole_printed_mm": 2.9, "hole_finished_mm": 3.0, "pin_mm": 3.0, "engagement_mm": 2.0, "source": "B4"},
+    "front_plate|pin h8 3x16": {"intent": "slip", "feature": "knuckle pin in blind front-plate bore", "hole_printed_mm": 2.9, "hole_finished_mm": 3.0, "pin_mm": 3.0, "engagement_mm": 1.5, "source": "B4"},
+    "housing|locating pin h8 3x6": {"intent": "slip", "feature": "deck-side locating pin", "hole_printed_mm": 2.9, "hole_finished_mm": 3.0, "pin_mm": 3.0, "engagement_mm": 2.5, "source": "B7"},
+    "wrist_mount|locating pin h8 3x6": {"intent": "slip", "feature": "bonded spider-side locating pin", "hole_printed_mm": 2.9, "hole_finished_mm": 3.0, "pin_mm": 3.0, "engagement_mm": 3.5, "source": "B7"},
+    "housing|M3x16 plate screw": {"intent": "self-tapping", "feature": "standoff pilot", "hole_printed_mm": 2.5, "hole_finished_mm": 2.5, "pin_mm": 3.0, "engagement_mm": 12.92, "source": "B41"},
+    "servo|M3x10 ear screw": {"intent": "clearance", "feature": "purchased servo ear bore", "hole_printed_mm": 4.5, "hole_finished_mm": 4.5, "pin_mm": 3.0, "engagement_mm": 2.5, "source": "B41"}
+  }
+}

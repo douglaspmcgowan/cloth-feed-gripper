@@ -1,0 +1,143 @@
+{
+ "id": "T11",
+ "title": "Radial keep-out, r <= 12 hub band (z 0..+1) vs wrist-link lip",
+ "mode": "linear",
+ "units": "mm radial clearance, worst angle over 320 deg roll",
+ "requirement": "Rolling hub clears the stationary lip by >= 0.1 mm at every roll angle.",
+ "notes": "Roll sweeps every angle, so hub offset (T04) and lip eccentricity add as magnitudes.",
+ "spec": {
+  "lsl": 0.1
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": null,
+ "variant_label": "",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T11_keepout_radial.yaml",
+ "nominal": 0.5999999999999996,
+ "mid": 0.12499999999999942,
+ "wc": [
+  -0.5000000000000011,
+  0.75
+ ],
+ "rss_classic": [
+  -0.1980711995830031,
+  0.4480711995830019
+ ],
+ "rss_dist": [
+  -0.24566411203947183,
+  0.4956641120394707
+ ],
+ "rss_dist_unclipped": [
+  -0.24566411203947183,
+  0.4956641120394707
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": 0.17887618077641393,
+  "std": 0.12377804095897149,
+  "min": -0.34137778139714475,
+  "max": 0.6605312820718476,
+  "p0135": -0.17051531427513017,
+  "p50": 0.1772533806834653,
+  "p99865": 0.5382910735046215,
+  "out_lo_pct": 26.771,
+  "out_hi_pct": 0.0,
+  "out_pct": 26.771,
+  "out_pct_se": 0.14001476918525416,
+  "cpk_normal": 0.2124129615811227,
+  "cpk_percentile": 0.22214012302821823
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "lip_radius",
+   "kind": "linear",
+   "nominal": 12.6,
+   "bias": 0.0,
+   "upper": 0.2,
+   "lower": -0.2,
+   "mid": 12.6,
+   "half": 0.2,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.06666666666666667,
+   "tag": "D",
+   "source": "so101.md keep-out table [D]; tol [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 29.113801229619597
+  },
+  {
+   "name": "hub_radius",
+   "kind": "linear",
+   "nominal": 12.0,
+   "bias": 0.1,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 12.1,
+   "half": 0.05,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "hub printed face-down: first-layer flare",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 1.8196125768512248
+  },
+  {
+   "name": "hub_offset",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.0,
+   "lower": 0.0,
+   "mid": 0.2750000000000006,
+   "half": 0.2750000000000006,
+   "sensitivity": -1.0,
+   "dist": "empirical",
+   "sigma": 0.08491295147516248,
+   "tag": "D",
+   "source": "T04 radial",
+   "note": "",
+   "from_stack": "T04",
+   "gdt": null,
+   "var_pct": 47.23123527131448
+  },
+  {
+   "name": "lip_eccentricity",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.2,
+   "lower": 0.0,
+   "mid": 0.1,
+   "half": 0.1,
+   "sensitivity": -1.0,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "A",
+   "source": "",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 21.8353509222147
+  }
+ ],
+ "seed": 20260922
+}

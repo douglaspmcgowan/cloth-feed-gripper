@@ -1,0 +1,287 @@
+{
+ "FSR short in HOLD": {
+  "t_state_ms": 5,
+  "t_safe_ms": 103,
+  "t_overcurrent_onset_ms": null,
+  "t_fault_after_onset_ms": null,
+  "state": "FAULT",
+  "fault": 4,
+  "F_max_after_N": 4.90407183040749,
+  "F_now_N": 0.3935395395656702,
+  "relaxed": false,
+  "before": "HOLD"
+ },
+ "FSR open in HOLD": {
+  "t_state_ms": 163,
+  "t_safe_ms": 263,
+  "t_overcurrent_onset_ms": null,
+  "t_fault_after_onset_ms": null,
+  "state": "RELEASE",
+  "fault": 0,
+  "F_max_after_N": 4.904074268926603,
+  "F_now_N": 0.39354014840598944,
+  "relaxed": false,
+  "before": "HOLD"
+ },
+ "FSR open before the grip, continuous": {
+  "t_state_ms": 794,
+  "t_safe_ms": 877,
+  "t_overcurrent_onset_ms": null,
+  "t_fault_after_onset_ms": null,
+  "state": "RELEASE",
+  "fault": 0,
+  "F_max_after_N": 3.309501399317169,
+  "F_now_N": 0.4392886424856502,
+  "relaxed": false
+ },
+ "FSR open before the grip, discontinuous": {
+  "t_state_ms": 794,
+  "t_safe_ms": 877,
+  "t_overcurrent_onset_ms": null,
+  "t_fault_after_onset_ms": null,
+  "state": "FAULT",
+  "fault": 9,
+  "F_max_after_N": 3.306479259633281,
+  "F_now_N": 0.4380120396867893,
+  "relaxed": false
+ },
+ "stall (finger jammed) in CLOSE": {
+  "t_state_ms": 374,
+  "t_safe_ms": 434,
+  "t_overcurrent_onset_ms": 274,
+  "t_fault_after_onset_ms": 100,
+  "state": "FAULT",
+  "fault": 3,
+  "F_max_after_N": 0.0,
+  "F_now_N": 0.0,
+  "relaxed": false
+ },
+ "limit switch stuck closed": {
+  "t_state_ms": 414,
+  "t_safe_ms": 414,
+  "t_overcurrent_onset_ms": null,
+  "t_fault_after_onset_ms": null,
+  "state": "FAULT",
+  "fault": 8,
+  "F_max_after_N": 0.0,
+  "F_now_N": 0.0,
+  "relaxed": false
+ },
+ "brown-out reset in HOLD": {
+  "before": "HOLD",
+  "t_safe_ms": 32,
+  "state_after_rehome": "IDLE",
+  "fault": 0
+ },
+ "serial extremes in HOLD": {
+  "before": "HOLD",
+  "state": "HOLD",
+  "F_max_N": 4.904074293171671,
+  "t_safe_ms": 0
+ },
+ "FSR stuck (ADC frozen) in HOLD": {
+  "t_state_ms": 500,
+  "t_safe_ms": 603,
+  "t_overcurrent_onset_ms": null,
+  "t_fault_after_onset_ms": null,
+  "state": "FAULT",
+  "fault": 10,
+  "F_max_after_N": 4.904074293171671,
+  "F_now_N": 0.3935401544632181,
+  "relaxed": false,
+  "before": "HOLD",
+  "frozen_mv": 2070.0
+ },
+ "FSR reads 50 %, stiffest finger": {
+  "F_peak_N": 7.06191318645858,
+  "state": "HOLD",
+  "warns": [
+   "FORCE_SAT"
+  ],
+  "t_safe_ms": 0
+ },
+ "FSR span halves in a FORCE_SAT hold": {
+  "before": "HOLD",
+  "hold_path": "FORCE_SAT",
+  "t_slip_ms": 112,
+  "state": "HOLD",
+  "F_now_N": 4.904074293171671,
+  "t_safe_ms": 0
+ },
+ "INA219 fails in HOLD": {
+  "t_state_ms": 120,
+  "t_safe_ms": 223,
+  "t_overcurrent_onset_ms": null,
+  "t_fault_after_onset_ms": null,
+  "state": "FAULT",
+  "fault": 11,
+  "F_max_after_N": 4.90407421619641,
+  "F_now_N": 0.3935401352416125,
+  "relaxed": false,
+  "before": "HOLD"
+ },
+ "hold current, Fit B, continuous": {
+  "backoff_off": {
+   "state": "HOLD",
+   "before": "HOLD",
+   "F4_reading_A": 0.3970787227153778,
+   "rail_A": 0.397078997208448,
+   "motor_A": 1.0931248008351855,
+   "F_true_N": 4.904187149259245,
+   "backoff_deg": 0.0
+  },
+  "backoff_on": {
+   "state": "HOLD",
+   "before": "HOLD",
+   "F4_reading_A": 0.3970787227153778,
+   "rail_A": 0.19348352454227297,
+   "motor_A": 0.5456522315774077,
+   "F_true_N": 4.880821627071036,
+   "backoff_deg": 0.6600000262260437
+  }
+ },
+ "stall after contact, Fit B, continuous": {
+  "state": "FAULT",
+  "fault": 3,
+  "t_onset_ms": 59,
+  "t_state_ms": 159,
+  "t_detect_after_onset_ms": 100,
+  "rail_A": 3.75,
+  "overcurrent": true,
+  "t_safe_ms": 159
+ },
+ "stall in HOLD, Fit B, continuous": {
+  "state": "FAULT",
+  "fault": 3,
+  "t_onset_ms": 1,
+  "t_state_ms": 120,
+  "t_detect_after_onset_ms": 119,
+  "rail_A": 3.75,
+  "overcurrent": true,
+  "t_safe_ms": 120,
+  "before": "HOLD"
+ },
+ "hold current, Fit B, discontinuous": {
+  "backoff_off": {
+   "state": "HOLD",
+   "before": "HOLD",
+   "F4_reading_A": 1.0998064279556274,
+   "rail_A": 1.0998163312854166,
+   "motor_A": 1.0998163312854166,
+   "F_true_N": 4.899362899789935,
+   "backoff_deg": 0.0
+  },
+  "backoff_on": {
+   "state": "HOLD",
+   "before": "HOLD",
+   "F4_reading_A": 1.0998064279556274,
+   "rail_A": 0.5468878882078089,
+   "motor_A": 0.5468878882078089,
+   "F_true_N": 4.876359140543628,
+   "backoff_deg": 0.6600000262260437
+  }
+ },
+ "stall after contact, Fit B, discontinuous": {
+  "state": "FAULT",
+  "fault": 3,
+  "t_onset_ms": 59,
+  "t_state_ms": 159,
+  "t_detect_after_onset_ms": 100,
+  "rail_A": 3.75,
+  "overcurrent": true,
+  "t_safe_ms": 159
+ },
+ "stall in HOLD, Fit B, discontinuous": {
+  "state": "FAULT",
+  "fault": 3,
+  "t_onset_ms": 1,
+  "t_state_ms": 120,
+  "t_detect_after_onset_ms": 119,
+  "rail_A": 3.75,
+  "overcurrent": true,
+  "t_safe_ms": 120,
+  "before": "HOLD"
+ },
+ "hold current, Fit A, continuous": {
+  "backoff_off": {
+   "state": "HOLD",
+   "before": "HOLD",
+   "F4_reading_A": 0.4136381447315216,
+   "rail_A": 0.4136384617677493,
+   "motor_A": 1.1561668316875449,
+   "F_true_N": 4.904074293171671,
+   "backoff_deg": 0.0
+  },
+  "backoff_on": {
+   "state": "HOLD",
+   "before": "HOLD",
+   "F4_reading_A": 0.4136381447315216,
+   "rail_A": 0.1963834877123157,
+   "motor_A": 0.5720338763835107,
+   "F_true_N": 4.880716279863309,
+   "backoff_deg": 0.6600000262260437
+  }
+ },
+ "stall after contact, Fit A, continuous": {
+  "state": "FAULT",
+  "fault": 3,
+  "t_onset_ms": 59,
+  "t_state_ms": 159,
+  "t_detect_after_onset_ms": 100,
+  "rail_A": 3.99,
+  "overcurrent": true,
+  "t_safe_ms": 159
+ },
+ "stall in HOLD, Fit A, continuous": {
+  "state": "FAULT",
+  "fault": 3,
+  "t_onset_ms": 1,
+  "t_state_ms": 120,
+  "t_detect_after_onset_ms": 119,
+  "rail_A": 3.99,
+  "overcurrent": true,
+  "t_safe_ms": 120,
+  "before": "HOLD"
+ },
+ "hold current, Fit A, discontinuous": {
+  "backoff_off": {
+   "state": "HOLD",
+   "before": "HOLD",
+   "F4_reading_A": 1.163781762123108,
+   "rail_A": 1.1637922123585132,
+   "motor_A": 1.1637922123585132,
+   "F_true_N": 4.898920125606358,
+   "backoff_deg": 0.0
+  },
+  "backoff_on": {
+   "state": "HOLD",
+   "before": "HOLD",
+   "F4_reading_A": 1.163781762123108,
+   "rail_A": 0.5734400033235506,
+   "motor_A": 0.5734400033235506,
+   "F_true_N": 4.875948614108566,
+   "backoff_deg": 0.6600000262260437
+  }
+ },
+ "stall after contact, Fit A, discontinuous": {
+  "state": "FAULT",
+  "fault": 3,
+  "t_onset_ms": 59,
+  "t_state_ms": 159,
+  "t_detect_after_onset_ms": 100,
+  "rail_A": 3.99,
+  "overcurrent": true,
+  "t_safe_ms": 159
+ },
+ "stall in HOLD, Fit A, discontinuous": {
+  "state": "FAULT",
+  "fault": 3,
+  "t_onset_ms": 1,
+  "t_state_ms": 120,
+  "t_detect_after_onset_ms": 119,
+  "rail_A": 3.99,
+  "overcurrent": true,
+  "t_safe_ms": 120,
+  "before": "HOLD"
+ }
+}

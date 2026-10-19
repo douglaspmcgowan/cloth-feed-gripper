@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+trial,rail_set_V,lever_mm,peak_force_N,plateau_force_N,torque_Nm,rail_A,hold_A_from_TP01,rail_min_V,pulse_us,notes

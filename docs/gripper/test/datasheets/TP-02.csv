@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+part_incline_hold_pull,trial,fabric,incline_slip_deg,hold_N_probe,tension_N,slip_at_2N_mm_after_25p5s,pull_to_slip_N,fsr_min_N,slip_event_logged,notes

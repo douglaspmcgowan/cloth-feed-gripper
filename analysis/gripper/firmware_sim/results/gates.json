@@ -1,0 +1,56 @@
+{
+ "gates": [
+  {
+   "name": "arduino-cli compile",
+   "cmd": "arduino-cli compile --fqbn esp32:esp32:esp32 --warnings all firmware/gripper",
+   "exit": 1,
+   "summary": [
+    "   47 | esp_err_t esp_task_wdt_init(const esp_task_wdt_config_t *config);",
+    "      |           ^~~~~~~~~~~~~~~~~",
+    "Error during build: exit status 1"
+   ],
+   "sketch_warnings": [],
+   "library_warnings": [],
+   "core": [
+    "esp32:esp32   3.3.8            3.3.12           esp32"
+   ]
+  },
+  {
+   "name": "host FSM test",
+   "cmd": "python firmware/gripper/test/run_host_tests.py",
+   "exit": 0,
+   "summary": [
+    "INFO R20 over-current onset -> back-off begins 140 ms (limit 200), command at target 200 ms",
+    "INFO cycle k=0.88: contact 578 ms, HOLD 780 ms, F_max 4.67 N, F_end 4.67 N",
+    "INFO cycle k=1.00: contact 575 ms, HOLD 780 ms, F_max 5.31 N, F_end 5.31 N",
+    "INFO cycle k=1.63: contact 566 ms, HOLD 769 ms, F_max 6.92 N, F_end 6.41 N",
+    "INFO squeeze cap: max u 4.867 deg (U_MAX 4.867)",
+    "INFO relative floor: theta_c0 -4.0, ref -3.88, max u 4.867, lowest command -8.747 (floor -8.90)",
+    "INFO relative floor: theta_c0 +3.0, ref +1.32, max u 3.220, lowest command -1.900 (floor -1.90)",
+    "INFO inject FSR open: FAULT FSR_OPEN after 780 ms (search end + 120 ms settle)",
+    "INFO inject FSR short: FAULT FSR_SHORT after 5 ms",
+    "INFO inject FSR stuck: FAULT FSR_STUCK after 501 ms",
+    "INFO inject stall (SERVO_STALL_A in CLOSE): FAULT OVERCURRENT after 120 ms",
+    "INFO inject over-current in HOLD (3.2 A, INA219 full scale): FAULT OVERCURRENT after 120 ms",
+    "INFO inject limit stuck closed: FAULT LIMIT after 440 ms",
+    "INFO inject serial garbage: 20000 lines, 704 parsed as commands, 0 bad",
+    "INFO inject brown-out: reset -> BOOT, jaw commanded open on the first pulse, HOME after 300 ms",
+    "INFO slip in a FSR_TARGET hold, FSR span to 40 %: WARN FSR_SLIP after 101 ms",
+    "INFO slip in a FORCE_SAT hold, FSR span to 40 %: WARN FSR_SLIP after 101 ms",
+    "INFO inject INA219 failure in HOLD: FAULT I_SENSOR after 120 ms",
+    "INFO F1 back-off: F4 hold current 1.00 A, stopped at 2.10 deg, rail 0.16 A (stop 0.25 A)",
+    "INFO property: 45000 control outputs over 300 random runs, 0 clamp violations, 0 cap violations",
+    "rows covered: 69 / 69",
+    "PASS 2124 / 2124 checks"
+   ]
+  },
+  {
+   "name": "simulation pytest",
+   "cmd": "python -m pytest analysis/gripper/firmware_sim analysis/gripper/controls -q",
+   "exit": 1,
+   "summary": [
+    "2 failed, 40 passed"
+   ]
+  }
+ ]
+}

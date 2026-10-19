@@ -1,0 +1,89 @@
+Harness of the gripper controller: board to wrist
+Tags: [S] sourced, [D] derived here, [A] assumed
+Trunk length 1200 mm [A, measure at assembly]; 20 AWG 0.03331 ohm/m, 26 AWG 0.1339 ohm/m, 22 AWG 0.05296 ohm/m [S constants.py]
+
+(a) Wiring table (also out/harness_wiring.md and out/harness_wiring.csv)
+id   from            to         net        AWG             colour          length mm
+---  --------------  ---------  ---------  --------------  --------------  --------------
+H01  J3.1            SPL-GND    GND        20              black           1200
+H02  J3.2            SPL-V      SERVO_V    20              red             1200
+H03  J3.3            SPL-PWM    SERVO_PWM  26              orange          1200
+H04  SPL-GND         X1.1                  22              black           100
+H05  SPL-V           X1.2                  22              red             100
+H06  SPL-PWM         X1.3                  22              white           100
+H07  SPL-V           C_WRIST.+             cap lead        red             10
+H08  SPL-GND         C_WRIST.-             cap lead        black           10
+H09  X1.1            SERVO.GND             could-not-tell  could-not-tell  could-not-tell
+H10  X1.2            SERVO.V+              could-not-tell  could-not-tell  could-not-tell
+H11  X1.3            SERVO.SIG             could-not-tell  could-not-tell  could-not-tell
+H12  J4.1            SM.1       +3V3       26              red             1200
+H13  J4.2            SM.2       FSR_SIG    26              white           1200
+H14  J4.3            SM.3       LIM_SIG    26              green           1200
+H15  J4.4            SM.4       GND        26              gray            1200
+H16  SM.1            FSR.1                 26              red             150
+H17  SM.2            FSR.2                 26              white           150
+H18  SM.3            SW.NO                 26              green           120
+H19  SM.4            SW.COM                26              gray            120
+A01  ADAPTER.TIP     J1.1       VIN_RAW    supplied cord   supplied        1500
+A02  ADAPTER.SLEEVE  J1.2       GND        supplied cord   supplied        1500
+U01  HOST.USB-A      U5.USB                supplied cable  supplied        914
+N01  J2              -          VIN_RAW    -               -               0
+N02  J5              -          FB_IN      -               -               0
+N03  J6              -          DRV_AIN1   -               -               0
+N04  J7              -          SERVO_PWM  -               -               0
+
+(b) Servo power pair: resistance and drop (power_budget.py currents; setpoint low/nom/high 6.504/6.581/6.659 V; plug band 6.35 to 6.65 V, rating 6.8 V)
+20 AWG trunk to X1: pair 79.9 mohm [D] + pigtail pair 10.6 mohm [D, A gauge] = 90.5 mohm loop (buck_design.py assumed lead 30 mohm)
+fit  case   servo A  trunk drop V  total drop V  plug low V  plug nom V  plug high V  nom in band  corners in band  <= 6.8 V
+---  -----  -------  ------------  ------------  ----------  ----------  -----------  -----------  ---------------  --------
+A    hold   1.35     0.108         0.122         6.382       6.459       6.537        yes          yes              yes
+A    stall  3.48     0.278         0.315         6.193       6.266       6.340        NO           NO               yes
+B    hold   0.80     0.064         0.072         6.432       6.509       6.587        yes          yes              yes
+B    stall  2.07     0.165         0.187         6.319       6.394       6.469        yes          NO               yes
+26 AWG trunk to X1: pair 321.4 mohm [D] + pigtail pair 10.6 mohm [D, A gauge] = 332.0 mohm loop (buck_design.py assumed lead 30 mohm)
+fit  case   servo A  trunk drop V  total drop V  plug low V  plug nom V  plug high V  nom in band  corners in band  <= 6.8 V
+---  -----  -------  ------------  ------------  ----------  ----------  -----------  -----------  ---------------  --------
+A    hold   1.35     0.434         0.448         6.056       6.133       6.211        NO           NO               yes
+A    stall  3.09     0.992         1.025         5.491       5.557       5.622        NO           NO               yes
+B    hold   0.80     0.257         0.266         6.239       6.316       6.393        NO           NO               yes
+B    stall  1.92     0.618         0.638         5.873       5.943       6.013        NO           NO               yes
+Budget = nominal plug voltage at hold inside 6.35 to 6.65 V, and every case between 4.8 and 6.8 V (the band is a hold-torque calibration band; stall is judged against 4.8 V only) [D].
+20 AWG power pair MEETS the budget; a 26 AWG pair MISSES [D].
+Corner finding: at the low set point and Fit A hold the plug is +32 mV against the 6.35 V band edge; the loop would have to be at most 114 mohm (is 90.5) [D]. The pigtail is 10.6 mohm of it; the unknown selected-servo lead is excluded.
+
+(c) Signal conductors, 26 AWG, 1200 mm each (one conductor, worst case)
+id   signal        current mA  resistance mohm  drop mV  drop in ADC LSBs (0.806 mV)
+---  ------------  ----------  ---------------  -------  ---------------------------
+H03  SERVO_PWM     1.00        160.7            0.1607   0.1994
+H12  +3V3          0.87        160.7            0.1391   0.1727
+H13  FSR_SIG       0.87        160.7            0.1391   0.1727
+H14  LIM_SIG       0.70        160.7            0.1128   0.1400
+H15  GND (sensor)  0.70        160.7            0.1128   0.1400
+FSR current 0.87 mA at the 8 N cap [D]; PWM wire current 1.0 mA [A]; limit current 0.70 mA [D].
+FSR force error from the two series wires (321 mohm added) [D]:
+true force N  reads N  error N
+------------  -------  -------
+5             4.999    -0.0012
+8             7.997    -0.0028
+Limit switch closed: LIM_SIG sits 0.226 mV above the sensor GND at the board [D]; ESP32 input-low threshold 825 mV [A].
+Limit switch contact: COM + NO. Firmware wants the pin pulled to GND when the jaw is open (config.h PIN_LIMIT_OPEN, events.h EV_LIMIT_HIT); NO closes only when the lever is pressed, so a cut wire reads as not at the limit. Contact load 0.70 mA at 3.3 V [D]; check against the D2F-01L datasheet minimum load [A, not read].
+
+(d) Wire to buy (cut from spool, 15 % spare added)
+AWG  colour  cut length mm  buy mm (with spare)
+---  ------  -------------  -------------------
+20   black   1200           1380
+20   red     1200           1380
+26   gray    1320           1518
+26   green   1320           1518
+26   orange  1200           1380
+26   red     1350           1552
+26   white   1350           1552
+Total 20 AWG: 2400 mm cut, 2760 mm with spare [D].
+Total 26 AWG: 6540 mm cut, 7521 mm with spare [D].
+Spools: 26 AWG 2 m spool per colour (sourcing.HARNESS), five colours; 20 AWG red and black 1380 mm each with spare. Bought leads: servo extension lead (cut to 100 mm pigtail), braided sleeve 1380 mm with spare.
+
+(e) Flex
+26 AWG silicone OD 1.5 mm [S]; minimum dynamic bend radius 10 x OD = 15.0 mm (absolute minimum 5 x = 7.5 mm) [S, D]; a service loop needs a diameter of at least 30 mm.
+Jaw travel 30.2 deg (-10.2 to +20.0 deg, config.h JAW_MIN_DEG and DESIGN-BASIS R18); slack the lead must absorb at that radius: 7.9 mm [D].
+Flex cycles to survive [A]: 100000 = 102.9 cycles/h x 972 h; basis: one open-close of the jaw bends the lead across the finger-B knuckle once; 100000 cycles = 102.9 cycles/h x 972 h (35 s cycle) [A, DESIGN-BASIS section 7].
+One semester is about 10000 cycles (97 h) [A]; inspect every 10000 cycles.

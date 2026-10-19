@@ -1,0 +1,16 @@
+{
+ "case": "Fit A, 1000 uF, 10 us rise, 12 V",
+ "producer": {
+  "tool": "ngspice",
+  "version": "not recorded by original run"
+ },
+ "python_plug_min_V": 6.093385,
+ "python_servo_v_min_V": 6.458282,
+ "python_vbuck_min_V": 6.577702,
+ "ran": true,
+ "result": {
+  "plug_min_V": 6.094213,
+  "servo_v_min_V": 6.459301,
+  "vbuck_min_V": 6.583594
+ }
+}

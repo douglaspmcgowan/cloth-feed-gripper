@@ -1,0 +1,71 @@
+# CAD rev B overlay: every rev B change applied at once, plus the heat, servo-width and sensitivity cases.
+# There is no top-level `id:` key, so `tolstack.py run` skips this file; `tolstack.py revb` and `tolstack.py sens`
+# read it. Constants are re-pointed here, never in the stack files. Units: mm, degrees.
+# `also` lists stack variants that are run and shown under the same overlay but not counted in the tally.
+# A case = the rev B overlay (`set` + `pick`) unless it says `base: false` (then it is the drawn rev A design).
+
+rev_b:
+  # Constant overrides that carry the rev B CAD changes (row numbers = docs/gripper/analysis/tolerance_stacks.md,
+  # "CAD rev B change list").
+  set:
+    dog_slot_w: 3.4              # row 1: dog slots 3.14 -> 3.4
+    pin_d_min: "=pin_h8_min"     # row 2: h8 pin 2.986-3.000 instead of the m6 dowel; pin_clear becomes 0.030
+    pin_d_max: "=pin_h8_max"
+    pin_clear: 0.020             # row 2: h8 pins GRADED to the pressed bush bore (clearance 0.000-0.020); the ungraded h8 batch is 0.030 and leaves T16 MARGINAL
+    sleeve_len: 10.0             # B4/K2: bought 3 x 6 x 10 bush
+    pin_span: 15.0               # B4: 10.0 sleeve + 2 x 2.5 plates, between plate mid-planes
+    plate_gap: 12.5              # B38: 10.0 sleeve + one 2.5 plate; README face-to-face gap
+    face_b: 10.5                 # rev B DS3230 gear face width
+    finger_peg_pitch: 5.45       # K5/B43: finger pegs moved from 8 to 6, then 5.45 apart
+    deck_peg_float: "=(deck_pin_hole_max - pin_h8_min)/2"
+    deck_peg_rotation: "=2*deck_peg_float*deck_peg_lever/deck_peg_spacing"
+    cradle_pocket_w: 20.5        # row 3: cradle pocket 20.4 -> 20.5 for the 20.1 mm servo (20.9 for a 20.5 mm servo: case revb_servo205)
+    closed_gap: 0.0              # row 4: faces toed in 0.44 deg (parallel at first contact)
+    recess_d_cad: 19.56          # row 6: pilot recess 19.51 -> 19.56
+    pilot_clear_max: 0.40        # row 6: accept up to 0.40 diametral clearance
+    hole_cad_d: 3.7              # row 7: mount holes 3.6 -> 3.7
+    horn_hole_depth: 3.75        # row 8: ASSUMES the horn hole is measured, and re-tapped if needed, to >= 3.75 (a gate, not a CAD change)
+  # bought deck pins alone; T09H with the absolute floor (without the firmware relative floor); the two firmware requests the
+  # firmware declined (controls.md 6.4), shown for comparison: the base T09P and T09T are the ones counted.
+  also: [T05-deckpegs, T09H, T09P-trip7, T09T-slow3]
+  # Stack variants that carry the structural rev B changes (not expressible as a constant).
+  pick:
+    T05: tcpcal                  # row 5: pegs alone leave T05 MARGINAL in the combined run (see also:); the one-time pinch-point TCP calibration passes
+    T14: boss                    # rows 1+3: servo located by its boss, pocket only has to drop in (width from the case)
+    T14B: boss34                 # row 1: Ø9 boss bore in the case-top housing web + slots 3.4
+    T15: shimselect              # assembly: shims picked with a feeler gauge
+    T09F: relfloor8              # firmware: floor relative to the calibrated contact angle (JAW_FLOOR_BELOW_C0_DEG 4.9, R15 8 N)
+    T09H: relfloor8              # same firmware change; needed because slots 3.4 add 1.5 deg of dog lash (see T09H fix)
+    T09P: floor49                # same floor bounds the trip peak (controls.md 6.4, 2026-10-16)
+    # T09P-trip7 and T09T-slow3 were declined by the firmware simulation (controls.md 6.4); T09T counts its base stack.
+
+hot:
+  # Hot scenario [A]: the PETG servo seat and ear-screw preload relax at hold temperature (thermal.md: Fit A mount
+  # 67.5 C, Fit B 48.9 C). The amounts are judgement; see basis.yaml hot_* for the reason each was chosen.
+  set: {hot_servo_float: 0.10, hot_shaft_extra: 0.05, hot_endplay: 0.05}
+
+cases:
+  drawn:         {label: "CAD rev A as drawn (reference)", base: false}
+  revb:          {label: "Rev B, all changes at once, servo case 20.1 mm"}
+  revb_servo205: {label: "Rev B, A17 servo case 20.5 mm, pocket opened to 20.9", set: {servo_body_w: 20.5, cradle_pocket_w: 20.9}}
+  revb_ungraded: {label: "Rev B with ungraded h8 pins (pin clearance 0.000-0.030)", set: {pin_clear: "=sleeve_bore_max - pin_d_min"}}
+  revb_hot:      {label: "Rev B, hot seat (PETG relaxed)", set_from: hot}
+  drawn_hot:     {label: "CAD rev A as drawn, hot seat (PETG relaxed)", base: false, set_from: hot}
+
+# Sensitivity: each input scaled by every factor in `scales`, designs compared with their own reference.
+sensitivity:
+  scales: [0.5, 2.0]
+  designs: [drawn, revb]
+  factors:
+    - {id: xy_band,       label: "XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together", consts: [fdm_xy_tol_short, fdm_xy_tol]}
+    - {id: xy_long_band,  label: "XY print band over 30 mm only (0.20)", consts: [fdm_xy_tol]}
+    - {id: z_band,        label: "Z print band (0.15)", consts: [fdm_z_tol]}
+    - {id: hole_scatter,  label: "hole diameter scatter (0.15)", consts: [fdm_hole_scatter_d]}
+    - {id: cavity,        label: "pocket width scatter (0.15)", consts: [fdm_cavity_tol]}
+    - {id: tpu,           label: "TPU pad face band (0.30)", consts: [tpu_xy_tol]}
+    - {id: servo_shaft,   label: "servo shaft position in case (0.20)", consts: [servo_shaft_pos_tol]}
+    - {id: servo_angle,   label: "servo angle repeatability (0.5 deg)", consts: [servo_angle_rep_deg]}
+    - {id: servo_width,   label: "servo case width tolerance (0.10)", consts: [servo_body_w_tol]}
+    - {id: line_ream,     label: "line-reamed coaxiality (0.03)", consts: [line_ream_coax]}
+    - {id: plate_flat,    label: "plate flatness / standoff top (0.05)", consts: [plate_flat]}
+    - {id: fsr_err,       label: "FSR force error (10 %)", consts: [fsr_err]}

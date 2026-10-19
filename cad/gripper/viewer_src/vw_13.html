@@ -1,0 +1,117 @@
+<script>
+"use strict";
+/* ---------- assembly: the build order from the CAD, each step moving its parts in along their real insertion direction ---------- */
+const ASM=D.asm||{steps:[],subassemblies:[],findings:[],fastener_items:[],tool_access:[]};
+ASM.items=ASM.fastener_items||[];
+const AS={i:0,t:0,playing:false,last:0,dur:1800,hold:500};
+const asmItem=id=>(ASM.items||[]).find(x=>x.id===id);
+const itemName=id=>{const it=asmItem(id);return it?String(it.type||id).replace(/\s*\((?:PTFE\/steel|face to 7\.7)\)/,""):id;};
+const subName=id=>((ASM.subassemblies||[]).find(s=>s.id===id)||{}).name||"";
+const ease=x=>x<0?0:x>1?1:x<0.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+/* the step each part and fastener item first goes in */
+const FIRST={},FIRSTITEM={};
+ASM.steps.forEach((s,i)=>{(s.parts||[]).forEach(k=>{if(!(k in FIRST))FIRST[k]=i;});(s.items||[]).forEach(id=>{if(!(id in FIRSTITEM))FIRSTITEM[id]=i;});(s.moves||[]).forEach(m=>{if(D.parts.parts[m.what]){if(!(m.what in FIRST))FIRST[m.what]=i;}else if(!(m.what in FIRSTITEM))FIRSTITEM[m.what]=i;});});
+/* sub-assemblies built on the bench sit at their bench offset until their join step carries them in */
+const BENCH={};
+(ASM.subassemblies||[]).forEach(sa=>{if(!sa.bench_offset)return;const idx=ASM.steps.map((s,i)=>[s,i]).filter(([s])=>s.sub===sa.id);const j=(idx.find(([s])=>s.join)||[])[1];if(j===undefined)return;
+  idx.filter(([,i])=>i<=j).forEach(([s])=>{[...(s.parts||[]),...(s.items||[]),...(s.moves||[]).map(m=>m.what)].forEach(w=>{BENCH[w]={off:sa.bench_offset,join:j};});});});
+const benchOff=(w,i)=>{const b=BENCH[w];return b&&i<b.join?b.off:[0,0,0];};
+const STEP_T=()=>AS.dur+AS.hold;
+const TOTAL=()=>ASM.steps.length*STEP_T();
+function partsOfStep(s){const p=new Set(s.parts||[]);(s.moves||[]).forEach(m=>{if(D.parts.parts[m.what])p.add(m.what);});return [...p];}
+function itemsOfStep(s){const p=new Set(s.items||[]);(s.moves||[]).forEach(m=>{if(!D.parts.parts[m.what])p.add(m.what);});return [...p];}
+/* pose of the whole build at time t (ms from the start) */
+function asmPose(t){
+  if(!V3.ready||V3.mode!=="asm")return;const n=ASM.steps.length;if(!n)return;
+  t=Math.max(0,Math.min(TOTAL(),t));AS.t=t;let i=Math.min(n-1,Math.floor(t/STEP_T()));const f=ease(Math.min(1,(t-i*STEP_T())/AS.dur));
+  if(t>=TOTAL())i=n-1;
+  const s=ASM.steps[i];V3.theta=s.theta_deg||0;
+  const hide=new Set();for(const k in V3.parts){const fi=FIRST[k];if(fi!==undefined&&fi>i)hide.add(k);}
+  /* fastener groups show once any of their items is in */
+  ["fasteners","fasteners_a","fasteners_b"].forEach(g=>{if(FIRST[g]===undefined){const any=(ASM.items||[]).some(it=>it.group===g&&FIRSTITEM[it.id]!==undefined&&FIRSTITEM[it.id]<=i);if(!any)hide.add(g);else hide.delete(g);}});
+  /* a step that moves nothing (preparing parts, the final check) shows the finished gripper faded, with the parts it names in full */
+  V3.asmGhost=null;
+  if(!(s.moves||[]).length&&!(s.parts||[]).length&&i===0){const named=Object.keys(V3.parts).filter(k=>s.title.toLowerCase().includes((PLABEL[k]||k).toLowerCase()));
+    hide.clear();V3.asmGhost=new Set(Object.keys(V3.parts).filter(k=>!named.includes(k)));}
+  V3.asmHide=hide;V3.offset={};
+  /* a move starts dist mm back along its insertion direction and ends in place */
+  const moveBy=m=>{const d=(m.dist||0)*(1-f),b=benchOff(m.what,i);return [b[0]-m.dir[0]*d,b[1]-m.dir[1]*d,b[2]-m.dir[2]*d];};
+  if(!V3.asmGhost)for(const k in V3.parts){const b=benchOff(k,i);if(b[0]||b[1]||b[2])V3.offset[k]=b;}
+  (s.moves||[]).forEach(m=>{if(D.parts.parts[m.what])V3.offset[m.what]=moveBy(m);});
+  /* single fastener items move inside their group */
+  for(const id in (V3.items||{})){const fi=FIRSTITEM[id],objs=V3.items[id];
+    const m=(s.moves||[]).find(x=>x.what===id),off=m?moveBy(m):benchOff(id,i);
+    objs.forEach(o=>{if(!o.userData.p0)o.userData.p0=o.position.clone();o.visible=fi===undefined||fi<=i;const u=V3.unit;o.position.set(o.userData.p0.x+off[0]*u,o.userData.p0.y+off[1]*u,o.userData.p0.z+off[2]*u);});}
+  V3.hiParts=new Set(partsOfStep(s).filter(k=>!(V3.asmDone)));V3.hiColor=0x2d6fd6;V3.selItems=new Set(itemsOfStep(s));
+  applyPose();applyVis();
+  if(V3.asmSeen)V3.asmSeen.add(i);
+  if(AS.shown!==i){AS.shown=i;asmShowStep(i,false);asmArrows(s,i);}
+  $("#asmScrub").value=Math.round(t/TOTAL()*1000);
+  $("#asmhud").textContent=`step ${i+1} of ${n}: ${s.title}`;
+  V3.asmState={step:i,t,done:t>=TOTAL()-1};
+}
+/* an arrow for each move in the step shows the direction it goes in */
+function asmArrows(s,i){const T=THREE;V3.overlay.clear();const seen=new Set();
+  (s.moves||[]).forEach(m=>{const objs=D.parts.parts[m.what]?(V3.parts[m.what]?[V3.parts[m.what].node]:[]):(V3.items[m.what]||[]);if(!objs.length||!m.dist)return;
+    const key=m.dir.join()+"|"+(D.parts.parts[m.what]?m.what:"i");if(seen.has(key)&&!D.parts.parts[m.what])return;seen.add(key);
+    const b=new T.Box3();objs.forEach(o=>b.expandByObject(o));if(b.isEmpty())return;const c=b.getCenter(new T.Vector3()),d=new T.Vector3(...m.dir).normalize(),off=V3.offset&&V3.offset[m.what];
+    const end=c.clone();if(off)end.sub(new T.Vector3(...off));const len=Math.min(m.dist,40),start=end.clone().addScaledVector(d,-len-8);
+    const a=new T.ArrowHelper(d,start,len,0xd0681b,Math.min(6,len*0.3),Math.min(4,len*0.2));a.traverse(o=>{if(o.material){o.material.depthTest=false;o.material.transparent=true;}o.renderOrder=6;});V3.overlay.add(a);});}
+function asmResetItems(){for(const id in (V3.items||{}))V3.items[id].forEach(o=>{if(o.userData.p0)o.position.copy(o.userData.p0);o.visible=true;});}
+function asmShowStep(i,scroll){
+  AS.i=i;$$("#asmSteps button.step").forEach((b,j)=>{b.setAttribute("aria-current",j===i?"step":"false");b.setAttribute("aria-expanded",String(j===i));});
+  $$("#asmSteps .sdet").forEach((d,j)=>d.hidden=j!==i);
+  $("#asmStepv").textContent=`step ${i+1} of ${ASM.steps.length}`;
+  if(scroll){const b=$$("#asmSteps button.step")[i];if(b){const box=b.closest(".asteps");box.scrollTop=b.offsetTop-box.offsetTop-8;}}
+}
+function asmGo(i,user){i=Math.max(0,Math.min(ASM.steps.length-1,i));if(CUR!=="assembly")go("#assembly-steps",false);
+  const run=()=>{asmShowStep(i,true);const to=i*STEP_T()+(reduceMotion()?AS.dur:0);asmPose(to);if(!reduceMotion()&&!AS.playing)asmPlayStep(i);};
+  if(V3.ready&&V3.mode==="asm")run();else (V3.onready=V3.onready||[]).push(()=>{if(CUR==="assembly")run();});
+  if(user)setHash("assembly-steps");}
+/* play one step from its start, or the whole build */
+function asmPlayStep(i){AS.stopAt=(i+1)*STEP_T()-AS.hold/2;AS.t=i*STEP_T();asmRun(true,true);}
+function asmRun(on,single){AS.playing=on;AS.single=!!(on&&single);$("#asmPlay").setAttribute("aria-pressed",String(on&&!single));$("#asmPlay").textContent=on&&!single?"Pause":"Play";
+  if(!on){V3.anim=null;return;}if(!single)AS.stopAt=TOTAL();
+  if(reduceMotion()){/* steps jump instead of moving */let last=0;V3.anim=now=>{if(now-last<900)return;last=now;const i=Math.min(ASM.steps.length-1,Math.floor(AS.t/STEP_T())+(AS.t%STEP_T()>=AS.dur?1:0));
+      const to=Math.min(AS.stopAt,i*STEP_T()+AS.dur);asmPose(to);AS.t=to;if(to>=AS.stopAt-1||i>=ASM.steps.length-1&&to>=TOTAL()-AS.hold){if(to>=TOTAL()-AS.hold)asmPose(TOTAL());asmRun(false);}};return;}
+  AS.last=performance.now();
+  V3.anim=now=>{const sp=window.ASM_SPEED||1;AS.t+=Math.min(250,now-AS.last)*sp;AS.last=now;/* a slow frame never skips a step */if(AS.t>=AS.stopAt){AS.t=AS.stopAt>=TOTAL()?TOTAL():AS.stopAt;asmPose(AS.t);asmRun(false);return;}asmPose(AS.t);};
+}
+function renderAssembly(){
+  if(!ASM.steps.length){$("#asmSteps").innerHTML=`<li class="note">The assembly plan has not been generated. Run cad/gripper/assembly/assembly_plan.py and rebuild.</li>`;return;}
+  let sub=null;
+  $("#asmSteps").innerHTML=ASM.steps.map((s,i)=>{const head=s.sub!==sub?`<li class="sub" aria-hidden="true">${esc(subName(s.sub))}</li>`:"";sub=s.sub;
+    const parts=partsOfStep(s),items=itemsOfStep(s),flags=(ASM.findings||[]).filter(f=>f.step===s.id);
+    const itemCount={};items.forEach(id=>{const n=itemName(id);itemCount[n]=(itemCount[n]||0)+1;});
+    return head+`<li><button type="button" class="step" data-i="${i}" data-part="${parts.join(" ")}" aria-current="false" aria-expanded="false"><span class="num">${i+1}</span><span>${esc(s.title)}</span></button>
+      <div class="sdet" hidden>
+        ${parts.length?`<div class="chips">${parts.map(k=>`<a href="#${PSLUG(k)}" data-part="${k}">${esc(PLABEL[k]||k)}</a>`).join("")}</div>`:""}
+        ${Object.keys(itemCount).length?`<p><b>Fasteners</b> ${esc(Object.entries(itemCount).map(([n,c])=>`${c} × ${n}`).join(", "))}${s.fasteners?`. ${esc(s.fasteners)}`:""}</p>`:s.fasteners?`<p><b>Fasteners</b> ${esc(s.fasteners)}</p>`:""}
+        ${(s.tools||[]).filter(t=>!/^none$/i.test(t)).length?`<p><b>Tools</b> ${esc(s.tools.join(", "))}</p>`:""}
+        ${s.check?`<p><b>Check</b> ${esc(s.check)}</p>`:""}${s.note?`<p class="note">${esc(s.note)}</p>`:""}
+        ${flags.map(f=>`<p class="flag">${esc(f.text)}</p>`).join("")}
+      </div></li>`;}).join("");
+  $("#asmSteps").addEventListener("click",e=>{const b=e.target.closest("button.step");if(b){asmRun(false);asmGo(+b.dataset.i,true);}});
+  $("#asmPrev").addEventListener("click",()=>{asmRun(false);asmGo(AS.i-1,true);});
+  $("#asmNext").addEventListener("click",()=>{asmRun(false);asmGo(AS.i+1,true);});
+  $("#asmReplay").addEventListener("click",()=>{asmRun(false);asmPose(AS.i*STEP_T());if(reduceMotion())asmPose(AS.i*STEP_T()+AS.dur);else asmPlayStep(AS.i);});
+  /* Play pauses a full run; during a one-step replay it carries on through the rest of the build */
+  $("#asmPlay").addEventListener("click",()=>{if(AS.playing&&!AS.single){asmRun(false);return;}if(AS.t>=TOTAL()-1)AS.t=0;asmRun(true);});
+  $("#asmScrub").addEventListener("input",e=>{asmRun(false);asmPose(+e.target.value/1000*TOTAL());});
+  $("#asmArm").addEventListener("click",e=>{V3.asmArm=e.target.getAttribute("aria-pressed")!=="true";e.target.setAttribute("aria-pressed",String(V3.asmArm));if(V3.arm)V3.arm.visible=V3.asmArm;V3.dirty=true;});
+  const F=ASM.findings||[],sv={blocker:"fail",risk:"risk",note:"open"},sw={blocker:"blocks",risk:"at risk",note:"note"};
+  const sname=id=>{const i=ASM.steps.findIndex(s=>s.id===id);return i<0?"all":String(i+1);};
+  $("#asmFind tbody").innerHTML=F.length?F.map(f=>{const i=ASM.steps.findIndex(s=>s.id===f.step);return `<tr${i>=0?` data-part="${partsOfStep(ASM.steps[i]).join(" ")}"`:""}><td>${i>=0?`<a href="#assembly-steps" data-step="${i}">step ${i+1}</a>`:"all"}</td><td class="w">${esc(f.text)}${f.evidence?`<br><span class="note">${esc(f.evidence)}</span>`:""}</td><td>${st(sv[f.severity]||"open",sw[f.severity]||f.severity)}</td></tr>`;}).join("")
+    :`<tr><td colspan="3" class="note">No step is blocked by the geometry.</td></tr>`;
+  const tools=[...new Set(ASM.steps.flatMap(s=>s.tools||[]).map(t=>t.trim()).filter(t=>t&&!/^none$/i.test(t)))].sort();$("#asmTools").innerHTML=tools.map(t=>`<li>${esc(t)}</li>`).join("");
+  const TA=ASM.tool_access||[];const byType={};TA.forEach(a=>{const n=itemName(a.item);const c=byType[n];if(!c||a.clear_mm<c.clear_mm)byType[n]=a;});
+  kv($("#asmReach"),Object.entries(byType).map(([n,a])=>[esc(n),a.clear_mm>=999?"open":fmt(a.clear_mm,0)+" mm",a.ok?"driver reaches":"too short for a driver",a.ok?"cell-ok":"cell-bad"]));
+}
+ENTER.assembly=()=>{const go2=()=>{if(CUR!=="assembly")return;setMode("asm",$("#asm3d"));V3.home(new THREE.Vector3(0,0,0),250);asmPose(AS.t||0);};
+  if(V3.ready)go2();else (V3.onready=V3.onready||[]).push(go2);attach3D($("#asm3d"));};
+/* leaving the assembly puts every part back */
+const _setMode=setMode;setMode=function(mode,box){if(V3.mode==="asm"&&mode!=="asm"){asmRun(false);asmResetItems();V3.selItems=null;V3.asmState=null;}return _setMode(mode,box);};
+{const F=ASM.findings||[],nb=new Set(F.filter(f=>f.severity==="blocker").map(f=>f.step)).size,nr=new Set(F.filter(f=>f.severity==="risk").map(f=>f.step)).size;
+  VIEWS.assembly={st:nb?"fail":nr?"risk":"pass",w:nb?"blocked":undefined,v:`${ASM.steps.length} steps in ${(ASM.subassemblies||[]).length} groups. ${nb?nb+" step"+(nb>1?"s":"")+" cannot be done as drawn":"Every step can be done as drawn"}${nr?", and "+nr+" need care":""}.`};}
+RENDER.assembly=renderAssembly;
+</script>

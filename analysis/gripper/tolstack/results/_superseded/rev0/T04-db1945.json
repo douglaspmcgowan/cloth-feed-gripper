@@ -1,0 +1,124 @@
+{
+ "id": "T04-db1945",
+ "title": "Gripper datum B axis vs wrist-roll axis (concentricity)",
+ "mode": "radial",
+ "units": "mm radial offset",
+ "requirement": "Gripper axis (datum B) within 0.30 mm radial of the wrist-roll axis.",
+ "notes": "Screws clamp but do not locate; the part sits anywhere inside the pilot clearance (area-uniform disk). The disk radius is each T02 clearance sample / 2 (clipped at 0), so clearance scatter is carried and WC uses T02's WC.",
+ "spec": {
+  "usl": 0.3
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T04",
+ "variant_label": "recess CAD 19.45 + chamfer (T02-db1945)",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T04_concentricity.yaml",
+ "nominal": 0.0,
+ "mid": 0.0,
+ "wc": [
+  0.0,
+  0.2250000000000007
+ ],
+ "rss_classic": [
+  0.0,
+  0.14361406616345135
+ ],
+ "rss_dist": [
+  0.0,
+  0.15234060031189942
+ ],
+ "rss_dist_unclipped": [
+  0.0,
+  0.15234060031189942
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": true,
+ "mc": {
+  "n": 100000,
+  "mean": 0.05588515195740205,
+  "std": 0.02791997859306487,
+  "min": 0.0001708201297938223,
+  "max": 0.18409764369582268,
+  "p0135": 0.0023478465804641973,
+  "p50": 0.053324967789890196,
+  "p99865": 0.14656885932185365,
+  "out_lo_pct": 0.0,
+  "out_hi_pct": 0.0,
+  "out_pct": 0.0,
+  "out_pct_se": 3.162277660168379e-151,
+  "cpk_normal": 2.914458395552333,
+  "cpk_percentile": 2.6454819523008757
+ },
+ "pass": {
+  "wc": true,
+  "rss": true,
+  "mc": true
+ },
+ "verdict": true,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "pilot_float",
+   "kind": "radial",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.0,
+   "lower": -0.0,
+   "mid": 0.0,
+   "half": 0.12500000000000072,
+   "sensitivity": 1.0,
+   "dist": "empirical",
+   "sigma": 0.02668197645701231,
+   "tag": "D",
+   "source": "T02 clearance samples / 2",
+   "note": "",
+   "from_stack": "T02-db1945",
+   "gdt": null,
+   "var_pct": 36.28715812597018
+  },
+  {
+   "name": "horn_od_eccentricity",
+   "kind": "radial",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": 1.0,
+   "dist": "disk",
+   "sigma": 0.025,
+   "tag": "A",
+   "source": "horn OD vs spline",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 31.856420937014907
+  },
+  {
+   "name": "servo5_radial_play",
+   "kind": "radial",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": 1.0,
+   "dist": "disk",
+   "sigma": 0.025,
+   "tag": "A",
+   "source": "unpublished",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 31.856420937014907
+  }
+ ],
+ "seed": 20260922
+}

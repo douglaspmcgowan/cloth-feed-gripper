@@ -1,0 +1,103 @@
+{
+  "base_g": 152.9,
+  "base_gmm": 52995,
+  "limit_gmm": 43720.0,
+  "lever_mm": 309.1,
+  "rows": [
+    {
+      "option": "Housing and front plate 60 → 40 % gyroid",
+      "d_g": -5.28,
+      "d_gmm": -1755,
+      "basis": "D model, A strength",
+      "cost": "pin-plate and boss-web stiffness unchecked (T14B, T16 line-ream); coupon first",
+      "in_combo": true,
+      "running_gmm": 51240
+    },
+    {
+      "option": "Wrist plate 100 → 60 % (4 walls)",
+      "d_g": -3.7,
+      "d_gmm": -1163,
+      "basis": "A: 40 % of the solid mass",
+      "cost": "clamp under the 4 horn screws and the Ø19.56 pilot recess (T02) unchecked",
+      "in_combo": true,
+      "running_gmm": 50077
+    },
+    {
+      "option": "Bushes 3 × 6 × 10 → 3 × 6 × 8",
+      "d_g": -0.74,
+      "d_gmm": -252,
+      "basis": "D model",
+      "cost": "bearing length 8 in a 10.5 hub; T16 / T10B re-base (tolerance owner)",
+      "in_combo": true,
+      "running_gmm": 49825
+    },
+    {
+      "option": "Limiter sleeves brass → aluminium",
+      "d_g": -0.69,
+      "d_gmm": -233,
+      "basis": "D volume, A densities",
+      "cost": "aluminium creep and fretting under the nut at 60 °C (thermal owner)",
+      "in_combo": true,
+      "running_gmm": 49592
+    },
+    {
+      "option": "Lighter servo: DS3218MG at 1:1 (58 g)",
+      "d_g": -2.0,
+      "d_gmm": -680,
+      "basis": "S mass (actuators.csv A17)",
+      "cost": "fails the actuation study: R16 hold P 0.53 (actuation_trade.md 0); not a qualifying option",
+      "in_combo": false,
+      "running_gmm": null
+    },
+    {
+      "option": "Lighter servo: DS3218MG + 1.5:1 stage (58 + 8.2 g)",
+      "d_g": 6.2,
+      "d_gmm": 2109,
+      "basis": "S/A (actuation_trade.md 5.2)",
+      "cost": "qualifies on torque but is heavier; new bay, +0.95° backlash",
+      "in_combo": false,
+      "running_gmm": null
+    },
+    {
+      "option": "Servo case turned up toward the wrist (long-Y layout; case 10 mm up from pivot A, but the deck rises so pivot-to-H +18.8 mm and servo u 31.0 → 39.8)",
+      "d_g": 3.04,
+      "d_gmm": 2762,
+      "basis": "D model",
+      "cost": "whole gripper moves away from H with the taller deck; housing redesign; wrist flex / keep-out re-check",
+      "in_combo": false,
+      "running_gmm": null
+    },
+    {
+      "option": "Servo body 10 mm nearer the wrist on a 1:1 stage (shaft off pivot A)",
+      "d_g": 8.2,
+      "d_gmm": 2189,
+      "basis": "D lever, A stage 8.2 g as actuation_trade.md 5.2",
+      "cost": "net heavier: the stage's own moment exceeds the 600 g·mm the move saves",
+      "in_combo": false,
+      "running_gmm": null
+    },
+    {
+      "option": "Lightening holes, both knuckles (20 % of each)",
+      "d_g": -2.5,
+      "d_gmm": -862,
+      "basis": "A: 20 % removed",
+      "cost": "arm and gear-root stress unchecked (gears.py); PA6-CF print",
+      "in_combo": true,
+      "running_gmm": 48730
+    },
+    {
+      "option": "Finger 45 → 40 mm (cloth, nail, FSR 5 mm nearer H; a hollow finger buys nothing more: the Fin Ray is already open cells)",
+      "d_g": -0.4,
+      "d_gmm": -244,
+      "basis": "D model",
+      "cost": "r_c 65 → about 60 (R17, gear and servo sizing), tip stiffness R12 rises about (45/40)³, reach; finger lane",
+      "in_combo": true,
+      "running_gmm": 48486
+    }
+  ],
+  "combo_gmm": 48486,
+  "combo_use": 1.109,
+  "combo_short_gmm": 4766,
+  "combo_short_g_at_com": 13.7,
+  "basis": "D = rebuilt model with one parameter changed; A = assumed fraction; S = sourced"
+}

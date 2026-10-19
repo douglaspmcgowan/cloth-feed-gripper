@@ -1,0 +1,21 @@
+id: T03B
+title: Axial stack — screw tip clear of the horn hole floor
+parts: ["wrist mount", "servo horn", "M3 horn screws"]
+constants: basis.yaml
+companion_of: T03
+units: mm (hole depth minus screw protrusion below H)
+requirement: Screw tip stops >= 0.2 mm above the blind-hole floor so the head, not the tip, takes the clamp load.
+spec: {lsl: "=bottom_margin_min"}
+accept: {method: wc}
+fix: "Measure the horn hole depth (DB M15) before buying screws. At the CAD 2.5, M3x6 bottoms and M3x5 engages too little (T03-m3x5); at 3.5 deep M3x6 is marginal (T03B-depth35), so check each head seats by hand."
+fix_variant: depth35
+notes: CAD horn holes are 2.5 deep but M3x6 through the 3.0 clamp protrudes 3.0, so the CAD says the screw bottoms. The stock gripper uses the same screw and clamp, so the real holes are probably deeper.
+contributors:
+  - {name: horn_hole_depth, nominal: "=horn_hole_depth", tol: 0.10, dist: normal, tag: A, source: "2.5 CAD (so101.md row 4) [D]; tol [A]"}
+  - {name: screw_length, nominal: "=screw_len", tol: "=screw_len_tol", direction: -1, dist: normal, tag: A, source: "M3x6"}
+  - {name: clamp_thickness, nominal: "=clamp_t", tol: "=fdm_z_tol", dist: uniform, tag: S, source: "params.json 3.0; Z band [S Gebre]"}
+  - {name: datum_A_flatness_lift, nominal: 0, unilateral: "=mount_flatness", dist: uniform, tag: A, source: "flatness 0.2 on A"}
+  - {name: horn_face_runout, nominal: 0, tol: "=horn_face_runout/2", dist: normal, tag: A, source: "horn face FIM 0.05; same term and sign as T03"}
+variants:
+  - {id: depth35, role: scenario, label: "horn holes measured 3.5 deep (M15 outcome to confirm)", set: {horn_hole_depth: 3.5}}
+  - {id: m3x5, label: "M3x5 screws", set: {screw_len: 5.0}}

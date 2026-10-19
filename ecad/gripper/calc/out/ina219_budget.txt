@@ -1,0 +1,48 @@
+INA219 current reading at the 3.0 A trip (shunt 300 mV across 0.10 ohm, PGA /8 default, full scale 320 mV = 3.20 A)
+error source (+/-)                                      amperes  percent of reading
+------------------------------------------------------  -------  ------------------
+offset, PGA /8, 200 uV max [S]                          0.0020   0.067
+gain error, 0.5 % max incl. offset at 25 C [S]          0.0150   0.500
+gain temperature drift, 1 m%/C over 40 C [S]            0.0012   0.040
+shunt tolerance 1 % [A]                                 0.0300   1.000
+shunt TCR 100 ppm/C over 45 C rise [A]                  0.0135   0.450
+filter R8/R9: 20 uA bias mismatch x 10 ohm [S, A]       0.0020   0.067
+filter R8/R9: gain loss R/320 kohm input impedance [S]  0.0001   0.003
+quantisation, +/-0.5 LSB = 5 uV [S]                     0.0001   0.002
+WORST CASE (sum)                                        0.0638   2.13
+ROOT-SUM-SQUARE                                         0.0363   1.21
+The true current when the reading first reaches 3.0 A lies in 2.937 to 3.065 A (worst case) and 2.964 to 3.036 A (RSS).
+
+Saturation: Fit A stall 3.77 A -> 377 mV across the shunt against 320 mV full scale: SATURATES. A saturated reading is 3.20 A, above the 3.0 A trip. Fit B stall 2.20 A: does not saturate.
+
+Trip against holding current at the force cap (torque = 2 F r_c / eta, r_c 65 mm, eta 0.85; current = T/K, and T/K + offset implied by the dyno.md hold point [D])
+cap N  fit  torque N*m  I = T/K A  I = T/K + offset A  trip margin A (T/K)  trip margin A (+offset)  margin at low end of trip range (T/K)  ... (+offset)
+-----  ---  ----------  ---------  ------------------  -------------------  -----------------------  -------------------------------------  -------------
+10.0   A    1.529       1.776      2.246               +1.224               +0.754                   +1.161                                 +0.692
+10.0   B    1.529       1.038      1.323               +1.962               +1.677                   +1.900                                 +1.614
+8.0    A    1.224       1.421      1.891               +1.579               +1.109                   +1.516                                 +1.047
+8.0    B    1.224       0.830      1.116               +2.170               +1.884                   +2.107                                 +1.822
+A negative margin means the servo current at the cap is above the trip: STALL would be raised by a legitimate grip at the cap.
+
+Detection delay: current must stay above 3.0 A for 100 ms, sampled every 20 ms (5 samples): 100 ms at best, up to 120.6 ms with one sample period and one conversion (586 us max). R20 allows 200 ms to detect and back off: 79.4 ms remain for the back-off.
+
+Chopped motor current (50 % duty, amplitude 1) read once per 20 ms with a 532 us conversion, no averaging; the mean is 0.5
+chop Hz [A]  reading min  reading max  worst error % of mean
+-----------  -----------  -----------  ---------------------
+300.0        0.000        1.000        100.0
+1000.0       0.060        0.940        88.0
+3000.0       0.373        0.627        25.3
+20000.0      0.483        0.517        3.4
+
+Averaging setting (SADC bits; time to produce one result)
+SADC  samples  time ms  fits 20 ms  chop error % @300 Hz  chop error % @1 kHz
+----  -------  -------  ----------  --------------------  -------------------
+0x8   1        0.53     yes         100.0                 88.0
+0x9   2        1.06     yes         100.0                 6.0
+0xA   4        2.13     yes         56.6                  6.0
+0xB   8        4.26     yes         21.7                  6.0
+0xC   16       8.51     yes         17.5                  5.7
+0xD   32       17.02    yes         2.1                   0.1
+0xE   64       34.05    no          2.1                   0.1
+0xF   128      68.10    no          2.1                   0.1
+Recommendation: write configuration register 0x00 = 0x39EF at boot (default 0x399F) -> shunt ADC 1101 (12-bit, 32 samples, 17.02 ms). The result then averages over 17 ms, nearly the whole 20 ms control period, so a chopped current is read as its mean; one result is ready per control tick. Chop frequency of the DS3218MG drive is not published [A: 300 Hz to 20 kHz tried].

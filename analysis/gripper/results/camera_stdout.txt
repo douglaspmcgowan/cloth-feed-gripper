@@ -1,0 +1,197 @@
+poses:
+  approach  b= -187.0 theta= 20.0 ik_err=2.38 mm tilt=41.4 q=[-0.001, -3.316, 2.675, 1.488, -0.001]
+  feed0     b= -187.0 theta=  0.0 ik_err=2.38 mm tilt=41.9 q=[-0.001, -3.316, 2.789, 1.367, -0.001]
+  feed1     b= -162.0 theta=  0.0 ik_err=0.01 mm tilt=45.0 q=[-0.001, -3.143, 2.842, 1.087, -0.001]
+  feed2     b= -137.0 theta=  0.0 ik_err=0.01 mm tilt=45.0 q=[-0.001, -2.777, 2.767, 0.796, -0.001]
+  feed3     b= -112.0 theta=  0.0 ik_err=0.01 mm tilt=45.0 q=[-0.001, -2.449, 2.641, 0.594, -0.001]
+  feed4     b=  -87.0 theta=  0.0 ik_err=0.01 mm tilt=45.0 q=[-0.001, -2.171, 2.478, 0.478, -0.001]
+  feed5     b=  -62.0 theta=  0.0 ik_err=0.00 mm tilt=45.0 q=[-0.001, -1.932, 2.289, 0.428, -0.0]
+  feed6     b=  -37.0 theta=  0.0 ik_err=0.00 mm tilt=45.0 q=[-0.001, -1.715, 2.074, 0.426, -0.0]
+handedness: +n (front plate) faces the seam edge, NSIGN = 1.0
+
+top 12 placement x camera (score):
+  5.00 O_h200_r120_path         PiCam3           feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=6.3 tips=1 dof=True blur=0.64 occ=['machine']
+  5.00 O_h200_r130_path         PiCam3           feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=6.0 tips=1 dof=True blur=0.61 occ=['machine']
+  4.99 O_h200_r140_path         PiCam3           feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.7 tips=1 dof=True blur=0.59 occ=['machine']
+  4.99 O_h200_r120_path         ESP32CAM_OV2640  feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.7 tips=1 dof=True blur=0.58 occ=['machine']
+  4.99 O_h225_r130_path         PiCam3           feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.7 tips=1 dof=True blur=0.58 occ=['machine']
+  4.98 O_h200_r150_path         PiCam3           feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.5 tips=1 dof=True blur=0.56 occ=['machine']
+  4.98 O_h200_r130_path         ESP32CAM_OV2640  feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.5 tips=1 dof=True blur=0.56 occ=['machine']
+  4.98 O_h225_r140_path         PiCam3           feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.5 tips=1 dof=True blur=0.56 occ=['machine']
+  4.98 O_h225_r150_path         PiCam3           feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.3 tips=1 dof=True blur=0.53 occ=['machine']
+  4.98 O_h200_r140_path         ESP32CAM_OV2640  feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.2 tips=1 dof=True blur=0.53 occ=['machine']
+  4.98 O_h225_r130_path         ESP32CAM_OV2640  feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.2 tips=1 dof=True blur=0.52 occ=['machine']
+  4.98 O_h250_r150_path         PiCam3           feed_pass=True app_pass=True crit_vis=1.00 edge_vis=1.00 ppm_crit=5.0 tips=1 dof=True blur=0.51 occ=['machine']
+
+best per kind:
+  wrist    W_edge_n35_u30_aim125 PiCam3_wide score 2.68 pass_feed False pass_approach True
+  overhead O_h200_r120_path PiCam3 score 5.00 pass_feed True pass_approach True
+  side     S_throat_high PiCam3_wide score 3.85 pass_feed True pass_approach False
+
+clearance, fixed (body + support to arm/gripper over all poses):
+  O_h250_r0_crit             -15.6 mm  ok=False ['base_bed']
+  O_h250_r0_path             -17.6 mm  ok=False []
+  O_h250_r60_crit             42.0 mm  ok=False ['base_bed']
+  O_h250_r60_path             34.1 mm  ok=True []
+  O_h250_r120_crit           100.0 mm  ok=False ['base_bed']
+  O_h250_r120_path            91.3 mm  ok=True []
+  O_h350_r0_crit             -15.6 mm  ok=False ['base_bed']
+  O_h350_r0_path             -17.6 mm  ok=False []
+  O_h350_r60_crit             42.0 mm  ok=False ['base_bed']
+  O_h350_r60_path             34.1 mm  ok=True []
+  O_h350_r120_crit           100.0 mm  ok=False ['base_bed']
+  O_h350_r120_path            91.3 mm  ok=True []
+  O_h500_r0_crit             -15.6 mm  ok=False ['base_bed']
+  O_h500_r0_path             -17.6 mm  ok=False []
+  O_h500_r60_crit             42.0 mm  ok=False ['base_bed']
+  O_h500_r60_path             34.1 mm  ok=True []
+  O_h500_r120_crit           100.0 mm  ok=False ['base_bed']
+  O_h500_r120_path            91.3 mm  ok=True []
+  O_h200_r90_path             62.3 mm  ok=True []
+  O_h200_r100_path            71.9 mm  ok=True []
+  O_h200_r110_path            81.6 mm  ok=True []
+  O_h200_r120_path            91.3 mm  ok=True []
+  O_h200_r130_path           101.1 mm  ok=True []
+  O_h200_r140_path           110.9 mm  ok=True []
+  O_h200_r150_path           120.8 mm  ok=True []
+  O_h225_r90_path             62.3 mm  ok=True []
+  O_h225_r100_path            71.9 mm  ok=True []
+  O_h225_r110_path            81.6 mm  ok=True []
+  O_h225_r120_path            91.3 mm  ok=True []
+  O_h225_r130_path           101.1 mm  ok=True []
+  O_h225_r140_path           110.9 mm  ok=True []
+  O_h225_r150_path           120.8 mm  ok=True []
+  O_h250_r90_path             62.3 mm  ok=True []
+  O_h250_r100_path            71.9 mm  ok=True []
+  O_h250_r110_path            81.6 mm  ok=True []
+  O_h250_r130_path           101.1 mm  ok=True []
+  O_h250_r140_path           110.9 mm  ok=True []
+  O_h250_r150_path           120.8 mm  ok=True []
+  O_h275_r90_path             62.3 mm  ok=True []
+  O_h275_r100_path            71.9 mm  ok=True []
+  O_h275_r110_path            81.6 mm  ok=True []
+  O_h275_r120_path            91.3 mm  ok=True []
+  O_h275_r130_path           101.1 mm  ok=True []
+  O_h275_r140_path           110.9 mm  ok=True []
+  O_h275_r150_path           120.8 mm  ok=True []
+  O_h300_r90_path             62.3 mm  ok=True []
+  O_h300_r100_path            71.9 mm  ok=True []
+  O_h300_r110_path            81.6 mm  ok=True []
+  O_h300_r120_path            91.3 mm  ok=True []
+  O_h300_r130_path           101.1 mm  ok=True []
+  O_h300_r140_path           110.9 mm  ok=True []
+  O_h300_r150_path           120.8 mm  ok=True []
+  S_throat_low                76.2 mm  ok=True []
+  S_throat_high               76.2 mm  ok=True []
+  S_throat_front             105.2 mm  ok=True []
+  S_left_low                  71.9 mm  ok=True []
+  S_front_right               18.1 mm  ok=False []
+clearance, wrist edge face (envelope above bed / gap to own housing+pad / gap to finger sweep):
+  W_edge_n35_u10_aim125      PiCam3       bed   59.7  housing   10.2  fingers   32.0  arm   -6.0  ok=False
+  W_edge_n35_u10_aim125      PiCam3_wide  bed   59.7  housing   10.2  fingers   32.0  arm   -6.7  ok=False
+  W_edge_n35_u10_aim125      UVC32_1080p  bed   57.0  housing    7.3  fingers   31.5  arm   -8.6  ok=False
+  W_edge_n35_u10_aim160      PiCam3       bed   60.2  housing    9.8  fingers   32.4  arm   -5.9  ok=False
+  W_edge_n35_u10_aim160      PiCam3_wide  bed   60.2  housing    9.8  fingers   32.4  arm   -6.7  ok=False
+  W_edge_n35_u10_aim160      UVC32_1080p  bed   57.6  housing    7.2  fingers   31.9  arm   -8.6  ok=False
+  W_edge_n35_u30_aim125      PiCam3       bed   45.2  housing    7.8  fingers   15.9  arm    7.8  ok=True
+  W_edge_n35_u30_aim125      PiCam3_wide  bed   45.2  housing    7.8  fingers   15.9  arm    7.1  ok=True
+  W_edge_n35_u30_aim125      UVC32_1080p  bed   42.5  housing    1.4  fingers   15.8  arm    3.8  ok=True
+  W_edge_n35_u30_aim160      PiCam3       bed   45.8  housing    7.7  fingers   15.5  arm    8.5  ok=True
+  W_edge_n35_u30_aim160      PiCam3_wide  bed   45.8  housing    7.7  fingers   15.5  arm    7.9  ok=True
+  W_edge_n35_u30_aim160      UVC32_1080p  bed   43.2  housing    1.2  fingers   15.5  arm    4.6  ok=True
+  W_edge_n28p5_u10_aim125    PiCam3       bed   60.3  housing    7.1  fingers   32.0  arm   -5.5  ok=False
+  W_edge_n28p5_u10_aim125    PiCam3_wide  bed   60.3  housing    7.1  fingers   32.0  arm   -6.4  ok=False
+  W_edge_n28p5_u10_aim125    UVC32_1080p  bed   57.7  housing    0.6  fingers   31.3  arm   -8.7  ok=False
+  W_edge_n28p5_u10_aim160    PiCam3       bed   60.7  housing    7.1  fingers   32.4  arm   -5.6  ok=False
+  W_edge_n28p5_u10_aim160    PiCam3_wide  bed   60.7  housing    7.1  fingers   32.4  arm   -6.3  ok=False
+  W_edge_n28p5_u10_aim160    UVC32_1080p  bed   58.1  housing    0.6  fingers   31.7  arm   -8.7  ok=False
+  W_edge_n28p5_u30_aim125    PiCam3       bed   45.9  housing    1.2  fingers   14.6  arm    8.7  ok=True
+  W_edge_n28p5_u30_aim125    PiCam3_wide  bed   45.9  housing    1.2  fingers   14.6  arm    7.9  ok=True
+  W_edge_n28p5_u30_aim125    UVC32_1080p  bed   43.3  housing   -3.9  fingers   14.9  arm    4.8  ok=False
+  W_edge_n28p5_u30_aim160    PiCam3       bed   46.4  housing    1.1  fingers   14.6  arm    9.3  ok=True
+  W_edge_n28p5_u30_aim160    PiCam3_wide  bed   46.4  housing    1.1  fingers   14.6  arm    8.5  ok=True
+  W_edge_n28p5_u30_aim160    UVC32_1080p  bed   43.8  housing   -4.3  fingers   14.8  arm    5.5  ok=False
+  W_edge_n24_u10_aim125      PiCam3       bed   60.8  housing    2.6  fingers   32.6  arm   -5.6  ok=False
+  W_edge_n24_u10_aim125      PiCam3_wide  bed   60.8  housing    2.6  fingers   32.6  arm   -6.5  ok=False
+  W_edge_n24_u10_aim125      UVC32_1080p  bed   58.2  housing   -3.5  fingers   31.7  arm   -8.7  ok=False
+  W_edge_n24_u10_aim160      PiCam3       bed   61.0  housing    2.6  fingers   32.9  arm   -5.6  ok=False
+  W_edge_n24_u10_aim160      PiCam3_wide  bed   61.0  housing    2.6  fingers   32.9  arm   -6.5  ok=False
+  W_edge_n24_u10_aim160      UVC32_1080p  bed   58.5  housing   -3.8  fingers   32.1  arm   -8.7  ok=False
+  W_edge_n24_u30_aim125      PiCam3       bed   46.4  housing   -2.9  fingers   14.4  arm    9.3  ok=False
+  W_edge_n24_u30_aim125      PiCam3_wide  bed   46.4  housing   -2.9  fingers   14.4  arm    8.6  ok=False
+  W_edge_n24_u30_aim125      UVC32_1080p  bed   43.8  housing   -6.8  fingers   14.4  arm    5.5  ok=False
+  W_edge_n24_u30_aim160      PiCam3       bed   46.7  housing   -3.0  fingers   14.4  arm    9.8  ok=False
+  W_edge_n24_u30_aim160      PiCam3_wide  bed   46.7  housing   -3.0  fingers   14.4  arm    8.9  ok=False
+  W_edge_n24_u30_aim160      UVC32_1080p  bed   44.2  housing   -6.6  fingers   14.5  arm    6.1  ok=False
+
+torque-lane worst-pose util reproduced: no camera 0.9769 (lane 0.9769), 10 g @ 20 mm 1.0110 (lane 1.011)
+
+fixed candidates that pass feed and clearance (placement camera ppm head_clear):
+  O_h200_r120_path       PiCam3           ppm 6.29 head_clear 12.7 mm
+  O_h200_r130_path       PiCam3           ppm 6.02 head_clear 15.1 mm
+  O_h200_r140_path       PiCam3           ppm 5.75 head_clear 17.4 mm
+  O_h200_r120_path       ESP32CAM_OV2640  ppm 5.72 head_clear 12.7 mm
+  O_h225_r130_path       PiCam3           ppm 5.69 head_clear 11.5 mm
+  O_h200_r150_path       PiCam3           ppm 5.49 head_clear 19.6 mm
+  O_h200_r130_path       ESP32CAM_OV2640  ppm 5.47 head_clear 15.1 mm
+  O_h225_r140_path       PiCam3           ppm 5.47 head_clear 13.8 mm
+  O_h225_r150_path       PiCam3           ppm 5.26 head_clear 15.9 mm
+  O_h200_r140_path       ESP32CAM_OV2640  ppm 5.23 head_clear 17.4 mm
+  O_h225_r130_path       ESP32CAM_OV2640  ppm 5.17 head_clear 11.5 mm
+  O_h250_r150_path       PiCam3           ppm 5.01 head_clear 12.7 mm
+  O_h200_r130_path       C270             ppm 5.01 head_clear 15.1 mm
+  O_h225_r90_path        PiCam3           ppm 6.52 head_clear 1.7 mm
+  O_h225_r100_path       PiCam3           ppm 6.32 head_clear 4.3 mm
+  O_h225_r90_path        ESP32CAM_OV2640  ppm 5.93 head_clear 1.7 mm
+  O_h250_r100_path       PiCam3           ppm 5.87 head_clear 2.0 mm
+  O_h225_r100_path       ESP32CAM_OV2640  ppm 5.75 head_clear 4.3 mm
+  O_h250_r110_path       PiCam3           ppm 5.70 head_clear 4.0 mm
+  O_h250_r120_path       PiCam3           ppm 5.53 head_clear 6.4 mm
+  O_h225_r90_path        C270             ppm 5.43 head_clear 1.7 mm
+  O_h250_r100_path       ESP32CAM_OV2640  ppm 5.34 head_clear 2.0 mm
+  O_h275_r110_path       PiCam3           ppm 5.33 head_clear 1.8 mm
+  O_h225_r100_path       C270             ppm 5.27 head_clear 4.3 mm
+  O_h275_r120_path       PiCam3           ppm 5.19 head_clear 3.9 mm
+  O_h250_r110_path       ESP32CAM_OV2640  ppm 5.19 head_clear 4.0 mm
+  O_h275_r130_path       PiCam3           ppm 5.06 head_clear 5.9 mm
+  O_h250_r120_path       ESP32CAM_OV2640  ppm 5.03 head_clear 6.4 mm
+  O_h200_r90_path        PiCam3           ppm 7.09 head_clear 4.7 mm
+  O_h200_r100_path       PiCam3           ppm 6.83 head_clear 7.5 mm
+  O_h200_r110_path       PiCam3           ppm 6.56 head_clear 10.1 mm
+  O_h200_r90_path        ESP32CAM_OV2640  ppm 6.45 head_clear 4.7 mm
+  O_h200_r100_path       ESP32CAM_OV2640  ppm 6.21 head_clear 7.5 mm
+  O_h225_r110_path       PiCam3           ppm 6.11 head_clear 6.8 mm
+  O_h200_r110_path       ESP32CAM_OV2640  ppm 5.97 head_clear 10.1 mm
+  O_h225_r120_path       PiCam3           ppm 5.90 head_clear 9.2 mm
+  O_h225_r110_path       ESP32CAM_OV2640  ppm 5.56 head_clear 6.8 mm
+  O_h225_r120_path       ESP32CAM_OV2640  ppm 5.37 head_clear 9.2 mm
+  O_h250_r130_path       PiCam3           ppm 5.36 head_clear 8.5 mm
+  O_h250_r140_path       PiCam3           ppm 5.19 head_clear 10.7 mm
+  O_h225_r110_path       C270             ppm 5.09 head_clear 6.8 mm
+  O_h200_r120_path       C270             ppm 5.24 head_clear 12.7 mm
+  S_throat_high          PiCam3_wide      ppm 5.18 head_clear 33.8 mm
+  S_throat_high          UVC32_1080p      ppm 5.81 head_clear 33.8 mm
+  S_throat_high          ESP32CAM_OV2640  ppm 8.13 head_clear 33.8 mm
+  S_throat_high          OV9281_GS        ppm 5.69 head_clear 33.8 mm
+  S_throat_high          C270             ppm 7.44 head_clear 33.8 mm
+  S_throat_front         ESP32CAM_OV2640  ppm 5.43 head_clear 47.9 mm
+  S_throat_low           ESP32CAM_OV2640  ppm 5.93 head_clear 50.2 mm
+  O_h200_r90_path        C270             ppm 5.91 head_clear 4.7 mm
+  O_h200_r100_path       C270             ppm 5.69 head_clear 7.5 mm
+  O_h200_r110_path       C270             ppm 5.47 head_clear 10.1 mm
+  S_throat_low           C270             ppm 5.43 head_clear 50.2 mm
+CSI run lens -> Pi on the table ~ 906 mm (official cables 200/300/500 mm)
+
+PRIMARY: O_h200_r150_path PiCam3  BACKUP (fixed): S_throat_high PiCam3_wide  WRIST OPTION (reserved pad): W_edge_n35_u30_aim160 UVC32_1080p  (optical best, CSI: W_edge_n28p5_u30_aim125 PiCam3_wide )
+  wrist 4.11 W_edge_n28p5_u30_aim125 PiCam3_wide app_edge 1.00 tips 2 ppm_app 8.1 crit 1.00 ppm_crit 5.1 blur_app 12.0 use 0.995 util_worst 1.008
+  wrist 4.11 W_edge_n28p5_u30_aim160 PiCam3_wide app_edge 1.00 tips 2 ppm_app 8.1 crit 1.00 ppm_crit 5.0 blur_app 12.0 use 0.995 util_worst 1.008
+  wrist 4.11 W_edge_n35_u30_aim125 PiCam3_wide app_edge 1.00 tips 2 ppm_app 8.0 crit 1.00 ppm_crit 5.1 blur_app 11.6 use 0.996 util_worst 1.008
+  wrist 4.11 W_edge_n35_u30_aim160 PiCam3_wide app_edge 1.00 tips 2 ppm_app 8.0 crit 1.00 ppm_crit 5.0 blur_app 11.7 use 0.996 util_worst 1.008
+  wrist 3.38 W_edge_n35_u30_aim125 PiCam3 app_edge 1.00 tips 2 ppm_app 13.9 crit 0.00 ppm_crit 0.0 blur_app 20.1 use 0.996 util_worst 1.008
+  wrist 3.38 W_edge_n35_u30_aim160 PiCam3 app_edge 1.00 tips 2 ppm_app 13.8 crit 0.00 ppm_crit 0.0 blur_app 20.2 use 0.996 util_worst 1.008
+  wrist 3.38 W_edge_n28p5_u30_aim125 PiCam3 app_edge 1.00 tips 2 ppm_app 14.0 crit 0.00 ppm_crit 0.0 blur_app 20.7 use 0.995 util_worst 1.008
+  wrist 3.38 W_edge_n28p5_u30_aim160 PiCam3 app_edge 1.00 tips 2 ppm_app 14.0 crit 0.00 ppm_crit 0.0 blur_app 20.7 use 0.995 util_worst 1.008
+first-pass O_h250_r120 head thresholds: underside >= 51, right face <= 46
+
+primary head thresholds: underside >= 33 mm above bed (nominal 65), right face <= a 64 mm (nominal 40)
+wrote analysis\gripper\results\camera.json

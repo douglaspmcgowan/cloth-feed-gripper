@@ -26,7 +26,7 @@ Source of every requirement below: Douglas, 2026-10-10, "put the video in the we
 
 ## Sync
 
-- [x] One command, `python scripts/sync.py --ref <sha>`, copies the inputs from a `berkeley-ai-tutor` clone, writes the site files and `public/provenance.json` (source repository name, commit, sync date, and for each served file its public path, sha256 and size). Running it twice with the same ref changes nothing. Proof: second run, then `git status --short` is empty.
+- [x] One command, `python scripts/sync.py --ref <sha>`, reads the inputs from this repository, writes the site files and `public/provenance.json` (source repository name, commit, sync date, and for each served file its public path, sha256 and size). Running it twice with the same ref changes nothing. Proof: second run reports `changed: nothing`.
 - [x] `public/provenance.json` lets a stranger verify the served bytes and reveals nothing else about the private source repository: no source-side path, hash or size, and no input that is read but not served. Proof: `npm test` (`deploy.spec.mjs`) rehashes every listed file and checks the key set; the `source-path` rule of `check_public.py` fails on any path `sync.py` reads that appears in a served file without a reviewed allowlist line. The review app's other evidence citations (relative file names in its Sources panels) are kept on purpose and are outside this rule.
 
 ## Privacy and serving

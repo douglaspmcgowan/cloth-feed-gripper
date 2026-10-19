@@ -1,0 +1,29 @@
+id: T06
+title: Gear centre distance a (pin A to pin B, rev A pinned layout)
+parts: ["mid plate", "front plate", "knuckle A", "knuckle B", "pin A", "pin B"]
+constants: basis.yaml
+units: mm
+requirement: a stays inside the band that keeps backlash between jt_min and jt_max for the design jt0 (T07).
+spec: {lsl: "=a0 - (jt0 - jt_min)/k_jt", usl: "=a0 + (jt_max - jt0)/k_jt"}
+accept: {method: mc}
+notes: >-
+  Both knuckles run in bronze sleeves on m6 pins pressed into the line-reamed plate holes (rev A, fix 9), so a is
+  the printed A-to-B hole spacing (reaming sizes the hole but follows its printed position) plus the two sleeve
+  clearances. The servo no longer sets a: it drives knuckle A through the dog coupling (T14B).
+constant: "=a0"
+contributors:
+  - {name: pinA_to_pinB_holes, nominal: 0, tol: "=plate_hole_pos_tol", dist: normal, tag: S, source: "pin A and pin B holes on one print, 28.5 apart (basis XY band); reaming does not move them"}
+  - {name: pin_float, nominal: 0, tol: "=pin_clear/2", dist: uniform, tag: D, source: "knuckle B sleeve on its pin (basis pin_clear)"}
+  - {name: pinA_float, nominal: 0, tol: "=pin_clear/2", direction: -1, dist: uniform, tag: D, source: "knuckle A sleeve on its pin"}
+  - {name: sleeveA_ecc, nominal: 0, tol: 0.015, direction: -1, dist: normal, tag: S, source: "bush concentricity IT9 (0.030 at 3-6 mm) / 2, https://www.hpceurope.com/docFichesTechniques/OiliteBushings.pdf (retrieved 2026-10-11)"}
+  - {name: sleeveB_ecc, nominal: 0, tol: 0.015, dist: normal, tag: S, source: "same"}
+variants:
+  - id: servoshaft
+    role: rejected
+    label: "pre-rev-A layout: knuckle A on the servo shaft, pin B in the housing"
+    drop: [pinA_to_pinB_holes, pinA_float, sleeveA_ecc]
+    add:
+      - {name: pinB_pos_to_cradle, nominal: 0, tol: "=fdm_xy_tol_short", dist: normal, tag: A, source: "pin B bore to the cradle, same print"}
+      - {name: servo_float_in_cradle, nominal: 0, tol: "=(cradle_pocket_w + fdm_pocket_bias - servo_body_w)/2", direction: -1, dist: uniform, tag: D, source: "cradle clearance / 2"}
+      - {name: shaft_in_case, nominal: 0, tol: "=servo_shaft_pos_tol", direction: -1, dist: normal, tag: A, source: "unpublished"}
+      - {name: spline_play, nominal: 0, tol: "=servo_spline_play_r", direction: -1, dist: uniform, tag: A, source: ""}

@@ -1,0 +1,119 @@
+
+<script>
+"use strict";
+/* ---------- dyno ---------- */
+function multiPlot(container,panels,xlab,xr){container.innerHTML="";panels.forEach((p,i)=>{const d=h("div",{class:"chart"},container);
+  const P=plot(d,{w:720,h:i===panels.length-1?190:160,m:{l:60,r:16,t:10,b:i===panels.length-1?40:22},x:{min:xr[0],max:xr[1],label:i===panels.length-1?xlab:"",fmt:i===panels.length-1?undefined:()=>""},y:{min:p.min,max:p.max,label:p.label},aria:p.label});
+  p.series.forEach(([pts,c,w,dash])=>P.line(pts,c,w||1.6,dash));if(p.hl)p.hl.forEach(([v,c,lab])=>P.hline(v,c,"4 3",lab));P.legend(p.series.map(q=>[q[4],q[1],q[3]]),{x:P.m.l+8,y:P.m.t+14});});}
+function partName(c){
+  let m=c.match(/^gear m([\d.]+)z(\d+)a\d+(?:x[\d.]+)?b(\d+)_(\S+)/);if(m)return `Gear pair, ${m[4]}, module ${m[1]}, ${m[2]} teeth, ${m[3]} mm`;
+  if(c.startsWith("finger"))return "Finger, "+(c.includes("hot_spot")?"hot spot":"99th percentile")+", "+(c.includes("pessimistic")?"pessimistic":"as printed")+(c.includes("uncapped")?", uncapped":"");
+  return decode(c.replace(/\s*\*$/,"")).replace(/^./,x=>x.toUpperCase());}
+function renderDyno(){
+  const A=D.tspeed.A_mech,B=D.tspeed.B_elec,DC=D.dyno_close.A_mech;
+  const Tm=Math.max(...A.T_Nm,...B.T_Nm),wm=Math.max(...A.w_rad_s,...B.w_rad_s);
+  fitDraw($("#tsChart"),cw=>{const P=plot($("#tsChart"),{w:cw,h:320,x:{min:0,max:Math.ceil(Tm*10)/10,label:"Output torque ("+NM+")"},y:{min:0,max:Math.ceil(wm),label:"Output speed (rad/s)"}});
+    P.line(A.T_Nm.map((t,i)=>[t,A.w_rad_s[i]]),"var(--c1)",2.2);P.line(B.T_Nm.map((t,i)=>[t,B.w_rad_s[i]]),"var(--c2)",2.2,"6 4");
+    P.vline(0.792,"var(--ok)","4 3");P.vline(1.556,"var(--warn)","4 3");
+    P.text(0.792,wm,"Hold","var(--ok)","start",5,16);P.text(1.556,wm,"Cap","var(--warn)","end",-5,16);
+    const lg=[["Fit A, mechanical figures","var(--c1)"],["Fit B, datasheet current","var(--c2)","6 4"],["Hold torque "+fmt(0.792,3)+" "+NM,"var(--ok)","4 3"],["10 N force cap "+fmt(1.556,3)+" "+NM,"var(--warn)","4 3"]];
+    if(P.narrow)keyRow($("#tsChart"),lg);else P.legend(lg,{x:P.m.l+12,y:P.m.t+P.ph-64});});
+  const Im=Math.max(...A.I_A,...B.I_A);
+  const Q=plot($("#tiChart"),{w:640,h:340,x:{min:0,max:Math.ceil(Tm*10)/10,label:"Output torque ("+NM+")"},y:{min:0,max:Math.ceil(Im),label:"Motor current (A)"}});
+  Q.line(A.T_Nm.map((t,i)=>[t,A.I_A[i]]),"var(--c1)",2.2);Q.line(B.T_Nm.map((t,i)=>[t,B.I_A[i]]),"var(--c2)",2.2,"6 4");
+  Q.hline(3,"var(--bad)","4 3","3 A rail","start");Q.dot(0.792,A.hold_0p792Nm_current_A,"var(--c1)",5,"hold, Fit A","var(--surface)");Q.dot(0.792,B.hold_0p792Nm_current_A,"var(--c2)",5,"hold, Fit B","var(--surface)");
+  Q.text(0.792,A.hold_0p792Nm_current_A,`hold ${fmt(A.hold_0p792Nm_current_A,2)} A`,"var(--c1)","start",8,-6);
+  kv($("#curNums"),[["Stall current, Fit A",fmt(D.motor_fit.A_mech.I_stall_A,2)+" A","the datasheet says 2.2 A; the rail is 3 A","cell-warn"],["Hold current, Fit A",fmt(A.hold_0p792Nm_current_A,2)+" A",`${fmt(A.hold_fraction_of_stall*100,0)} % of stall`],["Hold current, Fit B",fmt(B.hold_0p792Nm_current_A,2)+" A"]]);
+  function duty(){const z=$("#dutyWin").value==="close",S=z?D.closez:D.duty,t=S.t,pts=k=>t.map((x,i)=>[x,S[k][i]]);
+    const xr=[t[0],t[t.length-1]];
+    const panels=[{label:"Jaw angle (°)",min:-12,max:22,series:[[pts("theta_cmd"),"var(--c5)",1.4,"4 3","command"],[pts("theta_A"),"var(--c1)",2,null,"jaw"]]},
+      {label:"Force (N)",min:0,max:10,series:[[pts("F"),"var(--c2)",2,null,"pad force"],[pts("F_fsr"),"var(--c3)",1.4,"4 3","sensor reading"]].concat(z?[]:[[pts("tension"),"var(--c4)",1.4,null,"cloth tension"]]),hl:[[5,"var(--ok)","5 N setpoint"],[8,"var(--bad)","8 N trip"]]},
+      {label:"Torque ("+NM+")",min:-0.5,max:2.2,series:[[pts("T_servo"),"var(--c1)",1.8,null,"servo"]].concat(z?[]:[[pts("T_mesh"),"var(--c2)",1.4,"4 3","mesh"]])},
+      {label:"Current (A)",min:0,max:4,series:[[pts("i"),"var(--c4)",1.6,null,"motor current"]],hl:[[3,"var(--bad)","3 A rail"]]}];
+    multiPlot($("#dutyChart"),panels,"Time (s)",xr);}
+  $("#dutyWin").addEventListener("change",duty);duty();
+  kv($("#dutyNums"),[["Close to contact",fmt(DC.close_to_contact_s,2)+" s"],["Close to 5 N",fmt(DC.close_to_5N_s,2)+" s","limit 0.5 s; the torque model says 0.278",DC.close_to_5N_s>0.5?"cell-bad":"cell-ok"],["Mean hold force",fmt(DC.F_hold_mean_N,2)+" N","setpoint 5 N"],["Peak servo torque",fmt(DC.T_servo_peak_Nm,2)+" "+NM]]);
+  const T=D.therm,tm=T.t.map(x=>x/60);
+  const R=plot($("#thermChart"),{w:640,h:300,x:{min:0,max:30,label:"Time (min)"},y:{min:20,max:160,label:"Temperature (°C)"}});
+  R.hband(20,60,"var(--band)");R.hline(60,"var(--bad)","4 3","60 °C limit","end");
+  R.line(tm.map((x,i)=>[x,T.T_winding[i]]),"var(--c2)",1.4);R.line(tm.map((x,i)=>[x,T.T_case[i]]),"var(--c1)",2.2);
+  R.legend([["case","var(--c1)"],["winding","var(--c2)"]],{x:R.m.l+8,y:R.m.t+16});
+  $("#thermTable").innerHTML=`<thead><tr><th>Scenario</th><th>Result, 60 °C limit</th><th class="n">Case (°C)</th><th class="n">Winding (°C)</th><th class="n">Copper loss (W)</th></tr></thead><tbody>`+
+    Object.entries(D.therm_cases).map(([k,c])=>{const m=k.match(/^([AB])_\w+?_amb(\d+)_Rth2x([\d.]+)$/)||[0,k,"",""];return `<tr><td class="w"><b>Fit ${esc(m[1])}</b><br><span class="note">${m[2]} °C ambient, case-to-air resistance × ${m[3]}</span></td><td>${c.R26_pass?st("pass","under 60 °C"):st("fail","over 60 °C")}</td><td class="n ${c.R26_pass?"cell-ok":"cell-bad"}">${fmt(c.T_case_30min_C,1)}</td><td class="n">${fmt(c.T_winding_30min_C,1)}</td><td class="n">${fmt(c.mean_Pcu_W,2)}</td></tr>`;}).join("")+"</tbody>";
+  const rk=D.rank,stack=window.innerWidth<=600,Hh=rk.length*(stack?44:26)+56;
+  $("#rankChart").classList.toggle("wide",!stack);$("#rankChart").classList.toggle("tall",stack);
+  const K=plot($("#rankChart"),{w:760,h:Hh,m:{l:stack?18:330,r:stack?64:70,t:8,b:40},x:{min:1,max:1e10,log:true,ticks:stack?[1,1e5,1e10]:undefined,label:"Grips to failure, log scale"+(stack?"; target 1e5":""),fmt:v=>"1e"+Math.round(Math.log10(v))},y:{min:0,max:rk.length,ticks:[]}});
+  K.vband(1,1e5,"var(--bad-soft)");K.vline(1e5,"var(--bad)","4 3",stack?undefined:"target 1e5");
+  rk.forEach((r,i)=>{const yy=rk.length-i-0.5,v=Math.max(1,r.grips_to_failure),y0=K.y(yy+(stack?0:0.32)),y1=K.y(yy-(stack?0.4:0.32));
+    s("rect",{x:K.x(1),y:y0,width:Math.max(2,K.x(v)-K.x(1)),height:y1-y0},K.svg,`fill:${v<1e5?"var(--bad)":r.component.startsWith("gear")?"var(--c1)":r.component.startsWith("knuckle")?"var(--c3)":"var(--c2)"};opacity:.8`);
+    const t=s("text",stack?{x:K.m.l+2,y:K.y(yy+0.14),"text-anchor":"start"}:{x:K.m.l-6,y:K.y(yy)+4,"text-anchor":"end"},K.svg);t.textContent=partName(r.component);
+    K.text(v,stack?yy-0.2:yy,fmtE(r.grips_to_failure)+(r.static_ok?"":", breaks at once"),"var(--ink)","start",5,4,"val");});
+  const EVN={snag_2x_tension:"Cloth snags at twice the tension",collision_TPU_tip:"Fingertip hits an obstacle",collision_rigid_knuckle:"Knuckle hits an obstacle",jam_fingerB:"Finger B jams"};
+  const sub=k=>(/^(\d+)dps/.test(k)?"at "+k.match(/^(\d+)dps/)[1]+" °/s, ":"")+(/J_low/.test(k)?"inertia × 0.35":/J_high/.test(k)?"inertia × 2.6":"inertia as estimated");
+  const rows=[];Object.entries(D.shock).forEach(([k,v])=>{if(!EVN[k]||!v||typeof v!=="object")return;
+    if(typeof v.T_mesh_peak_Nm==="number")rows.push([EVN[k],v]);else Object.entries(v).forEach(([kk,vv])=>{if(vv&&typeof vv.T_mesh_peak_Nm==="number")rows.push([EVN[k]+", "+sub(kk),vv]);});});
+  const lim=D.gears.lc.shock;
+  $("#shockTable").innerHTML=`<thead><tr><th>Event</th><th class="n">Peak mesh torque (${NM})</th><th class="n">Peak servo torque (${NM})</th><th class="n">Peak obstacle force (N)</th><th class="n">Lowest grip force (N)</th><th class="n">Peak current (A)</th></tr></thead><tbody>`+
+    rows.map(([n,v])=>`<tr><td class="w">${esc(n)}</td><td class="n ${v.T_mesh_peak_Nm>lim?"cell-warn":""}">${fmt(v.T_mesh_peak_Nm,2)}</td><td class="n">${fmt(v.T_servo_peak_Nm,2)}</td><td class="n">${fmt(v.obstacle_force_peak_N,1)}</td><td class="n">${fmt(v.F_min_N??v.F_grip_min_N,2)}</td><td class="n">${fmt(v.I_peak_A,2)}</td></tr>`).join("")+"</tbody>";
+}
+RENDER.dyno=renderDyno;
+
+/* ---------- tolerance stacks ---------- */
+function tolClean(t){return String(t||"").replace(/\s*\((?:DB|T\d|W1)[^)]*\)/g,"").replace(/fix-9 layout/g,"pinned layout").replace(/T08 shimmed/g,"end play shimmed").replace(/\bDESIGN-BASIS CAD\b/g,"early CAD").replace(/theta_min/g,"the jaw limit").replace(/theta_hold/g,"hold angle")
+  .replace(/theta = 0/g,"0°").replace(/\bFSR\b/g,"force sensor").replace(/\bBC\b/g,"bolt circle").replace(/ deg\b/g,"°").replace(/\+\/-/g,"±").replace(/,?\s*\bT\d+[A-Z]?(-[\w-]+)?\b/g,"").replace(/\s+/g," ").trim();}
+const FIXES=[["Screw clearance holes at Ø3.6 in CAD, or print and drill to Ø3.3",["T01-cad36","T01-drill33"]],["Head counterbores at Ø6.5, not 6.0",["T01H-cb65"]],["Measure the real horn hole depth before choosing the screw length",["T03","T03B"]],
+  ["Pilot recess at Ø19.51 with a 0.3 × 45° chamfer",["T02-cad1951"]],["Hub radius 11.6 mm near the horn, widening 5.0 mm above it",["T11-hub116","T12-widen50"]],["Knuckles on steel pins, plates reamed together, bronze sleeves, floating coupling",["T07-bushed","T16-bushed"]],
+  ["Close on force, not on angle",["T09-forceclose"]],["Shim the knuckle end play to about 0.3 mm",["T08-shimmed","T15-shimmed"]],["Locate each finger with two pegs",["T10-pegs","T05-pinned-pegs"]],["Locating tab on the camera bracket",["T13-tab"]]];
+function renderTol(){
+  const T=D.tol,byId={};T.forEach(r=>{byId[r.id]=r;r.name=tolClean(r.t);r.var=r.id.includes("-")?(tolClean(r.vl)||"with a fix"):"as designed";});
+  const iv=a=>a&&a.length===2&&a[0]!=null?`${fmt(a[0],3)} to ${fmt(a[1],3)}`:"–";
+  const spec=sp=>!sp?"–":sp.lsl!=null&&sp.usl!=null?`${fmt(sp.lsl,3)} to ${fmt(sp.usl,3)}`:sp.lsl!=null?`at least ${fmt(sp.lsl,3)}`:sp.usl!=null?`at most ${fmt(sp.usl,3)}`:"–";
+  const pc=(r,k)=>r.p&&r.p[k]===false?"cell-bad":r.p&&r.p[k]?"cell-ok":"";
+  const cols=[{k:"name",t:"Stack",f:r=>`<span class="w">${r.v?st("pass"):st("fail")} <b>${esc(r.name)}</b><br><span class="note">${esc(r.var)}</span></span>`},{k:"nom",t:"Nominal",n:1,f:r=>fmt(r.nom,3)},
+    {k:"wc",t:"Worst case",n:1,nosort:1,f:r=>iv(r.wc),cls:r=>pc(r,"wc")},{k:"rss",t:"Statistical",n:1,nosort:1,f:r=>iv(r.rss),cls:r=>pc(r,"rss")},
+    {k:"mc",t:"Simulated, 99.73 %",n:1,nosort:1,f:r=>iv(r.mc),cls:r=>pc(r,"mc")},{k:"out",t:"Out of limit (%)",n:1,f:r=>fmt(r.out,2)},
+    {k:"cpk",t:"Capability",n:1,f:r=>fmt(r.cpk,2),cls:r=>r.cpk==null?"":r.cpk>=1.33?"cell-ok":"cell-bad"},{k:"spec",t:"Limit",n:1,nosort:1,f:r=>spec(r.spec)},{k:"method",t:"Judged by",f:r=>r.method==="wc"?"worst case":"simulation"},
+    {k:"v",t:"Verdict",v:r=>r.v?1:0,f:r=>r.v?st("pass"):st("fail")+(r.blk&&r.blk.length?` <span class="note">through ${esc(r.blk.map(b=>byId[b]?byId[b].name.toLowerCase():"another stack").join(", "))}</span>`:"")}];
+  const tb=sortableTable($("#tolTable"),cols,T,{attr:r=>{const k=tolPart(r.id);return k?`data-part="${k}${k==="finger_a"?" finger_b":""}"`:"";}});
+  let picked=false;
+  function filt(){const m=$("#tolShow").value,q=$("#tolQ").value.toLowerCase();const r=T.filter(r=>(m==="all"||(m==="base"&&!r.id.includes("-"))||(m==="fix"&&r.id.includes("-"))||(m==="fail"&&!r.v))&&(!q||(r.id+" "+r.name+" "+r.var).toLowerCase().includes(q)));
+    tb.set(r);$("#tolCount").textContent=`${r.length} of ${T.length} shown`;}
+  $("#tolShow").addEventListener("change",()=>{picked=true;filt();});
+  $("#tolQ").addEventListener("input",()=>{if(!picked&&$("#tolQ").value&&$("#tolShow").value==="fail")$("#tolShow").value="all";filt();});filt();
+  $("#fixTable").innerHTML=`<thead><tr><th>Fix</th><th>Result with the fix</th></tr></thead><tbody>`+FIXES.map(([txt,ids])=>`<tr><td class="w">${esc(txt)}</td><td>${ids.map(id=>{const r=byId[id];return r?`${esc(r.name)}: ${r.v?st("pass"):st("fail")}${r.cpk!=null?` capability ${fmt(r.cpk,2)}`:""}`:"";}).join("<br>")}</td></tr>`).join("")+"</tbody>";
+}
+RENDER.tolerances=renderTol;
+
+/* ---------- camera ---------- */
+const CAMN={PiCam3:"Pi Camera 3",PiCam3_wide:"Pi Camera 3 Wide",C270:"Logitech C270",ESP32CAM_OV2640:"ESP32-CAM, OV2640",OV9281_GS:"OV9281, global shutter",UVC32_1080p:"USB module, 1080p"};
+const placeName=(p,kind)=>kind+", "+String(p).replace(/^[A-Z]_/,"").replace(/_/g," ");
+function renderCamera(){
+  const rows=D.cam,cams=[...new Set(rows.map(r=>r[2]))];$("#camSel").innerHTML+=cams.map(c=>`<option value="${esc(c)}">${esc(CAMN[c]||decode(c))}</option>`).join("");
+  const KC={overhead:"var(--c1)",side:"var(--c2)",wrist:"var(--c4)"};
+  const pr=rows.find(r=>r[0]===D.cam_mount.primary_fixed.placement&&r[2]===D.cam_mount.primary_fixed.camera);
+  const blind=r=>!r[3]&&!r[4],NB=rows.filter(blind),nb=k=>NB.filter(r=>r[1]===k).length;
+  function draw(){const cs=$("#camSel").value,R0=rows.filter(r=>!cs||r[2]===cs),R=R0.filter(r=>!blind(r)),nz=R0.length-R.length;const ym=Math.max(8,...R.map(r=>r[4]||0));
+    const P=plot($("#camChart"),{w:640,h:360,x:{min:0,max:100,label:"Critical edge visible at the worst feed pose (%)"},y:{min:0,max:Math.ceil(ym),label:"Pixels per mm at the critical edge"}});
+    R.forEach(r=>{if(r[3]==null||r[4]==null)return;const ok=r[5];P.dot(r[3]*100,r[4],ok?KC[r[1]]:"none",ok?3.8:3,`${placeName(r[0],r[1])}; ${CAMN[r[2]]||r[2]}; ${fmt(r[4],2)} px/mm; ${fmt(r[3]*100,0)} % seen; feed ${ok?"passes":"fails"}; ${fmt(r[7],1)} g`,ok?null:KC[r[1]]);});
+    if(nz){P.dot(0,0,"var(--c5)",5,`${nz} positions see none of the edge`,"var(--surface)");P.text(0,0,`${fmt(nz,0)} positions see none of the edge`,null,"start",10,-10);}
+    if(pr&&(!cs||cs===pr[2])){P.dot(pr[3]*100,pr[4],"none",9,"primary","var(--ink)");P.text(pr[3]*100,pr[4],"primary","var(--ink)","end",-12,4);}
+    P.legend([["overhead or oblique","var(--c1)"],["side","var(--c2)"],["wrist","var(--c4)"]],{x:P.m.l+8,y:P.m.t+16});}
+  $("#camSel").addEventListener("change",draw);draw();
+  kv($("#camNums"),[["Positions tried",fmt(rows.length,0),`${fmt(rows.filter(r=>r[5]).length,0)} pass the feed check`],["See none of the edge",fmt(NB.length,0),["overhead","side","wrist"].filter(nb).map(k=>`${nb(k)} ${k}`).join(", ")+"; drawn as one point at the origin"],["Primary, resolution",pr?fmt(pr[4],1)+" px/mm":"5.5 px/mm"],["Primary, edge seen",pr?fmt(pr[3]*100,0)+" %":"100 %","straight overhead sees 0 %"],["Mass on the wrist","0 g","a wrist camera would add 16.3 g"]]);
+  $("#camTop").innerHTML=`<thead><tr><th class="n">Rank</th><th>Position</th><th>Camera</th><th class="n">Pixels per mm</th><th class="n">Edge seen</th><th class="n">Score</th></tr></thead><tbody>`+
+    D.cam_top.map((r,i)=>`<tr${i===0?' class="hl"':""}><td class="n">${i+1}</td><td>${esc(placeName(r.placement,r.kind))}</td><td>${esc(CAMN[r.camera]||decode(r.camera))}</td><td class="n">${fmt(r.ppm_crit_min,2)}</td><td class="n">${fmt((r.feed_crit_visible_min||0)*100,0)} %</td><td class="n">${fmt(r.score,2)}</td></tr>`).join("")+"</tbody>";
+  pics($("#camPics"),[["camera_views","What each camera sees"],["camera_top","Layout from above"],["camera_side","Layout from the side"]]);
+}
+RENDER.camera=renderCamera;
+
+/* ---------- start ---------- */
+window.addEventListener("hashchange",()=>go(location.hash,true));
+window.addEventListener("resize",cueSoon);
+if(window.matchMedia){try{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{if(DONE.finger)drawFEA();});}catch(e){}}
+new MutationObserver(()=>{if(DONE.finger)drawFEA();window.dispatchEvent(new Event("theme-change"));}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+if(window.matchMedia){try{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>window.dispatchEvent(new Event("theme-change")));}catch(e){}}
+try{fillStatic();}catch(err){console.error("fillStatic",err);}
+buildShell();
+$$(".depth a[href^='#open-']").forEach(a=>{const c=CHECKS[a.getAttribute("href").slice(6)];if(c)a.textContent=c[1].length+(c[1].length===1?" bench check":" bench checks");});
+go(location.hash||store("gripperView")||"model",false);
+</script>

@@ -1,0 +1,25 @@
+id: T03
+title: Axial stack horn face to clamp to screw — thread engagement
+parts: ["wrist mount", "servo horn", "M3 horn screws"]
+constants: basis.yaml
+mode: expression
+units: mm full-thread engagement below horn face H
+requirement: >-
+  M3 engages >= 1.5 mm (3 pitches) of full horn thread. The screw reaches min(protrusion below H, hole depth),
+  and its incomplete tip thread is inside the hole either way, so engagement = min(L - t - lift - runout, depth)
+  - tip chamfer. Conditional on T03B: a screw that bottoms does not clamp.
+spec: {lsl: "=thread_engage_min"}
+accept: {method: wc, requires: [T03B]}
+fix: "Measure the real horn hole depth (DB M15) before buying screws. At 3.5 deep, M3x6 engages fully but is marginal on bottoming (T03-depth35), so run each screw in by hand and check the head seats before torquing."
+fix_variant: depth35
+expression: "minimum(screw_length - clamp_thickness - datum_A_flatness_lift - horn_face_runout, horn_hole_depth) - screw_tip_chamfer"
+contributors:
+  - {name: screw_length, nominal: "=screw_len", tol: "=screw_len_tol", dist: normal, tag: A, source: "M3x6 [S LeRobot]; tol [A]"}
+  - {name: clamp_thickness, nominal: "=clamp_t", tol: "=fdm_z_tol", dist: uniform, tag: S, source: "3.0 (params.json) [D]; Z band [S Gebre]"}
+  - {name: datum_A_flatness_lift, nominal: 0, unilateral: "=mount_flatness", dist: uniform, tag: A, source: "flatness 0.2 on A: part rests on high points"}
+  - {name: horn_face_runout, nominal: 0, tol: "=horn_face_runout/2", dist: normal, tag: A, source: "horn face FIM 0.05"}
+  - {name: horn_hole_depth, nominal: "=horn_hole_depth", tol: 0.10, dist: normal, tag: A, source: "2.5 CAD (so101.md row 4) [D]; tol [A]"}
+  - {name: screw_tip_chamfer, nominal: "=screw_tip_chamfer", tol: 0, tag: A, source: "incomplete thread at the point"}
+variants:
+  - {id: depth35, role: scenario, label: "horn holes measured 3.5 deep (M15 outcome to confirm)", set: {horn_hole_depth: 3.5}, accept: {method: wc, requires: [T03B-depth35]}}
+  - {id: m3x5, label: "M3x5 screws in the 2.5 CAD hole", set: {screw_len: 5.0}, accept: {method: wc, requires: [T03B-m3x5]}}

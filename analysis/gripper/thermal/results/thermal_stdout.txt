@@ -1,0 +1,294 @@
+=== Thermal lane: DS3230 MG in revision B printed PETG housing ===
+Hold torque at 5 N per pad: 0.7918 N m; cycle 35.25 s; hold fraction 0.7092, close fraction 0.0213
+Conductances (W/K): case->housing 0.0822 (ears 0.0402, pocket 0.0224, band 0.0167, top gap 0.0029); housing->mount 3.61e-04; mount->arm 0.0354; case->finger root 1.56e-03
+
+--- 1. Heat sources (6.5 V rail, average-value conduction, winding at 100 C for the table) ---
+A_mech               F  5.0 N avg: I_hold 1.690 A, hold 6.42 W peak 8.94 W, cycle-average 4.75 W, rail current in hold 0.99 A (trip 3.0 A)
+A_mech               F  5.0 N pwm: I_hold 1.690 A, hold 11.30 W peak 13.40 W, cycle-average 8.31 W, rail current in hold 1.74 A (trip 3.0 A)
+A_mech               F  6.5 N avg: I_hold 2.179 A, hold 10.66 W peak 10.66 W, cycle-average 7.76 W, rail current in hold 1.64 A (trip 3.0 A)
+A_mech               F  8.0 N avg: I_hold 2.669 A, hold 15.97 W peak 15.97 W, cycle-average 11.53 W, rail current in hold 2.46 A (trip 3.0 A)
+A_mech               F 10.0 N avg: I_hold 3.322 A, hold 24.72 W peak 24.72 W, cycle-average 17.73 W, rail current in hold 3.80 A (trip 3.0 A)
+B_elec               F  5.0 N avg: I_hold 1.609 A, hold 6.10 W peak 8.50 W, cycle-average 4.52 W, rail current in hold 0.94 A (trip 3.0 A)
+B_elec               F  5.0 N pwm: I_hold 1.609 A, hold 10.75 W peak 12.74 W, cycle-average 7.91 W, rail current in hold 1.65 A (trip 3.0 A)
+B_elec               F  6.5 N avg: I_hold 2.076 A, hold 10.13 W peak 10.13 W, cycle-average 7.37 W, rail current in hold 1.56 A (trip 3.0 A)
+B_elec               F  8.0 N avg: I_hold 2.542 A, hold 15.18 W peak 15.18 W, cycle-average 10.95 W, rail current in hold 2.34 A (trip 3.0 A)
+B_elec               F 10.0 N avg: I_hold 3.164 A, hold 23.49 W peak 23.49 W, cycle-average 16.85 W, rail current in hold 3.61 A (trip 3.0 A)
+B_elec_Annimos1p8A   F  5.0 N avg: I_hold 1.609 A, hold 6.10 W peak 8.50 W, cycle-average 4.52 W, rail current in hold 0.94 A (trip 3.0 A)
+B_elec_Annimos1p8A   F  5.0 N pwm: I_hold 1.609 A, hold 10.75 W peak 12.74 W, cycle-average 7.91 W, rail current in hold 1.65 A (trip 3.0 A)
+B_elec_Annimos1p8A   F  6.5 N avg: I_hold 2.076 A, hold 10.13 W peak 10.13 W, cycle-average 7.37 W, rail current in hold 1.56 A (trip 3.0 A)
+B_elec_Annimos1p8A   F  8.0 N avg: I_hold 2.542 A, hold 15.18 W peak 15.18 W, cycle-average 10.95 W, rail current in hold 2.34 A (trip 3.0 A)
+B_elec_Annimos1p8A   F 10.0 N avg: I_hold 3.164 A, hold 23.49 W peak 23.49 W, cycle-average 16.85 W, rail current in hold 3.61 A (trip 3.0 A)
+
+--- 2. Steady state (cycle-averaged power), ambient 25 C, open cradle as drawn ---
+A_mech               avg F  5.0: winding pk  165.3  case  92.4  housing  86.9  mount  28.8  finger root  32.1 C; min margin -40.3 K (winding_peak_vs_limit_K)
+A_mech               avg F  8.0: no steady state (electro-thermal runaway)
+A_mech               avg F 10.0: no steady state (electro-thermal runaway)
+A_mech               pwm F  5.0: winding pk  230.5  case 120.7  housing 112.3  mount  28.9  finger root  34.8 C; min margin -105.5 K (winding_peak_vs_limit_K)
+A_mech               pwm F  8.0: winding pk  333.8  case 160.3  housing 147.4  mount  29.2  finger root  38.2 C; min margin -208.8 K (winding_peak_vs_limit_K)
+A_mech               pwm F 10.0: winding pk  400.1  case 184.2  housing 168.3  mount  29.3  finger root  40.3 C; min margin -275.1 K (winding_peak_vs_limit_K)
+B_elec               avg F  5.0: winding pk  156.8  case  88.8  housing  83.7  mount  28.8  finger root  31.8 C; min margin -33.6 K (housing_vs_petg_creep_onset_K)
+B_elec               avg F  8.0: no steady state (electro-thermal runaway)
+B_elec               avg F 10.0: no steady state (electro-thermal runaway)
+B_elec               pwm F  5.0: winding pk  221.7  case 117.1  housing 109.0  mount  28.9  finger root  34.4 C; min margin -96.7 K (winding_peak_vs_limit_K)
+B_elec               pwm F  8.0: winding pk  320.6  case 155.4  housing 143.0  mount  29.1  finger root  37.8 C; min margin -195.6 K (winding_peak_vs_limit_K)
+B_elec               pwm F 10.0: winding pk  384.1  case 178.5  housing 163.3  mount  29.3  finger root  39.8 C; min margin -259.1 K (winding_peak_vs_limit_K)
+B_elec_Annimos1p8A   avg F  5.0: winding pk  156.8  case  88.8  housing  83.7  mount  28.8  finger root  31.8 C; min margin -33.6 K (housing_vs_petg_creep_onset_K)
+B_elec_Annimos1p8A   avg F  8.0: no steady state (electro-thermal runaway)
+B_elec_Annimos1p8A   avg F 10.0: no steady state (electro-thermal runaway)
+B_elec_Annimos1p8A   pwm F  5.0: winding pk  221.7  case 117.1  housing 109.0  mount  28.9  finger root  34.4 C; min margin -96.7 K (winding_peak_vs_limit_K)
+B_elec_Annimos1p8A   pwm F  8.0: winding pk  320.6  case 155.4  housing 143.0  mount  29.1  finger root  37.8 C; min margin -195.6 K (winding_peak_vs_limit_K)
+B_elec_Annimos1p8A   pwm F 10.0: winding pk  384.1  case 178.5  housing 163.3  mount  29.3  finger root  39.8 C; min margin -259.1 K (winding_peak_vs_limit_K)
+A_mech: effective case-to-ambient resistance 12.64 K/W (all heat paths, P_avg 5.33 W)
+B_elec: effective case-to-ambient resistance 12.81 K/W (all heat paths, P_avg 4.98 W)
+   face top_exposed    :  1020.0 mm2, L  7.79 mm, Ra    1864.4, h_conv 13.06, h_rad  5.69 W/m2K, Ra in stated range: False
+   face bottom_exposed :  1020.0 mm2, L  7.79 mm, Ra    1864.4, h_conv  6.53, h_rad  5.69 W/m2K, Ra in stated range: False
+   face ends_exposed   :  1025.1 mm2, L 20.10 mm, Ra   32073.0, h_conv 10.03, h_rad  5.69 W/m2K, Ra in stated range: True
+   face back           :   804.0 mm2, L 20.10 mm, Ra   32073.0, h_conv 10.03, h_rad  5.69 W/m2K, Ra in stated range: True
+   face ears_back      :   291.5 mm2, L 20.10 mm, Ra   32073.0, h_conv 10.03, h_rad  5.69 W/m2K, Ra in stated range: True
+   face band_top       :   200.0 mm2, L  4.00 mm, Ra     252.8, h_conv 15.42, h_rad  3.56 W/m2K, Ra in stated range: False
+   face band_bottom    :   200.0 mm2, L  4.00 mm, Ra     252.8, h_conv  7.71, h_rad  3.56 W/m2K, Ra in stated range: False
+
+--- 2b. Transients, 1 h from cold at 25 C ---
+A_mech|duty         : case 30 min 86.7 C, 60 min 92.2 C; housing 60 min 86.7 C; winding peak (last cycle) 155.7 C; case 63 % time 792.0 s
+A_mech|continuous   : case 30 min 112.3 C, 60 min 119.4 C; housing 60 min 111.1 C; winding peak (last cycle) 198.2 C; case 63 % time 769.4000000000001 s
+  check A_mech: steady case 92.41 vs 60 min transient 92.20 C; steady winding peak 165.3 vs transient 155.7 C
+B_elec|duty         : case 30 min 83.3 C, 60 min 88.6 C; housing 60 min 83.4 C; winding peak (last cycle) 147.9 C; case 63 % time 795.0500000000001 s
+B_elec|continuous   : case 30 min 107.2 C, 60 min 114.0 C; housing 60 min 106.3 C; winding peak (last cycle) 187.2 C; case 63 % time 773.5 s
+  check B_elec: steady case 88.83 vs 60 min transient 88.60 C; steady winding peak 156.8 vs transient 147.9 C
+
+--- 2c. Sustained hold at the cap, from the duty-cycle steady state, 25 C ---
+A_mech   F  6.5 N continuous: case 60 C at 0.0 s, 70 C at 0.0 s, winding 125 C at 0.0 s, housing 50 C at 0.0 s
+A_mech   F  8.0 N continuous: case 60 C at 0.0 s, 70 C at 0.0 s, winding 125 C at 0.0 s, housing 50 C at 0.0 s
+A_mech   F 10.0 N continuous: case 60 C at 0.0 s, 70 C at 0.0 s, winding 125 C at 0.0 s, housing 50 C at 0.0 s
+B_elec   F  6.5 N continuous: case 60 C at 0.0 s, 70 C at 0.0 s, winding 125 C at 0.0 s, housing 50 C at 0.0 s
+B_elec   F  8.0 N continuous: case 60 C at 0.0 s, 70 C at 0.0 s, winding 125 C at 0.0 s, housing 50 C at 0.0 s
+B_elec   F 10.0 N continuous: case 60 C at 0.0 s, 70 C at 0.0 s, winding 125 C at 0.0 s, housing 50 C at 0.0 s
+
+--- 3. Limits and creep ---
+Mount clamp: preload 250-500 N; bearing under an M3 nut 18.4-36.8 MPa, under a 7 mm washer 8.8-17.7 MPa; hold reaction 8.0 N per screw (0.11 MPa on the ear face)
+Romeijn 2021 flexural creep stresses (48 mm span assumed): 8.8, 17.6, 26.4 MPa
+Preload retained after a semester (84 h hot) [judgement]: 25 C 0.69, 40 C 0.50, 50 C 0.28, 60 C 0.16, 65 C 0.13
+Temperature at which half the preload is gone in a semester: 40.0 C (972 h design life: 37.3 C)
+A_mech|avg|F5: housing at the mount 86.9 C -> preload retained 0.00; finger root 32.1 C vs TPU HDT 50.3 C
+B_elec|avg|F5: housing at the mount 83.7 C -> preload retained 0.00; finger root 31.8 C vs TPU HDT 50.3 C
+
+--- 4. Sensitivity (steady, Fit A and Fit B, 5 N hold unless stated) ---
+A_mech: baseline case 92.4 C, housing 86.9 C, winding pk 165.3 C
+   baseline                : case   92.4 (  +0.0)  housing   86.9  winding pk  165.3  min margin  -40.3 K
+   ambient_20              : case   87.3 (  -5.1)  housing   81.9  winding pk  159.1  min margin  -34.0 K
+   ambient_30              : case   97.5 (  +5.0)  housing   91.9  winding pk  171.4  min margin  -46.5 K
+   ambient_35              : case  102.5 ( +10.1)  housing   96.8  winding pk  177.6  min margin  -52.6 K
+   ambient_40              : case  107.5 ( +15.0)  housing  101.7  winding pk  183.7  min margin  -58.6 K
+   enclosed_shroud         : case  129.9 ( +37.5)  housing  120.5  winding pk  211.1  min margin  -86.1 K
+   duty_0p5                : case   72.5 ( -19.9)  housing   68.8  winding pk  140.9  min margin  -18.8 K
+   duty_0p9                : case  112.1 ( +19.7)  housing  104.6  winding pk  189.4  min margin  -64.4 K
+   duty_1p0_continuous     : case  123.2 ( +30.7)  housing  114.5  winding pk  202.8  min margin  -77.8 K
+   V_6p35                  : case   90.8 (  -1.6)  housing   85.4  winding pk  161.3  min margin  -36.3 K
+   V_6p8                   : case   95.7 (  +3.3)  housing   89.9  winding pk  173.5  min margin  -48.5 K
+   pwm_bound               : case  120.7 ( +28.3)  housing  112.3  winding pk  230.5  min margin -105.5 K
+   R19_close_0p75s         : case   92.4 (  +0.0)  housing   86.9  winding pk  165.3  min margin  -40.3 K
+   R_wc_6                  : case   88.8 (  -3.6)  housing   83.7  winding pk  128.6  min margin  -33.7 K
+   R_wc_15                 : case   97.6 (  +5.2)  housing   91.5  winding pk  222.4  min margin  -97.4 K
+   h_conv_x0p75            : case  104.1 ( +11.7)  housing   98.2  winding pk  179.6  min margin  -54.6 K
+   h_conv_x1p25            : case   83.8 (  -8.6)  housing   78.5  winding pk  154.7  min margin  -29.7 K
+   eps_0p77                : case   94.4 (  +2.0)  housing   88.7  winding pk  167.7  min margin  -42.7 K
+   eps_0p92                : case   90.8 (  -1.6)  housing   85.4  winding pk  163.3  min margin  -38.3 K
+   G_ch_x0p5               : case   92.9 (  +0.5)  housing   82.7  winding pk  165.9  min margin  -40.9 K
+   G_ch_x2                 : case   92.1 (  -0.3)  housing   89.2  winding pk  164.9  min margin  -39.9 K
+   G_cf_x3                 : case   90.7 (  -1.7)  housing   85.3  winding pk  163.2  min margin  -38.2 K
+   arm_offset_0            : case   92.4 (  -0.0)  housing   86.9  winding pk  165.3  min margin  -40.3 K
+   arm_offset_15           : case   92.4 (  +0.0)  housing   86.9  winding pk  165.3  min margin  -40.3 K
+   force_7N_hold           : case  144.2 ( +51.8)  housing  133.2  winding pk  308.7  min margin -183.7 K
+   opt_backoff_hold_eta2   : case   40.0 ( -52.4)  housing   39.0  winding pk   49.2  min margin  +11.0 K
+   opt_duty_limit_0p5      : case   72.5 ( -19.9)  housing   68.8  winding pk  140.9  min margin  -18.8 K
+   opt_al_fin_40cm2        : case   66.8 ( -25.7)  housing   63.6  winding pk  133.9  min margin  -13.6 K
+   opt_al_strap_to_arm     : case   65.2 ( -27.2)  housing   62.2  winding pk  132.1  min margin  -12.2 K
+B_elec: baseline case 88.8 C, housing 83.7 C, winding pk 156.8 C
+   baseline                : case   88.8 (  +0.0)  housing   83.7  winding pk  156.8  min margin  -33.6 K
+   ambient_20              : case   83.7 (  -5.1)  housing   78.6  winding pk  150.6  min margin  -28.6 K
+   ambient_30              : case   93.9 (  +5.1)  housing   88.6  winding pk  162.9  min margin  -38.6 K
+   ambient_35              : case   98.9 ( +10.1)  housing   93.6  winding pk  168.9  min margin  -43.9 K
+   ambient_40              : case  103.9 ( +15.1)  housing   98.5  winding pk  175.0  min margin  -50.0 K
+   enclosed_shroud         : case  123.9 ( +35.1)  housing  115.2  winding pk  199.2  min margin  -74.2 K
+   duty_0p5                : case   70.1 ( -18.7)  housing   66.7  winding pk  134.1  min margin  -16.7 K
+   duty_0p9                : case  107.3 ( +18.4)  housing  100.3  winding pk  179.1  min margin  -54.0 K
+   duty_1p0_continuous     : case  117.5 ( +28.7)  housing  109.5  winding pk  191.5  min margin  -66.5 K
+   V_6p35                  : case   87.3 (  -1.5)  housing   82.3  winding pk  153.0  min margin  -32.3 K
+   V_6p8                   : case   91.9 (  +3.1)  housing   86.4  winding pk  164.3  min margin  -39.4 K
+   pwm_bound               : case  117.1 ( +28.2)  housing  109.0  winding pk  221.7  min margin  -96.7 K
+   R19_close_0p75s         : case   88.8 (  +0.0)  housing   83.7  winding pk  156.8  min margin  -33.6 K
+   R_wc_6                  : case   85.6 (  -3.2)  housing   80.8  winding pk  122.9  min margin  -30.8 K
+   R_wc_15                 : case   93.4 (  +4.6)  housing   87.8  winding pk  208.8  min margin  -83.8 K
+   h_conv_x0p75            : case   99.9 ( +11.1)  housing   94.4  winding pk  170.2  min margin  -45.2 K
+   h_conv_x1p25            : case   80.7 (  -8.2)  housing   75.7  winding pk  146.9  min margin  -25.7 K
+   eps_0p77                : case   90.7 (  +1.9)  housing   85.3  winding pk  159.0  min margin  -35.3 K
+   eps_0p92                : case   87.3 (  -1.5)  housing   82.3  winding pk  154.9  min margin  -32.3 K
+   G_ch_x0p5               : case   89.3 (  +0.5)  housing   79.7  winding pk  157.3  min margin  -32.3 K
+   G_ch_x2                 : case   88.6 (  -0.3)  housing   85.9  winding pk  156.4  min margin  -35.9 K
+   G_cf_x3                 : case   87.2 (  -1.6)  housing   82.2  winding pk  154.8  min margin  -32.2 K
+   arm_offset_0            : case   88.8 (  -0.0)  housing   83.6  winding pk  156.7  min margin  -33.6 K
+   arm_offset_15           : case   88.8 (  +0.0)  housing   83.7  winding pk  156.8  min margin  -33.7 K
+   force_7N_hold           : case  137.1 ( +48.3)  housing  126.9  winding pk  287.8  min margin -162.8 K
+   opt_backoff_hold_eta2   : case   39.3 ( -49.5)  housing   38.4  winding pk   48.1  min margin  +11.6 K
+   opt_duty_limit_0p5      : case   70.1 ( -18.7)  housing   66.7  winding pk  134.1  min margin  -16.7 K
+   opt_al_fin_40cm2        : case   64.6 ( -24.2)  housing   61.6  winding pk  127.5  min margin  -11.6 K
+   opt_al_strap_to_arm     : case   63.1 ( -25.7)  housing   60.3  winding pk  125.7  min margin  -10.3 K
+
+Options (case drop K / housing drop K / min-margin gain K):
+   A_mech|opt_backoff_hold_eta2    : {'case_drop_K': 52.41, 'housing_drop_K': 47.87, 'min_margin_gain_K': 51.26, 'min_margin_K': 10.98}
+   A_mech|opt_duty_limit_0p5       : {'case_drop_K': 19.91, 'housing_drop_K': 18.06, 'min_margin_gain_K': 21.45, 'min_margin_K': -18.83}
+   A_mech|opt_al_fin_40cm2         : {'case_drop_K': 25.66, 'housing_drop_K': 23.29, 'min_margin_gain_K': 26.68, 'min_margin_K': -13.6}
+   A_mech|opt_al_strap_to_arm      : {'case_drop_K': 27.18, 'housing_drop_K': 24.68, 'min_margin_gain_K': 28.07, 'min_margin_K': -12.21}
+   A_mech|opt_vent_vs_enclosed     : {'case_rise_if_enclosed_K': 37.49}
+   A_mech|opt_ASA_housing          : {'housing_limit_gain_K': 31.0}
+   B_elec|opt_backoff_hold_eta2    : {'case_drop_K': 49.5, 'housing_drop_K': 45.25, 'min_margin_gain_K': 45.25, 'min_margin_K': 11.6}
+   B_elec|opt_duty_limit_0p5       : {'case_drop_K': 18.72, 'housing_drop_K': 16.99, 'min_margin_gain_K': 16.99, 'min_margin_K': -16.66}
+   B_elec|opt_al_fin_40cm2         : {'case_drop_K': 24.24, 'housing_drop_K': 22.03, 'min_margin_gain_K': 22.03, 'min_margin_K': -11.62}
+   B_elec|opt_al_strap_to_arm      : {'case_drop_K': 25.73, 'housing_drop_K': 23.39, 'min_margin_gain_K': 23.39, 'min_margin_K': -10.26}
+   B_elec|opt_vent_vs_enclosed     : {'case_rise_if_enclosed_K': 35.07}
+   B_elec|opt_ASA_housing          : {'housing_limit_gain_K': 31.0}
+Largest case shifts (Fit A baseline): force_7N_hold +51.8 K; enclosed_shroud +37.5 K; duty_1p0_continuous +30.7 K; pwm_bound +28.3 K; duty_0p5 -19.9 K; duty_0p9 +19.7 K
+
+Max sustainable hold force, steady, 25 C (strict = R26 60 C + winding 125 + PETG creep 50; rating = 70 C + 125 + Tg 68):
+   A_mech|duty|strict|as_is                : 3.00 N
+   A_mech|duty|strict|backoff              : 7.33 N
+   A_mech|duty|rating|as_is                : 4.05 N
+   A_mech|duty|rating|backoff              : 9.83 N
+   A_mech|continuous|strict|as_is          : 2.50 N
+   A_mech|continuous|strict|backoff        : 6.15 N
+   A_mech|continuous|rating|as_is          : 3.38 N
+   A_mech|continuous|rating|backoff        : 8.25 N
+   B_elec|duty|strict|as_is                : 3.09 N
+   B_elec|duty|strict|backoff              : 7.55 N
+   B_elec|duty|rating|as_is                : 4.16 N
+   B_elec|duty|rating|backoff              : 10.10 N
+   B_elec|continuous|strict|as_is          : 2.57 N
+   B_elec|continuous|strict|backoff        : 6.33 N
+   B_elec|continuous|rating|as_is          : 3.48 N
+   B_elec|continuous|rating|backoff        : 8.48 N
+
+--- 4b. Mitigated-case matrix (5 N hold, 6.5 V; back-off factor = eta_g^2 = 0.4225, the friction threshold) ---
+A_mech|avg|amb25|backoff_none             : case   92.4  mount   86.9  winding pk  165.3  min margin   -40.3 K (winding_peak_vs_limit_K)
+A_mech|avg|amb25|backoff_0.4225           : case   40.0  mount   39.0  winding pk   49.2  min margin   +11.0 K (housing_vs_petg_creep_onset_K)
+A_mech|avg|amb40|backoff_none             : case  107.5  mount  101.7  winding pk  183.7  min margin   -58.6 K (winding_peak_vs_limit_K)
+A_mech|avg|amb40|backoff_0.4225           : case   55.0  mount   54.0  winding pk   64.8  min margin    -4.0 K (housing_vs_petg_creep_onset_K)
+A_mech|pwm|amb25|backoff_none             : case  120.7  mount  112.3  winding pk  230.5  min margin  -105.5 K (winding_peak_vs_limit_K)
+A_mech|pwm|amb25|backoff_0.4225           : case   74.5  mount   70.6  winding pk  120.9  min margin   -20.6 K (housing_vs_petg_creep_onset_K)
+A_mech|pwm|amb40|backoff_none             : case  132.6  mount  124.2  winding pk  242.4  min margin  -117.4 K (winding_peak_vs_limit_K)
+A_mech|pwm|amb40|backoff_0.4225           : case   87.8  mount   84.0  winding pk  134.2  min margin   -34.0 K (housing_vs_petg_creep_onset_K)
+B_elec|avg|amb25|backoff_none             : case   88.8  mount   83.7  winding pk  156.8  min margin   -33.6 K (housing_vs_petg_creep_onset_K)
+B_elec|avg|amb25|backoff_0.4225           : case   39.3  mount   38.4  winding pk   48.1  min margin   +11.6 K (housing_vs_petg_creep_onset_K)
+B_elec|avg|amb40|backoff_none             : case  103.9  mount   98.5  winding pk  175.0  min margin   -50.0 K (winding_peak_vs_limit_K)
+B_elec|avg|amb40|backoff_0.4225           : case   54.3  mount   53.4  winding pk   63.6  min margin    -3.4 K (housing_vs_petg_creep_onset_K)
+B_elec|pwm|amb25|backoff_none             : case  117.1  mount  109.0  winding pk  221.7  min margin   -96.7 K (winding_peak_vs_limit_K)
+B_elec|pwm|amb25|backoff_0.4225           : case   72.5  mount   68.9  winding pk  116.7  min margin   -18.9 K (housing_vs_petg_creep_onset_K)
+B_elec|pwm|amb40|backoff_none             : case  129.1  mount  121.1  winding pk  233.7  min margin  -108.7 K (winding_peak_vs_limit_K)
+B_elec|pwm|amb40|backoff_0.4225           : case   85.9  mount   82.2  winding pk  130.1  min margin   -32.2 K (housing_vs_petg_creep_onset_K)
+A_mech|avg|amb25        : largest back-off factor with case <= 60 C = 0.713; hold rail current 0.99 A none / 0.18 A at 0.4225 / 0.5 A at the limit
+A_mech|avg|amb40        : largest back-off factor with case <= 60 C = 0.511; hold rail current 0.99 A none / 0.18 A at 0.4225 / 0.26 A at the limit
+A_mech|pwm|amb25        : largest back-off factor with case <= 60 C = 0.266; hold rail current 1.74 A none / 0.73 A at 0.4225 / 0.46 A at the limit
+A_mech|pwm|amb40        : largest back-off factor with case <= 60 C = 0.125; hold rail current 1.74 A none / 0.73 A at 0.4225 / 0.22 A at the limit
+B_elec|avg|amb25        : largest back-off factor with case <= 60 C = 0.732; hold rail current 0.94 A none / 0.17 A at 0.4225 / 0.51 A at the limit
+B_elec|avg|amb40        : largest back-off factor with case <= 60 C = 0.526; hold rail current 0.94 A none / 0.17 A at 0.4225 / 0.26 A at the limit
+B_elec|pwm|amb25        : largest back-off factor with case <= 60 C = 0.281; hold rail current 1.65 A none / 0.69 A at 0.4225 / 0.46 A at the limit
+B_elec|pwm|amb40        : largest back-off factor with case <= 60 C = 0.133; hold rail current 1.65 A none / 0.69 A at 0.4225 / 0.22 A at the limit
+
+--- 4c. Back-off factor and gearbox-efficiency sensitivity (case C / mount C / min margin K) ---
+A_mech|avg|amb25|factor_0.42                            : case   39.9  mount   38.9  min margin   +11.1 K  [below friction threshold: hold not kept]
+A_mech|avg|amb25|factor_0.6                             : case   51.0  mount   49.1  min margin    +0.9 K
+A_mech|avg|amb25|factor_0.8                             : case   68.3  mount   65.0  min margin   -15.0 K
+A_mech|avg|amb25|eta_0.5_no_backoff                     : case  146.6  mount  135.3  min margin  -190.9 K
+A_mech|avg|amb25|eta_0.65_no_backoff                    : case   92.4  mount   86.9  min margin   -40.3 K
+A_mech|avg|amb25|eta_0.8_no_backoff                     : case   69.6  mount   66.2  min margin   -16.2 K
+A_mech|avg|amb25|eta_0.5_backoff_at_threshold           : case   35.6  mount   34.9  min margin   +15.1 K
+A_mech|avg|amb25|eta_0.65_backoff_at_threshold          : case   40.0  mount   39.0  min margin   +11.0 K
+A_mech|avg|amb25|eta_0.8_backoff_at_threshold           : case   45.5  mount   44.1  min margin    +5.9 K
+A_mech|avg|amb25|eta_0.5_backoff_0p4225                 : case   47.4  mount   45.9  min margin    +4.1 K
+A_mech|avg|amb25|eta_0.65_backoff_0p4225                : case   40.0  mount   39.0  min margin   +11.0 K
+A_mech|avg|amb25|eta_0.8_backoff_0p4225                 : case   36.3  mount   35.6  min margin   +14.4 K  [below friction threshold: hold not kept]
+A_mech|avg|amb40|factor_0.42                            : case   54.9  mount   53.9  min margin    -3.9 K  [below friction threshold: hold not kept]
+A_mech|avg|amb40|factor_0.6                             : case   66.0  mount   64.1  min margin   -14.1 K
+A_mech|avg|amb40|factor_0.8                             : case   83.4  mount   80.0  min margin   -30.0 K
+A_mech|avg|amb40|eta_0.5_no_backoff                     : case  160.9  mount  149.2  min margin  -211.5 K
+A_mech|avg|amb40|eta_0.65_no_backoff                    : case  107.5  mount  101.7  min margin   -58.6 K
+A_mech|avg|amb40|eta_0.8_no_backoff                     : case   84.7  mount   81.2  min margin   -31.2 K
+A_mech|avg|amb40|eta_0.5_backoff_at_threshold           : case   50.5  mount   49.9  min margin    +0.1 K
+A_mech|avg|amb40|eta_0.65_backoff_at_threshold          : case   55.0  mount   54.0  min margin    -4.0 K
+A_mech|avg|amb40|eta_0.8_backoff_at_threshold           : case   60.6  mount   59.1  min margin    -9.1 K
+A_mech|avg|amb40|eta_0.5_backoff_0p4225                 : case   62.5  mount   60.9  min margin   -10.9 K
+A_mech|avg|amb40|eta_0.65_backoff_0p4225                : case   55.0  mount   54.0  min margin    -4.0 K
+A_mech|avg|amb40|eta_0.8_backoff_0p4225                 : case   51.3  mount   50.5  min margin    -0.6 K  [below friction threshold: hold not kept]
+A_mech|pwm|amb25|factor_0.42                            : case   74.3  mount   70.4  min margin   -20.4 K  [below friction threshold: hold not kept]
+A_mech|pwm|amb25|factor_0.6                             : case   89.7  mount   84.4  min margin   -34.4 K
+A_mech|pwm|amb25|factor_0.8                             : case  105.6  mount   98.8  min margin   -68.5 K
+A_mech|pwm|amb25|eta_0.5_no_backoff                     : case  141.9  mount  131.1  min margin  -159.7 K
+A_mech|pwm|amb25|eta_0.65_no_backoff                    : case  120.7  mount  112.3  min margin  -105.5 K
+A_mech|pwm|amb25|eta_0.8_no_backoff                     : case  106.6  mount   99.7  min margin   -70.8 K
+A_mech|pwm|amb25|eta_0.5_backoff_at_threshold           : case   65.6  mount   62.6  min margin   -12.6 K
+A_mech|pwm|amb25|eta_0.65_backoff_at_threshold          : case   74.5  mount   70.6  min margin   -20.6 K
+A_mech|pwm|amb25|eta_0.8_backoff_at_threshold           : case   83.0  mount   78.3  min margin   -28.3 K
+A_mech|pwm|amb25|eta_0.5_backoff_0p4225                 : case   85.4  mount   80.6  min margin   -30.6 K
+A_mech|pwm|amb25|eta_0.65_backoff_0p4225                : case   74.5  mount   70.6  min margin   -20.6 K
+A_mech|pwm|amb25|eta_0.8_backoff_0p4225                 : case   67.3  mount   64.1  min margin   -14.1 K  [below friction threshold: hold not kept]
+A_mech|pwm|amb40|factor_0.42                            : case   87.6  mount   83.8  min margin   -33.8 K  [below friction threshold: hold not kept]
+A_mech|pwm|amb40|factor_0.6                             : case  102.5  mount   97.3  min margin   -47.3 K
+A_mech|pwm|amb40|factor_0.8                             : case  118.0  mount  111.2  min margin   -80.9 K
+A_mech|pwm|amb40|eta_0.5_no_backoff                     : case  153.2  mount  142.4  min margin  -170.9 K
+A_mech|pwm|amb40|eta_0.65_no_backoff                    : case  132.6  mount  124.2  min margin  -117.4 K
+A_mech|pwm|amb40|eta_0.8_no_backoff                     : case  118.9  mount  112.0  min margin   -83.2 K
+A_mech|pwm|amb40|eta_0.5_backoff_at_threshold           : case   79.2  mount   76.2  min margin   -26.2 K
+A_mech|pwm|amb40|eta_0.65_backoff_at_threshold          : case   87.8  mount   84.0  min margin   -34.0 K
+A_mech|pwm|amb40|eta_0.8_backoff_at_threshold           : case   96.0  mount   91.4  min margin   -41.4 K
+A_mech|pwm|amb40|eta_0.5_backoff_0p4225                 : case   98.4  mount   93.6  min margin   -43.6 K
+A_mech|pwm|amb40|eta_0.65_backoff_0p4225                : case   87.8  mount   84.0  min margin   -34.0 K
+A_mech|pwm|amb40|eta_0.8_backoff_0p4225                 : case   80.8  mount   77.7  min margin   -27.7 K  [below friction threshold: hold not kept]
+B_elec|avg|amb25|factor_0.42                            : case   39.2  mount   38.3  min margin   +11.7 K  [below friction threshold: hold not kept]
+B_elec|avg|amb25|factor_0.6                             : case   49.7  mount   48.0  min margin    +2.0 K
+B_elec|avg|amb25|factor_0.8                             : case   66.2  mount   63.1  min margin   -13.1 K
+B_elec|avg|amb25|eta_0.5_no_backoff                     : case  139.3  mount  128.8  min margin  -169.2 K
+B_elec|avg|amb25|eta_0.65_no_backoff                    : case   88.8  mount   83.7  min margin   -33.6 K
+B_elec|avg|amb25|eta_0.8_no_backoff                     : case   67.4  mount   64.2  min margin   -14.2 K
+B_elec|avg|amb25|eta_0.5_backoff_at_threshold           : case   35.1  mount   34.5  min margin   +15.5 K
+B_elec|avg|amb25|eta_0.65_backoff_at_threshold          : case   39.3  mount   38.4  min margin   +11.6 K
+B_elec|avg|amb25|eta_0.8_backoff_at_threshold           : case   44.6  mount   43.3  min margin    +6.7 K
+B_elec|avg|amb25|eta_0.5_backoff_0p4225                 : case   46.4  mount   44.9  min margin    +5.1 K
+B_elec|avg|amb25|eta_0.65_backoff_0p4225                : case   39.3  mount   38.4  min margin   +11.6 K
+B_elec|avg|amb25|eta_0.8_backoff_0p4225                 : case   35.8  mount   35.1  min margin   +14.9 K  [below friction threshold: hold not kept]
+B_elec|avg|amb40|factor_0.42                            : case   54.2  mount   53.2  min margin    -3.2 K  [below friction threshold: hold not kept]
+B_elec|avg|amb40|factor_0.6                             : case   64.8  mount   63.0  min margin   -13.0 K
+B_elec|avg|amb40|factor_0.8                             : case   81.3  mount   78.1  min margin   -28.1 K
+B_elec|avg|amb40|eta_0.5_no_backoff                     : case  153.7  mount  143.0  min margin  -189.6 K
+B_elec|avg|amb40|eta_0.65_no_backoff                    : case  103.9  mount   98.5  min margin   -50.0 K
+B_elec|avg|amb40|eta_0.8_no_backoff                     : case   82.5  mount   79.2  min margin   -29.2 K
+B_elec|avg|amb40|eta_0.5_backoff_at_threshold           : case   50.1  mount   49.4  min margin    +0.6 K
+B_elec|avg|amb40|eta_0.65_backoff_at_threshold          : case   54.3  mount   53.4  min margin    -3.4 K
+B_elec|avg|amb40|eta_0.8_backoff_at_threshold           : case   59.6  mount   58.2  min margin    -8.2 K
+B_elec|avg|amb40|eta_0.5_backoff_0p4225                 : case   61.4  mount   59.9  min margin    -9.9 K
+B_elec|avg|amb40|eta_0.65_backoff_0p4225                : case   54.3  mount   53.4  min margin    -3.4 K
+B_elec|avg|amb40|eta_0.8_backoff_0p4225                 : case   50.8  mount   50.1  min margin    -0.1 K  [below friction threshold: hold not kept]
+B_elec|pwm|amb25|factor_0.42                            : case   72.3  mount   68.7  min margin   -18.7 K  [below friction threshold: hold not kept]
+B_elec|pwm|amb25|factor_0.6                             : case   87.1  mount   82.1  min margin   -32.1 K
+B_elec|pwm|amb25|factor_0.8                             : case  102.5  mount   96.0  min margin   -61.2 K
+B_elec|pwm|amb25|eta_0.5_no_backoff                     : case  137.5  mount  127.2  min margin  -148.5 K
+B_elec|pwm|amb25|eta_0.65_no_backoff                    : case  117.1  mount  109.0  min margin   -96.7 K
+B_elec|pwm|amb25|eta_0.8_no_backoff                     : case  103.5  mount   96.8  min margin   -63.5 K
+B_elec|pwm|amb25|eta_0.5_backoff_at_threshold           : case   64.0  mount   61.1  min margin   -11.1 K
+B_elec|pwm|amb25|eta_0.65_backoff_at_threshold          : case   72.5  mount   68.9  min margin   -18.9 K
+B_elec|pwm|amb25|eta_0.8_backoff_at_threshold           : case   80.7  mount   76.3  min margin   -26.3 K
+B_elec|pwm|amb25|eta_0.5_backoff_0p4225                 : case   83.1  mount   78.4  min margin   -28.4 K
+B_elec|pwm|amb25|eta_0.65_backoff_0p4225                : case   72.5  mount   68.9  min margin   -18.9 K
+B_elec|pwm|amb25|eta_0.8_backoff_0p4225                 : case   65.7  mount   62.6  min margin   -12.6 K  [below friction threshold: hold not kept]
+B_elec|pwm|amb40|factor_0.42                            : case   85.7  mount   82.1  min margin   -32.1 K  [below friction threshold: hold not kept]
+B_elec|pwm|amb40|factor_0.6                             : case  100.1  mount   95.1  min margin   -45.1 K
+B_elec|pwm|amb40|factor_0.8                             : case  115.0  mount  108.5  min margin   -73.7 K
+B_elec|pwm|amb40|eta_0.5_no_backoff                     : case  148.9  mount  138.7  min margin  -159.9 K
+B_elec|pwm|amb40|eta_0.65_no_backoff                    : case  129.1  mount  121.1  min margin  -108.7 K
+B_elec|pwm|amb40|eta_0.8_no_backoff                     : case  115.9  mount  109.3  min margin   -75.9 K
+B_elec|pwm|amb40|eta_0.5_backoff_at_threshold           : case   77.7  mount   74.7  min margin   -24.7 K
+B_elec|pwm|amb40|eta_0.65_backoff_at_threshold          : case   85.9  mount   82.2  min margin   -32.2 K
+B_elec|pwm|amb40|eta_0.8_backoff_at_threshold           : case   93.8  mount   89.4  min margin   -39.4 K
+B_elec|pwm|amb40|eta_0.5_backoff_0p4225                 : case   96.1  mount   91.5  min margin   -41.5 K
+B_elec|pwm|amb40|eta_0.65_backoff_0p4225                : case   85.9  mount   82.2  min margin   -32.2 K
+B_elec|pwm|amb40|eta_0.8_backoff_0p4225                 : case   79.2  mount   76.2  min margin   -26.2 K  [below friction threshold: hold not kept]
+
+VERDICT: not safe without back-off; with back-off, acceptable only when every section-0 condition holds; discontinuous conduction: do not operate.

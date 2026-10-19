@@ -1,0 +1,457 @@
+{
+ "_provenance": {
+  "generator": "analysis/gripper/actuation/pin_rev_a.py",
+  "pinned_from": "analysis/gripper/thermal/results/thermal.json at 7e1039ab7a26077e6d6c8f15673adca6bc907eae",
+  "what": "rev A thermal model of the DS3218MG at 6.5 V, 5 N hold: the rows extras.py reads"
+ },
+ "step1_heat_sources": {
+  "A_mech|F5|avg": {
+   "I_close_A": 1.8735,
+   "I_hold_A": 1.3969,
+   "I_rail_hold_A": 0.7183,
+   "I_stall_A": 3.7471,
+   "K_out": 0.8422,
+   "P_avg_case_W": 0.1769,
+   "P_avg_total_W": 3.4633,
+   "P_avg_winding_W": 3.2864,
+   "P_close_winding_W": 7.9887,
+   "P_hold_case_W": 0.2276,
+   "P_hold_winding_W": 4.4412,
+   "P_peak_total_W": 8.3722,
+   "R20_ohm": 1.7347,
+   "T_hold_Nm": 0.7647,
+   "f_close": 0.0143,
+   "f_hold": 0.7143
+  },
+  "A_mech|F5|pwm": {
+   "I_close_A": 1.8735,
+   "I_hold_A": 1.3969,
+   "I_rail_hold_A": 1.4319,
+   "I_stall_A": 3.7471,
+   "K_out": 0.8422,
+   "P_avg_case_W": 0.1769,
+   "P_avg_total_W": 6.8366,
+   "P_avg_winding_W": 6.6597,
+   "P_close_winding_W": 12.1779,
+   "P_hold_case_W": 0.2276,
+   "P_hold_winding_W": 9.08,
+   "P_peak_total_W": 12.5614,
+   "R20_ohm": 1.7347,
+   "T_hold_Nm": 0.7647,
+   "f_close": 0.0143,
+   "f_hold": 0.7143
+  },
+  "B_elec|F5|avg": {
+   "I_close_A": 1.0515,
+   "I_hold_A": 0.784,
+   "I_rail_hold_A": 0.3979,
+   "I_stall_A": 2.1029,
+   "K_out": 1.5006,
+   "P_avg_case_W": 0.078,
+   "P_avg_total_W": 1.9224,
+   "P_avg_winding_W": 1.8444,
+   "P_close_winding_W": 4.4835,
+   "P_hold_case_W": 0.094,
+   "P_hold_winding_W": 2.4925,
+   "P_peak_total_W": 4.6265,
+   "R20_ohm": 3.0909,
+   "T_hold_Nm": 0.7647,
+   "f_close": 0.0143,
+   "f_hold": 0.7143
+  },
+  "B_elec|F5|pwm": {
+   "I_close_A": 1.0515,
+   "I_hold_A": 0.784,
+   "I_rail_hold_A": 0.7984,
+   "I_stall_A": 2.1029,
+   "K_out": 1.5006,
+   "P_avg_case_W": 0.078,
+   "P_avg_total_W": 3.8156,
+   "P_avg_winding_W": 3.7376,
+   "P_close_winding_W": 6.8346,
+   "P_hold_case_W": 0.094,
+   "P_hold_winding_W": 5.0959,
+   "P_peak_total_W": 6.9776,
+   "R20_ohm": 3.0909,
+   "T_hold_Nm": 0.7647,
+   "f_close": 0.0143,
+   "f_hold": 0.7143
+  }
+ },
+ "step2_steady": {
+  "A_mech|avg|F5": {
+   "I_hold_A": 1.3969,
+   "T_C": {
+    "case": 71.02,
+    "finger_root": 29.46,
+    "housing": 67.48,
+    "mount": 28.64,
+    "winding": 104.3,
+    "winding_peak": 117.78
+   },
+   "T_hold_Nm": 0.7647,
+   "binding": "housing_vs_petg_creep_onset_K",
+   "converged": true,
+   "f_close": 0.0143,
+   "f_hold": 0.7143,
+   "heat_W": {
+    "P_avg_case_W": 0.1769,
+    "P_avg_total_W": 3.5053,
+    "P_avg_winding_W": 3.3284,
+    "P_hold_case_W": 0.2276,
+    "P_hold_winding_W": 4.498,
+    "P_peak_total_W": 8.4744
+   },
+   "margins_K": {
+    "case_vs_R26_K": -11.02,
+    "case_vs_servo_rating_K": -1.02,
+    "finger_root_vs_tpu_HDT_K": 20.84,
+    "housing_vs_petg_Tg_K": 0.52,
+    "housing_vs_petg_creep_onset_K": -17.48,
+    "winding_peak_vs_limit_K": 7.22
+   },
+   "min_margin_K": -17.48,
+   "runaway": false,
+   "scenario": {
+    "G_cf_scale": 1.0,
+    "G_ch_scale": 1.0,
+    "I_close_frac_stall": 0.5,
+    "R_wc": 10.0,
+    "T_amb": 25.0,
+    "T_arm_offset_K": 5.0,
+    "V_rail": 6.5,
+    "al_strap": false,
+    "conduction": "avg",
+    "enclosure": "open",
+    "eps_case": 0.85,
+    "eta_g": null,
+    "fin_area_m2": 0.0,
+    "fit": "A_mech",
+    "force_N": 5.0,
+    "h_scale": 1.0,
+    "hold_current_factor": 1.0,
+    "hold_fraction": null,
+    "idle_W": 0.0325,
+    "rds_W_per_A2": 0.1,
+    "t_close": 0.5
+   }
+  },
+  "A_mech|pwm|F5": {
+   "I_hold_A": 1.3969,
+   "T_C": {
+    "case": 103.97,
+    "finger_root": 32.23,
+    "housing": 97.28,
+    "mount": 28.83,
+    "winding": 170.57,
+    "winding_peak": 194.77
+   },
+   "T_hold_Nm": 0.7647,
+   "binding": "winding_peak_vs_limit_K",
+   "converged": true,
+   "f_close": 0.0143,
+   "f_hold": 0.7143,
+   "heat_W": {
+    "P_avg_case_W": 0.1769,
+    "P_avg_total_W": 6.8366,
+    "P_avg_winding_W": 6.6597,
+    "P_hold_case_W": 0.2276,
+    "P_hold_winding_W": 9.08,
+    "P_peak_total_W": 12.5614
+   },
+   "margins_K": {
+    "case_vs_R26_K": -43.97,
+    "case_vs_servo_rating_K": -33.97,
+    "finger_root_vs_tpu_HDT_K": 18.07,
+    "housing_vs_petg_Tg_K": -29.28,
+    "housing_vs_petg_creep_onset_K": -47.28,
+    "winding_peak_vs_limit_K": -69.77
+   },
+   "min_margin_K": -69.77,
+   "runaway": false,
+   "scenario": {
+    "G_cf_scale": 1.0,
+    "G_ch_scale": 1.0,
+    "I_close_frac_stall": 0.5,
+    "R_wc": 10.0,
+    "T_amb": 25.0,
+    "T_arm_offset_K": 5.0,
+    "V_rail": 6.5,
+    "al_strap": false,
+    "conduction": "pwm",
+    "enclosure": "open",
+    "eps_case": 0.85,
+    "eta_g": null,
+    "fin_area_m2": 0.0,
+    "fit": "A_mech",
+    "force_N": 5.0,
+    "h_scale": 1.0,
+    "hold_current_factor": 1.0,
+    "hold_fraction": null,
+    "idle_W": 0.0325,
+    "rds_W_per_A2": 0.1,
+    "t_close": 0.5
+   }
+  },
+  "B_elec|avg|F5": {
+   "I_hold_A": 0.784,
+   "T_C": {
+    "case": 50.68,
+    "finger_root": 27.63,
+    "housing": 48.88,
+    "mount": 28.51,
+    "winding": 67.34,
+    "winding_peak": 73.66
+   },
+   "T_hold_Nm": 0.7647,
+   "binding": "housing_vs_petg_creep_onset_K",
+   "converged": true,
+   "f_close": 0.0143,
+   "f_hold": 0.7143,
+   "heat_W": {
+    "P_avg_case_W": 0.078,
+    "P_avg_total_W": 1.7433,
+    "P_avg_winding_W": 1.6653,
+    "P_hold_case_W": 0.094,
+    "P_hold_winding_W": 2.2505,
+    "P_peak_total_W": 4.1912
+   },
+   "margins_K": {
+    "case_vs_R26_K": 9.32,
+    "case_vs_servo_rating_K": 19.32,
+    "finger_root_vs_tpu_HDT_K": 22.67,
+    "housing_vs_petg_Tg_K": 19.12,
+    "housing_vs_petg_creep_onset_K": 1.12,
+    "winding_peak_vs_limit_K": 51.34
+   },
+   "min_margin_K": 1.12,
+   "runaway": false,
+   "scenario": {
+    "G_cf_scale": 1.0,
+    "G_ch_scale": 1.0,
+    "I_close_frac_stall": 0.5,
+    "R_wc": 10.0,
+    "T_amb": 25.0,
+    "T_arm_offset_K": 5.0,
+    "V_rail": 6.5,
+    "al_strap": false,
+    "conduction": "avg",
+    "enclosure": "open",
+    "eps_case": 0.85,
+    "eta_g": null,
+    "fin_area_m2": 0.0,
+    "fit": "B_elec",
+    "force_N": 5.0,
+    "h_scale": 1.0,
+    "hold_current_factor": 1.0,
+    "hold_fraction": null,
+    "idle_W": 0.0325,
+    "rds_W_per_A2": 0.1,
+    "t_close": 0.5
+   }
+  },
+  "B_elec|pwm|F5": {
+   "I_hold_A": 0.784,
+   "T_C": {
+    "case": 74.34,
+    "finger_root": 29.75,
+    "housing": 70.5,
+    "mount": 28.66,
+    "winding": 111.71,
+    "winding_peak": 125.3
+   },
+   "T_hold_Nm": 0.7647,
+   "binding": "housing_vs_petg_creep_onset_K",
+   "converged": true,
+   "f_close": 0.0143,
+   "f_hold": 0.7143,
+   "heat_W": {
+    "P_avg_case_W": 0.078,
+    "P_avg_total_W": 3.8156,
+    "P_avg_winding_W": 3.7376,
+    "P_hold_case_W": 0.094,
+    "P_hold_winding_W": 5.0959,
+    "P_peak_total_W": 6.9776
+   },
+   "margins_K": {
+    "case_vs_R26_K": -14.34,
+    "case_vs_servo_rating_K": -4.34,
+    "finger_root_vs_tpu_HDT_K": 20.55,
+    "housing_vs_petg_Tg_K": -2.5,
+    "housing_vs_petg_creep_onset_K": -20.5,
+    "winding_peak_vs_limit_K": -0.3
+   },
+   "min_margin_K": -20.5,
+   "runaway": false,
+   "scenario": {
+    "G_cf_scale": 1.0,
+    "G_ch_scale": 1.0,
+    "I_close_frac_stall": 0.5,
+    "R_wc": 10.0,
+    "T_amb": 25.0,
+    "T_arm_offset_K": 5.0,
+    "V_rail": 6.5,
+    "al_strap": false,
+    "conduction": "pwm",
+    "enclosure": "open",
+    "eps_case": 0.85,
+    "eta_g": null,
+    "fin_area_m2": 0.0,
+    "fit": "B_elec",
+    "force_N": 5.0,
+    "h_scale": 1.0,
+    "hold_current_factor": 1.0,
+    "hold_fraction": null,
+    "idle_W": 0.0325,
+    "rds_W_per_A2": 0.1,
+    "t_close": 0.5
+   }
+  }
+ },
+ "step4b_mitigated_matrix": {
+  "A_mech|avg|amb25|backoff_0.4225": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 35.66,
+   "case_vs_R26_K": 24.34,
+   "min_margin_K": 15.01,
+   "min_margin_with_sleeves_K": 24.34,
+   "mount_C": 34.99,
+   "winding_peak_C": 42.22
+  },
+  "A_mech|avg|amb25|backoff_none": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 71.02,
+   "case_vs_R26_K": -11.02,
+   "min_margin_K": -17.48,
+   "min_margin_with_sleeves_K": -11.02,
+   "mount_C": 67.48,
+   "winding_peak_C": 117.78
+  },
+  "A_mech|avg|amb40|backoff_0.4225": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 50.63,
+   "case_vs_R26_K": 9.37,
+   "min_margin_K": 0.06,
+   "min_margin_with_sleeves_K": 9.37,
+   "mount_C": 49.94,
+   "winding_peak_C": 57.56
+  },
+  "A_mech|avg|amb40|backoff_none": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 86.12,
+   "case_vs_R26_K": -26.12,
+   "min_margin_K": -32.44,
+   "min_margin_with_sleeves_K": -26.12,
+   "mount_C": 82.44,
+   "winding_peak_C": 135.18
+  },
+  "A_mech|pwm|amb25|backoff_0.4225": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 65.2,
+   "case_vs_R26_K": -5.2,
+   "min_margin_K": -12.18,
+   "min_margin_with_sleeves_K": -5.2,
+   "mount_C": 62.18,
+   "winding_peak_C": 103.57
+  },
+  "A_mech|pwm|amb25|backoff_none": {
+   "binding": "winding_peak_vs_limit_K",
+   "case_C": 103.97,
+   "case_vs_R26_K": -43.97,
+   "min_margin_K": -69.77,
+   "min_margin_with_sleeves_K": -69.77,
+   "mount_C": 97.28,
+   "winding_peak_C": 194.77
+  },
+  "A_mech|pwm|amb40|backoff_0.4225": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 78.78,
+   "case_vs_R26_K": -18.78,
+   "min_margin_K": -25.77,
+   "min_margin_with_sleeves_K": -18.78,
+   "mount_C": 75.77,
+   "winding_peak_C": 117.15
+  },
+  "A_mech|pwm|amb40|backoff_none": {
+   "binding": "winding_peak_vs_limit_K",
+   "case_C": 116.36,
+   "case_vs_R26_K": -56.36,
+   "min_margin_K": -82.16,
+   "min_margin_with_sleeves_K": -82.16,
+   "mount_C": 109.7,
+   "winding_peak_C": 207.16
+  },
+  "B_elec|avg|amb25|backoff_0.4225": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 31.43,
+   "case_vs_R26_K": 28.57,
+   "min_margin_K": 18.95,
+   "min_margin_with_sleeves_K": 28.57,
+   "mount_C": 31.05,
+   "winding_peak_C": 35.02
+  },
+  "B_elec|avg|amb25|backoff_none": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 50.68,
+   "case_vs_R26_K": 9.32,
+   "min_margin_K": 1.12,
+   "min_margin_with_sleeves_K": 9.32,
+   "mount_C": 48.88,
+   "winding_peak_C": 73.66
+  },
+  "B_elec|avg|amb40|backoff_0.4225": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 46.39,
+   "case_vs_R26_K": 13.61,
+   "min_margin_K": 4.0,
+   "min_margin_with_sleeves_K": 13.61,
+   "mount_C": 46.0,
+   "winding_peak_C": 50.18
+  },
+  "B_elec|avg|amb40|backoff_none": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 65.77,
+   "case_vs_R26_K": -5.77,
+   "min_margin_K": -13.88,
+   "min_margin_with_sleeves_K": -5.77,
+   "mount_C": 63.88,
+   "winding_peak_C": 89.95
+  },
+  "B_elec|pwm|amb25|backoff_0.4225": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 49.86,
+   "case_vs_R26_K": 10.14,
+   "min_margin_K": 1.88,
+   "min_margin_with_sleeves_K": 10.14,
+   "mount_C": 48.12,
+   "winding_peak_C": 71.39
+  },
+  "B_elec|pwm|amb25|backoff_none": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 74.34,
+   "case_vs_R26_K": -14.34,
+   "min_margin_K": -20.5,
+   "min_margin_with_sleeves_K": -14.34,
+   "mount_C": 70.5,
+   "winding_peak_C": 125.3
+  },
+  "B_elec|pwm|amb40|backoff_0.4225": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 63.92,
+   "case_vs_R26_K": -3.92,
+   "min_margin_K": -12.19,
+   "min_margin_with_sleeves_K": -3.92,
+   "mount_C": 62.19,
+   "winding_peak_C": 85.45
+  },
+  "B_elec|pwm|amb40|backoff_none": {
+   "binding": "housing_vs_petg_creep_onset_K",
+   "case_C": 87.64,
+   "case_vs_R26_K": -27.64,
+   "min_margin_K": -33.82,
+   "min_margin_with_sleeves_K": -27.64,
+   "mount_C": 83.82,
+   "winding_peak_C": 138.6
+  }
+ }
+}

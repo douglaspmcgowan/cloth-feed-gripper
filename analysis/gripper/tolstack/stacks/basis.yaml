@@ -1,0 +1,222 @@
+# DESIGN BASIS INPUTS for every tolerance stack in this folder. CAD revision: rev A (cad/gripper/params.json and
+# cad/gripper/README.md as of master 996dce6). Re-point here, and only here, when the CAD or the measured coupons change.
+# Stack files reference these names as "=name" or "=expression". Units: mm, degrees, N, s.
+# Tags: S sourced (URL, retrieved date), D derived (repo CAD file or a formula in this file), A assumed (reason given;
+#       measure on the coupon print, docs/gripper/analysis/tolerance_stacks.md section 8).
+# Process capability: every "tol" below is a +/- 3 sigma band unless it says otherwise (normal: sigma = tol / 3;
+# uniform: the hard limits). Retrieved 2026-10-11 unless stated.
+constants:
+  # ================= Process sigma by feature type (the numbers the printer has to hit) =================
+  # FDM, PETG/PLA/PA6-CF, 0.4 mm nozzle, 0.2 mm layer, a calibrated hobby printer (Prusa / Bambu class).
+  fdm_xy_tol_short:  {value: 0.10,  tag: S, source: "outer XY features 3-18 mm: Pmk >= 1.33 interval of a 3 mm feature is X 2.90-3.09, Y 2.90-3.05 (Gebre et al. 2026, Table 3), https://iris.unitn.it/retrieve/aaecc8a0-0420-472b-9a40-4d43d7df5e0b/Material%20Design%20%20%20Processing%20Communications%20-%202026%20-%20Gebre%20-%20Influence%20of%20Geometry%20and%20Size%20on%20Precision%20and%20Accuracy%20in.pdf, retrieved 2026-10-11"}
+  fdm_xy_tol:        {value: 0.20,  tag: A, source: "features more than 30 mm apart: the measured data above stop at 18 mm; a service bureau guarantees +/-0.5 % (0.23 mm at 45 mm), https://www.hubs.com/manufacturing-standards/ (search snippet, retrieved 2026-10-11). Doubled the short-feature band"}
+  fdm_z_tol:         {value: 0.15,  tag: S, source: "Z features: Pmk >= 1.33 interval of a 3 mm feature is 2.81-3.09 (Gebre et al. 2026, Table 3), same URL"}
+  fdm_hole_bias_small_d: {value: -0.25, tag: S, source: "printed holes 3.6-4.6 come out about 0.25 under CAD, https://www.cnckitchen.com/blog/are-our-heat-set-insert-datasheets-wrong (retrieved 2026-10-11); PETG table gives +0.27 at 3 mm and +0.26 at 5 mm of CAD enlargement, https://tools.creative3dp.com/blog/3d-printing-hole-compensation-typical-values/ (low confidence)"}
+  fdm_hole_bias_large_d: {value: -0.16, tag: S, source: "PETG hole near 20 mm: +0.16 CAD enlargement, https://tools.creative3dp.com/blog/3d-printing-hole-compensation-typical-values/ (retrieved 2026-10-11, vendor guide, low confidence)"}
+  fdm_hole_scatter_d: {value: 0.15, tag: A, source: "print-to-print scatter of a small hole about its biased mean: the blog tables above imply +/-0.10-0.15 and no dataset with a sample size exists; took the upper end"}
+  fdm_pos_dia:       {value: 0.20,  tag: A, source: "position diameter of a printed hole to datums on the same print (+/-0.1 per axis = the XY short-feature band); no public hole-position scatter for hobby printers was found"}
+  fdm_pocket_bias:   {value: -0.10, tag: A, source: "rectangular pockets and slots print small, less than round holes (no measured slot data found)"}
+  fdm_cavity_tol:    {value: 0.15,  tag: A, source: "pocket width scatter, between the XY band (0.10) and the small-hole band (0.15)"}
+  efc_resid_d:       {value: 0.10,  tag: A, source: "first-layer flare left after slicer compensation; the Ender study compensates -0.2 (ILHE), https://mdpi-res.com/d_attachment/processes/processes-11-02810/article_deploy/processes-11-02810.pdf (retrieved 2026-10-11)"}
+  efc_hub_bias_r:    {value: 0.10,  tag: A, source: "hub OD flare when the mount face prints on the bed"}
+  mount_flatness:    {value: 0.20,  tag: A, source: "proposed flatness callout on datum A"}
+  plate_flat:        {value: 0.05,  tag: A, source: "local flatness / top-layer height difference between features on one print layer"}
+  tpu_xy_tol:        {value: 0.30,  tag: A, source: "TPU 95A: no measured dimensional data exists; vendors quote +/-0.2 to +/-0.5 floors, e.g. https://craftcloud3d.com/en/material-guide/fdm-tpu (retrieved 2026-10-11)"}
+  pad_profile_zone:  "=tpu_xy_tol"        # D: TPU pad face profile zone (+/- half of it)
+  # Purchased parts
+  pin_h8_min:        {value: 2.986, tag: A, source: "ISO 2338 h8 pin at 3 mm (h8 band 14 um below nominal, ISO 286 grade table); the limits were not found on a public catalogue page - confirm on the supplier sheet"}
+  pin_h8_max:        {value: 3.000, tag: A, source: "same"}
+  pin_d_min:         {value: 3.002, tag: S, source: "ISO 8734 m6 dowel, +0.002/+0.008 (shown at 2.5 mm, same IT band at 3 mm), https://www.mcmaster.com/dowel-pins/diameter~2-5mm/ (retrieved 2026-10-11)"}
+  pin_d_max:         {value: 3.008, tag: S, source: "same"}
+  sleeve_bore_min:   {value: 3.000, tag: S, source: "sintered bronze bush: bore becomes H7 after pressing into a rigid H7 housing, https://www.hpceurope.com/docFichesTechniques/OiliteBushings.pdf pp. 40-43 (retrieved 2026-10-11)"}
+  sleeve_bore_max:   {value: 3.016, tag: A, source: "same source: bore is F7 as supplied (+0.006/+0.016 at 3 mm from the ISO 286 table); a printed PA6-CF knuckle is not a rigid housing, so the pressed bore can sit anywhere from H7 low to F7 high"}
+  m3_major_max:      {value: 2.980, tag: S, source: "ISO 965 6g, https://www.brightonbest.com/download/pds/PDS_Thread_Details_Metric_Series.pdf"}
+  m3_major_min:      {value: 2.874, tag: S, source: "same"}
+  m3_mid:            "=(m3_major_max + m3_major_min)/2"
+  m3_head_dk_max:    {value: 5.6,   tag: S, source: "ISO 7045 M3 pan head dk max 5.6, https://ns1.engineersedge.com/iso_phillips_Pan_head_screw.htm (retrieved 2026-10-11, med confidence)"}
+  screw_len_tol:     {value: 0.24,  tag: A, source: "ISO 4759-1 length tolerance for a 6 mm screw is not publicly available; measure 10 screws"}
+  shim_tol:          {value: 0.02,  tag: A, source: "steel shim washer thickness"}
+  servo_body_w:      {value: 20.1,  tag: S, source: "DS3218MG case 39.9 x 20.1 x 40.4, https://servodatabase.com/servo/dsservo/ds3218-mg (retrieved 2026-10-11, low-med); CAD uses 20.0"}
+  servo_body_w_a17:  {value: 20.5,  tag: S, source: "actuators.csv row A17 mount_pattern text (its dim_W_mm says 20) and torque_and_actuator.md row A17: body 40.0 x 20.5 x 40.5 (Miuzei drawing, as cited there). Conflicts with the 20.1 above; the stacks run both, measure 3 servos"}
+  servo_body_w_tol:  {value: 0.10,  tag: A, source: "listings disagree by about 0.1 and none states a tolerance; measure 3 servos"}
+  servo_shaft_pos_tol: {value: 0.20, tag: A, source: "output shaft vs case side, unpublished for hobby servos"}
+  servo_spline_play_r: {value: 0.05, tag: A, source: "horn on the 25T spline, radial"}
+  servo_angle_rep_deg: {value: 0.5, tag: A, source: "3 us deadband = 0.27 deg (180 deg / 2000 us, deadband per https://servodatabase.com/servo/dsservo/ds3218-mg) plus gear-train play"}
+  # Hot scenario terms (docs/gripper/analysis/thermal.md): the PETG servo seat and the ear-screw preload relax at hold
+  # temperature (Fit A mount 67.5 C, Fit B 48.9 C). 0 in every cold run; the `hot` cases in stacks/rev_b.yaml set them.
+  hot_servo_float:   {value: 0.0,   tag: A, source: "extra +/- servo shift in its seat when the PETG relaxes (mm, uniform). Cold = 0. Hot cases use 0.10, the ear-hole to M3 radial float guessed at the order of the cold float; not measured, replace with the clamped-coupon test (thermal.md section 6)"}
+  hot_shaft_extra:   {value: 0.0,   tag: A, source: "extra +/- shaft position term when the seat relaxes (mm, normal 3 sigma). Cold = 0. Hot cases use 0.05, a quarter of servo_shaft_pos_tol; judgement"}
+  hot_endplay:       {value: 0.0,   tag: A, source: "extra +/- end play at pin B from warm PETG plates against PA6-CF knuckles (mm, uniform). Cold = 0. Hot cases use 0.05; the expansion coefficients were not sourced, so this is a stand-in, not a calculation"}
+  servo_horn_trim_deg: {value: 1.0, tag: A, source: "SERVO_DEG_AT_JAW0 set by eye at bench step 1 (firmware/gripper/config.h)"}
+
+  # ================= SO-101 wrist-roll interface, frame I (docs/gripper/research/so101.md) =================
+  bc_d:              {value: 14.0,  tag: D, cad: wrist_mount.bolt_circle_d, source: "so101.md rows 4/7; params.json wrist_mount.bolt_circle_d"}
+  hole_cad_d:        {value: 3.6,   tag: D, cad: wrist_mount.clearance_hole_cad, source: "params.json wrist_mount.clearance_hole_cad (rev A, fix 1)"}
+  horn_od:           {value: 19.2,  tag: D, source: "so101.md row 2"}
+  recess_d_cad:      {value: 19.51, tag: D, cad: wrist_mount.recess_d_cad, source: "params.json wrist_mount.recess_d_cad (rev A, fix 4) with a 0.3 x 45 mouth chamfer (recess_chamfer)"}
+  recess_depth:      {value: 1.0,   tag: D, cad: wrist_mount.recess_depth, source: "params.json wrist_mount.recess_depth"}
+  center_hole_d:     {value: 5.4,   tag: D, source: "so101.md row 11"}
+  clamp_t:           {value: 3.0,   tag: D, cad: wrist_mount.clamp_t, source: "params.json wrist_mount.clamp_t"}
+  cbore_d:           {value: 6.5,   tag: D, cad: wrist_mount.counterbore_d, source: "params.json wrist_mount.counterbore_d (rev A, fix 2)"}
+  horn_hole_depth:   {value: 2.5,   tag: D, source: "so101.md row 4 (CAD model of the horn); DB M15 says measure the real horn"}
+  screw_tip_chamfer: {value: 0.5,   tag: A, source: "incomplete thread at the screw point, about 1 pitch of M3x0.5"}
+  screw_len:         {value: 6.0,   tag: S, source: "M3x6 pan head, https://huggingface.co/docs/lerobot/so101"}
+  r_keepout_1:       {value: 11.6,  tag: D, cad: wrist_mount.hub_r_low, source: "params.json wrist_mount.hub_r_low: hub r 11.6 from H-1 to H+1"}
+  r_stat_1:          {value: 12.6,  tag: D, source: "so101.md keep-out table: wrist-link lip r 12.6 at frame-I z 0..+1"}
+  r_keepout_2:       {value: 14.6,  tag: D, cad: wrist_mount.hub_r_band, source: "params.json wrist_mount.hub_r_band: r 14.6 from H+1 to H+5.0"}
+  r_stat_2:          {value: 15.4,  tag: D, source: "so101.md keep-out table: lip r 15.4-15.8 at frame-I z +2..+5.3"}
+  lip_top_above_H:   {value: 4.3,   tag: D, source: "so101.md: lip top z = +5.3, H at z = +1.0"}
+  widen_z_above_H:   {value: 5.0,   tag: D, cad: wrist_mount.band_to_H, source: "params.json wrist_mount.band_to_H: spider (r > 15) only above H+5.0"}
+  horn_above_case:   {value: 4.8,   tag: D, source: "so101.md row 3"}
+  rim_below_H:       {value: 1.0,   tag: D, cad: wrist_mount.rim_below_H, source: "params.json wrist_mount.rim_below_H"}
+  horn_thread_pos_dia: {value: 0.05, tag: A, source: "molded horn hole pattern position"}
+  horn_od_tol:       {value: 0.05,  tag: A, source: "molded horn OD"}
+  horn_ecc_r:        {value: 0.05,  tag: A, source: "horn OD to spline axis"}
+  servo5_radial_play: {value: 0.05, tag: A, source: "STS3215 output bearing radial play; unpublished"}
+  horn_height_tol:   {value: 0.10,  tag: A, source: "horn face height above case"}
+  horn_face_runout:  {value: 0.05,  tag: A, source: "horn face axial runout FIM"}
+  servo5_seat_tol:   {value: 0.20,  tag: A, source: "servo 5 axial seat in the printed wrist link"}
+  servo5_axial_play: {value: 0.05,  tag: A, source: "unpublished"}
+  lip_r_tol:         {value: 0.20,  tag: A, source: "stock printed wrist-link lip radius"}
+  lip_r_ecc:         {value: 0.20,  tag: A, source: "lip vs roll axis (print + servo-5 seat)"}
+  lip_z_tol:         {value: 0.10,  tag: A, source: "stock printed lip height"}
+  thread_engage_min: {value: 1.5,   tag: A, source: "3 pitches of M3x0.5 in the aluminium horn"}
+  bottom_margin_min: {value: 0.2,   tag: A, source: "screw tip clear of the blind-hole floor so the head clamps"}
+
+  # ================= Housing, deck and cradle (PETG; cad/gripper/README.md, params.json housing) =================
+  deck_hole_cad:     {value: 3.6,   tag: D, cad: housing.clearance_hole_cad, source: "params.json housing.clearance_hole_cad: 4x M3 up through the deck into heat-set inserts in the spider"}
+  deck_float:        "=(deck_hole_cad + fdm_hole_bias_small_d + fdm_hole_scatter_d - m3_major_min)/2"   # D: 0.313 radial, largest hole less smallest screw
+  deck_pin_hole_min: {value: 3.000, tag: S, source: "reamed 3 mm H7 hole lower limit"}
+  deck_pin_hole_max: {value: 3.010, tag: S, source: "reamed 3 mm H7 hole upper limit"}
+  deck_peg_float:    {value: 0.020, tag: A, source: "rev A printed peg in a reamed hole"}
+  deck_peg_spacing:  {value: 40.94288705013363, tag: D,
+                      cad_derived: "((${housing.deck_pegs.1.0} - ${housing.deck_pegs.0.0}) ** 2 + (${housing.deck_pegs.1.1} - ${housing.deck_pegs.0.1}) ** 2) ** 0.5",
+                      source: "params.json housing.deck_pegs: centre distance between the two locating pins"}
+  deck_peg_lever:    {value: 14.309175378057255, tag: D,
+                      cad_derived: "((${gear.center_distance} / 2) ** 2 + ((${housing.deck_pegs.0.1} + ${housing.deck_pegs.1.1}) / 2) ** 2) ** 0.5",
+                      source: "params.json gear.center_distance and housing.deck_pegs: peg midpoint to pin A"}
+  deck_peg_rotation: {value: 0.0, tag: D, source: "rev A printed-peg option did not model two-pin rotation"}
+  cradle_pocket_w:   {value: 20.4,  tag: D, cad_derived: "${servo.body_x} + 2 * ${housing.cradle_pocket_clear}", source: "params.json housing.cradle_pocket_clear 0.2 per side on the 20.0 CAD servo width (README: pocket 40.4 x 20.4)"}
+  cradle_to_pinA:    "=fdm_xy_tol_short"   # D: cradle pocket and pin A hole are on the same mid-plate print, < 30 mm apart
+  pinA_to_datumB:    "=fdm_xy_tol"         # D: pin A hole (mid plate) to the deck screw holes, ~30-45 mm apart
+  # Standoffs (z 0 -> 10, integral with the mid plate) at (-24.5, 13), (24.5, 13), (0, 15.5); pin A at (-14.25, 0),
+  # pin B at (14.25, 0). The front plate plane through the three standoff tops, evaluated at a pin, weights the
+  # three tops by the barycentric coordinates of the pin (they sum to 1; the third one is negative because the
+  # pins lie outside the standoff triangle).
+  w_near:            {value: 3.391, tag: D, source: "barycentric weight of the standoff on the pin's side (x +/-24.5, y 13) at pin (+/-14.25, 0)"}
+  w_far:             {value: 2.809, tag: D, source: "weight of the opposite-side standoff"}
+  w_top:             {value: -5.2,  tag: D, source: "weight of the (0, 15.5) standoff: 13 + 2.5 w_top = 0"}
+  standoff_common_tol: "=fdm_z_tol"  # D: all three tops share one print height (moves the gap, not the tilt)
+
+  # ================= Gear pair and pivots (rev A: params.json gear, knuckle) =================
+  gear_m:            {value: 1.5,   tag: D, cad: gear.module, source: "params.json gear.module (gears.md recommendation, PA6-CF)"}
+  gear_z:            {value: 19,    tag: D, cad: gear.teeth, source: "params.json gear.teeth"}
+  alpha_deg:         {value: 25,    tag: D, cad: gear.pressure_angle, source: "params.json gear.pressure_angle"}
+  face_b:            {value: 8.0,   tag: D, cad: gear.face_width, source: "params.json gear.face_width"}
+  a0:                "=gear_m*gear_z"        # D: 28.5 = params.json gear.center_distance (x = 0)
+  r_pitch:           "=a0/2"
+  k_jt:              "=2*tan(radians(alpha_deg))"   # D: backlash change per mm of centre distance
+  jt0:               {value: 0.25,  tag: D, cad: gear.backlash_jt, source: "params.json gear.backlash_jt (flank offset in gear_profile.dxf)"}
+  jt_min:            {value: 0.05,  tag: A, source: "no binding"}
+  jt_max:            {value: 0.45,  tag: A, source: "open-jaw repeatability limit"}
+  tooth_thk_tol:     {value: 0.05,  tag: A, source: "printed PA6-CF tooth thickness"}
+  gear_runout_r:     {value: 0.05,  tag: A, source: "pitch circle vs sleeve bore"}
+  pin_clear:         "=sleeve_bore_max - pin_d_min"   # D: 0.014, largest running clearance of a knuckle sleeve on its m6 pin
+  plate_hole_pos_tol: "=fdm_xy_tol_short"   # D: reaming sizes a hole but follows the printed position, https://newscrewdriver.com/2020/11/27/sawppy-issue-8mm-hole-precision/ (retrieved 2026-10-11)
+  line_ream_coax:    {value: 0.03,  tag: A, source: "mid- and front-plate holes reamed in one pass with the plates bolted together: coaxial within +/-0.03"}
+  pin_span:          {value: 12.5,  tag: D, cad_derived: "${knuckle.sleeve_len} + 2 * ${housing.plate}", source: "params.json knuckle.sleeve_len + 2 * housing.plate; README rev B mid-plane span: 10 + 2 * 2.5 = 15.0"}
+  pin_perp_zone:     {value: 0.10,  tag: A, source: "proposed perpendicularity dia 0.1 of the line-reamed pin axis to datum D"}
+  sleeve_len:        {value: 7.7,   tag: D, cad: knuckle.sleeve_len, source: "params.json knuckle.sleeve_len"}
+  knuckle_bore_len:  "=sleeve_len"
+  # Dog coupling: 2 M3 dog screws in the horn at r 7, in radial slots of knuckle A (3.14 wide, r 5.25-8.75, at +/-90 deg)
+  dog_r:             {value: 7.0,   tag: D, cad: servo.dog_r, source: "params.json servo.dog_r"}
+  dog_slot_w:        {value: 3.14,  tag: D, cad: knuckle.dog_slot_w, source: "params.json knuckle.dog_slot_w"}
+  dog_clear:         "=dog_slot_w + fdm_pocket_bias - m3_mid"   # D: 0.113 tangential clearance, printed slot less the screw
+  dog_lash:          "=dog_clear/(2*dog_r)"   # D, rad: half the free rotation of knuckle A on the horn
+  dog_pos_r:         {value: 0.05,  tag: A, source: "dog screw position in the horn (holes drilled and tapped by hand in the aluminium disc)"}
+  boss_web_to_pinA:  {value: 6.3, tag: D,
+                      cad_derived: "${housing.plate} / 2 + ${housing.front_gap} / 2 + ${servo.horn_t} + ${servo.horn_gap} - ${housing.boss_web_gap} - ${housing.boss_web_t} / 2",
+                      source: "params.json: boss-web mid-plane to the mid-plate plane that holds pin A"}
+  boss_to_dog_lever: {value: 3.05, tag: D,
+                      cad_derived: "${servo.horn_gap} + ${servo.horn_t} / 2 - ${housing.boss_web_gap} - ${housing.boss_web_t} / 2",
+                      source: "params.json: boss-web locating mid-plane to the horn/dog engagement mid-plane"}
+  servo_ear_span:    {value: 54.5, tag: D, cad: servo.ear_span,
+                      source: "params.json servo.ear_span: span of the ear seats that set servo-axis direction"}
+  boss_web_perp_zone: {value: 0.10, tag: A,
+                       source: "perpendicularity zone over pin_span; replace with the boss-bore centre offset measured at the web and mid-plate planes"}
+
+  # ================= Axial (Z) stack at the pivots (README, params.json knuckle) =================
+  plate_gap:         {value: 10.0,  tag: D, cad_derived: "${knuckle.sleeve_len} + ${housing.plate}", source: "params.json knuckle.sleeve_len + housing.plate; README rev B face gap: 10 + 2.5 = 12.5"}
+  knuckle_hub_len:   "=face_b"        # D: hub = face width 8 (knuckles z 1..9)
+  shim_t:            {value: 0.85,  tag: D, cad: knuckle.shim_t, source: "params.json knuckle.shim_t, one each side"}
+  washer_stack:      "=2*shim_t"
+  endplay_nom:       "=plate_gap - knuckle_hub_len - washer_stack"   # D: 0.3 = params.json knuckle.end_play
+
+  # ================= Fingers, pads and grip (params.json finger, knuckle, nail, fsr, grip) =================
+  contact_gap:       {value: 1.0,   tag: D, cad: finger.contact_gap, source: "params.json finger.contact_gap: rigid contact faces 1.0 apart at theta 0 (DB R21)"}
+  closed_gap:        "=contact_gap"
+  nail_t:            {value: 1.0,   tag: D, cad: nail.thickness, source: "params.json nail.thickness (PLA, printed flat: a Z dimension)"}
+  backing_t:         {value: 1.5,   tag: D, cad_derived: "${fsr.backing_under} + ${fsr.pocket_depth}", source: "params.json fsr.backing_under 1.0 + pocket_depth 0.5 (PLA, printed flat)"}
+  fsr_t:             {value: 0.45,  tag: D, cad: fsr.thickness, source: "params.json fsr.thickness (Interlink 402)"}
+  fsr_t_tol:         {value: 0.05,  tag: A, source: "FSR stack thickness, no published tolerance"}
+  L_tip:             {value: 70.0,  tag: D, source: "knuckle root 25 (root_offset 19 + root_thickness 3 + root_tab 3) + finger 45"}
+  L_root:            {value: 25.0,  tag: D, source: "same"}
+  r_c:               {value: 65.0,  tag: D, cad: grip.r_c_design_mm, source: "params.json grip.r_c_design_mm: pad-contact moment arm"}
+  pad_len:           "=L_tip - L_root"
+  base_width:        {value: 16.0,  tag: D, cad: finger.base_width, source: "params.json finger.base_width"}
+  xf_tol:            "=fdm_xy_tol_short"     # D: knuckle root face (PA6-CF) to pivot, one print
+  finger_hole_float: {value: 0.05,  tag: A, source: "2x 2 mm pegs 8 apart + 1 M2 per finger (rev A, fix 10): peg in TPU hole, no TPU hole data"}
+  finger_peg_pitch:  {value: 8.0,   tag: D, cad: knuckle.peg_pitch, source: "params.json knuckle.peg_pitch"}
+  finger_root_twist: "=2*finger_hole_float/finger_peg_pitch"   # D, rad
+  finger_twist_arm:  "=base_width/2"
+  k_pair_min:        {value: 0.523, tag: D, source: "docs/gripper/analysis/finger.md 6.2: pair stiffness at the pad, E 56 MPa"}
+  k_pair_max:        {value: 0.621, tag: D, source: "same, E 67 MPa"}
+  jaw_floor_deg:     {value: -7.4,  tag: D, source: "the absolute floor before firmware round 2 (config.h JAW_MIN_DEG was -7.4); the firmware now uses theta_c0 - JAW_FLOOR_BELOW_C0_DEG 4.9 (T09F/T09H relfloor8, T09P floor49; 6.2 in round 2, relfloor)"}
+  cal_window_deg:    {value: 4.0,   tag: D, source: "firmware/gripper/config.h CAL_C0_MIN_DEG / CAL_C0_MAX_DEG"}
+  cal_rep_deg:       {value: 0.3,   tag: A, source: "repeatability of the calibrated contact angle: touch at 0.5 N is 0.3-0.4 deg past first contact at k 0.52-0.62 N/mm, varies with cloth"}
+  near_speed_dps:    {value: 20.0,  tag: D, source: "config.h JAW_SPEED_NEAR_DPS (DB R19)"}
+  fast_speed_dps:    {value: 120.0, tag: D, source: "config.h JAW_SPEED_FAST_DPS (line 88): the command speed outside the slow zone"}
+  slow_zone_deg:     {value: 6.0,   tag: D, source: "config.h JAW_SLOW_ZONE_DEG"}
+  t_contact_min:     {value: 0.503, tag: D, source: "analysis/gripper/firmware_sim/results/fw_sim.json sweep_k: contact at 503 ms (k 1.55-1.63)"}
+  t_contact_max:     {value: 0.511, tag: D, source: "same: contact at 511 ms (k 1.0), the latest inside the R12 window 0.88-1.63"}
+  F_trip:            {value: 7.75,  tag: D, source: "config.h F_TRIP_N: the 8 N cap less 0.25 N for the trip-to-stop overshoot (DB D8, R15 ruled 8 N); was 8.0"}
+  trip_window_s:     {value: 0.0295, tag: D, source: "config.h F_TRIP_MS 20 ms hold + FSR EMA tau 9.5 ms"}
+  squeeze_rate_dps:  {value: 60.0,  tag: D, source: "config.h CTRL_RATE_LIMIT_DPS"}
+  fsr_err:           {value: 0.10,  tag: A, source: "FSR force error after CALF span calibration against a known weight; no public data for a calibrated FSR 402 behind a rigid backing"}
+  u_max_deg:         {value: 4.867, tag: D, source: "gates.json host FSM test: squeeze cap max u 4.867 deg at F_CAP 10 N with F_CAP_MARGIN_N 0.5 (force_ctrl.h CTRL_U_MAX_DEG)"}
+  u_max_8_deg:       {value: 3.785, tag: D, source: "the firmware compiled with F_CAP_N 8: squeeze cap 3.785 deg, (8 - 0.5 margin - 0.5) / 1.849 N/deg (analysis/gripper/controls/results/firmware_requests_stdout.txt, cap8)"}
+  F_target:          {value: 5.0,   tag: D, source: "DB R14 hold force per pad"}
+  F_cap:             {value: 8.0,   tag: D, source: "DESIGN-BASIS R15 force cap, ruled 8 N by Douglas 2026-10-12 (was 10.0 as written)"}
+  F_cap_proposed:    {value: 8.0,   tag: D, source: "R15 ruled 8 N (Douglas 2026-10-12); kept as the r15p8 scenarios' cap, now equal to F_cap"}
+  close_max:         {value: 0.5,   tag: D, source: "DB R19 full close <= 0.5 s as written"}
+  close_max_proposed: {value: 0.75, tag: D, source: "R19 proposed value (open requirement)"}
+
+  # ================= Camera pad (front plate, params.json camera_pad; wrist UVC option only) =================
+  cam_hole_spacing:  {value: 8.1,   tag: D, cad: camera_pad.bolt_pitch, source: "params.json camera_pad.bolt_pitch"}
+  cam_hole_cad:      {value: 3.6,   tag: A, source: "bracket clearance holes, CAD 3.6"}
+  cam_float:         "=(cam_hole_cad + fdm_hole_bias_small_d + fdm_hole_scatter_d - m3_major_min)/2"   # D, one part (pad uses heat-set inserts)
+  cam_tab_float:     {value: 0.05,  tag: A, source: "3 x 2 x 1.5 locating tab in its slot (rev A, fix 11): rotation float per side"}
+  cam_tab_arm:       {value: 6.0,   tag: A, source: "tab to bracket rotation centre"}
+  cam_perp_zone:     {value: 0.20,  tag: A, source: "proposed perpendicularity of bracket faces"}
+  cam_bracket_len:   {value: 20.0,  tag: A, source: "bracket face length"}
+  cam_board_float:   {value: 0.10,  tag: A, source: "4x M2 in the 32 x 32 UVC module"}
+  cam_board_spacing: {value: 28.0,  tag: A, source: "32 x 32 module hole spacing"}
+  cam_lens_tilt_deg: {value: 1.0,   tag: A, source: "M12 lens holder tilt on a cheap module"}
+
+  # ================= Requirements (A unless a sourced limit exists) =================
+  fit_min_clear:     {value: 0.02,  tag: A, source: "pilot must slide on by hand"}
+  pilot_clear_max:   {value: 0.30,  tag: A, source: "keeps float inside the concentricity budget (as written since 2026-09-22)"}
+  pilot_clear_max_relaxed: {value: 0.40, tag: A, source: "proposed: the 0.20 radial float still fits the 0.30 concentricity budget; T04 checks it"}
+  conc_max:          {value: 0.30,  tag: A, source: "gripper axis to roll axis, radial"}
+  jaw_center_tol:    {value: 0.50,  tag: A, source: "half of the +/-1 mm cloth-edge target (cloth_and_camera.md 3.2)"}
+  mesh_z_max:        {value: 0.80,  tag: A, source: "10 % of the 8 mm face width"}
+  parallel_max:      {value: 1.00,  tag: A, source: "root gap at tip contact over the 45 mm pad"}
+  oop_tip_max:       {value: 2.00,  tag: A, source: "fingertip Z mismatch, 10 % of the 20 mm pad depth"}
+  keepout_min_clear: {value: 0.10,  tag: A, source: "running clearance to stationary wrist parts"}
+  axial_min_clear:   {value: 0.10,  tag: A, source: "same, axial"}
+  cam_aim_max_deg:   {value: 3.0,   tag: A, source: "fingertips stay in the wrist-cam view without re-aim"}
+  cradle_float_max:  {value: 0.30,  tag: A, source: "servo float in the cradle (as written); in the pinned layout it feeds only the dog coupling, T14B"}
+  endplay_min:       {value: 0.05,  tag: A, source: "knuckle turns freely"}
+  endplay_max:       {value: 0.50,  tag: A, source: "limits axial float feeding the mesh"}
+  pin_tilt_da_max:   {value: 0.07,  tag: A, source: "k_jt * 0.07 = 0.065 backlash change across the face, about jt_min; no public misalignment limit for printed gears; confirm with a marker-contact test on coupon gears"}
+  run_clear_min:     {value: 0.0,   tag: A, source: "a running fit must never be an interference"}

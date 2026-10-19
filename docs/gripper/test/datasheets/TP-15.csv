@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+step,torque_Nm,hanger_kg,lever_own_moment_Nm,held_60s,backlash_after_mm,contact_pattern,damage,notes

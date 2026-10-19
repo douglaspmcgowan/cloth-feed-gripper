@@ -1,0 +1,675 @@
+{
+  "revision": "B",
+  "frame": "G (README)",
+  "Y_H": 31.0,
+  "a": 28.5,
+  "xf": 12.025,
+  "y0": -25.0,
+  "toe_in_deg": 0.44,
+  "r_c_contact_face": {
+    "A": 64.898,
+    "B": 64.887
+  },
+  "z_stack": {
+    "case": [
+      -46.5,
+      -8.5
+    ],
+    "boss_web": [
+      -8.35,
+      -6.75
+    ],
+    "horn": [
+      -6.0,
+      -3.0
+    ],
+    "mid_plate": [
+      -2.5,
+      0.0
+    ],
+    "knuckles": [
+      1.0,
+      11.5
+    ],
+    "front_plate": [
+      12.5,
+      15.0
+    ],
+    "seat_frame": [
+      -18.5,
+      -16.0
+    ]
+  },
+  "face_count": {
+    "housing": 173,
+    "front_plate": 30,
+    "wrist_mount": 47,
+    "knuckle_a": 386,
+    "knuckle_b": 431,
+    "finger_a": 39,
+    "finger_b": 39,
+    "nail_a": 6,
+    "fsr_backing_b": 12,
+    "fsr_sensor_b": 3,
+    "fsr_puck_b": 3,
+    "servo": 20,
+    "horn": 5,
+    "fasteners": 187,
+    "fasteners_a": 19,
+    "fasteners_b": 13
+  },
+  "r_c_nominal": 65.0,
+  "end_play": 0.3,
+  "closed_gap_tpu": 4.45,
+  "zc": 6.25,
+  "pivot_to_H": 31.0,
+  "tip_u_past_H": 101.0,
+  "parts": {
+    "housing": {
+      "material": "PETG",
+      "volume_cm3": 15.617,
+      "mass_g": 11.71,
+      "com_G": [
+        -0.91,
+        9.53,
+        -4.98
+      ],
+      "u_past_H": 21.47,
+      "bbox_G": [
+        -34.0,
+        34.0,
+        -17.5,
+        22.0,
+        -18.5,
+        12.5
+      ]
+    },
+    "front_plate": {
+      "material": "PETG",
+      "volume_cm3": 5.525,
+      "mass_g": 4.14,
+      "com_G": [
+        0.95,
+        2.63,
+        14.01
+      ],
+      "u_past_H": 28.37,
+      "bbox_G": [
+        -31.76,
+        31.76,
+        -17.5,
+        18.8,
+        12.49,
+        18.0
+      ]
+    },
+    "wrist_mount": {
+      "material": "PETG",
+      "volume_cm3": 7.399,
+      "mass_g": 9.25,
+      "com_G": [
+        -0.0,
+        25.68,
+        -0.22
+      ],
+      "u_past_H": 5.32,
+      "bbox_G": [
+        -35.0,
+        35.0,
+        21.99,
+        32.0,
+        -14.61,
+        14.61
+      ]
+    },
+    "knuckle_a": {
+      "material": "PA6CF",
+      "volume_cm3": 5.601,
+      "mass_g": 6.11,
+      "com_G": [
+        -12.11,
+        -5.26,
+        6.3
+      ],
+      "u_past_H": 36.26,
+      "bbox_G": [
+        -24.05,
+        1.33,
+        -25.0,
+        11.79,
+        -5.75,
+        18.25
+      ]
+    },
+    "knuckle_b": {
+      "material": "PA6CF",
+      "volume_cm3": 5.843,
+      "mass_g": 6.37,
+      "com_G": [
+        12.04,
+        -5.01,
+        6.25
+      ],
+      "u_past_H": 36.01,
+      "bbox_G": [
+        -1.5,
+        24.05,
+        -25.0,
+        13.35,
+        -5.75,
+        18.25
+      ]
+    },
+    "finger_a": {
+      "material": "TPU",
+      "volume_cm3": 3.769,
+      "mass_g": 4.6,
+      "com_G": [
+        -7.95,
+        -39.59,
+        6.25
+      ],
+      "u_past_H": 70.59,
+      "bbox_G": [
+        -18.23,
+        -1.89,
+        -70.0,
+        -22.0,
+        -3.75,
+        16.25
+      ]
+    },
+    "finger_b": {
+      "material": "TPU",
+      "volume_cm3": 3.769,
+      "mass_g": 4.6,
+      "com_G": [
+        7.95,
+        -39.59,
+        6.25
+      ],
+      "u_past_H": 70.59,
+      "bbox_G": [
+        1.89,
+        18.23,
+        -70.0,
+        -22.0,
+        -3.75,
+        16.25
+      ]
+    },
+    "nail_a": {
+      "material": "PLA",
+      "volume_cm3": 0.24,
+      "mass_g": 0.3,
+      "com_G": [
+        -1.72,
+        -64.0,
+        6.25
+      ],
+      "u_past_H": 95.0,
+      "bbox_G": [
+        -2.26,
+        -1.17,
+        -70.01,
+        -58.0,
+        -3.75,
+        16.25
+      ]
+    },
+    "fsr_backing_b": {
+      "material": "PLA",
+      "volume_cm3": 0.431,
+      "mass_g": 0.53,
+      "com_G": [
+        1.6,
+        -60.44,
+        6.25
+      ],
+      "u_past_H": 91.44,
+      "bbox_G": [
+        0.62,
+        2.26,
+        -70.01,
+        -51.0,
+        -3.75,
+        16.25
+      ]
+    },
+    "fsr_sensor_b": {
+      "material": "bought",
+      "volume_cm3": 0.118,
+      "mass_g": 0.6,
+      "com_G": [
+        0.97,
+        -61.01,
+        6.25
+      ],
+      "u_past_H": 92.01,
+      "bbox_G": [
+        0.67,
+        1.27,
+        -70.15,
+        -51.87,
+        -2.89,
+        15.39
+      ]
+    },
+    "fsr_puck_b": {
+      "material": "PLA",
+      "volume_cm3": 0.028,
+      "mass_g": 0.04,
+      "com_G": [
+        0.27,
+        -64.02,
+        6.25
+      ],
+      "u_past_H": 95.02,
+      "bbox_G": [
+        -0.26,
+        0.79,
+        -67.02,
+        -61.01,
+        3.25,
+        9.25
+      ]
+    },
+    "servo": {
+      "material": "bought",
+      "volume_cm3": 31.281,
+      "mass_g": 60.0,
+      "com_G": [
+        -4.3,
+        0.0,
+        -27.26
+      ],
+      "u_past_H": 31.0,
+      "bbox_G": [
+        -31.5,
+        23.0,
+        -10.05,
+        10.05,
+        -46.5,
+        -6.0
+      ]
+    },
+    "horn": {
+      "material": "bought Al",
+      "volume_cm3": 0.873,
+      "mass_g": 2.36,
+      "com_G": [
+        -14.25,
+        0.0,
+        -4.55
+      ],
+      "u_past_H": 31.0,
+      "bbox_G": [
+        -24.25,
+        -4.25,
+        -10.0,
+        10.0,
+        -6.0,
+        -3.0
+      ]
+    },
+    "fasteners": {
+      "material": "steel",
+      "volume_cm3": 2.6,
+      "mass_g": 15.51,
+      "com_G": [
+        -1.37,
+        10.33,
+        -2.9
+      ],
+      "u_past_H": 20.67,
+      "bbox_G": [
+        -33.25,
+        33.25,
+        -8.5,
+        34.0,
+        -22.8,
+        16.8
+      ]
+    },
+    "fasteners_a": {
+      "material": "steel",
+      "volume_cm3": 0.633,
+      "mass_g": 4.55,
+      "com_G": [
+        -13.95,
+        -9.46,
+        4.88
+      ],
+      "u_past_H": 40.46,
+      "bbox_G": [
+        -17.25,
+        -9.77,
+        -24.7,
+        8.5,
+        -6.75,
+        19.25
+      ]
+    },
+    "fasteners_b": {
+      "material": "steel",
+      "volume_cm3": 0.492,
+      "mass_g": 3.69,
+      "com_G": [
+        13.88,
+        -11.66,
+        6.25
+      ],
+      "u_past_H": 42.66,
+      "bbox_G": [
+        9.77,
+        17.25,
+        -24.7,
+        3.0,
+        -6.75,
+        19.25
+      ]
+    }
+  },
+  "web_sizes_bytes": {
+    "gripper_closed.glb": 2960076
+  },
+  "web_total_bytes": 2960076,
+  "invalid": [],
+  "sector_A_vertices": [
+    5487,
+    417
+  ],
+  "sector_B_vertices": [
+    6401,
+    476
+  ],
+  "fastener_items": {
+    "static": [
+      "pin h8 3x16",
+      "pin h8 3x16",
+      "shim 3.2x7x0.85",
+      "shim 3.2x7x0.85",
+      "shim 3.2x7x0.85",
+      "shim 3.2x7x0.85",
+      "M3x6 horn screw",
+      "M3x6 horn screw",
+      "M3x6 horn screw",
+      "M3x6 horn screw",
+      "M3x6 deck screw",
+      "M3 heat-set insert",
+      "M3x6 deck screw",
+      "M3 heat-set insert",
+      "M3x6 deck screw",
+      "M3 heat-set insert",
+      "M3x6 deck screw",
+      "M3 heat-set insert",
+      "locating pin h8 3x6",
+      "locating pin h8 3x6",
+      "M3x10 ear screw",
+      "limiter sleeve 5x3.2x2.55",
+      "washer M3 7x3.2x0.5",
+      "nut M3",
+      "M3x10 ear screw",
+      "limiter sleeve 5x3.2x2.55",
+      "washer M3 7x3.2x0.5",
+      "nut M3",
+      "M3x10 ear screw",
+      "limiter sleeve 5x3.2x2.55",
+      "washer M3 7x3.2x0.5",
+      "nut M3",
+      "M3x10 ear screw",
+      "limiter sleeve 5x3.2x2.55",
+      "washer M3 7x3.2x0.5",
+      "nut M3",
+      "M3x16 plate screw",
+      "M3x16 plate screw",
+      "M3x16 plate screw"
+    ],
+    "A": [
+      "bronze bush 3x6x10",
+      "pegs + M2 screw",
+      "dog set screw M3x10",
+      "dog set screw M3x10"
+    ],
+    "B": [
+      "bronze bush 3x6x10",
+      "pegs + M2 screw"
+    ]
+  },
+  "warnings": [],
+  "servo_model": "DSServo DS3230 MG",
+  "face_width": 10.5,
+  "fastener_masses_g": {
+    "fasteners": [
+      [
+        "pin h8 3x16",
+        0.888,
+        "D steel"
+      ],
+      [
+        "pin h8 3x16",
+        0.888,
+        "D steel"
+      ],
+      [
+        "shim 3.2x7x0.85",
+        0.203,
+        "D steel"
+      ],
+      [
+        "shim 3.2x7x0.85",
+        0.203,
+        "D steel"
+      ],
+      [
+        "shim 3.2x7x0.85",
+        0.203,
+        "D steel"
+      ],
+      [
+        "shim 3.2x7x0.85",
+        0.203,
+        "D steel"
+      ],
+      [
+        "M3x6 horn screw",
+        0.45,
+        "A catalogue"
+      ],
+      [
+        "M3x6 horn screw",
+        0.45,
+        "A catalogue"
+      ],
+      [
+        "M3x6 horn screw",
+        0.45,
+        "A catalogue"
+      ],
+      [
+        "M3x6 horn screw",
+        0.45,
+        "A catalogue"
+      ],
+      [
+        "M3x6 deck screw",
+        0.45,
+        "A catalogue"
+      ],
+      [
+        "M3 heat-set insert",
+        0.202,
+        "D brass"
+      ],
+      [
+        "M3x6 deck screw",
+        0.45,
+        "A catalogue"
+      ],
+      [
+        "M3 heat-set insert",
+        0.202,
+        "D brass"
+      ],
+      [
+        "M3x6 deck screw",
+        0.45,
+        "A catalogue"
+      ],
+      [
+        "M3 heat-set insert",
+        0.202,
+        "D brass"
+      ],
+      [
+        "M3x6 deck screw",
+        0.45,
+        "A catalogue"
+      ],
+      [
+        "M3 heat-set insert",
+        0.202,
+        "D brass"
+      ],
+      [
+        "locating pin h8 3x6",
+        0.333,
+        "D steel"
+      ],
+      [
+        "locating pin h8 3x6",
+        0.333,
+        "D steel"
+      ],
+      [
+        "M3x10 ear screw",
+        0.62,
+        "A catalogue"
+      ],
+      [
+        "limiter sleeve 5x3.2x2.55",
+        0.251,
+        "D brass"
+      ],
+      [
+        "washer M3 7x3.2x0.5",
+        0.119,
+        "D steel"
+      ],
+      [
+        "nut M3",
+        0.26,
+        "A catalogue"
+      ],
+      [
+        "M3x10 ear screw",
+        0.62,
+        "A catalogue"
+      ],
+      [
+        "limiter sleeve 5x3.2x2.55",
+        0.251,
+        "D brass"
+      ],
+      [
+        "washer M3 7x3.2x0.5",
+        0.119,
+        "D steel"
+      ],
+      [
+        "nut M3",
+        0.26,
+        "A catalogue"
+      ],
+      [
+        "M3x10 ear screw",
+        0.62,
+        "A catalogue"
+      ],
+      [
+        "limiter sleeve 5x3.2x2.55",
+        0.251,
+        "D brass"
+      ],
+      [
+        "washer M3 7x3.2x0.5",
+        0.119,
+        "D steel"
+      ],
+      [
+        "nut M3",
+        0.26,
+        "A catalogue"
+      ],
+      [
+        "M3x10 ear screw",
+        0.62,
+        "A catalogue"
+      ],
+      [
+        "limiter sleeve 5x3.2x2.55",
+        0.251,
+        "D brass"
+      ],
+      [
+        "washer M3 7x3.2x0.5",
+        0.119,
+        "D steel"
+      ],
+      [
+        "nut M3",
+        0.26,
+        "A catalogue"
+      ],
+      [
+        "M3x16 plate screw",
+        0.95,
+        "A catalogue"
+      ],
+      [
+        "M3x16 plate screw",
+        0.95,
+        "A catalogue"
+      ],
+      [
+        "M3x16 plate screw",
+        0.95,
+        "A catalogue"
+      ]
+    ],
+    "fasteners_a": [
+      [
+        "bronze bush 3x6x10",
+        1.858,
+        "D bronze"
+      ],
+      [
+        "pegs + M2 screw",
+        1.83,
+        "A catalogue"
+      ],
+      [
+        "dog set screw M3x10",
+        0.43,
+        "A catalogue"
+      ],
+      [
+        "dog set screw M3x10",
+        0.43,
+        "A catalogue"
+      ]
+    ],
+    "fasteners_b": [
+      [
+        "bronze bush 3x6x10",
+        1.858,
+        "D bronze"
+      ],
+      [
+        "pegs + M2 screw",
+        1.83,
+        "A catalogue"
+      ]
+    ]
+  }
+}

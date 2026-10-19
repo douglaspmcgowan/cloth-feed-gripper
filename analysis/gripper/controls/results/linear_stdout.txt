@@ -1,0 +1,17 @@
+Force loop, T = 20 ms, base Kp 0.240 deg/N, Ti 0.040 s
+softest (k 0.88, 4 plies, slow servo)    schedule             mean frame phase  g 2.33  Kp*K 0.241  PM 67.8 deg at 0.92 Hz  GM 16.5 dB  Ms 1.31  BW 1.51 Hz
+softest (k 0.88, 4 plies, slow servo)    schedule             worst frame phase g 2.33  Kp*K 0.241  PM 64.5 deg at 0.92 Hz  GM 14.4 dB  Ms 1.39  BW 1.65 Hz
+softest (k 0.88, 4 plies, slow servo)    W2b-1 (no schedule)  mean frame phase  g 1.00  Kp*K 0.104  PM 79.9 deg at 0.41 Hz  GM 23.9 dB  Ms 1.14  BW 0.50 Hz
+softest (k 0.88, 4 plies, slow servo)    W2b-1 (no schedule)  worst frame phase g 1.00  Kp*K 0.104  PM 78.5 deg at 0.41 Hz  GM 21.7 dB  Ms 1.16  BW 0.52 Hz
+softest (k 0.88, 4 plies, slow servo)    T 10 ms: PM 64.8 GM 15.3 Ms 1.37; no EMA: PM 67.5 GM 15.9; Kp max for PM 45 / GM 6 dB 0.479 deg/N
+nominal (k 1.10, 1 ply)                  schedule             mean frame phase  g 2.27  Kp*K 0.334  PM 75.3 deg at 1.36 Hz  GM 13.9 dB  Ms 1.32  BW 2.02 Hz
+nominal (k 1.10, 1 ply)                  schedule             worst frame phase g 2.27  Kp*K 0.334  PM 70.4 deg at 1.36 Hz  GM 11.7 dB  Ms 1.43  BW 2.50 Hz
+nominal (k 1.10, 1 ply)                  W2b-1 (no schedule)  mean frame phase  g 1.00  Kp*K 0.147  PM 83.8 deg at 0.59 Hz  GM 21.1 dB  Ms 1.13  BW 0.66 Hz
+nominal (k 1.10, 1 ply)                  W2b-1 (no schedule)  worst frame phase g 1.00  Kp*K 0.147  PM 81.7 deg at 0.59 Hz  GM 18.9 dB  Ms 1.16  BW 0.70 Hz
+nominal (k 1.10, 1 ply)                  T 10 ms: PM 70.9 GM 12.9 Ms 1.38; no EMA: PM 74.7 GM 12.9; Kp max for PM 45 / GM 6 dB 0.465 deg/N
+stiffest (k 1.63, thin ply, fast servo)  schedule             mean frame phase  g 1.39  Kp*K 0.381  PM 82.9 deg at 1.63 Hz  GM 12.4 dB  Ms 1.37  BW 1.99 Hz
+stiffest (k 1.63, thin ply, fast servo)  schedule             worst frame phase g 1.39  Kp*K 0.381  PM 77.0 deg at 1.63 Hz  GM 10.1 dB  Ms 1.51  BW 2.71 Hz
+stiffest (k 1.63, thin ply, fast servo)  W2b-1 (no schedule)  mean frame phase  g 1.00  Kp*K 0.274  PM 85.7 deg at 1.13 Hz  GM 15.2 dB  Ms 1.25  BW 1.24 Hz
+stiffest (k 1.63, thin ply, fast servo)  W2b-1 (no schedule)  worst frame phase g 1.00  Kp*K 0.274  PM 81.6 deg at 1.13 Hz  GM 13.0 dB  Ms 1.33  BW 1.39 Hz
+stiffest (k 1.63, thin ply, fast servo)  T 10 ms: PM 77.8 GM 11.3 Ms 1.43; no EMA: PM 82.2 GM 10.9; Kp max for PM 45 / GM 6 dB 0.385 deg/N
+delay budget (ms): zero-order hold (T/2) 10.0, frame phase (mean) 10.0, servo dead time 10.0, FSR EMA (tau) 9.0, servo lag tau 40.0; total 79.0

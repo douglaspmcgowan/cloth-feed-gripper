@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+trial,theta_c0_deg,tip_gap_open_mm,r_d_mm,backlash_B_tip_mm,backlash_A_tip_mm,angle_open_deg,deadband_us,notes

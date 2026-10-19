@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+t_min,case_C,mount_C,ambient_C,ir_check_C,rail_V,rail_mean_A,cycles_done,hold_I_A,hold_Ih_A,drive_regime,sleeves_fitted,stopped_by_rig,notes

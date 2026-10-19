@@ -1,0 +1,34 @@
+id: T09
+title: Closure gap — first-contact angle of the jaw before calibration
+parts: ["servo horn", "knuckle A", "knuckle B", "finger A", "finger B"]
+constants: basis.yaml
+units: deg (servo jaw angle at first pad contact, theta = 0 means rigid contact faces 1.0 apart)
+requirement: >-
+  The uncalibrated first-contact angle falls inside the firmware calibration window (CAL_C0 -4 .. +4 deg), so
+  CALIBRATE finds it instead of raising a SENSOR fault. T09T (close time, R19) and T09F / T09P / T09H (pad force,
+  R15 and R14) build on this angle.
+spec: {lsl: "=-cal_window_deg", usl: "=cal_window_deg"}
+accept: {method: mc}
+notes: >-
+  The rigid contact faces (PLA nail on A, FSR stack on B) are contact_gap apart at theta = 0. Each finger closes
+  the gap at r_c per radian (r_c is the moment arm of the pad normal), so contact comes at
+  theta_c = -gap / (2 r_c), converted to degrees (-0.441 deg per mm of gap). Angle terms enter directly:
+  the horn trim set by eye at bench step 1, servo repeatability, the dog coupling lash (A lags the horn while
+  closing, so the servo turns dog_lash further) and finger B's backlash lag (the servo turns half of it further).
+constant: "=degrees(a0/(2*r_c))"
+contributors:
+  - {name: centre_distance, from_stack: T06, sensitivity: "=-degrees(1/(2*r_c))", tag: D, source: "T06: a larger centre distance widens the gap"}
+  - {name: contact_gap, nominal: "=contact_gap", tol: 0, sensitivity: "=-degrees(1/(2*r_c))", tag: D, source: "params.json finger.contact_gap"}
+  - {name: xf_A, nominal: 0, tol: "=xf_tol", sensitivity: "=degrees(1/(2*r_c))", dist: normal, tag: S, source: "knuckle A root face to pivot (basis XY band)"}
+  - {name: xf_B, nominal: 0, tol: "=xf_tol", sensitivity: "=degrees(1/(2*r_c))", dist: normal, tag: S, source: "knuckle B root face to pivot"}
+  - {name: pad_A_profile, nominal: 0, gdt: {type: profile, zone: "=pad_profile_zone"}, sensitivity: "=degrees(1/(2*r_c))", dist: normal, tag: A, source: "TPU pad face (no data)"}
+  - {name: pad_B_profile, nominal: 0, gdt: {type: profile, zone: "=pad_profile_zone"}, sensitivity: "=degrees(1/(2*r_c))", dist: normal, tag: A, source: "TPU pad face"}
+  - {name: nail_thickness, nominal: 0, tol: "=fdm_z_tol", sensitivity: "=degrees(1/(2*r_c))", dist: normal, tag: S, source: "PLA nail 1.0 printed flat (Z band)"}
+  - {name: backing_thickness, nominal: 0, tol: "=fdm_z_tol", sensitivity: "=degrees(1/(2*r_c))", dist: normal, tag: S, source: "PLA FSR backing 1.5 printed flat (Z band)"}
+  - {name: fsr_thickness, nominal: 0, tol: "=fsr_t_tol", sensitivity: "=degrees(1/(2*r_c))", dist: normal, tag: A, source: "FSR 402 stack 0.45"}
+  - {name: finger_A_root_float, kind: radial, project: first, radius: "=finger_hole_float", dist: disk, sensitivity: "=degrees(1/(2*r_c))", tag: A, source: "pegs + M2: X component of the T05 float disk"}
+  - {name: finger_B_root_float, kind: radial, project: first, radius: "=finger_hole_float", dist: disk, sensitivity: "=-degrees(1/(2*r_c))", tag: A, source: "same, finger B"}
+  - {name: horn_trim, nominal: 0, tol: "=servo_horn_trim_deg", dist: normal, tag: A, source: "SERVO_DEG_AT_JAW0 set by eye (basis servo_horn_trim_deg)"}
+  - {name: servo_angle_error, nominal: 0, tol: "=servo_angle_rep_deg", dist: normal, tag: A, source: "deadband + gear play"}
+  - {name: dog_lash_offset, nominal: "=-degrees(dog_lash)", tol: "=degrees(fdm_xy_tol_short/(2*dog_r))", dist: normal, tag: D, source: "dog clearance / (2 r_dog), taken up in the closing direction; tol from the printed slot width"}
+  - {name: backlash_lag_B, from_stack: T07, sensitivity: "=-degrees(1/(4*r_pitch))", tag: D, source: "B lags A by jt/(2r) rad; contact needs half of it more servo travel"}

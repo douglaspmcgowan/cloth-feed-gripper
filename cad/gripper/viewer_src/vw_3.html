@@ -1,0 +1,111 @@
+<style>
+#pughSum{list-style:none;padding:0;margin:var(--s3) 0 0}#pughSum>li{font-weight:600;margin-bottom:var(--s3)}
+.rk{display:flex;gap:var(--s3);align-items:baseline;padding:var(--s1) 0;font-weight:400}
+.rk .rn{flex:none;width:1.5em;color:var(--ink2);font-variant-numeric:tabular-nums}
+.rk b{margin-left:auto;font-variant-numeric:tabular-nums}
+#sensOut h3{margin:var(--s4) 0 var(--s1)}#sensOut h3:first-child{margin-top:0}
+.tw.compact th,.tw.compact td{padding-inline:var(--s1)}.tw.compact th:first-child,.tw.compact td:first-child{padding-left:var(--s2)}
+.tw.compact th{white-space:normal;vertical-align:bottom}
+.tw.compact th[colspan]{text-align:center;border-bottom:0}
+.gread{margin:var(--s2) 0 0;color:var(--ink);min-height:1.5em}
+#gearMap rect[tabindex]{cursor:pointer}
+#gearMap rect.sel{stroke:var(--ink);stroke-width:2}
+#gearMap rect[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+</style>
+
+<section class="view" id="mass" data-title="Mass budget" hidden>
+  <div class="fig" id="mass-payload" data-fig="Payload curve" data-info="Each curve is the heaviest gripper hardware the shoulder joint can carry at its worst pose, against how far that mass sits past the wrist horn. Dashed curves add a 10 g camera.|Hardware means everything except the cloth, the camera and the sensor wiring."><div class="fig-in two">
+    <div class="stage"><div class="chart" id="kitChart"></div></div>
+    <aside class="nums"><dl class="kv" id="massNums"></dl>
+      <div class="tw full"><table id="kitTable"><thead><tr><th>Arm kit</th><th class="n">Budget (g&nbsp;mm)</th><th class="n">Estimate</th><th class="n">CAD</th></tr></thead><tbody></tbody></table></div></aside></div></div>
+  <div class="fig" id="mass-rollup" data-fig="Roll-up" data-info="Red cells are where the CAD came out more than 15 % heavier, or more than 5 mm further out, than the early estimate."><div class="stage"><div class="tw full compact"><table id="rollTable"><thead><tr><th rowspan="2">Group</th><th class="n" colspan="2">Early estimate</th><th class="n" colspan="2">CAD</th></tr><tr><th class="n">Mass (g)</th><th class="n">Distance (mm)</th><th class="n">Mass (g)</th><th class="n">Distance (mm)</th></tr></thead><tbody></tbody></table></div></div></div>
+  <div class="detail" id="mass-method" hidden>
+    <p>The budget is a mass-moment about the shoulder-lift joint at full extension, cloth included. The 7.4 V kit is the design point; the 5 V kit fails outright and the 12 V kit leaves room.</p>
+    <p id="decR10txt"></p>
+  </div>
+  <div class="detail" id="mass-sources" hidden><ul class="paths"><li>analysis/gripper/results/payload_torque.json <span>allowable mass per kit, roll-up</span></li><li>cad/gripper/out/fitcheck.json <span>CAD mass and centre</span></li><li>docs/gripper/analysis/torque_and_actuator.md</li></ul></div>
+</section>
+
+<section class="view" id="torque" data-title="Torque and actuator" hidden>
+  <div class="fig" id="torque-chain" data-fig="Torque chain" data-info="The torque the servo needs is worked back from the cloth: tension and friction set the pad force, the pad force times the moment arm sets the finger torque, and efficiency and the hold rule set the stall rating.|Move a slider to see every step and both servo margins update."><div class="fig-in two">
+    <div class="stage"><div class="sliders" id="sensCtrl"></div><div class="ctrl"><button type="button" id="sensReset">Reset to design point</button></div></div>
+    <aside class="nums"><div id="sensOut"></div></aside></div></div>
+  <div class="fig" id="torque-arm" data-fig="Moment arm" data-info="Hold torque against the moment arm, one line per pad friction. The green band is the allowed moment arm; the dot follows the sliders in Torque chain."><div class="stage"><div class="chart" id="rcChart"></div></div></div>
+  <div class="fig" id="torque-sensitivity" data-fig="Sensitivity" data-info="Each bar is the hold torque when one input moves across its plausible range and the others stay at the design point."><div class="stage"><div class="chart" id="tornado"></div></div></div>
+  <div class="fig" id="torque-shortlist" data-fig="Shortlist" data-info="The pick, the backup and the DC-motor fallback from the actuator trade, side by side."><div class="stage"><div class="tw"><table id="top3"></table></div></div></div>
+  <div class="fig" id="torque-actuators" data-fig="All actuators" data-info="Sort by any column. A red cell fails its limit: hold margin at least 1.00, close at most 0.50 s, price at most $50, arm use at most 100 %.|The last column lists the trade script's own reasons.|Gearmotor with a printed stage means a gearmotor plus an added printed spur stage. It is the fallback if the servo is not accepted as the DC motor."><div class="stage">
+    <div class="ctrl"><label>Find <input type="search" id="actQ" placeholder="model"></label><label>Kind <select id="actKind"><option value="">all</option></select></label><label><input type="checkbox" id="actPass"> passing only</label><span class="note" id="actCount" aria-live="polite"></span></div>
+    <div class="tw"><table id="actTable"></table></div></div></div>
+  <div class="detail" id="torque-method" hidden>
+    <h2>Formulas</h2>
+    <div class="tw"><table><tbody>
+      <tr><td>Pad force</td><td>safety factor &times; tension &divide; ((&mu;<sub>A</sub> + &mu;<sub>B</sub>) cos &theta; &minus; 2 sin &theta;)</td></tr>
+      <tr><td>Servo hold torque</td><td>(2 &times; pad force &times; moment arm + tension &times; pad position) &divide; efficiency</td></tr>
+      <tr><td>Stall rating needed</td><td>hold torque &divide; 0.4</td></tr></tbody></table></div>
+    <h2>Trade</h2>
+    <p>38 catalogue actuators and 14 gearmotor branches with a printed stage were checked at the design rail: 6.35 V for hold and 6.65 V for full stall. Scores are a weighted utility over the ones that pass every limit.</p>
+    <p id="breakTxt"></p>
+  </div>
+  <div class="detail" id="torque-sources" hidden><ul class="paths"><li>analysis/gripper/payload_torque.py <span>same formulas as the sliders</span></li><li>analysis/gripper/results/payload_torque.json <span>trade, tornado, break-even</span></li><li>docs/gripper/analysis/torque_and_actuator.md</li></ul></div>
+</section>
+
+<section class="view" id="finger" data-title="Finger" hidden>
+  <div class="fig" id="finger-stress" data-fig="Stress field" data-info="The grey shape is the undeformed finger; the coloured shape is drawn at true scale. The colour scale tops out at the 99.5th percentile so one hot element does not wash out the field.|Nonlinear cases show the last converged state, so the force slider is off for them."><div class="fig-in two">
+    <div class="stage">
+      <div class="ctrl">
+        <label>Load <select id="feaCase"><option value="fea_tip">Tip pad, linear</option><option value="fea_mid">Mid pad, linear</option><option value="fea_point">Point at tip, linear</option><option value="fea_tip_nl_cap">Tip, nonlinear at fold</option><option value="fea_mid_nl_cap">Mid, nonlinear at cap</option></select></label>
+        <label>Force <input type="range" id="feaF" min="0.5" max="10" step="0.5" value="5"><output id="feaFv">5.0 N</output></label>
+        <label>Stiffness <select id="feaE"><option value="67">67 MPa, in plane</option><option value="56">56 MPa, across layers</option></select></label>
+        <label>Field <select id="feaField"><option value="vm">Stress</option><option value="gl">Strain, nonlinear only</option></select></label>
+      </div>
+      <canvas class="fea" id="feaCanvas" width="900" height="760"></canvas>
+      <div class="cbar"><span id="cbLo">0</span><i></i><span id="cbHi">1</span></div>
+    </div>
+    <aside class="nums"><dl class="kv" id="feaNums"></dl></aside></div></div>
+  <div class="fig" id="finger-stiffness" data-fig="Stiffness" data-info="The green band is the allowed tip stiffness. The two dots are the recommended finger at the two print directions; the bar is the range with the nail and sensor parts fitted."><div class="stage"><div class="chart" id="kWin"></div></div></div>
+  <div class="fig" id="finger-sweep" data-fig="Design sweep" data-info="Each dot is one finger geometry: rib count, rib angle, wall, rib thickness and tip width. Hover a dot for its numbers."><div class="fig-in two">
+    <div class="stage"><div class="chart" id="sweepChart"></div></div><aside class="nums"><dl class="kv" id="sweepNums"></dl></aside></div></div>
+  <div class="fig" id="finger-fold" data-fig="Fold check" data-info="Stiffness is checked at two material stiffnesses, 67 and 56 MPa, one per print direction.|The fold load is the last load at which the large-displacement solution converges."><div class="stage"><div class="tw full"><table><thead><tr><th>Check</th><th>Result</th><th>Verdict</th></tr></thead><tbody>
+    <tr><td>Linear tip stiffness at 67 and 56 MPa</td><td>1.101 and 0.922 N/mm; 1.07 to 1.29 with the nail and sensor parts</td><td><span class="st pass">in window</span></td></tr>
+    <tr><td>Nonlinear tip fold at 67 MPa</td><td>folds at 10.63 N, which is 8.88 N at 56 MPa</td><td><span class="st risk">below the 10 N cap</span></td></tr>
+    <tr><td>Nonlinear tip fold with the nail</td><td>8.41 N at 56 MPa</td><td><span class="st risk">below the 10 N cap</span></td></tr>
+    <tr><td>Mid-pad nonlinear at the cap</td><td>12.0 N at 67 MPa, 10.0 N at 56 MPa, converged</td><td><span class="st pass">holds</span></td></tr>
+    <tr><td>Mitigation</td><td>limit the jaw to &minus;7.4&deg; and trip the force sensor at 8 N</td><td><span class="st">bench test</span></td></tr>
+  </tbody></table></div></div></div>
+  <div class="detail" id="finger-method" hidden>
+    <p>The recommended finger is 45 mm long with 6 ribs at 30&deg;, a 0.8 mm wall, 1.0 mm ribs and a 4 mm tip, 3.64 g in TPU 95A printed flat.</p>
+    <p>It is solved as a 2D plane-stress model with quadratic triangles. The linear cases scale from a 1 N solution; the nonlinear cases use a large-displacement formulation and stop at the last load that converges, which is where the tip folds.</p>
+  </div>
+  <div class="detail" id="finger-sources" hidden><ul class="paths"><li>docs/gripper/analysis/finger.md</li><li>analysis/gripper/results/fea_*.json <span>fields shown</span></li><li>analysis/gripper/results/fea_sweep.json <span>289 runs</span></li></ul></div>
+</section>
+
+<section class="view" id="gears" data-title="Gears" hidden>
+  <div class="fig" id="gears-picks" data-fig="Picks" data-info="Safety factor is allowable stress over working stress. The three load levels are the hold, the 10 N force cap and the full servo stall."><div class="fig-in two">
+    <div class="stage"><div class="tw full"><table id="gearCmp"></table></div></div>
+    <aside class="nums"><h2>Torque at the mesh</h2><dl class="kv" id="gearLoads"></dl></aside></div></div>
+  <div class="fig" id="gears-map" data-fig="Design space" data-info="Each cell is the narrowest face width, in mm, that passes every check for that module and tooth count. A blank cell means nothing up to 10 mm passes. The ring marks the pick. Select a cell to read it out."><div class="stage">
+    <div class="ctrl"><label>Material <select id="gearMat"></select></label></div><div class="chart" id="gearMap"></div><p class="gread" id="gearMapRead" aria-live="polite"></p></div></div>
+  <div class="fig" id="gears-profile" data-fig="Tooth profile" data-info="The tooth outline of both sectors, as generated for the CAD."><div class="stage"><div class="chart" id="gearProf"></div><p class="cap" id="gearProfCap"></p></div></div>
+  <div class="fig" id="gears-materials" data-fig="Materials" data-info="One row per material tried in the sweep. The pick is the printed PA6-CF pair."><div class="stage"><div class="tw full"><table id="gearMatTable"></table></div></div></div>
+  <div class="detail" id="gears-method" hidden>
+    <p>The sweep covered 14,784 geometries: 6 materials, 4 modules from 0.8 to 1.5, 18 to 28 teeth, face widths 4 to 10 mm, two pressure angles and three profile shifts.</p>
+    <p>Each was checked for root and flank strength, contact ratio, undercut, wear and cumulative fatigue damage.</p>
+  </div>
+  <div class="detail" id="gears-sources" hidden><ul class="paths"><li>docs/gripper/analysis/gears.md</li><li>analysis/gripper/results/gears.json</li><li>cad/gripper/gear_profile.svg <span>profile shown</span></li></ul></div>
+</section>
+
+<section class="view" id="dyno" data-title="Dyno" hidden>
+  <div class="fig" id="dyno-speed" data-fig="Torque and speed" data-info="The servo datasheet's stall torque, no-load speed and stall current do not agree with each other, so there are two motor fits. Fit A keeps the mechanical figures; Fit B keeps the stated current."><div class="stage"><div class="chart" id="tsChart"></div></div></div>
+  <div class="fig" id="dyno-current" data-fig="Current" data-info="Current against torque for the two motor fits, with the hold point on each and the 3 A rail."><div class="fig-in two"><div class="stage"><div class="chart" id="tiChart"></div></div><aside class="nums"><dl class="kv" id="curNums"></dl></aside></div></div>
+  <div class="fig" id="dyno-duty" data-fig="Duty cycle" data-info="One 35 s feed cycle with Fit A, driven by the firmware constants and closing the force loop."><div class="fig-in two"><div class="stage">
+    <div class="ctrl"><label>Window <select id="dutyWin"><option value="full">full cycle</option><option value="close">close only</option></select></label></div><div id="dutyChart"></div></div>
+    <aside class="nums"><dl class="kv" id="dutyNums"></dl></aside></div></div>
+  <div class="fig" id="dyno-thermal" data-fig="Thermal" data-info="The curve is Fit A at 40 °C ambient. The table repeats the 30-minute run for both fits, two ambients and three values of the case-to-air thermal resistance. The result column is against the 60 °C case limit."><div class="stage"><div class="chart short" id="thermChart"></div><div class="tw"><table id="thermTable"></table></div></div></div>
+  <div class="fig" id="dyno-life" data-fig="Life" data-info="Grips until the weakest part fails, on a log scale; the target is 100,000. Finger rows span two material knock-downs and whether tip collisions are capped at the fold stress.|The PETG gear pair fails on the first grip."><div class="stage"><div class="chart" id="rankChart"></div></div></div>
+  <div class="fig" id="dyno-shock" data-fig="Shock" data-info="The shock events the dyno model runs, and what each one loads."><div class="stage"><div class="tw"><table id="shockTable"></table></div></div></div>
+  <div class="detail" id="dyno-method" hidden>
+    <p>The virtual dyno is a DC-motor model of the servo behind its gearbox, driven by the same thresholds the firmware uses. It runs the feed cycle, a 30-minute thermal soak, four shock events and a fatigue ranking.</p>
+    <p>Shock cases vary the rotor inertia from 0.35 to 2.6 times the estimate because it has not been measured.</p>
+  </div>
+  <div class="detail" id="dyno-sources" hidden><ul class="paths"><li>docs/gripper/analysis/dyno.md</li><li>analysis/gripper/results/dyno.json</li><li>firmware/gripper/config.h <span>thresholds driving the model</span></li></ul></div>
+</section>

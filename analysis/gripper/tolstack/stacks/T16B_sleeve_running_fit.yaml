@@ -1,0 +1,30 @@
+id: T16B
+title: Knuckle sleeve running fit on its pin (bronze bush bore vs m6 dowel)
+parts: ["knuckle A", "knuckle B", "pin A", "pin B"]
+constants: basis.yaml
+companion_of: T16
+units: mm diametral clearance (< 0 = the knuckle is pressed onto its pin)
+requirement: Each knuckle turns on its pin, so the sleeve bore is never smaller than the pin.
+spec: {lsl: "=run_clear_min"}
+accept: {method: wc}
+fix: >-
+  Use an h8 pin (ISO 2338, 2.986-3.000) instead of the m6 dowel (T16B-h8pin). The bush maker recommends a
+  running shaft of f7 or h7, and m6 is a press-fit size. Buy 3 x 6 bushes (no 3 x 5 bush was found in the
+  catalogue searched [A]; confirm with the supplier) and open the knuckle bore to 6. The worst case of the fix
+  is exactly 0.000 clearance (3.000 pin in a 3.000 bore), so check a few pins and pressed bores.
+fix_variant: h8pin
+notes: >-
+  A sintered bronze bush comes F7 (3.006-3.016) and closes to H7 (3.000-3.010) when pressed into a rigid H7
+  housing; a printed PA6-CF knuckle closes it somewhere in between, so the bore is taken as uniform over
+  3.000-3.016. The m6 dowel is 3.002-3.008. The lower limit stays 0.000 (line-to-line is accepted: oil-impregnated
+  bush, H7/h6-type sliding fit [A], worst case only, and the assembly check turns every pair by hand). The rev B
+  pins are graded to the pressed bore so each pair is 0.000-0.020 (case revb: pin_clear 0.020), which T16 needs.
+contributors:
+  - {name: sleeve_bore, limits: ["=sleeve_bore_min", "=sleeve_bore_max"], dist: uniform, tag: S, source: "HPC Oilite catalogue pp. 40-43"}
+  - {name: pin_d, limits: ["=pin_d_min", "=pin_d_max"], direction: -1, dist: uniform, tag: S, source: "ISO 8734 m6 (McMaster)"}
+variants:
+  - id: h8pin
+    label: "ISO 2338 h8 pin 2.986-3.000 as the knuckle shaft"
+    drop: [pin_d]
+    add:
+      - {name: pin_d, limits: ["=pin_h8_min", "=pin_h8_max"], direction: -1, dist: uniform, tag: A, source: "h8 limits from the ISO 286 grade table, not found on a public catalogue page (basis.yaml pin_h8_min/max); confirm on the supplier sheet"}

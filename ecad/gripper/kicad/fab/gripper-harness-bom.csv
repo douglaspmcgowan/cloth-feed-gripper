@@ -1,0 +1,13 @@
+Item,Qty,Manufacturer,MPN,Supplier,Supplier PN,Unit USD,Ext USD,Evidence,Retrieved,Supplier URL
+"12 V 3 A regulated DC adapter, 5.5 x 2.1 mm centre positive",1,Pololu,WPA-1774 (12 V 3 A wall adapter),Pololu,1774,21.95,21.95,S,2026-10-11,https://www.pololu.com/product/1774
+"20 AWG silicone stranded wire, red + black, 1.2 m each (servo power pair)",2,Pyrodrone,"Silicone Wire (1M Red, 1M Black) 20 AWG, SKU X8-1424-24",Pyrodrone,X8-1424-24,5.99,11.98,S,2026-10-11,https://pyrodrone.com/products/1ft-silicone-wire-choose-color-and-gauge
+"26 AWG silicone stranded wire, five colours, 1.2 m each (signal conductors)",5,Adafruit,Silicone Cover Stranded-Core Wire 2 m 26 AWG,Adafruit,"1877 (red), 1880 (green), 1882 (white), 1883 (orange), 1884 (gray)",0.95,4.75,S,2026-10-11,https://www.adafruit.com/product/1877
+JST XH 4-position housing XHP-4 with 4 crimp contacts SXH-001T-P0.6,1,JST,XHP-4 + SXH-001T-P0.6,DigiKey,"455-2267-ND (XHP-4), 455-1135TR-ND (SXH-001T-P0.6)",0.29,0.29,A,2026-10-11,https://www.digikey.com/en/products/detail/jst-sales-america-inc/XHP-4/683353
+"4-position latching wire-to-wire pair (wrist end), plug and receptacle",1,JST,SMP-04V-BC + SMR-04V-B,DigiKey,"455-3248-ND (SMP-04V-BC), 455-3247-ND (SMR-04V-B)",0.34,0.34,A,2026-10-11,https://www.digikey.com/en/products/result?keywords=SMP-04V-BC
+3-pin 0.1 in servo extension lead (male end mates the servo plug),1,Adafruit,Servo Extension Cable 30 cm,Adafruit,972,1.95,1.95,S,2026-10-11,https://www.adafruit.com/product/972
+470 uF 16 V low-ESR radial electrolytic (forearm-end capacitor),1,Panasonic,EEU-FR1C471,DigiKey,P14394-ND,0.71,0.71,S,2026-10-11,https://www.digikey.com/en/products/detail/panasonic-industry/EEU-FR1C471/2433528
+Amphenol Clincher 2-position female for the FSR 402 tail,1,Amphenol FCI,65801-002LF / COM-14194,SparkFun,COM-14194,2.95,2.95,S,2026-10-11,https://www.sparkfun.com/amphenol-fci-clincher-connector-2-position-female.html
+Subminiature lever microswitch for the jaw-open limit,1,Omron (Aratas),D2F-01L,DigiKey,SW154-ND,1.44,1.44,S,2026-10-11,https://www.digikey.com/en/products/detail/aratas-formerly-omron-components/D2F-01L/83264
+Braided sleeve 1.5 m,2,TE Connectivity Raychem,Versaflex 1/4 inch expandable braided sleeve,DigiKey,484-VERSAFLEX-1/4-0-SP-DS-ND,2.01,4.02,S,2026-10-11,https://www.digikey.com/en/products/detail/te-connectivity-raychem-cable-protection/VERSAFLEX-1-4-0-SP/24399324
+"M3 standoffs, 4 off (with screws)",1,Adafruit,Black Nylon Machine Screw and Stand-off Set M3,Adafruit,4685,16.95,16.95,S,2026-10-11,https://www.adafruit.com/product/4685
+USB cable for the DevKitC (micro-B),1,Adafruit,USB A to Micro-B cable 1 m,Adafruit,592,2.95,2.95,S,2026-10-11,https://www.adafruit.com/product/592

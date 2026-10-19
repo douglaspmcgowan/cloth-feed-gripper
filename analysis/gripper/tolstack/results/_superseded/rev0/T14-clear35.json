@@ -1,0 +1,125 @@
+{
+ "id": "T14-clear35",
+ "title": "Gripper servo body in cradle fit (20.0 width)",
+ "mode": "linear",
+ "units": "mm clearance (pocket - body)",
+ "requirement": "Servo drops in (>= 0) and floats <= 0.30 (float feeds T06 through the cradle).",
+ "notes": "",
+ "spec": {
+  "lsl": 0.0,
+  "usl": 0.3
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T14",
+ "variant_label": "CAD clearance 0.35 + crush ribs",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T14_servo_cradle.yaml",
+ "nominal": 0.3500000000000014,
+ "mid": 0.25,
+ "wc": [
+  -0.09999999999999998,
+  0.6
+ ],
+ "rss_classic": [
+  0.043844718719116965,
+  0.456155281280883
+ ],
+ "rss_dist": [
+  0.0,
+  0.5
+ ],
+ "rss_dist_unclipped": [
+  0.0,
+  0.5
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": 0.25018425122326876,
+  "std": 0.0832601572030807,
+  "min": -0.06410828469584828,
+  "max": 0.5675056888097849,
+  "p0135": 0.015478862186097595,
+  "p50": 0.25047637986338955,
+  "p99865": 0.4831952023911646,
+  "out_lo_pct": 0.061,
+  "out_hi_pct": 28.386,
+  "out_pct": 28.447,
+  "out_pct_se": 0.1426698353191732,
+  "cpk_normal": 0.19943812442897157,
+  "cpk_percentile": 0.21280453209022138
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "pocket_width",
+   "kind": "linear",
+   "nominal": 20.35,
+   "bias": -0.1,
+   "upper": 0.15,
+   "lower": -0.15,
+   "mid": 20.25,
+   "half": 0.15,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.049999999999999996,
+   "tag": "A",
+   "source": "W1 S3",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 35.99999999999999
+  },
+  {
+   "name": "pocket_first_layer_residual",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 0.0,
+   "half": 0.1,
+   "sensitivity": -1.0,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "A",
+   "source": "pocket walls start on the bed",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 48.0
+  },
+  {
+   "name": "servo_body_width",
+   "kind": "linear",
+   "nominal": 20.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 20.0,
+   "half": 0.1,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.03333333333333333,
+   "tag": "S",
+   "source": "DS3218MG 20.0 [S]; tol [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 15.999999999999998
+  }
+ ],
+ "seed": 20260922
+}

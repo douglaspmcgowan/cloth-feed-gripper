@@ -1,0 +1,188 @@
+{
+ "id": "T15-shimmed",
+ "title": "Standoff length / plate parallelism, knuckle B end play at pin B",
+ "mode": "linear",
+ "units": "mm axial end play",
+ "requirement": "Knuckle B turns freely (>= 0.05) with <= 0.5 axial float.",
+ "notes": "Plate gap at pin B (x = 12) interpolates between standoffs at x = -27 and +27, so a length mismatch tilts the front plate.",
+ "spec": {
+  "lsl": 0.05,
+  "usl": 0.5
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T15",
+ "variant_label": "1.7 mm of hub bosses/spacers (end play 0.3)",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T15_standoff_endplay.yaml",
+ "nominal": 0.30000000000000004,
+ "mid": 0.30000000000000004,
+ "wc": [
+  -0.04999999999999999,
+  0.6500000000000001
+ ],
+ "rss_classic": [
+  0.14646391545093565,
+  0.45353608454906447
+ ],
+ "rss_dist": [
+  0.06394918391165788,
+  0.5360508160883422
+ ],
+ "rss_dist_unclipped": [
+  0.06394918391165788,
+  0.5360508160883422
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": 0.3000970233193497,
+  "std": 0.07874578891349215,
+  "min": 0.014497328544793797,
+  "max": 0.5559011194233401,
+  "p0135": 0.09299838412078713,
+  "p50": 0.300441994756074,
+  "p99865": 0.5028979049443402,
+  "out_lo_pct": 0.003,
+  "out_hi_pct": 0.173,
+  "out_pct": 0.17600000000000002,
+  "out_pct_se": 0.01325481950084572,
+  "cpk_normal": 0.8461954153944576,
+  "cpk_percentile": 0.9856862418012624
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "standoff_L1_x_neg",
+   "kind": "linear",
+   "nominal": 8.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 8.0,
+   "half": 0.1,
+   "sensitivity": 0.26833976833976836,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "D",
+   "source": "README geometry",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 3.8768618307391947
+  },
+  {
+   "name": "standoff_L2_x_pos",
+   "kind": "linear",
+   "nominal": 8.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 8.0,
+   "half": 0.1,
+   "sensitivity": 0.7316602316602316,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "D",
+   "source": "",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 28.822333742001376
+  },
+  {
+   "name": "mid_plate_flatness",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "",
+   "note": "",
+   "from_stack": null,
+   "gdt": {
+    "type": "flatness",
+    "zone": "=2*plate_flat"
+   },
+   "var_pct": 4.4867202951506275
+  },
+  {
+   "name": "front_plate_flatness",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "",
+   "note": "",
+   "from_stack": null,
+   "gdt": {
+    "type": "flatness",
+    "zone": "=2*plate_flat"
+   },
+   "var_pct": 4.4867202951506275
+  },
+  {
+   "name": "knuckle_B_hub",
+   "kind": "linear",
+   "nominal": 6.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 6.0,
+   "half": 0.1,
+   "sensitivity": -1.0,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "D",
+   "source": "hub = face width",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 53.84064354180754
+  },
+  {
+   "name": "spacers",
+   "kind": "linear",
+   "nominal": 1.7,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 1.7,
+   "half": 0.05,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 4.4867202951506275
+  }
+ ],
+ "seed": 20260922
+}

@@ -1,0 +1,254 @@
+{
+ "as_drawn": {
+  "action": "protect J4 pin 3; resolve: D5, R17, R18, controller pin, +3V3 rail",
+  "branches": [
+   {
+    "current_A": 0.0007146691,
+    "from": "LIM_SIG",
+    "part": "R17",
+    "to": "+3V3"
+   },
+   {
+    "current_A": 0.006658945,
+    "from": "LIM_SIG",
+    "part": "R18",
+    "to": "LIM_IN"
+   }
+  ],
+  "entry": {
+   "connector": "J4",
+   "net": "LIM_SIG",
+   "parts": [
+    "J4",
+    "R17",
+    "R18",
+    "D5"
+   ],
+   "pin": "3"
+  },
+  "fault": "limit lead crossed to servo power",
+  "id": "fault-limit-servo",
+  "kcl_A": {},
+  "missing_figures": [
+   "repository has no continuous-current or clamp-power quote",
+   "repository has no continuous-power quote",
+   "repository has no continuous-power quote",
+   "repository has no controller injection-current quote",
+   "repository has no 3.3 V rail sink-current quote"
+  ],
+  "nodes_V": {
+   "+3V3": 3.3,
+   "LIM_IN": 0.0,
+   "LIM_SIG": 6.658945
+  },
+  "parts": [
+   {
+    "current_A": 6.3,
+    "part": "D5",
+    "power_W": "not evidenced",
+    "power_basis": "source-limited",
+    "rating": {
+     "source": "repository has no continuous-current or clamp-power quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.0007146691,
+    "part": "R17",
+    "power_W": 0.002400534,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no continuous-power quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.006658945,
+    "part": "R18",
+    "power_W": 0.04434155,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no continuous-power quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.006658945,
+    "part": "controller pin",
+    "power_W": 0.0,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no controller injection-current quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.0007146691,
+    "part": "+3V3 rail",
+    "power_W": 0.0,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no 3.3 V rail sink-current quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   }
+  ],
+  "source": {
+   "current_limit_A": 6.3,
+   "description": "servo rail; current bounded by U1 source limit",
+   "power_bound_W": 41.95135,
+   "voltage_V": 6.658945
+  },
+  "source_limited": [
+   "D5"
+  ],
+  "status": "not evidenced"
+ },
+ "proposed": {
+  "action": "protect J4 pin 3; resolve: R25, R17, R18, D5, controller pin, +3V3 rail",
+  "branches": [
+   {
+    "current_A": 0.006658945,
+    "from": "LIM_RAW",
+    "part": "R25",
+    "to": "LIM_SIG"
+   },
+   {
+    "current_A": -0.0007021277,
+    "from": "LIM_SIG",
+    "part": "R17",
+    "to": "+3V3"
+   },
+   {
+    "current_A": 0.0,
+    "from": "LIM_SIG",
+    "part": "R18",
+    "to": "LIM_IN"
+   }
+  ],
+  "entry": {
+   "connector": "J4",
+   "net": "LIM_RAW",
+   "parts": [
+    "J4",
+    "R25"
+   ],
+   "pin": "3"
+  },
+  "fault": "limit lead crossed to servo power",
+  "id": "fault-limit-servo",
+  "kcl_A": {},
+  "missing_figures": [
+   "repository has no continuous-power quote",
+   "repository has no continuous-power quote",
+   "repository has no continuous-power quote",
+   "repository has no continuous-current or clamp-power quote",
+   "repository has no controller injection-current quote",
+   "repository has no 3.3 V rail sink-current quote"
+  ],
+  "nodes_V": {
+   "+3V3": 3.3,
+   "LIM_IN": 0.0,
+   "LIM_RAW": 6.658945,
+   "LIM_SIG": 0.0
+  },
+  "parts": [
+   {
+    "current_A": 0.006658945,
+    "part": "R25",
+    "power_W": 0.04434155,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no continuous-power quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.0007021277,
+    "part": "R17",
+    "power_W": 0.002317021,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no continuous-power quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.0,
+    "part": "R18",
+    "power_W": 0.0,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no continuous-power quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.007361073,
+    "part": "D5",
+    "power_W": "not evidenced",
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no continuous-current or clamp-power quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.0,
+    "part": "controller pin",
+    "power_W": 0.0,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no controller injection-current quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   },
+   {
+    "current_A": 0.0007021277,
+    "part": "+3V3 rail",
+    "power_W": 0.0,
+    "power_basis": "branch",
+    "rating": {
+     "source": "repository has no 3.3 V rail sink-current quote",
+     "unit": "A or W",
+     "value": "not quoted"
+    },
+    "verdict": "not evidenced"
+   }
+  ],
+  "source": {
+   "current_limit_A": 6.3,
+   "description": "servo rail; current bounded by U1 source limit",
+   "power_bound_W": 41.95135,
+   "voltage_V": 6.658945
+  },
+  "source_limited": [],
+  "status": "not evidenced",
+  "timing": {
+   "close_tau_s": 0.0001824561,
+   "closed_low_V": 0.5789474,
+   "input_low_threshold_V": 0.825,
+   "release_tau_s": 0.00057
+  }
+ }
+}

@@ -1,0 +1,33 @@
+baseline per-jaw stroke 24.63 tip gaps [50.27, 25.66, 1.0, -10.39, -25.29]
+theta_c -0.31 theta_over 4.41
+T1 1:1 spur sector (baseline) | T 0.765 | act A17 | close 0.279 | mm {'mass_g': 115.8, 'mass_moment_gmm': 40507.0, 'pct_budget_C001_7p4V': 92.7}
+T2a reduction pinion -> sector A, A:B 1:1 | T 0.201 | act A12 | close 0.388 | mm {'mass_g': 104.8, 'mass_moment_gmm': 36792.0, 'pct_budget_C001_7p4V': 84.2}
+T2b unequal A:B sector pair (asymmetric sweep) | T None | act None | close None | mm {'mass_g': 116.8, 'mass_moment_gmm': 40857.0, 'pct_budget_C001_7p4V': 93.5}
+T3 rack-and-pinion parallel jaw | T None | act None | close None | mm {'mass_g': 123.8, 'mass_moment_gmm': 43403.0, 'pct_budget_C001_7p4V': 99.3}
+T4 4-bar parallelogram, 1:1 synced | T 0.5 | act A17 | close 0.329 | mm {'mass_g': 115.8, 'mass_moment_gmm': 41045.0, 'pct_budget_C001_7p4V': 93.9}
+T5 worm + DC gearmotor (Pololu HPCB 150:1, M01), 1-start, self-locking | T 1.4 | act None | close 0.594 | mm {'mass_g': 79.8, 'mass_moment_gmm': 28287.0, 'pct_budget_C001_7p4V': 64.7}
+T5b worm + DC gearmotor (M01), 2-start (R19 fix) | T 1.85 | act None | close 0.394 | mm {'mass_g': 79.8, 'mass_moment_gmm': 28287.0, 'pct_budget_C001_7p4V': 64.7}
+T6 tendon + whiffletree, servo on the gripper | T 0.708 | act A17 | close 0.29 | mm {'mass_g': 119.8, 'mass_moment_gmm': 41863.0, 'pct_budget_C001_7p4V': 95.8}
+T6p tendon, servo proximal behind the wrist (Bowden) | T 1.003 | act None | close None | mm {'mass_g': 122.8, 'mass_moment_gmm': 36209.0, 'pct_budget_C001_7p4V': 82.8}
+gearmotor extra reduction {'M01': {'gearbox_limit_kgcm': 2.0, 'N_min_instantaneous': 3.9}, 'M02': {'gearbox_limit_kgcm': 2.5, 'N_min_instantaneous': 3.12}, 'M03': {'gearbox_limit_kgcm': 2.5, 'N_min_instantaneous': 3.12}, 'M04': {'gearbox_limit_kgcm': 2.0, 'N_min_instantaneous': 3.9}}
+T2a sweep [(1.5, 'A17', 'in', 58.0, 0.49, 0.307), (2.0, 'A17', 'in', 58.0, 0.987, 0.334), (2.5, 'A17', 'in', 58.0, 1.484, 0.362), (3.0, 'A17', 'in', 58.0, 1.981, 0.39), (3.5, 'A12', 'unverified', 43.0, 0.023, 0.368), (4.0, 'A12', 'unverified', 43.0, 0.17, 0.388), (4.5, 'A12', 'unverified', 43.0, 0.316, 0.409), (5.0, 'A12', 'unverified', 43.0, 0.462, 0.43), (5.5, 'A12', 'unverified', 43.0, 0.608, 0.45)]
+T2a pinion {'part': 'pinion z12', 'm': 1.0, 'z': 12, 'b_mm': 6.0, 'Y': 0.245, 'cases': {'LC1': {'F_t_N': 33.5, 'sigma_MPa': 22.8, 'PETG': False, 'PA6-CF': True, 'POM': False}, 'LC2': {'F_t_N': 67.1, 'sigma_MPa': 45.6, 'PETG': False, 'PA6-CF': True, 'POM': True}, 'LC3': {'F_t_N': 98.1, 'sigma_MPa': 66.7, 'PETG': False, 'PA6-CF': True, 'POM': True}}, 'passes': ['PA6-CF']} sector {'part': 'sector A z48', 'm': 1.0, 'z': 48, 'b_mm': 6.0, 'Y': 0.384, 'cases': {'LC1': {'F_t_N': 33.5, 'sigma_MPa': 14.6, 'PETG': True, 'PA6-CF': True, 'POM': True}, 'LC2': {'F_t_N': 67.1, 'sigma_MPa': 29.1, 'PETG': True, 'PA6-CF': True, 'POM': True}, 'LC3': {'F_t_N': 98.1, 'sigma_MPa': 42.6, 'PETG': True, 'PA6-CF': True, 'POM': True}}, 'passes': ['PETG', 'PA6-CF', 'POM']}
+T3 h {'A': 48.0, 'B': 67.0} lock {'A': 0.312, 'B': 0.224}
+T3 variants {'printed_slide': (0.227, {'A': 0.96, 'B': 1.34}, 'A12', 0.037, 0.531, {'mass_g': 103.8, 'mass_moment_gmm': 36461.0, 'pct_budget_C001_7p4V': 83.4}), 'ball_rail': (0.11, {'A': 0.03, 'B': 0.04}, 'A12', 1.147, 0.53, {'mass_g': 123.8, 'mass_moment_gmm': 43403.0, 'pct_budget_C001_7p4V': 99.3})}
+T5 {'lead_angle_deg': 5.71, 'eta_worm': 0.279, 'self_locking': True, 'mu_lock_threshold': 0.1, 'T_motor_LC1_kgcm': 1.4, 'LC1_fraction_of_gearbox_limit': 0.7, 'margin_LC1_40pct_of_stall': -0.428, 'worm_thrust_LC1_N': 76.5, 'worm_thrust_at_gearbox_limit_N': 109.3, 'wheel_b_min_LC1_mm': {'PETG': 11.64, 'PA6-CF': 6.25}, 'pad_force_at_gearbox_limit_N': 7.14, 'counts_per_jaw_deg': 100.4, 'close': {'t_s': 0.594, 'free_s': 0.341, 'near_s': 0.15, 'over_s': 0.103, 'w_jaw_noload_deg_s': 66.0, 'w_jaw_loaded_deg_s': 42.9, 'passes_R19': False}}
+  wheel {'b6': {'LC1': 39.6, 'LC2': 79.2, 'LC3': 56.6}, 'b8': {'LC1': 29.7, 'LC2': 59.4, 'LC3': 42.4}}
+T5b {'lead_angle_deg': 11.31, 'eta_worm': 0.422, 'self_locking': True, 'mu_lock_threshold': 0.2, 'T_motor_LC1_kgcm': 1.85, 'LC1_fraction_of_gearbox_limit': 0.923, 'margin_LC1_40pct_of_stall': -0.567, 'worm_thrust_LC1_N': 76.5, 'worm_thrust_at_gearbox_limit_N': 82.8, 'wheel_b_min_LC1_mm': {'PETG': 11.64, 'PA6-CF': 6.25}, 'pad_force_at_gearbox_limit_N': 5.41, 'counts_per_jaw_deg': 50.2, 'close': {'t_s': 0.394, 'free_s': 0.17, 'near_s': 0.15, 'over_s': 0.073, 'w_jaw_noload_deg_s': 132.0, 'w_jaw_loaded_deg_s': 71.1, 'passes_R19': True}}
+  wheel {'b6': {'LC1': 39.6, 'LC2': 79.2, 'LC3': 42.9}, 'b8': {'LC1': 29.7, 'LC2': 59.4, 'LC3': 32.1}}
+R19 screen {'C0': {'close_time_s': 0.279, 'passes': True}, 'C1': {'close_time_s': 0.388, 'passes': True}, 'C2': {'close_time_s': 0.53, 'passes': False}, 'C2p': {'close_time_s': 0.531, 'passes': False}, 'C3': {'close_time_s': 0.594, 'passes': False}, 'C3b': {'close_time_s': 0.394, 'passes': True}}
+pugh totals {'C0': 0.0, 'C1': 30.0, 'C2': 15.0, 'C2p': 25.0, 'C3': 80.0, 'C3b': 45.0} rank (R19 passers) ['C3b', 'C1', 'C0'] rank without screen ['C3', 'C3b', 'C1', 'C2p', 'C2', 'C0']
+  sens equal_weights {'C0': 0.0, 'C1': 11.1, 'C2': -0.0, 'C2p': -0.0, 'C3': 55.6, 'C3b': 22.2} ['C3b', 'C1', 'C0'] {}
+  sens K1_zero_(GSI_accepts_servo_and_1to1) {'C0': 0.0, 'C1': 15.0, 'C2': 0.0, 'C2p': 10.0, 'C3': 50.0, 'C3b': 15.0} ['C1', 'C3b', 'C0'] {}
+  sens K3_doubled {'C0': 0.0, 'C1': 45.0, 'C2': 0.0, 'C2p': 55.0, 'C3': 110.0, 'C3b': 75.0} ['C3b', 'C1', 'C0'] {}
+  sens K8_doubled {'C0': 0.0, 'C1': 20.0, 'C2': -5.0, 'C2p': 15.0, 'C3': 60.0, 'C3b': 25.0} ['C3b', 'C1', 'C0'] {}
+  sens K2_like_for_like_40pct_of_stall {'C0': 0.0, 'C1': 30.0, 'C2': 15.0, 'C2p': 25.0, 'C3': 20.0, 'C3b': 15.0} ['C1', 'C3b', 'C0'] {'C3': {'K2': -2}, 'C3b': {'K2': -2}}
+  sens K2_like_for_like_instantaneous {'C0': 0.0, 'C1': 45.0, 'C2': 15.0, 'C2p': 25.0, 'C3': 20.0, 'C3b': 15.0} ['C1', 'C3b', 'C0'] {'C1': {'K2': 2}, 'C3': {'K2': -2}, 'C3b': {'K2': -2}}
+  sens K2_K3_thresholds_x0.75 {'C0': 0.0, 'C1': 45.0, 'C2': 15.0, 'C2p': 25.0, 'C3': 80.0, 'C3b': 45.0} ['C1', 'C3b', 'C0'] {'C1': {'K3': 2}}
+  sens K2_K3_thresholds_x1.25 {'C0': 0.0, 'C1': 15.0, 'C2': 15.0, 'C2p': 10.0, 'C3': 80.0, 'C3b': 45.0} ['C3b', 'C1', 'C0'] {'C1': {'K2': 0}, 'C2p': {'K3': 1}}
+rank stable False top stable False
+DB stock_note blank but csv says unavailable: ['A18']
+wrote docs\gripper\figures\concept_numbers.json and 8 SVGs

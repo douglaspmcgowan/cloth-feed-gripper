@@ -1,0 +1,54 @@
+id: T05
+title: Jaw centreline offset at the fingertips vs roll axis (X, closing axis)
+parts: ["wrist mount", "servo horn", "spider", "deck", "mid plate", "knuckle A", "knuckle B", "finger A", "finger B"]
+constants: basis.yaml
+units: mm (pinch point x vs roll axis, gripper frame G)
+requirement: >-
+  Pinch point within +/-0.5 mm of its design position, without a per-unit TCP calibration. The systematic shift
+  from finger B lagging by half the design backlash (0.25 * jt0 * L_tip / r) is known and calibrated into the
+  TCP, so the spec is centred on it.
+spec: {lsl: "=0.25*jt0*L_tip/r_pitch - jaw_center_tol", usl: "=0.25*jt0*L_tip/r_pitch + jaw_center_tol"}
+accept: {method: mc}
+fix: >-
+  Locate the deck on the spider with two bonded ISO 2338 h8 pins in reamed deck holes. That removes the deck
+  screw float; T05-deckpegs includes translation clearance and rotation about the two-pin pattern.
+fix_variant: deckpegs
+notes: >-
+  Rev A chain, roll axis to pinch point: pilot float, horn eccentricity and servo-5 play (T04 terms, X component);
+  spider insert holes to the recess (one print); the deck floats on 4 M3 screws in Ø3.6 holes (nothing locates
+  it); deck holes to the pin A hole (one PETG housing print, about 30-45 mm apart); knuckle A sleeve on pin A.
+  Pin B follows pin A by the centre distance a (T06, same shared names), so x_B = x_A + a and
+  x_c = x_A + (a - a0)/2: pin A float nets +0.5 (it is +1 in x_A and -1 in a), the A-to-B hole spacing and pin B
+  float enter at 0.5. Dog lash turns A and B by equal and opposite angles, so the centre does not move.
+contributors:
+  - {name: pilot_float, kind: radial, project: true, from_stack: T02, radius_scale: 0.5, dist: disk, tag: D, source: "X component of the T04 pilot float (same samples)"}
+  - {name: horn_od_eccentricity, kind: radial, project: true, radius: "=horn_ecc_r", dist: disk, tag: A, source: "X component of the T04 term"}
+  - {name: servo5_radial_play, kind: radial, project: true, radius: "=servo5_radial_play", dist: disk, tag: A, source: "X component of the T04 term"}
+  - {name: inserts_to_recess, nominal: 0, tol: "=fdm_xy_tol_short", dist: normal, tag: S, source: "spider insert bores to the recess, one print, < 30 mm (basis XY band)"}
+  - {name: deck_float, kind: radial, project: true, radius: "=deck_float", dist: disk, tag: D, source: "deck on 4 M3 in Ø3.6 holes: largest printed hole less the smallest screw, / 2 (basis deck_float)"}
+  - {name: pinA_to_deck_holes, nominal: 0, tol: "=pinA_to_datumB", dist: normal, tag: A, source: "pin A plate hole to the deck screw holes, 30-45 mm apart on one print (basis fdm_xy_tol)"}
+  - {name: pinA_float, nominal: 0, tol: "=pin_clear/2", sensitivity: 0.5, dist: uniform, tag: D, source: "+1 in x_A, -1 in a (T06): net 0.5"}
+  - {name: pinA_to_pinB_holes, nominal: 0, tol: "=plate_hole_pos_tol", sensitivity: 0.5, dist: normal, tag: S, source: "in a (T06): 0.5"}
+  - {name: pin_float, nominal: 0, tol: "=pin_clear/2", sensitivity: 0.5, dist: uniform, tag: D, source: "knuckle B sleeve, in a (T06): 0.5"}
+  - {name: sleeveA_ecc, nominal: 0, tol: 0.015, sensitivity: 0.5, dist: normal, tag: S, source: "bush concentricity (T06): +1 in x_A, -1 in a"}
+  - {name: sleeveB_ecc, nominal: 0, tol: 0.015, sensitivity: 0.5, dist: normal, tag: S, source: "bush concentricity (T06): 0.5"}
+  - {name: xf_A, nominal: 0, tol: "=xf_tol", sensitivity: 0.5, dist: normal, tag: S, source: "knuckle A root face to pivot (PA6-CF, XY band)"}
+  - {name: xf_B, nominal: 0, tol: "=xf_tol", sensitivity: -0.5, dist: normal, tag: S, source: "knuckle B root face to pivot"}
+  - {name: pad_A_profile, nominal: 0, gdt: {type: profile, zone: "=pad_profile_zone"}, sensitivity: 0.5, dist: normal, tag: A, source: "TPU pad (no data, basis tpu_xy_tol)"}
+  - {name: pad_B_profile, nominal: 0, gdt: {type: profile, zone: "=pad_profile_zone"}, sensitivity: -0.5, dist: normal, tag: A, source: "TPU pad"}
+  - {name: finger_A_root_float, kind: radial, project: first, radius: "=finger_hole_float", dist: disk, sensitivity: 0.5, tag: A, source: "pegs + M2 (rev A fix 10): X component of the X-Z float disk"}
+  - {name: finger_B_root_float, kind: radial, project: first, radius: "=finger_hole_float", dist: disk, sensitivity: 0.5, tag: A, source: "same, finger B"}
+  - {name: backlash_lag_B, from_stack: T07, sensitivity: "=0.25*L_tip/r_pitch", tag: D, source: "centred CAD mesh: B lags by jt/(2r) rad while A drives it closed; the centre moves half"}
+variants:
+  - id: deckpegs
+    label: "deck located by two bought h8 pins in reamed holes"
+    drop: [deck_float]
+    add:
+      - {name: deck_peg_float, nominal: 0, tol: "=deck_peg_float", dist: uniform, tag: D, source: "radial clearance: (3.010 H7 hole max - 2.986 h8 pin min) / 2"}
+      - {name: deck_peg_rotation, nominal: 0, tol: "=deck_peg_rotation", dist: uniform, tag: D, source: "two-pin rotation: 2 * radial clearance * 14.309 mm pin-A lever / 40.942 mm pin spacing"}
+  - id: tcpcal
+    label: "measure the pinch point once and set the TCP (removes every fixed offset; leaves the T04 float)"
+    role: option
+    drop: [inserts_to_recess, deck_float, pinA_to_deck_holes, pinA_to_pinB_holes, xf_A, xf_B, pad_A_profile, pad_B_profile]
+    add:
+      - {name: tcp_measure, nominal: 0, tol: 0.10, dist: normal, tag: A, source: "pinch point measured with a pin gauge on the arm"}
