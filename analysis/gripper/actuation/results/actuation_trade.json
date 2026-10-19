@@ -288,6 +288,8 @@
    "interface": 0.1,
    "noise_life": 0.1
   },
+  "score_decimal_places": 3,
+  "score_rounding": "decimal half-even; ties by candidate key ascending",
   "utility_rules": {
    "requirements": "mean of P(R14), P(R15), P(R19) from the Monte Carlo under the requirement set",
    "cost": "($50 - actuator, stage and driver cost) / $40, clipped 0..1",
@@ -55073,14 +55075,14 @@
     "eligible": false
    },
    {
-    "cfg": "A28@2:1",
-    "score": 0.446,
-    "eligible": false
-   },
-   {
     "cfg": "A28@1.5:1",
     "score": 0.446,
     "eligible": true
+   },
+   {
+    "cfg": "A28@2:1",
+    "score": 0.446,
+    "eligible": false
    },
    {
     "cfg": "A33@2:1",
@@ -55183,12 +55185,12 @@
     "eligible": false
    },
    {
-    "cfg": "W02@8:1",
+    "cfg": "A38@2:1",
     "score": 0.404,
     "eligible": false
    },
    {
-    "cfg": "A38@2:1",
+    "cfg": "W02@8:1",
     "score": 0.404,
     "eligible": false
    },
@@ -55218,17 +55220,17 @@
     "eligible": false
    },
    {
+    "cfg": "M04@5:1",
+    "score": 0.397,
+    "eligible": false
+   },
+   {
     "cfg": "M06@12:1",
     "score": 0.397,
     "eligible": false
    },
    {
     "cfg": "W01@12:1",
-    "score": 0.397,
-    "eligible": false
-   },
-   {
-    "cfg": "M04@5:1",
     "score": 0.397,
     "eligible": false
    },
@@ -55278,12 +55280,12 @@
     "eligible": false
    },
    {
-    "cfg": "M11@8:1",
+    "cfg": "M10@8:1",
     "score": 0.384,
     "eligible": false
    },
    {
-    "cfg": "M10@8:1",
+    "cfg": "M11@8:1",
     "score": 0.384,
     "eligible": false
    },
@@ -55349,7 +55351,7 @@
    },
    {
     "cfg": "A16@2:1",
-    "score": 0.319,
+    "score": 0.318,
     "eligible": false
    },
    {
@@ -55363,12 +55365,12 @@
     "eligible": false
    },
    {
-    "cfg": "M08@5:1",
+    "cfg": "M08@12:1",
     "score": 0.281,
     "eligible": false
    },
    {
-    "cfg": "M08@12:1",
+    "cfg": "M08@5:1",
     "score": 0.281,
     "eligible": false
    },
@@ -55476,7 +55478,7 @@
    },
    {
     "cfg": "A28@1.5:1",
-    "score": 0.535,
+    "score": 0.536,
     "eligible": true
    },
    {
@@ -55500,12 +55502,12 @@
     "eligible": false
    },
    {
-    "cfg": "A30@1.5:1",
+    "cfg": "A18@2:1",
     "score": 0.52,
     "eligible": false
    },
    {
-    "cfg": "A18@2:1",
+    "cfg": "A30@1.5:1",
     "score": 0.52,
     "eligible": false
    },
@@ -55520,12 +55522,12 @@
     "eligible": false
    },
    {
-    "cfg": "A37@2:1",
+    "cfg": "A32@2:1",
     "score": 0.505,
     "eligible": false
    },
    {
-    "cfg": "A32@2:1",
+    "cfg": "A37@2:1",
     "score": 0.505,
     "eligible": false
    },
@@ -55535,12 +55537,12 @@
     "eligible": false
    },
    {
-    "cfg": "A34@2:1",
+    "cfg": "A32@1.5:1",
     "score": 0.498,
     "eligible": false
    },
    {
-    "cfg": "A32@1.5:1",
+    "cfg": "A34@2:1",
     "score": 0.498,
     "eligible": false
    },
@@ -55550,13 +55552,13 @@
     "eligible": false
    },
    {
-    "cfg": "A36@2:1",
+    "cfg": "A19@2:1",
     "score": 0.496,
     "eligible": false
    },
    {
-    "cfg": "A19@2:1",
-    "score": 0.495,
+    "cfg": "A36@2:1",
+    "score": 0.496,
     "eligible": false
    },
    {
@@ -55566,7 +55568,7 @@
    },
    {
     "cfg": "A38@2:1",
-    "score": 0.493,
+    "score": 0.494,
     "eligible": false
    },
    {
@@ -55675,17 +55677,17 @@
     "eligible": false
    },
    {
+    "cfg": "M04@5:1",
+    "score": 0.397,
+    "eligible": false
+   },
+   {
     "cfg": "M06@12:1",
     "score": 0.397,
     "eligible": false
    },
    {
     "cfg": "W01@12:1",
-    "score": 0.397,
-    "eligible": false
-   },
-   {
-    "cfg": "M04@5:1",
     "score": 0.397,
     "eligible": false
    },
@@ -55725,12 +55727,12 @@
     "eligible": false
    },
    {
-    "cfg": "M11@8:1",
+    "cfg": "M10@8:1",
     "score": 0.384,
     "eligible": false
    },
    {
-    "cfg": "M10@8:1",
+    "cfg": "M11@8:1",
     "score": 0.384,
     "eligible": false
    },
@@ -55770,12 +55772,12 @@
     "eligible": false
    },
    {
-    "cfg": "M08@5:1",
+    "cfg": "M08@12:1",
     "score": 0.281,
     "eligible": false
    },
    {
-    "cfg": "M08@12:1",
+    "cfg": "M08@5:1",
     "score": 0.281,
     "eligible": false
    },
@@ -55817,12 +55819,12 @@
    },
    "oat_changes": {},
    "mc_weights_win_share": {
-    "A39@1:1": 0.915,
-    "A17@1.5:1": 0.085
+    "A39@1:1": 0.913,
+    "A17@1.5:1": 0.087
    },
    "mc_weights_recommendation_share": {
-    "A39@1:1": 0.781,
-    "A17@1.5:1": 0.219
+    "A39@1:1": 0.776,
+    "A17@1.5:1": 0.224
    },
    "n_weight_samples": 4000,
    "winner_at_other_gates": {
@@ -55851,12 +55853,12 @@
    },
    "oat_changes": {},
    "mc_weights_win_share": {
-    "A39@1:1": 0.938,
-    "A17@1.5:1": 0.062
+    "A39@1:1": 0.934,
+    "A17@1.5:1": 0.066
    },
    "mc_weights_recommendation_share": {
-    "A39@1:1": 0.818,
-    "A17@1.5:1": 0.182
+    "A39@1:1": 0.814,
+    "A17@1.5:1": 0.186
    },
    "n_weight_samples": 4000,
    "winner_at_other_gates": {

@@ -153,8 +153,8 @@ ranking (as_written), top 6 eligible, then top 3 overall:
   A19@1:1      score 0.581 GATED    cost 0.64  mass 0.08  envelope 1.00  availability 0.20  interface 1.00  noise_life 0.35  requirements 0.67
   A33@1:1      score 0.566 GATED    cost 0.75  mass 0.08  envelope 0.70  availability 0.40  interface 1.00  noise_life 0.43  requirements 0.64
   winner A39@1:1; single-weight x0.5/x1.5 changes that move it: none
-  random weights (each x U(0.5, 1.5), 4000 draws) win share: {'A39@1:1': 0.915, 'A17@1.5:1': 0.085}
-  same draws, recommendation after the 0.02 tie rule: {'A39@1:1': 0.781, 'A17@1.5:1': 0.219}
+  random weights (each x U(0.5, 1.5), 4000 draws) win share: {'A39@1:1': 0.913, 'A17@1.5:1': 0.087}
+  same draws, recommendation after the 0.02 tie rule: {'A39@1:1': 0.776, 'A17@1.5:1': 0.224}
   winner with the P(R14 and R16) gate at 0.8 / 0.95: {'gate 0.8': 'A33@1:1', 'gate 0.95': 'A37@1:1'}; top score with no gates: A17@1:1
 
 ranking (proposed), top 6 eligible, then top 3 overall:
@@ -168,8 +168,8 @@ ranking (proposed), top 6 eligible, then top 3 overall:
   A19@1:1      score 0.676 GATED    cost 0.64  mass 0.08  envelope 1.00  availability 0.20  interface 1.00  noise_life 0.35  requirements 0.98
   A33@1:1      score 0.661 GATED    cost 0.75  mass 0.08  envelope 0.70  availability 0.40  interface 1.00  noise_life 0.43  requirements 0.95
   winner A39@1:1; single-weight x0.5/x1.5 changes that move it: none
-  random weights (each x U(0.5, 1.5), 4000 draws) win share: {'A39@1:1': 0.938, 'A17@1.5:1': 0.062}
-  same draws, recommendation after the 0.02 tie rule: {'A39@1:1': 0.818, 'A17@1.5:1': 0.182}
+  random weights (each x U(0.5, 1.5), 4000 draws) win share: {'A39@1:1': 0.934, 'A17@1.5:1': 0.066}
+  same draws, recommendation after the 0.02 tie rule: {'A39@1:1': 0.814, 'A17@1.5:1': 0.186}
   winner with the P(R14 and R16) gate at 0.8 / 0.95: {'gate 0.8': 'A33@1:1', 'gate 0.95': 'A37@1:1'}; top score with no gates: A17@1:1
 
 sensitivity (one at a time; FEA E56 finger, 10 N cap, shipped profile):
