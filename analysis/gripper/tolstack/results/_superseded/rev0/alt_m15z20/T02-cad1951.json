@@ -1,0 +1,125 @@
+{
+ "id": "T02-cad1951",
+ "title": "Horn pilot recess radial fit (\u00d819.2 horn in the printed recess)",
+ "mode": "linear",
+ "units": "mm diametral clearance",
+ "requirement": "Recess slides onto the horn by hand (clearance >= 0.02) and float stays small enough to centre the gripper (<= 0.30).",
+ "notes": "Base = the stock \u00d820.0 recess: 20.0 - 19.2 = 0.8 diametral (0.4 radial), not the 0.4 so101.md row 12 states. The recess is only 1.0 mm (5 layers) deep, so first-layer squish affects all of it when the mount face prints on the bed; a 0.3x45 mouth chamfer removes that term. Under the assumed scatter no CAD size reaches Cpk 1.33 (see results/sweep_T02_recess_d_cad.md); the coupon (section 8) must shrink the scatter first.",
+ "spec": {
+  "lsl": 0.02,
+  "usl": 0.3
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T02",
+ "variant_label": "CAD 19.51 + 0.3x45 mouth chamfer (prints about \u00d819.36 \u00b10.10); best Cpk of the sweep",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T02_pilot_recess_fit.yaml",
+ "nominal": 0.3100000000000023,
+ "mid": 0.1600000000000037,
+ "wc": [
+  0.010000000000003673,
+  0.3100000000000037
+ ],
+ "rss_classic": [
+  0.0481966011250142,
+  0.27180339887499316
+ ],
+ "rss_dist": [
+  0.0481966011250142,
+  0.27180339887499316
+ ],
+ "rss_dist_unclipped": [
+  0.0481966011250142,
+  0.27180339887499316
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": 0.15996701351266515,
+  "std": 0.037394187805029955,
+  "min": 0.0025762768826744775,
+  "max": 0.3556725736264603,
+  "p0135": 0.04822214052238245,
+  "p50": 0.16004488536404438,
+  "p99865": 0.272424714508961,
+  "out_lo_pct": 0.005,
+  "out_hi_pct": 0.01,
+  "out_pct": 0.015000000000000001,
+  "out_pct_se": 0.003872692861562869,
+  "cpk_normal": 1.2476717348200475,
+  "cpk_percentile": 1.2453757556036142
+ },
+ "pass": {
+  "wc": false,
+  "rss": true,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "recess_d_printed",
+   "kind": "linear",
+   "nominal": 19.51,
+   "bias": -0.15,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 19.360000000000003,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.03333333333333333,
+   "tag": "A",
+   "source": "CAD (so101.md) + large-hole bias [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 79.99999999999999
+  },
+  {
+   "name": "recess_first_layer_residual",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.0,
+   "lower": -0.0,
+   "mid": 0.0,
+   "half": 0.0,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.0,
+   "tag": "A",
+   "source": "Prusa KB elephant-foot compensation (via W1)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.0
+  },
+  {
+   "name": "horn_od",
+   "kind": "linear",
+   "nominal": 19.2,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 19.2,
+   "half": 0.05,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "so101.md row 2 nominal [D]; tol [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 19.999999999999996
+  }
+ ],
+ "seed": 20260922
+}

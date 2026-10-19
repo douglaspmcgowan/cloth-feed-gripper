@@ -1,0 +1,64 @@
+id: T14B
+title: Dog coupling — servo shaft offset from pin A against the dog slot clearance
+parts: ["mid plate", "servo cradle", "gripper servo", "servo horn", "knuckle A", "pin A"]
+constants: basis.yaml
+companion_of: T14
+mode: expression
+units: mm tangential interference at a dog (> 0 = the dogs force knuckle A sideways)
+requirement: >-
+  The servo shaft axis and pin A are two separate axes. The two M3 dogs on the horn sit in radial slots in
+  knuckle A, so the slots absorb any offset along the slot, but an offset across the slot must fit inside the
+  tangential half-clearance, or the coupling side-loads the servo bearing and pin A.
+spec: {usl: 0.0}
+accept: {method: wc}
+fix: >-
+  Locate the servo by its Ø9 output boss in a reamed bore in the 1.6 mm housing web at the case top (the boss is concentric with the
+  shaft) and open the dog slots to 3.4 (lash about +/-1.5 deg [A: arithmetic here, (3.4 - 0.1 - 2.927) /
+  (2 x 7 mm) rad]). With the web terms T14B-boss34 fails at Cpk 0.98. A 3.42 mm slot adds 0.010 mm
+  half-clearance and restores about Cpk 1.05, but costs the closure window; the robust fix is a zero-lash
+  coupling that takes offset, such as an Oldham disc.
+fix_variant: boss34
+notes: >-
+  Once the boss locates the servo (boss, boss34), the servo case width does not enter this stack at all; only the
+  cradle-located layouts use servo_body_w. Offset across the slot = shaft in case + servo float in the cradle + cradle to pin A hole + spline play +
+  dog screw position + knuckle A float on its pin. For boss variants, wall lean moves the web bore by
+  boss_web_to_pinA * pin_perp_zone / pin_span = 6.30 * 0.10 / 15 = 0.042 mm. Servo-axis direction is set by
+  the ear seats and cradle floor, not the 1.6 mm bore engagement; ear-seat flatness moves the dog plane by
+  boss_to_dog_lever * mount_flatness / servo_ear_span = 3.05 * 0.20 / 54.5 = 0.011 mm. Both levers are CAD
+  derived. Half-clearance = (printed slot width - screw major) / 2.
+  Rev A has 0.06 nominal half-clearance against an offset that can reach 0.5.
+expression: "abs(shaft_in_case + servo_float + cradle_to_pinA + spline_play + dog_pos + pinA_float + hot_servo_shift + hot_shaft_shift) - (slot_w - dog_d)/2"
+contributors:
+  - {name: shaft_in_case, nominal: 0, tol: "=servo_shaft_pos_tol", dist: normal, tag: A, source: "unpublished"}
+  - {name: servo_float, nominal: 0, tol: "=(cradle_pocket_w + fdm_pocket_bias - servo_body_w)/2", dist: uniform, tag: D, source: "T14 nominal clearance / 2"}
+  - {name: cradle_to_pinA, nominal: 0, tol: "=cradle_to_pinA", dist: normal, tag: S, source: "one mid-plate print, < 30 mm"}
+  - {name: spline_play, nominal: 0, tol: "=servo_spline_play_r", dist: uniform, tag: A, source: ""}
+  - {name: dog_pos, nominal: 0, tol: "=dog_pos_r", dist: normal, tag: A, source: "dog screw holes in the horn"}
+  - {name: pinA_float, nominal: 0, tol: "=pin_clear/2", dist: uniform, tag: D, source: "knuckle A sleeve on pin A"}
+  - {name: slot_w, nominal: "=dog_slot_w", bias: "=fdm_pocket_bias", tol: "=fdm_cavity_tol", dist: normal, tag: A, source: "params.json dog_slot_w 3.14 [D]; slot bias and scatter [A]"}
+  - {name: dog_d, limits: ["=m3_major_min", "=m3_major_max"], dist: uniform, tag: S, source: "M3 6g major"}
+  - {name: hot_servo_shift, nominal: 0, tol: "=hot_servo_float", dist: uniform, tag: A, source: "hot scenario only (0 when cold): PETG seat relaxes, servo shifts"}
+  - {name: hot_shaft_shift, nominal: 0, tol: "=hot_shaft_extra", dist: normal, tag: A, source: "hot scenario only (0 when cold): shaft position term widens"}
+variants:
+  - {id: w205, role: scenario, label: "servo body 20.5 (actuators.csv A17) in a pocket opened to 20.9, rev A cradle-located: servo float 0.15 per side", set: {servo_body_w: 20.5, cradle_pocket_w: 20.9}}
+  - id: boss34
+    label: "servo located by its Ø9 boss in a reamed bore + dog slots 3.4"
+    set: {dog_slot_w: 3.4}
+    expression: "abs(boss_bore_to_pinA + boss_fit + boss_to_shaft + boss_web_tilt + servo_axis_tilt + spline_play + dog_pos + pinA_float + hot_servo_shift + hot_shaft_shift) - (slot_w - dog_d)/2"
+    drop: [shaft_in_case, servo_float, cradle_to_pinA]
+    add:
+      - {name: boss_bore_to_pinA, nominal: 0, tol: "=fdm_xy_tol_short", dist: normal, tag: S, source: "boss bore and pin A hole, one print"}
+      - {name: boss_fit, nominal: 0, tol: 0.01, dist: uniform, tag: A, source: "boss in a reamed Ø9 bore: assumed a near line-to-line fit (H7 reamer on a molded boss), no measured data; check the boss diameter on 3 servos"}
+      - {name: boss_to_shaft, nominal: 0, tol: 0.05, dist: normal, tag: A, source: "output boss to shaft, unpublished"}
+      - {name: boss_web_tilt, nominal: 0, tol: "=boss_web_to_pinA * boss_web_perp_zone / pin_span", dist: normal, tag: A, source: "wall perpendicularity propagated over the CAD lever; measured bore-centre offset replaces it"}
+      - {name: servo_axis_tilt, nominal: 0, tol: "=boss_to_dog_lever * mount_flatness / servo_ear_span", dist: normal, tag: A, source: "ear-seat flatness propagated over the CAD lever; clamped servo-axis measurement replaces it"}
+  - id: boss
+    label: "servo located by its boss, slots unchanged at 3.14"
+    expression: "abs(boss_bore_to_pinA + boss_fit + boss_to_shaft + boss_web_tilt + servo_axis_tilt + spline_play + dog_pos + pinA_float + hot_servo_shift + hot_shaft_shift) - (slot_w - dog_d)/2"
+    drop: [shaft_in_case, servo_float, cradle_to_pinA]
+    add:
+      - {name: boss_bore_to_pinA, nominal: 0, tol: "=fdm_xy_tol_short", dist: normal, tag: S, source: "boss bore and pin A hole, one print"}
+      - {name: boss_fit, nominal: 0, tol: 0.01, dist: uniform, tag: A, source: "boss in a reamed Ø9 bore: assumed a near line-to-line fit (H7 reamer on a molded boss), no measured data; check the boss diameter on 3 servos"}
+      - {name: boss_to_shaft, nominal: 0, tol: 0.05, dist: normal, tag: A, source: "output boss to shaft, unpublished"}
+      - {name: boss_web_tilt, nominal: 0, tol: "=boss_web_to_pinA * boss_web_perp_zone / pin_span", dist: normal, tag: A, source: "wall perpendicularity propagated over the CAD lever; measured bore-centre offset replaces it"}
+      - {name: servo_axis_tilt, nominal: 0, tol: "=boss_to_dog_lever * mount_flatness / servo_ear_span", dist: normal, tag: A, source: "ear-seat flatness propagated over the CAD lever; clamped servo-axis measurement replaces it"}

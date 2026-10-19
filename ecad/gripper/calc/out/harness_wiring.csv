@@ -1,0 +1,27 @@
+id,from,to,signal,gauge_awg,colour,length_mm,connector_and_pin,notes
+H01,J3.1,SPL-GND,GND,20,black,1200,"J3 Phoenix MKDS 1,5/3-5.08 screw terminal, pin 1","Trunk, in the braided sleeve. Servo return. Splice at the forearm end with H04 and the capacitor lead H08."
+H02,J3.2,SPL-V,SERVO_V,20,red,1200,"J3 Phoenix MKDS 1,5/3-5.08 screw terminal, pin 2","Trunk, in the braided sleeve. Servo V+, 6.58 V nominal. Splice with H05 and the capacitor lead H07."
+H03,J3.3,SPL-PWM,SERVO_PWM,26,orange,1200,"J3 Phoenix MKDS 1,5/3-5.08 screw terminal, pin 3","Trunk, in the braided sleeve. 5 V logic, 50 Hz. Fold the strands back on themselves so the screw clamps more copper."
+H04,SPL-GND,X1.1,,22,black,100,"Servo extension lead 972, male plug X1, pin 1",Pigtail. Gauge is not stated by the seller [A]. Cut the female end off the lead.
+H05,SPL-V,X1.2,,22,red,100,"Servo extension lead 972, male plug X1, pin 2",Pigtail [A gauge].
+H06,SPL-PWM,X1.3,,22,white,100,"Servo extension lead 972, male plug X1, pin 3",Pigtail [A gauge]; white is the signal wire of this lead.
+H07,SPL-V,C_WRIST.+,,cap lead,red,10,"EEU-FR1C471 470 uF 16 V, + lead (longer lead)",Soldered across the splice. Polarised: wrong way round it fails. Capacitance is design.ELEC c_wrist_F.
+H08,SPL-GND,C_WRIST.-,,cap lead,black,10,"EEU-FR1C471 470 uF 16 V, - lead (stripe side)",Soldered across the splice.
+H09,X1.1,SERVO.GND,,could-not-tell,could-not-tell,could-not-tell,"DSServo DS3230 MG lead, 3-pin plug","Supplied with the selected servo; lead gauge, colour, and length are not recorded. Not built. Team must confirm on delivered servo."
+H10,X1.2,SERVO.V+,,could-not-tell,could-not-tell,could-not-tell,"DSServo DS3230 MG lead, 3-pin plug","Supplied with the selected servo; lead gauge, colour, and length are not recorded. Team must confirm on delivered servo."
+H11,X1.3,SERVO.SIG,,could-not-tell,could-not-tell,could-not-tell,"DSServo DS3230 MG lead, 3-pin plug","Supplied with the selected servo; lead gauge, colour, and length are not recorded. Team must confirm on delivered servo."
+H12,J4.1,SM.1,+3V3,26,red,1200,"J4 JST XH B4B-XH-A, housing XHP-4 with SXH-001T-P0.6 crimp contact, pin 1","Trunk, in the braided sleeve. 3.3 V to the FSR, about 0.9 mA at 10 N."
+H13,J4.2,SM.2,FSR_SIG,26,white,1200,"J4 JST XH B4B-XH-A, housing XHP-4 with SXH-001T-P0.6 crimp contact, pin 2","Trunk, in the braided sleeve. FSR node; carries the same 0.9 mA as H12 because R15 is on the board."
+H14,J4.3,SM.3,LIM_SIG,26,green,1200,"J4 JST XH B4B-XH-A, housing XHP-4 with SXH-001T-P0.6 crimp contact, pin 3","Trunk, in the braided sleeve. Pulled up by R17 4.7 k; switch closing pulls it to GND."
+H15,J4.4,SM.4,GND,26,gray,1200,"J4 JST XH B4B-XH-A, housing XHP-4 with SXH-001T-P0.6 crimp contact, pin 4","Trunk, in the braided sleeve. Sensor return, separate from the servo return H01. Carries only the 0.7 mA limit current."
+H16,SM.1,FSR.1,,26,red,150,"JST SM 4-position pair SMP-04V-BC / SMR-04V-B, wrist end, contact 1; to Clincher position 1","Along finger B. Clincher end: crimp or solder to the Clincher contact per Amphenol, never to the FSR tail. Length includes the service loop [A]."
+H17,SM.2,FSR.2,,26,white,150,"JST SM 4-position pair SMP-04V-BC / SMR-04V-B, wrist end, contact 2; to Clincher position 2",Same route as H16. FSR leg polarity does not matter.
+H18,SM.3,SW.NO,,26,green,120,"JST SM 4-position pair SMP-04V-BC / SMR-04V-B, wrist end, contact 3; to D2F-01L NO terminal",Normally-open contact: closes to COM when the lever is pressed at jaw open.
+H19,SM.4,SW.COM,,26,gray,120,"JST SM 4-position pair SMP-04V-BC / SMR-04V-B, wrist end, contact 4; to D2F-01L COM terminal","Common contact, to the sensor return."
+A01,ADAPTER.TIP,J1.1,VIN_RAW,supplied cord,supplied,1500,"J1 barrel jack 5.5 x 2.1 mm, centre positive; Pololu WPA-1774",12 V in. J2 is the screw-terminal alternative; use one input only.
+A02,ADAPTER.SLEEVE,J1.2,GND,supplied cord,supplied,1500,J1 barrel jack sleeve,Return of the adapter cord (same cord as A01).
+U01,HOST.USB-A,U5.USB,,supplied cable,supplied,914,Adafruit 592 USB A to micro-B on the DevKitC,Firmware load and serial. Not part of the wrist cable.
+N01,J2,-,VIN_RAW,-,-,0,J2 screw terminal 2-way,"Not wired: alternative 12 V input, use J1 or J2, not both."
+N02,J5,-,FB_IN,-,-,0,J5 1x3 header,"Not wired: optional servo position feedback, unfitted (FB_ENABLED 0)."
+N03,J6,-,DRV_AIN1,-,-,0,J6 1x8 header,"Not wired: DC-gearmotor branch expansion, unused in the servo build."
+N04,J7,-,SERVO_PWM,-,-,0,J7 1x3 header,"Not wired: bench servo header, bench use only."

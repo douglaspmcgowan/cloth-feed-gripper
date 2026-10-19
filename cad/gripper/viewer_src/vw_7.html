@@ -1,0 +1,163 @@
+
+<script>
+"use strict";
+/* a chart drawn at its own pixel width keeps its text at the CSS size; it redraws when its box is resized or first shown */
+function fitDraw(box,draw,max=1100){let last=0;const run=()=>{const w=Math.min(max,Math.round(box.clientWidth));if(w<120||w===last)return;last=w;draw(w);};
+  if(window.ResizeObserver)new ResizeObserver(run).observe(box);else window.addEventListener("resize",run);run();}
+/* a key under a chart: [label, colour, dash, line width] */
+function keyRow(box,items){const d=h("div",{class:"lgd"},box);items.forEach(([lab,c,dash,w])=>{const sp=h("span",null,d),k=s("svg",{viewBox:"0 0 20 8","aria-hidden":"true"},sp);
+  s("line",{x1:0,x2:20,y1:4,y2:4},k,`stroke:${c};stroke-width:${w||2.5};${dash?"stroke-dasharray:"+dash:""}`);sp.appendChild(document.createTextNode(lab));});}
+/* ---------- concepts ---------- */
+const TRANS=[ // CONCEPT.md section 4.1: name, hold torque, mass-moment, % of budget, close s, closes in time, chart label, label anchor, dx, dy
+ ["1:1 spur sectors (baseline)","0.765",40507,92.7,0.28,true,"1:1 sectors","end",-8,17],
+ ["Pinion and sector, 4:1","0.201",36792,84.2,0.39,true,"4:1 pinion","start",8,4],
+ ["Unequal sectors","0.574",40857,93.5,0.28,true,"Unequal sectors","end",-8,-7],
+ ["Rack and pinion on a ball rail","0.110",43403,99.3,0.53,false,"Rack, ball rail","start",8,18],
+ ["Rack and pinion on a printed slide","0.227",36461,83.4,0.53,false,"Rack, printed slide","start",8,4],
+ ["Four-bar parallelogram","0.500",41045,93.9,0.33,true,"Four-bar","start",8,12],
+ ["Worm, 1-start, with a gearmotor","1.40 "+KGCMU+" at the gearbox",28287,64.7,0.59,false,"Worm, 1-start","start",8,4],
+ ["Worm, 2-start, with a gearmotor","1.85 "+KGCMU+" at the gearbox",28287,64.7,0.39,true,"Worm, 2-start","start",8,4],
+ ["Tendon, servo on the gripper","0.708",41863,95.8,0.29,true,"Tendon","start",8,-6],
+ ["Tendon, servo behind the wrist","1.003",36209,82.8,null,false,"","start",0,0],
+];
+const KLAB={K1:"Course compliance",K2:"Grip-force margin",K3:"Mass-moment",K4:"Single-ply pickup",K5:"Force control and resolution",K6:"Compactness",K7:"Transmission strength and life",K8:"Build and integration risk",K9:"Hold power and heat"};
+const CASEN={equal_weights:"equal weights","K1_zero_(GSI_accepts_servo_and_1to1)":"course compliance zeroed",K3_doubled:"mass-moment doubled",K8_doubled:"build risk doubled",K2_like_for_like_40pct_of_stall:"force margin at 40 % of stall",K2_like_for_like_instantaneous:"force margin, instantaneous","K2_K3_thresholds_x0.75":"thresholds × 0.75","K2_K3_thresholds_x1.25":"thresholds × 1.25"};
+const SKETCH=[["concept_T1_spur_1to1","1:1 spur sectors"],["concept_T2_unequal_ratio","Unequal sectors"],["concept_T3_rack_pinion","Rack and pinion"],["concept_T4_fourbar","Four-bar"],["concept_T5_worm","Worm"],["concept_T6_tendon","Tendon"]];
+function pics(el,list){el.innerHTML=list.map(([k,cap,notes])=>`<figure class="pic"><img src="${D.img[k]}" alt="${esc(cap)}"><figcaption class="cap"><b>${esc(cap)}</b>${(notes||[]).map(n=>`<span>${esc(n)}</span>`).join("")}</figcaption></figure>`).join("");
+  $$("img",el).forEach(im=>{const w=()=>im.closest("figure").classList.toggle("span2",im.naturalWidth>im.naturalHeight*1.8);if(im.complete&&im.naturalWidth)w();else im.addEventListener("load",w);});}
+const SKROWS=[[0],[1,2],[3,4],[5],[6,7],[8,9]],CDESC={C0:"Standard servo on finger A, 1:1 spur sectors",C1:"Pinion stage into the sector on finger A, then a 1:1 sync",C3:"Self-locking, driven by a DC gearmotor",C3b:"Driven by a DC gearmotor"},STOCK={in:"in stock",unverified:"not confirmed"};
+function skNote(t,many){const tq=/^[\d.]+$/.test(t[1])?`hold torque ${t[1]} ${NM}`:`motor torque ${t[1]}`;return `${many?t[0]+": ":""}${many?tq:cap1s(tq)}, ${t[4]===null?"no servo fits":"closes in "+fmt(t[4],2)+" s"}, ${fmt(t[3],1)} % of the mass budget`;}
+function cap1s(t){return t.charAt(0).toUpperCase()+t.slice(1);}
+function renderConcepts(){
+  const lim=MASS.budget_gmm;
+  const tight=window.innerWidth<=600,xm=tight?0.7:0.65,SHORT={"Unequal sectors":"Unequal","1:1 sectors":"1:1","Rack, ball rail":"Rack, rail","Rack, printed slide":"Rack, slide","Worm, 1-start":"Worm, 1","Worm, 2-start":"Worm, 2"};
+  const P=plot($("#transChart"),{w:680,h:320,m:{l:62,b:44},x:{min:0.2,max:xm,label:"Close time to 5 N, model (s)"},y:{min:24000,max:46000,label:"Mass-moment ("+GMM+")",fmt:v=>fmt(v/1000,0)+"k"}});
+  P.vband(0.5,xm,"var(--bad-soft)");P.hband(lim,46000,"var(--bad-soft)");
+  P.vline(0.5,"var(--bad)","4 3","0.5 s limit");P.hline(lim,"var(--bad)","4 3","budget "+fmt(lim,0),"start");
+  TRANS.forEach(t=>{if(t[4]===null)return;P.dot(t[4],t[2],t[5]?"var(--c1)":"var(--c5)",5,t[0]);P.text(t[4],t[2],tight&&SHORT[t[6]]||t[6],"var(--ink2)",t[7],t[8],t[9]);});
+  $("#transTable tbody").innerHTML=TRANS.map(t=>`<tr><td>${esc(t[0])}</td><td class="n">${t[1]}</td><td class="n">${fmt(t[2],0)}</td><td class="n">${fmt(t[3],1)} %</td><td class="n">${t[4]===null?"–":fmt(t[4],2)}</td><td>${t[5]?st("pass","yes"):st("fail",t[4]===null?"no servo fits":"no")}</td></tr>`).join("");
+  pics($("#sketches"),SKETCH.map((sk,i)=>[sk[0],sk[1],SKROWS[i].map(r=>skNote(TRANS[r],SKROWS[i].length>1))]));
+  const C=D.pugh.concepts;
+  $("#comboTable tbody").innerHTML=Object.entries(C).map(([k,c])=>`<tr${k==="C0"?' class="hl"':""}><td class="w"><b>${CN[k]}</b>${CDESC[k]?`<br><span class="note">${esc(CDESC[k])}</span>`:""}</td><td>${esc(STOCK[c.stock]||c.stock)}</td><td class="n">${fmt(c.mass_g,1)}</td><td class="n">${fmt(c.mass_moment_gmm,0)}</td><td class="n">${fmt(c.pct_budget,1)} %</td><td class="n">${fmt(c.close_time_s,2)}</td><td>${c.passes_R19?st("pass","yes"):st("fail","no")}</td></tr>`).join("");
+  const sel=$("#pughCase");sel.innerHTML=`<option value="base">base</option>`+Object.keys(D.pugh.sens).map(k=>`<option value="${esc(k)}">${esc(CASEN[k]||decode(k))}</option>`).join("");
+  const cs=["C1","C2","C2p","C3","C3b"],tbl=$("#pughTable");
+  function draw(){
+    const cse=sel.value,tot=cse==="base"?D.pugh.total:D.pugh.sens[cse];
+    const cls=v=>v>=2?"p2":v===1?"p1":v===-1?"m1":v<=-2?"m2":"";
+    let html=`<thead><tr><th>Criterion</th><th class="n">Weight</th><th>Baseline</th>${cs.map(c=>`<th>${CN[c]}</th>`).join("")}</tr></thead><tbody>`;
+    Object.keys(D.pugh.weights).forEach(k=>{html+=`<tr><td>${esc(KLAB[k]||k)}</td><td class="n">${D.pugh.weights[k]}</td><td class="sc">0</td>`+cs.map(c=>{const sc=D.pugh.scores[c][k];return `<td class="sc"><button type="button" class="${cls(sc.score)}" aria-pressed="false" data-c="${c}" data-k="${k}">${sc.score>0?"+":""}${sc.score}</button></td>`;}).join("")+"</tr>";});
+    html+=`<tr><td><b>Weighted total</b></td><td class="n">100</td><td class="sc">0</td>`+cs.map(c=>`<td class="sc"><b>${tot[c]>0?"+":""}${fmt(tot[c],tot[c]%1?1:0)}</b></td>`).join("")+"</tr>";
+    html+=`<tr><td>Closes in 0.5 s</td><td></td><td class="sc">${st("pass","yes")}</td>`+cs.map(c=>`<td class="sc">${C[c].passes_R19?st("pass","yes"):st("fail","no")}</td>`).join("")+"</tr></tbody>";
+    tbl.innerHTML=html;
+    const top=cse==="base"?D.pugh.rank[0]:D.pugh.top_by_case[cse];
+    $("#pughTop").textContent=`Top concept that closes in time: ${CN[top]||decode(top)}.`;$("#pughWhy").textContent="";
+    const sg=v=>(v>0?"+":"")+fmt(v,v%1?1:0);
+    const rk=[["Baseline",0]].concat(cs.map(c=>[CN[c],tot[c]])).sort((a,b)=>b[1]-a[1]);
+    $("#pughSum").innerHTML=`<li>Weighted total, best first${rk.map(([n,v],i)=>`<div class="rk"><span class="rn">${i+1}</span><span>${esc(n)}</span><b>${sg(v)}</b></div>`).join("")}</li><li>Close in 0.5 s<div class="rk"><span class="rn"></span><span>${["Baseline"].concat(cs.filter(c=>C[c].passes_R19).map(c=>CN[c])).join(", ")}</span></div>${cs.some(c=>!C[c].passes_R19)?`<div class="rk"><span class="rn"></span><span>Too slow: ${cs.filter(c=>!C[c].passes_R19).map(c=>CN[c].toLowerCase()).join(", ")}</span></div>`:""}</li>`;
+  }
+  tbl.addEventListener("click",e=>{const b=e.target.closest("button[data-k]");if(!b)return;$$("button[data-k]",tbl).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+    $("#pughWhy").textContent=`${CN[b.dataset.c]}, ${KLAB[b.dataset.k].toLowerCase()}: ${decode(D.pugh.scores[b.dataset.c][b.dataset.k].why)}.`;});
+  sel.addEventListener("change",draw);draw();
+  const ms=$("#morphSel");ms.addEventListener("change",()=>$$("#morph td").forEach(td=>td.classList.toggle("pick",!!ms.value&&(td.dataset.c||"").split(" ").includes(ms.value))));
+}
+RENDER.concepts=renderConcepts;
+
+/* ---------- mass budget ---------- */
+function renderMass(){
+  const KB={C001_5V:28720,C001_7p4V:43720,C018_12V:96220},KN={C001_5V:"5 V kit",C001_7p4V:"7.4 V kit (design)",C018_12V:"12 V kit"};
+  const dm=D.kits.d_mm,Pk=plot($("#kitChart"),{w:640,h:360,x:{min:10,max:80,label:"Hardware centre of mass past the horn (mm)"},y:{min:40,max:280,label:"Allowable hardware mass (g)"}});
+  Object.keys(D.kits.kits).forEach((k,i)=>{const c=col(i);Pk.line(dm.map((d,j)=>[d,D.kits.kits[k].no_camera.gov[j]]),c,2.2);Pk.line(dm.map((d,j)=>[d,D.kits.kits[k].with_camera.gov[j]]),c,1.4,"5 4");});
+  const dbItems=D.rollup.no_camera.items.filter(it=>!/cloth|FSR|camera/i.test(it.name));
+  const dbm=dbItems.reduce((a,b)=>a+b.g,0),dbd=dbItems.reduce((a,b)=>a+b.g*b.d_mm,0)/dbm;
+  const PP=D.parts.parts,cm=Object.values(PP).reduce((a,b)=>a+b.mass_g,0),cd=Object.values(PP).reduce((a,b)=>a+b.mass_g*b.u_past_H,0)/cm;
+  Pk.dot(dbd,dbm,"var(--c3)",6,`Early estimate ${fmt(dbm,1)} g at ${fmt(dbd,1)} mm`,"var(--surface)");Pk.text(dbd,dbm,`estimate ${fmt(dbm,1)} g`,"var(--c3)","start",9,22);
+  Pk.dot(cd,cm,"var(--bad)",6,`CAD ${fmt(cm,1)} g at ${fmt(cd,1)} mm`,"var(--surface)");Pk.text(cd,cm,`CAD ${fmt(cm,1)} g`,"var(--bad)","start",9,4);
+  Pk.legend(Object.keys(D.kits.kits).map((k,i)=>[KN[k]||decode(k),col(i)]).concat([["with a 10 g camera","var(--ink2)","5 4"]]),{x:Pk.m.l+Pk.pw-170,y:Pk.y(205)});
+  kv($("#massNums"),[["Mass with cloth",fmt(MASS.total_g_incl_cloth,1)+" g",`limit about ${fmt(LIMIT_G,0)} g`],["Centre of mass",fmt(MASS.com_u_past_H,1)+" mm","past the wrist horn"],
+    ["Mass-moment",fmt(MASS.mass_moment_gmm,0)+" "+GMM,`${fmt(MASS.budget_use*100,0)} % of ${fmt(MASS.budget_gmm,0)}`,MASS.ok?"cell-ok":"cell-bad"]]);
+  const U=D.rollup.no_camera.util;
+  $("#kitTable tbody").innerHTML=Object.keys(KB).map(k=>{const cad=MASS.mass_moment_gmm/KB[k],db=40507/KB[k];
+    return `<tr${k==="C001_7p4V"?' class="hl"':""}><td>${KN[k]}</td><td class="n">${fmt(KB[k],0)}</td><td class="n ${db>1?"cell-bad":"cell-ok"}" title="worst pose ${fmt(U[k]*100,0)} %">${fmt(db*100,0)} %</td><td class="n ${cad>1?"cell-bad":"cell-ok"}">${fmt(cad*100,0)} %</td></tr>`;}).join("");
+  const grp=[["Housing and plates",["housing"],["housing","front_plate","wrist_mount"]],["Knuckles",["knuckles"],["knuckle_a","knuckle_b"]],["Fingers and nail",["fingers TPU"],["finger_a","finger_b","nail_a"]],
+    ["Servo",["actuator"],["servo"]],["Horn, pins, fasteners",["horn, pins, fasteners"],["horn","fasteners","fasteners_a","fasteners_b"]],["Sensor parts and wiring",["FSR + wiring"],["fsr_backing_b","fsr_sensor_b","fsr_puck_b","@FSR + servo wiring"]],["Cloth at the pad",["cloth at pad"],["@cloth at the pad"]]];
+  const fi=n=>{const it=MASS.items.find(it=>it.name.toLowerCase().startsWith(n));if(!it)throw new Error("mass item not found: "+n);return it;};
+  let tDB=0,tC=0;
+  $("#rollTable tbody").innerHTML=grp.map(([lab,dbn,cn])=>{const di=D.rollup.no_camera.items.filter(it=>dbn.includes(it.name));const dg=di.reduce((a,b)=>a+b.g,0),dd=di.reduce((a,b)=>a+b.g*b.d_mm,0)/dg;
+    const ci=cn.map(n=>n.startsWith("@")?fi(n.slice(1).toLowerCase()):{g:PP[n].mass_g,u_past_H:PP[n].u_past_H});const cg=ci.reduce((a,b)=>a+b.g,0),cdd=ci.reduce((a,b)=>a+b.g*b.u_past_H,0)/cg;tDB+=dg;tC+=cg;
+    return `<tr data-part="${cn.filter(n=>!n.startsWith("@")).join(" ")}"><td>${lab}</td><td class="n">${fmt(dg,1)}</td><td class="n">${fmt(dd,1)}</td><td class="n ${cg>dg*1.15?"cell-bad":""}">${fmt(cg,1)}</td><td class="n ${cdd>dd+5?"cell-bad":""}">${fmt(cdd,1)}</td></tr>`;}).join("")
+    +`<tr class="hl"><td><b>Total</b></td><td class="n"><b>${fmt(tDB,1)}</b></td><td class="n">${fmt(D.rollup.no_camera.com_mm,1)}</td><td class="n"><b>${fmt(tC,1)}</b></td><td class="n">${fmt(MASS.com_u_past_H,1)}</td></tr>`;
+}
+RENDER.mass=renderMass;
+
+/* ---------- torque and actuator ---------- */
+const SENS=[["mua","Friction, pad A (coefficient)",0.15,0.8,0.01,0.4],["mub","Friction, pad B (coefficient)",0.15,0.8,0.01,0.4],["T","Cloth tension (N)",0.5,5,0.05,2],["SF","Slip safety factor (ratio)",1,3,0.05,2],
+  ["th","Pad angle (°)",0,10,0.5,0],["rc","Moment arm (mm)",40,90,1,65],["xf","Pad position (mm)",8,16,0.25,11.5],["eta","Efficiency (0 to 1)",0.6,0.95,0.01,0.85],["hf","Hold fraction of stall (0 to 1)",0.25,0.5,0.01,0.4]];
+const SV={};
+function Freq(mua,mub,T,SF,th){const t=th*Math.PI/180,den=(mua+mub)*Math.cos(t)-2*Math.sin(t);return den<=0?Infinity:SF*T/den;}
+function Tservo(F,rc,T,xf,eta){return (2*F*rc+T*xf)/1000/eta;}
+const TN={"mu both pads 0.3-0.6":"Friction, both pads: 0.3 to 0.6","nail mu 0.4-0.25 (finger A)":"Nail friction, finger A: 0.4 to 0.25","tension 1-3 N":"Cloth tension: 1 to 3 N","slip SF 1.5-2.5":"Slip safety factor: 1.5 to 2.5",
+  "r_c 55-80 mm":"Moment arm: 55 to 80 mm","eta 0.95-0.70":"Efficiency: 0.95 to 0.70","pad angle 0-5 deg":"Pad angle: 0 to 5°","pad offset x_f 11.5-14.5 mm":"Pad position: 11.5 to 14.5 mm"};
+function drawTornado(cw){
+  const tr=D.grip.tornado_T_hold_kgcm,ent=Object.entries(tr.ranges).sort((a,b)=>(b[1][1]-b[1][0])-(a[1][1]-a[1][0])),n=ent.length,stack=cw<560,rh=stack?44:30,lim=BUILD_STALL*HOLD_FRAC;
+  const Pt=plot($("#tornado"),{w:cw,h:n*rh+78,m:{l:stack?8:250,r:44,t:34,b:44},x:{min:2,max:13,label:"Hold torque ("+KGCMU+")"},y:{min:0,max:n,ticks:[]}}),bh=Pt.ph/n;
+  ent.forEach(([lab,[lo,hi]],i)=>{const top=Pt.m.t+i*bh,by=stack?top+20:top+bh*0.17,bt=stack?bh-26:bh*0.66,x0=Pt.x(Math.min(lo,tr.base)),x1=Pt.x(Math.max(hi,tr.base)),ty=by+bt/2+4.5;
+    s("rect",{x:x0,y:by,width:Math.max(1,x1-x0),height:bt,rx:2},Pt.svg,"fill:var(--c1);opacity:.75");
+    const t=s("text",stack?{x:Pt.m.l+2,y:top+13}:{x:Pt.m.l-10,y:top+bh/2+4.5,"text-anchor":"end"},Pt.svg,"fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:4px");t.textContent=TN[lab]||decode(lab);
+    s("text",{x:x1+5,y:ty},Pt.svg,"fill:var(--ink);font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:4px").textContent=fmt(hi,2);
+    if(lo<tr.base)s("text",{x:x0-5,y:ty,"text-anchor":"end"},Pt.svg,"fill:var(--ink);font-weight:600").textContent=fmt(lo,2);});
+  Pt.vline(tr.base,"var(--ink2)","3 3");Pt.vline(lim,"var(--bad)","5 3");
+  s("text",{x:Pt.x(tr.base)-5,y:Pt.m.t-10,"text-anchor":"end"},Pt.svg).textContent="Design point "+fmt(tr.base,2);
+  s("text",{x:Pt.x(lim)+5,y:Pt.m.t-10},Pt.svg,"fill:var(--bad);font-weight:600").textContent="Servo limit "+fmt(lim,2);
+}
+function renderTorque(){
+  const box=$("#sensCtrl");
+  SENS.forEach(([k,l,mn,mx,stp,v])=>{SV[k]=v;h("label",null,box,`<span>${l}</span><output id="sv_${k}">${v}</output><input type="range" data-k="${k}" min="${mn}" max="${mx}" step="${stp}" value="${v}">`);});
+  box.addEventListener("input",e=>{const k=e.target.dataset.k;if(!k)return;SV[k]=+e.target.value;$("#sv_"+k).textContent=SV[k];updSens();});
+  $("#sensReset").addEventListener("click",()=>{SENS.forEach(([k,,,,,v])=>{SV[k]=v;const i=$(`input[data-k="${k}"]`,box);i.value=v;$("#sv_"+k).textContent=v;});updSens();});
+  fitDraw($("#tornado"),drawTornado);
+  updSens();
+  /* shortlist and the full trade */
+  const A=D.acts,rec=D.actrec,KIND={servo:"Servo",continuous:"Continuous servo",gearmotor:"Gearmotor",worm:"Worm gearmotor",linear:"Linear servo",fallback:"Fallback: gearmotor with a printed stage"};
+  /* title, then a muted line of the rest: the parts after "+", or the bracketed note */
+  const sp=a=>{const m=String(a.model||""),parts=m.split(" + ");if(parts.length>1)return [parts[0],parts.slice(1).join(", ")];const b=m.match(/^(.*?)\s*\((.*)\)\s*$/);return b?[b[1],b[2]]:[m,""];},name=a=>sp(a)[0];
+  const pick=[[rec.primary,"Pick","In stock; best score among those that pass"],[rec.backup,"Backup","Next best score; sold out"],[rec.dc_branch,"DC fallback","Only if the servo is not accepted as the DC motor; needs the close limit at 0.6 s"]].map(([id,role,why])=>[A.find(x=>x.id===id)||{},role,why]);
+  const row=(l,f)=>`<tr><td>${l}</td>${pick.map(([a],i)=>`<td class="n${i===0?" pick":""}">${f(a,i)}</td>`).join("")}</tr>`;
+  $("#top3").innerHTML=`<thead><tr><th></th>${pick.map(([a,role])=>`<th class="n">${role}</th>`).join("")}</tr></thead><tbody>`+
+    row("Model",a=>`<b>${esc(name(a))}</b>${sp(a)[1]?`<br><span class="note">${esc(sp(a)[1])}</span>`:""}`)+row("Score",a=>fmt(a.score,3))+row("Stall at 6.35 V",a=>a.stall?fmt(a.stall,2)+" "+KGCMU:"–")+row("Hold margin",a=>fmt(a.hm,3))+row("Margin by the vendor's rule",a=>fmt(a.hmv,3))+
+    row("Close",a=>fmt(a.close,3)+" s")+row("Mass",a=>fmt(a.mass,1)+" g")+row("Price",a=>"$"+fmt(a.price,2))+row("Stock",a=>a.stock===1?"in stock":a.stock===0.5?"listed":"out")+
+    row("Why",(a,i)=>esc(pick[i][2]))+row("Fails",a=>a.fail&&a.fail.length?a.fail.map(x=>esc(decode(x))).join("; "):"nothing")+"</tbody>";
+  const kinds=[...new Set(A.map(a=>a.kind))];$("#actKind").innerHTML+=kinds.map(k=>`<option value="${esc(k)}">${esc(KIND[k]||k)}</option>`).join("");
+  const c=(v,ok)=>v===null||v===undefined?"":(ok?"cell-ok":"cell-bad");
+  const cols=[{k:"model",t:"Model",f:r=>`<span class="w">${r.id===rec.primary?"<b>":""}${esc(name(r))}${r.id===rec.primary?"</b>":""}${sp(r)[1]?`<br><span class="note">${esc(sp(r)[1])}</span>`:""}</span>`},{k:"kind",t:"Kind",f:r=>esc(r.kind==="fallback"?"Gearmotor, printed stage":KIND[r.kind]||r.kind)},
+    {k:"price",t:"Price ($)",n:1,f:r=>fmt(r.price,2),cls:r=>c(r.price,r.price<=50)},{k:"mass",t:"Mass (g)",n:1,f:r=>fmt(r.mass,1)},{k:"stall",t:"Stall ("+KGCMU+")",n:1,f:r=>fmt(r.stall,2)},
+    {k:"hm",t:"Hold margin",n:1,f:r=>fmt(r.hm,3),cls:r=>c(r.hm,r.hm>=1)},{k:"close",t:"Close (s)",n:1,f:r=>fmt(r.close,3),cls:r=>c(r.close,r.close<=0.5)},
+    {k:"arm",t:"Arm use",n:1,f:r=>r.arm==null?"–":fmt(r.arm*100,1)+" %",cls:r=>c(r.arm,r.arm<=1)},{k:"rcmax",t:"Max moment arm (mm)",n:1,f:r=>fmt(r.rcmax,1)},
+    {k:"tmesh",t:"Mesh torque at stall ("+NM+")",n:1,f:r=>fmt(r.tmesh,2)},{k:"stock",t:"Stock",f:r=>r.stock===1?st("pass","in"):r.stock===0.5?st("risk","listed"):r.stock===0?st("fail","out"):"–"},
+    {k:"score",t:"Score",n:1,f:r=>fmt(r.score,3)},{k:"pass",t:"Passes all",v:r=>r.pass?1:0,f:r=>r.pass?st("pass","yes"):st("fail","no")},
+    {k:"fail",t:"Fails",nosort:1,f:r=>`<div class="chips">${(r.fail||[]).map(x=>`<span class="chip">${esc(decode(x))}</span>`).join("")}</div>`}];
+  const T=sortableTable($("#actTable"),cols,A,{key:"score",dir:-1,hl:r=>r.id===rec.primary});
+  function filt(){const q=$("#actQ").value.toLowerCase(),k=$("#actKind").value,p=$("#actPass").checked;
+    const r=A.filter(a=>(!q||String(a.model).toLowerCase().includes(q))&&(!k||a.kind===k)&&(!p||a.pass));T.set(r);$("#actCount").textContent=`${r.length} of ${A.length} shown; ${A.filter(a=>a.pass).length} pass every limit`;}
+  $("#actQ").addEventListener("input",filt);$("#actKind").addEventListener("change",filt);$("#actPass").addEventListener("change",filt);filt();
+}
+function updSens(){
+  const v=SV,F=Freq(v.mua,v.mub,v.T,v.SF,v.th),Th=Tservo(F,v.rc,v.T,v.xf,v.eta),stall=Th/KGCM/v.hf;
+  const capB=BUILD_STALL*KGCM*v.hf,capA19=A19.stall*KGCM*v.hf,mB=capB/Th,mA19=capA19/Th,mA17=A17.stall*KGCM*v.hf/Th;
+  const Tst=BUILD_STALL*KGCM,w0=415.2,thOver=5/(1.0*v.rc)*180/Math.PI;
+  const tc=1.3*(20-(-0.31)-3)/w0+3/Math.min(20,w0)+thOver/Math.min(w0*(1-0.5*Th/Tst),60);
+  const bad=x=>x<1?"cell-bad":"cell-ok",ok=Number.isFinite(F),Tcap=Tservo(R15_CAP_N,v.rc,v.T,v.xf,v.eta);
+  const G=[["Needed at the pad and the servo",[["Pad force needed",ok?fmt(F,2)+" N":"slips","design 5.00; allowed 5 to 10 N"],["Finger torque",ok?fmt(F*v.rc/1000,3)+" "+NM:"–",`at a ${fmt(v.rc,0)} mm arm`],
+      ["Servo hold torque",`${fmt(Th,3)} ${NM}`,`${fmt(Th/KGCM,2)} ${KGCMU}; design 0.792`],[`Torque at the ${R15_CAP_N} N cap`,`${fmt(Tcap,3)} ${NM}`,"design 1.556 was at 10 N"],["Stall rating needed",`${fmt(stall,2)} ${KGCMU}`,`design 20.18; the ${BUILD.model} gives ${fmt(BUILD_STALL,2)}`]]],
+    [`${BUILD.model}, the build servo`,[["Hold margin",fmt(mB,3),`hold fraction ${fmt(v.hf,2)}`,bad(mB)],["Close time",fmt(tc,3)+" s",`limit ${R19_CLOSE_S} s`,tc>R19_CLOSE_S?"cell-bad":"cell-ok"]]],
+    ["DS3218MG, rev A comparison",[["Hold margin",fmt(mA17,3),"rev A design 1.034",bad(mA17)]]],
+    ["DS3235, the alternative",[["Hold margin",fmt(mA19,3),"design 1.622",bad(mA19)]]]];
+  if(!$("#sensOut h3")){$("#sensOut").innerHTML=G.map((g,i)=>`<h3>${g[0]}</h3><dl class="kv" data-g="${i}"></dl>`).join("");}
+  G.forEach((g,i)=>kv($(`#sensOut dl[data-g="${i}"]`),g[1]));
+  const R=D.grip.T_hold_vs_rc,Pr=plot($("#rcChart"),{w:640,h:340,x:{min:40,max:90,label:"Moment arm (mm)"},y:{min:2,max:16,label:"Hold torque ("+KGCMU+")"}});
+  Pr.vband(40,65,"var(--band)");Pr.vline(65,"var(--ok)","4 3","arm limit 65");
+  ["mu_0.3","mu_0.4","mu_0.5","mu_0.6"].forEach((k,i)=>{Pr.line(R.r_c_mm.map((r,j)=>[r,R[k][j]]),col(i),2);const last=R.r_c_mm.length-1;Pr.text(R.r_c_mm[last],R[k][last],"friction "+k.slice(3),col(i),"end",-2,-6);});
+  Pr.hline(BUILD_STALL*HOLD_FRAC,"var(--bad)","5 3","servo limit, "+fmt(BUILD_STALL*HOLD_FRAC,2)+" "+KGCMU,"start");
+  if(Number.isFinite(Th)&&v.rc>=40&&v.rc<=90)Pr.dot(v.rc,Math.min(16,Th/KGCM),"var(--ink)",5.5,"slider point","var(--surface)");
+}
+RENDER.torque=renderTorque;
+</script>

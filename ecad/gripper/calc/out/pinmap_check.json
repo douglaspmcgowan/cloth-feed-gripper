@@ -1,0 +1,444 @@
+{
+ "config": {
+  "PIN_BUTTON": 25,
+  "PIN_DRV_AIN1": 16,
+  "PIN_DRV_AIN2": 17,
+  "PIN_DRV_NFAULT": 4,
+  "PIN_DRV_NSLEEP": 13,
+  "PIN_ENC_A": 27,
+  "PIN_ENC_B": 33,
+  "PIN_FSR_ADC": 34,
+  "PIN_I2C_SCL": 22,
+  "PIN_I2C_SDA": 21,
+  "PIN_LIMIT_OPEN": 26,
+  "PIN_SERVO_FB_ADC": 32,
+  "PIN_SERVO_PWM": 18,
+  "PIN_STATUS_LED": 2
+ },
+ "lines": [
+  {
+   "config_gpio": 18,
+   "design_gpio": 18,
+   "macro": "PIN_SERVO_PWM",
+   "match": true,
+   "net": "PWM_3V3",
+   "socket_pin": 28
+  },
+  {
+   "config_gpio": 34,
+   "design_gpio": 34,
+   "macro": "PIN_FSR_ADC",
+   "match": true,
+   "net": "FSR_ADC",
+   "socket_pin": 5
+  },
+  {
+   "config_gpio": 32,
+   "design_gpio": 32,
+   "macro": "PIN_SERVO_FB_ADC",
+   "match": true,
+   "net": "FB_ADC",
+   "socket_pin": 7
+  },
+  {
+   "config_gpio": 25,
+   "design_gpio": 25,
+   "macro": "PIN_BUTTON",
+   "match": true,
+   "net": "BTN_IN",
+   "socket_pin": 9
+  },
+  {
+   "config_gpio": 26,
+   "design_gpio": 26,
+   "macro": "PIN_LIMIT_OPEN",
+   "match": true,
+   "net": "LIM_IN",
+   "socket_pin": 10
+  },
+  {
+   "config_gpio": 21,
+   "design_gpio": 21,
+   "macro": "PIN_I2C_SDA",
+   "match": true,
+   "net": "SDA",
+   "socket_pin": 25
+  },
+  {
+   "config_gpio": 22,
+   "design_gpio": 22,
+   "macro": "PIN_I2C_SCL",
+   "match": true,
+   "net": "SCL",
+   "socket_pin": 22
+  },
+  {
+   "config_gpio": 2,
+   "design_gpio": 2,
+   "macro": "PIN_STATUS_LED",
+   "match": true,
+   "net": "LED_DRV",
+   "socket_pin": 34
+  },
+  {
+   "config_gpio": 16,
+   "design_gpio": 16,
+   "macro": "PIN_DRV_AIN1",
+   "match": true,
+   "net": "DRV_AIN1",
+   "socket_pin": 31
+  },
+  {
+   "config_gpio": 17,
+   "design_gpio": 17,
+   "macro": "PIN_DRV_AIN2",
+   "match": true,
+   "net": "DRV_AIN2",
+   "socket_pin": 30
+  },
+  {
+   "config_gpio": 13,
+   "design_gpio": 13,
+   "macro": "PIN_DRV_NSLEEP",
+   "match": true,
+   "net": "DRV_NSLEEP",
+   "socket_pin": 15
+  },
+  {
+   "config_gpio": 4,
+   "design_gpio": 4,
+   "macro": "PIN_DRV_NFAULT",
+   "match": true,
+   "net": "DRV_NFAULT",
+   "socket_pin": 32
+  },
+  {
+   "config_gpio": 27,
+   "design_gpio": 27,
+   "macro": "PIN_ENC_A",
+   "match": true,
+   "net": "ENC_A",
+   "socket_pin": 11
+  },
+  {
+   "config_gpio": 33,
+   "design_gpio": 33,
+   "macro": "PIN_ENC_B",
+   "match": true,
+   "net": "ENC_B",
+   "socket_pin": 8
+  }
+ ],
+ "netlist": {
+  "ok": true,
+  "path": "ecad/gripper/kicad/out/gripper.net",
+  "present": true,
+  "rows": [
+   {
+    "expected": "PWM_3V3",
+    "gpio": 18,
+    "netlist": "/PWM_3V3",
+    "ok": true,
+    "socket_pin": 28
+   },
+   {
+    "expected": "FSR_ADC",
+    "gpio": 34,
+    "netlist": "/FSR_ADC",
+    "ok": true,
+    "socket_pin": 5
+   },
+   {
+    "expected": "FB_ADC",
+    "gpio": 32,
+    "netlist": "/FB_ADC",
+    "ok": true,
+    "socket_pin": 7
+   },
+   {
+    "expected": "BTN_IN",
+    "gpio": 25,
+    "netlist": "/BTN_IN",
+    "ok": true,
+    "socket_pin": 9
+   },
+   {
+    "expected": "LIM_IN",
+    "gpio": 26,
+    "netlist": "/LIM_IN",
+    "ok": true,
+    "socket_pin": 10
+   },
+   {
+    "expected": "SDA",
+    "gpio": 21,
+    "netlist": "/SDA",
+    "ok": true,
+    "socket_pin": 25
+   },
+   {
+    "expected": "SCL",
+    "gpio": 22,
+    "netlist": "/SCL",
+    "ok": true,
+    "socket_pin": 22
+   },
+   {
+    "expected": "LED_DRV",
+    "gpio": 2,
+    "netlist": "/LED_DRV",
+    "ok": true,
+    "socket_pin": 34
+   },
+   {
+    "expected": "DRV_AIN1",
+    "gpio": 16,
+    "netlist": "/DRV_AIN1",
+    "ok": true,
+    "socket_pin": 31
+   },
+   {
+    "expected": "DRV_AIN2",
+    "gpio": 17,
+    "netlist": "/DRV_AIN2",
+    "ok": true,
+    "socket_pin": 30
+   },
+   {
+    "expected": "DRV_NSLEEP",
+    "gpio": 13,
+    "netlist": "/DRV_NSLEEP",
+    "ok": true,
+    "socket_pin": 15
+   },
+   {
+    "expected": "DRV_NFAULT",
+    "gpio": 4,
+    "netlist": "/DRV_NFAULT",
+    "ok": true,
+    "socket_pin": 32
+   },
+   {
+    "expected": "ENC_A",
+    "gpio": 27,
+    "netlist": "/ENC_A",
+    "ok": true,
+    "socket_pin": 11
+   },
+   {
+    "expected": "ENC_B",
+    "gpio": 33,
+    "netlist": "/ENC_B",
+    "ok": true,
+    "socket_pin": 8
+   }
+  ]
+ },
+ "ok": true,
+ "rules": [
+  {
+   "gpio": 18,
+   "net": "PWM_3V3",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 34,
+   "net": "FSR_ADC",
+   "notes": "ADC1; input-only, no pull-up (external network provides the bias)",
+   "ok": true
+  },
+  {
+   "gpio": 32,
+   "net": "FB_ADC",
+   "notes": "ADC1",
+   "ok": true
+  },
+  {
+   "gpio": 25,
+   "net": "BTN_IN",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 26,
+   "net": "LIM_IN",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 21,
+   "net": "SDA",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 22,
+   "net": "SCL",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 2,
+   "net": "LED_DRV",
+   "notes": "strapping (low or floating for download mode); resistors on net: R21; LED + 330 ohm to GND only: low at reset, allowed (download mode needs low or floating)",
+   "ok": true
+  },
+  {
+   "gpio": 16,
+   "net": "DRV_AIN1",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 17,
+   "net": "DRV_AIN2",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 13,
+   "net": "DRV_NSLEEP",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 4,
+   "net": "DRV_NFAULT",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 27,
+   "net": "ENC_A",
+   "notes": "plain digital I/O",
+   "ok": true
+  },
+  {
+   "gpio": 33,
+   "net": "ENC_B",
+   "notes": "plain digital I/O",
+   "ok": true
+  }
+ ],
+ "socket": [
+  {
+   "design_net_on_pin": "PWM_3V3",
+   "gpio": 18,
+   "header": "J3",
+   "net": "PWM_3V3",
+   "ok": true,
+   "socket_pin": 28
+  },
+  {
+   "design_net_on_pin": "FSR_ADC",
+   "gpio": 34,
+   "header": "J2",
+   "net": "FSR_ADC",
+   "ok": true,
+   "socket_pin": 5
+  },
+  {
+   "design_net_on_pin": "FB_ADC",
+   "gpio": 32,
+   "header": "J2",
+   "net": "FB_ADC",
+   "ok": true,
+   "socket_pin": 7
+  },
+  {
+   "design_net_on_pin": "BTN_IN",
+   "gpio": 25,
+   "header": "J2",
+   "net": "BTN_IN",
+   "ok": true,
+   "socket_pin": 9
+  },
+  {
+   "design_net_on_pin": "LIM_IN",
+   "gpio": 26,
+   "header": "J2",
+   "net": "LIM_IN",
+   "ok": true,
+   "socket_pin": 10
+  },
+  {
+   "design_net_on_pin": "SDA",
+   "gpio": 21,
+   "header": "J3",
+   "net": "SDA",
+   "ok": true,
+   "socket_pin": 25
+  },
+  {
+   "design_net_on_pin": "SCL",
+   "gpio": 22,
+   "header": "J3",
+   "net": "SCL",
+   "ok": true,
+   "socket_pin": 22
+  },
+  {
+   "design_net_on_pin": "LED_DRV",
+   "gpio": 2,
+   "header": "J3",
+   "net": "LED_DRV",
+   "ok": true,
+   "socket_pin": 34
+  },
+  {
+   "design_net_on_pin": "DRV_AIN1",
+   "gpio": 16,
+   "header": "J3",
+   "net": "DRV_AIN1",
+   "ok": true,
+   "socket_pin": 31
+  },
+  {
+   "design_net_on_pin": "DRV_AIN2",
+   "gpio": 17,
+   "header": "J3",
+   "net": "DRV_AIN2",
+   "ok": true,
+   "socket_pin": 30
+  },
+  {
+   "design_net_on_pin": "DRV_NSLEEP",
+   "gpio": 13,
+   "header": "J2",
+   "net": "DRV_NSLEEP",
+   "ok": true,
+   "socket_pin": 15
+  },
+  {
+   "design_net_on_pin": "DRV_NFAULT",
+   "gpio": 4,
+   "header": "J3",
+   "net": "DRV_NFAULT",
+   "ok": true,
+   "socket_pin": 32
+  },
+  {
+   "design_net_on_pin": "ENC_A",
+   "gpio": 27,
+   "header": "J2",
+   "net": "ENC_A",
+   "ok": true,
+   "socket_pin": 11
+  },
+  {
+   "design_net_on_pin": "ENC_B",
+   "gpio": 33,
+   "header": "J2",
+   "net": "ENC_B",
+   "ok": true,
+   "socket_pin": 8
+  }
+ ],
+ "strapping_unused": [
+  0,
+  5,
+  12,
+  15
+ ]
+}

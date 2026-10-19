@@ -1,0 +1,65 @@
+Item,Qty,References,Value,Footprint,Fit,Manufacturer,MPN,Supplier,Supplier PN,Unit USD,Ext USD,Evidence,Retrieved,Supplier URL
+1,1,C1,100uF 35V,CP_Radial_D8.0mm_P3.50mm,fit,Panasonic,EEU-FR1V101,DigiKey,P124225-ND,0.7100,0.7100,S,2026-10-11,https://www.digikey.com/en/products/detail/panasonic-industry/EEU-FR1V101/9921024
+2,2,C2 C3,10uF 50V,C_1210_3225Metric,fit,muRata,GRM32ER71H106KA12L,LCSC,C77102,0.3324,0.6648,S,2026-10-11,https://www.lcsc.com/product-detail/C77102.html
+3,9,C4 C7 C10 C11 C13 C16 C17 C18 C19,100nF 50V,C_0603_1608Metric,fit,YAGEO,CC0603KRX7R9BB104,LCSC,C14663,0.0141,0.1269,S,2026-10-11,https://www.lcsc.com/product-detail/C14663.html
+4,1,C5,22nF,C_0603_1608Metric,fit,Samsung Electro-Mechanics,CL10B223KB8NNNC,LCSC,C21122,0.0084,0.0084,S,2026-10-11,https://www.lcsc.com/product-detail/C21122.html
+5,1,C6,470pF,C_0603_1608Metric,fit,Samsung Electro-Mechanics,CL10C471JB8NNNC,LCSC,C27694,0.0090,0.0090,S,2026-10-11,https://www.lcsc.com/product-detail/C27694.html
+6,2,C8 C9,47uF 16V,C_1210_3225Metric,fit,Samsung Electro-Mechanics,CL32A476KOJNNWE,LCSC,C730498,0.3663,0.7326,S,2026-10-11,https://www.lcsc.com/product-detail/C730498.html
+7,1,C12,1000uF 16V,CP_Radial_D10.0mm_P5.00mm,fit,Panasonic,EEU-FR1C102B,DigiKey,P15331CT-ND,1.1300,1.1300,S,2026-10-11,https://www.digikey.com/en/products/detail/panasonic-electronic-components/EEU-FR1C102B/2504095
+8,2,C14 C15,1uF 25V,C_0603_1608Metric,fit,Samsung Electro-Mechanics,CL10A105KB8NNNC,LCSC,C15849,0.0166,0.0332,S,2026-10-11,https://www.lcsc.com/product-detail/C15849.html
+9,1,C20,10nF,C_0603_1608Metric,fit,Samsung Electro-Mechanics,CL10B103KB8NNNC,LCSC,C1589,0.0097,0.0097,S,2026-10-11,https://www.lcsc.com/product-detail/C1589.html
+10,1,D1,SMBJ16A,D_SMB,fit,VISHAY,SMBJ16A-M3/52,LCSC,C1979375,0.1836,0.1836,S,2026-10-11,https://www.lcsc.com/product-detail/C1979375.html
+11,1,D2,B540C,D_SMC,fit,DIODES,B540C-13-F,LCSC,C72264,0.2332,0.2332,S,2026-10-11,https://www.lcsc.com/product-detail/C72264.html
+12,3,D3 D4 D5,PESD5V0S1BA,D_SOD-323,fit,Nexperia,"PESD5V0S1BA,115",LCSC,C19224,0.0861,0.2583,S,2026-10-11,https://www.lcsc.com/product-detail/C19224.html
+13,1,D6,GREEN,LED_0805_2012Metric,fit,TOGIALED,TJ-S2012SW8TGLC2G-A5,LCSC,C192319,0.0337,0.0337,S,2026-10-11,https://www.lcsc.com/product-detail/C192319.html
+14,1,D7,BAT60A,D_SOD-323,fit,Infineon,BAT60AE6327HTSA1,DigiKey,BAT60AE6327HTSA1CT-ND,0.6400,0.6400,S,2026-10-11,https://www.digikey.com/en/products/result?keywords=BAT60AE6327HTSA1
+15,1,D8,SMBJ7.0A,D_SMB,fit,Littelfuse,SMBJ7.0A,DigiKey,SMBJ7.0ALFCT-ND,0.5300,0.5300,S,2026-10-11,https://www.digikey.com/en/products/detail/littelfuse-inc/SMBJ7-0A/285960
+16,1,DZ1,BZT52C15,D_SOD-123,fit,JSCJ,BZT52C15,LCSC,C2104,0.0202,0.0202,S,2026-10-11,https://www.lcsc.com/product-detail/C2104.html
+17,1,F1,2.6A hold,Fuse_1812_4532Metric,fit,RUILON,SMD1812P260TF/16,LCSC,C20814,0.1498,0.1498,S,2026-10-11,https://www.lcsc.com/product-detail/C20814.html
+18,1,J1,12V IN 2.1mm,BarrelJack_CUI_PJ-102AH_Horizontal,fit,Same Sky (CUI Devices),PJ-102AH,DigiKey,CP-102AH-ND,0.7700,0.7700,S,2026-10-11,https://www.digikey.com/product-detail/en/PJ-102AH/CP-102AH-ND/408448
+19,1,J2,12V IN screw,"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",fit,Phoenix Contact,1715721,DigiKey,277-1263-ND,1.1600,1.1600,S,2026-10-11,https://www.digikey.com/en/products/detail/phoenix-contact/1715721/260631
+20,1,J3,SERVO harness,"TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal",fit,Phoenix Contact,1715734,DigiKey,277-1264-ND,1.7100,1.7100,S,2026-10-11,https://www.digikey.com/en/products/detail/phoenix-contact/1715734/260632
+21,1,J4,GRIPPER SENSORS,JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical,fit,JST,B4B-XH-A(LF)(SN),LCSC,C144395,0.0599,0.0599,S,2026-10-11,https://www.lcsc.com/product-detail/C144395.html
+22,1,J5 J6 J7,pin headers cut from one 36-pin strip,PinHeader_1xNN_P2.54mm_Vertical,fit,Adafruit,Break-away 0.1 in 36-pin male header (10-pack),Adafruit,392,0.4950,0.4950,S,2026-10-11,https://www.adafruit.com/product/392
+23,1,L1,10uH,L_Bourns_SRP1245A,fit,Bourns,SRP1245A-100M,DigiKey,SRP1245A-100MCT-ND,1.4700,1.4700,S,2026-10-11,https://www.digikey.com/en/products/result?keywords=SRP1245A-100M
+24,1,Q1,AO4407A,SOIC-8_3.9x4.9mm_P1.27mm,fit,MSKSEMI,AO4407A,LCSC,C7379957,0.0618,0.0618,S,2026-10-11,https://www.lcsc.com/product-detail/C7379957.html
+25,1,R1,100k,R_0603_1608Metric,fit,UNI-ROYAL,0603WAF1003T5E,LCSC,C25803,0.0031,0.0031,S,2026-10-11,https://www.lcsc.com/product-detail/C25803.html
+26,1,R2,294k,R_0603_1608Metric,fit,VISHAY,CRCW0603294KFKEA,LCSC,C2092132,0.0035,0.0035,S,2026-10-11,https://www.lcsc.com/product-detail/C2092132.html
+27,1,R3,43.2k,R_0603_1608Metric,fit,YAGEO,RC0603FR-0743K2L,DigiKey,311-43.2KHRCT-ND,0.0122,0.0122,S,2026-10-11,https://www.digikey.com/en/products/result?keywords=RC0603FR-0743K2L
+28,1,R4,243k,R_0603_1608Metric,fit,YAGEO,RC0603FR-07243KL,LCSC,C137764,0.0018,0.0018,S,2026-10-11,https://www.lcsc.com/product-detail/C137764.html
+29,1,R5,27.4k,R_0603_1608Metric,fit,VISHAY,CRCW060327K4FKEA,LCSC,C843937,0.0107,0.0107,S,2026-10-11,https://www.lcsc.com/product-detail/C843937.html
+30,1,R6,71.5k 0.1%,R_0603_1608Metric,fit,YAGEO,RT0603BRD0771K5L,DigiKey,YAG1727CT-ND,0.1000,0.1000,S,2026-10-11,https://www.digikey.com/en/products/result?keywords=RT0603BRD0771K5L
+31,1,R7,10.0k 0.1%,R_0603_1608Metric,fit,YAGEO,RT0603BRD0710KL,DigiKey,YAG1236CT-ND,0.1000,0.1000,S,2026-10-11,https://www.digikey.com/en/products/detail/yageo/RT0603BRD0710KL/1072198
+32,2,R8 R9,10R,R_0603_1608Metric,fit,UNI-ROYAL,0603WAF100JT5E,LCSC,C22859,0.0032,0.0064,S,2026-10-11,https://www.lcsc.com/product-detail/C22859.html
+33,2,R10 R11,2.2k,R_0603_1608Metric,fit,UNI-ROYAL,0603WAF2201T5E,LCSC,C4190,0.0018,0.0036,S,2026-10-11,https://www.lcsc.com/product-detail/C4190.html
+34,3,R12 R16 R19,10k,R_0603_1608Metric,fit,YAGEO,RC0603FR-0710KL,LCSC,C98220,0.0034,0.0102,S,2026-10-11,https://www.lcsc.com/product-detail/C98220.html
+35,1,R13,100R,R_0603_1608Metric,fit,UNI-ROYAL,0603WAF1000T5E,LCSC,C22775,0.0032,0.0032,S,2026-10-11,https://www.lcsc.com/product-detail/C22775.html
+36,1,R14,0R DNP,R_0603_1608Metric,DNP,UNI-ROYAL,0603WAF0000T5E,LCSC,C21189,0.0022,0.0022,S,2026-10-11,https://www.lcsc.com/product-detail/C21189.html
+37,1,R15,2.70k 0.1%,R_0603_1608Metric,fit,YAGEO,RT0603BRD072K7L,DigiKey,YAG1623CT-ND,0.1000,0.1000,S,2026-10-11,https://www.digikey.com/en/products/detail/yageo/RT0603BRD072K7L/1072440
+38,1,R17,4.7k,R_0603_1608Metric,fit,UNI-ROYAL,0603WAF4701T5E,LCSC,C23162,0.0028,0.0028,S,2026-10-11,https://www.lcsc.com/product-detail/C23162.html
+39,3,R18 R20 R22,1k,R_0603_1608Metric,fit,UNI-ROYAL,0603WAF1001T5E,LCSC,C21190,0.0026,0.0078,S,2026-10-11,https://www.lcsc.com/product-detail/C21190.html
+40,1,R21,330R,R_0603_1608Metric,fit,UNI-ROYAL,0603WAF3300T5E,LCSC,C23138,0.0026,0.0026,S,2026-10-11,https://www.lcsc.com/product-detail/C23138.html
+41,1,R23,DNP,R_0603_1608Metric,DNP,UNI-ROYAL,0603WAF0000T5E,LCSC,C21189,0.0022,0.0022,S,2026-10-11,https://www.lcsc.com/product-detail/C21189.html
+42,1,R24,768R,R_0603_1608Metric,fit,YAGEO,RC0603FR-07768RL,DigiKey,311-768HRCT-ND,0.0122,0.0122,S,2026-10-11,https://www.digikey.com/en/products/result?keywords=RC0603FR-07768RL
+43,1,RS1,0.1R 1% 2W,R_2512_6332Metric,fit,YAGEO,PE2512FKE7W0R1L,LCSC,C165698,0.1933,0.1933,S,2026-10-11,https://www.lcsc.com/product-detail/C165698.html
+44,1,SW1,START/STOP,SW_PUSH_6mm,fit,Adafruit,Tactile Button switch 6 mm (20-pack),Adafruit,367,0.1250,0.1250,S,2026-10-11,https://www.adafruit.com/product/367
+45,1,TP1,VIN_P,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+46,1,TP2,V_BUCK,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+47,1,TP3,SERVO_V,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+48,1,TP4,+5V,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+49,1,TP5,+3V3,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+50,3,TP6 TP7 TP8,GND,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,1.0500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+51,1,TP9,SERVO_PWM,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+52,1,TP10,PWM_3V3,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+53,1,TP11,FSR_SIG,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+54,1,TP12,FSR_ADC,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+55,1,TP13,SDA,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+56,1,TP14,SCL,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+57,1,TP15,BTN_IN,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+58,1,TP16,LIM_IN,TestPoint_Keystone_5000-5004_Miniature,fit,Keystone Electronics,5000,DigiKey,36-5000-ND,0.3500,0.3500,S,2026-10-11,https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326
+59,1,U1,TPS54560BDDAR,Texas_R-PDSO-G8_EP2.95x4.9mm_Mask2.4x3.1mm_ThermalVias,fit,Texas Instruments,TPS54560BDDAR,DigiKey,296-TPS54560BDDARCT-ND,5.8000,5.8000,S,2026-10-11,https://www.digikey.com/en/products/detail/texas-instruments/TPS54560BDDAR/10820404
+60,1,U2,INA219AIDR,SOIC-8_3.9x4.9mm_P1.27mm,fit,Texas Instruments,INA219AIDR,LCSC,C138706,0.9571,0.9571,S,2026-10-11,https://www.lcsc.com/product-detail/C138706.html
+61,1,U3,MCP1703AT-5002E/DB,SOT-223-3_TabPin2,fit,Microchip,MCP1703AT-5002E/DB,DigiKey,MCP1703AT-5002E/DBCT-ND,0.8400,0.8400,S,2026-10-11,https://www.digikey.com/en/products/detail/microchip-technology/MCP1703AT-5002E-DB/3131481
+62,1,U4,SN74AHCT1G125DBVR,SOT-23-5,fit,Texas Instruments,SN74AHCT1G125DBVR,LCSC,C7484,0.1009,0.1009,S,2026-10-11,https://www.lcsc.com/product-detail/C7484.html
+63,1,U5,ESP32-DevKitC-V4,ESP32-DevKitC-V4_Socket,fit,Espressif,ESP32-DEVKITC-32E,DigiKey,1965-ESP32-DEVKITC-32E-ND,10.0000,10.0000,S,2026-10-11,https://www.digikey.com/en/products/detail/espressif-systems/ESP32-DEVKITC-32E/12091810
+64,1,U5-SOCKETS,two 1x19 female 2.54 mm sockets for the DevKitC (one 2-pack),soldered in the U5 footprint,fit,ProtoSupplies,HDR-29-G,ProtoSupplies,HDR-29-G,0.8000,0.8000,S,2026-10-11,https://protosupplies.com/product/header-female-1x19/

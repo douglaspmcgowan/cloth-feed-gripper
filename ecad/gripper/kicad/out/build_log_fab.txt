@@ -1,0 +1,265 @@
+### drc (exit 0)
+Found 0 violations
+Found 0 unconnected items
+Found 0 schematic parity issues
+Saved DRC Report to ecad/gripper/kicad/out/drc.rpt
+Saved board
+
+### board_stats (exit 0)
+board 100.0 x 85.0 mm, 2 copper layers, 90 footprints, 1018 track segments, 95 vias
+bottom ground coverage 89.3 %; bottom tracks 241.8 mm; top tracks 1543.6 mm
+power nets: 104.0 mm at 2.0 mm, 14.3 mm of 0.6 mm neck, 0 vias
+  VIN_RAW  {'2.00': 19.57} vias 0
+  VIN_F    {'2.00': 8.16} vias 0
+  VIN_P    {'0.25': 17.84, '0.60': 3.79, '2.00': 26.03} vias 0
+  SW       {'0.25': 2.41, '0.60': 1.03, '2.00': 9.4} vias 0
+  V_BUCK   {'0.25': 81.33, '2.00': 12.72} vias 0
+  SERVO_V  {'0.25': 30.31, '0.60': 9.47, '2.00': 28.12} vias 0
+
+### gerbers (exit 0)
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-F_Cu.gtl'.
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-B_Cu.gbl'.
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-F_Paste.gtp'.
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-B_Paste.gbp'.
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-F_Silkscreen.gto'.
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-B_Silkscreen.gbo'.
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-F_Mask.gts'.
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-B_Mask.gbs'.
+Plotted to 'ecad\gripper\kicad\fab\gerber\gripper-Edge_Cuts.gm1'.
+
+### drill (exit 0)
+Created file 'ecad\gripper\kicad\fab\gerber\gripper-PTH.drl'
+Created file 'ecad\gripper\kicad\fab\gerber\gripper-NPTH.drl'
+Created file 'ecad\gripper\kicad\fab\gerber\gripper-PTH-drl_map.pdf'.
+Created file 'ecad\gripper\kicad\fab\gerber\gripper-NPTH-drl_map.pdf'.
+Done.
+
+### position (exit 0)
+Wrote position data to 'ecad\gripper\kicad\fab\gripper-pos.csv'.
+
+### board_pdf (exit 0)
+Plotted to 'ecad\gripper\kicad\out\board\gripper-F_Cu.pdf'.
+Plotted to 'ecad\gripper\kicad\out\board\gripper-B_Cu.pdf'.
+Plotted to 'ecad\gripper\kicad\out\board\gripper-F_Silkscreen.pdf'.
+Plotted to 'ecad\gripper\kicad\out\board\gripper-F_Fab.pdf'.
+Plotted to 'ecad\gripper\kicad\out\board\gripper-Edge_Cuts.pdf'.
+Done.
+
+### step (exit 0)
+Could not add 3D model for TP7.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for U1.
+File not found: ${KICAD10_3DMODEL_DIR}/Package_SO.3dshapes/Texas_R-PDSO-G8_EP2.95x4.9mm_Mask2.4x3.1mm.step
+Could not add 3D model for TP12.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP10.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP1.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP13.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP5.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for F1.
+File not found: ${KICAD10_3DMODEL_DIR}/Fuse.3dshapes/Fuse_1812_4532Metric.step
+Could not add 3D model for TP9.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for L1.
+File not found: ${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Bourns_SRP1245A.step
+Could not add 3D model for TP16.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP15.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP4.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP14.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP8.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP3.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP11.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP2.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for TP6.
+File not found: ${KICAD10_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5000-5004_Miniature.step
+Could not add 3D model for J1.
+File not found: ${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-102AH_Horizontal.step
+STEP file 'ecad/gripper/kicad/fab/gripper.step' created.
+
+Export time 9.804 s
+
+### render_top (exit 0)
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Calculating plated copper
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.880 s
+Rendering: 37 
+Rendering: 93 
+Rendering: 100 
+Rendering time 0.834 s
+Successfully created 3D render image
+
+### render_bottom (exit 0)
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Calculating plated copper
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.332 s
+Rendering: 62 
+Rendering: 100 
+Rendering time 0.587 s
+Successfully created 3D render image
+
+### bom (exit 0)
+BOM lines 65, placed parts 84, DNP 2
+board parts $34.96 (of which assumed-price lines $1.64), harness $48.87, 5 bare boards $2.00 [A]
+total for one gripper $85.83
+
+### fab_check (exit 0)
+gerber_layer_set       ok    9 of 9 layers present
+drill_plated           ok    drill file 189 holes, board 189 (94 pad holes + 95 vias)
+drill_unplated         ok    drill file 4 holes, board 4 mounting holes
+bom_complete           ok    65 lines, 86 parts, every line has MPN, supplier number and price
+position_file          ok    84 placements; 0 fitted BOM parts are hand-placed through-hole or socketed and not in the file
+drc                    ok    0 errors, 0 warnings, 0 unconnected, 0 schematic parity issues
+erc                    ok    0 errors, 0 warnings
+step_model             ok    3026090 bytes
+fabrication outputs: COMPLETE
+

@@ -1,0 +1,13 @@
+as_drawn: 6.658945 V at LIM_SIG; not evidenced
+  D5: 6.3 A, not evidenced W (source-limited)
+  R17: 0.0007146691 A, 0.002400534 W (branch)
+  R18: 0.006658945 A, 0.04434155 W (branch)
+  controller pin: 0.006658945 A, 0.0 W (branch)
+  +3V3 rail: 0.0007146691 A, 0.0 W (branch)
+proposed: 6.658945 V at LIM_RAW; not evidenced
+  R25: 0.006658945 A, 0.04434155 W (branch)
+  R17: 0.0007021277 A, 0.002317021 W (branch)
+  R18: 0 A, 0.0 W (branch)
+  D5: 0.007361073 A, not evidenced W (branch)
+  controller pin: 0 A, 0.0 W (branch)
+  +3V3 rail: 0.0007021277 A, 0.0 W (branch)

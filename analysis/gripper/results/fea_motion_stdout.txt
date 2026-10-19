@@ -1,0 +1,112 @@
+{
+ "pinch": {
+  "calibrated": {
+   "E56": {
+    "k_A": 1.0732132930554226,
+    "k_B": 1.0811116201726014,
+    "k_pair": 0.523248972354245,
+    "arm_plus_mesh_fraction": 0.02845480273029841,
+    "theta_for_target_deg": -4.520055449928833,
+    "theta_for_cap_deg": -8.73159516401799,
+    "F_at_theta_min_N": 12.391893296679964
+   },
+   "E67": {
+    "k_A": 1.2809715972983986,
+    "k_B": 1.289966697306424,
+    "k_pair": 0.6210207143055744,
+    "arm_plus_mesh_fraction": 0.03377172789750013,
+    "theta_for_target_deg": -3.8570025683447753,
+    "theta_for_cap_deg": -7.405489400849877,
+    "F_at_theta_min_N": 14.707381826433163
+   },
+   "E26_scaled": {
+    "k_A": 0.49709345566803526,
+    "k_B": 0.5005840914920452,
+    "k_pair": 0.24607864346984426,
+    "arm_plus_mesh_fraction": 0.013382002882049326,
+    "theta_for_target_deg": -9.263717196450349,
+    "theta_for_cap_deg": -18.218918657061025,
+    "F_at_theta_min_N": 5.827780757504479
+   },
+   "E9.8_scaled": {
+    "k_A": 0.187365994828721,
+    "k_B": 0.18868169602392473,
+    "k_pair": 0.09353259585285473,
+    "arm_plus_mesh_fraction": 0.005086396160265899,
+    "theta_for_target_deg": -23.869113058435893,
+    "theta_for_cap_deg": -47.42971038103211,
+    "F_at_theta_min_N": 2.215094551175498
+   },
+   "contact": -0.4
+  },
+  "centred": {
+   "E56": {
+    "k_A": 1.0732132930554226,
+    "k_B": 1.0811116201726014,
+    "k_pair": 0.523248972354245,
+    "arm_plus_mesh_fraction": 0.02845480273029841,
+    "theta_for_target_deg": -4.818470968226137,
+    "theta_for_cap_deg": -9.030010682315297,
+    "F_at_theta_min_N": 12.037610138315111
+   },
+   "E67": {
+    "k_A": 1.2809715972983986,
+    "k_B": 1.289966697306424,
+    "k_pair": 0.6210207143055744,
+    "arm_plus_mesh_fraction": 0.03377172789750013,
+    "theta_for_target_deg": -4.155418086642079,
+    "theta_for_cap_deg": -7.70390491914718,
+    "F_at_theta_min_N": 14.286899051122099
+   },
+   "E26_scaled": {
+    "k_A": 0.49709345566803526,
+    "k_B": 0.5005840914920452,
+    "k_pair": 0.24607864346984426,
+    "arm_plus_mesh_fraction": 0.013382002882049326,
+    "theta_for_target_deg": -9.562132714747653,
+    "theta_for_cap_deg": -18.517334175358332,
+    "F_at_theta_min_N": 5.661165009321772
+   },
+   "E9.8_scaled": {
+    "k_A": 0.187365994828721,
+    "k_B": 0.18868169602392473,
+    "k_pair": 0.09353259585285473,
+    "arm_plus_mesh_fraction": 0.005086396160265899,
+    "theta_for_target_deg": -24.1675285767332,
+    "theta_for_cap_deg": -47.72812589932942,
+    "F_at_theta_min_N": 2.1517651894001277
+   },
+   "contact": -0.7
+  }
+ },
+ "R15": {
+  "theta_min_design_basis_deg": -11.0,
+  "F_cap_N": 10.0,
+  "F_at_theta_min_linear_N": {
+   "E56": 12.391893296679964,
+   "E67": 14.707381826433163
+  },
+  "theta_for_cap_deg": {
+   "E56": -8.73159516401799,
+   "E67": -7.405489400849877
+  },
+  "theta_for_target_deg": {
+   "E56": -4.520055449928833,
+   "E67": -3.8570025683447753
+  },
+  "conflict": true,
+  "theta_min_recommended_deg": -7.4,
+  "target_margin_deg_at_E56": 2.8799445500711673,
+  "note": "calibrated theta 0 (lag 0), one 0.3 mm ply at the tip pad, finger A + nail and finger B + FSR backing, linear FEA stiffness plus arm and mesh compliance. theta_min_recommended = the least-negative theta_for_cap over E 56-67; the E 67 finger reaches the cap first."
+ },
+ "nl_fold": {
+  "nonlinear_bare_E56": {
+   "theta_last_converged_deg": -11.0,
+   "F_last_N": 8.331189590438301
+  },
+  "nonlinear_bare_E67": {
+   "theta_last_converged_deg": -11.0,
+   "F_last_N": 9.941325690152377
+  }
+ }
+}

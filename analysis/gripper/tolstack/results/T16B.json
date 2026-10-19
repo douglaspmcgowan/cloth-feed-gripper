@@ -1,0 +1,167 @@
+{
+ "role": "baseline",
+ "fix": "Use an h8 pin (ISO 2338, 2.986-3.000) instead of the m6 dowel (T16B-h8pin). The bush maker recommends a running shaft of f7 or h7, and m6 is a press-fit size. Buy 3 x 6 bushes (no 3 x 5 bush was found in the catalogue searched [A]; confirm with the supplier) and open the knuckle bore to 6. The worst case of the fix is exactly 0.000 clearance (3.000 pin in a 3.000 bore), so check a few pins and pressed bores.",
+ "fix_variant": "T16B-h8pin",
+ "companion_of": "T16",
+ "dominant": {
+  "name": "sleeve_bore",
+  "var_pct": 87.6712329
+ },
+ "yield_pct": 68.933,
+ "id": "T16B",
+ "title": "Knuckle sleeve running fit on its pin (bronze bush bore vs m6 dowel)",
+ "mode": "linear",
+ "units": "mm diametral clearance (< 0 = the knuckle is pressed onto its pin)",
+ "requirement": "Each knuckle turns on its pin, so the sleeve bore is never smaller than the pin.",
+ "notes": "A sintered bronze bush comes F7 (3.006-3.016) and closes to H7 (3.000-3.010) when pressed into a rigid H7 housing; a printed PA6-CF knuckle closes it somewhere in between, so the bore is taken as uniform over 3.000-3.016. The m6 dowel is 3.002-3.008. The lower limit stays 0.000 (line-to-line is accepted: oil-impregnated bush, H7/h6-type sliding fit [A], worst case only, and the assembly check turns every pair by hand). The rev B pins are graded to the pressed bore so each pair is 0.000-0.020 (case revb: pin_clear 0.020), which T16 needs.",
+ "spec": {
+  "lsl": 0.0
+ },
+ "accept": {
+  "method": "wc"
+ },
+ "variant_of": null,
+ "variant_label": "",
+ "path": "analysis/gripper/tolstack/stacks/T16B_sleeve_running_fit.yaml",
+ "nominal": 0.003,
+ "mid": 0.003,
+ "wc": [
+  -0.008,
+  0.014
+ ],
+ "rss_classic": [
+  -0.00554400375,
+  0.0115440037
+ ],
+ "rss_dist": [
+  -0.008,
+  0.014
+ ],
+ "rss_dist_unclipped": [
+  -0.0117986486,
+  0.0177986486
+ ],
+ "rss_clipped": true,
+ "rss_nonlinear": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": 0.00301688217,
+  "std": 0.00493148222,
+  "min": -0.00792698773,
+  "max": 0.0139608149,
+  "p0135": -0.00748877897,
+  "p50": 0.00302709762,
+  "p99865": 0.0135298902,
+  "out_lo_pct": 31.067,
+  "out_hi_pct": 0.0,
+  "out_pct": 31.067,
+  "out_pct_se": 0.146340067,
+  "cpk_normal": 0.203919906,
+  "cpk_percentile": 0.287859751,
+  "cpk_normal_se": 0.000931174558,
+  "cpk_percentile_se": 0.00178955185
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "wc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "sleeve_bore",
+   "kind": "linear",
+   "nominal": 3.008,
+   "bias": 0.0,
+   "upper": 0.008,
+   "lower": -0.008,
+   "mid": 3.008,
+   "half": 0.008,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.00461880215,
+   "tag": "S",
+   "source": "HPC Oilite catalogue pp. 40-43",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 87.6712329
+  },
+  {
+   "name": "pin_d",
+   "kind": "linear",
+   "nominal": 3.005,
+   "bias": 0.0,
+   "upper": 0.003,
+   "lower": -0.003,
+   "mid": 3.005,
+   "half": 0.003,
+   "sensitivity": -1.0,
+   "dist": "uniform",
+   "sigma": 0.00173205081,
+   "tag": "S",
+   "source": "ISO 8734 m6 (McMaster)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 12.3287671
+  }
+ ],
+ "seed": 20260922,
+ "own_verdict3": "fail",
+ "verdict3": "fail",
+ "verdict_decided": true,
+ "verdict_band": [
+  "fail"
+ ],
+ "input_digest": {
+  "algorithm": "sha256",
+  "digest": "fa035516e4ebb9de294fc9f9972df710db45e286c9cc6c7832f1f5936bef72e3",
+  "files": [
+   "stacks/basis.yaml",
+   "stacks/rev_b.yaml",
+   "stacks/T01_bolt_pattern_fit.yaml",
+   "stacks/T01H_screw_head_counterbore.yaml",
+   "stacks/T02_pilot_recess_fit.yaml",
+   "stacks/T03_thread_engagement.yaml",
+   "stacks/T03B_screw_bottoming.yaml",
+   "stacks/T04_concentricity.yaml",
+   "stacks/T05_jaw_centerline.yaml",
+   "stacks/T06_gear_center_distance.yaml",
+   "stacks/T07_backlash.yaml",
+   "stacks/T08_mesh_axial.yaml",
+   "stacks/T09_closure_gap.yaml",
+   "stacks/T09F_force_at_floor.yaml",
+   "stacks/T09H_hold_force_reach.yaml",
+   "stacks/T09P_force_at_trip.yaml",
+   "stacks/T09T_close_time.yaml",
+   "stacks/T10_pad_parallelism.yaml",
+   "stacks/T10B_pad_out_of_plane.yaml",
+   "stacks/T11_keepout_radial.yaml",
+   "stacks/T12_keepout_axial.yaml",
+   "stacks/T12B_rim_to_case.yaml",
+   "stacks/T13_camera_aim.yaml",
+   "stacks/T14_servo_cradle.yaml",
+   "stacks/T14B_dog_coupling.yaml",
+   "stacks/T15_standoff_endplay.yaml",
+   "stacks/T16_pin_tilt.yaml",
+   "stacks/T16B_sleeve_running_fit.yaml",
+   "tolcalc/__init__.py",
+   "tolcalc/cad.py",
+   "tolcalc/detmath.py",
+   "tolcalc/engine.py",
+   "tolcalc/gdt.py",
+   "tolcalc/model.py",
+   "tolcalc/report.py",
+   "tolcalc/scenarios.py",
+   "tolcalc/statistics.py",
+   "tolstack.py"
+  ]
+ }
+}

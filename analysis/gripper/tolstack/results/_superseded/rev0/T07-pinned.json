@@ -1,0 +1,163 @@
+{
+ "id": "T07-pinned",
+ "title": "Gear backlash jt (circumferential)",
+ "mode": "linear",
+ "units": "mm circumferential backlash",
+ "requirement": "jt between 0.05 (no binding) and 0.45 (open-jaw repeatability), design jt0 = 0.25 by flank offset.",
+ "notes": "jt = jt0 + 2 tan(alpha) (a - a0) - ds_A - ds_B, plus pitch-circle runout of each gear (KHK Table 4.1 via W1).",
+ "spec": {
+  "lsl": 0.05,
+  "usl": 0.45
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T07",
+ "variant_label": "both knuckles on pressed pins (T06-pinned)",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T07_backlash.yaml",
+ "nominal": 0.25,
+ "mid": 0.25,
+ "wc": [
+  -0.046543926503750443,
+  0.5465439265037504
+ ],
+ "rss_classic": [
+  0.13064042420509614,
+  0.36935957579490386
+ ],
+ "rss_dist": [
+  0.12006555129435986,
+  0.37993444870564014
+ ],
+ "rss_dist_unclipped": [
+  0.12006555129435986,
+  0.37993444870564014
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": true,
+ "mc": {
+  "n": 100000,
+  "mean": 0.25017140159777107,
+  "std": 0.04343572300541859,
+  "min": 0.07110574000300274,
+  "max": 0.4325863428857004,
+  "p0135": 0.12033892101002786,
+  "p50": 0.25006124059824786,
+  "p99865": 0.3814777743285401,
+  "out_lo_pct": 0.0,
+  "out_hi_pct": 0.0,
+  "out_pct": 0.0,
+  "out_pct_se": 3.162277660168379e-151,
+  "cpk_normal": 1.5335196053357616,
+  "cpk_percentile": 1.5214125173327806
+ },
+ "pass": {
+  "wc": false,
+  "rss": true,
+  "mc": true
+ },
+ "verdict": true,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "centre_distance",
+   "kind": "linear",
+   "nominal": 24.0,
+   "bias": 0.0,
+   "upper": 0.0,
+   "lower": 0.0,
+   "mid": 24.0,
+   "half": 0.1700000000000017,
+   "sensitivity": 0.7279404685324047,
+   "dist": "empirical",
+   "sigma": 0.04400129461028806,
+   "tag": "D",
+   "source": "T06",
+   "note": "",
+   "from_stack": "T06-pinned",
+   "gdt": null,
+   "var_pct": 54.69108382966285
+  },
+  {
+   "name": "tooth_thickness_A",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "W1 assumption 3",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 14.807829064215573
+  },
+  {
+   "name": "tooth_thickness_B",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "W1 assumption 3",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 14.807829064215573
+  },
+  {
+   "name": "runout_A",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": 0.7279404685324047,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "pitch circle vs bore",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 7.846629020952996
+  },
+  {
+   "name": "runout_B",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 0.0,
+   "half": 0.05,
+   "sensitivity": 0.7279404685324047,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "pitch circle vs bore",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 7.846629020952996
+  }
+ ],
+ "seed": 20260922
+}

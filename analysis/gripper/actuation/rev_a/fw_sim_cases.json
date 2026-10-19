@@ -1,0 +1,37 @@
+{
+ "_provenance": {
+  "generator": "analysis/gripper/actuation/pin_rev_a.py",
+  "pinned_from": "analysis/gripper/firmware_sim/results/fw_sim.json at 7e1039ab7a26077e6d6c8f15673adca6bc907eae",
+  "what": "compiled-firmware simulation, A17 1:1 plant, rev A config"
+ },
+ "cases": {
+  "0.88 R12 min": {
+   "F_hold_mean_N": 5.216258769958332,
+   "F_max_N": 5.216265535166062,
+   "c0_deg": -1.0800013542175293,
+   "t_F90_s": 0.643,
+   "t_contact_s": 0.51
+  },
+  "1.05 FEA E56+D7": {
+   "F_hold_mean_N": 6.200233768638058,
+   "F_max_N": 6.200242897438176,
+   "c0_deg": -0.6800012588500977,
+   "t_F90_s": 0.621,
+   "t_contact_s": 0.51
+  },
+  "1.24 FEA E67+D7": {
+   "F_hold_mean_N": 6.069834339370103,
+   "F_max_N": 7.21431965588977,
+   "c0_deg": -0.6800012588500977,
+   "t_F90_s": 0.607,
+   "t_contact_s": 0.507
+  },
+  "1.63 R12 max": {
+   "F_hold_mean_N": 6.001141332236103,
+   "F_max_N": 7.414433206553987,
+   "c0_deg": -0.6800012588500977,
+   "t_F90_s": 0.589,
+   "t_contact_s": 0.503
+  }
+ }
+}

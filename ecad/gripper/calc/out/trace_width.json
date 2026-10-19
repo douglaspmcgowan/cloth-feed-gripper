@@ -1,0 +1,93 @@
+{
+ "board": {
+  "bottom_ground_coverage_pct": 89.3,
+  "ground_vias": 50,
+  "power_neck_mm": 14.29,
+  "power_net_vias": 0,
+  "power_wide_mm": 104.0,
+  "servo_path_copper_mohm_upper": 18.88332,
+  "servo_path_drop_mV_at_stall_upper": 71.19011,
+  "servo_path_neck_mm": 9.47,
+  "servo_path_wide_mm": 40.84
+ },
+ "chosen_mm": 2.0,
+ "max_current_A_at_10C": {
+  "neck": 1.651399,
+  "wide": 3.953113
+ },
+ "n_vias_for_377A_10C": 2,
+ "n_vias_for_5A_10C": 3,
+ "neck_mm": 0.6,
+ "rise_C": {
+  "neck_hold": 6.325497,
+  "neck_stall_long_trace_bound": 65.2752,
+  "wide_hold": 0.8700277,
+  "wide_stall": 8.978146
+ },
+ "vias": [
+  {
+   "area_mil2": 45.65136,
+   "area_mm2": 0.02945243,
+   "current_A": 2.110305,
+   "drill_mm": 0.4,
+   "rise_C": 10.0
+  },
+  {
+   "area_mil2": 45.65136,
+   "area_mm2": 0.02945243,
+   "current_A": 2.862849,
+   "drill_mm": 0.4,
+   "rise_C": 20.0
+  }
+ ],
+ "widths": [
+  {
+   "current_A": 2.2,
+   "drop_mV_per_10mm": 12.87596,
+   "drop_mV_per_10mm_at_chosen": 5.737497,
+   "r_mohm_per_10mm": 5.852711,
+   "rise_C": 10.0,
+   "width_mm": 0.8911949
+  },
+  {
+   "current_A": 2.2,
+   "drop_mV_per_10mm": 20.33759,
+   "drop_mV_per_10mm_at_chosen": 5.950428,
+   "r_mohm_per_10mm": 9.244361,
+   "rise_C": 20.0,
+   "width_mm": 0.5851654
+  },
+  {
+   "current_A": 3.77,
+   "drop_mV_per_10mm": 10.49668,
+   "drop_mV_per_10mm_at_chosen": 9.831983,
+   "r_mohm_per_10mm": 2.784265,
+   "rise_C": 10.0,
+   "width_mm": 1.873351
+  },
+  {
+   "current_A": 3.77,
+   "drop_mV_per_10mm": 16.57951,
+   "drop_mV_per_10mm_at_chosen": 10.19687,
+   "r_mohm_per_10mm": 4.397749,
+   "rise_C": 20.0,
+   "width_mm": 1.230057
+  },
+  {
+   "current_A": 5.0,
+   "drop_mV_per_10mm": 9.430564,
+   "drop_mV_per_10mm_at_chosen": 13.03977,
+   "r_mohm_per_10mm": 1.886113,
+   "rise_C": 10.0,
+   "width_mm": 2.765426
+  },
+  {
+   "current_A": 5.0,
+   "drop_mV_per_10mm": 14.89558,
+   "drop_mV_per_10mm_at_chosen": 13.5237,
+   "r_mohm_per_10mm": 2.979117,
+   "rise_C": 20.0,
+   "width_mm": 1.8158
+  }
+ ]
+}

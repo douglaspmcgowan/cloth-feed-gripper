@@ -1,0 +1,2528 @@
+{
+ "xcheck": {
+  "shoulder_lift": {
+   "urdf_hand_stock": -0.855,
+   "mujoco_stock": -0.855,
+   "urdf_hand_arm_only": -0.527,
+   "mujoco_arm_only": -0.527,
+   "urdf_hand_new_DS3218": -0.924,
+   "mujoco_new_jacobian": -0.924,
+   "mujoco_new_lumped": -0.924
+  },
+  "elbow_flex": {
+   "urdf_hand_stock": -0.453,
+   "mujoco_stock": -0.453,
+   "urdf_hand_arm_only": -0.234,
+   "mujoco_arm_only": -0.235,
+   "urdf_hand_new_DS3218": -0.503,
+   "mujoco_new_jacobian": -0.503,
+   "mujoco_new_lumped": -0.503
+  },
+  "wrist_flex": {
+   "urdf_hand_stock": -0.117,
+   "mujoco_stock": -0.117,
+   "urdf_hand_arm_only": -0.03,
+   "mujoco_arm_only": -0.03,
+   "urdf_hand_new_DS3218": -0.146,
+   "mujoco_new_jacobian": -0.146,
+   "mujoco_new_lumped": -0.146
+  }
+ },
+ "lever": 309.1,
+ "worst": {
+  "new_no_camera": {
+   "shoulder_lift": {
+    "max_abs_Nm": 0.934,
+    "pose_sl_el_wf_rad": [
+     -3.316,
+     0.204,
+     -0.0
+    ],
+    "zero_pose_Nm": 0.924,
+    "optimised_max_abs_Nm": 0.9339,
+    "optimised_pose_sl_el_wf_rad": [
+     -0.212,
+     0.249,
+     -0.036
+    ]
+   },
+   "elbow_flex": {
+    "max_abs_Nm": 0.504,
+    "pose_sl_el_wf_rad": [
+     -1.222,
+     1.247,
+     -0.0
+    ],
+    "zero_pose_Nm": 0.503,
+    "optimised_max_abs_Nm": 0.5036,
+    "optimised_pose_sl_el_wf_rad": [
+     -1.164,
+     1.201,
+     -0.036
+    ]
+   },
+   "wrist_flex": {
+    "max_abs_Nm": 0.146,
+    "pose_sl_el_wf_rad": [
+     -0.623,
+     2.384,
+     1.382
+    ],
+    "zero_pose_Nm": 0.146,
+    "optimised_max_abs_Nm": 0.1455,
+    "optimised_pose_sl_el_wf_rad": [
+     -0.604,
+     2.389,
+     1.357
+    ]
+   }
+  },
+  "new_with_camera": {
+   "shoulder_lift": {
+    "max_abs_Nm": 0.966,
+    "pose_sl_el_wf_rad": [
+     -3.316,
+     0.204,
+     -0.0
+    ],
+    "zero_pose_Nm": 0.956,
+    "optimised_max_abs_Nm": 0.9665,
+    "optimised_pose_sl_el_wf_rad": [
+     -0.213,
+     0.25,
+     -0.037
+    ]
+   },
+   "elbow_flex": {
+    "max_abs_Nm": 0.525,
+    "pose_sl_el_wf_rad": [
+     -3.117,
+     3.142,
+     -0.0
+    ],
+    "zero_pose_Nm": 0.525,
+    "optimised_max_abs_Nm": 0.5248,
+    "optimised_pose_sl_el_wf_rad": [
+     -3.045,
+     3.082,
+     -0.037
+    ]
+   },
+   "wrist_flex": {
+    "max_abs_Nm": 0.154,
+    "pose_sl_el_wf_rad": [
+     -0.623,
+     2.384,
+     1.382
+    ],
+    "zero_pose_Nm": 0.154,
+    "optimised_max_abs_Nm": 0.1535,
+    "optimised_pose_sl_el_wf_rad": [
+     0.007,
+     -0.03,
+     0.023
+    ]
+   }
+  }
+ },
+ "allow": {
+  "C001_5V": {
+   "no_camera": {
+    "20.0": [
+     62.4,
+     78.9,
+     65.1
+    ],
+    "30.0": [
+     60.5,
+     76.6,
+     63.1
+    ],
+    "40.0": [
+     58.8,
+     74.5,
+     61.3
+    ],
+    "50.0": [
+     57.2,
+     72.4,
+     59.6
+    ]
+   },
+   "with_camera": {
+    "20.0": [
+     52.4,
+     68.9,
+     55.1
+    ],
+    "30.0": [
+     50.8,
+     66.9,
+     53.4
+    ],
+    "40.0": [
+     49.4,
+     65.0,
+     51.9
+    ],
+    "50.0": [
+     48.0,
+     63.2,
+     50.5
+    ]
+   }
+  },
+  "C001_7p4V": {
+   "no_camera": {
+    "20.0": [
+     107.5,
+     127.1,
+     110.7
+    ],
+    "30.0": [
+     104.4,
+     123.4,
+     107.4
+    ],
+    "40.0": [
+     101.4,
+     119.9,
+     104.3
+    ],
+    "50.0": [
+     98.6,
+     116.6,
+     101.4
+    ]
+   },
+   "with_camera": {
+    "20.0": [
+     97.5,
+     117.1,
+     100.7
+    ],
+    "30.0": [
+     94.7,
+     113.7,
+     97.7
+    ],
+    "40.0": [
+     92.0,
+     110.4,
+     94.9
+    ],
+    "50.0": [
+     89.4,
+     107.4,
+     92.3
+    ]
+   }
+  },
+  "C018_12V": {
+   "no_camera": {
+    "20.0": [
+     265.7,
+     295.8,
+     270.5
+    ],
+    "30.0": [
+     257.9,
+     287.1,
+     262.5
+    ],
+    "40.0": [
+     250.6,
+     279.0,
+     255.0
+    ],
+    "50.0": [
+     243.7,
+     271.3,
+     247.9
+    ]
+   },
+   "with_camera": {
+    "20.0": [
+     255.7,
+     285.8,
+     260.5
+    ],
+    "30.0": [
+     248.2,
+     277.4,
+     252.8
+    ],
+    "40.0": [
+     241.1,
+     269.5,
+     245.6
+    ],
+    "50.0": [
+     234.5,
+     262.1,
+     238.7
+    ]
+   }
+  }
+ },
+ "feed_tension_max": {
+  "C001_5V": {
+   "max_Nm": 0.093,
+   "bins_m": [
+    "0.10"
+   ]
+  },
+  "C001_7p4V": {
+   "max_Nm": 0.093,
+   "bins_m": [
+    "0.10",
+    "0.17"
+   ]
+  },
+  "C018_12V": {
+   "max_Nm": 0.093,
+   "bins_m": [
+    "0.10",
+    "0.17"
+   ]
+  }
+ },
+ "grip": {
+  "F_target_N": 5.0,
+  "T_hold_Nm": 0.792,
+  "T_hold_kgcm": 8.07,
+  "T_peak_Nm": 1.556,
+  "stall_needed_kgcm": 20.18,
+  "speed": {
+   "free_travel_deg": 17.31,
+   "t_near_s": 0.15,
+   "t_over_s_at_ramp_ceiling": 0.073,
+   "t_free_budget_s": 0.277,
+   "no_load_speed_required_deg_s": 81.4,
+   "equiv_s_per_60deg": 0.737
+  }
+ },
+ "runs": {
+  "r40_6p0V": {
+   "pass": [
+    [
+     "A17",
+     1.01,
+     65.7,
+     0.279,
+     0.977,
+     1.999
+    ],
+    [
+     "A19",
+     1.585,
+     104.4,
+     0.269,
+     0.984,
+     3.138
+    ],
+    [
+     "A20",
+     1.006,
+     65.5,
+     0.283,
+     0.991,
+     1.993
+    ]
+   ],
+   "fails_servo_std": {
+    "A13": [
+     "hold capacity 0.608 < 0.792 N*m"
+    ],
+    "A16": [
+     "hold capacity 0.392 < 0.792 N*m"
+    ],
+    "A17": [],
+    "A18": [
+     "arm budget 101% of C001 7.4 V hold (worst pose)"
+    ],
+    "A19": [],
+    "A20": []
+   },
+   "gearmotor_direct": {
+    "M01": [
+     0.078,
+     [
+      "hold capacity 0.078 < 0.792 N*m"
+     ]
+    ],
+    "M02": [
+     0.196,
+     [
+      "hold capacity 0.196 < 0.792 N*m"
+     ]
+    ],
+    "M03": [
+     0.245,
+     [
+      "hold capacity 0.245 < 0.792 N*m"
+     ]
+    ],
+    "M04": [
+     0.157,
+     [
+      "hold capacity 0.157 < 0.792 N*m"
+     ]
+    ],
+    "M05": [
+     0.02,
+     [
+      "hold capacity 0.020 < 0.792 N*m",
+      "no mass data"
+     ]
+    ],
+    "M06": [
+     0.059,
+     [
+      "hold capacity 0.059 < 0.792 N*m"
+     ]
+    ],
+    "M07": [
+     0.141,
+     [
+      "hold capacity 0.141 < 0.792 N*m",
+      "arm budget 111% of C001 7.4 V hold (worst pose)",
+      "envelope 50x24x24 mm"
+     ]
+    ],
+    "M08": [
+     0.353,
+     [
+      "hold capacity 0.353 < 0.792 N*m",
+      "close 0.57 s > 0.5 s",
+      "arm budget 116% of C001 7.4 V hold (worst pose)"
+     ]
+    ],
+    "W01": [
+     0.294,
+     [
+      "hold capacity 0.294 < 0.792 N*m"
+     ]
+    ],
+    "W02": [
+     0.294,
+     [
+      "hold capacity 0.294 < 0.792 N*m"
+     ]
+    ],
+    "L01": [
+     1.294,
+     [
+      "price > $50",
+      "close 2.03 s > 0.5 s"
+     ]
+    ]
+   },
+   "fallback": [
+    [
+     "M01+12.75:1",
+     "hold+hold_and_carry_cap",
+     12.75,
+     34.3,
+     18.5,
+     1.017,
+     0.639,
+     0.441,
+     2.026,
+     0.839,
+     []
+    ],
+    [
+     "M02+4.5:1",
+     "hold",
+     4.5,
+     43.2,
+     16.8,
+     1.002,
+     0.629,
+     0.422,
+     0.993,
+     0.833,
+     []
+    ],
+    [
+     "M02+8:1",
+     "hold_and_carry_cap",
+     8.0,
+     27.2,
+     15.9,
+     1.604,
+     1.006,
+     0.582,
+     1.589,
+     0.83,
+     [
+      "close 0.58 s > 0.5 s"
+     ]
+    ],
+    [
+     "M03+3.75:1",
+     "hold",
+     3.75,
+     36.0,
+     15.1,
+     1.044,
+     1.044,
+     0.67,
+     0.827,
+     0.827,
+     [
+      "close 0.67 s > 0.5 s"
+     ]
+    ],
+    [
+     "M03+8:1",
+     "hold_and_carry_cap",
+     8.0,
+     27.2,
+     15.9,
+     2.005,
+     2.005,
+     1.248,
+     1.589,
+     0.83,
+     [
+      "close 1.25 s > 0.5 s"
+     ]
+    ],
+    [
+     "M04+6.25:1",
+     "hold",
+     6.25,
+     24.0,
+     14.9,
+     1.004,
+     0.626,
+     0.458,
+     0.993,
+     0.826,
+     []
+    ],
+    [
+     "M04+10:1",
+     "hold_and_carry_cap",
+     10.0,
+     30.4,
+     17.0,
+     1.606,
+     1.002,
+     0.609,
+     1.589,
+     0.833,
+     [
+      "close 0.61 s > 0.5 s"
+     ]
+    ],
+    [
+     "M06+16.75:1",
+     "hold+hold_and_carry_cap",
+     16.75,
+     39.3,
+     27.6,
+     1.011,
+     1.011,
+     0.654,
+     1.996,
+     0.871,
+     [
+      "close 0.65 s > 0.5 s"
+     ]
+    ],
+    [
+     "M07+7:1",
+     "hold+hold_and_carry_cap",
+     7.0,
+     25.4,
+     100.3,
+     1.009,
+     1.009,
+     0.311,
+     2.002,
+     1.125,
+     [
+      "arm budget 113%"
+     ]
+    ],
+    [
+     "M08+2.5:1",
+     "hold+hold_and_carry_cap",
+     2.5,
+     24.0,
+     112.0,
+     1.003,
+     1.003,
+     1.123,
+     1.986,
+     1.166,
+     [
+      "close 1.12 s > 0.5 s",
+      "arm budget 117%"
+     ]
+    ],
+    [
+     "W01+3:1",
+     "hold",
+     3.0,
+     28.8,
+     15.7,
+     1.002,
+     1.002,
+     0.861,
+     0.794,
+     0.829,
+     [
+      "close 0.86 s > 0.5 s"
+     ]
+    ],
+    [
+     "W01+6.75:1",
+     "hold_and_carry_cap",
+     6.75,
+     24.9,
+     17.2,
+     2.03,
+     2.03,
+     1.603,
+     1.609,
+     0.834,
+     [
+      "close 1.60 s > 0.5 s"
+     ]
+    ],
+    [
+     "W02+3:1",
+     "hold",
+     3.0,
+     28.8,
+     15.7,
+     1.002,
+     1.002,
+     0.861,
+     0.794,
+     0.829,
+     [
+      "close 0.86 s > 0.5 s"
+     ]
+    ],
+    [
+     "W02+6.75:1",
+     "hold_and_carry_cap",
+     6.75,
+     24.9,
+     17.2,
+     2.03,
+     2.03,
+     1.603,
+     1.609,
+     0.834,
+     [
+      "close 1.60 s > 0.5 s"
+     ]
+    ]
+   ],
+   "rank": [
+    "M02+4.5:1",
+    "M01+12.75:1",
+    "M04+6.25:1",
+    "A19",
+    "A17",
+    "A20"
+   ],
+   "scores": {
+    "A17": 0.496,
+    "A19": 0.511,
+    "A20": 0.31,
+    "M01+12.75:1": 0.538,
+    "M02+4.5:1": 0.55,
+    "M04+6.25:1": 0.519
+   },
+   "rank_vendor_consistent": [
+    "A19",
+    "A17",
+    "A20"
+   ],
+   "p1_vendor_consistent": {
+    "A17": 0.405,
+    "A19": 0.596,
+    "A20": 0.0
+   },
+   "stable_vendor_consistent": 0.9,
+   "one_at_a_time_first_vc": {
+    "torque_margin x0.5": "A17",
+    "torque_margin x1.5": "A19",
+    "overload x0.5": "A19",
+    "overload x1.5": "A19",
+    "mass x0.5": "A19",
+    "mass x1.5": "A19",
+    "availability x0.5": "A19",
+    "availability x1.5": "A17",
+    "cost x0.5": "A19",
+    "cost x1.5": "A19",
+    "spec_confidence x0.5": "A19",
+    "spec_confidence x1.5": "A19",
+    "sensing x0.5": "A19",
+    "sensing x1.5": "A19",
+    "course_dc_motor x0.5": "A19",
+    "course_dc_motor x1.5": "A19",
+    "simplicity x0.5": "A19",
+    "simplicity x1.5": "A19",
+    "speed_margin x0.5": "A19",
+    "speed_margin x1.5": "A19"
+   },
+   "p1": {
+    "A17": 0.079,
+    "A19": 0.302,
+    "A20": 0.0,
+    "M01+12.75:1": 0.0,
+    "M02+4.5:1": 0.619,
+    "M04+6.25:1": 0.0
+   },
+   "p3": {
+    "A17": 0.241,
+    "A19": 0.441,
+    "A20": 0.0,
+    "M01+12.75:1": 0.884,
+    "M02+4.5:1": 1.0,
+    "M04+6.25:1": 0.434
+   },
+   "stable": 0.9,
+   "one_at_a_time_first": {
+    "torque_margin x0.5": "M02+4.5:1",
+    "torque_margin x1.5": "A19",
+    "overload x0.5": "M02+4.5:1",
+    "overload x1.5": "M02+4.5:1",
+    "mass x0.5": "A19",
+    "mass x1.5": "M02+4.5:1",
+    "availability x0.5": "M02+4.5:1",
+    "availability x1.5": "M02+4.5:1",
+    "cost x0.5": "M02+4.5:1",
+    "cost x1.5": "M02+4.5:1",
+    "spec_confidence x0.5": "M02+4.5:1",
+    "spec_confidence x1.5": "M02+4.5:1",
+    "sensing x0.5": "M02+4.5:1",
+    "sensing x1.5": "M02+4.5:1",
+    "course_dc_motor x0.5": "M02+4.5:1",
+    "course_dc_motor x1.5": "M02+4.5:1",
+    "simplicity x0.5": "M02+4.5:1",
+    "simplicity x1.5": "M02+4.5:1",
+    "speed_margin x0.5": "M02+4.5:1",
+    "speed_margin x1.5": "M02+4.5:1"
+   },
+   "reco": {
+    "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
+    "primary": "A17",
+    "primary_in_stock": true,
+    "backup": "A19",
+    "dc_branch": "M02+8:1"
+   },
+   "dc_pool": [
+    {
+     "id": "M02+8:1",
+     "score": 0.743,
+     "close_time_s": 0.582,
+     "mass_g": 15.9,
+     "hold_margin": 1.604,
+     "hold_margin_vendor_rule": 1.006,
+     "fail": [
+      "close 0.58 s > 0.5 s"
+     ]
+    }
+   ]
+  },
+  "r40_design": {
+   "pass": [
+    [
+     "A17",
+     1.034,
+     67.3,
+     0.278,
+     0.977,
+     2.088
+    ],
+    [
+     "A19",
+     1.622,
+     106.9,
+     0.268,
+     0.984,
+     3.275
+    ]
+   ],
+   "fails_servo_std": {
+    "A13": [
+     "rail 6.65 V > rated max 6 V",
+     "hold capacity 0.608 < 0.792 N*m"
+    ],
+    "A16": [
+     "rail 6.65 V > rated max 6 V",
+     "hold capacity 0.392 < 0.792 N*m"
+    ],
+    "A17": [],
+    "A18": [
+     "arm budget 101% of C001 7.4 V hold (worst pose)"
+    ],
+    "A19": [],
+    "A20": [
+     "rail 6.65 V > rated max 6 V"
+    ]
+   },
+   "gearmotor_direct": {
+    "M01": [
+     0.078,
+     [
+      "hold capacity 0.078 < 0.792 N*m"
+     ]
+    ],
+    "M02": [
+     0.196,
+     [
+      "hold capacity 0.196 < 0.792 N*m"
+     ]
+    ],
+    "M03": [
+     0.245,
+     [
+      "hold capacity 0.245 < 0.792 N*m"
+     ]
+    ],
+    "M04": [
+     0.157,
+     [
+      "hold capacity 0.157 < 0.792 N*m"
+     ]
+    ],
+    "M05": [
+     0.02,
+     [
+      "hold capacity 0.020 < 0.792 N*m",
+      "no mass data"
+     ]
+    ],
+    "M06": [
+     0.059,
+     [
+      "hold capacity 0.059 < 0.792 N*m"
+     ]
+    ],
+    "M07": [
+     0.141,
+     [
+      "hold capacity 0.141 < 0.792 N*m",
+      "arm budget 111% of C001 7.4 V hold (worst pose)",
+      "envelope 50x24x24 mm"
+     ]
+    ],
+    "M08": [
+     0.353,
+     [
+      "hold capacity 0.353 < 0.792 N*m",
+      "close 0.57 s > 0.5 s",
+      "arm budget 116% of C001 7.4 V hold (worst pose)"
+     ]
+    ],
+    "W01": [
+     0.294,
+     [
+      "hold capacity 0.294 < 0.792 N*m"
+     ]
+    ],
+    "W02": [
+     0.294,
+     [
+      "hold capacity 0.294 < 0.792 N*m"
+     ]
+    ],
+    "L01": [
+     1.294,
+     [
+      "price > $50",
+      "close 2.03 s > 0.5 s"
+     ]
+    ]
+   },
+   "fallback": [
+    [
+     "M01+12.75:1",
+     "hold+hold_and_carry_cap",
+     12.75,
+     34.3,
+     18.5,
+     1.017,
+     0.639,
+     0.441,
+     2.026,
+     0.839,
+     []
+    ],
+    [
+     "M02+4.5:1",
+     "hold",
+     4.5,
+     43.2,
+     16.8,
+     1.002,
+     0.629,
+     0.422,
+     0.993,
+     0.833,
+     []
+    ],
+    [
+     "M02+8:1",
+     "hold_and_carry_cap",
+     8.0,
+     27.2,
+     15.9,
+     1.604,
+     1.006,
+     0.582,
+     1.589,
+     0.83,
+     [
+      "close 0.58 s > 0.5 s"
+     ]
+    ],
+    [
+     "M03+3.75:1",
+     "hold",
+     3.75,
+     36.0,
+     15.1,
+     1.044,
+     1.044,
+     0.67,
+     0.827,
+     0.827,
+     [
+      "close 0.67 s > 0.5 s"
+     ]
+    ],
+    [
+     "M03+8:1",
+     "hold_and_carry_cap",
+     8.0,
+     27.2,
+     15.9,
+     2.005,
+     2.005,
+     1.248,
+     1.589,
+     0.83,
+     [
+      "close 1.25 s > 0.5 s"
+     ]
+    ],
+    [
+     "M04+6.25:1",
+     "hold",
+     6.25,
+     24.0,
+     14.9,
+     1.004,
+     0.626,
+     0.458,
+     0.993,
+     0.826,
+     []
+    ],
+    [
+     "M04+10:1",
+     "hold_and_carry_cap",
+     10.0,
+     30.4,
+     17.0,
+     1.606,
+     1.002,
+     0.609,
+     1.589,
+     0.833,
+     [
+      "close 0.61 s > 0.5 s"
+     ]
+    ],
+    [
+     "M06+16.75:1",
+     "hold+hold_and_carry_cap",
+     16.75,
+     39.3,
+     27.6,
+     1.011,
+     1.011,
+     0.654,
+     1.996,
+     0.871,
+     [
+      "close 0.65 s > 0.5 s"
+     ]
+    ],
+    [
+     "M07+7:1",
+     "hold+hold_and_carry_cap",
+     7.0,
+     25.4,
+     100.3,
+     1.009,
+     1.009,
+     0.311,
+     2.002,
+     1.125,
+     [
+      "arm budget 113%"
+     ]
+    ],
+    [
+     "M08+2.5:1",
+     "hold+hold_and_carry_cap",
+     2.5,
+     24.0,
+     112.0,
+     1.003,
+     1.003,
+     1.123,
+     1.986,
+     1.166,
+     [
+      "close 1.12 s > 0.5 s",
+      "arm budget 117%"
+     ]
+    ],
+    [
+     "W01+3:1",
+     "hold",
+     3.0,
+     28.8,
+     15.7,
+     1.002,
+     1.002,
+     0.861,
+     0.794,
+     0.829,
+     [
+      "close 0.86 s > 0.5 s"
+     ]
+    ],
+    [
+     "W01+6.75:1",
+     "hold_and_carry_cap",
+     6.75,
+     24.9,
+     17.2,
+     2.03,
+     2.03,
+     1.603,
+     1.609,
+     0.834,
+     [
+      "close 1.60 s > 0.5 s"
+     ]
+    ],
+    [
+     "W02+3:1",
+     "hold",
+     3.0,
+     28.8,
+     15.7,
+     1.002,
+     1.002,
+     0.861,
+     0.794,
+     0.829,
+     [
+      "close 0.86 s > 0.5 s"
+     ]
+    ],
+    [
+     "W02+6.75:1",
+     "hold_and_carry_cap",
+     6.75,
+     24.9,
+     17.2,
+     2.03,
+     2.03,
+     1.603,
+     1.609,
+     0.834,
+     [
+      "close 1.60 s > 0.5 s"
+     ]
+    ]
+   ],
+   "rank": [
+    "M02+4.5:1",
+    "M01+12.75:1",
+    "M04+6.25:1",
+    "A19",
+    "A17"
+   ],
+   "scores": {
+    "A17": 0.502,
+    "A19": 0.514,
+    "M01+12.75:1": 0.538,
+    "M02+4.5:1": 0.55,
+    "M04+6.25:1": 0.519
+   },
+   "rank_vendor_consistent": [
+    "A19",
+    "A17"
+   ],
+   "p1_vendor_consistent": {
+    "A17": 0.424,
+    "A19": 0.576
+   },
+   "stable_vendor_consistent": 0.75,
+   "one_at_a_time_first_vc": {
+    "torque_margin x0.5": "A17",
+    "torque_margin x1.5": "A19",
+    "overload x0.5": "A19",
+    "overload x1.5": "A17",
+    "mass x0.5": "A19",
+    "mass x1.5": "A19",
+    "availability x0.5": "A19",
+    "availability x1.5": "A17",
+    "cost x0.5": "A19",
+    "cost x1.5": "A17",
+    "spec_confidence x0.5": "A17",
+    "spec_confidence x1.5": "A19",
+    "sensing x0.5": "A19",
+    "sensing x1.5": "A19",
+    "course_dc_motor x0.5": "A19",
+    "course_dc_motor x1.5": "A19",
+    "simplicity x0.5": "A19",
+    "simplicity x1.5": "A19",
+    "speed_margin x0.5": "A19",
+    "speed_margin x1.5": "A19"
+   },
+   "p1": {
+    "A17": 0.096,
+    "A19": 0.311,
+    "M01+12.75:1": 0.0,
+    "M02+4.5:1": 0.593,
+    "M04+6.25:1": 0.0
+   },
+   "p3": {
+    "A17": 0.284,
+    "A19": 0.449,
+    "M01+12.75:1": 0.858,
+    "M02+4.5:1": 1.0,
+    "M04+6.25:1": 0.409
+   },
+   "stable": 0.85,
+   "one_at_a_time_first": {
+    "torque_margin x0.5": "M02+4.5:1",
+    "torque_margin x1.5": "A19",
+    "overload x0.5": "M02+4.5:1",
+    "overload x1.5": "M02+4.5:1",
+    "mass x0.5": "A19",
+    "mass x1.5": "M02+4.5:1",
+    "availability x0.5": "A19",
+    "availability x1.5": "M02+4.5:1",
+    "cost x0.5": "M02+4.5:1",
+    "cost x1.5": "M02+4.5:1",
+    "spec_confidence x0.5": "M02+4.5:1",
+    "spec_confidence x1.5": "M02+4.5:1",
+    "sensing x0.5": "M02+4.5:1",
+    "sensing x1.5": "M02+4.5:1",
+    "course_dc_motor x0.5": "M02+4.5:1",
+    "course_dc_motor x1.5": "M02+4.5:1",
+    "simplicity x0.5": "M02+4.5:1",
+    "simplicity x1.5": "M02+4.5:1",
+    "speed_margin x0.5": "M02+4.5:1",
+    "speed_margin x1.5": "M02+4.5:1"
+   },
+   "reco": {
+    "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
+    "primary": "A17",
+    "primary_in_stock": true,
+    "backup": "A19",
+    "dc_branch": "M02+8:1"
+   },
+   "dc_pool": [
+    {
+     "id": "M02+8:1",
+     "score": 0.743,
+     "close_time_s": 0.582,
+     "mass_g": 15.9,
+     "hold_margin": 1.604,
+     "hold_margin_vendor_rule": 1.006,
+     "fail": [
+      "close 0.58 s > 0.5 s"
+     ]
+    }
+   ]
+  },
+  "r25_6p0V": {
+   "pass": [],
+   "fails_servo_std": {
+    "A13": [
+     "hold capacity 0.380 < 0.792 N*m"
+    ],
+    "A16": [
+     "hold capacity 0.245 < 0.792 N*m"
+    ],
+    "A17": [
+     "hold capacity 0.500 < 0.792 N*m"
+    ],
+    "A18": [
+     "hold capacity 0.569 < 0.792 N*m",
+     "arm budget 101% of C001 7.4 V hold (worst pose)"
+    ],
+    "A19": [
+     "hold capacity 0.785 < 0.792 N*m"
+    ],
+    "A20": [
+     "hold capacity 0.498 < 0.792 N*m"
+    ]
+   },
+   "gearmotor_direct": {
+    "M01": [
+     0.049,
+     [
+      "hold capacity 0.049 < 0.792 N*m"
+     ]
+    ],
+    "M02": [
+     0.123,
+     [
+      "hold capacity 0.123 < 0.792 N*m"
+     ]
+    ],
+    "M03": [
+     0.245,
+     [
+      "hold capacity 0.245 < 0.792 N*m"
+     ]
+    ],
+    "M04": [
+     0.098,
+     [
+      "hold capacity 0.098 < 0.792 N*m"
+     ]
+    ],
+    "M05": [
+     0.012,
+     [
+      "hold capacity 0.012 < 0.792 N*m",
+      "no mass data"
+     ]
+    ],
+    "M06": [
+     0.037,
+     [
+      "hold capacity 0.037 < 0.792 N*m"
+     ]
+    ],
+    "M07": [
+     0.088,
+     [
+      "hold capacity 0.088 < 0.792 N*m",
+      "arm budget 111% of C001 7.4 V hold (worst pose)",
+      "envelope 50x24x24 mm"
+     ]
+    ],
+    "M08": [
+     0.221,
+     [
+      "hold capacity 0.221 < 0.792 N*m",
+      "close 0.57 s > 0.5 s",
+      "arm budget 116% of C001 7.4 V hold (worst pose)"
+     ]
+    ],
+    "W01": [
+     0.294,
+     [
+      "hold capacity 0.294 < 0.792 N*m"
+     ]
+    ],
+    "W02": [
+     0.294,
+     [
+      "hold capacity 0.294 < 0.792 N*m"
+     ]
+    ],
+    "L01": [
+     1.294,
+     [
+      "price > $50",
+      "close 2.03 s > 0.5 s"
+     ]
+    ]
+   },
+   "fallback": [
+    [
+     "M01+20:1",
+     "hold+hold_and_carry_cap",
+     20.0,
+     42.9,
+     22.4,
+     1.002,
+     1.002,
+     0.567,
+     3.177,
+     0.852,
+     [
+      "close 0.57 s > 0.5 s"
+     ]
+    ],
+    [
+     "M02+8:1",
+     "hold+hold_and_carry_cap",
+     8.0,
+     27.2,
+     15.9,
+     1.006,
+     1.006,
+     0.582,
+     1.589,
+     0.83,
+     [
+      "close 0.58 s > 0.5 s"
+     ]
+    ],
+    [
+     "M03+3.75:1",
+     "hold",
+     3.75,
+     36.0,
+     15.1,
+     1.044,
+     1.044,
+     0.67,
+     0.827,
+     0.827,
+     [
+      "close 0.67 s > 0.5 s"
+     ]
+    ],
+    [
+     "M03+8:1",
+     "hold_and_carry_cap",
+     8.0,
+     27.2,
+     15.9,
+     2.005,
+     2.005,
+     1.248,
+     1.589,
+     0.83,
+     [
+      "close 1.25 s > 0.5 s"
+     ]
+    ],
+    [
+     "M04+10:1",
+     "hold+hold_and_carry_cap",
+     10.0,
+     30.4,
+     17.0,
+     1.002,
+     1.002,
+     0.609,
+     1.589,
+     0.833,
+     [
+      "close 0.61 s > 0.5 s"
+     ]
+    ],
+    [
+     "M06+26.5:1",
+     "hold+hold_and_carry_cap",
+     26.5,
+     49.4,
+     32.9,
+     1.003,
+     1.003,
+     0.935,
+     3.157,
+     0.889,
+     [
+      "close 0.93 s > 0.5 s",
+      "stage gear > 45 mm"
+     ]
+    ],
+    [
+     "M07+11.25:1",
+     "hold+hold_and_carry_cap",
+     11.25,
+     32.2,
+     102.7,
+     1.012,
+     1.012,
+     0.364,
+     3.217,
+     1.133,
+     [
+      "arm budget 113%"
+     ]
+    ],
+    [
+     "M08+4:1",
+     "hold+hold_and_carry_cap",
+     4.0,
+     38.4,
+     114.6,
+     1.005,
+     1.005,
+     1.697,
+     3.177,
+     1.175,
+     [
+      "close 1.70 s > 0.5 s",
+      "arm budget 117%"
+     ]
+    ],
+    [
+     "W01+3:1",
+     "hold",
+     3.0,
+     28.8,
+     15.7,
+     1.002,
+     1.002,
+     0.861,
+     0.794,
+     0.829,
+     [
+      "close 0.86 s > 0.5 s"
+     ]
+    ],
+    [
+     "W01+6.75:1",
+     "hold_and_carry_cap",
+     6.75,
+     24.9,
+     17.2,
+     2.03,
+     2.03,
+     1.603,
+     1.609,
+     0.834,
+     [
+      "close 1.60 s > 0.5 s"
+     ]
+    ],
+    [
+     "W02+3:1",
+     "hold",
+     3.0,
+     28.8,
+     15.7,
+     1.002,
+     1.002,
+     0.861,
+     0.794,
+     0.829,
+     [
+      "close 0.86 s > 0.5 s"
+     ]
+    ],
+    [
+     "W02+6.75:1",
+     "hold_and_carry_cap",
+     6.75,
+     24.9,
+     17.2,
+     2.03,
+     2.03,
+     1.603,
+     1.609,
+     0.834,
+     [
+      "close 1.60 s > 0.5 s"
+     ]
+    ]
+   ],
+   "rank": [],
+   "scores": {},
+   "rank_vendor_consistent": [],
+   "p1_vendor_consistent": {},
+   "stable_vendor_consistent": null,
+   "one_at_a_time_first_vc": {
+    "torque_margin x0.5": null,
+    "torque_margin x1.5": null,
+    "overload x0.5": null,
+    "overload x1.5": null,
+    "mass x0.5": null,
+    "mass x1.5": null,
+    "availability x0.5": null,
+    "availability x1.5": null,
+    "cost x0.5": null,
+    "cost x1.5": null,
+    "spec_confidence x0.5": null,
+    "spec_confidence x1.5": null,
+    "sensing x0.5": null,
+    "sensing x1.5": null,
+    "course_dc_motor x0.5": null,
+    "course_dc_motor x1.5": null,
+    "simplicity x0.5": null,
+    "simplicity x1.5": null,
+    "speed_margin x0.5": null,
+    "speed_margin x1.5": null
+   },
+   "p1": {},
+   "p3": {},
+   "stable": null,
+   "one_at_a_time_first": {
+    "torque_margin x0.5": null,
+    "torque_margin x1.5": null,
+    "overload x0.5": null,
+    "overload x1.5": null,
+    "mass x0.5": null,
+    "mass x1.5": null,
+    "availability x0.5": null,
+    "availability x1.5": null,
+    "cost x0.5": null,
+    "cost x1.5": null,
+    "spec_confidence x0.5": null,
+    "spec_confidence x1.5": null,
+    "sensing x0.5": null,
+    "sensing x1.5": null,
+    "course_dc_motor x0.5": null,
+    "course_dc_motor x1.5": null,
+    "simplicity x0.5": null,
+    "simplicity x1.5": null,
+    "speed_margin x0.5": null,
+    "speed_margin x1.5": null
+   },
+   "reco": {
+    "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
+    "primary": null,
+    "primary_in_stock": false,
+    "backup": null,
+    "dc_branch": "M02+8:1"
+   },
+   "dc_pool": [
+    {
+     "id": "M02+8:1",
+     "score": 0.545,
+     "close_time_s": 0.582,
+     "mass_g": 15.9,
+     "hold_margin": 1.006,
+     "hold_margin_vendor_rule": 1.006,
+     "fail": [
+      "close 0.58 s > 0.5 s"
+     ]
+    },
+    {
+     "id": "M01+20:1",
+     "score": 0.493,
+     "close_time_s": 0.567,
+     "mass_g": 22.4,
+     "hold_margin": 1.002,
+     "hold_margin_vendor_rule": 1.002,
+     "fail": [
+      "close 0.57 s > 0.5 s"
+     ]
+    }
+   ]
+  },
+  "r25_design": {
+   "pass": [
+    [
+     "A19",
+     1.014,
+     65.9,
+     0.268,
+     0.984,
+     3.275
+    ]
+   ],
+   "fails_servo_std": {
+    "A13": [
+     "rail 6.65 V > rated max 6 V",
+     "hold capacity 0.380 < 0.792 N*m"
+    ],
+    "A16": [
+     "rail 6.65 V > rated max 6 V",
+     "hold capacity 0.245 < 0.792 N*m"
+    ],
+    "A17": [
+     "hold capacity 0.512 < 0.792 N*m"
+    ],
+    "A18": [
+     "hold capacity 0.588 < 0.792 N*m",
+     "arm budget 101% of C001 7.4 V hold (worst pose)"
+    ],
+    "A19": [],
+    "A20": [
+     "rail 6.65 V > rated max 6 V",
+     "hold capacity 0.498 < 0.792 N*m"
+    ]
+   },
+   "gearmotor_direct": {
+    "M01": [
+     0.049,
+     [
+      "hold capacity 0.049 < 0.792 N*m"
+     ]
+    ],
+    "M02": [
+     0.123,
+     [
+      "hold capacity 0.123 < 0.792 N*m"
+     ]
+    ],
+    "M03": [
+     0.245,
+     [
+      "hold capacity 0.245 < 0.792 N*m"
+     ]
+    ],
+    "M04": [
+     0.098,
+     [
+      "hold capacity 0.098 < 0.792 N*m"
+     ]
+    ],
+    "M05": [
+     0.012,
+     [
+      "hold capacity 0.012 < 0.792 N*m",
+      "no mass data"
+     ]
+    ],
+    "M06": [
+     0.037,
+     [
+      "hold capacity 0.037 < 0.792 N*m"
+     ]
+    ],
+    "M07": [
+     0.088,
+     [
+      "hold capacity 0.088 < 0.792 N*m",
+      "arm budget 111% of C001 7.4 V hold (worst pose)",
+      "envelope 50x24x24 mm"
+     ]
+    ],
+    "M08": [
+     0.221,
+     [
+      "hold capacity 0.221 < 0.792 N*m",
+      "close 0.57 s > 0.5 s",
+      "arm budget 116% of C001 7.4 V hold (worst pose)"
+     ]
+    ],
+    "W01": [
+     0.294,
+     [
+      "hold capacity 0.294 < 0.792 N*m"
+     ]
+    ],
+    "W02": [
+     0.294,
+     [
+      "hold capacity 0.294 < 0.792 N*m"
+     ]
+    ],
+    "L01": [
+     1.294,
+     [
+      "price > $50",
+      "close 2.03 s > 0.5 s"
+     ]
+    ]
+   },
+   "fallback": [
+    [
+     "M01+20:1",
+     "hold+hold_and_carry_cap",
+     20.0,
+     42.9,
+     22.4,
+     1.002,
+     1.002,
+     0.567,
+     3.177,
+     0.852,
+     [
+      "close 0.57 s > 0.5 s"
+     ]
+    ],
+    [
+     "M02+8:1",
+     "hold+hold_and_carry_cap",
+     8.0,
+     27.2,
+     15.9,
+     1.006,
+     1.006,
+     0.582,
+     1.589,
+     0.83,
+     [
+      "close 0.58 s > 0.5 s"
+     ]
+    ],
+    [
+     "M03+3.75:1",
+     "hold",
+     3.75,
+     36.0,
+     15.1,
+     1.044,
+     1.044,
+     0.67,
+     0.827,
+     0.827,
+     [
+      "close 0.67 s > 0.5 s"
+     ]
+    ],
+    [
+     "M03+8:1",
+     "hold_and_carry_cap",
+     8.0,
+     27.2,
+     15.9,
+     2.005,
+     2.005,
+     1.248,
+     1.589,
+     0.83,
+     [
+      "close 1.25 s > 0.5 s"
+     ]
+    ],
+    [
+     "M04+10:1",
+     "hold+hold_and_carry_cap",
+     10.0,
+     30.4,
+     17.0,
+     1.002,
+     1.002,
+     0.609,
+     1.589,
+     0.833,
+     [
+      "close 0.61 s > 0.5 s"
+     ]
+    ],
+    [
+     "M06+26.5:1",
+     "hold+hold_and_carry_cap",
+     26.5,
+     49.4,
+     32.9,
+     1.003,
+     1.003,
+     0.935,
+     3.157,
+     0.889,
+     [
+      "close 0.93 s > 0.5 s",
+      "stage gear > 45 mm"
+     ]
+    ],
+    [
+     "M07+11.25:1",
+     "hold+hold_and_carry_cap",
+     11.25,
+     32.2,
+     102.7,
+     1.012,
+     1.012,
+     0.364,
+     3.217,
+     1.133,
+     [
+      "arm budget 113%"
+     ]
+    ],
+    [
+     "M08+4:1",
+     "hold+hold_and_carry_cap",
+     4.0,
+     38.4,
+     114.6,
+     1.005,
+     1.005,
+     1.697,
+     3.177,
+     1.175,
+     [
+      "close 1.70 s > 0.5 s",
+      "arm budget 117%"
+     ]
+    ],
+    [
+     "W01+3:1",
+     "hold",
+     3.0,
+     28.8,
+     15.7,
+     1.002,
+     1.002,
+     0.861,
+     0.794,
+     0.829,
+     [
+      "close 0.86 s > 0.5 s"
+     ]
+    ],
+    [
+     "W01+6.75:1",
+     "hold_and_carry_cap",
+     6.75,
+     24.9,
+     17.2,
+     2.03,
+     2.03,
+     1.603,
+     1.609,
+     0.834,
+     [
+      "close 1.60 s > 0.5 s"
+     ]
+    ],
+    [
+     "W02+3:1",
+     "hold",
+     3.0,
+     28.8,
+     15.7,
+     1.002,
+     1.002,
+     0.861,
+     0.794,
+     0.829,
+     [
+      "close 0.86 s > 0.5 s"
+     ]
+    ],
+    [
+     "W02+6.75:1",
+     "hold_and_carry_cap",
+     6.75,
+     24.9,
+     17.2,
+     2.03,
+     2.03,
+     1.603,
+     1.609,
+     0.834,
+     [
+      "close 1.60 s > 0.5 s"
+     ]
+    ]
+   ],
+   "rank": [
+    "A19"
+   ],
+   "scores": {
+    "A19": 0.318
+   },
+   "rank_vendor_consistent": [
+    "A19"
+   ],
+   "p1_vendor_consistent": {
+    "A19": 1.0
+   },
+   "stable_vendor_consistent": 1.0,
+   "one_at_a_time_first_vc": {
+    "torque_margin x0.5": "A19",
+    "torque_margin x1.5": "A19",
+    "overload x0.5": "A19",
+    "overload x1.5": "A19",
+    "mass x0.5": "A19",
+    "mass x1.5": "A19",
+    "availability x0.5": "A19",
+    "availability x1.5": "A19",
+    "cost x0.5": "A19",
+    "cost x1.5": "A19",
+    "spec_confidence x0.5": "A19",
+    "spec_confidence x1.5": "A19",
+    "sensing x0.5": "A19",
+    "sensing x1.5": "A19",
+    "course_dc_motor x0.5": "A19",
+    "course_dc_motor x1.5": "A19",
+    "simplicity x0.5": "A19",
+    "simplicity x1.5": "A19",
+    "speed_margin x0.5": "A19",
+    "speed_margin x1.5": "A19"
+   },
+   "p1": {
+    "A19": 1.0
+   },
+   "p3": {
+    "A19": 1.0
+   },
+   "stable": 1.0,
+   "one_at_a_time_first": {
+    "torque_margin x0.5": "A19",
+    "torque_margin x1.5": "A19",
+    "overload x0.5": "A19",
+    "overload x1.5": "A19",
+    "mass x0.5": "A19",
+    "mass x1.5": "A19",
+    "availability x0.5": "A19",
+    "availability x1.5": "A19",
+    "cost x0.5": "A19",
+    "cost x1.5": "A19",
+    "spec_confidence x0.5": "A19",
+    "spec_confidence x1.5": "A19",
+    "sensing x0.5": "A19",
+    "sensing x1.5": "A19",
+    "course_dc_motor x0.5": "A19",
+    "course_dc_motor x1.5": "A19",
+    "simplicity x0.5": "A19",
+    "simplicity x1.5": "A19",
+    "speed_margin x0.5": "A19",
+    "speed_margin x1.5": "A19"
+   },
+   "reco": {
+    "rule": "pool = configurations that pass every hard constraint and also hold under their vendor's published hold rule (trade_vendor_consistent); primary = best-scoring in the pool that is in stock at its cited vendor (if none is in stock: best-scoring, flagged); backup = next best in the pool; DC branch = dc_pick rule",
+    "primary": "A19",
+    "primary_in_stock": false,
+    "backup": null,
+    "dc_branch": "M02+8:1"
+   },
+   "dc_pool": [
+    {
+     "id": "M02+8:1",
+     "score": 0.545,
+     "close_time_s": 0.582,
+     "mass_g": 15.9,
+     "hold_margin": 1.006,
+     "hold_margin_vendor_rule": 1.006,
+     "fail": [
+      "close 0.58 s > 0.5 s"
+     ]
+    },
+    {
+     "id": "M01+20:1",
+     "score": 0.493,
+     "close_time_s": 0.567,
+     "mass_g": 22.4,
+     "hold_margin": 1.002,
+     "hold_margin_vendor_rule": 1.002,
+     "fail": [
+      "close 0.57 s > 0.5 s"
+     ]
+    }
+   ]
+  }
+ },
+ "conflict": {
+  "speedyfpv_6p0V": {
+   "V": 6.0,
+   "stall_kgcm": 20.389,
+   "hold_margin_40pct": 1.0098,
+   "hold_margin_25pct": 0.6311
+  },
+  "miuzei_6p0V": {
+   "V": 6.0,
+   "stall_kgcm": 19.944,
+   "hold_margin_40pct": 0.9878,
+   "hold_margin_25pct": 0.6174
+  },
+  "speedyfpv_low_end": {
+   "V": 6.35,
+   "stall_kgcm": 20.875,
+   "hold_margin_40pct": 1.0339,
+   "hold_margin_25pct": 0.6462
+  },
+  "miuzei_low_end": {
+   "V": 6.35,
+   "stall_kgcm": 20.625,
+   "hold_margin_40pct": 1.0215,
+   "hold_margin_25pct": 0.6385
+  },
+  "speedyfpv_nominal": {
+   "V": 6.5,
+   "stall_kgcm": 21.083,
+   "hold_margin_40pct": 1.0442,
+   "hold_margin_25pct": 0.6526
+  },
+  "miuzei_nominal": {
+   "V": 6.5,
+   "stall_kgcm": 20.917,
+   "hold_margin_40pct": 1.036,
+   "hold_margin_25pct": 0.6475
+  },
+  "speedyfpv_high_end": {
+   "V": 6.65,
+   "stall_kgcm": 21.292,
+   "hold_margin_40pct": 1.0545,
+   "hold_margin_25pct": 0.6591
+  },
+  "miuzei_high_end": {
+   "V": 6.65,
+   "stall_kgcm": 21.208,
+   "hold_margin_40pct": 1.0504,
+   "hold_margin_25pct": 0.6565
+  }
+ },
+ "breakeven": {
+  "A17@r40_design": {
+   "V": 6.35,
+   "tension_max_N": 2.07,
+   "mu_min": 0.386
+  },
+  "A19@r40_design": {
+   "V": 6.35,
+   "tension_max_N": 3.25,
+   "mu_min": 0.243
+  },
+  "A19@r25_design": {
+   "V": 6.35,
+   "tension_max_N": 2.03,
+   "mu_min": 0.394
+  }
+ },
+ "gear_lc3": {
+  "A17@r40_6p0V": {
+   "m1.0_z24": {
+    "sigma_MPa": 82.4,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 46.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.999
+  },
+  "A19@r40_6p0V": {
+   "m1.0_z24": {
+    "sigma_MPa": 129.3,
+    "PETG": false,
+    "PA6-CF": false
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 72.2,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 3.138
+  },
+  "A20@r40_6p0V": {
+   "m1.0_z24": {
+    "sigma_MPa": 82.1,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 45.8,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.993
+  },
+  "A17@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 86.0,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 48.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 2.088
+  },
+  "A19@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 134.9,
+    "PETG": false,
+    "PA6-CF": false
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 75.3,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 3.275
+  },
+  "M01+12.75:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 83.5,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 46.6,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 2.026
+  },
+  "M02+4.5:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 40.9,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 22.8,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 0.993
+  },
+  "M02+8:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 65.5,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 36.5,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.589
+  },
+  "M03+3.75:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 34.1,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 19.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 0.827
+  },
+  "M03+8:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 65.5,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 36.5,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.589
+  },
+  "M04+6.25:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 40.9,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 22.8,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 0.993
+  },
+  "M04+10:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 65.5,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 36.5,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.589
+  },
+  "M06+16.75:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 82.2,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 45.9,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.996
+  },
+  "M07+7:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 82.5,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 46.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 2.002
+  },
+  "M08+2.5:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 81.8,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 45.7,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.986
+  },
+  "W01+3:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 32.7,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 18.3,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 0.794
+  },
+  "W01+6.75:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 66.3,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 37.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.609
+  },
+  "W02+3:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 32.7,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 18.3,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 0.794
+  },
+  "W02+6.75:1@r40_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 66.3,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 37.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.609
+  },
+  "A19@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 134.9,
+    "PETG": false,
+    "PA6-CF": false
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 75.3,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 3.275
+  },
+  "M01+20:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 130.9,
+    "PETG": false,
+    "PA6-CF": false
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 73.1,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 3.177
+  },
+  "M02+8:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 65.5,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 36.5,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.589
+  },
+  "M03+3.75:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 34.1,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 19.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 0.827
+  },
+  "M03+8:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 65.5,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 36.5,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.589
+  },
+  "M04+10:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 65.5,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 36.5,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.589
+  },
+  "M06+26.5:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 130.1,
+    "PETG": false,
+    "PA6-CF": false
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 72.6,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 3.157
+  },
+  "M07+11.25:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 132.5,
+    "PETG": false,
+    "PA6-CF": false
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 74.0,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 3.217
+  },
+  "M08+4:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 130.9,
+    "PETG": false,
+    "PA6-CF": false
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 73.1,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 3.177
+  },
+  "W01+3:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 32.7,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 18.3,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 0.794
+  },
+  "W01+6.75:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 66.3,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 37.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.609
+  },
+  "W02+3:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 32.7,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 18.3,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 0.794
+  },
+  "W02+6.75:1@r25_design": {
+   "m1.0_z24": {
+    "sigma_MPa": 66.3,
+    "PETG": false,
+    "PA6-CF": true
+   },
+   "m1.5_z20": {
+    "sigma_MPa": 37.0,
+    "PETG": true,
+    "PA6-CF": true
+   },
+   "T_LC3_Nm": 1.609
+  }
+ },
+ "roll_A17": {
+  "no_camera": {
+   "mass": 115.8,
+   "util": {
+    "C001_5V": 1.1544,
+    "C001_7p4V": 0.9769,
+    "C018_12V": 0.6349
+   },
+   "util0": {
+    "C001_5V": 1.1422,
+    "C001_7p4V": 0.9666,
+    "C018_12V": 0.6282
+   },
+   "pose": {
+    "C001_5V": [
+     -0.212,
+     0.249,
+     -0.036
+    ],
+    "C001_7p4V": [
+     -0.212,
+     0.249,
+     -0.036
+    ],
+    "C018_12V": [
+     -0.212,
+     0.249,
+     -0.036
+    ]
+   }
+  },
+  "with_camera": {
+   "mass": 125.8,
+   "util": {
+    "C001_5V": 1.1947,
+    "C001_7p4V": 1.011,
+    "C018_12V": 0.657
+   },
+   "util0": {
+    "C001_5V": 1.182,
+    "C001_7p4V": 1.0003,
+    "C018_12V": 0.6501
+   },
+   "pose": {
+    "C001_5V": [
+     -0.213,
+     0.25,
+     -0.037
+    ],
+    "C001_7p4V": [
+     -0.213,
+     0.25,
+     -0.037
+    ],
+    "C018_12V": [
+     -0.213,
+     0.25,
+     -0.037
+    ]
+   }
+  },
+  "hw": [
+   97.3,
+   31.7
+  ],
+  "allow": {
+   "C001_5V": {
+    "allowable_hw_g_no_camera": 60.2,
+    "margin_g_no_camera": -37.1,
+    "allowable_hw_g_with_camera": 50.6,
+    "margin_g_with_camera": -46.7
+   },
+   "C001_7p4V": {
+    "allowable_hw_g_no_camera": 103.9,
+    "margin_g_no_camera": 6.6,
+    "allowable_hw_g_with_camera": 94.2,
+    "margin_g_with_camera": -3.1
+   },
+   "C018_12V": {
+    "allowable_hw_g_no_camera": 256.6,
+    "margin_g_no_camera": 159.3,
+    "allowable_hw_g_with_camera": 247.0,
+    "margin_g_with_camera": 149.7
+   }
+  }
+ },
+ "rolls": {
+  "A17": [
+   "DSServo DS3218MG",
+   115.8,
+   {
+    "C001_5V": 1.1544,
+    "C001_7p4V": 0.9769,
+    "C018_12V": 0.6349
+   },
+   {
+    "C001_5V": 1.1947,
+    "C001_7p4V": 1.011,
+    "C018_12V": 0.657
+   }
+  ],
+  "A19": [
+   "DSServo DS3235 coreless",
+   117.8,
+   {
+    "C001_5V": 1.1627,
+    "C001_7p4V": 0.9839,
+    "C018_12V": 0.6394
+   },
+   {
+    "C001_5V": 1.2029,
+    "C001_7p4V": 1.018,
+    "C018_12V": 0.6616
+   }
+  ],
+  "M02+8:1": [
+   "Pololu 380:1 Micro Metal",
+   73.7,
+   {
+    "C001_5V": 0.9804,
+    "C001_7p4V": 0.8296,
+    "C018_12V": 0.5392
+   },
+   {
+    "C001_5V": 1.0206,
+    "C001_7p4V": 0.8637,
+    "C018_12V": 0.5613
+   }
+  ]
+ },
+ "csv_changed": false
+}
+wrote analysis\gripper\results\payload_torque.json

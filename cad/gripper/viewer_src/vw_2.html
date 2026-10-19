@@ -1,0 +1,240 @@
+
+<div class="app">
+<nav class="rail" id="rail" aria-label="Views">
+  <div class="rail-top"><a class="brand" href="#model">Cloth-feed gripper</a><span class="here" id="here"></span><button type="button" id="menuBtn" aria-expanded="false" aria-controls="railList">Views</button></div>
+  <div class="rail-list" id="railList">
+    <div class="rail-group"><div class="rail-h">Design</div>
+      <a class="nav" href="#model">3D model</a><a class="nav" href="#fit">Fit check</a><a class="nav" href="#parts">Parts</a><a class="nav" href="#assembly">Assembly</a><a class="nav" href="#drawings">Drawings</a><a class="nav" href="#concepts">Concepts</a></div>
+    <div class="rail-group"><div class="rail-h">Analysis</div>
+      <a class="nav" href="#mass">Mass budget</a><a class="nav" href="#torque">Torque and actuator</a><a class="nav" href="#finger">Finger</a><a class="nav" href="#gears">Gears</a><a class="nav" href="#dyno">Dyno</a><a class="nav" href="#tolerances">Tolerance stacks</a><a class="nav" href="#camera">Camera</a></div>
+    <div class="rail-group"><div class="rail-h">Build</div>
+      <a class="nav" href="#firmware">Firmware and controls</a><a class="nav" href="#open">Open items</a></div>
+  </div>
+</nav>
+<main id="main">
+
+<section class="view" id="model" data-title="3D model">
+  <div class="fig" id="model-3d" data-fig="Model" data-info="Drag to orbit; scroll or pinch to zoom. Click a part to select it in every view; Open in the list shows it alone.|X is the jaw-closing axis, Y points up to the wrist and Z points out of the gear plane.|Below 0° the pads overlap on purpose. That is overtravel into the grip, and the firmware stops on the force sensor at 5 N.">
+    <div class="fig-in two">
+      <div class="stage flush">
+        <div class="v3d" id="v3d"><div class="msg v3dmsg" id="v3dmsg">Loading the model&hellip;</div><div class="hud" id="v3dhud"></div></div>
+        <div class="ctrl">
+          <label>Jaw angle <input type="range" id="jaw" min="-11" max="20" step="0.5" value="0"><output id="jawv">0.0&deg;</output></label>
+          <button id="explode" type="button" aria-pressed="false">Explode</button>
+          <button id="ctxBtn" type="button" aria-pressed="true">Arm wrist</button>
+          <button id="stockBtn" type="button" aria-pressed="false">Stock gripper</button>
+          <button id="lookBtn" type="button" aria-pressed="true">Shadows and shading</button>
+          <button id="resetCam" type="button">Reset view</button>
+        </div>
+      </div>
+      <aside class="nums">
+        <h2>Parts shown</h2>
+        <p class="note" id="massLive" aria-live="polite"></p>
+        <div class="plist" id="plist"></div>
+      </aside>
+    </div>
+  </div>
+  <div class="detail" id="model-method" hidden>
+    <h2>What the model is</h2>
+    <p>The gripper is rebuilt from parameters by one script and exported closed. The arm wrist link and its servo come from the SO-101 upstream model, placed with the horn face <span id="yhTxt"></span> mm above the pivots.</p>
+    <p>Moving the jaw turns side A and side B by equal and opposite angles about their own pivots, 28.5 mm apart, exactly as the CAD script poses them.</p>
+    <h2>How the live mass is added up</h2>
+    <p>It sums the parts that are ticked, each at its own centre of mass along the roll axis, then adds two fixed items: the cloth at the pad (13.5 g at <span class="cadCloth"></span> mm) and the sensor and servo wiring (5 g at 40 mm). With every part ticked it matches the fit check: <span class="cadM"></span> g and <span class="cadMM"></span> g&nbsp;mm.</p>
+  </div>
+  <div class="detail" id="model-sources" hidden><ul class="paths">
+    <li>cad/gripper/gripper_concept.py <span>builds every part</span></li><li>cad/gripper/out/web/gripper_closed.glb <span>the mesh shown</span></li>
+    <li>cad/gripper/out/parts.json <span>part masses and centres</span></li><li>cad/gripper/viewer_src/so101_mesh.py <span>arm wrist context</span></li></ul></div>
+</section>
+
+<section class="view" id="fit" data-title="Fit check" hidden>
+  <div class="fig" id="fit-3d" data-fig="3D check" data-info="Pick a finding to fly to it: the jaw and roll go to its worst pose, its two parts stay solid and the rest fade. The model is cut through the two closest points, and the inset beside it draws that cut to scale.|Every gap is the exact minimum distance between the CAD solids at each jaw angle from −11° to +20° and each wrist roll from 0° to 350°. Worst case takes off every tolerance the tolerance stacks state; where none is stated the page says so and shows the nominal only.|Keys: [ and ] step through the findings, F frames the finding, 0 shows the whole assembly, 1 to 4 pick front, side, top and iso, S turns the section on or off, X flips it.">
+    <div class="fbar">
+      <button type="button" id="fitPrev" class="ico" aria-label="Previous finding" title="Previous finding ( [ )"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+      <select id="fitPick" aria-label="Finding"></select>
+      <button type="button" id="fitNext" class="ico" aria-label="Next finding" title="Next finding ( ] )"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+      <span id="fitCount" class="note"></span>
+      <button type="button" id="fitAll" aria-pressed="false" title="Whole assembly ( 0 )">Whole assembly</button>
+    </div>
+    <p id="fitPickRead" class="fread" aria-live="polite"></p>
+    <div class="fig-in two fgrid">
+      <p id="fitAns" class="fans"></p>
+      <div class="stage flush">
+        <div class="v3d" id="fit3d"><div class="msg v3dmsg">Loading the model&hellip;</div>
+          <div class="vtools" role="toolbar" aria-label="View">
+            <button type="button" data-view="front" title="Front ( 1 )">Front</button><button type="button" data-view="side" title="Side ( 2 )">Side</button><button type="button" data-view="top" title="Top ( 3 )">Top</button><button type="button" data-view="iso" title="Iso ( 4 )">Iso</button><button type="button" data-view="fit" title="Frame the finding ( F )">Finding</button><button type="button" data-view="reset" title="Whole assembly ( 0 )">Reset</button>
+          </div>
+          <div class="floc" id="fitLoc" hidden><span>Where it is</span></div>
+          <div class="nlgd" id="fitLegend" hidden></div>
+          <div class="hud" id="fithud" aria-live="polite"></div></div>
+        <div class="ctrl">
+          <label>Jaw angle <input type="range" id="fitJaw" min="-11" max="20" step="1" value="0"><output id="fitJawv">0&deg;</output></label>
+          <label>Wrist roll <input type="range" id="fitRoll" min="0" max="350" step="10" value="0"><output id="fitRollv">0&deg;</output></label>
+          <button id="fitPlay" type="button" aria-pressed="false">Sweep the jaw</button>
+          <span class="seg" role="group" aria-label="Section">
+            <button type="button" id="fitCutOn" aria-pressed="false" title="Section ( S )">Section</button><button type="button" data-cut="x" aria-pressed="false" title="Cut across X">X</button><button type="button" data-cut="y" aria-pressed="false" title="Cut across Y">Y</button><button type="button" data-cut="z" aria-pressed="false" title="Cut across Z">Z</button><button type="button" data-cut="f" aria-pressed="false" title="The finding's plane">Finding</button><button type="button" id="fitFlip" title="Flip the cut ( X )">Flip</button>
+          </span>
+          <label id="fitCutL" hidden>Offset <input type="range" id="fitCutPos" min="-40" max="40" step="0.1" value="0"><output id="fitCutv">0 mm</output></label>
+          <button id="fitLink" type="button" title="Copy a link to this finding, pose and view">Copy link</button>
+        </div>
+      </div>
+      <aside class="nums">
+        <div id="fitCard" class="fcard" aria-live="polite"></div>
+        <div class="fpanel"><h2 id="fitSecH">Section through the gap</h2><div id="fitSec" class="fsec"></div></div>
+        <div class="fpanel" id="fitChartP"><h2 id="fitChartH">Gap against jaw angle</h2><div id="fitChart" class="chart"></div></div>
+        <div class="fpanel"><h2>Checks</h2><div class="checks" id="fitChecks"></div></div>
+      </aside>
+      <div class="stage flistw"><h2>Findings, worst first</h2><ol class="flist" id="fitList"></ol></div>
+    </div>
+  </div>
+  <div class="fig" id="fit-findings" data-fig="Findings" data-info="Every measured pair, its requirement or named reason for no requirement,
+and its saved audit status. Overlaps and envelope checks follow. Show in 3D sets the sliders to the measured worst pose and draws that
+check."><div class="fig-in two"><div class="stage"><div class="tw"><table id="fitFind"><thead><tr><th>Finding</th><th
+class="n">Value</th><th>Limit or reason</th><th>Verdict</th><th></th></tr></thead><tbody></tbody></table></div></div>
+    <aside class="nums"><h2>Key numbers</h2><dl class="kv" id="fitNums"></dl></aside></div></div>
+  <div class="fig" id="fit-checks" data-fig="All checks" data-info="Each row is one check from the CAD fit script with its measured result. Clearances are solid against solid, not bounding boxes."><div class="stage"><div class="tw"><table id="fitTable"><thead><tr><th>Check</th><th>Result</th><th>Verdict</th></tr></thead><tbody></tbody></table></div></div></div>
+  <div class="fig" id="fit-section" data-fig="Section sheet" data-info="The section cuts through the wrist and the gripper on the roll axis. The keep-out bands near the horn are the two radii the arm leaves free."><div class="stage flush"><div class="sheet"><img data-img="draw_fitcheck" alt="Fit check section through the wrist and gripper"></div></div></div>
+  <div class="fig" id="fit-isometric" data-fig="Isometric sheet" data-info="The gripper on the arm's wrist link, drawn from the same CAD as the section."><div class="stage flush"><div class="sheet"><img data-img="draw_fitcheck_iso" alt="Isometric view of the gripper on the wrist"></div></div></div>
+  <div class="detail" id="fit-method" hidden>
+    <p>Every check is a solid-on-solid measurement in CAD. The moving set includes the dog set screws, the fasteners and the force-sensor stack. The servo horn turns with knuckle A on the servo shaft.</p>
+    <p>Jaw travel is sampled in 1&deg; steps plus the firmware floor, wrist roll in 10&deg; steps, and stored distances are rounded to 0.001 mm. For each governed moving pair, the between-sample allowance is half its largest change from the stored minimum to an adjacent pose, plus 0.0005 mm for rounding.</p>
+    <p>The roll gap is measured two ways. The ring method treats the fixed wrist link as a full ring at its smallest radius in each band, which is safe but pessimistic; the 3D method turns the wrist link about the roll axis in 10&deg; steps and measures the true closest approach.</p>
+    <p id="sweepTxt"></p>
+    <p>The wrist-flex sweep swings the gripper &plusmn;95&deg; at four roll angles against the forearm and compares it with the stock gripper at the same poses.</p>
+  </div>
+  <div class="detail" id="fit-sources" hidden><ul class="paths">
+    <li>cad/gripper/fit3d.py <span>gaps, overlaps and roll in 3D</span></li><li>cad/gripper/out/fit3d.json <span>its results</span></li>
+    <li>cad/gripper/fitcheck.py <span>keep-outs, ring roll gap, stock envelope, wrist flex</span></li><li>cad/gripper/out/fitcheck.json <span>results</span></li><li>cad/gripper/drawings/fitcheck.svg, fitcheck_iso.svg <span>the two sheets</span></li></ul></div>
+</section>
+
+<section class="view" id="parts" data-title="Parts" hidden>
+  <div class="fig" id="parts-browse" data-fig="Browse" data-info="Each row is one part with its quantity, material, mass and how it is made. Choose a row to see the part alone in 3D, where it sits, its drawing sheet and every place it appears in the review.|Printed mass is CAD volume times density times fill. Bought parts carry their listed price.">
+    <div class="pgrid">
+      <div class="stage plist2-wrap">
+        <div class="ctrl"><label>Show <select id="partsShow"><option value="all">all parts</option><option value="printed">printed</option><option value="bought">bought</option><option value="fasteners">fasteners</option></select></label><span class="note" id="partsCount"></span></div>
+        <ul class="plist2" id="partsList" aria-label="Parts"></ul>
+      </div>
+      <div class="stage flush pstage">
+        <div class="ptabs" role="tablist" aria-label="Part view"><button type="button" role="tab" id="ptab3d" aria-selected="true" aria-controls="part3dWrap">3D</button><button type="button" role="tab" id="ptabDraw" aria-selected="false" aria-controls="partDrawWrap">Drawing</button></div>
+        <div id="part3dWrap">
+          <div class="v3d" id="part3d"><div class="msg v3dmsg">Loading the model&hellip;</div><div class="hud" id="parthud"></div></div>
+          <div class="ctrl">
+            <label>Where it sits <select id="partCtx"><option value="ghost">in place, others faded</option><option value="alone">alone</option><option value="explode">exploded, others faded</option></select></label>
+            <button id="partDims" type="button" aria-pressed="true">Dimensions</button>
+            <button id="partCut" type="button" aria-pressed="false">Section</button>
+            <button id="partReset" type="button">Reset view</button>
+          </div>
+        </div>
+        <div id="partDrawWrap" hidden><div class="sheet"><img id="partSheet" alt=""></div></div>
+        <div class="pinfo" id="partInfo" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fig" id="parts-list" data-fig="List only" data-info="The bill of materials as one sortable list: printed parts, bought parts and every fastener line. Totals add up the rows shown, so with everything shown they equal the BOM.|Fastener prices are catalogue-class estimates, not quotes.">
+    <div class="fig-in two"><div class="stage">
+      <div class="ctrl"><label>Show <select id="bomShow"><option value="all">everything</option><option value="printed">printed parts</option><option value="bought">bought parts</option><option value="fasteners">fasteners</option><option value="buy">bought parts and fasteners</option></select></label><span class="note" id="bomCount"></span></div>
+      <div class="tw full"><table id="bomTable"></table></div></div>
+      <aside class="nums"><h2>Off the arm</h2><p class="note">Not counted in the mass.</p><ul id="offList"></ul></aside></div>
+  </div>
+  <div class="detail" id="parts-method" hidden>
+    <p>The BOM is written by the CAD script, so part masses match the model. Fastener masses are catalogue values where one is listed, otherwise volume times density. Fastener prices are catalogue-class estimates, not quotes.</p>
+    <p>Thumbnails are drawn from the same 3D model in this page, so they always show the current CAD.</p>
+  </div>
+  <div class="detail" id="parts-sources" hidden><ul class="paths"><li>cad/gripper/drawings/BOM.md <span>generated BOM</span></li><li>cad/gripper/out/parts.json <span>masses, centres and fastener masses</span></li><li>cad/gripper/params.json <span>materials and fill</span></li></ul></div>
+</section>
+
+<section class="view" id="assembly" data-title="Assembly" hidden>
+  <div class="fig" id="assembly-steps" data-fig="Steps" data-info="Each step moves its parts into place along the direction they really go in. Play runs every step in order; the slider scrubs the whole build.|Parts already fitted stay in place. Choose a part name to open it in Parts.">
+    <div class="agrid">
+      <div class="stage flush astage">
+        <div class="v3d" id="asm3d"><div class="msg v3dmsg">Loading the model&hellip;</div><div class="hud" id="asmhud" aria-live="polite"></div></div>
+        <div class="ctrl">
+          <button id="asmPrev" type="button" aria-label="Previous step">Previous</button>
+          <button id="asmPlay" type="button" aria-pressed="false">Play</button>
+          <button id="asmNext" type="button" aria-label="Next step">Next</button>
+          <button id="asmReplay" type="button">Replay step</button>
+          <label class="grow">Build <input type="range" id="asmScrub" min="0" max="1000" step="1" value="0" aria-label="Scrub through the build"><output id="asmStepv">step 1</output></label>
+          <button id="asmArm" type="button" aria-pressed="false">Arm wrist</button>
+        </div>
+      </div>
+      <div class="stage asteps"><ol class="steps" id="asmSteps"></ol></div>
+    </div>
+  </div>
+  <div class="fig" id="assembly-findings" data-fig="Findings and tools" data-info="What the geometry says about each step: tool reach, parts that must go in before others, and press fits.">
+    <div class="fig-in two"><div class="stage"><div class="tw"><table id="asmFind"><thead><tr><th>Step</th><th>Finding</th><th>Verdict</th></tr></thead><tbody></tbody></table></div></div>
+      <aside class="nums"><h2>Tools</h2><ul id="asmTools"></ul><h2>Tool reach</h2><dl class="kv" id="asmReach"></dl></aside></div>
+  </div>
+  <div class="detail" id="assembly-method" hidden>
+    <p>The order comes from the CAD: each step's parts travel along their insertion direction, and the path is checked against the parts already fitted. Each screw's driver axis is traced outward from its head to the first fitted part, so a short reach shows up as a finding.</p>
+    <p>Torques are assumed starting points for printed parts, not measured values.</p>
+  </div>
+  <div class="detail" id="assembly-sources" hidden><ul class="paths"><li>docs/gripper/assembly/ASSEMBLY.md <span>the build document</span></li><li>cad/gripper/assembly/assembly_plan.py <span>builds the sequence and checks it</span></li><li>cad/gripper/assembly/steps.json <span>the sequence as data</span></li></ul></div>
+</section>
+
+<section class="view" id="drawings" data-title="Drawings" hidden>
+  <div class="fig" id="drawings-housing" data-fig="Housing" data-info="Dimensions come from the CAD. Tolerances and callouts are proposed and have not been checked on a printed part."><div class="fig-in two"><div class="stage flush"><div class="sheet"><img data-img="draw_housing" alt="Housing drawing"></div></div><aside class="nums"><h2>Key dimensions, mm</h2><p class="plink"><a class="btnlink" href="#housing" data-part="housing">Open in 3D</a></p><ul class="dims" data-notes="draw_housing"></ul></aside></div></div>
+  <div class="fig" id="drawings-knuckle-a" data-fig="Knuckle A" data-info="Dimensions come from the CAD. Tolerances and callouts are proposed and have not been checked on a printed part."><div class="fig-in two"><div class="stage flush"><div class="sheet"><img data-img="draw_knuckle_a" alt="Knuckle A drawing"></div></div><aside class="nums"><h2>Key dimensions, mm</h2><p class="plink"><a class="btnlink" href="#knuckle-a" data-part="knuckle_a">Open in 3D</a></p><ul class="dims" data-notes="draw_knuckle_a"></ul></aside></div></div>
+  <div class="fig" id="drawings-knuckle-b" data-fig="Knuckle B" data-info="Dimensions come from the CAD. Tolerances and callouts are proposed and have not been checked on a printed part."><div class="fig-in two"><div class="stage flush"><div class="sheet"><img data-img="draw_knuckle_b" alt="Knuckle B drawing"></div></div><aside class="nums"><h2>Key dimensions, mm</h2><p class="plink"><a class="btnlink" href="#knuckle-b" data-part="knuckle_b">Open in 3D</a></p><ul class="dims" data-notes="draw_knuckle_b"></ul></aside></div></div>
+  <div class="fig" id="drawings-finger" data-fig="Finger" data-info="Dimensions come from the CAD. Tolerances and callouts are proposed and have not been checked on a printed part."><div class="fig-in two"><div class="stage flush"><div class="sheet"><img data-img="draw_finger_a" alt="Finger drawing"></div></div><aside class="nums"><h2>Key dimensions, mm</h2><p class="plink"><a class="btnlink" href="#finger-a" data-part="finger_a">Open in 3D</a></p><ul class="dims" data-notes="draw_finger_a"></ul></aside></div></div>
+  <div class="fig" id="drawings-wrist-mount" data-fig="Wrist mount" data-info="Dimensions come from the CAD. Tolerances and callouts are proposed and have not been checked on a printed part."><div class="fig-in two"><div class="stage flush"><div class="sheet"><img data-img="draw_wrist_mount" alt="Wrist mount drawing"></div></div><aside class="nums"><h2>Key dimensions, mm</h2><p class="plink"><a class="btnlink" href="#wrist-mount" data-part="wrist_mount">Open in 3D</a></p><ul class="dims" data-notes="draw_wrist_mount"></ul></aside></div></div>
+  <div class="fig" id="drawings-datums" data-fig="Datums" data-info="The pivot axes are parallel to datum A. Pivot positions are located to A, B and C; pivot orientation is held to D."><div class="stage"><div class="tw"><table><thead><tr><th>Datum</th><th>Feature</th><th>Role</th></tr></thead><tbody>
+    <tr><td><b>A</b></td><td>Mount face: the recess floor that seats on the servo horn</td><td>Primary, 3 degrees of freedom. Flatness 0.2 mm, assumed</td></tr>
+    <tr><td><b>B</b></td><td>Recess bore, &Oslash;19.51 in CAD on the &Oslash;19.2 horn</td><td>Secondary, 2 degrees of freedom. The float from its clearance is real</td></tr>
+    <tr><td><b>C</b></td><td>4 clearance holes on the &Oslash;14.0 bolt circle</td><td>Clocking about the roll axis. Jaw clocking is calibrated in software</td></tr>
+    <tr><td><b>D</b></td><td>Mid-plate front face, which the knuckles and gears run against</td><td>Orients the pivot axes, square to A within 0.1 mm</td></tr>
+  </tbody></table></div></div></div>
+  <div class="fig" id="drawings-callouts" data-fig="Callouts" data-info="Proposed callouts from the tolerance study, in mm. None has been checked on a printed part."><div class="stage"><div class="tw"><table><thead><tr><th>Feature</th><th>Callout</th></tr></thead><tbody>
+    <tr><td>Mount face (A)</td><td>Flatness 0.2</td></tr>
+    <tr><td>Recess (B), &Oslash;19.51 in CAD</td><td>&Oslash;19.36 &plusmn;0.10 as printed, 0.3 &times; 45&deg; chamfer</td></tr>
+    <tr><td>4 &times; &Oslash;3.6 holes</td><td>Position &Oslash;0.2 to A and B, at maximum material</td></tr>
+    <tr><td>4 &times; &Oslash;6.5 counterbores</td><td>Position &Oslash;0.2 to A and B</td></tr>
+    <tr><td>Hub outside &Oslash;23.2 and &Oslash;29.2</td><td>Profile 0.2 to A and B</td></tr>
+    <tr><td>Mid-plate front face (D)</td><td>Square to A within 0.1</td></tr>
+    <tr><td>Pin holes A and B, both plates</td><td>Position &Oslash;0.2 to A, B, C; square to D within &Oslash;0.1; reamed together</td></tr>
+    <tr><td>Knuckle bores</td><td>Bronze bush 3 × 6 × 10, 3 mm bore, 0.000–0.020 mm running clearance after grading</td></tr>
+    <tr><td>Gear teeth</td><td>Profile 0.1 to the bore; runout 0.1</td></tr>
+    <tr><td>Finger pad faces</td><td>Profile 0.3 to A and B</td></tr>
+    <tr><td>Knuckle hub faces</td><td>Parallel to D within 0.1</td></tr>
+    <tr><td>Camera boss face</td><td>Square to A within 0.2, plus a locating tab</td></tr>
+  </tbody></table></div></div></div>
+  <div class="detail" id="drawings-method" hidden>
+    <p>The drawings are projected from the same CAD script as the model, so they cannot drift from it. The datum scheme and the callouts come from the tolerance study and are proposals until the test coupon is printed.</p>
+  </div>
+  <div class="detail" id="drawings-sources" hidden><ul class="paths">
+    <li>cad/gripper/drawings/*.svg <span>the five sheets</span></li><li>docs/gripper/analysis/tolerance_stacks.md <span>datum scheme and callouts</span></li><li>cad/gripper/params.json <span>every dimension</span></li></ul></div>
+</section>
+
+
+
+<section class="view" id="concepts" data-title="Concepts" hidden>
+  <div class="fig" id="concepts-transmissions" data-fig="Transmissions" data-info="Each point is one way to drive the jaws under the same loads and the same 24.6 mm tip stroke. Blue points close inside 0.5 s.|The two worm rows show motor torque at the gearbox output against its 2.0 kg cm limit. Rack close times assume the lightest servo that passes."><div class="stage">
+    <div class="chart short" id="transChart"></div>
+    <div class="tw"><table id="transTable"><thead><tr><th>Transmission</th><th class="n">Hold torque (N&nbsp;m)</th><th class="n">Mass-moment (g&nbsp;mm)</th><th class="n">Budget used</th><th class="n">Close (s)</th><th>Closes in 0.5 s</th></tr></thead><tbody></tbody></table></div></div></div>
+  <div class="fig" id="concepts-sketches" data-fig="Sketches" data-info="One sketch per transmission, drawn to the same jaw opening. The numbers under each sketch are the rows of the Transmissions table."><div class="stage plain"><div class="pics" id="sketches"></div></div></div>
+  <div class="fig" id="concepts-scores" data-fig="Scores" data-info="Each concept is scored against the baseline, which is zero everywhere. Press a score to read its reason.|Three concepts close in more than 0.5 s and drop out whatever they score."><div class="stage">
+    <div class="ctrl"><label>Weights <select id="pughCase"></select></label><span class="note" id="pughTop" aria-live="polite"></span></div>
+    <div class="tw full"><table id="pughTable"></table></div>
+    <p class="note" id="pughWhy" aria-live="polite"></p>
+    <ul class="dims" id="pughSum"></ul></div></div>
+  <div class="fig" id="concepts-options" data-fig="Option chart" data-info="Each row is one job the gripper must do, with the options considered for it. Choose a concept to highlight the option it uses in every row."><div class="stage">
+    <div class="ctrl"><label>Show concept <select id="morphSel"><option value="">none</option><option value="0">Baseline</option><option value="1">Geared-down servo</option><option value="2">Rack jaw, ball rail</option><option value="2p">Rack jaw, printed slide</option><option value="3">1-start worm</option><option value="3b">2-start worm</option></select></label></div>
+    <div class="tw"><table id="morph"><thead><tr><th>Job</th><th colspan="5">Options considered, the baseline's choice first</th></tr></thead><tbody>
+    <tr><td>Actuate</td><td data-c="0">Standard servo</td><td data-c="1 2 2p">Feedback servo</td><td>Mini servo</td><td>Micro servo</td><td data-c="3 3b">Gearmotor and H-bridge</td></tr>
+    <tr><td>Transmit</td><td data-c="0">1:1 spur sectors</td><td data-c="1">Pinion and sector, 4:1</td><td data-c="2 2p">Rack and pinion</td><td>Four-bar</td><td data-c="3 3b">Worm; tendon</td></tr>
+    <tr><td>Guide the jaws</td><td data-c="0 1 3 3b">Pivot pins</td><td data-c="2">Ball rail</td><td data-c="2p">Printed dovetail</td><td></td><td></td></tr>
+    <tr><td>Synchronise</td><td data-c="0 1 3 3b">1:1 sector pair</td><td data-c="2 2p">Twin racks</td><td>Unequal sectors</td><td>Whiffletree</td><td></td></tr>
+    <tr><td>Comply</td><td data-c="0 1 2 2p 3 3b">Fin Ray, TPU 95A</td><td>Lattice infill</td><td>Solid soft pad</td><td></td><td></td></tr>
+    <tr><td>Pick one ply</td><td data-c="0 1 2 2p 3 3b">PLA nail on finger A</td><td>Pins or microneedles</td><td>Vacuum</td><td></td><td></td></tr>
+    <tr><td>Sense force</td><td data-c="0 1 2 2p 3 3b">Force sensor on finger B</td><td>Motor current only</td><td>Servo pot error</td><td></td><td></td></tr>
+    <tr><td>Sense position</td><td data-c="0">Servo internal</td><td data-c="1 2 2p">Pot to ADC</td><td data-c="3 3b">Encoder</td><td>Limit switch</td><td></td></tr>
+    <tr><td>Mount to arm</td><td data-c="0 1 2 2p 3 3b">Horn flange</td><td>Replacement wrist link</td><td>Fixed wrist</td><td></td><td></td></tr>
+    <tr><td>Gear material</td><td data-c="0 1 3 3b">PA6-CF, printed</td><td>PETG</td><td>POM, machined</td><td>Aluminium, machined</td><td></td></tr>
+    <tr><td>Structure material</td><td data-c="0 1 2 2p 3 3b">PETG housing</td><td>PLA</td><td>Aluminium 6061</td><td></td><td></td></tr>
+    <tr><td>See the cloth</td><td data-c="0 1 2 2p 3 3b">Fixed camera off the arm</td><td>Wrist pad, reserved</td><td>Camera in the housing</td><td>Side or oblique</td><td></td></tr>
+    </tbody></table></div></div></div>
+  <div class="fig" id="concepts-compared" data-fig="Concepts compared" data-info="The six concepts assembled from the option chart, each sized with the lightest actuator that passes.|Availability says whether that actuator was confirmed in stock when the study was run."><div class="stage"><div class="tw"><table id="comboTable"><thead><tr><th>Concept</th><th>Actuator availability</th><th class="n">Mass (g)</th><th class="n">Mass-moment (g&nbsp;mm)</th><th class="n">Budget used</th><th class="n">Close (s)</th><th>Closes in 0.5 s</th></tr></thead><tbody></tbody></table></div></div></div>
+  <div class="detail" id="concepts-method" hidden>
+    <p>Seven design spaces were screened: transmission, finger, actuator class, material, wrist mount, sensing and camera. Six concepts were assembled from the option chart and scored against the baseline on nine weighted criteria.</p>
+    <p>First place is not stable across the weight cases. The geared-down servo leads when course compliance is zeroed, meaning the instructor accepts the servo as the DC motor and the 1:1 pair as the transmission.</p>
+  </div>
+  <div class="detail" id="concepts-sources" hidden><ul class="paths"><li>docs/gripper/CONCEPT.md <span>sections 4 to 7</span></li><li>docs/gripper/figures/concept_numbers.json <span>scores and weight cases</span></li><li>docs/gripper/figures/concept_*.svg <span>sketches</span></li></ul></div>
+</section>

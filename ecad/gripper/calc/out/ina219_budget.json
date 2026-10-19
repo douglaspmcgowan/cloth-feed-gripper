@@ -1,0 +1,219 @@
+{
+ "averaging": [
+  {
+   "fits_20ms": true,
+   "sadc_bits": 8,
+   "samples": 1,
+   "time_ms": 0.532,
+   "worst_err_pct_1kHz": 87.96992,
+   "worst_err_pct_300Hz": 100.0
+  },
+  {
+   "fits_20ms": true,
+   "sadc_bits": 9,
+   "samples": 2,
+   "time_ms": 1.064,
+   "worst_err_pct_1kHz": 6.015038,
+   "worst_err_pct_300Hz": 100.0
+  },
+  {
+   "fits_20ms": true,
+   "sadc_bits": 10,
+   "samples": 4,
+   "time_ms": 2.128,
+   "worst_err_pct_1kHz": 6.015038,
+   "worst_err_pct_300Hz": 56.6416
+  },
+  {
+   "fits_20ms": true,
+   "sadc_bits": 11,
+   "samples": 8,
+   "time_ms": 4.256,
+   "worst_err_pct_1kHz": 6.015038,
+   "worst_err_pct_300Hz": 21.6792
+  },
+  {
+   "fits_20ms": true,
+   "sadc_bits": 12,
+   "samples": 16,
+   "time_ms": 8.512,
+   "worst_err_pct_1kHz": 5.733083,
+   "worst_err_pct_300Hz": 17.4812
+  },
+  {
+   "fits_20ms": true,
+   "sadc_bits": 13,
+   "samples": 32,
+   "time_ms": 17.024,
+   "worst_err_pct_1kHz": 0.1409774,
+   "worst_err_pct_300Hz": 2.098997
+  },
+  {
+   "fits_20ms": false,
+   "sadc_bits": 14,
+   "samples": 64,
+   "time_ms": 34.048,
+   "worst_err_pct_1kHz": 0.1409774,
+   "worst_err_pct_300Hz": 2.098997
+  },
+  {
+   "fits_20ms": false,
+   "sadc_bits": 15,
+   "samples": 128,
+   "time_ms": 68.096,
+   "worst_err_pct_1kHz": 0.1409774,
+   "worst_err_pct_300Hz": 2.098997
+  }
+ ],
+ "budget": {
+  "rss_A": 0.03628638,
+  "rss_pct": 1.209546,
+  "shunt_mV": 300.0,
+  "terms": {
+   "filter R8/R9: 20 uA bias mismatch x 10 ohm [S, A]": [
+    0.002,
+    0.0006666667
+   ],
+   "filter R8/R9: gain loss R/320 kohm input impedance [S]": [
+    9.375e-05,
+    3.125e-05
+   ],
+   "gain error, 0.5 % max incl. offset at 25 C [S]": [
+    0.015,
+    0.005
+   ],
+   "gain temperature drift, 1 m%/C over 40 C [S]": [
+    0.0012,
+    0.0004
+   ],
+   "offset, PGA /8, 200 uV max [S]": [
+    0.002,
+    0.0006666667
+   ],
+   "quantisation, +/-0.5 LSB = 5 uV [S]": [
+    5e-05,
+    1.666667e-05
+   ],
+   "shunt TCR 100 ppm/C over 45 C rise [A]": [
+    0.0135,
+    0.0045
+   ],
+   "shunt tolerance 1 % [A]": [
+    0.03,
+    0.01
+   ]
+  },
+  "true_trip_range_rss_A": [
+   2.963714,
+   3.036286
+  ],
+  "true_trip_range_worst_A": [
+   2.937487,
+   3.065232
+  ],
+  "worst_A": 0.06384375,
+  "worst_pct": 2.128125
+ },
+ "chop": [
+  {
+   "duty": 0.5,
+   "err_pct_worst": 100.0,
+   "f_chop_Hz": 300.0,
+   "hi": 1.0,
+   "lo": 0.0,
+   "mean": 0.5
+  },
+  {
+   "duty": 0.5,
+   "err_pct_worst": 87.96992,
+   "f_chop_Hz": 1000.0,
+   "hi": 0.9398496,
+   "lo": 0.06015038,
+   "mean": 0.5
+  },
+  {
+   "duty": 0.5,
+   "err_pct_worst": 25.31328,
+   "f_chop_Hz": 3000.0,
+   "hi": 0.6265664,
+   "lo": 0.3734336,
+   "mean": 0.5
+  },
+  {
+   "duty": 0.5,
+   "err_pct_worst": 3.383459,
+   "f_chop_Hz": 20000.0,
+   "hi": 0.5169173,
+   "lo": 0.4830827,
+   "mean": 0.5
+  }
+ ],
+ "config": {
+  "default": "0x399F",
+  "note": "write to register 0x00 once at boot; keeps PGA /8 and 12-bit bus ADC",
+  "recommended": "0x39EF",
+  "sadc_bits": "1101 (12-bit, 32 samples, 17.02 ms)"
+ },
+ "delay": {
+  "left_for_backoff_s": 0.079414,
+  "max_s": 0.120586,
+  "min_s": 0.1,
+  "period_s": 0.02,
+  "r20_limit_s": 0.2,
+  "samples_needed": 5,
+  "window_s": 0.1
+ },
+ "hold": {
+  "10.0": {
+   "A": {
+    "ideal_A": 1.77632,
+    "margin_ideal_A": 1.22368,
+    "margin_ideal_vs_worst_low_A": 1.161166,
+    "margin_offset_A": 0.7540514,
+    "margin_offset_vs_worst_low_A": 0.691538,
+    "torque_Nm": 1.529412,
+    "with_offset_A": 2.245949
+   },
+   "B": {
+    "ideal_A": 1.037593,
+    "margin_ideal_A": 1.962407,
+    "margin_ideal_vs_worst_low_A": 1.899894,
+    "margin_offset_A": 1.676654,
+    "margin_offset_vs_worst_low_A": 1.614141,
+    "torque_Nm": 1.529412,
+    "with_offset_A": 1.323346
+   }
+  },
+  "8.0": {
+   "A": {
+    "ideal_A": 1.421056,
+    "margin_ideal_A": 1.578944,
+    "margin_ideal_vs_worst_low_A": 1.51643,
+    "margin_offset_A": 1.109315,
+    "margin_offset_vs_worst_low_A": 1.046802,
+    "torque_Nm": 1.223529,
+    "with_offset_A": 1.890685
+   },
+   "B": {
+    "ideal_A": 0.8300742,
+    "margin_ideal_A": 2.169926,
+    "margin_ideal_vs_worst_low_A": 2.107412,
+    "margin_offset_A": 1.884173,
+    "margin_offset_vs_worst_low_A": 1.821659,
+    "torque_Nm": 1.223529,
+    "with_offset_A": 1.115827
+   }
+  }
+ },
+ "saturation": {
+  "fit_A_shunt_mV": 377.0,
+  "fit_A_stall_A": 3.77,
+  "fit_B_saturates": false,
+  "fit_B_stall_A": 2.2,
+  "fs_mV": 320.0,
+  "reading_when_saturated_A": 3.2,
+  "saturates": true,
+  "still_trips": true
+ },
+ "shunt_fs_A": 3.2
+}

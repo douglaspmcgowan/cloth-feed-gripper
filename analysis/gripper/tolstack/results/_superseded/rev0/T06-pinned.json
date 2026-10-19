@@ -1,0 +1,125 @@
+{
+ "id": "T06-pinned",
+ "title": "Gear centre distance a (servo shaft A to idler pin B)",
+ "mode": "linear",
+ "units": "mm",
+ "requirement": "a stays inside the band that keeps backlash between jt_min and jt_max for the design jt0 (T07).",
+ "notes": "",
+ "spec": {
+  "lsl": 23.72525225805454,
+  "usl": 24.27474774194546
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T06",
+ "variant_label": "both knuckles on pins pressed into the plates; servo drives A through a floating dog coupling",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T06_gear_center_distance.yaml",
+ "nominal": 24.0,
+ "mid": 24.0,
+ "wc": [
+  23.83,
+  24.17
+ ],
+ "rss_classic": [
+  23.88842043197789,
+  24.11157956802211
+ ],
+ "rss_dist": [
+  23.868280601276805,
+  24.131719398723195
+ ],
+ "rss_dist_unclipped": [
+  23.868280601276805,
+  24.131719398723195
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": true,
+ "mc": {
+  "n": 100000,
+  "mean": 24.000066593303274,
+  "std": 0.04400129461028806,
+  "min": 23.81259958842921,
+  "max": 24.168798410502216,
+  "p0135": 23.87313093061048,
+  "p50": 24.000172153138912,
+  "p99865": 24.13071268516858,
+  "out_lo_pct": 0.0,
+  "out_hi_pct": 0.0,
+  "out_pct": 0.0,
+  "out_pct_se": 3.162277660168379e-151,
+  "cpk_normal": 2.0808565677820132,
+  "cpk_percentile": 2.1033742128778
+ },
+ "pass": {
+  "wc": true,
+  "rss": true,
+  "mc": true
+ },
+ "verdict": true,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "pin_float",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.03500000000000014,
+   "lower": -0.03500000000000014,
+   "mid": 0.0,
+   "half": 0.03500000000000014,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.020207259421636984,
+   "tag": "D",
+   "source": "knuckle B reamed 3.075 bore on the m6 pin (pin pressed into the plates: no plate float)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 21.181556195965516
+  },
+  {
+   "name": "pinA_to_pinB_holes",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 0.0,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.03333333333333333,
+   "tag": "A",
+   "source": "pin A and pin B holes on one print, 24 mm apart",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 57.63688760806896
+  },
+  {
+   "name": "pinA_float",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.03500000000000014,
+   "lower": -0.03500000000000014,
+   "mid": 0.0,
+   "half": 0.03500000000000014,
+   "sensitivity": -1.0,
+   "dist": "uniform",
+   "sigma": 0.020207259421636984,
+   "tag": "D",
+   "source": "knuckle A reamed bore on its pin",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 21.181556195965516
+  }
+ ],
+ "seed": 20260922
+}

@@ -1,0 +1,25 @@
+id: T13
+title: Wrist-camera aim angle error (optional UVC bracket on the front-plate pad)
+parts: ["front plate", "camera bracket"]
+constants: basis.yaml
+units: deg
+requirement: Optical axis within +/-3 deg of nominal so the fingertips stay in view without re-aiming (extrinsics are calibrated anyway).
+spec: {lsl: "=-cam_aim_max_deg", usl: "=cam_aim_max_deg"}
+accept: {method: mc}
+notes: >-
+  Rev A pad: 2 heat-set inserts 8.1 apart plus a 3 x 2 x 1.5 locating tab slot (fix 11). The primary camera is
+  fixed off-arm (camera.md 0), so this stack only matters if the wrist UVC option is built. The tab, not the
+  screws, sets the bracket rotation.
+contributors:
+  - {name: bracket_tab_float, nominal: 0, tol: "=degrees(cam_tab_float/cam_tab_arm)", dist: uniform, tag: A, source: "tab in its slot"}
+  - {name: housing_boss_perpendicularity, nominal: 0, tol: "=degrees(cam_perp_zone/cam_bracket_len)", dist: normal, tag: A, source: "perp 0.2 over 20 to A"}
+  - {name: bracket_face_perpendicularity, nominal: 0, tol: "=degrees(cam_perp_zone/cam_bracket_len)", dist: normal, tag: A, source: ""}
+  - {name: board_float, nominal: 0, tol: "=degrees(2*cam_board_float/cam_board_spacing)", dist: uniform, tag: A, source: "4x M2"}
+  - {name: lens_tilt, nominal: 0, tol: "=cam_lens_tilt_deg", dist: normal, tag: A, source: ""}
+variants:
+  - id: notab
+    role: rejected
+    label: "no locating tab: rotation set by 2 screws in Ø3.6 holes"
+    drop: [bracket_tab_float]
+    add:
+      - {name: bracket_rotation_float, nominal: 0, tol: "=degrees(2*cam_float/cam_hole_spacing)", dist: uniform, tag: D, source: "bracket float on 2 screws 8.1 apart (inserts in the pad: one part floats)"}

@@ -1,0 +1,784 @@
+{
+ "adapter": {
+  "hold_rating_A": 1.181614,
+  "nominal_12V_stall_A_A": 2.23669,
+  "rating_W_at_12V": 37.31288,
+  "rating_with_25pct_margin_A": 3.109407,
+  "recommended": "12 V, 3.5 A (42 W) minimum for a sustained Fit A stall; 12 V 2 A would carry hold and any Fit B case",
+  "sustained_hold_A": 0.9452916,
+  "worst_input_A": 2.487525,
+  "worst_input_W": 26.86528
+ },
+ "bulk": {
+  "c_total_uF": 1526.4,
+  "e_max_to_6v8_mJ": 2.232091,
+  "regen": [
+   {
+    "c_needed_for_6v8_uF": 1367.686,
+    "energy_mJ": 2.0,
+    "rise_V": 0.1961626,
+    "v_peak_V": 6.777603
+   },
+   {
+    "c_needed_for_6v8_uF": 3419.215,
+    "energy_mJ": 5.0,
+    "rise_V": 0.4801969,
+    "v_peak_V": 7.061637
+   },
+   {
+    "c_needed_for_6v8_uF": 13676.86,
+    "energy_mJ": 20.0,
+    "rise_V": 1.756474,
+    "v_peak_V": 8.337914
+   },
+   {
+    "c_needed_for_6v8_uF": 34192.15,
+    "energy_mJ": 50.0,
+    "rise_V": 3.850673,
+    "v_peak_V": 10.43211
+   },
+   {
+    "c_needed_for_6v8_uF": 118988.7,
+    "energy_mJ": 174.0,
+    "rise_V": 9.889831,
+    "v_peak_V": 16.47127
+   }
+  ],
+  "regen_basis": "assumed energy returned by a back-driven servo: 20 mJ = half of stall torque 2.1 N*m x 1 deg backlash (0.0175 rad) [A]; 174 mJ = whole reflected rotor kinetic energy 0.5 x 6.5e-3 kg*m2 x (7.31 rad/s)^2 [D from dyno.md]; nothing in the board sinks energy (non-synchronous buck, diode D2), so the rail rises by the capacitors alone",
+  "servo_v_dip_V": 0.12263,
+  "stall_charge_uC": 121.6871,
+  "stall_energy_mJ": 0.7995233,
+  "verdict": {
+   "adequate": true,
+   "gain_2200_over_1000_V": 0.0039409,
+   "plug_min_1000_V": 6.0934,
+   "plug_min_2200_V": 6.0973,
+   "plug_min_470_V": 6.0937,
+   "rule": "plug >= 4.8 V (servo minimum [S]) and V_BUCK >= 5.6916 V (power_budget ldo_min_input_V: 5 V rail plus worst MCP1703A dropout [S]) in the worst stall step (Fit A, 10 us rise)",
+   "vbuck_floor_V": 5.6916,
+   "vbuck_min_1000_V": 6.5777
+  }
+ },
+ "dissipation": [
+  {
+   "D2_W": 0.3113725,
+   "F1_W": 0.03716124,
+   "L1_W": 0.03127704,
+   "Q1_W": 0.009661923,
+   "RS1_W": 0.18225,
+   "RS1_pct_rating": 9.1125,
+   "U1_cond_W": 0.1091021,
+   "U1_rise_K": 6.103868,
+   "U1_switch_W": 0.03448404,
+   "U1_total_W": 0.1453302,
+   "U3_W": 0.1686308,
+   "U3_rise_K": 10.45511,
+   "fit": "A",
+   "i_A": 1.35,
+   "scenario": "hold",
+   "vin": 12.0
+  },
+  {
+   "D2_W": 0.7322437,
+   "F1_W": 0.2553864,
+   "L1_W": 0.1922955,
+   "Q1_W": 0.06640047,
+   "RS1_W": 1.215541,
+   "RS1_pct_rating": 60.77704,
+   "U1_cond_W": 0.6970066,
+   "U1_rise_K": 32.91171,
+   "U1_switch_W": 0.08487428,
+   "U1_total_W": 0.7836121,
+   "U3_W": 0.1887135,
+   "U3_rise_K": 11.70024,
+   "fit": "A",
+   "i_A": 3.486461,
+   "scenario": "stall",
+   "vin": 12.0
+  },
+  {
+   "D2_W": 0.195279,
+   "F1_W": 0.01384198,
+   "L1_W": 0.01198854,
+   "Q1_W": 0.003598916,
+   "RS1_W": 0.064,
+   "RS1_pct_rating": 3.2,
+   "U1_cond_W": 0.0414071,
+   "U1_rise_K": 2.710748,
+   "U1_switch_W": 0.02138736,
+   "U1_total_W": 0.06454162,
+   "U3_W": 0.1634608,
+   "U3_rise_K": 10.13457,
+   "fit": "B",
+   "i_A": 0.8,
+   "scenario": "hold",
+   "vin": 12.0
+  },
+  {
+   "D2_W": 0.4608109,
+   "F1_W": 0.08758235,
+   "L1_W": 0.07095654,
+   "Q1_W": 0.02277141,
+   "RS1_W": 0.433038,
+   "RS1_pct_rating": 21.6519,
+   "U1_cond_W": 0.2507873,
+   "U1_rise_K": 12.78231,
+   "U1_switch_W": 0.05181356,
+   "U1_total_W": 0.3043407,
+   "U3_W": 0.1755018,
+   "U3_rise_K": 10.88111,
+   "fit": "B",
+   "i_A": 2.080957,
+   "scenario": "stall",
+   "vin": 12.0
+  },
+  {
+   "D2_W": 0.3489934,
+   "F1_W": 0.03085043,
+   "L1_W": 0.03127704,
+   "Q1_W": 0.008021112,
+   "RS1_W": 0.18225,
+   "RS1_pct_rating": 9.1125,
+   "U1_cond_W": 0.09910635,
+   "U1_rise_K": 5.837512,
+   "U1_switch_W": 0.03796205,
+   "U1_total_W": 0.1389884,
+   "U3_W": 0.1686308,
+   "U3_rise_K": 10.45511,
+   "fit": "A",
+   "i_A": 1.35,
+   "scenario": "hold",
+   "vin": 13.2
+  },
+  {
+   "D2_W": 0.8304293,
+   "F1_W": 0.2108491,
+   "L1_W": 0.1922955,
+   "Q1_W": 0.05482076,
+   "RS1_W": 1.215541,
+   "RS1_pct_rating": 60.77704,
+   "U1_cond_W": 0.6323215,
+   "U1_rise_K": 30.56703,
+   "U1_switch_W": 0.09355674,
+   "U1_total_W": 0.7277865,
+   "U3_W": 0.1887135,
+   "U3_rise_K": 11.70024,
+   "fit": "A",
+   "i_A": 3.486461,
+   "scenario": "stall",
+   "vin": 13.2
+  },
+  {
+   "D2_W": 0.2182711,
+   "F1_W": 0.01150713,
+   "L1_W": 0.01198854,
+   "Q1_W": 0.002991854,
+   "RS1_W": 0.064,
+   "RS1_pct_rating": 3.2,
+   "U1_cond_W": 0.03762498,
+   "U1_rise_K": 2.649571,
+   "U1_switch_W": 0.02353725,
+   "U1_total_W": 0.06308502,
+   "U3_W": 0.1634608,
+   "U3_rise_K": 10.13457,
+   "fit": "B",
+   "i_A": 0.8,
+   "scenario": "hold",
+   "vin": 13.2
+  },
+  {
+   "D2_W": 0.5184673,
+   "F1_W": 0.07257456,
+   "L1_W": 0.07095654,
+   "Q1_W": 0.01886939,
+   "RS1_W": 0.433038,
+   "RS1_pct_rating": 21.6519,
+   "U1_cond_W": 0.2277137,
+   "U1_rise_K": 12.04113,
+   "U1_switch_W": 0.05706369,
+   "U1_total_W": 0.2866935,
+   "U3_W": 0.1755018,
+   "U3_rise_K": 10.88111,
+   "fit": "B",
+   "i_A": 2.080957,
+   "scenario": "stall",
+   "vin": 13.2
+  }
+ ],
+ "esp_board_power": [
+  {
+   "ams_dropout_V": 1.1818,
+   "ams_headroom_V": 0.10253,
+   "bod_V": 2.43,
+   "case": "esp32 board, no Wi-Fi",
+   "d7_V": 0.29866,
+   "i5_A": 0.094,
+   "ldo_dropout_V": 0.2444,
+   "ldo_over_rating": false,
+   "margin_bod_V": 0.837,
+   "margin_min_supply_V": 0.267,
+   "v33_V": 3.267,
+   "v5_V": 4.85,
+   "v5pin_V": 4.5513,
+   "v_buck_min_V": 6.5777
+  },
+  {
+   "ams_dropout_V": 1.186,
+   "ams_headroom_V": 0.091943,
+   "bod_V": 2.43,
+   "case": "esp32 board, Wi-Fi receive",
+   "d7_V": 0.30502,
+   "i5_A": 0.126,
+   "ldo_dropout_V": 0.3276,
+   "ldo_over_rating": false,
+   "margin_bod_V": 0.837,
+   "margin_min_supply_V": 0.267,
+   "v33_V": 3.267,
+   "v5_V": 4.85,
+   "v5pin_V": 4.545,
+   "v_buck_min_V": 6.5777
+  },
+  {
+   "ams_dropout_V": 1.2097,
+   "ams_headroom_V": 0.052081,
+   "bod_V": 2.43,
+   "case": "esp32 board, Wi-Fi transmit peak",
+   "d7_V": 0.32124,
+   "i5_A": 0.266,
+   "ldo_dropout_V": 0.6916,
+   "ldo_over_rating": true,
+   "margin_bod_V": 0.837,
+   "margin_min_supply_V": 0.267,
+   "v33_V": 3.267,
+   "v5_V": 4.85,
+   "v5pin_V": 4.5288,
+   "v_buck_min_V": 6.5777
+  }
+ ],
+ "esp_stall_vbuck_min": 6.5777,
+ "esp_usb": [
+  {
+   "ams_dropout_V": 1.181818,
+   "ams_headroom_V": 0.001181818,
+   "margin_bod_V": 0.837,
+   "v33_V": 3.267,
+   "v5pin_V": 4.45,
+   "v_usb_V": 4.75
+  },
+  {
+   "ams_dropout_V": 1.181818,
+   "ams_headroom_V": 0.2511818,
+   "margin_bod_V": 0.837,
+   "v33_V": 3.267,
+   "v5pin_V": 4.7,
+   "v_usb_V": 5.0
+  },
+  {
+   "ams_dropout_V": 1.181818,
+   "ams_headroom_V": 0.5011818,
+   "margin_bod_V": 0.837,
+   "v33_V": 3.267,
+   "v5pin_V": 4.95,
+   "v_usb_V": 5.25
+  }
+ ],
+ "fsr_errors": [
+  {
+   "cause": "3V3 -1 %",
+   "err_N": -0.1587578,
+   "force_N": 5.0,
+   "read_N": 4.841242
+  },
+  {
+   "cause": "3V3 +1 %",
+   "err_N": 0.1650553,
+   "force_N": 5.0,
+   "read_N": 5.165055
+  },
+  {
+   "cause": "3V3 -3 %",
+   "err_N": -0.4586711,
+   "force_N": 5.0,
+   "read_N": 4.541329
+  },
+  {
+   "cause": "3V3 = 3.267 V (AMS1117 low, board power)",
+   "err_N": -0.1587578,
+   "force_N": 5.0,
+   "read_N": 4.841242
+  },
+  {
+   "cause": "ground offset 137.9 mV: shared 20 AWG return, Fit A stall",
+   "err_N": 1.246555,
+   "force_N": 5.0,
+   "read_N": 6.246555
+  },
+  {
+   "cause": "ground offset 54.0 mV: shared 20 AWG return, Fit A hold",
+   "err_N": 0.4475522,
+   "force_N": 5.0,
+   "read_N": 5.447552
+  },
+  {
+   "cause": "ground offset 17.4 mV: separate 26 AWG FSR return (0.9 mA) + 5 mohm board plane at 3.45 A [A]",
+   "err_N": 0.1392201,
+   "force_N": 5.0,
+   "read_N": 5.13922
+  },
+  {
+   "cause": "3V3 -1 %",
+   "err_N": -0.3256119,
+   "force_N": 8.0,
+   "read_N": 7.674388
+  },
+  {
+   "cause": "3V3 +1 %",
+   "err_N": 0.3444181,
+   "force_N": 8.0,
+   "read_N": 8.344418
+  },
+  {
+   "cause": "3V3 -3 %",
+   "err_N": -0.9259388,
+   "force_N": 8.0,
+   "read_N": 7.074061
+  },
+  {
+   "cause": "3V3 = 3.267 V (AMS1117 low, board power)",
+   "err_N": -0.3256119,
+   "force_N": 8.0,
+   "read_N": 7.674388
+  },
+  {
+   "cause": "ground offset 137.9 mV: shared 20 AWG return, Fit A stall",
+   "err_N": 2.361784,
+   "force_N": 8.0,
+   "read_N": 10.36178
+  },
+  {
+   "cause": "ground offset 54.0 mV: shared 20 AWG return, Fit A hold",
+   "err_N": 0.8260691,
+   "force_N": 8.0,
+   "read_N": 8.826069
+  },
+  {
+   "cause": "ground offset 17.4 mV: separate 26 AWG FSR return (0.9 mA) + 5 mohm board plane at 3.45 A [A]",
+   "err_N": 0.2544043,
+   "force_N": 8.0,
+   "read_N": 8.254404
+  }
+ ],
+ "ground_mv": {
+  "separate 26 AWG FSR return (0.9 mA) + 5 mohm board plane at 3.45 A [A]": 17.39461,
+  "shared 20 AWG return, Fit A hold": 53.9622,
+  "shared 20 AWG return, Fit A stall": 137.9034
+ },
+ "input": [
+  {
+   "eff": 0.9648602,
+   "f1_margin_A": 2.537445,
+   "fit": "A",
+   "i_servo": 0.005,
+   "iin_A": 0.06255463,
+   "pin_W": 0.67559,
+   "pout_W": 0.6516121,
+   "scenario": "idle",
+   "vin": 10.8
+  },
+  {
+   "eff": 0.9552525,
+   "f1_margin_A": 1.654708,
+   "fit": "A",
+   "i_servo": 1.35,
+   "iin_A": 0.9452916,
+   "pin_W": 10.20915,
+   "pout_W": 9.698539,
+   "scenario": "hold",
+   "vin": 10.8
+  },
+  {
+   "eff": 0.9372043,
+   "f1_margin_A": 0.1124745,
+   "fit": "A",
+   "i_servo": 3.486461,
+   "iin_A": 2.487525,
+   "pin_W": 26.86528,
+   "pout_W": 24.8129,
+   "scenario": "stall",
+   "vin": 10.8
+  },
+  {
+   "eff": 0.9648602,
+   "f1_margin_A": 2.537445,
+   "fit": "B",
+   "i_servo": 0.005,
+   "iin_A": 0.06255463,
+   "pin_W": 0.67559,
+   "pout_W": 0.6516121,
+   "scenario": "idle",
+   "vin": 10.8
+  },
+  {
+   "eff": 0.9599188,
+   "f1_margin_A": 2.023618,
+   "fit": "B",
+   "i_servo": 0.8,
+   "iin_A": 0.5763815,
+   "pin_W": 6.22492,
+   "pout_W": 5.955327,
+   "scenario": "hold",
+   "vin": 10.8
+  },
+  {
+   "eff": 0.9490363,
+   "f1_margin_A": 1.146949,
+   "fit": "B",
+   "i_servo": 2.080957,
+   "iin_A": 1.453051,
+   "pin_W": 15.69295,
+   "pout_W": 14.76695,
+   "scenario": "stall",
+   "vin": 10.8
+  },
+  {
+   "eff": 0.9600588,
+   "f1_margin_A": 2.543423,
+   "fit": "A",
+   "i_servo": 0.005,
+   "iin_A": 0.05657688,
+   "pin_W": 0.6789226,
+   "pout_W": 0.6516121,
+   "scenario": "idle",
+   "vin": 12.0
+  },
+  {
+   "eff": 0.9517726,
+   "f1_margin_A": 1.747016,
+   "fit": "A",
+   "i_servo": 1.35,
+   "iin_A": 0.8529844,
+   "pin_W": 10.23581,
+   "pout_W": 9.698539,
+   "scenario": "hold",
+   "vin": 12.0
+  },
+  {
+   "eff": 0.9354499,
+   "f1_margin_A": 0.3633105,
+   "fit": "A",
+   "i_servo": 3.486461,
+   "iin_A": 2.23669,
+   "pin_W": 26.84027,
+   "pout_W": 24.8129,
+   "scenario": "stall",
+   "vin": 12.0
+  },
+  {
+   "eff": 0.9600588,
+   "f1_margin_A": 2.543423,
+   "fit": "B",
+   "i_servo": 0.005,
+   "iin_A": 0.05657688,
+   "pin_W": 0.6789226,
+   "pout_W": 0.6516121,
+   "scenario": "idle",
+   "vin": 12.0
+  },
+  {
+   "eff": 0.9559785,
+   "f1_margin_A": 2.079447,
+   "fit": "B",
+   "i_servo": 0.8,
+   "iin_A": 0.5205528,
+   "pin_W": 6.246634,
+   "pout_W": 5.955327,
+   "scenario": "hold",
+   "vin": 12.0
+  },
+  {
+   "eff": 0.9461547,
+   "f1_margin_A": 1.290385,
+   "fit": "B",
+   "i_servo": 2.080957,
+   "iin_A": 1.309615,
+   "pin_W": 15.71538,
+   "pout_W": 14.76695,
+   "scenario": "stall",
+   "vin": 12.0
+  },
+  {
+   "eff": 0.9560612,
+   "f1_margin_A": 2.548354,
+   "fit": "A",
+   "i_servo": 0.005,
+   "iin_A": 0.05164599,
+   "pin_W": 0.681727,
+   "pout_W": 0.6516121,
+   "scenario": "idle",
+   "vin": 13.2
+  },
+  {
+   "eff": 0.9488896,
+   "f1_margin_A": 1.822804,
+   "fit": "A",
+   "i_servo": 1.35,
+   "iin_A": 0.7771962,
+   "pin_W": 10.25899,
+   "pout_W": 9.698539,
+   "scenario": "hold",
+   "vin": 13.2
+  },
+  {
+   "eff": 0.9339718,
+   "f1_margin_A": 0.5676288,
+   "fit": "A",
+   "i_servo": 3.486461,
+   "iin_A": 2.032371,
+   "pin_W": 26.8273,
+   "pout_W": 24.8129,
+   "scenario": "stall",
+   "vin": 13.2
+  },
+  {
+   "eff": 0.9560612,
+   "f1_margin_A": 2.548354,
+   "fit": "B",
+   "i_servo": 0.005,
+   "iin_A": 0.05164599,
+   "pin_W": 0.681727,
+   "pout_W": 0.6516121,
+   "scenario": "idle",
+   "vin": 13.2
+  },
+  {
+   "eff": 0.952719,
+   "f1_margin_A": 2.125374,
+   "fit": "B",
+   "i_servo": 0.8,
+   "iin_A": 0.4746263,
+   "pin_W": 6.265067,
+   "pout_W": 5.955327,
+   "scenario": "hold",
+   "vin": 13.2
+  },
+  {
+   "eff": 0.9437594,
+   "f1_margin_A": 1.407843,
+   "fit": "B",
+   "i_servo": 2.080957,
+   "iin_A": 1.192157,
+   "pin_W": 15.73648,
+   "pout_W": 14.76695,
+   "scenario": "stall",
+   "vin": 13.2
+  }
+ ],
+ "ldo_min_input_V": 5.6916,
+ "loads": [
+  [
+   "DS3218MG servo, Fit A",
+   "4.8 to 6.8",
+   "0.005 idle / 1.35 hold",
+   "3.77 at 6.8 V",
+   "3.77"
+  ],
+  [
+   "DS3218MG servo, Fit B",
+   "4.8 to 6.8",
+   "0.005 idle / 0.80 hold",
+   "2.20 at 6.8 V",
+   "2.20"
+  ],
+  [
+   "ESP32 + DevKitC on +5V, no Wi-Fi",
+   "4.5 to 5.5",
+   "0.094",
+   "0.266 (Wi-Fi TX peak)",
+   "-"
+  ],
+  [
+   "74AHCT1G125 + R12 on +5V",
+   "4.5 to 5.5",
+   "0.001",
+   "0.001",
+   "-"
+  ],
+  [
+   "INA219, LED, FSR divider, pull-ups on +3V3",
+   "3.0 to 3.6",
+   "0.010",
+   "0.010",
+   "-"
+  ],
+  [
+   "TPS54560B quiescent",
+   "4.5 to 60",
+   "0.0001",
+   "0.0001",
+   "-"
+  ]
+ ],
+ "plug": [
+  {
+   "R_cable_ohm": 0.079944,
+   "awg": 20,
+   "below_rating": true,
+   "fit": "A",
+   "high": 6.658395,
+   "i_A": 0.005,
+   "in_band": false,
+   "low": 6.50364,
+   "nom": 6.58089,
+   "scenario": "idle"
+  },
+  {
+   "R_cable_ohm": 0.079944,
+   "awg": 20,
+   "below_rating": true,
+   "fit": "A",
+   "high": 6.51052,
+   "i_A": 1.35,
+   "in_band": true,
+   "low": 6.355765,
+   "nom": 6.433016,
+   "scenario": "hold"
+  },
+  {
+   "R_cable_ohm": 0.079944,
+   "awg": 20,
+   "below_rating": true,
+   "fit": "A",
+   "high": 6.275629,
+   "i_A": 3.445881,
+   "in_band": false,
+   "low": 6.129783,
+   "nom": 6.202586,
+   "scenario": "stall"
+  },
+  {
+   "R_cable_ohm": 0.079944,
+   "awg": 20,
+   "below_rating": true,
+   "fit": "B",
+   "high": 6.658395,
+   "i_A": 0.005,
+   "in_band": false,
+   "low": 6.50364,
+   "nom": 6.58089,
+   "scenario": "idle"
+  },
+  {
+   "R_cable_ohm": 0.079944,
+   "awg": 20,
+   "below_rating": true,
+   "fit": "B",
+   "high": 6.570989,
+   "i_A": 0.8,
+   "in_band": true,
+   "low": 6.416235,
+   "nom": 6.493485,
+   "scenario": "hold"
+  },
+  {
+   "R_cable_ohm": 0.079944,
+   "awg": 20,
+   "below_rating": true,
+   "fit": "B",
+   "high": 6.430156,
+   "i_A": 2.056736,
+   "in_band": false,
+   "low": 6.280718,
+   "nom": 6.355314,
+   "scenario": "stall"
+  },
+  {
+   "R_cable_ohm": 0.32136,
+   "awg": 26,
+   "below_rating": true,
+   "fit": "A",
+   "high": 6.657188,
+   "i_A": 0.005,
+   "in_band": false,
+   "low": 6.502433,
+   "nom": 6.579683,
+   "scenario": "idle"
+  },
+  {
+   "R_cable_ohm": 0.32136,
+   "awg": 26,
+   "below_rating": true,
+   "fit": "A",
+   "high": 6.184609,
+   "i_A": 1.35,
+   "in_band": false,
+   "low": 6.029854,
+   "nom": 6.107104,
+   "scenario": "hold"
+  },
+  {
+   "R_cable_ohm": 0.32136,
+   "awg": 26,
+   "below_rating": true,
+   "fit": "A",
+   "high": 5.571406,
+   "i_A": 3.0592,
+   "in_band": false,
+   "low": 5.441926,
+   "nom": 5.50656,
+   "scenario": "stall"
+  },
+  {
+   "R_cable_ohm": 0.32136,
+   "awg": 26,
+   "below_rating": true,
+   "fit": "B",
+   "high": 6.657188,
+   "i_A": 0.005,
+   "in_band": false,
+   "low": 6.502433,
+   "nom": 6.579683,
+   "scenario": "idle"
+  },
+  {
+   "R_cable_ohm": 0.32136,
+   "awg": 26,
+   "below_rating": true,
+   "fit": "B",
+   "high": 6.377857,
+   "i_A": 0.8,
+   "in_band": false,
+   "low": 6.223102,
+   "nom": 6.300352,
+   "scenario": "hold"
+  },
+  {
+   "R_cable_ohm": 0.32136,
+   "awg": 26,
+   "below_rating": true,
+   "fit": "B",
+   "high": 5.979072,
+   "i_A": 1.912453,
+   "in_band": false,
+   "low": 5.840117,
+   "nom": 5.90948,
+   "scenario": "stall"
+  }
+ ],
+ "plug_cable": {
+  "R_cable_20_ohm": 0.079944,
+  "R_cable_26_ohm": 0.32136,
+  "R_lead_ohm": 0.03,
+  "band": [
+   6.35,
+   6.65
+  ],
+  "rating_V": 6.8
+ },
+ "worst_input": {
+  "fit": "A",
+  "iin": 2.487525,
+  "pin": 26.86528,
+  "sc": "stall",
+  "vin": 10.8
+ }
+}

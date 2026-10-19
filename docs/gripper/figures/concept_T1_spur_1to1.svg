@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" width="820" height="520" font-family="Helvetica, Arial, sans-serif">
+<rect width="820" height="520" fill="#ffffff"/>
+<text x="16" y="26" font-size="17" font-weight="bold" fill="#1f2328">T1 (baseline): 1:1 spur sector pair</text>
+<text x="16" y="44" font-size="12" fill="#6b7280">Servo spline drives knuckle A directly; sector A meshes sector B at a = m z. Jaws counter-rotate at equal angle.</text>
+<circle cx="246.0" cy="260.0" r="75.2" stroke="#1d4ed8" stroke-width="1.0" fill="#dbeafe" fill-opacity="1.0"/>
+<circle cx="246.0" cy="260.0" r="84.0" stroke="#6b7280" stroke-width="0.7" fill="none" fill-opacity="1.0" stroke-dasharray="3,3"/>
+<polygon points="321.2,256.9 336.7,252.0 335.6,244.2 319.4,243.6" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="317.8,237.5 331.5,228.8 328.5,221.6 312.7,225.1" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="309.5,219.7 320.5,207.8 315.7,201.5 301.4,209.1" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="301.4,310.9 315.7,318.5 320.5,312.2 309.5,300.3" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="312.7,294.9 328.5,298.4 331.5,291.2 317.8,282.5" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="319.4,276.4 335.6,275.8 336.7,268.0 321.2,263.1" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="321.2,256.9 336.7,252.0 335.6,244.2 319.4,243.6" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="317.8,237.5 331.5,228.8 328.5,221.6 312.7,225.1" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="309.5,219.7 320.5,207.8 315.7,201.5 301.4,209.1" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="301.4,310.9 315.7,318.5 320.5,312.2 309.5,300.3" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="312.7,294.9 328.5,298.4 331.5,291.2 317.8,282.5" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="319.4,276.4 335.6,275.8 336.7,268.0 321.2,263.1" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="321.2,256.9 336.7,252.0 335.6,244.2 319.4,243.6" stroke="#1d4ed8" stroke-width="0.8" fill="#dbeafe" fill-opacity="1.0" stroke-linejoin="round"/>
+<circle cx="246.0" cy="260.0" r="10.5" stroke="#1d4ed8" stroke-width="1.0" fill="#ffffff" fill-opacity="1.0"/>
+<circle cx="414.0" cy="260.0" r="75.2" stroke="#c2410c" stroke-width="1.0" fill="#ffedd5" fill-opacity="1.0"/>
+<circle cx="414.0" cy="260.0" r="84.0" stroke="#6b7280" stroke-width="0.7" fill="none" fill-opacity="1.0" stroke-dasharray="3,3"/>
+<polygon points="339.0,253.3 323.1,256.1 323.1,263.9 339.0,266.7" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="339.9,272.9 325.2,279.7 327.2,287.3 343.3,285.9" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="345.7,291.7 333.3,302.1 337.2,308.9 352.4,303.3" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="356.3,308.3 346.9,321.5 352.5,327.1 365.7,317.7" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="365.7,202.3 352.5,192.9 346.9,198.5 356.3,211.7" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="352.4,216.7 337.2,211.1 333.3,217.9 345.7,228.3" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="343.3,234.1 327.2,232.7 325.2,240.3 339.9,247.1" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="339.0,253.3 323.1,256.1 323.1,263.9 339.0,266.7" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="339.9,272.9 325.2,279.7 327.2,287.3 343.3,285.9" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="345.7,291.7 333.3,302.1 337.2,308.9 352.4,303.3" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="356.3,308.3 346.9,321.5 352.5,327.1 365.7,317.7" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="365.7,202.3 352.5,192.9 346.9,198.5 356.3,211.7" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="352.4,216.7 337.2,211.1 333.3,217.9 345.7,228.3" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="343.3,234.1 327.2,232.7 325.2,240.3 339.9,247.1" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<polygon points="339.0,253.3 323.1,256.1 323.1,263.9 339.0,266.7" stroke="#c2410c" stroke-width="0.8" fill="#ffedd5" fill-opacity="1.0" stroke-linejoin="round"/>
+<circle cx="414.0" cy="260.0" r="10.5" stroke="#c2410c" stroke-width="1.0" fill="#ffffff" fill-opacity="1.0"/>
+<polyline points="190.0,163.0 194.3,160.7 198.7,158.5 203.1,156.5 207.7,154.8 212.3,153.2 217.0,151.8 221.8,150.7 226.6,149.7 231.4,149.0 236.2,148.4 241.1,148.1 246.0,148.0 250.9,148.1 255.8,148.4 260.6,149.0 265.4,149.7 270.2,150.7 275.0,151.8 279.7,153.2 284.3,154.8 288.9,156.5 293.3,158.5 297.7,160.7 302.0,163.0" stroke="#1d4ed8" stroke-width="1.6" fill="none" fill-opacity="1.0" stroke-linejoin="round"/>
+<line x1="293.3" y1="158.5" x2="302.0" y2="163.0" stroke="#1d4ed8" stroke-width="1.6"/>
+<polygon points="302.0,163.0 296.0,162.5 298.2,158.4" fill="#1d4ed8"/>
+<polyline points="470.0,163.0 465.7,160.7 461.3,158.5 456.9,156.5 452.3,154.8 447.7,153.2 443.0,151.8 438.2,150.7 433.4,149.7 428.6,149.0 423.8,148.4 418.9,148.1 414.0,148.0 409.1,148.1 404.2,148.4 399.4,149.0 394.6,149.7 389.8,150.7 385.0,151.8 380.3,153.2 375.7,154.8 371.1,156.5 366.7,158.5 362.3,160.7 358.0,163.0" stroke="#c2410c" stroke-width="1.6" fill="none" fill-opacity="1.0" stroke-linejoin="round"/>
+<line x1="366.7" y1="158.5" x2="358.0" y2="163.0" stroke="#c2410c" stroke-width="1.6"/>
+<polygon points="358.0,163.0 361.8,158.4 364.0,162.5" fill="#c2410c"/>
+<text x="246.0" y="127.0" font-size="11" fill="#1d4ed8" text-anchor="middle" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">open: A turns CW</text>
+<text x="414.0" y="127.0" font-size="11" fill="#c2410c" text-anchor="middle" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">B turns CCW</text>
+<line x1="246.0" y1="281.0" x2="246.0" y2="428.0" stroke="#1d4ed8" stroke-width="5"/>
+<line x1="414.0" y1="281.0" x2="414.0" y2="428.0" stroke="#c2410c" stroke-width="5"/>
+<text x="232.0" y="449.0" font-size="11" fill="#1d4ed8" text-anchor="middle" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">to finger A</text>
+<text x="428.0" y="449.0" font-size="11" fill="#c2410c" text-anchor="middle" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">to finger B</text>
+<text x="204.0" y="239.0" font-size="10" fill="#1d4ed8" text-anchor="end" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">servo shaft</text>
+<text x="456.0" y="239.0" font-size="10" fill="#c2410c" text-anchor="start" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">idler pin</text>
+<line x1="246.0" y1="260.0" x2="246.0" y2="484.0" stroke="#6b7280" stroke-width="0.8" stroke-dasharray="2,2"/>
+<line x1="414.0" y1="260.0" x2="414.0" y2="484.0" stroke="#6b7280" stroke-width="0.8" stroke-dasharray="2,2"/>
+<line x1="330.0" y1="484.0" x2="414.0" y2="484.0" stroke="#6b7280" stroke-width="1.0"/>
+<polygon points="414.0,484.0 409.4,485.9 409.4,482.1" fill="#6b7280"/>
+<line x1="330.0" y1="484.0" x2="246.0" y2="484.0" stroke="#6b7280" stroke-width="1.0"/>
+<polygon points="246.0,484.0 250.6,482.1 250.6,485.9" fill="#6b7280"/>
+<text x="330.0" y="484.0" font-size="11" fill="#6b7280" text-anchor="middle" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">a = 24 mm</text>
+<text x="330.0" y="249.5" font-size="10" fill="#6b7280" text-anchor="middle" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">pitch point</text>
+<rect x="520" y="330" width="290" height="118" fill="#f9fafb" stroke="#d1d5db"/>
+<text x="530.0" y="347.0" font-size="12" fill="#1f2328" text-anchor="start" font-weight="bold" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">Numbers (this script)</text>
+<text x="530.0" y="365.0" font-size="11" fill="#1f2328" text-anchor="start" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">ratio 1:1; sector 100 deg; m 1 z 24 b 6 (params.json)</text>
+<text x="530.0" y="381.0" font-size="11" fill="#1f2328" text-anchor="start" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">T_servo LC1 0.765 N*m, LC2 1.529 N*m</text>
+<text x="530.0" y="397.0" font-size="11" fill="#1f2328" text-anchor="start" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">lightest servo passing: A17 (58 g)</text>
+<text x="530.0" y="413.0" font-size="11" fill="#1f2328" text-anchor="start" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">hold margin +0.046; close 0.28 s (R19 &lt;= 0.5)</text>
+<text x="530.0" y="429.0" font-size="11" fill="#1f2328" text-anchor="start" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">LC3 (one finger blocked): full stall crosses the mesh</text>
+<text x="530.0" y="445.0" font-size="11" fill="#1f2328" text-anchor="start" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">gear lane: m1.5 z20 PETG or m1 z24 PA6-CF (DESIGN-BASIS 2)</text>
+</svg>

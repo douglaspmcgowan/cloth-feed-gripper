@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+trial,finger_pair,command_N,fsr_reading_N,probe_peak_N,probe_hold_mean_N,probe_hold_min_N,state_at_end,notes

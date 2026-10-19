@@ -1,0 +1,22 @@
+id: T16
+title: "Pin axis tilt, centre-distance change across the {face_b:g} mm gear face"
+parts: ["mid plate", "front plate", "knuckle A", "knuckle B", "pin A", "pin B"]
+constants: basis.yaml
+units: mm (a at front face - a at back face)
+requirement: Centre distance varies <= 0.07 mm across the face (axes A and B parallel in the plane of centres).
+spec: {lsl: "=-pin_tilt_da_max", usl: "=pin_tilt_da_max"}
+accept: {method: mc}
+notes: >-
+  Rev A: pins A and B are pressed through the mid and front plates, whose holes are line-reamed together. A pin
+  tilts by (front hole offset - mid hole offset) / pin span; each knuckle can also cock in its sleeve by
+  clearance / sleeve length. Every term is the change of a across face_b.
+contributors:
+  - {name: pinA_coax, nominal: 0, tol: "=line_ream_coax", sensitivity: "=-face_b/pin_span", dist: normal, tag: A, source: "line-reamed plate holes"}
+  - {name: pinB_coax, nominal: 0, tol: "=line_ream_coax", sensitivity: "=face_b/pin_span", dist: normal, tag: A, source: "line-reamed plate holes"}
+  - {name: knuckleA_tilt_on_pin, nominal: 0, tol: "=pin_clear/knuckle_bore_len*face_b", direction: -1, dist: uniform, tag: D, source: "sleeve clearance over the sleeve length"}
+  - {name: knuckleB_tilt_on_pin, nominal: 0, tol: "=pin_clear/knuckle_bore_len*face_b", dist: uniform, tag: D, source: "same"}
+variants:
+  - id: noream
+    role: scenario
+    label: "line reaming skipped: plate holes as printed, front plate located by the pins"
+    set: {line_ream_coax: "=plate_hole_pos_tol"}

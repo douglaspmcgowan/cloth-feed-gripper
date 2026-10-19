@@ -1,0 +1,127 @@
+{
+ "stack": "T09",
+ "param": "dog_slot_w",
+ "samples": 100000,
+ "seed": 20260922,
+ "paths": [
+  "stacks"
+ ],
+ "values": "3.3:3.8:0.1",
+ "overrides": {},
+ "first": {
+  "marginal_or_better": 3.3,
+  "pass": 3.3
+ },
+ "points": [
+  {
+   "dog_slot_w": 3.3,
+   "nominal": -1.80930174,
+   "wc": [
+    -4.52998121,
+    0.911377719
+   ],
+   "out_pct": 0.0,
+   "cpk": 1.82793642,
+   "verdict3": "pass"
+  },
+  {
+   "dog_slot_w": 3.4,
+   "nominal": -2.21855731,
+   "wc": [
+    -4.93923678,
+    0.502122151
+   ],
+   "out_pct": 0.0,
+   "cpk": 1.48689279,
+   "verdict3": "pass"
+  },
+  {
+   "dog_slot_w": 3.5,
+   "nominal": -2.62781288,
+   "wc": [
+    -5.34849234,
+    0.0928665827
+   ],
+   "out_pct": 0.034,
+   "cpk": 1.14584916,
+   "verdict3": "marginal"
+  },
+  {
+   "dog_slot_w": 3.6,
+   "nominal": -3.03706845,
+   "wc": [
+    -5.75774791,
+    -0.316388985
+   ],
+   "out_pct": 0.876,
+   "cpk": 0.804805527,
+   "verdict3": "fail"
+  },
+  {
+   "dog_slot_w": 3.7,
+   "nominal": -3.44632402,
+   "wc": [
+    -6.16700348,
+    -0.725644553
+   ],
+   "out_pct": 8.548,
+   "cpk": 0.463761895,
+   "verdict3": "fail"
+  },
+  {
+   "dog_slot_w": 3.8,
+   "nominal": -3.85557958,
+   "wc": [
+    -6.57625905,
+    -1.13490012
+   ],
+   "out_pct": 35.939,
+   "cpk": 0.122718262,
+   "verdict3": "fail"
+  }
+ ],
+ "input_digest": {
+  "algorithm": "sha256",
+  "digest": "fa035516e4ebb9de294fc9f9972df710db45e286c9cc6c7832f1f5936bef72e3",
+  "files": [
+   "stacks/basis.yaml",
+   "stacks/rev_b.yaml",
+   "stacks/T01_bolt_pattern_fit.yaml",
+   "stacks/T01H_screw_head_counterbore.yaml",
+   "stacks/T02_pilot_recess_fit.yaml",
+   "stacks/T03_thread_engagement.yaml",
+   "stacks/T03B_screw_bottoming.yaml",
+   "stacks/T04_concentricity.yaml",
+   "stacks/T05_jaw_centerline.yaml",
+   "stacks/T06_gear_center_distance.yaml",
+   "stacks/T07_backlash.yaml",
+   "stacks/T08_mesh_axial.yaml",
+   "stacks/T09_closure_gap.yaml",
+   "stacks/T09F_force_at_floor.yaml",
+   "stacks/T09H_hold_force_reach.yaml",
+   "stacks/T09P_force_at_trip.yaml",
+   "stacks/T09T_close_time.yaml",
+   "stacks/T10_pad_parallelism.yaml",
+   "stacks/T10B_pad_out_of_plane.yaml",
+   "stacks/T11_keepout_radial.yaml",
+   "stacks/T12_keepout_axial.yaml",
+   "stacks/T12B_rim_to_case.yaml",
+   "stacks/T13_camera_aim.yaml",
+   "stacks/T14_servo_cradle.yaml",
+   "stacks/T14B_dog_coupling.yaml",
+   "stacks/T15_standoff_endplay.yaml",
+   "stacks/T16_pin_tilt.yaml",
+   "stacks/T16B_sleeve_running_fit.yaml",
+   "tolcalc/__init__.py",
+   "tolcalc/cad.py",
+   "tolcalc/detmath.py",
+   "tolcalc/engine.py",
+   "tolcalc/gdt.py",
+   "tolcalc/model.py",
+   "tolcalc/report.py",
+   "tolcalc/scenarios.py",
+   "tolcalc/statistics.py",
+   "tolstack.py"
+  ]
+ }
+}

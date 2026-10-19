@@ -1,0 +1,113 @@
+{
+  "bom_zero_price_lines": [],
+  "checks": {
+    "bom_complete": {
+      "detail": "64 lines, 85 parts, every line has MPN, supplier number and price",
+      "pass": true
+    },
+    "drc": {
+      "detail": "0 errors, 0 warnings, 0 unconnected, 0 schematic parity issues",
+      "pass": true
+    },
+    "drill_plated": {
+      "detail": "drill file 189 holes, board 189 (94 pad holes + 95 vias)",
+      "pass": true
+    },
+    "drill_unplated": {
+      "detail": "drill file 4 holes, board 4 mounting holes",
+      "pass": true
+    },
+    "erc": {
+      "detail": "0 errors, 0 warnings",
+      "pass": true
+    },
+    "gerber_layer_set": {
+      "detail": "9 of 9 layers present",
+      "pass": true
+    },
+    "position_file": {
+      "detail": "84 placements; 1 fitted BOM parts are hand-placed through-hole or socketed and not in the file",
+      "pass": true
+    },
+    "step_model": {
+      "detail": "3026090 bytes",
+      "pass": true
+    }
+  },
+  "drc": {
+    "errors": 0,
+    "schematic_parity_issues": 0,
+    "unconnected": 0,
+    "violations": 0,
+    "warnings": 0
+  },
+  "drill": {
+    "plated": {
+      "0.200": 6,
+      "0.400": 95,
+      "0.800": 2,
+      "0.950": 4,
+      "1.000": 70,
+      "1.100": 4,
+      "1.300": 5,
+      "1.600": 3
+    },
+    "unplated": {
+      "3.200": 4
+    }
+  },
+  "erc": {
+    "errors": 0,
+    "messages": 0,
+    "warnings": 0
+  },
+  "gerbers": {
+    "B_Cu": {
+      "bytes": 213223,
+      "draw_commands": 8209,
+      "file": "gripper-B_Cu.gbl"
+    },
+    "B_Mask": {
+      "bytes": 4717,
+      "draw_commands": 92,
+      "file": "gripper-B_Mask.gbs"
+    },
+    "B_Paste": {
+      "bytes": 452,
+      "draw_commands": 0,
+      "file": "gripper-B_Paste.gbp"
+    },
+    "B_Silkscreen": {
+      "bytes": 453,
+      "draw_commands": 0,
+      "file": "gripper-B_Silkscreen.gbo"
+    },
+    "Edge_Cuts": {
+      "bytes": 606,
+      "draw_commands": 5,
+      "file": "gripper-Edge_Cuts.gm1"
+    },
+    "F_Cu": {
+      "bytes": 288256,
+      "draw_commands": 10853,
+      "file": "gripper-F_Cu.gtl"
+    },
+    "F_Mask": {
+      "bytes": 12116,
+      "draw_commands": 234,
+      "file": "gripper-F_Mask.gts"
+    },
+    "F_Paste": {
+      "bytes": 8538,
+      "draw_commands": 147,
+      "file": "gripper-F_Paste.gtp"
+    },
+    "F_Silkscreen": {
+      "bytes": 179599,
+      "draw_commands": 7056,
+      "file": "gripper-F_Silkscreen.gto"
+    }
+  },
+  "pass": true,
+  "position_rows": 84
+}

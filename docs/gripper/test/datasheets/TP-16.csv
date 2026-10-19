@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+trial,injected_fault,fault_event_seen,t_enter_fault_ms,st_fault_field,th_before_deg,th_after_deg,I_end_of_search_A,build,notes

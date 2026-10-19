@@ -1,0 +1,17 @@
+id: T12
+title: Axial keep-out, gripper widens (r > 15) above the wrist-link lip top
+parts: ["wrist mount", "mid plate", "wrist link"]
+constants: basis.yaml
+units: mm (z where the part widens past r 15) - (lip top z)
+requirement: Any part wider than r 15 starts >= 0.1 mm above the lip top (z +5.3).
+spec: {lsl: "=axial_min_clear"}
+accept: {method: mc}
+contributors:
+  - {name: widen_height_above_H, nominal: "=widen_z_above_H", tol: "=fdm_z_tol", dist: uniform, tag: D, source: "params.json band_to_H 5.0 [D]; Z band [S]"}
+  - {name: datum_A_flatness_lift, nominal: 0, unilateral: "=mount_flatness", dist: uniform, tag: A, source: "raises the part"}
+  - {name: lip_top_above_H, nominal: "=lip_top_above_H", tol: "=lip_z_tol", direction: -1, dist: normal, tag: D, source: "so101.md"}
+  - {name: horn_height, nominal: 0, tol: "=horn_height_tol", dist: normal, tag: A, source: ""}
+  - {name: servo5_seat, nominal: 0, tol: "=servo5_seat_tol", direction: -1, dist: normal, tag: A, source: ""}
+  - {name: servo5_axial_play, nominal: 0, tol: "=servo5_axial_play", dist: uniform, tag: A, source: ""}
+variants:
+  - {id: stock45, role: rejected, label: "pre-rev-A widen at 4.5 above H", set: {widen_z_above_H: 4.5}}

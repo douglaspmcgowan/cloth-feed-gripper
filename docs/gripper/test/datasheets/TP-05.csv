@@ -1,0 +1,9 @@
+#date,
+#tester,
+#unit_serial,
+#firmware,
+#ambient_C,
+#supply_V_at_servo,
+#instruments,
+#fsr_cal_id,
+trial,part,blocked_at_deg,t_overcurrent_onset_ms,t_fault_ms,t_backoff_begin_ms,t_unloaded_ms,peak_rail_A,case_C,relax_event,notes

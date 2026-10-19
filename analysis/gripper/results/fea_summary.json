@@ -1,0 +1,1155 @@
+{
+ "inputs_overridden_from_params": {
+  "grip.target_N": "params.json grip.F_target_N",
+  "grip.cap_N": "params.json grip.F_cap_N",
+  "grip.mu_pad_cloth": "params.json grip.mu_pad_cloth",
+  "drive.eta_mesh_pivot": "params.json grip.eta_mesh_pivot",
+  "grip.k_tip_min_N_per_mm": "params.json grip.k_tip_min_N_per_mm",
+  "grip.k_tip_max_N_per_mm": "params.json grip.k_tip_max_N_per_mm",
+  "grip.k_tip_default_N_per_mm": "params.json grip.k_tip_default_N_per_mm",
+  "grip.theta_min_deg": "params.json grip.theta_min_deg",
+  "grip.theta_open_max_deg": "params.json grip.theta_open_max_deg",
+  "drive.hold_fraction": "params.json grip.hold_fraction_of_stall",
+  "geometry.length_design_mm": "params.json grip.finger_length_design_mm",
+  "geometry.pad_centroid_from_tip_mm": "params.json grip.pad_centroid_from_tip_mm",
+  "TPU.E_nominal_MPa": "params.json materials.allowables.TPU95A.E_xy",
+  "TPU.E_low_MPa": "params.json materials.allowables.TPU95A.E_z",
+  "TPU.nu": "params.json materials.allowables.TPU95A.poisson",
+  "TPU.density": "params.json materials.allowables.TPU95A.density",
+  "TPU.break_XY_MPa": "params.json materials.allowables.TPU95A.break_xy",
+  "TPU.break_Z_MPa": "params.json materials.allowables.TPU95A.break_z",
+  "TPU.flex_strength_MPa_at_9p4pct": "params.json materials.allowables.TPU95A.flex_strength_xy_at_9p4pct",
+  "PLA.E_MPa": "params.json materials.allowables.PLA.E_xy",
+  "PLA.tensile_XY_MPa": "params.json materials.allowables.PLA.tensile_xy",
+  "PLA.allow_LC1_MPa": "params.json materials.allowables.PLA.allow_LC1",
+  "PLA.allow_LC2_MPa": "params.json materials.allowables.PLA.allow_LC2",
+  "PLA.density": "params.json materials.allowables.PLA.density",
+  "TPU.strain_limit_LC1": "params.json materials.allowables.TPU95A.design_strain_max_pct / 100",
+  "actuators.design_point": "params.json grip.servo_design_point"
+ },
+ "E_MPa": 67.0,
+ "E_low_MPa": 56.0,
+ "nu": 0.45,
+ "h_mm": 0.25,
+ "validation": {
+  "rect": [
+   {
+    "h": 3.0,
+    "order": 1,
+    "dofs": 132,
+    "delta_mm": 2.0405846949148483,
+    "ratio_to_timoshenko": 0.6776998838073502
+   },
+   {
+    "h": 3.0,
+    "order": 2,
+    "dofs": 434,
+    "delta_mm": 2.9938377433708756,
+    "ratio_to_timoshenko": 0.9942853613851922
+   },
+   {
+    "h": 1.5,
+    "order": 1,
+    "dofs": 500,
+    "delta_mm": 2.7729247467691627,
+    "ratio_to_timoshenko": 0.920917805261891
+   },
+   {
+    "h": 1.5,
+    "order": 2,
+    "dofs": 1818,
+    "delta_mm": 2.997871967283289,
+    "ratio_to_timoshenko": 0.9956251700603765
+   },
+   {
+    "h": 0.75,
+    "order": 1,
+    "dofs": 1778,
+    "delta_mm": 2.9317381832360048,
+    "ratio_to_timoshenko": 0.973661436883178
+   },
+   {
+    "h": 0.75,
+    "order": 2,
+    "dofs": 6754,
+    "delta_mm": 2.9992857311840204,
+    "ratio_to_timoshenko": 0.9960946960906581
+   },
+   {
+    "h": 0.375,
+    "order": 1,
+    "dofs": 6384,
+    "delta_mm": 2.984968495030518,
+    "ratio_to_timoshenko": 0.9913397896651369
+   },
+   {
+    "h": 0.375,
+    "order": 2,
+    "dofs": 24826,
+    "delta_mm": 2.99979477902282,
+    "ratio_to_timoshenko": 0.9962637562928965
+   }
+  ],
+  "wedge": [
+   {
+    "h": 2.0,
+    "dofs": 1020,
+    "compliance": 0.018819435953551608,
+    "ratio_to_hand": 1.0096888280220642
+   },
+   {
+    "h": 1.0,
+    "dofs": 3688,
+    "compliance": 0.01866300932352071,
+    "ratio_to_hand": 1.0012963224689138
+   },
+   {
+    "h": 0.5,
+    "dofs": 14110,
+    "compliance": 0.018855835417678504,
+    "ratio_to_hand": 1.011641709732527
+   },
+   {
+    "h": 0.25,
+    "dofs": 54962,
+    "compliance": 0.01885890556814581,
+    "ratio_to_hand": 1.0118064275612033
+   }
+  ],
+  "finray": [
+   {
+    "h": 0.8,
+    "dofs": 3398,
+    "secs": 0.2390131950378418,
+    "k_mid": 2.751614406994775,
+    "k_tip": 2.876471265173458,
+    "wrap_mid": -0.0882797751653748,
+    "vm_p99_mid": 0.31706382919620196,
+    "vm_max_mid": 0.4608869502582517,
+    "vm_p99_tip": 0.1416344919780029,
+    "vm_max_tip": 0.38067649847975416
+   },
+   {
+    "h": 0.5,
+    "dofs": 7408,
+    "secs": 0.17261767387390137,
+    "k_mid": 2.686818017179641,
+    "k_tip": 2.8338490090573814,
+    "wrap_mid": -0.08135743119518596,
+    "vm_p99_mid": 0.3129176053364511,
+    "vm_max_mid": 0.5502993027041608,
+    "vm_p99_tip": 0.14149143887014276,
+    "vm_max_tip": 0.39295875089440574
+   },
+   {
+    "h": 0.35,
+    "dofs": 13570,
+    "secs": 0.35426998138427734,
+    "k_mid": 2.670524185362941,
+    "k_tip": 2.8462295108891413,
+    "wrap_mid": -0.07967530467089053,
+    "vm_p99_mid": 0.3101817865837888,
+    "vm_max_mid": 0.652765383398111,
+    "vm_p99_tip": 0.14153155207201054,
+    "vm_max_tip": 0.38955887036083714
+   },
+   {
+    "h": 0.25,
+    "dofs": 26508,
+    "secs": 1.0122687816619873,
+    "k_mid": 2.6541921895854745,
+    "k_tip": 2.8293937328602787,
+    "wrap_mid": -0.07800785554438738,
+    "vm_p99_mid": 0.31477066044741,
+    "vm_max_mid": 0.7483290882035643,
+    "vm_p99_tip": 0.14103709227531422,
+    "vm_max_tip": 0.3905193446278804
+   },
+   {
+    "h": 0.18,
+    "dofs": 49258,
+    "secs": 1.8073174953460693,
+    "k_mid": 2.649601229406291,
+    "k_tip": 2.8159220169405446,
+    "wrap_mid": -0.07739577416894278,
+    "vm_p99_mid": 0.3155760824708098,
+    "vm_max_mid": 0.8562669932049913,
+    "vm_p99_tip": 0.14112823825811213,
+    "vm_max_tip": 0.3954831280402218
+   }
+  ],
+  "rect_ref": {
+   "timoshenko_mm": 3.011044776119403,
+   "euler_bernoulli_mm": 2.985074626865672,
+   "E_MPa": 67.0,
+   "nu": 0.45
+  },
+  "wedge_ref": {
+   "hand_compliance": 0.018638847366884363,
+   "L_mm": 45.0,
+   "note": "EB+Timoshenko tapered wedge, point load; FEA uses a 2 mm patch"
+  },
+  "finray_geometry": "L 45, wall 1.2, rib 0.9, 6 ribs at 10 deg"
+ },
+ "reference": {
+  "cad_section_L45": {
+   "n_vertices": 3574,
+   "n_elements": 6101,
+   "dofs": 26508,
+   "area_mm2": 151.56660059333723,
+   "area_pla_mm2": 0.0,
+   "option": null,
+   "mass_g": 3.6982250544774278,
+   "mid": {
+    "s_mm": 22.5,
+    "patch_len_mm": 10.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.3767624680397306,
+    "k_N_per_mm": 2.6541921895854745,
+    "tip_ux_per_N": -0.029390432181390175,
+    "tip_uy_per_N": -0.004048707490822622,
+    "wrap_ratio": -0.07800785554438738,
+    "vm_max_per_N": 0.7483290882035643,
+    "vm_p99_per_N": 0.31477066044741,
+    "vm_p995_per_N": 0.3571478885755511,
+    "strain_max_per_N": 0.01114675584570788,
+    "strain_p99_per_N": 0.004686122757543754
+   },
+   "tip": {
+    "s_mm": 40.0,
+    "patch_len_mm": 6.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.35343260585690356,
+    "k_N_per_mm": 2.8293937328602787,
+    "tip_ux_per_N": -0.43856996642875495,
+    "tip_uy_per_N": -0.07168644458333354,
+    "wrap_ratio": -1.2408871144342621,
+    "vm_max_per_N": 0.3905193446278804,
+    "vm_p99_per_N": 0.14103709227531422,
+    "vm_p995_per_N": 0.14703292997373252,
+    "strain_max_per_N": 0.005823618888345561,
+    "strain_p99_per_N": 0.0021032397671666876
+   },
+   "point": {
+    "s_mm": 22.5,
+    "load_ux_per_N": -0.42022992878221066,
+    "k_at_node_N_per_mm": 2.3796496429892846,
+    "tip_ux_per_N": -0.024777073983959345,
+    "note": "2D point load: displacement under the load is log-singular (mesh dependent)",
+    "vm_max_per_N": 0.829055819829501,
+    "vm_p99_per_N": 0.33572488003682,
+    "vm_p995_per_N": 0.38243486093021123,
+    "strain_max_per_N": 0.012355645803190088,
+    "strain_p99_per_N": 0.0049929533253331194
+   }
+  },
+  "cad_L60": {
+   "n_vertices": 4322,
+   "n_elements": 7383,
+   "dofs": 32064,
+   "area_mm2": 183.8146264300008,
+   "area_pla_mm2": 0.0,
+   "option": null,
+   "mass_g": 4.4850768848920195,
+   "mid": {
+    "s_mm": 30.0,
+    "patch_len_mm": 10.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.8109655153869935,
+    "k_N_per_mm": 1.2330980553751403,
+    "tip_ux_per_N": -0.07596499432958913,
+    "tip_uy_per_N": -0.00931002552375648,
+    "wrap_ratio": -0.09367228678439991,
+    "vm_max_per_N": 1.0853800829317541,
+    "vm_p99_per_N": 0.42820153254758675,
+    "vm_p995_per_N": 0.5076352139708042,
+    "strain_max_per_N": 0.01618275003799051,
+    "strain_p99_per_N": 0.006336370401902043
+   },
+   "tip": {
+    "s_mm": 55.0,
+    "patch_len_mm": 6.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.9165028089858557,
+    "k_N_per_mm": 1.0911041299551902,
+    "tip_ux_per_N": -1.1718738018536836,
+    "tip_uy_per_N": -0.14928599085509453,
+    "wrap_ratio": -1.2786363449888445,
+    "vm_max_per_N": 0.5043862489980674,
+    "vm_p99_per_N": 0.1964864599476348,
+    "vm_p995_per_N": 0.2057350703505726,
+    "strain_max_per_N": 0.007467742789382611,
+    "strain_p99_per_N": 0.0029316364164684162
+   },
+   "point": {
+    "s_mm": 30.0,
+    "load_ux_per_N": -0.8683714588226027,
+    "k_at_node_N_per_mm": 1.1515809160239654,
+    "tip_ux_per_N": -0.07038542139290044,
+    "note": "2D point load: displacement under the load is log-singular (mesh dependent)",
+    "vm_max_per_N": 1.1469369897657453,
+    "vm_p99_per_N": 0.4402733278635561,
+    "vm_p995_per_N": 0.5245572744804263,
+    "strain_max_per_N": 0.017113734609088542,
+    "strain_p99_per_N": 0.00652933814301147
+   }
+  },
+  "cad_section_L45_plane_strain": {
+   "n_vertices": 3574,
+   "n_elements": 6101,
+   "dofs": 26508,
+   "area_mm2": 151.56660059333723,
+   "area_pla_mm2": 0.0,
+   "option": null,
+   "mass_g": 3.6982250544774278,
+   "mid": {
+    "s_mm": 22.5,
+    "patch_len_mm": 10.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.3005536116552249,
+    "k_N_per_mm": 3.327193423139209,
+    "tip_ux_per_N": -0.02398340942961931,
+    "tip_uy_per_N": -0.003416050524705994,
+    "wrap_ratio": -0.07979744211868424,
+    "vm_max_per_N": 0.5569452347947176,
+    "vm_p99_per_N": 0.2698150771854129,
+    "vm_p995_per_N": 0.308649077724303,
+    "strain_max_per_N": 0.007954720420450534,
+    "strain_p99_per_N": 0.003727079406896758
+   },
+   "tip": {
+    "s_mm": 40.0,
+    "patch_len_mm": 6.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.2820362617340625,
+    "k_N_per_mm": 3.5456433646213887,
+    "tip_ux_per_N": -0.3498863392702209,
+    "tip_uy_per_N": -0.057268913742865524,
+    "wrap_ratio": -1.2405721772051268,
+    "vm_max_per_N": 0.31340250035805245,
+    "vm_p99_per_N": 0.12233680130077691,
+    "vm_p995_per_N": 0.1274539712431882,
+    "strain_max_per_N": 0.00445946691318555,
+    "strain_p99_per_N": 0.0016776191904182367
+   }
+  },
+  "cad_section_L45_P1": {
+   "n_vertices": 3574,
+   "n_elements": 6101,
+   "dofs": 7148,
+   "area_mm2": 151.5666005933369,
+   "area_pla_mm2": 0.0,
+   "option": null,
+   "mass_g": 3.6982250544774202,
+   "mid": {
+    "s_mm": 22.5,
+    "patch_len_mm": 10.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.34091441304599934,
+    "k_N_per_mm": 2.933287540016886,
+    "tip_ux_per_N": -0.0370120828452075,
+    "tip_uy_per_N": -0.005428917421117461,
+    "wrap_ratio": -0.1085670814399199,
+    "vm_max_per_N": 0.5045555526703305,
+    "vm_p99_per_N": 0.30433515204054895,
+    "vm_p995_per_N": 0.3713694988762893,
+    "strain_max_per_N": 0.007494545404915385,
+    "strain_p99_per_N": 0.004542438456110203
+   },
+   "tip": {
+    "s_mm": 40.0,
+    "patch_len_mm": 6.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.3508156690562461,
+    "k_N_per_mm": 2.850499815729925,
+    "tip_ux_per_N": -0.43871330003593884,
+    "tip_uy_per_N": -0.07174667456311062,
+    "wrap_ratio": -1.250552180910711,
+    "vm_max_per_N": 0.3625919510417297,
+    "vm_p99_per_N": 0.1421879422919791,
+    "vm_p995_per_N": 0.14788137204148424,
+    "strain_max_per_N": 0.005119977342484245,
+    "strain_p99_per_N": 0.0021212986099430012
+   }
+  }
+ },
+ "recommended": {
+  "set": {
+   "rib_angle": 30,
+   "ribs": 6,
+   "wall": 0.8,
+   "rib_thickness": 1.0,
+   "tip_width": 4.0
+  },
+  "label": "Recommended L 45: 6 ribs at 30 deg, wall 0.8, rib 1, tip 4 mm; E 67",
+  "verdict": "CONDITIONAL: linear checks pass, but the nonlinear tip-pad limit is 8.9 N at E 56, above the 8 N FSR trip and below the 10 N cap: FAILS the R15 fold check; the cap relies on the FSR trip",
+  "nonlinear_check": {
+   "criterion": "tip-pad nonlinear limit at E 56 >= F_cap 10 N (fallback: >= FSR trip 8 N)",
+   "F_cap_N": 10.0,
+   "fsr_trip_N": 8.0,
+   "F_target_N": 5.0,
+   "passed": "trip only",
+   "chosen_limit_E56_N": 8.932835820895523,
+   "screen_vs_fine": {
+    "screen_h": 0.5,
+    "screen_limit_E56_N": 8.932835820895523,
+    "fine_h": 0.32,
+    "fine_limit_E56_N": 8.880597014925373,
+    "fine_reached_cap": false
+   },
+   "rec_bare_tip_limit_E56_N": 8.880597014925373,
+   "rec_bare_tip_bracket_E56_N": [
+    8.880597014925373,
+    8.919776119402986
+   ],
+   "rec_nailA_tip_limit_E56_N": 8.4140625,
+   "cadL60_tip_limit_E56_N": 6.524953358208955,
+   "mechanism_rec_tip": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+   "mechanism_rec_nailA_tip": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+   "mechanism_cadL60_tip": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+   "hand_back_flank_buckling_rec_E56": {
+    "s0_mm": 4.278212445292918,
+    "s1_mm": 11.876638020934793,
+    "panel_len_mm": 7.86395240351964,
+    "chord_force_per_N": 2.5351444257748805,
+    "P_cr_pinned_N": 7.626490444381365,
+    "F_cr_pinned_N": 3.0083061015548602,
+    "F_cr_fixed_N": 12.033224406219441
+   }
+  },
+  "linear": {
+   "n_vertices": 3682,
+   "n_elements": 6059,
+   "dofs": 26858,
+   "area_mm2": 149.10999598971827,
+   "area_pla_mm2": 0.0,
+   "option": null,
+   "mass_g": 3.638283902149126,
+   "mid": {
+    "s_mm": 22.5,
+    "patch_len_mm": 10.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.5754956524893562,
+    "k_N_per_mm": 1.7376325879690204,
+    "tip_ux_per_N": -0.35386606126890685,
+    "tip_uy_per_N": -0.017127748426889664,
+    "wrap_ratio": -0.6148891998370946,
+    "vm_max_per_N": 0.9296454573607804,
+    "vm_p99_per_N": 0.40009670144655024,
+    "vm_p995_per_N": 0.4468351419799528,
+    "strain_max_per_N": 0.013873857491166899,
+    "strain_p99_per_N": 0.005928242964292591
+   },
+   "tip": {
+    "s_mm": 40.0,
+    "patch_len_mm": 6.0,
+    "on_pla": false,
+    "compliance_mm_per_N": 0.9084674322463236,
+    "k_N_per_mm": 1.1007549247278443,
+    "tip_ux_per_N": -0.8611967742856321,
+    "tip_uy_per_N": -0.06463046711535224,
+    "wrap_ratio": -0.9479665904546434,
+    "vm_max_per_N": 0.8878155109446683,
+    "vm_p99_per_N": 0.3859933222399845,
+    "vm_p995_per_N": 0.4229289002770171,
+    "strain_max_per_N": 0.01318335422740633,
+    "strain_p99_per_N": 0.00573491118151774
+   },
+   "point": {
+    "s_mm": 22.5,
+    "load_ux_per_N": -0.6647552180505417,
+    "k_at_node_N_per_mm": 1.504313125863977,
+    "tip_ux_per_N": -0.3583764209032734,
+    "note": "2D point load: displacement under the load is log-singular (mesh dependent)",
+    "vm_max_per_N": 1.0011934226153738,
+    "vm_p99_per_N": 0.4394854529171101,
+    "vm_p995_per_N": 0.4982069082645457,
+    "strain_max_per_N": 0.014878834359680395,
+    "strain_p99_per_N": 0.006523609083945741
+   }
+  }
+ },
+ "nonlinear": {
+  "rec_tip": {
+   "E_MPa": 67.0,
+   "h_mm": 0.32,
+   "option": null,
+   "F_N": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5,
+    8.0,
+    8.5,
+    9.0,
+    9.5,
+    10.0,
+    10.5,
+    10.625
+   ],
+   "patch_disp_mm": [
+    0.0,
+    0.45743646779640895,
+    0.9237803678251564,
+    1.3994548920128436,
+    1.8847908448284096,
+    2.38004397354979,
+    2.8854280256426565,
+    3.4011668676357525,
+    3.927567352607278,
+    4.465111422786545,
+    5.0145603945814266,
+    5.577056047465125,
+    6.154193892715634,
+    6.748041390949532,
+    7.361091973862584,
+    7.996195107868154,
+    8.65657246525964,
+    9.346097356962758,
+    10.070125346031206,
+    10.837659413182244,
+    11.668483782420175,
+    12.641656649482103,
+    12.97880718025112
+   ],
+   "tip_ux_mm": [
+    0.0,
+    -0.4336017394524973,
+    -0.873544987463902,
+    -1.3204036715521519,
+    -1.7746929985467754,
+    -2.2368862108321412,
+    -2.707446710266656,
+    -3.1868801734969727,
+    -3.6758104239543394,
+    -4.17508042583177,
+    -4.6858747160298355,
+    -5.209850813632657,
+    -5.749255662119849,
+    -6.306996299688399,
+    -6.886648119618575,
+    -7.492436352058002,
+    -8.129314261640022,
+    -8.80336855883322,
+    -9.522976614295562,
+    -10.30189848891015,
+    -11.16968541216903,
+    -12.242938144446052,
+    -12.648695740360347
+   ],
+   "incremental_mode": {
+    "F_N": 10.625,
+    "tip_incremental_mm": 4.504417415479058,
+    "tip_incremental_ux_mm": -3.4976290367600704,
+    "back_bow_max_mm": 2.3237625013487424,
+    "back_bow_s_mm": 9.55479452054795,
+    "back_bow_to_tip_ratio": 0.5158852493029009,
+    "mechanism": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+    "classifier": "back-flank bow over 2 < s < L-8 vs tip incremental |du|; ratio >= 0.5 -> back-flank buckling"
+   },
+   "iters": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    6,
+    6,
+    6,
+    8,
+    7
+   ],
+   "linear_compliance_mm_per_N": 0.9062966499020434,
+   "secant_k_at_target": 0.9970963766640123,
+   "secant_k_at_last": 0.8186422567527829,
+   "at_last_converged": {
+    "F_N": 10.625,
+    "cauchy_vm_and_green_lagrange_strain": {
+     "vm_max": 10.731716568270011,
+     "vm_p99": 5.341004786415015,
+     "vm_p995": 5.906594970360178,
+     "strain_max": 0.14676137509921186,
+     "strain_p99": 0.08305025749127676,
+     "boundary_self_intersections": 0
+    },
+    "J_min": 0.8847386217487163,
+    "note": "Cauchy sigma = F S F^T / J; strain = max |principal Green-Lagrange|; TPU elements"
+   },
+   "secs": 128.58925318717957,
+   "last_converged_F_N": 10.625,
+   "smallest_rejected_F_N": 10.671875,
+   "reached_cap": false,
+   "rejected": [
+    {
+     "F_N": 11.0,
+     "reason": "newton",
+     "patch_disp_mm": 30.331729619311304
+    },
+    {
+     "F_N": 10.75,
+     "reason": "newton",
+     "patch_disp_mm": 12.779088790260577
+    },
+    {
+     "F_N": 10.8125,
+     "reason": "newton",
+     "patch_disp_mm": 13.427804343203418
+    },
+    {
+     "F_N": 10.71875,
+     "reason": "newton",
+     "patch_disp_mm": 31.35234205965178
+    },
+    {
+     "F_N": 10.671875,
+     "reason": "newton",
+     "patch_disp_mm": 23.216693099245262
+    }
+   ],
+   "newton_iterations": 245,
+   "controller": "dF0 0.5, bisection to 0.03 N, jump x4.0",
+   "scaled_to_E": {
+    "56": {
+     "last_converged_F_N": 8.880597014925373,
+     "smallest_rejected_F_N": 8.919776119402986
+    },
+    "26": {
+     "last_converged_F_N": 4.123134328358209,
+     "smallest_rejected_F_N": 4.141324626865671
+    },
+    "9.8": {
+     "last_converged_F_N": 1.5541044776119406,
+     "smallest_rejected_F_N": 1.5609608208955226
+    }
+   },
+   "scaling_note": "SVK internal force is linear in E at fixed nu, so load at a given displacement scales exactly with E"
+  },
+  "rec_mid": {
+   "E_MPa": 67.0,
+   "h_mm": 0.32,
+   "option": null,
+   "F_N": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5,
+    8.0,
+    8.5,
+    9.0,
+    9.5,
+    10.0,
+    10.5,
+    11.0,
+    11.5,
+    11.964285714285714
+   ],
+   "patch_disp_mm": [
+    0.0,
+    0.2938813707408766,
+    0.600210615131207,
+    0.9183827073677202,
+    1.2475601886933179,
+    1.5866833742418933,
+    1.9344892829578957,
+    2.289539726216282,
+    2.6502584511731735,
+    3.0149762683544044,
+    3.3819818717625214,
+    3.7495749353512995,
+    4.116117429247268,
+    4.480079189309562,
+    4.8400745919253385,
+    5.194888495847246,
+    5.543491061490425,
+    5.885042319666329,
+    6.218888235150363,
+    6.544550442921631,
+    6.861711887718616,
+    7.170200389600721,
+    7.469971815915651,
+    7.761094167374966,
+    8.02382142298821
+   ],
+   "tip_ux_mm": [
+    0.0,
+    -0.18132697340231874,
+    -0.37230467227168157,
+    -0.5729143302207417,
+    -0.782954213548678,
+    -1.0020434051288845,
+    -1.2296303724522395,
+    -1.4650063931849693,
+    -1.7073242210337076,
+    -1.955622309531794,
+    -2.208854372201149,
+    -2.46592317874881,
+    -2.725716581202459,
+    -2.9871431730166487,
+    -3.249164921748737,
+    -3.510824588184838,
+    -3.7712665800392453,
+    -4.029750837080276,
+    -4.285660184950015,
+    -4.53850219529826,
+    -4.787906917566293,
+    -5.033621942951283,
+    -5.275506199437911,
+    -5.513523739261218,
+    -5.731132224089981
+   ],
+   "incremental_mode": {
+    "F_N": 11.964285714285714,
+    "tip_incremental_mm": 3.110270316504491,
+    "tip_incremental_ux_mm": -1.5067579834780522,
+    "back_bow_max_mm": 0.571043376986403,
+    "back_bow_s_mm": 36.986301369863014,
+    "back_bow_to_tip_ratio": 0.18359927558585193,
+    "mechanism": "local tip-wedge fold (incremental motion concentrated at the tip)",
+    "classifier": "back-flank bow over 2 < s < L-8 vs tip incremental |du|; ratio >= 0.5 -> back-flank buckling"
+   },
+   "iters": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+   ],
+   "linear_compliance_mm_per_N": 0.5750290793385142,
+   "secant_k_at_target": 1.478423063632286,
+   "secant_k_at_last": 1.4910957115780386,
+   "at_last_converged": {
+    "F_N": 11.964285714285714,
+    "cauchy_vm_and_green_lagrange_strain": {
+     "vm_max": 12.898333721572005,
+     "vm_p99": 4.953498894771572,
+     "vm_p995": 5.462440668758049,
+     "strain_max": 0.1560365169724654,
+     "strain_p99": 0.0745348531799622,
+     "boundary_self_intersections": 0
+    },
+    "J_min": 0.9065464244633603,
+    "note": "Cauchy sigma = F S F^T / J; strain = max |principal Green-Lagrange|; TPU elements"
+   },
+   "secs": 69.08253717422485,
+   "last_converged_F_N": 11.964285714285714,
+   "smallest_rejected_F_N": null,
+   "reached_cap": true,
+   "rejected": [],
+   "newton_iterations": 120,
+   "controller": "dF0 0.5, bisection to 0.03 N, jump x4.0",
+   "scaled_to_E": {
+    "56": {
+     "last_converged_F_N": 10.0,
+     "smallest_rejected_F_N": null
+    },
+    "26": {
+     "last_converged_F_N": 4.642857142857142,
+     "smallest_rejected_F_N": null
+    },
+    "9.8": {
+     "last_converged_F_N": 1.75,
+     "smallest_rejected_F_N": null
+    }
+   },
+   "scaling_note": "SVK internal force is linear in E at fixed nu, so load at a given displacement scales exactly with E"
+  },
+  "cadL60_tip": {
+   "E_MPa": 67.0,
+   "h_mm": 0.35,
+   "option": null,
+   "F_N": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5,
+    7.625,
+    7.71875,
+    7.75390625,
+    7.806640625
+   ],
+   "patch_disp_mm": [
+    0.0,
+    0.45657785093181585,
+    0.9156436860571271,
+    1.3771196156039027,
+    1.8409082087099224,
+    2.3068950837220004,
+    2.7749525951778313,
+    3.244944957578153,
+    3.716735317327927,
+    4.190195598141479,
+    4.665220553102038,
+    5.141748738573472,
+    5.619796268438325,
+    6.0995195881767845,
+    6.581386758064132,
+    7.068098292302424,
+    7.195514815096123,
+    7.327349160146053,
+    7.487731290353786,
+    7.434411207317205
+   ],
+   "tip_ux_mm": [
+    0.0,
+    -0.5843673324259958,
+    -1.1740757774947128,
+    -1.7689043074923734,
+    -2.3685924363609097,
+    -2.9728445102332093,
+    -3.5813359094322896,
+    -4.193721651126304,
+    -4.8096481092938745,
+    -5.428768991098166,
+    -6.050767529694415,
+    -6.675388571200342,
+    -7.302488354220082,
+    -7.932122887722643,
+    -8.564772372883429,
+    -9.203646056125242,
+    -9.370227215763062,
+    -9.537856240988306,
+    -9.732940588479433,
+    -9.67609511063886
+   ],
+   "incremental_mode": {
+    "F_N": 7.806640625,
+    "tip_incremental_mm": 1.5140337700984008,
+    "tip_incremental_ux_mm": -0.5948867919004339,
+    "back_bow_max_mm": -0.8804643222493539,
+    "back_bow_s_mm": 20.898876404494374,
+    "back_bow_to_tip_ratio": 0.5815354582164507,
+    "mechanism": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+    "classifier": "back-flank bow over 2 < s < L-8 vs tip incremental |du|; ratio >= 0.5 -> back-flank buckling"
+   },
+   "iters": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    8,
+    19,
+    6
+   ],
+   "linear_compliance_mm_per_N": 0.9106263039060923,
+   "secant_k_at_target": 1.0717606902154622,
+   "secant_k_at_last": 1.050068446216216,
+   "at_last_converged": {
+    "F_N": 7.806640625,
+    "cauchy_vm_and_green_lagrange_strain": {
+     "vm_max": 4.544950029559272,
+     "vm_p99": 1.8328785920663606,
+     "vm_p995": 1.9539379007188975,
+     "strain_max": 0.07659074632895244,
+     "strain_p99": 0.027737713158043784,
+     "boundary_self_intersections": 0
+    },
+    "J_min": 0.9483004871970352,
+    "note": "Cauchy sigma = F S F^T / J; strain = max |principal Green-Lagrange|; TPU elements"
+   },
+   "secs": 150.04031348228455,
+   "last_converged_F_N": 7.806640625,
+   "smallest_rejected_F_N": 7.8125,
+   "reached_cap": false,
+   "rejected": [
+    {
+     "F_N": 8.0,
+     "reason": "newton",
+     "patch_disp_mm": -0.6540410361642605
+    },
+    {
+     "F_N": 7.75,
+     "reason": "newton",
+     "patch_disp_mm": 7.371423561285855
+    },
+    {
+     "F_N": 7.8125,
+     "reason": "newton",
+     "patch_disp_mm": 41.56334615976575
+    },
+    {
+     "F_N": 7.859375,
+     "reason": "newton",
+     "patch_disp_mm": 13.273798793038631
+    },
+    {
+     "F_N": 7.7890625,
+     "reason": "newton",
+     "patch_disp_mm": 33.67832291094723
+    },
+    {
+     "F_N": 7.8857421875,
+     "reason": "branch jump (rate 0.303 vs -1.01 mm/N)",
+     "patch_disp_mm": 7.458414402940021
+    },
+    {
+     "F_N": 7.84619140625,
+     "reason": "branch jump (rate 0.0297 vs -1.01 mm/N)",
+     "patch_disp_mm": 7.435587631273935
+    }
+   ],
+   "newton_iterations": 271,
+   "controller": "dF0 0.5, bisection to 0.03 N, jump x4.0",
+   "scaled_to_E": {
+    "56": {
+     "last_converged_F_N": 6.524953358208955,
+     "smallest_rejected_F_N": 6.529850746268656
+    },
+    "26": {
+     "last_converged_F_N": 3.029442630597015,
+     "smallest_rejected_F_N": 3.031716417910448
+    },
+    "9.8": {
+     "last_converged_F_N": 1.1418668376865673,
+     "smallest_rejected_F_N": 1.142723880597015
+    }
+   },
+   "scaling_note": "SVK internal force is linear in E at fixed nu, so load at a given displacement scales exactly with E"
+  },
+  "rec_nailA_tip": {
+   "E_MPa": 56.0,
+   "h_mm": 0.32,
+   "option": "with PLA",
+   "F_N": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5,
+    8.0,
+    8.25,
+    8.34375,
+    8.4140625
+   ],
+   "patch_disp_mm": [
+    0.0,
+    0.4703805629195245,
+    0.9504075969502216,
+    1.4409976741875834,
+    1.9429758371848522,
+    2.457131959138992,
+    2.984328618113115,
+    3.525673168489865,
+    4.082758326110097,
+    4.657957222089971,
+    5.25472838076015,
+    5.877861597361507,
+    6.533646649213218,
+    7.230189483410097,
+    7.978657457906953,
+    8.797749259490104,
+    9.733232174979271,
+    10.29844322359952,
+    10.561340083881067,
+    10.84349078674061
+   ],
+   "tip_ux_mm": [
+    0.0,
+    -0.48053057214350964,
+    -0.9684006475625417,
+    -1.4646812569151269,
+    -1.9704130102193613,
+    -2.486664579175803,
+    -3.0146442257589396,
+    -3.555883494654603,
+    -4.112507852643009,
+    -4.68759408732738,
+    -5.285583109296047,
+    -5.912683483782694,
+    -6.577240871130653,
+    -7.290316891000825,
+    -8.06743860866103,
+    -8.934606706501269,
+    -9.954906449928345,
+    -10.596518884074186,
+    -10.906852786112884,
+    -11.256777854916393
+   ],
+   "incremental_mode": {
+    "F_N": 8.4140625,
+    "tip_incremental_mm": 3.819856244282854,
+    "tip_incremental_ux_mm": -3.225875297146702,
+    "back_bow_max_mm": 2.166110935352604,
+    "back_bow_s_mm": 36.986301369863014,
+    "back_bow_to_tip_ratio": 0.5670660875247867,
+    "mechanism": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+    "classifier": "back-flank bow over 2 < s < L-8 vs tip incremental |du|; ratio >= 0.5 -> back-flank buckling"
+   },
+   "iters": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    6,
+    6,
+    6,
+    7,
+    7,
+    6,
+    8
+   ],
+   "linear_compliance_mm_per_N": 0.9317812278983376,
+   "secant_k_at_target": 0.9515239680717235,
+   "secant_k_at_last": 0.7759551481602854,
+   "at_last_converged": {
+    "F_N": 8.4140625,
+    "cauchy_vm_and_green_lagrange_strain": {
+     "vm_max": 7.8480264642727455,
+     "vm_p99": 4.081486870585011,
+     "vm_p995": 4.545987356226852,
+     "strain_max": 0.1364957530560999,
+     "strain_p99": 0.0767466203786591,
+     "pla_vm_max": 6.940171007668949,
+     "pla_vm_p99": 6.596204056555498,
+     "boundary_self_intersections": 0
+    },
+    "J_min": 0.8943719608009567,
+    "note": "Cauchy sigma = F S F^T / J; strain = max |principal Green-Lagrange|; TPU elements"
+   },
+   "secs": 157.76564407348633,
+   "last_converged_F_N": 8.4140625,
+   "smallest_rejected_F_N": 8.4375,
+   "reached_cap": false,
+   "rejected": [
+    {
+     "F_N": 8.5,
+     "reason": "newton",
+     "patch_disp_mm": 32.38330127833439
+    },
+    {
+     "F_N": 8.625,
+     "reason": "newton",
+     "patch_disp_mm": 15.01648843850749
+    },
+    {
+     "F_N": 8.4375,
+     "reason": "newton",
+     "patch_disp_mm": 11.047103112455108
+    },
+    {
+     "F_N": 8.484375,
+     "reason": "newton",
+     "patch_disp_mm": 10.70098336775002
+    },
+    {
+     "F_N": 8.51953125,
+     "reason": "newton",
+     "patch_disp_mm": 11.417688275215994
+    },
+    {
+     "F_N": 8.466796875,
+     "reason": "newton",
+     "patch_disp_mm": 10.966002324269068
+    }
+   ],
+   "newton_iterations": 264,
+   "controller": "dF0 0.5, bisection to 0.03 N, jump x4.0"
+  }
+ },
+ "export_sizes_bytes": {
+  "fea_mid.json": 227796,
+  "fea_tip.json": 226493,
+  "fea_point.json": 227688,
+  "fea_mid_nl_cap.json": 150176,
+  "fea_tip_nl_cap.json": 147768
+ },
+ "export_total_bytes": 979921,
+ "runtime_s": 913.611067533493
+}

@@ -1,0 +1,18 @@
+id: T01H
+title: M3 pan head clears its counterbore (rev A Ø6.5)
+parts: ["wrist mount", "servo horn", "M3 horn screws"]
+constants: basis.yaml
+companion_of: T01
+mode: radial
+units: mm radial interference (> 0 = head rubs counterbore wall)
+requirement: Screw head (located by the horn thread) seats without touching the counterbore wall.
+spec: {usl: 0.0}
+accept: {method: wc}
+contributors:
+  - {name: cbore_d_printed, nominal: "=cbore_d", bias: "=fdm_hole_bias_small_d", tol: "=fdm_hole_scatter_d", sensitivity: -0.5, dist: normal, tag: S, source: "CAD 6.5 (params.json wrist_mount.counterbore_d) + small-hole bias [S] + scatter [A]"}
+  - {name: head_dk, limits: ["=m3_head_dk_max - 0.3", "=m3_head_dk_max"], sensitivity: 0.5, dist: uniform, tag: S, source: "ISO 7045 M3 dk max 5.6 [S]; min 5.3 [A] (dk min not found)"}
+  - {name: cbore_position, kind: radial, gdt: {type: position, zone: "=fdm_pos_dia"}, dist: disk, tag: A, source: "counterbore to A|B|C, printed"}
+  - {name: horn_thread_position, kind: radial, gdt: {type: position, zone: "=horn_thread_pos_dia"}, dist: disk, tag: A, source: "molded horn pattern"}
+  - {name: head_on_shank, kind: radial, radius: 0.05, dist: disk, tag: A, source: "head concentric to shank"}
+variants:
+  - {id: stock60, role: rejected, label: "stock counterbore 6.0", set: {cbore_d: 6.0}}

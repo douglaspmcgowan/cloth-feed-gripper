@@ -1,0 +1,74 @@
+Pin map check: firmware/gripper/config.h against ecad/gripper/design.py GPIO_NETS
+config.h macro    config.h GPIO  design GPIO  net         DevKitC socket pin  line check
+----------------  -------------  -----------  ----------  ------------------  ----------
+PIN_SERVO_PWM     18             18           PWM_3V3     28                  ok
+PIN_FSR_ADC       34             34           FSR_ADC     5                   ok
+PIN_SERVO_FB_ADC  32             32           FB_ADC      7                   ok
+PIN_BUTTON        25             25           BTN_IN      9                   ok
+PIN_LIMIT_OPEN    26             26           LIM_IN      10                  ok
+PIN_I2C_SDA       21             21           SDA         25                  ok
+PIN_I2C_SCL       22             22           SCL         22                  ok
+PIN_STATUS_LED    2              2            LED_DRV     34                  ok
+PIN_DRV_AIN1      16             16           DRV_AIN1    31                  ok
+PIN_DRV_AIN2      17             17           DRV_AIN2    30                  ok
+PIN_DRV_NSLEEP    13             13           DRV_NSLEEP  15                  ok
+PIN_DRV_NFAULT    4              4            DRV_NFAULT  32                  ok
+PIN_ENC_A         27             27           ENC_A       11                  ok
+PIN_ENC_B         33             33           ENC_B       8                   ok
+
+Socket pin on the DevKitC header and the net design.PARTS places on it
+GPIO  expected net  header  socket pin  net on U5 pin  check
+----  ------------  ------  ----------  -------------  -----
+18    PWM_3V3       J3      28          PWM_3V3        ok
+34    FSR_ADC       J2      5           FSR_ADC        ok
+32    FB_ADC        J2      7           FB_ADC         ok
+25    BTN_IN        J2      9           BTN_IN         ok
+26    LIM_IN        J2      10          LIM_IN         ok
+21    SDA           J3      25          SDA            ok
+22    SCL           J3      22          SCL            ok
+2     LED_DRV       J3      34          LED_DRV        ok
+16    DRV_AIN1      J3      31          DRV_AIN1       ok
+17    DRV_AIN2      J3      30          DRV_AIN2       ok
+13    DRV_NSLEEP    J2      15          DRV_NSLEEP     ok
+4     DRV_NFAULT    J3      32          DRV_NFAULT     ok
+27    ENC_A         J2      11          ENC_A          ok
+33    ENC_B         J2      8           ENC_B          ok
+
+ESP32 pin rules [S]: analog on ADC1 (32-39), 34-39 input-only without pull-ups, strapping pins 0, 2, 5, 12, 15, flash pins 6-11
+GPIO  net         result  notes
+----  ----------  ------  ------------------------------------------------------------------------------------------------------------------------------------------------------------
+18    PWM_3V3     ok      plain digital I/O
+34    FSR_ADC     ok      ADC1; input-only, no pull-up (external network provides the bias)
+32    FB_ADC      ok      ADC1
+25    BTN_IN      ok      plain digital I/O
+26    LIM_IN      ok      plain digital I/O
+21    SDA         ok      plain digital I/O
+22    SCL         ok      plain digital I/O
+2     LED_DRV     ok      strapping (low or floating for download mode); resistors on net: R21; LED + 330 ohm to GND only: low at reset, allowed (download mode needs low or floating)
+16    DRV_AIN1    ok      plain digital I/O
+17    DRV_AIN2    ok      plain digital I/O
+13    DRV_NSLEEP  ok      plain digital I/O
+4     DRV_NFAULT  ok      plain digital I/O
+27    ENC_A       ok      plain digital I/O
+33    ENC_B       ok      plain digital I/O
+Strapping pins 0, 5, 12, 15 are unused by the circuit: 0, 5, 12, 15
+
+Netlist ecad/gripper/kicad/out/gripper.net: every GPIO socket pin is on the expected net
+GPIO  socket pin  expected net  netlist net  check
+----  ----------  ------------  -----------  -----
+18    28          PWM_3V3       /PWM_3V3     ok
+34    5           FSR_ADC       /FSR_ADC     ok
+32    7           FB_ADC        /FB_ADC      ok
+25    9           BTN_IN        /BTN_IN      ok
+26    10          LIM_IN        /LIM_IN      ok
+21    25          SDA           /SDA         ok
+22    22          SCL           /SCL         ok
+2     34          LED_DRV       /LED_DRV     ok
+16    31          DRV_AIN1      /DRV_AIN1    ok
+17    30          DRV_AIN2      /DRV_AIN2    ok
+13    15          DRV_NSLEEP    /DRV_NSLEEP  ok
+4     32          DRV_NFAULT    /DRV_NFAULT  ok
+27    11          ENC_A         /ENC_A       ok
+33    8           ENC_B         /ENC_B       ok
+
+Overall: PASS

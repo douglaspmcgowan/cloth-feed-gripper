@@ -1,0 +1,31 @@
+id: T10
+title: Finger pad parallelism in the closing plane (root gap at tip contact)
+parts: ["knuckle A", "knuckle B", "finger A", "finger B", "TPU pads"]
+constants: basis.yaml
+units: mm root gap when the tips first touch (> 0 = V open toward the root)
+requirement: Root gap at tip contact within +/-1.0 mm over the 45 mm pad (pad_len = L_tip - L_root).
+spec: {lsl: "=-parallel_max", usl: "=parallel_max"}
+accept: {method: mc}
+fix: >-
+  Toe the rigid contact faces in by 0.44 deg (contact_gap / (2 r_c) = 1.0 / 130 rad, hinged at the pad-contact
+  point, the same -0.44 deg touch the firmware sim uses) so they are parallel at first contact, not at
+  theta = 0 (T10-toein). The 0.64 mm design V then goes away and the tolerance band is centred.
+fix_variant: toein
+notes: >-
+  Rotation errors (servo angle, backlash, dog lash) cancel at tip contact; only translation errors g scale by
+  (1 - L_root/L_tip), plus pad face tilt and root-block angle. The finger is located by 2 pegs + 1 M2 (rev A),
+  so its float is a small X translation.
+constant: "=-(1 - L_root/L_tip)*a0"
+contributors:
+  - {name: closed_gap_design, nominal: "=closed_gap", sensitivity: "=1 - L_root/L_tip", tol: 0, tag: D, source: "params.json finger.contact_gap"}
+  - {name: centre_distance, from_stack: T06, sensitivity: "=1 - L_root/L_tip", tag: D, source: "T06"}
+  - {name: xf_A, nominal: 0, tol: "=xf_tol", sensitivity: "=-(1 - L_root/L_tip)", dist: normal, tag: S, source: "knuckle root face (XY band)"}
+  - {name: xf_B, nominal: 0, tol: "=xf_tol", sensitivity: "=-(1 - L_root/L_tip)", dist: normal, tag: S, source: ""}
+  - {name: pad_A_tilt, nominal: 0, tol: "=pad_profile_zone", dist: normal, tag: A, source: "TPU profile zone used as tilt over the pad"}
+  - {name: pad_B_tilt, nominal: 0, tol: "=pad_profile_zone", dist: normal, tag: A, source: ""}
+  - {name: finger_A_root_float, kind: radial, project: first, radius: "=finger_hole_float", dist: disk, sensitivity: "=-(1 - L_root/L_tip)", tag: A, source: "pegs + M2: X component of the float disk"}
+  - {name: finger_B_root_float, kind: radial, project: first, radius: "=finger_hole_float", dist: disk, sensitivity: "=1 - L_root/L_tip", tag: A, source: "same"}
+  - {name: root_block_A_angle, nominal: 0, tol: "=fdm_xy_tol_short/base_width*pad_len", dist: normal, tag: S, source: "root face angle over the 16 mm base, projected to the pad"}
+  - {name: root_block_B_angle, nominal: 0, tol: "=fdm_xy_tol_short/base_width*pad_len", dist: normal, tag: S, source: ""}
+variants:
+  - {id: toein, label: "contact faces toed in 0.44 deg: parallel at first contact", set: {closed_gap: 0.0}}

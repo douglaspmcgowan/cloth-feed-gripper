@@ -1,0 +1,1394 @@
+{
+ "case": "revb",
+ "label": "Rev B, all changes at once, servo case 20.1 mm",
+ "tally": {
+  "n": 26,
+  "pass": 22,
+  "marginal": 2,
+  "fail": 2,
+  "undecided": 0,
+  "own_fail": 2,
+  "thinnest": "T09T",
+  "thinnest_cpk": -0.239466102,
+  "thinnest_ex_horn": "T09T",
+  "thinnest_ex_horn_cpk": -0.239466102,
+  "marginal_ids": [
+   "T09H",
+   "T16"
+  ],
+  "fail_ids": [
+   "T09T",
+   "T14B"
+  ]
+ },
+ "stacks": [
+  {
+   "id": "T01",
+   "title": "Horn-to-mount bolt pattern fit (4x M3 on the 14.0 BC)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": -0.3865,
+   "wc": [
+    -0.363,
+    -0.035
+   ],
+   "spec": {
+    "usl": 0.0
+   },
+   "units": "mm radial interference (> 0 = screw hits hole wall)",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "hole_position",
+    "var_pct": 81.0164869
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T01",
+   "picked_variant": null,
+   "mc": {
+    "mean": -0.193473596,
+    "std": 0.0390370056,
+    "p0135": -0.309368655,
+    "p99865": -0.0835826288,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.76624388,
+    "cpk_percentile_se": 0.0248532143,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T01H",
+   "title": "M3 pan head clears its counterbore (rev A \u00d86.5)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": -0.525,
+   "wc": [
+    -0.55,
+    -0.075
+   ],
+   "spec": {
+    "usl": 0.0
+   },
+   "units": "mm radial interference (> 0 = head rubs counterbore wall)",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "cbore_position",
+    "var_pct": 55.1724138
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T01H",
+   "picked_variant": null,
+   "mc": {
+    "mean": -0.325566889,
+    "std": 0.0595422814,
+    "p0135": -0.48486188,
+    "p99865": -0.16465171,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.02364694,
+    "cpk_percentile_se": 0.0124769432,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T02",
+   "title": "Horn pilot recess radial fit (\u00d819.2 horn in the printed \u00d819.51 recess)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.36,
+   "wc": [
+    0.05,
+    0.35
+   ],
+   "spec": {
+    "lsl": 0.02,
+    "usl": 0.4
+   },
+   "units": "mm diametral clearance",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "recess_d_printed",
+    "var_pct": 80.0
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T02",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.199967014,
+    "std": 0.0373941878,
+    "p0135": 0.0882221405,
+    "p99865": 0.312424715,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.61009181,
+    "cpk_percentile_se": 0.0216598085,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T03",
+   "title": "Axial stack horn face to clamp to screw \u2014 thread engagement",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 2.5,
+   "wc": [
+    1.885,
+    2.915
+   ],
+   "spec": {
+    "lsl": 1.5
+   },
+   "units": "mm full-thread engagement below horn face H",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "clamp_thickness",
+    "var_pct": 43.3703701
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T03",
+   "picked_variant": null,
+   "mc": {
+    "mean": 2.40040498,
+    "std": 0.131436558,
+    "p0135": 2.03385556,
+    "p99865": 2.77298076,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.4568962,
+    "cpk_percentile_se": 0.0123932117,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T03B",
+   "title": "Axial stack \u2014 screw tip clear of the horn hole floor",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.75,
+   "wc": [
+    0.235,
+    1.465
+   ],
+   "spec": {
+    "lsl": 0.2
+   },
+   "units": "mm (hole depth minus screw protrusion below H)",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "clamp_thickness",
+    "var_pct": 40.7301252
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T03B",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.849698669,
+    "std": 0.135499478,
+    "p0135": 0.462623179,
+    "p99865": 1.22904004,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.67850725,
+    "cpk_percentile_se": 0.0215096474,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T04",
+   "title": "Gripper datum B axis vs wrist-roll axis (concentricity)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    0.0,
+    0.275
+   ],
+   "spec": {
+    "usl": 0.3
+   },
+   "units": "mm radial offset",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pilot_float",
+    "var_pct": 67.418813
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T04",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.0791109092,
+    "std": 0.0373593934,
+    "p0135": 0.00348336302,
+    "p99865": 0.190867697,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.95803339,
+    "cpk_percentile_se": 0.0108366985,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T05-tcpcal",
+   "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+   "role": "option",
+   "variant_of": "T05",
+   "nominal": 0.307017544,
+   "wc": [
+    -0.552118737,
+    1.16615383
+   ],
+   "spec": {
+    "lsl": -0.192982456,
+    "usl": 0.807017544
+   },
+   "units": "mm (pinch point x vs roll axis, gripper frame G)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "backlash_lag_B",
+    "var_pct": 37.7171203
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T05",
+   "picked_variant": "T05-tcpcal",
+   "mc": {
+    "mean": 0.307476011,
+    "std": 0.0917405604,
+    "p0135": 0.037036895,
+    "p99865": 0.578707933,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.84174663,
+    "cpk_percentile_se": 0.0160541685,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T06",
+   "title": "Gear centre distance a (pin A to pin B, rev A pinned layout)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 28.5,
+   "wc": [
+    28.35,
+    28.65
+   ],
+   "spec": {
+    "lsl": 28.2855493,
+    "usl": 28.7144507
+   },
+   "units": "mm",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pinA_to_pinB_holes",
+    "var_pct": 90.4977376
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T06",
+   "picked_variant": null,
+   "mc": {
+    "mean": 28.5000378,
+    "std": 0.0351165776,
+    "p0135": 28.3954234,
+    "p99865": 28.6067559,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.00968535,
+    "cpk_percentile_se": 0.0120910415,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T07",
+   "title": "Gear backlash jt (circumferential, m 1.5 z 19, alpha 25)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.25,
+   "wc": [
+    -0.0831538291,
+    0.583153829
+   ],
+   "spec": {
+    "lsl": 0.05,
+    "usl": 0.45
+   },
+   "units": "mm circumferential backlash",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.998,
+   "dominant": {
+    "name": "centre_distance",
+    "var_pct": 50.8008548
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T07",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.250156519,
+    "std": 0.0460853397,
+    "p0135": 0.110333116,
+    "p99865": 0.389888926,
+    "out_pct": 0.002,
+    "cpk_percentile": 1.42997487,
+    "cpk_percentile_se": 0.0129513765,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T08",
+   "title": "Gear mesh axial alignment (gear A vs gear B mid-planes, Z)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -0.49,
+    0.49
+   ],
+   "spec": {
+    "lsl": -0.8,
+    "usl": 0.8
+   },
+   "units": "mm (z_mid A - z_mid B)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "float_A",
+    "var_pct": 45.9027542
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T08",
+   "picked_variant": null,
+   "mc": {
+    "mean": -0.000394221297,
+    "std": 0.127487527,
+    "p0135": -0.320686733,
+    "p99865": 0.32052258,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.49246573,
+    "cpk_percentile_se": 0.0131071814,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09",
+   "title": "Closure gap \u2014 first-contact angle of the jaw before calibration",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": -2.21855731,
+   "wc": [
+    -4.94750592,
+    0.5103913
+   ],
+   "spec": {
+    "lsl": -4.0,
+    "usl": 4.0
+   },
+   "units": "deg (servo jaw angle at first pad contact, theta = 0 means rigid contact faces 1.0 apart)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "horn_trim",
+    "var_pct": 68.3527969
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09",
+   "picked_variant": null,
+   "mc": {
+    "mean": -2.21778725,
+    "std": 0.40456073,
+    "p0135": -3.41557368,
+    "p99865": -0.996507673,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.48713706,
+    "cpk_percentile_se": 0.0178183918,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09F-relfloor8",
+   "title": "Pad force at the jaw floor with the FSR trip failed (position-only cap, R15)",
+   "role": "option",
+   "variant_of": "T09F",
+   "nominal": 6.35935148,
+   "wc": [
+    4.86526237,
+    8.03132454
+   ],
+   "spec": {
+    "usl": 8.0
+   },
+   "units": "N (pad force with the jaw at JAW_MIN_DEG -7.4)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "k_pair",
+    "var_pct": 60.6020832
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09F",
+   "picked_variant": "T09F-relfloor8",
+   "mc": {
+    "mean": 6.35966528,
+    "std": 0.403544868,
+    "p0135": 5.30698983,
+    "p99865": 7.48019121,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.46111961,
+    "cpk_percentile_se": 0.00296689148,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09H-relfloor8",
+   "title": "Largest hold force the firmware can reach on the softest finger (R14 under the R15 cap)",
+   "role": "option",
+   "variant_of": "T09H",
+   "nominal": 6.31652319,
+   "wc": [
+    4.82610294,
+    7.9848274
+   ],
+   "spec": {
+    "lsl": 5.0
+   },
+   "units": "N (pad force at the firmware squeeze cap or the jaw floor, whichever comes first)",
+   "method": "mc",
+   "verdict3": "marginal",
+   "own_verdict3": "marginal",
+   "verdict_band": [
+    "marginal"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.996,
+   "dominant": {
+    "name": "k_pair",
+    "var_pct": 60.6205157
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09H",
+   "picked_variant": "T09H-relfloor8",
+   "mc": {
+    "mean": 6.31703521,
+    "std": 0.401129272,
+    "p0135": 5.28345428,
+    "p99865": 7.44721368,
+    "out_pct": 0.004,
+    "cpk_percentile": 1.27663479,
+    "cpk_percentile_se": 0.0098508073,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09P-floor49",
+   "title": "Peak pad force when the FSR over-force trip fires (R15)",
+   "role": "option",
+   "variant_of": "T09P",
+   "nominal": 6.35935148,
+   "wc": [
+    4.86526237,
+    8.03132454
+   ],
+   "spec": {
+    "usl": 8.0
+   },
+   "units": "N (largest true pad force before the trip opens the jaw)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "k_pair",
+    "var_pct": 60.6071646
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09P",
+   "picked_variant": "T09P-floor49",
+   "mc": {
+    "mean": 6.35965954,
+    "std": 0.403531101,
+    "p0135": 5.30698983,
+    "p99865": 7.48005564,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.46129535,
+    "cpk_percentile_se": 0.00331357782,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09T",
+   "title": "Close time to first contact after calibration (R19)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.507,
+   "wc": [
+    0.463,
+    0.551
+   ],
+   "spec": {
+    "usl": 0.5
+   },
+   "units": "s (close command to first pad contact)",
+   "method": "mc",
+   "verdict3": "fail",
+   "own_verdict3": "fail",
+   "verdict_band": [
+    "fail"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 24.039,
+   "dominant": {
+    "name": "servo_angle_error",
+    "var_pct": 69.5991091
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09T",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.507024243,
+    "std": 0.00997571382,
+    "p0135": 0.477135476,
+    "p99865": 0.536359169,
+    "out_pct": 75.961,
+    "cpk_percentile": -0.239466102,
+    "cpk_percentile_se": 0.00271920286,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T10",
+   "title": "Finger pad parallelism in the closing plane (root gap at tip contact)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -1.45178571,
+    1.45178571
+   ],
+   "spec": {
+    "lsl": -1.0,
+    "usl": 1.0
+   },
+   "units": "mm root gap when the tips first touch (> 0 = V open toward the root)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pad_A_tilt",
+    "var_pct": 25.3019138
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T10",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.00044247588,
+    "std": 0.198754785,
+    "p0135": -0.596246827,
+    "p99865": 0.597365487,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.67371443,
+    "cpk_percentile_se": 0.0127880908,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T10B",
+   "title": "Fingertip out-of-plane mismatch (Z) from pin perpendicularity and knuckle wobble",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -2.39691131,
+    2.39691131
+   ],
+   "spec": {
+    "lsl": -2.0,
+    "usl": 2.0
+   },
+   "units": "mm (tip A z - tip B z)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pinA_perpendicularity",
+    "var_pct": 22.3369789
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T10B",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.00175344023,
+    "std": 0.329107191,
+    "p0135": -0.973896445,
+    "p99865": 0.97824244,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.04541878,
+    "cpk_percentile_se": 0.0128559304,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T11",
+   "title": "Radial keep-out, r 11.6 hub band (H-1..H+1) vs wrist-link lip r 12.6",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 1.0,
+   "wc": [
+    0.175,
+    1.15
+   ],
+   "spec": {
+    "lsl": 0.1
+   },
+   "units": "mm radial clearance, worst angle over 320 deg roll",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "lip_radius",
+    "var_pct": 47.0247895
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T11",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.720487586,
+    "std": 0.0971682588,
+    "p0135": 0.434167767,
+    "p99865": 0.999016009,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.16542979,
+    "cpk_percentile_se": 0.0278873875,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T12",
+   "title": "Axial keep-out, gripper widens (r > 15) above the wrist-link lip top",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.7,
+   "wc": [
+    0.1,
+    1.5
+   ],
+   "spec": {
+    "lsl": 0.1
+   },
+   "units": "mm (z where the part widens past r 15) - (lip top z)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "widen_height_above_H",
+    "var_pct": 40.9090909
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T12",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.800364271,
+    "std": 0.13544986,
+    "p0135": 0.421091759,
+    "p99865": 1.17891789,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.84643153,
+    "cpk_percentile_se": 0.00732470886,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T12B",
+   "title": "Axial gap, gripper rim to servo-5 case top",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 3.8,
+   "wc": [
+    3.5,
+    4.1
+   ],
+   "spec": {
+    "lsl": 0.5
+   },
+   "units": "mm",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "rim_below_H",
+    "var_pct": 79.4117647
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T12B",
+   "picked_variant": null,
+   "mc": {
+    "mean": 3.80031686,
+    "std": 0.0971132665,
+    "p0135": 3.56516273,
+    "p99865": 4.03227692,
+    "out_pct": 0.0,
+    "cpk_percentile": 14.0440252,
+    "cpk_percentile_se": 0.0400197176,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T13",
+   "title": "Wrist-camera aim angle error (optional UVC bracket on the front-plate pad)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -3.03263599,
+    3.03263599
+   ],
+   "spec": {
+    "lsl": -3.0,
+    "usl": 3.0
+   },
+   "units": "deg",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "lens_tilt",
+    "var_pct": 35.1747352
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T13",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.00134143166,
+    "std": 0.563136967,
+    "p0135": -1.63707606,
+    "p99865": 1.62364815,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.83321314,
+    "cpk_percentile_se": 0.0149005909,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T14-boss",
+   "title": "Gripper servo body in cradle fit (20.4 pocket, DS3218MG 20.1 wide)",
+   "role": "option",
+   "variant_of": "T14",
+   "nominal": 0.4,
+   "wc": [
+    0.05,
+    0.55
+   ],
+   "spec": {
+    "lsl": 0.0
+   },
+   "units": "mm clearance (pocket - body)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pocket_width",
+    "var_pct": 69.2307692
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T14",
+   "picked_variant": "T14-boss",
+   "mc": {
+    "mean": 0.300208589,
+    "std": 0.0601524508,
+    "p0135": 0.120984862,
+    "p99865": 0.480245936,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.67525922,
+    "cpk_percentile_se": 0.0167183892,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T14B-boss34",
+   "title": "Dog coupling \u2014 servo shaft offset from pin A against the dog slot clearance",
+   "role": "option",
+   "variant_of": "T14B",
+   "nominal": -0.2365,
+   "wc": [
+    -0.287192661,
+    0.238192661
+   ],
+   "spec": {
+    "usl": 0.0
+   },
+   "units": "mm tangential interference at a dog (> 0 = the dogs force knuckle A sideways)",
+   "method": "wc",
+   "verdict3": "fail",
+   "own_verdict3": "fail",
+   "verdict_band": [
+    "fail"
+   ],
+   "verdict_decided": true,
+   "sampling_runs": [
+    {
+     "n": 100000,
+     "cpk_percentile": 0.977125869,
+     "cpk_percentile_se": 0.0128260311,
+     "verdict_band": [
+      "marginal",
+      "fail"
+     ],
+     "seed": 20260922,
+     "sample_head_sha256": "6e4bbc22d85f6bd1d825017422fbd8bda5800431c316edf95401905b30822f8d"
+    },
+    {
+     "n": 1000000,
+     "cpk_percentile": 0.982325086,
+     "cpk_percentile_se": 0.00249412862,
+     "verdict_band": [
+      "fail"
+     ],
+     "seed": 21260925,
+     "sample_head_sha256": "5ac1c8ea49b24716fbace1f2f9470615063c1650090a17d992ff354d18da3403"
+    }
+   ],
+   "yield_pct": 99.84,
+   "dominant": {
+    "name": "slot_w",
+    "var_pct": 33.4124169
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T14B",
+   "picked_variant": "T14B-boss34",
+   "mc": {
+    "mean": -0.144312933,
+    "std": 0.0429621967,
+    "p0135": -0.253922281,
+    "p99865": 0.0026479747,
+    "out_pct": 0.16,
+    "cpk_percentile": 0.982325086,
+    "cpk_percentile_se": 0.00249412862,
+    "n": 1000000
+   }
+  },
+  {
+   "id": "T15-shimselect",
+   "title": "Knuckle end play at pin B (three standoffs, shims 0.85 per side)",
+   "role": "option",
+   "variant_of": "T15",
+   "nominal": 0.3,
+   "wc": [
+    0.245,
+    0.355
+   ],
+   "spec": {
+    "lsl": 0.05,
+    "usl": 0.5
+   },
+   "units": "mm axial end play",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "endplay_set",
+    "var_pct": 67.5675676
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T15",
+   "picked_variant": "T15-shimselect",
+   "mc": {
+    "mean": 0.30001189,
+    "std": 0.0175405078,
+    "p0135": 0.255093132,
+    "p99865": 0.345945614,
+    "out_pct": 0.0,
+    "cpk_percentile": 4.35453195,
+    "cpk_percentile_se": 0.0474953993,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T16",
+   "title": "Pin axis tilt, centre-distance change across the 10.5 mm gear face",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -0.084,
+    0.084
+   ],
+   "spec": {
+    "lsl": -0.07,
+    "usl": 0.07
+   },
+   "units": "mm (a at front face - a at back face)",
+   "method": "mc",
+   "verdict3": "marginal",
+   "own_verdict3": "marginal",
+   "verdict_band": [
+    "marginal"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.998,
+   "dominant": {
+    "name": "knuckleA_tilt_on_pin",
+    "var_pct": 37.5
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T16",
+   "picked_variant": null,
+   "mc": {
+    "mean": -8.8035252e-05,
+    "std": 0.0198614284,
+    "p0135": -0.0540482692,
+    "p99865": 0.0538888415,
+    "out_pct": 0.002,
+    "cpk_percentile": 1.29584271,
+    "cpk_percentile_se": 0.00814038759,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T16B",
+   "title": "Knuckle sleeve running fit on its pin (bronze bush bore vs m6 dowel)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.015,
+   "wc": [
+    -2.22044605e-16,
+    0.03
+   ],
+   "spec": {
+    "lsl": 0.0
+   },
+   "units": "mm diametral clearance (< 0 = the knuckle is pressed onto its pin)",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "sleeve_bore",
+    "var_pct": 56.6371681
+   },
+   "blocked_by": [],
+   "rss_clipped": true,
+   "warnings": [],
+   "base_id": "T16B",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.0150136968,
+    "std": 0.00614254599,
+    "p0135": 0.000772909704,
+    "p99865": 0.0292504163,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.05418363,
+    "cpk_percentile_se": 0.00138469168,
+    "n": 100000
+   }
+  }
+ ],
+ "alternatives": [
+  {
+   "id": "T05-deckpegs",
+   "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+   "role": "option",
+   "variant_of": "T05",
+   "nominal": 0.307017544,
+   "wc": [
+    -1.07250652,
+    1.68654161
+   ],
+   "spec": {
+    "lsl": -0.192982456,
+    "usl": 0.807017544
+   },
+   "units": "mm (pinch point x vs roll axis, gripper frame G)",
+   "method": "mc",
+   "verdict3": "marginal",
+   "own_verdict3": "marginal",
+   "verdict_band": [
+    "marginal"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.988,
+   "dominant": {
+    "name": "pinA_to_deck_holes",
+    "var_pct": 29.4496182
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T05",
+   "picked_variant": "T05-deckpegs",
+   "mc": {
+    "mean": 0.307252349,
+    "std": 0.127477956,
+    "p0135": -0.0747612606,
+    "p99865": 0.68767293,
+    "out_pct": 0.012,
+    "cpk_percentile": 1.30925289,
+    "cpk_percentile_se": 0.00783106614,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09H",
+   "title": "Largest hold force the firmware can reach on the softest finger (R14 under the R15 cap)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 6.31652319,
+   "wc": [
+    2.91025052,
+    6.85762395
+   ],
+   "spec": {
+    "lsl": 5.0
+   },
+   "units": "N (pad force at the firmware squeeze cap or the jaw floor, whichever comes first)",
+   "method": "mc",
+   "verdict3": "fail",
+   "own_verdict3": "fail",
+   "verdict_band": [
+    "fail"
+   ],
+   "verdict_decided": true,
+   "sampling_runs": [
+    {
+     "n": 100000,
+     "cpk_percentile": 0.997431241,
+     "cpk_percentile_se": 0.0067903406,
+     "verdict_band": [
+      "marginal",
+      "fail"
+     ],
+     "seed": 20260922,
+     "sample_head_sha256": "9cab69fab310a97a997614786fb05de1fce68eaf3d95e4490843097d2aff85f6"
+    },
+    {
+     "n": 1000000,
+     "cpk_percentile": 0.986391425,
+     "cpk_percentile_se": 0.00468564885,
+     "verdict_band": [
+      "fail"
+     ],
+     "seed": 21260925,
+     "sample_head_sha256": "9745b931a64f54c27c27ac1c565975ecafb99a425c9e343f825988d2c9da44dc"
+    }
+   ],
+   "yield_pct": 99.8481,
+   "dominant": {
+    "name": "k_pair",
+    "var_pct": 78.0128694
+   },
+   "blocked_by": [],
+   "rss_clipped": true,
+   "warnings": [],
+   "base_id": "T09H",
+   "picked_variant": "T09H",
+   "mc": {
+    "mean": 6.25113341,
+    "std": 0.353017183,
+    "p0135": 4.9826983,
+    "p99865": 6.8557661,
+    "out_pct": 0.1519,
+    "cpk_percentile": 0.986391425,
+    "cpk_percentile_se": 0.00468564885,
+    "n": 1000000
+   }
+  },
+  {
+   "id": "T09P-trip7",
+   "title": "Peak pad force when the FSR over-force trip fires (R15)",
+   "role": "option",
+   "variant_of": "T09P",
+   "nominal": 7.7592287,
+   "wc": [
+    6.36363636,
+    9.42631281
+   ],
+   "spec": {
+    "usl": 8.0
+   },
+   "units": "N (largest true pad force before the trip opens the jaw)",
+   "method": "mc",
+   "verdict3": "fail",
+   "own_verdict3": "fail",
+   "verdict_band": [
+    "fail"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 65.443,
+   "dominant": {
+    "name": "squeeze_deg",
+    "var_pct": 77.3968088
+   },
+   "blocked_by": [],
+   "rss_clipped": true,
+   "warnings": [],
+   "base_id": "T09P",
+   "picked_variant": "T09P-trip7",
+   "mc": {
+    "mean": 7.76737432,
+    "std": 0.498574827,
+    "p0135": 6.57683662,
+    "p99865": 9.06071464,
+    "out_pct": 34.557,
+    "cpk_percentile": 0.181190064,
+    "cpk_percentile_se": 0.00184278272,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09T-slow3",
+   "title": "Close time to first contact after calibration (R19)",
+   "role": "option",
+   "variant_of": "T09T",
+   "nominal": 0.382,
+   "wc": [
+    0.338,
+    0.426
+   ],
+   "spec": {
+    "usl": 0.5
+   },
+   "units": "s (close command to first pad contact)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "servo_angle_error",
+    "var_pct": 69.5991091
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09T",
+   "picked_variant": "T09T-slow3",
+   "mc": {
+    "mean": 0.382024243,
+    "std": 0.00997571382,
+    "p0135": 0.352135476,
+    "p99865": 0.411359169,
+    "out_pct": 0.0,
+    "cpk_percentile": 4.02172213,
+    "cpk_percentile_se": 0.0474190579,
+    "n": 100000
+   }
+  }
+ ],
+ "input_digest": {
+  "algorithm": "sha256",
+  "digest": "fa035516e4ebb9de294fc9f9972df710db45e286c9cc6c7832f1f5936bef72e3",
+  "files": [
+   "stacks/basis.yaml",
+   "stacks/rev_b.yaml",
+   "stacks/T01_bolt_pattern_fit.yaml",
+   "stacks/T01H_screw_head_counterbore.yaml",
+   "stacks/T02_pilot_recess_fit.yaml",
+   "stacks/T03_thread_engagement.yaml",
+   "stacks/T03B_screw_bottoming.yaml",
+   "stacks/T04_concentricity.yaml",
+   "stacks/T05_jaw_centerline.yaml",
+   "stacks/T06_gear_center_distance.yaml",
+   "stacks/T07_backlash.yaml",
+   "stacks/T08_mesh_axial.yaml",
+   "stacks/T09_closure_gap.yaml",
+   "stacks/T09F_force_at_floor.yaml",
+   "stacks/T09H_hold_force_reach.yaml",
+   "stacks/T09P_force_at_trip.yaml",
+   "stacks/T09T_close_time.yaml",
+   "stacks/T10_pad_parallelism.yaml",
+   "stacks/T10B_pad_out_of_plane.yaml",
+   "stacks/T11_keepout_radial.yaml",
+   "stacks/T12_keepout_axial.yaml",
+   "stacks/T12B_rim_to_case.yaml",
+   "stacks/T13_camera_aim.yaml",
+   "stacks/T14_servo_cradle.yaml",
+   "stacks/T14B_dog_coupling.yaml",
+   "stacks/T15_standoff_endplay.yaml",
+   "stacks/T16_pin_tilt.yaml",
+   "stacks/T16B_sleeve_running_fit.yaml",
+   "tolcalc/__init__.py",
+   "tolcalc/cad.py",
+   "tolcalc/detmath.py",
+   "tolcalc/engine.py",
+   "tolcalc/gdt.py",
+   "tolcalc/model.py",
+   "tolcalc/report.py",
+   "tolcalc/scenarios.py",
+   "tolcalc/statistics.py",
+   "tolstack.py"
+  ]
+ },
+ "generated_blocks": {
+  "release": "Do not print revision B parts in these loops: T09T, T14B\n\n| Stack | Loop | Verdict | Cpk cold | Cpk hot | Parts in loop | What clears it |\n|---|---|---|---:|---:|---|---|\n| T09H | Largest hold force the firmware can reach on the softest finger (R14 under the R15 cap) | MARGINAL | 1.28 \u00b1 0.01 | 1.28 | servo horn, knuckle A, knuckle B, finger A, finger B, TPU pads | Needed only once the dog slots open to 3.4 (rev B row 1): the 1.5 deg of dog lash moves the first contact toward the jaw floor, and the absolute floor then cuts the squeeze short (T09H falls to Cpk 0.99 in the combined rev B run). The floor relative to the calibrated contact angle (the T09F firmware request, APPLIED in config.h JAW_FLOOR_BELOW_C0_DEG 4.9 for the ruled 8 N; 6.2 in round 2): T09H-relfloor8. The 4.9 deg floor sits just past the 4.867 deg squeeze cap, so it is MARGINAL exactly as with 6.2 (T09H-relfloor); the softest pair at the cap is the limit, not the floor. |\n| T09T | Close time to first contact after calibration (R19) | FAIL | -0.24 \u00b1 0.00 | -0.24 | servo horn, knuckle A, knuckle B, finger A, finger B | Accept R19 = 0.75 s (T09T-r19p075 passes). The requested JAW_SLOW_ZONE_DEG 6 -> 3 (T09T-slow3) was DECLINED by the firmware simulation (controls.md 6.4): contact by 0.5 s in every grip, but the jaw meets the cloth at up to 41 deg/s (R19's last 3 deg ask 20) and an 8 deg early contact on the stiff finger peaks at 10.48 N on the linear bound (shipped: 9.62 N at worst, 10 deg), past the 10 N cap; 4 and 5 deg zones also pass 10 N at 10 deg (12.03, 10.66 N). |\n| T14B | Dog coupling \u2014 servo shaft offset from pin A against the dog slot clearance | FAIL | 0.98 \u00b1 0.00 | 0.66 | mid plate, servo cradle, gripper servo, servo horn, knuckle A, pin A | Locate the servo by its \u00d89 output boss in a reamed bore in the 1.6 mm housing web at the case top (the boss is concentric with the shaft) and open the dog slots to 3.4 (lash about +/-1.5 deg [A: arithmetic here, (3.4 - 0.1 - 2.927) / (2 x 7 mm) rad]). With the web terms T14B-boss34 fails at Cpk 0.98. A 3.42 mm slot adds 0.010 mm half-clearance and restores about Cpk 1.05, but costs the closure window; the robust fix is a zero-lash coupling that takes offset, such as an Oldham disc. |\n| T16 | Pin axis tilt, centre-distance change across the 8 mm gear face | MARGINAL | 1.30 \u00b1 0.01 | 1.30 | mid plate, front plate, knuckle A, knuckle B, pin A, pin B | none recorded |\n\nClear to print on the assumed inputs: camera bracket, deck, front plate, M3 horn screws, pin B, servo 5, spider, TPU pads, wrist link, wrist mount.\nEvery verdict rests on at least one assumed input until coupon measurements replace them.",
+  "revb": "**Rev B, all changes at once, servo case 20.1 mm** (`revb`). 26 checks: 22 PASS, 2 MARGINAL, 2 FAIL, 0 UNDECIDED (gated worse) (2 independent). MARGINAL: T09H, T16. FAIL: T09T, T14B. Thinnest by Cpk: T09T, Cpk -0.24.\n\n| Stack | Run as | Verdict | Yield (MC) | Cpk | Worst case | Spec | Rev A as drawn |\n|---|---|---|---|---:|---|---|---|\n| T01 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.77 \u00b1 0.02 | -0.363 \u2026 -0.035 (in) | USL 0.000 mm radial interference | MARGINAL, Cpk 1.31 |\n| T01H | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.02 \u00b1 0.01 | -0.550 \u2026 -0.075 (in) | USL 0.000 mm radial interference | PASS, Cpk 2.02 |\n| T02 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.61 \u00b1 0.02 | 0.050 \u2026 0.350 (in) | LSL 0.020, USL 0.400 mm diametral clearance | MARGINAL, Cpk 1.16 |\n| T03 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.46 \u00b1 0.01 | 1.885 \u2026 2.915 (in) | LSL 1.500 mm full-thread engagement below horn face H | FAIL, Cpk 4.99 |\n| T03B | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.68 \u00b1 0.02 | 0.235 \u2026 1.465 (in) | LSL 0.200 mm | FAIL, Cpk -1.55 |\n| T04 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.96 \u00b1 0.01 | 0.000 \u2026 0.275 (in) | USL 0.300 mm radial offset | PASS, Cpk 2.25 |\n| T05 | T05-tcpcal | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.84 \u00b1 0.02 | -0.552 \u2026 1.166 (out) | LSL -0.193, USL 0.807 mm | FAIL, Cpk 0.92 |\n| T06 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.01 \u00b1 0.01 | 28.350 \u2026 28.650 (in) | LSL 28.286, USL 28.714 mm | PASS, Cpk 2.04 |\n| T07 | base stack | **PASS** | 99.998 % (<63 ppm (2 of 100,000 samples; 95% upper bound) out) | 1.43 \u00b1 0.01 | -0.083 \u2026 0.583 (out) | LSL 0.050, USL 0.450 mm circumferential backlash | PASS, Cpk 1.44 |\n| T08 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.49 \u00b1 0.01 | -0.490 \u2026 0.490 (in) | LSL -0.800, USL 0.800 mm | PASS, Cpk 2.49 |\n| T09 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.49 \u00b1 0.02 | -4.948 \u2026 0.510 (out) | LSL -4.000, USL 4.000 deg | PASS, Cpk 2.37 |\n| T09F | T09F-relfloor8 | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.46 \u00b1 0.00 | 4.865 \u2026 8.031 (out) | USL 8.000 N | FAIL, Cpk -0.04 |\n| T09H | T09H-relfloor8 | **MARGINAL** | 99.996 % (<92 ppm (4 of 100,000 samples; 95% upper bound) out) | 1.28 \u00b1 0.01 | 4.826 \u2026 7.985 (out) | LSL 5.000 N | PASS, Cpk 2.44 |\n| T09P | T09P-floor49 | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.46 \u00b1 0.00 | 4.865 \u2026 8.031 (out) | USL 8.000 N | FAIL, Cpk -0.52 |\n| T09T | base stack | **FAIL** | 24.04 % | -0.24 \u00b1 0.00 | 0.463 \u2026 0.551 (out) | USL 0.500 s | FAIL, Cpk -0.24 |\n| T10 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.67 \u00b1 0.01 | -1.452 \u2026 1.452 (out) | LSL -1.000, USL 1.000 mm root gap when the tips first touch | FAIL, Cpk 0.60 |\n| T10B | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.05 \u00b1 0.01 | -2.397 \u2026 2.397 (out) | LSL -2.000, USL 2.000 mm | PASS, Cpk 1.95 |\n| T11 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.17 \u00b1 0.03 | 0.175 \u2026 1.150 (in) | LSL 0.100 mm radial clearance, worst angle over 320 deg roll | PASS, Cpk 2.26 |\n| T12 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.85 \u00b1 0.01 | 0.100 \u2026 1.500 (in) | LSL 0.100 mm | PASS, Cpk 1.85 |\n| T12B | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 14.04 \u00b1 0.04 | 3.500 \u2026 4.100 (in) | LSL 0.500 mm | PASS, Cpk 14.04 |\n| T13 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.83 \u00b1 0.01 | -3.033 \u2026 3.033 (out) | LSL -3.000, USL 3.000 deg | PASS, Cpk 1.83 |\n| T14 | T14-boss | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.68 \u00b1 0.02 | 0.050 \u2026 0.550 (in) | LSL 0.000 mm clearance | FAIL, Cpk 0.55 |\n| T14B | T14B-boss34 | **FAIL** | 99.84 % | 0.98 \u00b1 0.00 | -0.287 \u2026 0.238 (out) | USL 0.000 mm tangential interference at a dog | FAIL, Cpk -0.06 |\n| T15 | T15-shimselect | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 4.35 \u00b1 0.05 | 0.245 \u2026 0.355 (in) | LSL 0.050, USL 0.500 mm axial end play | FAIL, Cpk 0.50 |\n| T16 | base stack | **MARGINAL** | 99.998 % (<63 ppm (2 of 100,000 samples; 95% upper bound) out) | 1.30 \u00b1 0.01 | -0.084 \u2026 0.084 (out) | LSL -0.070, USL 0.070 mm | PASS, Cpk 1.67 |\n| T16B | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.05 \u00b1 0.00 | -0.000 \u2026 0.030 (in) | LSL 0.000 mm diametral clearance | FAIL, Cpk 0.29 |\n| T05 | T05-deckpegs (alternative, not counted) | **MARGINAL** | 99.988 % (120 ppm out) | 1.31 \u00b1 0.01 | -1.073 \u2026 1.687 (out) | LSL -0.193, USL 0.807 mm | FAIL, Cpk 0.92 |\n| T09H | T09H (alternative, not counted) | **FAIL** | 99.85 % | 0.99 \u00b1 0.00 | 2.910 \u2026 6.858 (out) | LSL 5.000 N | PASS, Cpk 2.44 |\n| T09P | T09P-trip7 (alternative, not counted) | **FAIL** | 65.44 % | 0.18 \u00b1 0.00 | 6.364 \u2026 9.426 (out) | USL 8.000 N | FAIL, Cpk -0.52 |\n| T09T | T09T-slow3 (alternative, not counted) | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 4.02 \u00b1 0.05 | 0.338 \u2026 0.426 (in) | USL 0.500 s | FAIL, Cpk -0.24 |\n\n**Rev B, A17 servo case 20.5 mm, pocket opened to 20.9** (`revb_servo205`). 26 checks: 22 PASS, 2 MARGINAL, 2 FAIL, 0 UNDECIDED (gated worse) (2 independent). MARGINAL: T09H, T16. FAIL: T09T, T14B. Thinnest by Cpk: T09T, Cpk -0.24. Only the checks that differ from the `revb` run are listed.\n\nEvery check is identical to that run.\n\n**Rev B with ungraded h8 pins (pin clearance 0.000-0.030)** (`revb_ungraded`). 26 checks: 22 PASS, 1 MARGINAL, 3 FAIL, 0 UNDECIDED (gated worse) (3 independent). MARGINAL: T09H. FAIL: T09T, T14B, T16. Thinnest by Cpk: T09T, Cpk -0.24. Only the checks that differ from the `revb` run are listed.\n\n| Stack | Run as | Verdict | Yield (MC) | Cpk | Worst case | Spec | Rev A as drawn |\n|---|---|---|---|---:|---|---|---|\n| T05 | T05-tcpcal | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.83 \u00b1 0.01 | -0.569 \u2026 1.183 (out) | LSL -0.193, USL 0.807 mm | FAIL, Cpk 0.92 |\n| T06 | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.94 \u00b1 0.02 | 28.340 \u2026 28.660 (in) | LSL 28.286, USL 28.714 mm | PASS, Cpk 2.04 |\n| T07 | base stack | **PASS** | 99.998 % (<63 ppm (2 of 100,000 samples; 95% upper bound) out) | 1.41 \u00b1 0.02 | -0.092 \u2026 0.592 (out) | LSL 0.050, USL 0.450 mm circumferential backlash | PASS, Cpk 1.44 |\n| T10B | base stack | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 1.92 \u00b1 0.01 | -2.537 \u2026 2.537 (out) | LSL -2.000, USL 2.000 mm | PASS, Cpk 1.95 |\n| T14B | T14B-boss34 | **FAIL** | 99.82 % | 0.97 \u00b1 0.01 | -0.286 \u2026 0.243 (out) | USL 0.000 mm tangential interference at a dog | FAIL, Cpk -0.06 |\n| T16 | base stack | **FAIL** | 99.65 % | 0.98 \u00b1 0.01 | -0.105 \u2026 0.105 (out) | LSL -0.070, USL 0.070 mm | PASS, Cpk 1.67 |\n\n**Rev B, hot seat (PETG relaxed)** (`revb_hot`). 26 checks: 21 PASS, 3 MARGINAL, 2 FAIL, 0 UNDECIDED (gated worse) (2 independent). MARGINAL: T09H, T14, T16. FAIL: T09T, T14B. Thinnest by Cpk: T09T, Cpk -0.24. Only the checks that differ from the `revb` run are listed.\n\n| Stack | Run as | Verdict | Yield (MC) | Cpk | Worst case | Spec | Rev A as drawn |\n|---|---|---|---|---:|---|---|---|\n| T14 | T14-boss | **MARGINAL** | 99.996 % (<92 ppm (4 of 100,000 samples; 95% upper bound) out) | 1.27 \u00b1 0.01 | -0.050 \u2026 0.650 (out) | LSL 0.000 mm clearance | FAIL, Cpk 0.55 |\n| T14B | T14B-boss34 | **FAIL** | 97.64 % | 0.66 \u00b1 0.01 | -0.277 \u2026 0.388 (out) | USL 0.000 mm tangential interference at a dog | FAIL, Cpk -0.06 |\n| T15 | T15-shimselect | **PASS** | 100.000 % (<30 ppm (0 of 100,000 samples; 95% upper bound) out) | 2.43 \u00b1 0.01 | 0.195 \u2026 0.405 (in) | LSL 0.050, USL 0.500 mm axial end play | FAIL, Cpk 0.50 |\n\n**CAD rev A as drawn, hot seat (PETG relaxed)** (`drawn_hot`). 26 checks: 13 PASS, 2 MARGINAL, 11 FAIL, 0 UNDECIDED (gated worse) (10 independent). MARGINAL: T01, T02. FAIL: T03, T03B, T05, T09F, T09P, T09T, T10, T14, T14B, T15, T16B. Thinnest by Cpk: T03B, Cpk -1.55. Only the checks that differ from the rev A as drawn run are listed.\n\n| Stack | Run as | Verdict | Yield (MC) | Cpk | Worst case | Spec | Rev A as drawn |\n|---|---|---|---|---:|---|---|---|\n| T14 | base stack | **FAIL** | 87.26 % | 0.43 \u00b1 0.00 | -0.150 \u2026 0.550 (out) | LSL 0.000, USL 0.300 mm clearance | FAIL, Cpk 0.55 |\n| T14B | base stack | **FAIL** | 35.74 % | -0.09 \u00b1 0.00 | -0.115 \u2026 0.702 (out) | USL 0.000 mm tangential interference at a dog | FAIL, Cpk -0.06 |\n| T15 | base stack | **FAIL** | 88.94 % | 0.48 \u00b1 0.00 | -0.760 \u2026 1.360 (out) | LSL 0.050, USL 0.500 mm axial end play | FAIL, Cpk 0.50 |"
+ }
+}

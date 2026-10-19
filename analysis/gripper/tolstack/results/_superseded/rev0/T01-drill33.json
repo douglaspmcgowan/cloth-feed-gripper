@@ -1,0 +1,149 @@
+{
+ "id": "T01-drill33",
+ "title": "Horn-to-mount bolt pattern fit (4x M3 on the 14.0 BC)",
+ "mode": "radial",
+ "units": "mm radial interference (> 0 = screw hits hole wall)",
+ "requirement": "All 4 M3 screws pass the printed clearance holes and thread into the horn with no hole-wall contact, crediting no pilot float. Fixed-fastener case (screw threads into the horn): H = F + T1 + T2.",
+ "notes": "y = |e_hole + e_thread| + F/2 - H/2. The task brief names the floating-fastener formula H = F + T; it does not apply here because the horn is threaded (fixed fastener, H = F + T1 + T2). With the MMC hole H = 3.25 (CAD 3.6) and F = 2.98, floating would give T = 0.27 per part; fixed with T2 = 0.05 leaves T1 = 0.22.",
+ "spec": {
+  "usl": 0.0
+ },
+ "accept": {
+  "method": "wc"
+ },
+ "variant_of": "T01",
+ "variant_label": "print 3.0, drill 3.3 after printing",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T01_bolt_pattern_fit.yaml",
+ "nominal": -0.1864999999999999,
+ "mid": -0.2014999999999998,
+ "wc": [
+  -0.24299999999999977,
+  -0.03499999999999981
+ ],
+ "rss_classic": [
+  -0.23195077995717,
+  -0.0940186062613624
+ ],
+ "rss_dist": [
+  -0.24299999999999977,
+  -0.03499999999999981
+ ],
+ "rss_dist_unclipped": [
+  -0.24978819731569998,
+  -0.01778132954031167
+ ],
+ "rss_clipped": true,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": true,
+ "mc": {
+  "n": 100000,
+  "mean": -0.13341716246606639,
+  "std": 0.030344901691015985,
+  "min": -0.23343861396549556,
+  "max": -0.045942664532047914,
+  "p0135": -0.2174833508457477,
+  "p50": -0.13206044380747123,
+  "p99865": -0.059734957929962584,
+  "out_lo_pct": 0.0,
+  "out_hi_pct": 0.0,
+  "out_pct": 0.0,
+  "out_pct_se": 3.162277660168379e-151,
+  "cpk_normal": 1.4655637359291707,
+  "cpk_percentile": 1.8259185155165147
+ },
+ "pass": {
+  "wc": true,
+  "rss": true,
+  "mc": true
+ },
+ "verdict": true,
+ "method": "wc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "hole_d_printed",
+   "kind": "linear",
+   "nominal": 3.3,
+   "bias": 0.03,
+   "upper": 0.03,
+   "lower": -0.03,
+   "mid": 3.3299999999999996,
+   "half": 0.03,
+   "sensitivity": -0.5,
+   "dist": "normal",
+   "sigma": 0.01,
+   "tag": "A",
+   "source": "CAD 3.2 (so101.md) + CNC Kitchen -0.25 bias [S]; scatter [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.4487054846767077
+  },
+  {
+   "name": "screw_major_d",
+   "kind": "linear",
+   "nominal": 2.927,
+   "bias": 0.0,
+   "upper": 0.052999999999999936,
+   "lower": -0.052999999999999936,
+   "mid": 2.927,
+   "half": 0.052999999999999936,
+   "sensitivity": 0.5,
+   "dist": "uniform",
+   "sigma": 0.03059956426705013,
+   "tag": "S",
+   "source": "ISO 965 6g (Brighton-Best)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 4.2013790215228966
+  },
+  {
+   "name": "hole_position",
+   "kind": "radial",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 0.0,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "disk",
+   "sigma": 0.05,
+   "tag": "A",
+   "source": "position dia 0.2 to A|B|C, printed",
+   "note": "",
+   "from_stack": null,
+   "gdt": {
+    "type": "position",
+    "zone": "=fdm_pos_dia"
+   },
+   "var_pct": 89.74109693534156
+  },
+  {
+   "name": "horn_thread_position",
+   "kind": "radial",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.025,
+   "lower": -0.025,
+   "mid": 0.0,
+   "half": 0.025,
+   "sensitivity": 1.0,
+   "dist": "disk",
+   "sigma": 0.0125,
+   "tag": "A",
+   "source": "molded horn pattern, W1 assumption 4",
+   "note": "",
+   "from_stack": null,
+   "gdt": {
+    "type": "position",
+    "zone": "=horn_thread_pos_dia"
+   },
+   "var_pct": 5.6088185584588475
+  }
+ ],
+ "seed": 20260922
+}

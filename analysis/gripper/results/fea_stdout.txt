@@ -1,0 +1,557 @@
+validation done 11.7 s
+reference cases done 15.1 s
+sweep done 289 runs {'runs': 289, 'window_ok': 32, 'strain_ok': 289, 'stress_ok': 261, 'feasible_linear': 30, 'feasible_and_mid_ok': 13, 'feasible_design_basis_only': 32, 'in_window_failing_stress': 2, 'in_window_failing_strain': 0} 165.4 s
+  nl screen {'rib_angle': 0, 'ribs': 6, 'wall': 0.8, 'rib_thickness': 1.0, 'tip_width': 2.0} m 3.16 g: limit 8.10 N at E 56 (h 0.5, 25 s)
+  nl screen {'rib_angle': 30, 'ribs': 6, 'wall': 0.8, 'rib_thickness': 1.0, 'tip_width': 2.0} m 3.46 g: limit 6.79 N at E 56 (h 0.5, 20 s)
+  nl screen {'rib_angle': 30, 'ribs': 4, 'wall': 1.2, 'rib_thickness': 0.6, 'tip_width': 2.0} m 3.62 g: limit 7.52 N at E 56 (h 0.4, 27 s)
+  nl screen {'rib_angle': 30, 'ribs': 6, 'wall': 0.8, 'rib_thickness': 1.0, 'tip_width': 4.0} m 3.64 g: limit 8.93 N at E 56 (h 0.5, 28 s)
+  nl screen {'rib_angle': 30, 'ribs': 4, 'wall': 1.0, 'rib_thickness': 1.0, 'tip_width': 4.0} m 3.68 g: limit 9.38 N at E 56 (h 0.5, 24 s)
+  nl screen {'rib_angle': 0, 'ribs': 3, 'wall': 0.8, 'rib_thickness': 0.6, 'tip_width': 0.0} m 2.27 g: limit 3.60 N at E 56 (h 0.4, 31 s)
+  nl screen {'rib_angle': 15, 'ribs': 3, 'wall': 0.8, 'rib_thickness': 0.6, 'tip_width': 0.0} m 2.32 g: limit 2.04 N at E 56 (h 0.4, 21 s)
+  nl screen {'rib_angle': 30, 'ribs': 3, 'wall': 0.8, 'rib_thickness': 0.6, 'tip_width': 0.0} m 2.41 g: limit 1.53 N at E 56 (h 0.4, 26 s)
+  nl screen {'rib_angle': 45, 'ribs': 3, 'wall': 0.8, 'rib_thickness': 0.6, 'tip_width': 0.0} m 2.49 g: limit 10.00 N at E 56 (h 0.4, 15 s)
+nonlinear screen done 385.5 s
+variants done; CONDITIONAL: linear checks pass, but the nonlinear tip-pad limit is 8.9 N at E 56, above the 8 N FSR trip and below the 10 N cap: FAILS the R15 fold check; the cap relies on the FSR trip 398.8 s
+  nonlinear rec tip: converged to 10.625 N, smallest rejected 10.671875, 245 Newton its, 129 s
+  nonlinear rec mid: converged to 11.964 N, smallest rejected None, 120 Newton its, 69 s
+  nonlinear CAD L60 tip: converged to 7.807 N, smallest rejected 7.8125, 271 Newton its, 150 s
+  nonlinear rec + nail (A) tip, E 56: converged to 8.414 N, smallest rejected 8.4375, 264 Newton its, 158 s
+nonlinear done 909.1 s
+{
+ "ref": {
+  "cad_section_L45": {
+   "k_tip": 2.8293937328602787,
+   "k_mid": 2.6541921895854745,
+   "vm_p99_tip_per_N": 0.14103709227531422,
+   "wrap_mid": -0.07800785554438738,
+   "mass_g": 3.6982250544774278
+  },
+  "cad_L60": {
+   "k_tip": 1.0911041299551902,
+   "k_mid": 1.2330980553751403,
+   "vm_p99_tip_per_N": 0.1964864599476348,
+   "wrap_mid": -0.09367228678439991,
+   "mass_g": 4.4850768848920195
+  },
+  "cad_section_L45_plane_strain": {
+   "k_tip": 3.5456433646213887,
+   "k_mid": 3.327193423139209,
+   "vm_p99_tip_per_N": 0.12233680130077691,
+   "wrap_mid": -0.07979744211868424,
+   "mass_g": 3.6982250544774278
+  },
+  "cad_section_L45_P1": {
+   "k_tip": 2.850499815729925,
+   "k_mid": 2.933287540016886,
+   "vm_p99_tip_per_N": 0.1421879422919791,
+   "wrap_mid": -0.1085670814399199,
+   "mass_g": 3.6982250544774202
+  }
+ },
+ "counts": {
+  "runs": 289,
+  "window_ok": 32,
+  "strain_ok": 289,
+  "stress_ok": 261,
+  "feasible_linear": 30,
+  "feasible_and_mid_ok": 13,
+  "feasible_design_basis_only": 32,
+  "in_window_failing_stress": 2,
+  "in_window_failing_strain": 0,
+  "nl_screened": 9,
+  "nl_cap_ok": 1,
+  "nl_trip_ok": 4,
+  "feasible_linear_and_nl_cap": 1
+ },
+ "governing": {
+  "lowest_cap_stress_in_window": {
+   "vm_cap_tip": 3.0643695895218075,
+   "design": {
+    "rib_angle": 0,
+    "ribs": 6,
+    "wall": 1.0,
+    "rib_thickness": 1.0,
+    "tip_width": 4.0
+   }
+  },
+  "highest_k_E67_passing_stress": 3.0010593964487065
+ },
+ "verdict": "CONDITIONAL: linear checks pass, but the nonlinear tip-pad limit is 8.9 N at E 56, above the 8 N FSR trip and below the 10 N cap: FAILS the R15 fold check; the cap relies on the FSR trip",
+ "nonlinear_check": {
+  "criterion": "tip-pad nonlinear limit at E 56 >= F_cap 10 N (fallback: >= FSR trip 8 N)",
+  "F_cap_N": 10.0,
+  "fsr_trip_N": 8.0,
+  "F_target_N": 5.0,
+  "passed": "trip only",
+  "chosen_limit_E56_N": 8.932835820895523,
+  "screen_vs_fine": {
+   "screen_h": 0.5,
+   "screen_limit_E56_N": 8.932835820895523,
+   "fine_h": 0.32,
+   "fine_limit_E56_N": 8.880597014925373,
+   "fine_reached_cap": false
+  },
+  "rec_bare_tip_limit_E56_N": 8.880597014925373,
+  "rec_bare_tip_bracket_E56_N": [
+   8.880597014925373,
+   8.919776119402986
+  ],
+  "rec_nailA_tip_limit_E56_N": 8.4140625,
+  "cadL60_tip_limit_E56_N": 6.524953358208955,
+  "mechanism_rec_tip": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+  "mechanism_rec_nailA_tip": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+  "mechanism_cadL60_tip": "distributed back-flank bow (compressed back flank buckles between rib nodes)",
+  "hand_back_flank_buckling_rec_E56": {
+   "s0_mm": 4.278212445292918,
+   "s1_mm": 11.876638020934793,
+   "panel_len_mm": 7.86395240351964,
+   "chord_force_per_N": 2.5351444257748805,
+   "P_cr_pinned_N": 7.626490444381365,
+   "F_cr_pinned_N": 3.0083061015548602,
+   "F_cr_fixed_N": 12.033224406219441
+  }
+ },
+ "screened": [
+  {
+   "rib_angle": 0,
+   "ribs": 6,
+   "wall": 0.8,
+   "rib_thickness": 1.0,
+   "tip_width": 2.0,
+   "mass_g": 3.1635708308837587,
+   "k_tip_E56": 1.2825418585712565,
+   "k_tip_E67": 1.5344697236477531,
+   "feasible_linear": true,
+   "D7_ok": false,
+   "nl_limit_E56": 8.097014925373134
+  },
+  {
+   "rib_angle": 30,
+   "ribs": 6,
+   "wall": 0.8,
+   "rib_thickness": 1.0,
+   "tip_width": 2.0,
+   "mass_g": 3.4550539612094218,
+   "k_tip_E56": 1.2785391342538133,
+   "k_tip_E67": 1.5296807499108123,
+   "feasible_linear": true,
+   "D7_ok": false,
+   "nl_limit_E56": 6.791044776119403
+  },
+  {
+   "rib_angle": 30,
+   "ribs": 4,
+   "wall": 1.2,
+   "rib_thickness": 0.6,
+   "tip_width": 2.0,
+   "mass_g": 3.6197642978619573,
+   "k_tip_E56": 1.2439914515256247,
+   "k_tip_E67": 1.4883469152181583,
+   "feasible_linear": true,
+   "D7_ok": false,
+   "nl_limit_E56": 7.522388059701493
+  },
+  {
+   "rib_angle": 30,
+   "ribs": 6,
+   "wall": 0.8,
+   "rib_thickness": 1.0,
+   "tip_width": 4.0,
+   "mass_g": 3.638283902149126,
+   "k_tip_E56": 0.9222376532151226,
+   "k_tip_E67": 1.1033914779538074,
+   "feasible_linear": true,
+   "D7_ok": true,
+   "nl_limit_E56": 8.932835820895523
+  },
+  {
+   "rib_angle": 30,
+   "ribs": 4,
+   "wall": 1.0,
+   "rib_thickness": 1.0,
+   "tip_width": 4.0,
+   "mass_g": 3.676329662964441,
+   "k_tip_E56": 0.9059227106640302,
+   "k_tip_E67": 1.0838718145444646,
+   "feasible_linear": true,
+   "D7_ok": true,
+   "nl_limit_E56": 9.376865671641792
+  },
+  {
+   "rib_angle": 0,
+   "ribs": 3,
+   "wall": 0.8,
+   "rib_thickness": 0.6,
+   "tip_width": 0.0,
+   "mass_g": 2.2736490860939416,
+   "k_tip_E56": 1.3109151703429138,
+   "k_tip_E67": 1.5684163645174147,
+   "feasible_linear": true,
+   "D7_ok": false,
+   "nl_limit_E56": 3.5987639925373136
+  },
+  {
+   "rib_angle": 15,
+   "ribs": 3,
+   "wall": 0.8,
+   "rib_thickness": 0.6,
+   "tip_width": 0.0,
+   "mass_g": 2.3177279185046658,
+   "k_tip_E56": 1.3017758231167118,
+   "k_tip_E67": 1.5574817883717802,
+   "feasible_linear": true,
+   "D7_ok": false,
+   "nl_limit_E56": 2.037313432835821
+  },
+  {
+   "rib_angle": 30,
+   "ribs": 3,
+   "wall": 0.8,
+   "rib_thickness": 0.6,
+   "tip_width": 0.0,
+   "mass_g": 2.410475985564772,
+   "k_tip_E56": 1.296830736543813,
+   "k_tip_E67": 1.551565345507776,
+   "feasible_linear": true,
+   "D7_ok": false,
+   "nl_limit_E56": 1.5279850746268657
+  },
+  {
+   "rib_angle": 45,
+   "ribs": 3,
+   "wall": 0.8,
+   "rib_thickness": 0.6,
+   "tip_width": 0.0,
+   "mass_g": 2.49235244575222,
+   "k_tip_E56": 1.2849627621593296,
+   "k_tip_E67": 1.5373661618691978,
+   "feasible_linear": true,
+   "D7_ok": false,
+   "nl_limit_E56": 10.0
+  }
+ ],
+ "R15": {
+  "theta_min_design_basis_deg": -11.0,
+  "F_cap_N": 10.0,
+  "F_at_theta_min_linear_N": {
+   "E56": 12.391893296679964,
+   "E67": 14.707381826433163
+  },
+  "theta_for_cap_deg": {
+   "E56": -8.73159516401799,
+   "E67": -7.405489400849877
+  },
+  "theta_for_target_deg": {
+   "E56": -4.520055449928833,
+   "E67": -3.8570025683447753
+  },
+  "conflict": true,
+  "theta_min_recommended_deg": -7.4,
+  "target_margin_deg_at_E56": 2.8799445500711673,
+  "note": "calibrated theta 0 (lag 0), one 0.3 mm ply at the tip pad, finger A + nail and finger B + FSR backing, linear FEA stiffness plus arm and mesh compliance. theta_min_recommended = the least-negative theta_for_cap over E 56-67; the E 67 finger reaches the cap first."
+ },
+ "nl_fold": {
+  "nonlinear_bare_E56": {
+   "theta_last_converged_deg": -11.0,
+   "F_last_N": 8.331189590438301
+  },
+  "nonlinear_bare_E67": {
+   "theta_last_converged_deg": -11.0,
+   "F_last_N": 9.941325690152377
+  }
+ },
+ "recommended": {
+  "rib_angle": 30,
+  "ribs": 6,
+  "wall": 0.8,
+  "rib_thickness": 1.0,
+  "tip_width": 4.0,
+  "option": null,
+  "h": 0.32,
+  "E_solved_MPa": 67.0,
+  "mass_g": 3.638283902149126,
+  "k_mid": 1.7390424865997245,
+  "k_tip": 1.1033914779538074,
+  "wrap_mid": -0.6140246446095659,
+  "tip_ux_mid_per_N": -0.35308202608099704,
+  "vm_p99_mid": 0.3986454725598962,
+  "vm_max_mid": 0.819713540519321,
+  "vm_p99_tip": 0.3861265188454648,
+  "vm_max_tip": 0.7994147431222544,
+  "strain_p99_mid": 0.005949431829374136,
+  "strain_p99_tip": 0.005728938004297891,
+  "pla_vm_max_tip": null,
+  "k_tip_E56": 0.9222376532151226,
+  "k_tip_E67": 1.1033914779538074,
+  "k_mid_E67": 1.7390424865997245,
+  "strain_LC1_tip_E56": 0.034271325561424884,
+  "strain_LC1_mid_E56": 0.03559035112214885,
+  "vm_cap_tip": 3.861265188454648,
+  "vm_cap_mid": 3.986454725598962,
+  "window_ok": true,
+  "strain_ok": true,
+  "stress_ok": true,
+  "mid_ok": true,
+  "feasible_linear": true,
+  "feasible": false,
+  "nl_screened": true,
+  "feasible_design_basis_only": true,
+  "k_log_dist_to_default": 0.008718134056196338,
+  "nl_screen": {
+   "h": 0.5,
+   "E_solved_MPa": 67.0,
+   "last_converged_F_N": 10.6875,
+   "smallest_rejected_F_N": 10.7578125,
+   "reached": false,
+   "newton_iterations": 231,
+   "secs": 28.125367879867554
+  },
+  "nl_limit_tip_E56": 8.932835820895523,
+  "nl_cap_ok": false,
+  "nl_trip_ok": true,
+  "D7_variants": {
+   "nail": {
+    "k_tip_E56": 1.0732132930554226,
+    "k_tip_E67": 1.2809715972983986,
+    "mass_g": 3.935883902149126,
+    "window_ok": true,
+    "tpu_vm_cap": 3.5500401026200996,
+    "tpu_strain_LC1_E56": 0.03161302927642543,
+    "pla_vm_cap_max": 8.074143473860104,
+    "tpu_ok": true,
+    "pla_ok": true
+   },
+   "backing": {
+    "k_tip_E56": 1.0811116201726014,
+    "k_tip_E67": 1.289966697306424,
+    "mass_g": 3.9854839021491264,
+    "window_ok": true,
+    "tpu_vm_cap": 3.5387225856210893,
+    "tpu_strain_LC1_E56": 0.03142352410800768,
+    "pla_vm_cap_max": 8.440671791835461,
+    "tpu_ok": true,
+    "pla_ok": true
+   }
+  },
+  "D7_ok": true
+ },
+ "rec_lin_tip": {
+  "s_mm": 40.0,
+  "patch_len_mm": 6.0,
+  "on_pla": false,
+  "compliance_mm_per_N": 0.9084674322463236,
+  "k_N_per_mm": 1.1007549247278443,
+  "tip_ux_per_N": -0.8611967742856321,
+  "tip_uy_per_N": -0.06463046711535224,
+  "wrap_ratio": -0.9479665904546434,
+  "vm_max_per_N": 0.8878155109446683,
+  "vm_p99_per_N": 0.3859933222399845,
+  "vm_p995_per_N": 0.4229289002770171,
+  "strain_max_per_N": 0.01318335422740633,
+  "strain_p99_per_N": 0.00573491118151774
+ },
+ "nonlinear": {
+  "rec_tip": {
+   "last": 10.625,
+   "rej": 10.671875,
+   "at_last": {
+    "F_N": 10.625,
+    "cauchy_vm_and_green_lagrange_strain": {
+     "vm_max": 10.731716568270011,
+     "vm_p99": 5.341004786415015,
+     "vm_p995": 5.906594970360178,
+     "strain_max": 0.14676137509921186,
+     "strain_p99": 0.08305025749127676,
+     "boundary_self_intersections": 0
+    },
+    "J_min": 0.8847386217487163,
+    "note": "Cauchy sigma = F S F^T / J; strain = max |principal Green-Lagrange|; TPU elements"
+   },
+   "scaled": {
+    "56": {
+     "last_converged_F_N": 8.880597014925373,
+     "smallest_rejected_F_N": 8.919776119402986
+    },
+    "26": {
+     "last_converged_F_N": 4.123134328358209,
+     "smallest_rejected_F_N": 4.141324626865671
+    },
+    "9.8": {
+     "last_converged_F_N": 1.5541044776119406,
+     "smallest_rejected_F_N": 1.5609608208955226
+    }
+   }
+  },
+  "rec_mid": {
+   "last": 11.964285714285714,
+   "rej": null,
+   "at_last": {
+    "F_N": 11.964285714285714,
+    "cauchy_vm_and_green_lagrange_strain": {
+     "vm_max": 12.898333721572005,
+     "vm_p99": 4.953498894771572,
+     "vm_p995": 5.462440668758049,
+     "strain_max": 0.1560365169724654,
+     "strain_p99": 0.0745348531799622,
+     "boundary_self_intersections": 0
+    },
+    "J_min": 0.9065464244633603,
+    "note": "Cauchy sigma = F S F^T / J; strain = max |principal Green-Lagrange|; TPU elements"
+   },
+   "scaled": {
+    "56": {
+     "last_converged_F_N": 10.0,
+     "smallest_rejected_F_N": null
+    },
+    "26": {
+     "last_converged_F_N": 4.642857142857142,
+     "smallest_rejected_F_N": null
+    },
+    "9.8": {
+     "last_converged_F_N": 1.75,
+     "smallest_rejected_F_N": null
+    }
+   }
+  },
+  "cadL60_tip": {
+   "last": 7.806640625,
+   "rej": 7.8125,
+   "at_last": {
+    "F_N": 7.806640625,
+    "cauchy_vm_and_green_lagrange_strain": {
+     "vm_max": 4.544950029559272,
+     "vm_p99": 1.8328785920663606,
+     "vm_p995": 1.9539379007188975,
+     "strain_max": 0.07659074632895244,
+     "strain_p99": 0.027737713158043784,
+     "boundary_self_intersections": 0
+    },
+    "J_min": 0.9483004871970352,
+    "note": "Cauchy sigma = F S F^T / J; strain = max |principal Green-Lagrange|; TPU elements"
+   },
+   "scaled": {
+    "56": {
+     "last_converged_F_N": 6.524953358208955,
+     "smallest_rejected_F_N": 6.529850746268656
+    },
+    "26": {
+     "last_converged_F_N": 3.029442630597015,
+     "smallest_rejected_F_N": 3.031716417910448
+    },
+    "9.8": {
+     "last_converged_F_N": 1.1418668376865673,
+     "smallest_rejected_F_N": 1.142723880597015
+    }
+   }
+  },
+  "rec_nailA_tip": {
+   "last": 8.4140625,
+   "rej": 8.4375,
+   "at_last": {
+    "F_N": 8.4140625,
+    "cauchy_vm_and_green_lagrange_strain": {
+     "vm_max": 7.8480264642727455,
+     "vm_p99": 4.081486870585011,
+     "vm_p995": 4.545987356226852,
+     "strain_max": 0.1364957530560999,
+     "strain_p99": 0.0767466203786591,
+     "pla_vm_max": 6.940171007668949,
+     "pla_vm_p99": 6.596204056555498,
+     "boundary_self_intersections": 0
+    },
+    "J_min": 0.8943719608009567,
+    "note": "Cauchy sigma = F S F^T / J; strain = max |principal Green-Lagrange|; TPU elements"
+   },
+   "scaled": null
+  }
+ },
+ "motion": {
+  "calibrated": {
+   "E56": {
+    "k_A": 1.0732132930554226,
+    "k_B": 1.0811116201726014,
+    "k_pair": 0.523248972354245,
+    "arm_plus_mesh_fraction": 0.02845480273029841,
+    "theta_for_target_deg": -4.520055449928833,
+    "theta_for_cap_deg": -8.73159516401799,
+    "F_at_theta_min_N": 12.391893296679964
+   },
+   "E67": {
+    "k_A": 1.2809715972983986,
+    "k_B": 1.289966697306424,
+    "k_pair": 0.6210207143055744,
+    "arm_plus_mesh_fraction": 0.03377172789750013,
+    "theta_for_target_deg": -3.8570025683447753,
+    "theta_for_cap_deg": -7.405489400849877,
+    "F_at_theta_min_N": 14.707381826433163
+   },
+   "E26_scaled": {
+    "k_A": 0.49709345566803526,
+    "k_B": 0.5005840914920452,
+    "k_pair": 0.24607864346984426,
+    "arm_plus_mesh_fraction": 0.013382002882049326,
+    "theta_for_target_deg": -9.263717196450349,
+    "theta_for_cap_deg": -18.218918657061025,
+    "F_at_theta_min_N": 5.827780757504479
+   },
+   "E9.8_scaled": {
+    "k_A": 0.187365994828721,
+    "k_B": 0.18868169602392473,
+    "k_pair": 0.09353259585285473,
+    "arm_plus_mesh_fraction": 0.005086396160265899,
+    "theta_for_target_deg": -23.869113058435893,
+    "theta_for_cap_deg": -47.42971038103211,
+    "F_at_theta_min_N": 2.215094551175498
+   },
+   "contact": -0.4
+  },
+  "centred": {
+   "E56": {
+    "k_A": 1.0732132930554226,
+    "k_B": 1.0811116201726014,
+    "k_pair": 0.523248972354245,
+    "arm_plus_mesh_fraction": 0.02845480273029841,
+    "theta_for_target_deg": -4.818470968226137,
+    "theta_for_cap_deg": -9.030010682315297,
+    "F_at_theta_min_N": 12.037610138315111
+   },
+   "E67": {
+    "k_A": 1.2809715972983986,
+    "k_B": 1.289966697306424,
+    "k_pair": 0.6210207143055744,
+    "arm_plus_mesh_fraction": 0.03377172789750013,
+    "theta_for_target_deg": -4.155418086642079,
+    "theta_for_cap_deg": -7.70390491914718,
+    "F_at_theta_min_N": 14.286899051122099
+   },
+   "E26_scaled": {
+    "k_A": 0.49709345566803526,
+    "k_B": 0.5005840914920452,
+    "k_pair": 0.24607864346984426,
+    "arm_plus_mesh_fraction": 0.013382002882049326,
+    "theta_for_target_deg": -9.562132714747653,
+    "theta_for_cap_deg": -18.517334175358332,
+    "F_at_theta_min_N": 5.661165009321772
+   },
+   "E9.8_scaled": {
+    "k_A": 0.187365994828721,
+    "k_B": 0.18868169602392473,
+    "k_pair": 0.09353259585285473,
+    "arm_plus_mesh_fraction": 0.005086396160265899,
+    "theta_for_target_deg": -24.1675285767332,
+    "theta_for_cap_deg": -47.72812589932942,
+    "F_at_theta_min_N": 2.1517651894001277
+   },
+   "contact": -0.7
+  }
+ },
+ "sizes": {
+  "fea_mid.json": 227796,
+  "fea_tip.json": 226493,
+  "fea_point.json": 227688,
+  "fea_mid_nl_cap.json": 150176,
+  "fea_tip_nl_cap.json": 147768
+ },
+ "total": 979921,
+ "runtime_s": 913.6
+}

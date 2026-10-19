@@ -1,0 +1,82 @@
+{
+ "threejs": {
+  "first_frame_ms": 2598,
+  "median_frame_ms": 5949.7,
+  "mean_frame_ms": 3815.8,
+  "script_kb_transferred": 481,
+  "cdn_files": {
+   "three@0.186.1/build/three.module.js": 130.5,
+   "three@0.186.1/examples/jsm/loaders/GLTFLoader.js": 27.1,
+   "three@0.186.1/examples/jsm/controls/OrbitControls.js": 9.6,
+   "three@0.186.1/examples/jsm/environments/RoomEnvironment.js": 2.4,
+   "three@0.186.1/examples/jsm/postprocessing/EffectComposer.js": 3.6,
+   "three@0.186.1/examples/jsm/postprocessing/RenderPass.js": 2.5,
+   "three@0.186.1/examples/jsm/postprocessing/GTAOPass.js": 5.5,
+   "three@0.186.1/examples/jsm/postprocessing/OutputPass.js": 2.2,
+   "three@0.186.1/build/three.core.js": 261.2,
+   "three@0.186.1/examples/jsm/utils/BufferGeometryUtils.js": 9.6,
+   "three@0.186.1/examples/jsm/utils/SkeletonUtils.js": 4.4,
+   "three@0.186.1/examples/jsm/postprocessing/Pass.js": 2.6,
+   "three@0.186.1/examples/jsm/shaders/CopyShader.js": 1.5,
+   "three@0.186.1/examples/jsm/postprocessing/ShaderPass.js": 2.0,
+   "three@0.186.1/examples/jsm/postprocessing/MaskPass.js": 2.1,
+   "three@0.186.1/examples/jsm/shaders/OutputShader.js": 1.8,
+   "three@0.186.1/examples/jsm/shaders/GTAOShader.js": 4.7,
+   "three@0.186.1/examples/jsm/shaders/PoissonDenoiseShader.js": 3.5,
+   "three@0.186.1/examples/jsm/math/SimplexNoise.js": 4.5
+  },
+  "shot_kb": 83,
+  "console": [
+   "[GroupMarkerNotSet(crbug.com/242999)!:A0702000BC040000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.",
+   "[.WebGL-0x2f840013bc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "[.WebGL-0x2f840013bc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "[.WebGL-0x2f840013bc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "[.WebGL-0x2f840013bc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+  ],
+  "note": "q2 shadows+GTAO; median from 120 frames (earlier-tuned run; later material tweak does not change cost). 2439 ms first frame on re-run"
+ },
+ "threejs_q0": {
+  "first_frame_ms": 3072,
+  "median_frame_ms": 1449.9,
+  "script_kb_transferred": 480,
+  "note": "q0 = env+physical only"
+ },
+ "threejs_q1": {
+  "first_frame_ms": 2253,
+  "median_frame_ms": 2549.9,
+  "script_kb_transferred": 480,
+  "note": "q1 = + VSM shadows"
+ },
+ "babylon": {
+  "first_frame_ms": 1959,
+  "median_frame_ms": 1950,
+  "mean_frame_ms": 1968.1,
+  "script_kb_transferred": 1894,
+  "cdn_files": {
+   "babylonjs@9.28.0/babylon.js": 1640.3,
+   "babylonjs-loaders@9.28.0/babylonjs.loaders.min.js": 205.0,
+   "babylonjs-materials@9.28.0/babylonjs.materials.min.js": 48.9
+  },
+  "shot_kb": 24,
+  "console": [
+   "[GroupMarkerNotSet(crbug.com/242999)!:A0702000AC220000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.",
+   "[.WebGL-0x1d1c00113200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "[.WebGL-0x1d1c00113200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "[.WebGL-0x1d1c00113200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+   "[.WebGL-0x1d1c00113200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+  ]
+ },
+ "modelviewer": {
+  "first_frame_ms": 7587,
+  "median_frame_ms": 916.6,
+  "mean_frame_ms": 945.8,
+  "script_kb_transferred": 283,
+  "cdn_files": {
+   "@google/model-viewer@4.3.1/dist/model-viewer.min.js": 283.4
+  },
+  "shot_kb": 45,
+  "console": [
+   "[GroupMarkerNotSet(crbug.com/242999)!:A0702000AC220000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content."
+  ]
+ }
+}

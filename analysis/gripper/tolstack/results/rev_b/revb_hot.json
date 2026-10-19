@@ -1,0 +1,1368 @@
+{
+ "case": "revb_hot",
+ "label": "Rev B, hot seat (PETG relaxed)",
+ "tally": {
+  "n": 26,
+  "pass": 21,
+  "marginal": 3,
+  "fail": 2,
+  "undecided": 0,
+  "own_fail": 2,
+  "thinnest": "T09T",
+  "thinnest_cpk": -0.239466102,
+  "thinnest_ex_horn": "T09T",
+  "thinnest_ex_horn_cpk": -0.239466102,
+  "marginal_ids": [
+   "T09H",
+   "T14",
+   "T16"
+  ],
+  "fail_ids": [
+   "T09T",
+   "T14B"
+  ]
+ },
+ "stacks": [
+  {
+   "id": "T01",
+   "title": "Horn-to-mount bolt pattern fit (4x M3 on the 14.0 BC)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": -0.3865,
+   "wc": [
+    -0.363,
+    -0.035
+   ],
+   "spec": {
+    "usl": 0.0
+   },
+   "units": "mm radial interference (> 0 = screw hits hole wall)",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "hole_position",
+    "var_pct": 81.0164869
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T01",
+   "picked_variant": null,
+   "mc": {
+    "mean": -0.193473596,
+    "std": 0.0390370056,
+    "p0135": -0.309368655,
+    "p99865": -0.0835826288,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.76624388,
+    "cpk_percentile_se": 0.0248532143,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T01H",
+   "title": "M3 pan head clears its counterbore (rev A \u00d86.5)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": -0.525,
+   "wc": [
+    -0.55,
+    -0.075
+   ],
+   "spec": {
+    "usl": 0.0
+   },
+   "units": "mm radial interference (> 0 = head rubs counterbore wall)",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "cbore_position",
+    "var_pct": 55.1724138
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T01H",
+   "picked_variant": null,
+   "mc": {
+    "mean": -0.325566889,
+    "std": 0.0595422814,
+    "p0135": -0.48486188,
+    "p99865": -0.16465171,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.02364694,
+    "cpk_percentile_se": 0.0124769432,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T02",
+   "title": "Horn pilot recess radial fit (\u00d819.2 horn in the printed \u00d819.51 recess)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.36,
+   "wc": [
+    0.05,
+    0.35
+   ],
+   "spec": {
+    "lsl": 0.02,
+    "usl": 0.4
+   },
+   "units": "mm diametral clearance",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "recess_d_printed",
+    "var_pct": 80.0
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T02",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.199967014,
+    "std": 0.0373941878,
+    "p0135": 0.0882221405,
+    "p99865": 0.312424715,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.61009181,
+    "cpk_percentile_se": 0.0216598085,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T03",
+   "title": "Axial stack horn face to clamp to screw \u2014 thread engagement",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 2.5,
+   "wc": [
+    1.885,
+    2.915
+   ],
+   "spec": {
+    "lsl": 1.5
+   },
+   "units": "mm full-thread engagement below horn face H",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "clamp_thickness",
+    "var_pct": 43.3703701
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T03",
+   "picked_variant": null,
+   "mc": {
+    "mean": 2.40040498,
+    "std": 0.131436558,
+    "p0135": 2.03385556,
+    "p99865": 2.77298076,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.4568962,
+    "cpk_percentile_se": 0.0123932117,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T03B",
+   "title": "Axial stack \u2014 screw tip clear of the horn hole floor",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.75,
+   "wc": [
+    0.235,
+    1.465
+   ],
+   "spec": {
+    "lsl": 0.2
+   },
+   "units": "mm (hole depth minus screw protrusion below H)",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "clamp_thickness",
+    "var_pct": 40.7301252
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T03B",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.849698669,
+    "std": 0.135499478,
+    "p0135": 0.462623179,
+    "p99865": 1.22904004,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.67850725,
+    "cpk_percentile_se": 0.0215096474,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T04",
+   "title": "Gripper datum B axis vs wrist-roll axis (concentricity)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    0.0,
+    0.275
+   ],
+   "spec": {
+    "usl": 0.3
+   },
+   "units": "mm radial offset",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pilot_float",
+    "var_pct": 67.418813
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T04",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.0791109092,
+    "std": 0.0373593934,
+    "p0135": 0.00348336302,
+    "p99865": 0.190867697,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.95803339,
+    "cpk_percentile_se": 0.0108366985,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T05-tcpcal",
+   "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+   "role": "option",
+   "variant_of": "T05",
+   "nominal": 0.307017544,
+   "wc": [
+    -0.552118737,
+    1.16615383
+   ],
+   "spec": {
+    "lsl": -0.192982456,
+    "usl": 0.807017544
+   },
+   "units": "mm (pinch point x vs roll axis, gripper frame G)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "backlash_lag_B",
+    "var_pct": 37.7171203
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T05",
+   "picked_variant": "T05-tcpcal",
+   "mc": {
+    "mean": 0.307476011,
+    "std": 0.0917405604,
+    "p0135": 0.037036895,
+    "p99865": 0.578707933,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.84174663,
+    "cpk_percentile_se": 0.0160541685,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T06",
+   "title": "Gear centre distance a (pin A to pin B, rev A pinned layout)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 28.5,
+   "wc": [
+    28.35,
+    28.65
+   ],
+   "spec": {
+    "lsl": 28.2855493,
+    "usl": 28.7144507
+   },
+   "units": "mm",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pinA_to_pinB_holes",
+    "var_pct": 90.4977376
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T06",
+   "picked_variant": null,
+   "mc": {
+    "mean": 28.5000378,
+    "std": 0.0351165776,
+    "p0135": 28.3954234,
+    "p99865": 28.6067559,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.00968535,
+    "cpk_percentile_se": 0.0120910415,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T07",
+   "title": "Gear backlash jt (circumferential, m 1.5 z 19, alpha 25)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.25,
+   "wc": [
+    -0.0831538291,
+    0.583153829
+   ],
+   "spec": {
+    "lsl": 0.05,
+    "usl": 0.45
+   },
+   "units": "mm circumferential backlash",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.998,
+   "dominant": {
+    "name": "centre_distance",
+    "var_pct": 50.8008548
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T07",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.250156519,
+    "std": 0.0460853397,
+    "p0135": 0.110333116,
+    "p99865": 0.389888926,
+    "out_pct": 0.002,
+    "cpk_percentile": 1.42997487,
+    "cpk_percentile_se": 0.0129513765,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T08",
+   "title": "Gear mesh axial alignment (gear A vs gear B mid-planes, Z)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -0.49,
+    0.49
+   ],
+   "spec": {
+    "lsl": -0.8,
+    "usl": 0.8
+   },
+   "units": "mm (z_mid A - z_mid B)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "float_A",
+    "var_pct": 45.9027542
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T08",
+   "picked_variant": null,
+   "mc": {
+    "mean": -0.000394221297,
+    "std": 0.127487527,
+    "p0135": -0.320686733,
+    "p99865": 0.32052258,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.49246573,
+    "cpk_percentile_se": 0.0131071814,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09",
+   "title": "Closure gap \u2014 first-contact angle of the jaw before calibration",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": -2.21855731,
+   "wc": [
+    -4.94750592,
+    0.5103913
+   ],
+   "spec": {
+    "lsl": -4.0,
+    "usl": 4.0
+   },
+   "units": "deg (servo jaw angle at first pad contact, theta = 0 means rigid contact faces 1.0 apart)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "horn_trim",
+    "var_pct": 68.3527969
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09",
+   "picked_variant": null,
+   "mc": {
+    "mean": -2.21778725,
+    "std": 0.40456073,
+    "p0135": -3.41557368,
+    "p99865": -0.996507673,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.48713706,
+    "cpk_percentile_se": 0.0178183918,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09F-relfloor8",
+   "title": "Pad force at the jaw floor with the FSR trip failed (position-only cap, R15)",
+   "role": "option",
+   "variant_of": "T09F",
+   "nominal": 6.35935148,
+   "wc": [
+    4.86526237,
+    8.03132454
+   ],
+   "spec": {
+    "usl": 8.0
+   },
+   "units": "N (pad force with the jaw at JAW_MIN_DEG -7.4)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "k_pair",
+    "var_pct": 60.6020832
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09F",
+   "picked_variant": "T09F-relfloor8",
+   "mc": {
+    "mean": 6.35966528,
+    "std": 0.403544868,
+    "p0135": 5.30698983,
+    "p99865": 7.48019121,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.46111961,
+    "cpk_percentile_se": 0.00296689148,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09H-relfloor8",
+   "title": "Largest hold force the firmware can reach on the softest finger (R14 under the R15 cap)",
+   "role": "option",
+   "variant_of": "T09H",
+   "nominal": 6.31652319,
+   "wc": [
+    4.82610294,
+    7.9848274
+   ],
+   "spec": {
+    "lsl": 5.0
+   },
+   "units": "N (pad force at the firmware squeeze cap or the jaw floor, whichever comes first)",
+   "method": "mc",
+   "verdict3": "marginal",
+   "own_verdict3": "marginal",
+   "verdict_band": [
+    "marginal"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.996,
+   "dominant": {
+    "name": "k_pair",
+    "var_pct": 60.6205157
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09H",
+   "picked_variant": "T09H-relfloor8",
+   "mc": {
+    "mean": 6.31703521,
+    "std": 0.401129272,
+    "p0135": 5.28345428,
+    "p99865": 7.44721368,
+    "out_pct": 0.004,
+    "cpk_percentile": 1.27663479,
+    "cpk_percentile_se": 0.0098508073,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09P-floor49",
+   "title": "Peak pad force when the FSR over-force trip fires (R15)",
+   "role": "option",
+   "variant_of": "T09P",
+   "nominal": 6.35935148,
+   "wc": [
+    4.86526237,
+    8.03132454
+   ],
+   "spec": {
+    "usl": 8.0
+   },
+   "units": "N (largest true pad force before the trip opens the jaw)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "k_pair",
+    "var_pct": 60.6071646
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09P",
+   "picked_variant": "T09P-floor49",
+   "mc": {
+    "mean": 6.35965954,
+    "std": 0.403531101,
+    "p0135": 5.30698983,
+    "p99865": 7.48005564,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.46129535,
+    "cpk_percentile_se": 0.00331357782,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09T",
+   "title": "Close time to first contact after calibration (R19)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.507,
+   "wc": [
+    0.463,
+    0.551
+   ],
+   "spec": {
+    "usl": 0.5
+   },
+   "units": "s (close command to first pad contact)",
+   "method": "mc",
+   "verdict3": "fail",
+   "own_verdict3": "fail",
+   "verdict_band": [
+    "fail"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 24.039,
+   "dominant": {
+    "name": "servo_angle_error",
+    "var_pct": 69.5991091
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09T",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.507024243,
+    "std": 0.00997571382,
+    "p0135": 0.477135476,
+    "p99865": 0.536359169,
+    "out_pct": 75.961,
+    "cpk_percentile": -0.239466102,
+    "cpk_percentile_se": 0.00271920286,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T10",
+   "title": "Finger pad parallelism in the closing plane (root gap at tip contact)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -1.45178571,
+    1.45178571
+   ],
+   "spec": {
+    "lsl": -1.0,
+    "usl": 1.0
+   },
+   "units": "mm root gap when the tips first touch (> 0 = V open toward the root)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pad_A_tilt",
+    "var_pct": 25.3019138
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T10",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.00044247588,
+    "std": 0.198754785,
+    "p0135": -0.596246827,
+    "p99865": 0.597365487,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.67371443,
+    "cpk_percentile_se": 0.0127880908,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T10B",
+   "title": "Fingertip out-of-plane mismatch (Z) from pin perpendicularity and knuckle wobble",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -2.39691131,
+    2.39691131
+   ],
+   "spec": {
+    "lsl": -2.0,
+    "usl": 2.0
+   },
+   "units": "mm (tip A z - tip B z)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "pinA_perpendicularity",
+    "var_pct": 22.3369789
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T10B",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.00175344023,
+    "std": 0.329107191,
+    "p0135": -0.973896445,
+    "p99865": 0.97824244,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.04541878,
+    "cpk_percentile_se": 0.0128559304,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T11",
+   "title": "Radial keep-out, r 11.6 hub band (H-1..H+1) vs wrist-link lip r 12.6",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 1.0,
+   "wc": [
+    0.175,
+    1.15
+   ],
+   "spec": {
+    "lsl": 0.1
+   },
+   "units": "mm radial clearance, worst angle over 320 deg roll",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "lip_radius",
+    "var_pct": 47.0247895
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T11",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.720487586,
+    "std": 0.0971682588,
+    "p0135": 0.434167767,
+    "p99865": 0.999016009,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.16542979,
+    "cpk_percentile_se": 0.0278873875,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T12",
+   "title": "Axial keep-out, gripper widens (r > 15) above the wrist-link lip top",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.7,
+   "wc": [
+    0.1,
+    1.5
+   ],
+   "spec": {
+    "lsl": 0.1
+   },
+   "units": "mm (z where the part widens past r 15) - (lip top z)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "widen_height_above_H",
+    "var_pct": 40.9090909
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T12",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.800364271,
+    "std": 0.13544986,
+    "p0135": 0.421091759,
+    "p99865": 1.17891789,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.84643153,
+    "cpk_percentile_se": 0.00732470886,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T12B",
+   "title": "Axial gap, gripper rim to servo-5 case top",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 3.8,
+   "wc": [
+    3.5,
+    4.1
+   ],
+   "spec": {
+    "lsl": 0.5
+   },
+   "units": "mm",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "rim_below_H",
+    "var_pct": 79.4117647
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T12B",
+   "picked_variant": null,
+   "mc": {
+    "mean": 3.80031686,
+    "std": 0.0971132665,
+    "p0135": 3.56516273,
+    "p99865": 4.03227692,
+    "out_pct": 0.0,
+    "cpk_percentile": 14.0440252,
+    "cpk_percentile_se": 0.0400197176,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T13",
+   "title": "Wrist-camera aim angle error (optional UVC bracket on the front-plate pad)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -3.03263599,
+    3.03263599
+   ],
+   "spec": {
+    "lsl": -3.0,
+    "usl": 3.0
+   },
+   "units": "deg",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "lens_tilt",
+    "var_pct": 35.1747352
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T13",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.00134143166,
+    "std": 0.563136967,
+    "p0135": -1.63707606,
+    "p99865": 1.62364815,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.83321314,
+    "cpk_percentile_se": 0.0149005909,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T14-boss",
+   "title": "Gripper servo body in cradle fit (20.4 pocket, DS3218MG 20.1 wide)",
+   "role": "option",
+   "variant_of": "T14",
+   "nominal": 0.4,
+   "wc": [
+    -0.05,
+    0.65
+   ],
+   "spec": {
+    "lsl": 0.0
+   },
+   "units": "mm clearance (pocket - body)",
+   "method": "mc",
+   "verdict3": "marginal",
+   "own_verdict3": "marginal",
+   "verdict_band": [
+    "marginal"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.996,
+   "dominant": {
+    "name": "hot_seat_creep",
+    "var_pct": 48.0
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T14",
+   "picked_variant": "T14-boss",
+   "mc": {
+    "mean": 0.300247759,
+    "std": 0.0832405263,
+    "p0135": 0.0635773823,
+    "p99865": 0.534249822,
+    "out_pct": 0.004,
+    "cpk_percentile": 1.26857896,
+    "cpk_percentile_se": 0.00943163065,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T14B-boss34",
+   "title": "Dog coupling \u2014 servo shaft offset from pin A against the dog slot clearance",
+   "role": "option",
+   "variant_of": "T14B",
+   "nominal": -0.2365,
+   "wc": [
+    -0.277192661,
+    0.388192661
+   ],
+   "spec": {
+    "usl": 0.0
+   },
+   "units": "mm tangential interference at a dog (> 0 = the dogs force knuckle A sideways)",
+   "method": "wc",
+   "verdict3": "fail",
+   "own_verdict3": "fail",
+   "verdict_band": [
+    "fail"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 97.64,
+   "dominant": {
+    "name": "hot_servo_shift",
+    "var_pct": 33.8104086
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T14B",
+   "picked_variant": "T14B-boss34",
+   "mc": {
+    "mean": -0.121433276,
+    "std": 0.0550468429,
+    "p0135": -0.24928989,
+    "p99865": 0.0663471641,
+    "out_pct": 2.36,
+    "cpk_percentile": 0.656787937,
+    "cpk_percentile_se": 0.00538353783,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T15-shimselect",
+   "title": "Knuckle end play at pin B (three standoffs, shims 0.85 per side)",
+   "role": "option",
+   "variant_of": "T15",
+   "nominal": 0.3,
+   "wc": [
+    0.195,
+    0.405
+   ],
+   "spec": {
+    "lsl": 0.05,
+    "usl": 0.5
+   },
+   "units": "mm axial end play",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "hot_endplay",
+    "var_pct": 72.9927007
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T15",
+   "picked_variant": "T15-shimselect",
+   "mc": {
+    "mean": 0.29998034,
+    "std": 0.0338878321,
+    "p0135": 0.217743493,
+    "p99865": 0.382188894,
+    "out_pct": 0.0,
+    "cpk_percentile": 2.43144039,
+    "cpk_percentile_se": 0.00615576351,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T16",
+   "title": "Pin axis tilt, centre-distance change across the 10.5 mm gear face",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.0,
+   "wc": [
+    -0.084,
+    0.084
+   ],
+   "spec": {
+    "lsl": -0.07,
+    "usl": 0.07
+   },
+   "units": "mm (a at front face - a at back face)",
+   "method": "mc",
+   "verdict3": "marginal",
+   "own_verdict3": "marginal",
+   "verdict_band": [
+    "marginal"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.998,
+   "dominant": {
+    "name": "knuckleA_tilt_on_pin",
+    "var_pct": 37.5
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T16",
+   "picked_variant": null,
+   "mc": {
+    "mean": -8.8035252e-05,
+    "std": 0.0198614284,
+    "p0135": -0.0540482692,
+    "p99865": 0.0538888415,
+    "out_pct": 0.002,
+    "cpk_percentile": 1.29584271,
+    "cpk_percentile_se": 0.00814038759,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T16B",
+   "title": "Knuckle sleeve running fit on its pin (bronze bush bore vs m6 dowel)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 0.015,
+   "wc": [
+    -2.22044605e-16,
+    0.03
+   ],
+   "spec": {
+    "lsl": 0.0
+   },
+   "units": "mm diametral clearance (< 0 = the knuckle is pressed onto its pin)",
+   "method": "wc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "sleeve_bore",
+    "var_pct": 56.6371681
+   },
+   "blocked_by": [],
+   "rss_clipped": true,
+   "warnings": [],
+   "base_id": "T16B",
+   "picked_variant": null,
+   "mc": {
+    "mean": 0.0150136968,
+    "std": 0.00614254599,
+    "p0135": 0.000772909704,
+    "p99865": 0.0292504163,
+    "out_pct": 0.0,
+    "cpk_percentile": 1.05418363,
+    "cpk_percentile_se": 0.00138469168,
+    "n": 100000
+   }
+  }
+ ],
+ "alternatives": [
+  {
+   "id": "T05-deckpegs",
+   "title": "Jaw centreline offset at the fingertips vs roll axis (X, closing axis)",
+   "role": "option",
+   "variant_of": "T05",
+   "nominal": 0.307017544,
+   "wc": [
+    -1.07250652,
+    1.68654161
+   ],
+   "spec": {
+    "lsl": -0.192982456,
+    "usl": 0.807017544
+   },
+   "units": "mm (pinch point x vs roll axis, gripper frame G)",
+   "method": "mc",
+   "verdict3": "marginal",
+   "own_verdict3": "marginal",
+   "verdict_band": [
+    "marginal"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 99.988,
+   "dominant": {
+    "name": "pinA_to_deck_holes",
+    "var_pct": 29.4496182
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T05",
+   "picked_variant": "T05-deckpegs",
+   "mc": {
+    "mean": 0.307252349,
+    "std": 0.127477956,
+    "p0135": -0.0747612606,
+    "p99865": 0.68767293,
+    "out_pct": 0.012,
+    "cpk_percentile": 1.30925289,
+    "cpk_percentile_se": 0.00783106614,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09H",
+   "title": "Largest hold force the firmware can reach on the softest finger (R14 under the R15 cap)",
+   "role": "baseline",
+   "variant_of": null,
+   "nominal": 6.31652319,
+   "wc": [
+    2.91025052,
+    6.85762395
+   ],
+   "spec": {
+    "lsl": 5.0
+   },
+   "units": "N (pad force at the firmware squeeze cap or the jaw floor, whichever comes first)",
+   "method": "mc",
+   "verdict3": "fail",
+   "own_verdict3": "fail",
+   "verdict_band": [
+    "fail"
+   ],
+   "verdict_decided": true,
+   "sampling_runs": [
+    {
+     "n": 100000,
+     "cpk_percentile": 0.997431241,
+     "cpk_percentile_se": 0.0067903406,
+     "verdict_band": [
+      "marginal",
+      "fail"
+     ],
+     "seed": 20260922,
+     "sample_head_sha256": "9cab69fab310a97a997614786fb05de1fce68eaf3d95e4490843097d2aff85f6"
+    },
+    {
+     "n": 1000000,
+     "cpk_percentile": 0.986391425,
+     "cpk_percentile_se": 0.00468564885,
+     "verdict_band": [
+      "fail"
+     ],
+     "seed": 21260925,
+     "sample_head_sha256": "9745b931a64f54c27c27ac1c565975ecafb99a425c9e343f825988d2c9da44dc"
+    }
+   ],
+   "yield_pct": 99.8481,
+   "dominant": {
+    "name": "k_pair",
+    "var_pct": 78.0128694
+   },
+   "blocked_by": [],
+   "rss_clipped": true,
+   "warnings": [],
+   "base_id": "T09H",
+   "picked_variant": "T09H",
+   "mc": {
+    "mean": 6.25113341,
+    "std": 0.353017183,
+    "p0135": 4.9826983,
+    "p99865": 6.8557661,
+    "out_pct": 0.1519,
+    "cpk_percentile": 0.986391425,
+    "cpk_percentile_se": 0.00468564885,
+    "n": 1000000
+   }
+  },
+  {
+   "id": "T09P-trip7",
+   "title": "Peak pad force when the FSR over-force trip fires (R15)",
+   "role": "option",
+   "variant_of": "T09P",
+   "nominal": 7.7592287,
+   "wc": [
+    6.36363636,
+    9.42631281
+   ],
+   "spec": {
+    "usl": 8.0
+   },
+   "units": "N (largest true pad force before the trip opens the jaw)",
+   "method": "mc",
+   "verdict3": "fail",
+   "own_verdict3": "fail",
+   "verdict_band": [
+    "fail"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 65.443,
+   "dominant": {
+    "name": "squeeze_deg",
+    "var_pct": 77.3968088
+   },
+   "blocked_by": [],
+   "rss_clipped": true,
+   "warnings": [],
+   "base_id": "T09P",
+   "picked_variant": "T09P-trip7",
+   "mc": {
+    "mean": 7.76737432,
+    "std": 0.498574827,
+    "p0135": 6.57683662,
+    "p99865": 9.06071464,
+    "out_pct": 34.557,
+    "cpk_percentile": 0.181190064,
+    "cpk_percentile_se": 0.00184278272,
+    "n": 100000
+   }
+  },
+  {
+   "id": "T09T-slow3",
+   "title": "Close time to first contact after calibration (R19)",
+   "role": "option",
+   "variant_of": "T09T",
+   "nominal": 0.382,
+   "wc": [
+    0.338,
+    0.426
+   ],
+   "spec": {
+    "usl": 0.5
+   },
+   "units": "s (close command to first pad contact)",
+   "method": "mc",
+   "verdict3": "pass",
+   "own_verdict3": "pass",
+   "verdict_band": [
+    "pass"
+   ],
+   "verdict_decided": true,
+   "yield_pct": 100.0,
+   "dominant": {
+    "name": "servo_angle_error",
+    "var_pct": 69.5991091
+   },
+   "blocked_by": [],
+   "rss_clipped": false,
+   "warnings": [],
+   "base_id": "T09T",
+   "picked_variant": "T09T-slow3",
+   "mc": {
+    "mean": 0.382024243,
+    "std": 0.00997571382,
+    "p0135": 0.352135476,
+    "p99865": 0.411359169,
+    "out_pct": 0.0,
+    "cpk_percentile": 4.02172213,
+    "cpk_percentile_se": 0.0474190579,
+    "n": 100000
+   }
+  }
+ ],
+ "input_digest": {
+  "algorithm": "sha256",
+  "digest": "fa035516e4ebb9de294fc9f9972df710db45e286c9cc6c7832f1f5936bef72e3",
+  "files": [
+   "stacks/basis.yaml",
+   "stacks/rev_b.yaml",
+   "stacks/T01_bolt_pattern_fit.yaml",
+   "stacks/T01H_screw_head_counterbore.yaml",
+   "stacks/T02_pilot_recess_fit.yaml",
+   "stacks/T03_thread_engagement.yaml",
+   "stacks/T03B_screw_bottoming.yaml",
+   "stacks/T04_concentricity.yaml",
+   "stacks/T05_jaw_centerline.yaml",
+   "stacks/T06_gear_center_distance.yaml",
+   "stacks/T07_backlash.yaml",
+   "stacks/T08_mesh_axial.yaml",
+   "stacks/T09_closure_gap.yaml",
+   "stacks/T09F_force_at_floor.yaml",
+   "stacks/T09H_hold_force_reach.yaml",
+   "stacks/T09P_force_at_trip.yaml",
+   "stacks/T09T_close_time.yaml",
+   "stacks/T10_pad_parallelism.yaml",
+   "stacks/T10B_pad_out_of_plane.yaml",
+   "stacks/T11_keepout_radial.yaml",
+   "stacks/T12_keepout_axial.yaml",
+   "stacks/T12B_rim_to_case.yaml",
+   "stacks/T13_camera_aim.yaml",
+   "stacks/T14_servo_cradle.yaml",
+   "stacks/T14B_dog_coupling.yaml",
+   "stacks/T15_standoff_endplay.yaml",
+   "stacks/T16_pin_tilt.yaml",
+   "stacks/T16B_sleeve_running_fit.yaml",
+   "tolcalc/__init__.py",
+   "tolcalc/cad.py",
+   "tolcalc/detmath.py",
+   "tolcalc/engine.py",
+   "tolcalc/gdt.py",
+   "tolcalc/model.py",
+   "tolcalc/report.py",
+   "tolcalc/scenarios.py",
+   "tolcalc/statistics.py",
+   "tolstack.py"
+  ]
+ }
+}

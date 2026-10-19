@@ -1,0 +1,4218 @@
+{
+ "fastener_items": [
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -15.75,
+    -1.5,
+    -2.0,
+    -12.75,
+    1.5,
+    14.0
+   ],
+   "centroid": [
+    -14.25,
+    0.0,
+    6.0
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "pin_a",
+   "nodes": [
+    "fasteners",
+    "fasteners_1",
+    "fasteners_2"
+   ],
+   "type": "ISO 2338 h8 3 x 16"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    12.75,
+    -1.5,
+    -2.0,
+    15.75,
+    1.5,
+    14.0
+   ],
+   "centroid": [
+    14.25,
+    0.0,
+    6.0
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "pin_b",
+   "nodes": [
+    "fasteners_3",
+    "fasteners_4",
+    "fasteners_5"
+   ],
+   "type": "ISO 2338 h8 3 x 16"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -17.75,
+    -3.5,
+    0.08,
+    -10.75,
+    3.5,
+    0.93
+   ],
+   "centroid": [
+    -14.25,
+    0.0,
+    0.5
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "shim_a_back",
+   "nodes": [
+    "fasteners_6",
+    "fasteners_7",
+    "fasteners_8",
+    "fasteners_9"
+   ],
+   "type": "shim washer 3.2 x 7 x 0.85"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -17.75,
+    -3.5,
+    11.57,
+    -10.75,
+    3.5,
+    12.43
+   ],
+   "centroid": [
+    -14.25,
+    0.0,
+    12.0
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "shim_a_front",
+   "nodes": [
+    "fasteners_10",
+    "fasteners_11",
+    "fasteners_12",
+    "fasteners_13"
+   ],
+   "type": "shim washer 3.2 x 7 x 0.85"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    10.75,
+    -3.5,
+    0.08,
+    17.75,
+    3.5,
+    0.93
+   ],
+   "centroid": [
+    14.25,
+    0.0,
+    0.5
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "shim_b_back",
+   "nodes": [
+    "fasteners_14",
+    "fasteners_15",
+    "fasteners_16",
+    "fasteners_17"
+   ],
+   "type": "shim washer 3.2 x 7 x 0.85"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    10.75,
+    -3.5,
+    11.57,
+    17.75,
+    3.5,
+    12.43
+   ],
+   "centroid": [
+    14.25,
+    0.0,
+    12.0
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "shim_b_front",
+   "nodes": [
+    "fasteners_18",
+    "fasteners_19",
+    "fasteners_20",
+    "fasteners_21"
+   ],
+   "type": "shim washer 3.2 x 7 x 0.85"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    2.2,
+    25.6,
+    2.2,
+    7.7,
+    34.0,
+    7.7
+   ],
+   "centroid": [
+    4.95,
+    28.59,
+    4.95
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "horn_screw_1",
+   "nodes": [
+    "fasteners_22",
+    "fasteners_23",
+    "fasteners_24",
+    "fasteners_25",
+    "fasteners_26"
+   ],
+   "type": "M3x6 ISO 7045 pan head (horn)"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    -7.7,
+    25.6,
+    2.2,
+    -2.2,
+    34.0,
+    7.7
+   ],
+   "centroid": [
+    -4.95,
+    28.59,
+    4.95
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "horn_screw_2",
+   "nodes": [
+    "fasteners_27",
+    "fasteners_28",
+    "fasteners_29",
+    "fasteners_30",
+    "fasteners_31"
+   ],
+   "type": "M3x6 ISO 7045 pan head (horn)"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    -7.7,
+    25.6,
+    -7.7,
+    -2.2,
+    34.0,
+    -2.2
+   ],
+   "centroid": [
+    -4.95,
+    28.59,
+    -4.95
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "horn_screw_3",
+   "nodes": [
+    "fasteners_32",
+    "fasteners_33",
+    "fasteners_34",
+    "fasteners_35",
+    "fasteners_36"
+   ],
+   "type": "M3x6 ISO 7045 pan head (horn)"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    2.2,
+    25.6,
+    -7.7,
+    7.7,
+    34.0,
+    -2.2
+   ],
+   "centroid": [
+    4.95,
+    28.59,
+    -4.95
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "horn_screw_4",
+   "nodes": [
+    "fasteners_37",
+    "fasteners_38",
+    "fasteners_39",
+    "fasteners_40",
+    "fasteners_41"
+   ],
+   "type": "M3x6 ISO 7045 pan head (horn)"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    -33.25,
+    16.6,
+    3.25,
+    -27.75,
+    25.0,
+    8.75
+   ],
+   "centroid": [
+    -30.5,
+    19.59,
+    6.0
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "deck_screw_1",
+   "nodes": [
+    "fasteners_42",
+    "fasteners_43",
+    "fasteners_44",
+    "fasteners_45"
+   ],
+   "type": "M3x6 ISO 7045 pan head (deck)"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    -32.6,
+    22.0,
+    3.9,
+    -28.4,
+    25.5,
+    8.1
+   ],
+   "centroid": [
+    -30.5,
+    23.75,
+    6.0
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "insert_1",
+   "nodes": [
+    "fasteners_46",
+    "fasteners_47",
+    "fasteners_48",
+    "fasteners_49",
+    "fasteners_50"
+   ],
+   "type": "M3 brass heat-set insert 4.2 x 3.5"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    27.75,
+    16.6,
+    3.25,
+    33.25,
+    25.0,
+    8.75
+   ],
+   "centroid": [
+    30.5,
+    19.59,
+    6.0
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "deck_screw_2",
+   "nodes": [
+    "fasteners_51",
+    "fasteners_52",
+    "fasteners_53",
+    "fasteners_54"
+   ],
+   "type": "M3x6 ISO 7045 pan head (deck)"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    28.4,
+    22.0,
+    3.9,
+    32.6,
+    25.5,
+    8.1
+   ],
+   "centroid": [
+    30.5,
+    23.75,
+    6.0
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "insert_2",
+   "nodes": [
+    "fasteners_55",
+    "fasteners_56",
+    "fasteners_57",
+    "fasteners_58",
+    "fasteners_59"
+   ],
+   "type": "M3 brass heat-set insert 4.2 x 3.5"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    -33.25,
+    16.6,
+    -10.25,
+    -27.75,
+    25.0,
+    -4.75
+   ],
+   "centroid": [
+    -30.5,
+    19.59,
+    -7.5
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "deck_screw_3",
+   "nodes": [
+    "fasteners_60",
+    "fasteners_61",
+    "fasteners_62",
+    "fasteners_63"
+   ],
+   "type": "M3x6 ISO 7045 pan head (deck)"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    -32.6,
+    22.0,
+    -9.6,
+    -28.4,
+    25.5,
+    -5.4
+   ],
+   "centroid": [
+    -30.5,
+    23.75,
+    -7.5
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "insert_3",
+   "nodes": [
+    "fasteners_64",
+    "fasteners_65",
+    "fasteners_66",
+    "fasteners_67",
+    "fasteners_68"
+   ],
+   "type": "M3 brass heat-set insert 4.2 x 3.5"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    27.75,
+    16.6,
+    -10.25,
+    33.25,
+    25.0,
+    -4.75
+   ],
+   "centroid": [
+    30.5,
+    19.59,
+    -7.5
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "deck_screw_4",
+   "nodes": [
+    "fasteners_69",
+    "fasteners_70",
+    "fasteners_71",
+    "fasteners_72"
+   ],
+   "type": "M3x6 ISO 7045 pan head (deck)"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    28.4,
+    22.0,
+    -9.6,
+    32.6,
+    25.5,
+    -5.4
+   ],
+   "centroid": [
+    30.5,
+    23.75,
+    -7.5
+   ],
+   "driver_axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "group": "fasteners",
+   "id": "insert_4",
+   "nodes": [
+    "fasteners_73",
+    "fasteners_74",
+    "fasteners_75",
+    "fasteners_76",
+    "fasteners_77"
+   ],
+   "type": "M3 brass heat-set insert 4.2 x 3.5"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    -21.3,
+    19.5,
+    2.4,
+    -18.3,
+    25.5,
+    5.4
+   ],
+   "centroid": [
+    -19.8,
+    22.5,
+    3.9
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "locpin_1",
+   "nodes": [
+    "fasteners_78",
+    "fasteners_79",
+    "fasteners_80"
+   ],
+   "type": "ISO 2338 h8 3 x 6 locating pin"
+  },
+  {
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "bbox": [
+    18.3,
+    19.5,
+    -8.0,
+    21.3,
+    25.5,
+    -5.0
+   ],
+   "centroid": [
+    19.8,
+    22.5,
+    -6.5
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "locpin_2",
+   "nodes": [
+    "fasteners_81",
+    "fasteners_82",
+    "fasteners_83"
+   ],
+   "type": "ISO 2338 h8 3 x 6 locating pin"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    -31.8,
+    -7.8,
+    -22.8,
+    -26.2,
+    -2.2,
+    -11.0
+   ],
+   "centroid": [
+    -29.0,
+    -5.0,
+    -18.27
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "group": "fasteners",
+   "id": "ear_screw_1",
+   "nodes": [
+    "fasteners_84",
+    "fasteners_85",
+    "fasteners_86",
+    "fasteners_87",
+    "fasteners_88"
+   ],
+   "type": "M3x10 ISO 7045 pan head (servo ear)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -31.5,
+    -7.5,
+    -18.5,
+    -26.5,
+    -2.5,
+    -15.95
+   ],
+   "centroid": [
+    -29.0,
+    -5.0,
+    -17.22
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "limiter_1",
+   "nodes": [
+    "fasteners_89",
+    "fasteners_91",
+    "fasteners_92"
+   ],
+   "type": "compression limiter 5.0 x 3.2 x 2.55"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -32.5,
+    -8.5,
+    -15.95,
+    -25.5,
+    -1.5,
+    -15.45
+   ],
+   "centroid": [
+    -29.0,
+    -5.0,
+    -15.7
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "washer_1",
+   "nodes": [
+    "fasteners_90",
+    "fasteners_93",
+    "fasteners_94",
+    "fasteners_95",
+    "fasteners_96",
+    "fasteners_100"
+   ],
+   "type": "M3 ISO 7089 washer 7 x 3.2 x 0.5"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -32.17,
+    -7.75,
+    -15.45,
+    -25.83,
+    -2.25,
+    -13.05
+   ],
+   "centroid": [
+    -29.0,
+    -5.0,
+    -14.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "nut_1",
+   "nodes": [
+    "fasteners_97",
+    "fasteners_98",
+    "fasteners_99",
+    "fasteners_101",
+    "fasteners_102",
+    "fasteners_103",
+    "fasteners_104",
+    "fasteners_105"
+   ],
+   "type": "M3 ISO 4032 nut"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    -31.8,
+    2.2,
+    -22.8,
+    -26.2,
+    7.8,
+    -11.0
+   ],
+   "centroid": [
+    -29.0,
+    5.0,
+    -18.27
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "group": "fasteners",
+   "id": "ear_screw_2",
+   "nodes": [
+    "fasteners_106",
+    "fasteners_107",
+    "fasteners_108",
+    "fasteners_109",
+    "fasteners_110"
+   ],
+   "type": "M3x10 ISO 7045 pan head (servo ear)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -31.5,
+    2.5,
+    -18.5,
+    -26.5,
+    7.5,
+    -15.95
+   ],
+   "centroid": [
+    -29.0,
+    5.0,
+    -17.22
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "limiter_2",
+   "nodes": [
+    "fasteners_111",
+    "fasteners_113",
+    "fasteners_114"
+   ],
+   "type": "compression limiter 5.0 x 3.2 x 2.55"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -32.5,
+    1.5,
+    -15.95,
+    -25.5,
+    8.5,
+    -15.45
+   ],
+   "centroid": [
+    -29.0,
+    5.0,
+    -15.7
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "washer_2",
+   "nodes": [
+    "fasteners_112",
+    "fasteners_115",
+    "fasteners_116",
+    "fasteners_117",
+    "fasteners_118",
+    "fasteners_122"
+   ],
+   "type": "M3 ISO 7089 washer 7 x 3.2 x 0.5"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -32.17,
+    2.25,
+    -15.45,
+    -25.83,
+    7.75,
+    -13.05
+   ],
+   "centroid": [
+    -29.0,
+    5.0,
+    -14.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "nut_2",
+   "nodes": [
+    "fasteners_119",
+    "fasteners_120",
+    "fasteners_121",
+    "fasteners_123",
+    "fasteners_124",
+    "fasteners_125",
+    "fasteners_126",
+    "fasteners_127"
+   ],
+   "type": "M3 ISO 4032 nut"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    17.7,
+    -7.8,
+    -22.8,
+    23.3,
+    -2.2,
+    -11.0
+   ],
+   "centroid": [
+    20.5,
+    -5.0,
+    -18.27
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "group": "fasteners",
+   "id": "ear_screw_3",
+   "nodes": [
+    "fasteners_128",
+    "fasteners_129",
+    "fasteners_130",
+    "fasteners_131",
+    "fasteners_132"
+   ],
+   "type": "M3x10 ISO 7045 pan head (servo ear)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    18.0,
+    -7.5,
+    -18.5,
+    23.0,
+    -2.5,
+    -15.95
+   ],
+   "centroid": [
+    20.5,
+    -5.0,
+    -17.22
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "limiter_3",
+   "nodes": [
+    "fasteners_133",
+    "fasteners_135",
+    "fasteners_136"
+   ],
+   "type": "compression limiter 5.0 x 3.2 x 2.55"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    17.0,
+    -8.5,
+    -15.95,
+    24.0,
+    -1.5,
+    -15.45
+   ],
+   "centroid": [
+    20.5,
+    -5.0,
+    -15.7
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "washer_3",
+   "nodes": [
+    "fasteners_134",
+    "fasteners_137",
+    "fasteners_138",
+    "fasteners_139",
+    "fasteners_140",
+    "fasteners_144"
+   ],
+   "type": "M3 ISO 7089 washer 7 x 3.2 x 0.5"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    17.33,
+    -7.75,
+    -15.45,
+    23.67,
+    -2.25,
+    -13.05
+   ],
+   "centroid": [
+    20.5,
+    -5.0,
+    -14.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "nut_3",
+   "nodes": [
+    "fasteners_141",
+    "fasteners_142",
+    "fasteners_143",
+    "fasteners_145",
+    "fasteners_146",
+    "fasteners_147",
+    "fasteners_148",
+    "fasteners_149"
+   ],
+   "type": "M3 ISO 4032 nut"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    17.7,
+    2.2,
+    -22.8,
+    23.3,
+    7.8,
+    -11.0
+   ],
+   "centroid": [
+    20.5,
+    5.0,
+    -18.27
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "group": "fasteners",
+   "id": "ear_screw_4",
+   "nodes": [
+    "fasteners_150",
+    "fasteners_151",
+    "fasteners_152",
+    "fasteners_153",
+    "fasteners_154"
+   ],
+   "type": "M3x10 ISO 7045 pan head (servo ear)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    18.0,
+    2.5,
+    -18.5,
+    23.0,
+    7.5,
+    -15.95
+   ],
+   "centroid": [
+    20.5,
+    5.0,
+    -17.22
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "limiter_4",
+   "nodes": [
+    "fasteners_155",
+    "fasteners_157",
+    "fasteners_158"
+   ],
+   "type": "compression limiter 5.0 x 3.2 x 2.55"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    17.0,
+    1.5,
+    -15.95,
+    24.0,
+    8.5,
+    -15.45
+   ],
+   "centroid": [
+    20.5,
+    5.0,
+    -15.7
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "washer_4",
+   "nodes": [
+    "fasteners_156",
+    "fasteners_159",
+    "fasteners_160",
+    "fasteners_161",
+    "fasteners_162",
+    "fasteners_166"
+   ],
+   "type": "M3 ISO 7089 washer 7 x 3.2 x 0.5"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    17.33,
+    2.25,
+    -15.45,
+    23.67,
+    7.75,
+    -13.05
+   ],
+   "centroid": [
+    20.5,
+    5.0,
+    -14.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners",
+   "id": "nut_4",
+   "nodes": [
+    "fasteners_163",
+    "fasteners_164",
+    "fasteners_165",
+    "fasteners_167",
+    "fasteners_168",
+    "fasteners_169",
+    "fasteners_170",
+    "fasteners_171"
+   ],
+   "type": "M3 ISO 4032 nut"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -25.8,
+    10.2,
+    -1.0,
+    -20.2,
+    15.8,
+    16.8
+   ],
+   "centroid": [
+    -23.0,
+    13.0,
+    9.51
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "group": "fasteners",
+   "id": "plate_screw_1",
+   "nodes": [
+    "fasteners_172",
+    "fasteners_173",
+    "fasteners_174",
+    "fasteners_175",
+    "fasteners_176"
+   ],
+   "type": "M3x16 pan head (front plate)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    20.2,
+    10.2,
+    -1.0,
+    25.8,
+    15.8,
+    16.8
+   ],
+   "centroid": [
+    23.0,
+    13.0,
+    9.51
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "group": "fasteners",
+   "id": "plate_screw_2",
+   "nodes": [
+    "fasteners_177",
+    "fasteners_178",
+    "fasteners_179",
+    "fasteners_180",
+    "fasteners_181"
+   ],
+   "type": "M3x16 pan head (front plate)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -2.8,
+    12.7,
+    -1.0,
+    2.8,
+    18.3,
+    16.8
+   ],
+   "centroid": [
+    0.0,
+    15.5,
+    9.51
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "group": "fasteners",
+   "id": "plate_screw_3",
+   "nodes": [
+    "fasteners_182",
+    "fasteners_183",
+    "fasteners_184",
+    "fasteners_185",
+    "fasteners_186"
+   ],
+   "type": "M3x16 pan head (front plate)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -17.25,
+    -3.0,
+    1.25,
+    -11.25,
+    3.0,
+    11.25
+   ],
+   "centroid": [
+    -14.25,
+    0.0,
+    6.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners_a",
+   "id": "bush_a",
+   "nodes": [
+    "fasteners_a",
+    "fasteners_a_1",
+    "fasteners_a_2",
+    "fasteners_a_3"
+   ],
+   "type": "sintered bronze plain bush 3 x 6 x 10"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    -17.23,
+    -24.5,
+    -6.75,
+    -15.23,
+    -22.5,
+    19.25
+   ],
+   "centroid": [
+    -16.22,
+    -23.5,
+    6.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners_a",
+   "id": "peg_a_1",
+   "nodes": [
+    "fasteners_a_4",
+    "fasteners_a_5",
+    "fasteners_a_6"
+   ],
+   "type": "dowel pin 2 x 24 (finger pegs)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    -11.77,
+    -24.5,
+    -6.75,
+    -9.77,
+    -22.5,
+    19.25
+   ],
+   "centroid": [
+    -10.78,
+    -23.5,
+    6.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners_a",
+   "id": "peg_a_2",
+   "nodes": [
+    "fasteners_a_7",
+    "fasteners_a_8",
+    "fasteners_a_9"
+   ],
+   "type": "dowel pin 2 x 24 (finger pegs)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    -14.7,
+    -24.7,
+    -6.75,
+    -12.3,
+    -22.3,
+    19.25
+   ],
+   "centroid": [
+    -13.5,
+    -23.5,
+    6.25
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "group": "fasteners_a",
+   "id": "m2_a",
+   "nodes": [
+    "fasteners_a_10",
+    "fasteners_a_11",
+    "fasteners_a_12"
+   ],
+   "type": "M2x30 + nut (finger root)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -15.75,
+    -8.5,
+    -6.0,
+    -12.75,
+    -5.5,
+    4.0
+   ],
+   "centroid": [
+    -14.25,
+    -7.0,
+    -1.0
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "group": "fasteners_a",
+   "id": "dog_screw_1",
+   "nodes": [
+    "fasteners_a_13",
+    "fasteners_a_14",
+    "fasteners_a_15"
+   ],
+   "type": "M3x10 ISO 4026 socket set screw (dog)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    -15.75,
+    5.5,
+    -6.0,
+    -12.75,
+    8.5,
+    4.0
+   ],
+   "centroid": [
+    -14.25,
+    7.0,
+    -1.0
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "group": "fasteners_a",
+   "id": "dog_screw_2",
+   "nodes": [
+    "fasteners_a_16",
+    "fasteners_a_17",
+    "fasteners_a_18"
+   ],
+   "type": "M3x10 ISO 4026 socket set screw (dog)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "bbox": [
+    11.25,
+    -3.0,
+    1.25,
+    17.25,
+    3.0,
+    11.25
+   ],
+   "centroid": [
+    14.25,
+    0.0,
+    6.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners_b",
+   "id": "bush_b",
+   "nodes": [
+    "fasteners_b",
+    "fasteners_b_1",
+    "fasteners_b_2",
+    "fasteners_b_3"
+   ],
+   "type": "sintered bronze plain bush 3 x 6 x 10"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    15.23,
+    -24.5,
+    -6.75,
+    17.23,
+    -22.5,
+    19.25
+   ],
+   "centroid": [
+    16.22,
+    -23.5,
+    6.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners_b",
+   "id": "peg_b_1",
+   "nodes": [
+    "fasteners_b_4",
+    "fasteners_b_5",
+    "fasteners_b_6"
+   ],
+   "type": "dowel pin 2 x 24 (finger pegs)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    9.77,
+    -24.5,
+    -6.75,
+    11.77,
+    -22.5,
+    19.25
+   ],
+   "centroid": [
+    10.78,
+    -23.5,
+    6.25
+   ],
+   "driver_axis": null,
+   "group": "fasteners_b",
+   "id": "peg_b_2",
+   "nodes": [
+    "fasteners_b_7",
+    "fasteners_b_8",
+    "fasteners_b_9"
+   ],
+   "type": "dowel pin 2 x 24 (finger pegs)"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "bbox": [
+    12.3,
+    -24.7,
+    -6.75,
+    14.7,
+    -22.3,
+    19.25
+   ],
+   "centroid": [
+    13.5,
+    -23.5,
+    6.25
+   ],
+   "driver_axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "group": "fasteners_b",
+   "id": "m2_b",
+   "nodes": [
+    "fasteners_b_10",
+    "fasteners_b_11",
+    "fasteners_b_12"
+   ],
+   "type": "M2x30 + nut (finger root)"
+  }
+ ],
+ "findings": [
+  {
+   "evidence": "pin holes are line-reamed together; replacing either plate means reaming again",
+   "severity": "note",
+   "step": "s1",
+   "text": "The housing and front plate are a matched pair."
+  },
+  {
+   "evidence": "bore 4.2 mm = insert outer diameter 4.2 mm, depth 3.5 mm; printed holes run about 0.25 mm small, so test an insert in a coupon",
+   "severity": "note",
+   "step": "s6",
+   "text": "The insert bore in the CAD equals the insert diameter, so the model shows no melt-in interference."
+  },
+  {
+   "evidence": "the spider holes are blind and open on the underside, so a -Y path would run through solid plate; the pin is 6.0 mm long and stands 2.5 mm proud",
+   "severity": "note",
+   "step": "s7",
+   "text": "The locating pins go into the spider holes from below (travel +Y), not along -Y."
+  },
+  {
+   "evidence": "the SO-101 horn is not modelled; measure the hole depth (DB M15) and apply wrist_mount.horn_screw_rule: M3x6 needs 3.75 mm or more, 3.5 to 3.7 is marginal, less means re-tap",
+   "severity": "risk",
+   "step": "s8",
+   "text": "The horn screw length is not confirmed against the real horn hole depth."
+  },
+  {
+   "evidence": "driver clear 3.6 mm against 40 mm wanted, first hit housing",
+   "severity": "risk",
+   "step": "s9",
+   "text": "All 4 horn screws are trapped behind the deck once the housing is on, so removing the gripper from the arm means taking the housing off the wrist plate first."
+  },
+  {
+   "evidence": "it is driven with a 2.0 mm hex key through the pin A bore at step 13; the bore is 3 mm and pin A is not yet fitted",
+   "severity": "note",
+   "step": "s12",
+   "text": "The horn centre screw (M3x6 ISO 7380) is not in the CAD, so its path is not swept; its head must sit in the horn's counterbored centre, at most 0.4 mm proud, because the mid plate is 0.5 mm above the horn face."
+  },
+  {
+   "evidence": "spline step 14.4 deg (up to 7.2 deg off); the dog arc slots reach -16 to +25 deg against a jaw range of -11 to +20 deg, a margin of only 5 deg at the closing end",
+   "severity": "risk",
+   "step": "s13",
+   "text": "The 25-tooth spline moves the horn in coarse steps, so the dog slots will not land exactly at the screw angle without driving the servo."
+  },
+  {
+   "evidence": "4.5 mm3 overlap: nominal 9.0 mm boss in the 9.0 mm bore, which is reamed H7 at step 2",
+   "severity": "note",
+   "step": "s13",
+   "text": "The servo boss and the boss-web bore touch in the CAD."
+  },
+  {
+   "evidence": "clear 0.5 mm along [0.0, 0.0, 1.0] (hit knuckle_a)",
+   "severity": "risk",
+   "step": "s15",
+   "text": "dog screw 1 is hard to reach for service once the gripper is built."
+  },
+  {
+   "evidence": "clear 0.5 mm along [0.0, 0.0, 1.0] (hit knuckle_a)",
+   "severity": "risk",
+   "step": "s15",
+   "text": "dog screw 2 is hard to reach for service once the gripper is built."
+  },
+  {
+   "evidence": "set screw tops at z 4.0; the knuckle A dog slots (3.4 mm wide) take them at jaw angle 0",
+   "severity": "note",
+   "step": "s15",
+   "text": "The dog set screws are screwed in from the front through the mid-plate arc slots, before the gears go on."
+  },
+  {
+   "evidence": "pin 16.0 mm long, z -2.0 to 14.0, bottom 0.5 mm from the mid-plate back face z -2.5; pressed in from the front with retaining compound, with 1.5 mm in the front-plate blind hole",
+   "severity": "note",
+   "step": "s16",
+   "text": "Pin A can only go in after the servo is fitted and the horn centre screw is driven, because the 2.0 mm hex key uses the pin A bore."
+  },
+  {
+   "evidence": "2 x 4.2 mm bore, 4.5 mm deep, 8.1 mm apart; BOM line 'Camera-pad inserts (optional)'. Leave them empty unless the wrist camera is built",
+   "severity": "note",
+   "step": "s23",
+   "text": "The front plate camera pad has two insert bores for the optional wrist camera."
+  },
+  {
+   "evidence": "thread-forming overlap 27.9 mm3 per screw; CAD length 17.8 mm including a 1.8 mm head, so 16.0 mm of shank against 16 mm listed",
+   "severity": "note",
+   "step": "s24",
+   "text": "The front plate screws cut their own thread in a 2.5 mm pilot; stop at first snug (torque-limited driver, RISK F45)."
+  },
+  {
+   "evidence": "CAD peg 26.0 mm long across both cheeks; a 2 x 24 dowel sits flush with both cheek faces; the M2x30 bolt covers 24 mm of block plus a 1.6 mm nut (RISK F48)",
+   "severity": "note",
+   "step": "s26",
+   "text": "The finger pegs in the CAD are the hole tool, 1 mm longer each side than the 2 x 24 dowel the BOM lists (block width 24)."
+  },
+  {
+   "evidence": "with the jaw closed the nail path along -X runs into FSR 402 sensor, FSR backing, FSR puck, finger B; the closed gap between the finger pads is 4.45 mm and already holds the nail, the FSR stack and a 1.0 mm running gap",
+   "severity": "risk",
+   "step": "s31",
+   "text": "The nail and the FSR stack can only be bonded with the jaw open; the jaw must be driven by the servo."
+  }
+ ],
+ "frame": "G, mm",
+ "note": "Steps run in order. A step with bench true builds a sub-assembly displaced by the sub-assembly bench_offset; the first later step that moves those parts by dir x dist joins them into the gripper. moves also lists parts and items carried in a join. theta_deg poses the jaw for the whole step (finger A turns -theta about pivot A, finger B +theta about pivot B). Every move ends at the CAD position, so after the last step each part is at its CAD pose. Torques are assumed.",
+ "steps": [
+  {
+   "bench": true,
+   "check": "Ream 3.0 H7 from the mid-plate back face through into the 1.5 mm blind holes in the front plate. A 3.0 pin gauge goes in to the bottom of both holes. Mark the pair.",
+   "fasteners": "3 x M3x16 plate screws, snug, to clamp the front plate to the housing; take them out again after reaming",
+   "id": "s1",
+   "items": [],
+   "moves": [],
+   "note": "Reaming the two parts together keeps the two pins parallel. The housing and front plate stay a matched pair.",
+   "parts": [
+    "housing",
+    "front_plate"
+   ],
+   "sub": "prep",
+   "theta_deg": 0.0,
+   "title": "Clamp the housing and front plate together and line-ream the pin holes",
+   "tools": [
+    "3.0 mm H7 hand reamer",
+    "3.0 mm pin gauge"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Ream from behind through the cradle pocket. The servo output boss drops into the bore by hand.",
+   "fasteners": "none",
+   "id": "s2",
+   "items": [],
+   "moves": [],
+   "note": "Test with the servo boss now, while the housing is still empty. The web is only 1.6 mm thick, spans about 40 mm and prints on supports: clear the support from both faces first, then turn the reamer slowly with light feed and back it out turning forward; a reamer that grabs tears the web out. Print a spare housing if the web cracks.",
+   "parts": [
+    "housing"
+   ],
+   "sub": "prep",
+   "theta_deg": 0.0,
+   "title": "Ream the boss-web bore 9.0 H7",
+   "tools": [
+    "9.0 mm H7 hand reamer"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Two deck peg holes in the housing and two spider peg holes in the wrist plate, each takes the 3.0 pin gauge.",
+   "fasteners": "none",
+   "id": "s3",
+   "items": [],
+   "moves": [],
+   "parts": [
+    "housing",
+    "wrist_mount"
+   ],
+   "sub": "prep",
+   "theta_deg": 0.0,
+   "title": "Ream the four peg holes 3.0 H7",
+   "tools": [
+    "3.0 mm H7 hand reamer",
+    "3.0 mm pin gauge"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Pin-gauge each pressed bore, then measure the two ISO 2338 h8 3 x 16 pins with the micrometer and pair each pin with a bore for 0.000-0.020 mm clearance.",
+   "fasteners": "2 x sintered bronze plain bush 3 x 6 x 10, pressed in with the arbor press until neither end stands proud of a hub face (centred: 0.25 mm below each face of the 10.5 mm hub)",
+   "id": "s4",
+   "items": [
+    "bush_a",
+    "bush_b"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "what": "bush_a"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "what": "bush_b"
+    }
+   ],
+   "note": "Pairing the pins to the bores is done once here, so mark which pin goes to which knuckle. The shims bear on the hub faces, so a bush end standing proud would set the end play instead: check both faces with a straight edge.",
+   "parts": [
+    "knuckle_a",
+    "knuckle_b"
+   ],
+   "sub": "prep",
+   "theta_deg": 0.0,
+   "title": "Ream both knuckle bores 6.0 H7 and press in the bushes",
+   "tools": [
+    "6.0 mm H7 hand reamer",
+    "arbor press",
+    "3.0 mm pin gauge",
+    "0-25 mm micrometer"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Two M3 holes at r 7 mm, plus and minus 90 degrees from the horn arm line; an M3 screw runs in by hand.",
+   "fasteners": "none; skip if the horn already has them",
+   "id": "s5",
+   "items": [],
+   "moves": [],
+   "note": "Drill and tap by hand, square to the horn face.",
+   "parts": [],
+   "sub": "prep",
+   "theta_deg": 0.0,
+   "title": "Tap the two dog holes in the horn",
+   "tools": [
+    "M3 tap",
+    "2.5 mm drill"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Each insert sits flush with the underside of the plate and square to it. Let the plastic cool before screwing into it.",
+   "fasteners": "4 x M3 brass heat-set insert 4.2 x 3.5, pressed in from the underside of the spider",
+   "id": "s6",
+   "items": [
+    "insert_1",
+    "insert_2",
+    "insert_3",
+    "insert_4"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 8,
+     "what": "insert_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 8,
+     "what": "insert_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 8,
+     "what": "insert_3"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 8,
+     "what": "insert_4"
+    }
+   ],
+   "note": "PETG melts around 220 C, so keep the iron on each insert only as long as it takes to push it flush.",
+   "parts": [
+    "wrist_mount"
+   ],
+   "sub": "wrist",
+   "theta_deg": 0.0,
+   "title": "Heat-set four inserts into the wrist plate",
+   "tools": [
+    "soldering iron with an M3 insert tip, set to about 220 C",
+    "flat block"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Both pins stand 2.5 mm proud of the spider underside and square to it. Leave the compound to cure.",
+   "fasteners": "2 x ISO 2338 h8 3 x 6 locating pin, retaining compound 638, 2.5 mm standing proud",
+   "id": "s7",
+   "items": [
+    "locpin_1",
+    "locpin_2"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 8,
+     "what": "locpin_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 8,
+     "what": "locpin_2"
+    }
+   ],
+   "note": "Bond them before the wrist plate goes on the arm. The deck holes take the pins later with a sliding fit.",
+   "parts": [],
+   "sub": "wrist",
+   "theta_deg": 0.0,
+   "title": "Bond the two locating pins into the spider holes",
+   "tools": [
+    "retaining compound 638",
+    "depth gauge"
+   ]
+  },
+  {
+   "check": "Measure the horn hole depth (DB M15) and pick the screw length with wrist_mount.horn_screw_rule: M3x6 needs 3.75 mm or more, 3.5 to 3.7 is marginal, less means drill and re-tap. The four counterbores line up with the four horn holes.",
+   "fasteners": "none until the next step",
+   "id": "s8",
+   "items": [
+    "insert_1",
+    "insert_2",
+    "insert_3",
+    "insert_4",
+    "locpin_1",
+    "locpin_2"
+   ],
+   "join": true,
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "wrist_mount"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "insert_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "insert_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "insert_3"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "insert_4"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "locpin_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "locpin_2"
+    }
+   ],
+   "note": "The horn belongs to the SO-101 arm and is not in the bill of materials.",
+   "parts": [
+    "wrist_mount"
+   ],
+   "sub": "wrist",
+   "theta_deg": 0.0,
+   "title": "Measure the horn hole depth, then seat the wrist plate on the horn",
+   "tools": [
+    "caliper with depth rod"
+   ]
+  },
+  {
+   "check": "All four heads seat in the counterbores and the plate does not rock. Stop if a screw bottoms before the plate clamps.",
+   "fasteners": "4 x M3x6 ISO 7045 pan head into the SO-101 aluminium horn (length per the measured depth), about 0.6 N m (assumed)",
+   "id": "s9",
+   "items": [
+    "horn_screw_1",
+    "horn_screw_2",
+    "horn_screw_3",
+    "horn_screw_4"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "horn_screw_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "horn_screw_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "horn_screw_3"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "horn_screw_4"
+    }
+   ],
+   "note": "This is the only time the horn screws are easy to reach. Torques are assumed starting values, not measured; stop at the first sign of a stripped thread.",
+   "parts": [],
+   "sub": "wrist",
+   "theta_deg": 0.0,
+   "title": "Fit the four horn screws",
+   "tools": [
+    "PH1 screwdriver",
+    "torque screwdriver"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Each sleeve sits flush in its seat hole, 2.55 mm long.",
+   "fasteners": "4 x compression limiter 5.0 x 3.2 x 2.55, from the frame front face",
+   "id": "s10",
+   "items": [
+    "limiter_1",
+    "limiter_2",
+    "limiter_3",
+    "limiter_4"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 3,
+     "what": "limiter_1"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 3,
+     "what": "limiter_2"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 3,
+     "what": "limiter_3"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 3,
+     "what": "limiter_4"
+    }
+   ],
+   "note": "The sleeves take the clamp load of the ear screws so the printed seat does not creep.",
+   "parts": [
+    "housing"
+   ],
+   "sub": "housing",
+   "theta_deg": 0.0,
+   "title": "Press four limiter sleeves into the seat holes",
+   "tools": [
+    "flat block"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "The servo is on the jaw-0 pulse (the CAD closed pose) and stays powered until the horn is on.",
+   "fasteners": "none",
+   "id": "s11",
+   "items": [],
+   "moves": [],
+   "note": "The horn goes on in the next step at this angle, so the dog slots land at jaw angle 0.",
+   "parts": [],
+   "sub": "housing",
+   "theta_deg": 0.0,
+   "title": "Power the servo to the jaw-0 pulse",
+   "tools": [
+    "servo and controller"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "The horn sits between the boss web and the mid plate and its two tapped holes are under the two arc slots.",
+   "fasteners": "1 x M3x6 ISO 7380 button head centre screw, loose in the horn for now",
+   "id": "s12",
+   "items": [],
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 40,
+     "what": "horn"
+    }
+   ],
+   "note": "Slide the horn from below, +Y, with the centre screw already in it.",
+   "parts": [
+    "horn"
+   ],
+   "sub": "housing",
+   "theta_deg": 0.0,
+   "title": "Slide the horn in from below under the arc slots",
+   "tools": [
+    "none"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "The boss is in the web bore and the spline is in the horn. The hex key goes through the pin A bore into the centre screw while you hold the servo up.",
+   "fasteners": "the M3x6 ISO 7380 centre screw, driven through the pin A bore",
+   "id": "s13",
+   "items": [],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 60,
+     "what": "servo"
+    }
+   ],
+   "note": "Pin A is not in yet. It goes in at step 16 because the hex key uses its bore.",
+   "parts": [
+    "servo"
+   ],
+   "sub": "housing",
+   "theta_deg": 0.0,
+   "title": "Slide the servo in from behind and drive the centre screw",
+   "tools": [
+    "2.0 mm hex key"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "The ears are pulled flat against the sleeves and the servo does not move when pushed by hand.",
+   "fasteners": "4 x M3x10 ISO 7045 from the ear side, washer + nut on the frame front face in the end-wall notches, about 0.4 N m (assumed)",
+   "id": "s14",
+   "items": [
+    "ear_screw_1",
+    "ear_screw_2",
+    "ear_screw_3",
+    "ear_screw_4",
+    "washer_1",
+    "washer_2",
+    "washer_3",
+    "washer_4",
+    "nut_1",
+    "nut_2",
+    "nut_3",
+    "nut_4"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "ear_screw_1"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "ear_screw_2"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "ear_screw_3"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "ear_screw_4"
+    },
+    {
+     "dir": [
+      1,
+      0,
+      0
+     ],
+     "dist": 12,
+     "what": "washer_1"
+    },
+    {
+     "dir": [
+      1,
+      0,
+      0
+     ],
+     "dist": 12,
+     "what": "washer_2"
+    },
+    {
+     "dir": [
+      -1,
+      0,
+      0
+     ],
+     "dist": 12,
+     "what": "washer_3"
+    },
+    {
+     "dir": [
+      -1,
+      0,
+      0
+     ],
+     "dist": 12,
+     "what": "washer_4"
+    },
+    {
+     "dir": [
+      1,
+      0,
+      0
+     ],
+     "dist": 12,
+     "what": "nut_1"
+    },
+    {
+     "dir": [
+      1,
+      0,
+      0
+     ],
+     "dist": 12,
+     "what": "nut_2"
+    },
+    {
+     "dir": [
+      -1,
+      0,
+      0
+     ],
+     "dist": 12,
+     "what": "nut_3"
+    },
+    {
+     "dir": [
+      -1,
+      0,
+      0
+     ],
+     "dist": 12,
+     "what": "nut_4"
+    }
+   ],
+   "note": "Slide each washer and nut in sideways from the outboard end into its notch (they cannot come straight down past the end wall), then hold the nut while its screw turns. Torques are assumed starting values, not measured; stop at the first sign of a stripped thread.",
+   "parts": [],
+   "sub": "housing",
+   "theta_deg": 0.0,
+   "title": "Fit the four ear screws with washers and nuts",
+   "tools": [
+    "PH1 screwdriver",
+    "7 mm spanner or pliers"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Each screw top stands 4.0 mm in front of the mid-plate front face.",
+   "fasteners": "2 x M3x10 ISO 4026 socket set screw, thread-locker 243, from the front through the mid-plate arc slots into the horn",
+   "id": "s15",
+   "items": [
+    "dog_screw_1",
+    "dog_screw_2"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "rot_deg": 720,
+     "what": "dog_screw_1"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "rot_deg": 720,
+     "what": "dog_screw_2"
+    }
+   ],
+   "note": "They carry the drive to knuckle A. Do not over-tighten into the aluminium. They are not strong enough to carry a full stall on one dog (README, Dog coupling): keep the interim limit there until the coupling is fixed.",
+   "parts": [],
+   "sub": "housing",
+   "theta_deg": 0.0,
+   "title": "Fit the two dog set screws through the arc slots",
+   "tools": [
+    "1.5 mm hex key",
+    "thread-locker 243"
+   ]
+  },
+  {
+   "bench": true,
+   "check": "Both pins stand 14.0 mm proud of datum D and square to the mid plate.",
+   "fasteners": "2 x ISO 2338 h8 3 x 16, retaining compound 638, pressed in until 0.5 mm short of the mid-plate back face",
+   "id": "s16",
+   "items": [
+    "pin_a",
+    "pin_b"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "what": "pin_a"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "what": "pin_b"
+    }
+   ],
+   "note": "Pin A goes in only after step 13, because the hex key uses its bore. Use each pin with the bore it was paired with. Service: pin A is bonded and its back end faces the horn, so it can only be driven out backwards after the servo and the horn come off (steps 13 and 12 in reverse); pin B can be driven out backwards at any time.",
+   "parts": [
+    "housing"
+   ],
+   "sub": "housing",
+   "theta_deg": 0.0,
+   "title": "Press the two h8 pins in from the front",
+   "tools": [
+    "arbor press",
+    "retaining compound 638"
+   ]
+  },
+  {
+   "check": "The locating pins go into the deck holes, the deck lies flat against the underside of the wrist plate and the four deck holes sit over the inserts.",
+   "fasteners": "none until the next step",
+   "id": "s17",
+   "items": [],
+   "join": true,
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "housing"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "horn"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "servo"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "ear_screw_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "ear_screw_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "ear_screw_3"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "ear_screw_4"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "washer_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "washer_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "washer_3"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "washer_4"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "nut_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "nut_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "nut_3"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "nut_4"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "limiter_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "limiter_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "limiter_3"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "limiter_4"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "dog_screw_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "dog_screw_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "pin_a"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 60,
+     "what": "pin_b"
+    }
+   ],
+   "note": "The servo, horn and all the fasteners fitted so far come up with the housing.",
+   "parts": [
+    "housing"
+   ],
+   "sub": "mount",
+   "theta_deg": 0.0,
+   "title": "Lift the housing up onto the wrist plate",
+   "tools": [
+    "none"
+   ]
+  },
+  {
+   "check": "The deck is tight against the wrist plate with no gap at any of the four screws.",
+   "fasteners": "4 x M3x6 ISO 7045 pan head up through the deck into the heat-set inserts, about 0.5 N m (assumed)",
+   "id": "s18",
+   "items": [
+    "deck_screw_1",
+    "deck_screw_2",
+    "deck_screw_3",
+    "deck_screw_4"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "deck_screw_1"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "deck_screw_2"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "deck_screw_3"
+    },
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "deck_screw_4"
+    }
+   ],
+   "note": "All four deck screws have at least 40 mm of free driver length from below. Torques are assumed starting values, not measured; stop at the first sign of a stripped thread.",
+   "parts": [],
+   "sub": "mount",
+   "theta_deg": 0.0,
+   "title": "Fit the four deck screws",
+   "tools": [
+    "PH1 screwdriver",
+    "torque screwdriver"
+   ]
+  },
+  {
+   "check": "Each shim spins freely on its pin.",
+   "fasteners": "2 x shim washer 3.2 x 7 x 0.85, one per pin, against the mid plate; it bears on the knuckle hub face, not on the bush",
+   "id": "s19",
+   "items": [
+    "shim_a_back",
+    "shim_b_back"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "what": "shim_a_back"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "what": "shim_b_back"
+    }
+   ],
+   "parts": [],
+   "sub": "gears",
+   "theta_deg": 0.0,
+   "title": "Slip the two back shims onto the pins",
+   "tools": [
+    "tweezers"
+   ]
+  },
+  {
+   "check": "The knuckle turns smoothly on the pin and the two dog slots sit on the two set screws at jaw angle 0.",
+   "fasteners": "none; the bush was pressed in at step 4",
+   "id": "s20",
+   "items": [],
+   "join": true,
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "what": "knuckle_a"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "what": "bush_a"
+    }
+   ],
+   "note": "Hold the knuckle at jaw angle 0 so the dog slots line up with the set screws.",
+   "parts": [
+    "knuckle_a"
+   ],
+   "sub": "gears",
+   "theta_deg": 0.0,
+   "title": "Fit knuckle A with its bush onto pin A",
+   "tools": [
+    "none"
+   ]
+  },
+  {
+   "check": "The two gear sectors mesh with no visible gap at jaw angle 0 and both knuckles still turn on their pins.",
+   "fasteners": "none; the bush was pressed in at step 4",
+   "id": "s21",
+   "items": [],
+   "join": true,
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "what": "knuckle_b"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "what": "bush_b"
+    }
+   ],
+   "note": "Drop knuckle B straight down while the gears are at jaw angle 0 so the teeth find each other.",
+   "parts": [
+    "knuckle_b"
+   ],
+   "sub": "gears",
+   "theta_deg": 0.0,
+   "title": "Fit knuckle B with its bush onto pin B",
+   "tools": [
+    "none"
+   ]
+  },
+  {
+   "check": "End play of each knuckle is 0.3 mm plus or minus 0.05 mm, measured with the feeler gauges.",
+   "fasteners": "2 x shim washer 3.2 x 7, one per pin, picked from the 0.05 mm step assortment (0.85 nominal: plate gap 12.5 - hub 10.5 - 2 x 0.85 = 0.3)",
+   "id": "s22",
+   "items": [
+    "shim_a_front",
+    "shim_b_front"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "what": "shim_a_front"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "what": "shim_b_front"
+    }
+   ],
+   "note": "Change the shim thickness until each pin is in range.",
+   "parts": [],
+   "sub": "gears",
+   "theta_deg": 0.0,
+   "title": "Pick and slip on the two front shims",
+   "tools": [
+    "feeler gauges 0.05-0.5",
+    "tweezers"
+   ]
+  },
+  {
+   "check": "The plate sits on all three standoffs and the knuckles still turn freely.",
+   "fasteners": "none until the next step; the pin ends go 1.5 mm into the blind holes",
+   "id": "s23",
+   "items": [],
+   "join": true,
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 20,
+     "what": "front_plate"
+    }
+   ],
+   "note": "Use the matched front plate from step 1. Do not tilt it; start both pins together.",
+   "parts": [
+    "front_plate"
+   ],
+   "sub": "gears",
+   "theta_deg": 0.0,
+   "title": "Press the front plate onto the pins and standoffs",
+   "tools": [
+    "none"
+   ]
+  },
+  {
+   "check": "The plate is tight on the standoffs and the gears still turn by hand through the servo.",
+   "fasteners": "3 x M3x16, self-tapping into the 2.5 mm pilot in each standoff, about 0.3 N m (assumed)",
+   "id": "s24",
+   "items": [
+    "plate_screw_1",
+    "plate_screw_2",
+    "plate_screw_3"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "plate_screw_1"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "plate_screw_2"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      -1
+     ],
+     "dist": 10,
+     "rot_deg": 720,
+     "what": "plate_screw_3"
+    }
+   ],
+   "note": "These cut their own thread in PETG, so stop at first snug. Torques are assumed starting values, not measured; stop at the first sign of a stripped thread.",
+   "parts": [],
+   "sub": "gears",
+   "theta_deg": 0.0,
+   "title": "Fit the three front plate screws",
+   "tools": [
+    "PH1 screwdriver",
+    "torque screwdriver"
+   ]
+  },
+  {
+   "check": "The root tab sits between the two cheeks against the web and its peg holes line up with the cheek holes.",
+   "fasteners": "none until the next step",
+   "id": "s25",
+   "items": [],
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 30,
+     "what": "finger_a"
+    }
+   ],
+   "parts": [
+    "finger_a"
+   ],
+   "sub": "fingers",
+   "theta_deg": 0.0,
+   "title": "Slide finger A up into the root block of knuckle A",
+   "tools": [
+    "none"
+   ]
+  },
+  {
+   "check": "The finger cannot slide out of the block and the bolt is snug without crushing the cheeks.",
+   "fasteners": "2 x dowel pin 2 x 24 (6 mm apart), 1 x M2x30 with nut, about 0.2 N m (assumed)",
+   "id": "s26",
+   "items": [
+    "peg_a_1",
+    "peg_a_2",
+    "m2_a"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 12,
+     "what": "peg_a_1"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 12,
+     "what": "peg_a_2"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 12,
+     "rot_deg": 720,
+     "what": "m2_a"
+    }
+   ],
+   "note": "The CAD shows only a plain shank, so head and nut sides are assumed: head on the back, nut on the front end. Torques are assumed starting values, not measured; stop at the first sign of a stripped thread.",
+   "parts": [],
+   "sub": "fingers",
+   "theta_deg": 0.0,
+   "title": "Pin finger A with two dowels and an M2 bolt",
+   "tools": [
+    "1.5 mm hex key",
+    "tweezers"
+   ]
+  },
+  {
+   "check": "The root tab sits between the two cheeks against the web and its peg holes line up with the cheek holes.",
+   "fasteners": "none until the next step",
+   "id": "s27",
+   "items": [],
+   "moves": [
+    {
+     "dir": [
+      0,
+      1,
+      0
+     ],
+     "dist": 30,
+     "what": "finger_b"
+    }
+   ],
+   "parts": [
+    "finger_b"
+   ],
+   "sub": "fingers",
+   "theta_deg": 0.0,
+   "title": "Slide finger B up into the root block of knuckle B",
+   "tools": [
+    "none"
+   ]
+  },
+  {
+   "check": "The finger cannot slide out of the block.",
+   "fasteners": "2 x dowel pin 2 x 24 (6 mm apart), 1 x M2x30 with nut, about 0.2 N m (assumed)",
+   "id": "s28",
+   "items": [
+    "peg_b_1",
+    "peg_b_2",
+    "m2_b"
+   ],
+   "moves": [
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 12,
+     "what": "peg_b_1"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 12,
+     "what": "peg_b_2"
+    },
+    {
+     "dir": [
+      0,
+      0,
+      1
+     ],
+     "dist": 12,
+     "rot_deg": 720,
+     "what": "m2_b"
+    }
+   ],
+   "note": "Same as finger A. Torques are assumed starting values, not measured; stop at the first sign of a stripped thread.",
+   "parts": [],
+   "sub": "fingers",
+   "theta_deg": 0.0,
+   "title": "Pin finger B with two dowels and an M2 bolt",
+   "tools": [
+    "1.5 mm hex key",
+    "tweezers"
+   ]
+  },
+  {
+   "check": "The backing sits flat on the pad with its pocket facing the jaw centre, tight to the tip edge. The FSR head lies flat in the pocket and the tail leaves through the tail slot without a sharp bend.",
+   "fasteners": "cyanoacrylate glue, thin film on the pad face; a dot of glue at the sensor head only",
+   "id": "s29",
+   "items": [],
+   "moves": [
+    {
+     "dir": [
+      0.9397,
+      0.342,
+      0.0
+     ],
+     "dist": 10,
+     "what": "fsr_backing_b"
+    },
+    {
+     "dir": [
+      0.9397,
+      0.342,
+      0.0
+     ],
+     "dist": 10,
+     "what": "fsr_sensor_b"
+    }
+   ],
+   "note": "The jaw must be open at 20 degrees for steps 29 to 31: with the jaw closed the pad gap is only 4.45 mm and the stack on one finger blocks the other. Drive the jaw with the servo; never turn it by hand.",
+   "parts": [
+    "fsr_backing_b",
+    "fsr_sensor_b"
+   ],
+   "sub": "fingers",
+   "theta_deg": 20.0,
+   "title": "Open the jaw 20 degrees and bond the FSR backing and the FSR on finger B",
+   "tools": [
+    "cyanoacrylate glue",
+    "servo and controller",
+    "tweezers"
+   ]
+  },
+  {
+   "check": "The puck is centred inside the printed circle of the active area and does not touch the backing edge.",
+   "fasteners": "cyanoacrylate glue, one small drop",
+   "id": "s30",
+   "items": [],
+   "moves": [
+    {
+     "dir": [
+      0.9397,
+      0.342,
+      0.0
+     ],
+     "dist": 8,
+     "what": "fsr_puck_b"
+    }
+   ],
+   "parts": [
+    "fsr_puck_b"
+   ],
+   "sub": "fingers",
+   "theta_deg": 20.0,
+   "title": "Bond the puck onto the FSR active area",
+   "tools": [
+    "cyanoacrylate glue",
+    "tweezers"
+   ]
+  },
+  {
+   "check": "The nail sits flat on the pad face at the tip edge and faces the puck.",
+   "fasteners": "cyanoacrylate glue, thin film",
+   "id": "s31",
+   "items": [],
+   "moves": [
+    {
+     "dir": [
+      -0.9397,
+      0.342,
+      0.0
+     ],
+     "dist": 10,
+     "what": "nail_a"
+    }
+   ],
+   "parts": [
+    "nail_a"
+   ],
+   "sub": "fingers",
+   "theta_deg": 20.0,
+   "title": "Bond the nail onto the pad of finger A",
+   "tools": [
+    "cyanoacrylate glue"
+   ]
+  },
+  {
+   "check": "At jaw angle 0 the rigid faces are 1.0 mm apart at the contact height. Run the jaw from -11 to +20 degrees and check that nothing rubs. Then do the one-time pinch-point TCP calibration (tolerance row 5).",
+   "fasteners": "none",
+   "id": "s32",
+   "items": [],
+   "moves": [],
+   "note": "Jaw angle 0 is the CAD closed pose. Every part is now back at its CAD position.",
+   "parts": [],
+   "sub": "fingers",
+   "theta_deg": 0.0,
+   "title": "Close the jaw, check the gap and travel, then calibrate the pinch point",
+   "tools": [
+    "servo and controller",
+    "feeler gauge or paper strip"
+   ]
+  }
+ ],
+ "subassemblies": [
+  {
+   "id": "prep",
+   "name": "Prepare the printed parts",
+   "steps": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ]
+  },
+  {
+   "bench_offset": [
+    0,
+    -60,
+    0
+   ],
+   "id": "wrist",
+   "name": "Wrist plate on the arm",
+   "steps": [
+    "s6",
+    "s7",
+    "s8",
+    "s9"
+   ]
+  },
+  {
+   "bench_offset": [
+    0,
+    -60,
+    0
+   ],
+   "id": "housing",
+   "name": "Servo and housing",
+   "steps": [
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16"
+   ]
+  },
+  {
+   "id": "mount",
+   "name": "Housing onto the wrist plate",
+   "steps": [
+    "s17",
+    "s18"
+   ]
+  },
+  {
+   "id": "gears",
+   "name": "Pins, knuckles and front plate",
+   "steps": [
+    "s19",
+    "s20",
+    "s21",
+    "s22",
+    "s23",
+    "s24"
+   ]
+  },
+  {
+   "id": "fingers",
+   "name": "Fingers and pads",
+   "steps": [
+    "s25",
+    "s26",
+    "s27",
+    "s28",
+    "s29",
+    "s30",
+    "s31",
+    "s32"
+   ]
+  }
+ ],
+ "summary": {
+  "collision_mm3": 0.5,
+  "driver_need_mm": 40.0,
+  "final_pose_equals_cad": true,
+  "items_placed": 49,
+  "parts_placed": [
+   "finger_a",
+   "finger_b",
+   "front_plate",
+   "fsr_backing_b",
+   "fsr_puck_b",
+   "fsr_sensor_b",
+   "horn",
+   "housing",
+   "knuckle_a",
+   "knuckle_b",
+   "nail_a",
+   "servo",
+   "wrist_mount"
+  ],
+  "sweep_step_mm": 0.5,
+  "sweeps_run": 92,
+  "sweeps_with_collisions": 0
+ },
+ "sweeps": [
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s4",
+   "what": "bush_a"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s4",
+   "what": "bush_b"
+  },
+  {
+   "collisions": [],
+   "samples": 16,
+   "step": "s6",
+   "what": "insert_1"
+  },
+  {
+   "collisions": [],
+   "samples": 16,
+   "step": "s6",
+   "what": "insert_2"
+  },
+  {
+   "collisions": [],
+   "samples": 16,
+   "step": "s6",
+   "what": "insert_3"
+  },
+  {
+   "collisions": [],
+   "samples": 16,
+   "step": "s6",
+   "what": "insert_4"
+  },
+  {
+   "collisions": [],
+   "samples": 16,
+   "step": "s7",
+   "what": "locpin_1"
+  },
+  {
+   "collisions": [],
+   "samples": 16,
+   "step": "s7",
+   "what": "locpin_2"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s8",
+   "what": "insert_1"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s8",
+   "what": "insert_2"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s8",
+   "what": "insert_3"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s8",
+   "what": "insert_4"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s8",
+   "what": "locpin_1"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s8",
+   "what": "locpin_2"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s8",
+   "what": "wrist_mount"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s9",
+   "what": "horn_screw_1"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s9",
+   "what": "horn_screw_2"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s9",
+   "what": "horn_screw_3"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s9",
+   "what": "horn_screw_4"
+  },
+  {
+   "collisions": [],
+   "samples": 6,
+   "step": "s10",
+   "what": "limiter_1"
+  },
+  {
+   "collisions": [],
+   "samples": 6,
+   "step": "s10",
+   "what": "limiter_2"
+  },
+  {
+   "collisions": [],
+   "samples": 6,
+   "step": "s10",
+   "what": "limiter_3"
+  },
+  {
+   "collisions": [],
+   "samples": 6,
+   "step": "s10",
+   "what": "limiter_4"
+  },
+  {
+   "collisions": [],
+   "samples": 80,
+   "step": "s12",
+   "what": "horn"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s13",
+   "what": "servo"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s14",
+   "what": "ear_screw_1"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s14",
+   "what": "ear_screw_2"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s14",
+   "what": "ear_screw_3"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s14",
+   "what": "ear_screw_4"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s14",
+   "what": "nut_1"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s14",
+   "what": "nut_2"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s14",
+   "what": "nut_3"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s14",
+   "what": "nut_4"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s14",
+   "what": "washer_1"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s14",
+   "what": "washer_2"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s14",
+   "what": "washer_3"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s14",
+   "what": "washer_4"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s15",
+   "what": "dog_screw_1"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s15",
+   "what": "dog_screw_2"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s16",
+   "what": "pin_a"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s16",
+   "what": "pin_b"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "dog_screw_1"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "dog_screw_2"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "ear_screw_1"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "ear_screw_2"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "ear_screw_3"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "ear_screw_4"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "horn"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "housing"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "limiter_1"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "limiter_2"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "limiter_3"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "limiter_4"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "nut_1"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "nut_2"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "nut_3"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "nut_4"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "pin_a"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "pin_b"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "servo"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "washer_1"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "washer_2"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "washer_3"
+  },
+  {
+   "collisions": [],
+   "samples": 120,
+   "step": "s17",
+   "what": "washer_4"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s18",
+   "what": "deck_screw_1"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s18",
+   "what": "deck_screw_2"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s18",
+   "what": "deck_screw_3"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s18",
+   "what": "deck_screw_4"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s19",
+   "what": "shim_a_back"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s19",
+   "what": "shim_b_back"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s20",
+   "what": "bush_a"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s20",
+   "what": "knuckle_a"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s21",
+   "what": "bush_b"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s21",
+   "what": "knuckle_b"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s22",
+   "what": "shim_a_front"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s22",
+   "what": "shim_b_front"
+  },
+  {
+   "collisions": [],
+   "samples": 40,
+   "step": "s23",
+   "what": "front_plate"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s24",
+   "what": "plate_screw_1"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s24",
+   "what": "plate_screw_2"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s24",
+   "what": "plate_screw_3"
+  },
+  {
+   "collisions": [],
+   "samples": 60,
+   "step": "s25",
+   "what": "finger_a"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s26",
+   "what": "m2_a"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s26",
+   "what": "peg_a_1"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s26",
+   "what": "peg_a_2"
+  },
+  {
+   "collisions": [],
+   "samples": 60,
+   "step": "s27",
+   "what": "finger_b"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s28",
+   "what": "m2_b"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s28",
+   "what": "peg_b_1"
+  },
+  {
+   "collisions": [],
+   "samples": 24,
+   "step": "s28",
+   "what": "peg_b_2"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s29",
+   "what": "fsr_backing_b"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s29",
+   "what": "fsr_sensor_b"
+  },
+  {
+   "collisions": [],
+   "samples": 16,
+   "step": "s30",
+   "what": "fsr_puck_b"
+  },
+  {
+   "collisions": [],
+   "samples": 20,
+   "step": "s31",
+   "what": "nail_a"
+  }
+ ],
+ "tool_access": [
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 2.9,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "housing",
+   "item": "insert_1",
+   "need_mm": 25.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s6"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 2.9,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "housing",
+   "item": "insert_2",
+   "need_mm": 25.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s6"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 2.9,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "housing",
+   "item": "insert_3",
+   "need_mm": 25.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s6"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 2.9,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "housing",
+   "item": "insert_4",
+   "need_mm": 25.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s6"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 3.6,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "housing",
+   "item": "horn_screw_1",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s9"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 3.6,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "housing",
+   "item": "horn_screw_2",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s9"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 3.6,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "housing",
+   "item": "horn_screw_3",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s9"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 3.6,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "housing",
+   "item": "horn_screw_4",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s9"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "ear_screw_1",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s14"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "ear_screw_2",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s14"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "ear_screw_3",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s14"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "ear_screw_4",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s14"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "clear_final_mm": 0.5,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "knuckle_a",
+   "item": "dog_screw_1",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s15"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "clear_final_mm": 0.5,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": "knuckle_a",
+   "item": "dog_screw_2",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 0,
+   "step": "s15"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "deck_screw_1",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s18"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "deck_screw_2",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s18"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "deck_screw_3",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s18"
+  },
+  {
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "deck_screw_4",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s18"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "plate_screw_1",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s24"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "plate_screw_2",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s24"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "plate_screw_3",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s24"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "m2_a",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s26"
+  },
+  {
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "clear_final_mm": 300.0,
+   "clear_mm": 300.0,
+   "hit": null,
+   "hit_final": null,
+   "item": "m2_b",
+   "need_mm": 40.0,
+   "ok": true,
+   "rays_open_final": 9,
+   "step": "s28"
+  }
+ ]
+}

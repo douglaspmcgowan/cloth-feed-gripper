@@ -1,0 +1,267 @@
+name                 value          tag unit / note
+tps_vin_min          4.5            [S] V | operating input voltage, min (60 V max)
+tps_vin_max          60.0           [S] V | operating input voltage, max
+tps_vref             0.8            [S] V | feedback reference, typ
+tps_vref_min         0.792          [S] V | reference, min over temperature (-1 %)
+tps_vref_max         0.808          [S] V | reference, max over temperature (+1 %)
+tps_ea_gm            0.00035        [S] A/V | error-amplifier transconductance in normal operation (78 uA/V in soft start)
+tps_ea_gain          10000.0        [S] V/V | error-amplifier dc gain; output resistance = gain / gm = 28.6 Mohm
+tps_ea_imax          3e-05          [S] A | error-amplifier source/sink limit at 100 mV overdrive
+tps_ps_gm            17.0           [S] A/V | COMP-to-switch-current transconductance (power stage)
+tps_ilim_min         6.3            [S] A | high-side current limit, min over VIN and temperature (typ 7.9, max 9.5)
+tps_ilim_typ         7.9            [S] A | high-side current limit, typ
+tps_en_thresh        1.2            [S] V | EN threshold, rising and falling (1.1 to 1.3)
+tps_en_thresh_min    1.1            [S] V | EN threshold, min
+tps_en_thresh_max    1.3            [S] V | EN threshold, max
+tps_en_i1            1.2e-06        [S] A | EN pull-up current below threshold (0.58 to 1.8 uA)
+tps_en_ihys          3.4e-06        [S] A | extra EN current once above threshold (2.2 to 4.5 uA)
+tps_rt_coeff         92471.0        [S] kHz*kohm^0.991 | fsw[kHz] = 92471 * RT[kohm]^-0.991
+tps_rt_exp           -0.991         [S] 1 | RT exponent in the same equation
+tps_uvlo_rise        4.3            [S] V | internal VIN UVLO, rising (4.1 to 4.48)
+tps_uvlo_hyst        0.325          [S] V | internal UVLO hysteresis
+tps_ton_min          1.35e-07       [S] s | typical minimum controllable on-time
+tps_rds_typ          0.092          [S] ohm | high-side MOSFET on-resistance, typ (VIN 12 V)
+tps_rds_max          0.19           [S] ohm | high-side MOSFET on-resistance, max
+tps_rth_ja           42.0           [S] K/W | DDA (HSOIC-8) junction-to-ambient, JEDEC board
+tps_iq               0.000146       [S] A | operating non-switching supply current
+ina_vos_pga1         0.0001         [S] V | INA219A shunt offset max, PGA /1 (typ 10 uV)
+ina_vos_pga2         0.000125       [S] V | INA219A offset max, PGA /2
+ina_vos_pga4         0.00015        [S] V | INA219A offset max, PGA /4
+ina_vos_pga8         0.0002         [S] V | INA219A offset max, PGA /8 (typ 40 uV; the B grade is 100 uV). Part is INA219AIDR
+ina_gain_err_typ     0.0004         [S] 1 | current-sense gain error, typ (40 m%)
+ina_meas_err_max     0.005          [S] 1 | current measurement error, max at 25 C (includes offset and gain; +/-1 % over -25 to 85 C)
+ina_gain_tc          1e-05          [S] 1/K | gain temperature drift, typ 1 m%/C
+ina_conv_12bit       0.000532       [S] s | 12-bit shunt conversion time, typ (586 us max)
+ina_conv_12bit_max   0.000586       [S] s | 12-bit conversion time, max
+ina_default_cfg      14751          [S] code | configuration register reset value: bus 32 V, PGA /8 (+/-320 mV), 12-bit, continuous
+ina_fs_pga8          0.32           [S] V | shunt full scale at the default PGA /8
+ina_lsb              1e-05          [S] V | shunt-voltage LSB
+ina_ibias            2e-05          [S] A | IN+ and IN- input bias current, active mode, typ (IN- also 320 kohm to ground)
+ina_filter_note      series R as small as possible; 10 ohm per input protects against dV/dt and has no significant accuracy effect; caps 0.1 to 1 uF [S] text | datasheet advice on input filters (section Filtering and Input Considerations)
+mcp_vin_max          16.0           [S] V | input operating range top (2.7 to 16 V)
+mcp_dropout_typ      0.33           [S] V | dropout at 250 mA, 5.0 V output, typ
+mcp_dropout_max      0.65           [S] V | dropout at 250 mA, 5.0 V output, max
+mcp_vout_tol         0.03           [S] 1 | output tolerance over temperature, max (typ 0.4 % at 25 C)
+mcp_isc              0.4            [S] A | output short-circuit current, typ (rated output 250 mA)
+mcp_iout_max         0.25           [S] A | rated output current for a 5.0 V part
+mcp_rth_sot223       62.0           [S] K/W | SOT-223 junction-to-ambient, JESD51-7 4-layer board
+ams_dropout_typ      1.1            [A] V | datasheet fetch failed (SSL handshake error on the vendor server). Value is the usual published typical at 800 mA; a 1.0 V typical is used at 100 mA. Verify on the vendor PDF
+ams_dropout_max      1.3            [A] V | usual published maximum at 800 mA; not fetched this session
+ams_vout_tol         0.01           [A] 1 | 3.3 V fixed version output tolerance, +/-1 % assumed (not fetched)
+devkit_diode_drop    0.3            [A] V | DevKitC V4 puts a Schottky between the USB 5 V and its 5V rail; drop at 0.1 A assumed
+devkit_overhead_a    0.015          [A] A | DevKitC V4 board overhead (USB bridge, LED, AMS1117 ground current) on the 5 V rail
+esp_vdd_min          2.3            [S] V | chip supply minimum (3.0 V when the module has a 3.3 V in-package flash, as the WROOM-32 does)
+esp_vdd_min_flash    3.0            [S] V | minimum when a 3.3 V flash is in the package
+esp_vdd_max          3.6            [S] V | chip supply maximum
+esp_bod_default      2.43           [A] V | default brown-out detector level in the Arduino-ESP32 / ESP-IDF default sdkconfig (level 7); the datasheet fetched does not state it, verify in the core in use
+esp_i_active_nowifi  0.068          [S] A | CPU powered, 240 MHz dual core, radio off: 30 to 68 mA; top of the range is used
+esp_i_wifi_rx        0.1            [S] A | receive 802.11b/g/n: 95 to 100 mA
+esp_i_wifi_tx_peak   0.24           [S] A | transmit 802.11b 1 Mbps at +19.5 dBm, typ 240 mA (peak of the Wi-Fi cases)
+esp_adc_min_mv       150.0          [S] mV | effective ADC range with 11 dB attenuation, low end
+esp_adc_max_mv       2450.0         [S] mV | effective ADC range with 11 dB attenuation, high end
+esp_adc_err_mv       60.0           [S] mV | total ADC error after eFuse-Vref calibration at 11 dB, +/-60 mV; +/-6 % chip to chip uncalibrated
+esp_adc_cs_pf        20.0           [A] pF | SAR sampling capacitor, not published in the datasheet; 20 pF assumed (a few pF to tens of pF)
+esp_adc_rsw_ohm      1000.0         [A] ohm | sampling switch + mux resistance, assumed
+servo_vmin           4.8            [S] V | operating voltage low end (vendor page)
+servo_vmax           6.8            [S] V | operating voltage high end (vendor page)
+servo_stall_a        2.2            [A] A | stall 2.2 A at 6.8 V from docs/gripper/research/actuators.csv row A17 (Miuzei datasheet; Annimos says 1.8 A). The vendor page above does not list current
+servo_idle_a         0.005          [A] A | idle 5 mA from actuators.csv row A17 (Miuzei); moving-no-load current of 0.15 A is a separate assumption in droop_sim.py
+awg20_ohm_m          0.03331        [S] ohm/m | AWG 20
+awg22_ohm_m          0.05296        [S] ohm/m | AWG 22
+awg24_ohm_m          0.08422        [S] ohm/m | AWG 24
+awg26_ohm_m          0.1339         [S] ohm/m | AWG 26
+awg28_ohm_m          0.2129         [S] ohm/m | AWG 28
+cu_rho               1.724e-08      [A] ohm*m | annealed copper resistivity at 20 C, standard value
+cu_tc                0.00393        [A] 1/K | copper temperature coefficient of resistance
+cable_l_per_m        8e-07          [A] H/m | loop inductance of a twisted power pair, typical 0.5 to 1 uH/m
+c12_esr              0.03           [A] ohm | 1000 uF 16 V low-ESR aluminium electrolytic, ESR near 100 kHz about 20 to 40 mohm; no datasheet fetched
+c12_tol              0.2            [A] 1 | electrolytic capacitance tolerance +/-20 %
+c_wrist_esr          0.1            [A] ohm | 470 uF general-purpose electrolytic at the forearm end, assumed
+cer_esr              0.003          [A] ohm | 47 uF 1210 X5R/X7R ceramic ESR, order of a few mohm
+cer_derate_6v6       0.6            [A] 1 | 47 uF 16 V 1210 X5R retains roughly 50 to 70 % at 6.6 V bias; swept 30 to 100 % in buck_design.py
+l1_dcr               0.015          [A] ohm | Bourns SRP1245A-100M DCR order of 10 to 15 mohm; not fetched
+f1_hold              2.6            [S] A | MF-MSMF260/16X hold current at 23 C
+f1_trip              5.0            [S] A | trip current at 23 C (5.2 A for the /6X /8X /12X parts)
+f1_rmin              0.015          [S] ohm | resistance min
+f1_r1max             0.05           [S] ohm | R1max (max resistance one hour after trip or reflow); used as the worst-case resistance
+f1_vmax              16.0           [S] V | maximum operating voltage of the /16X; the 13.2 V adapter top needs this version, not /6X or /8X
+f1_ttrip             5.0            [S] s | maximum time to trip at 8 A (column read from the part table)
+ipc_k_ext            0.048          [S] 1 | IPC-2221 curve-fit constant k, external layers
+ipc_b                0.44           [S] 1 | exponent on temperature rise
+ipc_c                0.725          [S] 1 | exponent on cross-section area
+ipc_mil_per_oz       1.378          [S] mil/oz | copper thickness per ounce
+tvs_vc               26.0           [A] V | SMBJ16A maximum clamping voltage at its peak pulse current (about 23 A, 600 W class); datasheet fetch returned 404. Verify
+tvs_vwm              16.0           [A] V | SMBJ16A stand-off voltage
+q1_rds               0.013          [S] ohm | AO4407A RDS(on) max at VGS -10 V (11 mohm at -20 V, 17 mohm at -6 V); VDS -30 V, ID -12 A
+q1_rds_6v            0.017          [S] ohm | AO4407A RDS(on) max at VGS -6 V
+d2_vf                0.5            [A] V | B540C forward drop at about 3 to 5 A, 25 C; datasheet fetch returned 404. Verify
+d7_vf_100ma          0.3            [A] V | BAT60A-class Schottky forward drop at 100 mA, about 0.3 V; not fetched
+d7_vf_slope          0.05           [A] V/decade | forward drop change per decade of current
+rs1_tol              0.01           [A] 1 | RS1 0.1R 1 % (design.py value text)
+rs1_tcr              0.0001         [A] 1/K | 2512 metal-element shunt TCR, 50 to 100 ppm/K typical; not fetched
+rs1_rating           2.0            [A] W | design.py value text "0.1R 1% 2W"
+mc_ridley            1.5            [A] 1 | ramp factor mc = 1 + Se/Sn for the sampled current-loop term (Ridley), internal slope not published
+ibus_5v_idle         0.001          [A] A | 74AHCT1G125 supply current is microamps; 1 mA allowed for the buffer plus R12
+buck_servo_lead_resistance_ohm 0.03           [A] ohm | assumed, not sourced: servo lead and plug resistance
+buck_feedback_resistor_tolerance 0.001          [A] 1 | design.py resistor value text specifies 0.1 percent
+buck_nominal_load_a  1.0            [A] A | assumed, not sourced: nominal loop-analysis load
+buck_nominal_input_v 12.0           [A] V | assumed, not sourced: nominal adapter voltage
+buck_load_min_a      0.05           [A] A | assumed, not sourced: loop sweep load corner
+buck_load_light_a    0.15           [A] A | assumed, not sourced: loop sweep load corner
+buck_load_half_a     0.5            [A] A | assumed, not sourced: loop sweep load corner
+buck_load_two_a      2.0            [A] A | assumed, not sourced: loop sweep load corner
+buck_load_max_a      4.0            [A] A | assumed, not sourced: loop sweep load corner
+buck_bulk_esr_min_ohm 0.02           [A] ohm | assumed, not sourced: bulk-capacitor ESR sweep corner
+buck_bulk_esr_max_ohm 0.2            [A] ohm | assumed, not sourced: bulk-capacitor ESR sweep corner
+buck_bulk_scale_min  0.8            [A] 1 | c12_tol lower capacitance factor
+buck_bulk_scale_max  1.2            [A] 1 | c12_tol upper capacitance factor
+buck_ceramic_factor_min 0.3            [A] 1 | assumed, not sourced: ceramic bias sweep corner
+buck_ceramic_factor_mid 0.65           [A] 1 | assumed, not sourced: ceramic bias sweep midpoint
+buck_input_min_v     10.8           [A] V | assumed, not sourced: adapter low-voltage corner
+buck_input_max_v     13.2           [A] V | assumed, not sourced: adapter high-voltage corner
+buck_phase_margin_min_deg 45.0           [A] deg | assumed, not sourced: loop stability acceptance limit
+buck_gain_margin_min_db 10.0           [A] dB | assumed, not sourced: loop stability acceptance limit
+tps_en_i1_min        5.8e-07        [S] A | EN pull-up current minimum
+tps_en_i1_max        1.8e-06        [S] A | EN pull-up current maximum
+tps_en_ihys_min      2.2e-06        [S] A | EN hysteresis current minimum
+tps_en_ihys_max      4.5e-06        [S] A | EN hysteresis current maximum
+buck_load_resistance_floor_ohm 0.001          [A] ohm | assumed, not sourced: numerical load-resistance floor
+power_external_3v3_load_a 0.01           [A] A | assumed, not sourced: INA219, LED, FSR divider, pull-up and miscellaneous load
+power_starting_efficiency 0.85           [A] 1 | assumed, not sourced: fixed-point iteration starting efficiency
+power_rating_margin_factor 1.25           [A] 1 | assumed, not sourced: adapter rating margin
+power_five_volt_rail_v 5.0            [A] V | MCP1703A fixed output selected in design.py
+power_3v3_rail_v     3.3            [A] V | DevKitC regulated rail nominal voltage
+power_ldo_dropout_scale_cap 1.6            [A] 1 | assumed, not sourced: linear dropout extrapolation cap
+power_usb_min_v      4.75           [A] V | assumed, not sourced: USB supply low corner
+power_usb_max_v      5.25           [A] V | assumed, not sourced: USB supply high corner
+power_fsr_force_low_n 5.0            [A] N | firmware force-control setpoint
+power_fsr_force_high_n 8.0            [A] N | assumed, not sourced: FSR error high-force scenario
+power_3v3_minus_1pct_mv 3267.0         [A] mV | derived from nominal 3.3 V rail and assumed one-percent tolerance
+power_3v3_plus_1pct_mv 3333.0         [A] mV | derived from nominal 3.3 V rail and assumed one-percent tolerance
+power_3v3_minus_3pct_mv 3201.0         [S] mV | derived from nominal 3.3 V and MCP1703A three-percent tolerance
+power_regen_min_mj   2.0            [A] mJ | assumed, not sourced: regeneration sweep point
+power_regen_low_mj   5.0            [A] mJ | assumed, not sourced: regeneration sweep point
+power_regen_basis_mj 20.0           [A] mJ | assumed, not sourced: half stall torque through one degree backlash
+power_regen_high_mj  50.0           [A] mJ | assumed, not sourced: regeneration sweep point
+power_regen_rotor_mj 174.0          [A] mJ | docs/gripper/analysis/dyno.md reflected rotor kinetic energy
+power_switch_transition_time_s 1e-08          [A] s | assumed, not sourced: total TPS54560B switching transition time
+power_log_current_floor_a 0.001          [A] A | assumed, not sourced: diode logarithm current floor
+power_diode_reference_current_a 0.1            [A] A | d7_vf_100ma reference current
+power_ldo_full_load_dropout_ratio 1.1            [A] 1 | assumed, not sourced: AMS1117 full-load to light-load dropout ratio
+power_ldo_light_load_a 0.1            [A] A | assumed, not sourced: AMS1117 light-load interpolation point
+power_ldo_load_span_a 0.7            [A] A | assumed, not sourced: AMS1117 dropout interpolation span
+power_fit_a_stall_current_a 3.45           [A] A | docs/gripper/analysis/dyno.md Fit A stall at regulated voltage
+power_ground_wire_length_m 1.2            [A] m | design.py cable length
+power_fsr_return_current_a 0.0009         [A] A | assumed, not sourced: FSR return current
+power_board_plane_resistance_ohm 0.005          [A] ohm | assumed, not sourced: board ground-plane resistance
+ina_trip_current_a   3.0            [A] A | firmware/gripper/config.h STALL_CURRENT_A
+ina_trip_window_s    0.1            [A] s | firmware STALL_CURRENT_MS
+ina_control_period_s 0.02           [A] s | firmware current-reading period
+ina_force_caps_n     (10.0, 8.0)    [A] N | force caps swept by fsr_frontend.py and ina219_budget.py: element 0 is firmware F_CAP_N 10 (squeeze-cap sizing constant, config.h), element 1 is the R15 cap, 8 N (Douglas 2026-10-12, DESIGN-BASIS R15)
+ina_gain_temperature_span_c 40.0           [A] C | assumed, not sourced
+ina_shunt_temperature_rise_c 45.0           [A] C | assumed, not sourced
+ina_input_impedance_ohm 320000.0       [S] ohm | INA219 input impedance
+ina_saturation_error_fraction 0.01           [A] 1 | assumed, not sourced
+ina_detection_limit_s 0.2            [A] s | firmware detection requirement R20
+ina_chop_frequencies_hz (300.0, 1000.0, 3000.0, 20000.0) [A] Hz | assumed, not sourced: unpublished servo-drive chop frequencies
+ina_chop_duty        0.5            [A] 1 | assumed, not sourced: chopped-current duty cycle
+ina_average_codes_samples ((8, 1), (9, 2), (10, 4), (11, 8), (12, 16), (13, 32), (14, 64), (15, 128)) [S] code,count | SADC averaging codes and sample counts
+ina_average_fit_limit_s 0.0195         [A] s | assumed, not sourced
+ina_recommended_sadc_code 13             [A] code | selected 32-sample SADC setting
+ina_sadc_mask        15             [S] code | four-bit SADC field mask
+ina_sadc_shift       3              [S] bit | SADC field starts at configuration bit 3
+trace_supply_current_a 2.2            [A] A | servo_stall_a design input
+trace_auxiliary_current_a 5.0            [A] A | assumed, not sourced
+trace_temperature_rises_c (10.0, 20.0)   [A] C | assumed, not sourced
+trace_hold_current_a 1.35           [A] A | docs/gripper/analysis/dyno.md Fit A hold current
+trace_via_plating_um 25.0           [A] um | assumed, not sourced: typical 1 oz class fab
+trace_via_drill_mm   0.4            [A] mm | assumed, not sourced
+trace_reference_length_mm 10.0           [A] mm | assumed, not sourced
+trace_reference_temperature_c 20.0           [A] C | cu_rho reference temperature
+trace_ambient_temperature_c 25.0           [A] C | assumed, not sourced
+trace_mm_per_mil     0.0254         [A] mm/mil | standard unit conversion
+droop_comp_zero_v    0.6            [A] V | droop_sim.py: COMP voltage at zero peak current
+droop_5v_load_a      0.1            [A] A | droop_sim.py: constant 5 V and ESP32 load
+droop_servo_idle_a   0.15           [A] A | droop_sim.py: moving no-load servo current
+droop_step_time_s    0.003          [A] s | droop_sim.py: load-step start time
+droop_end_time_s     0.015          [A] s | droop_sim.py: simulation end time
+droop_diode_v        0.5            [A] V | droop_sim.py: freewheel diode drop
+droop_fsw_hz         399800.0       [A] Hz | droop_sim.py: implemented switching frequency
+droop_default_rise_s 0.001          [A] s | droop_sim.py: default servo-current rise time
+droop_default_vin_v  12.0           [A] V | droop_sim.py: nominal input voltage
+droop_fast_rise_s    1e-05          [A] s | droop_sim.py: fast load-step scenario
+droop_no_wrist_cap_f 1e-06          [A] F | droop_sim.py: numerical stand-in when wrist capacitance is absent
+droop_voltage_floor_v 0.1            [A] V | droop_sim.py: averaged-model switching voltage floor
+droop_recovery_band_v 0.15           [A] V | droop_sim.py: recovery-time voltage band
+droop_sweep_cap_220_f 0.00022        [A] F | droop_sim.py: bulk-capacitance sweep point
+droop_sweep_cap_470_f 0.00047        [A] F | droop_sim.py: bulk-capacitance sweep point
+droop_sweep_cap_1000_f 0.001          [A] F | droop_sim.py: bulk-capacitance sweep point
+droop_sweep_cap_2200_f 0.0022         [A] F | droop_sim.py: bulk-capacitance sweep point
+droop_low_vin_v      10.8           [A] V | droop_sim.py: low-input-voltage scenario
+fsr_default_vcc_mv   3300.0         [A] mV | _common.py: default divider supply
+servo_hold_torque_nm 0.758          [A] N*m | _common.py: dyno.md section 0, 5 N setpoint plus 2 N tension
+gripper_pad_radius_m 0.065          [A] m | _common.py: firmware config.h R_C_MM
+gripper_train_efficiency 0.85           [A] 1 | _common.py: firmware config.h ETA_TRAIN
+fsr_fit_r1n_ohm      6109.0         [A] ohm | _common.py: firmware config.h FSR_FIT_R1N_OHM
+fsr_fit_exponent     0.8195         [A] 1 | _common.py: firmware config.h FSR_FIT_EXP
+fsr_adc_min_mv       150.0          [S] mV | _common.py: effective ADC range lower endpoint
+fsr_adc_max_mv       2450.0         [S] mV | _common.py: effective ADC range upper endpoint
+fsr_table_forces_n   (0.2, 0.5, 3.0, 5.0, 8.0, 10.0) [A] N | fsr_frontend.py: force points tabulated; analysis choice; assumed, not sourced
+fsr_unloaded_force_n 0.0            [A] N | fsr_frontend.py: unloaded FSR (open circuit) case of the filter table; assumed, not sourced
+fsr_resolution_force_n 5.0            [A] N | fsr_frontend.py: force at which resolution is reported; assumed, not sourced
+fsr_filter_gain_freqs_hz (50.0, 500.0, 1000.0) [A] Hz | fsr_frontend.py: frequencies at which filter gain is tabulated; assumed, not sourced
+ctrl_lag_budget_s    0.076          [A] s | fsr_frontend.py: firmware config.h CTRL_LAG_COMP_S; assumed, not sourced (repo file, no vendor document)
+ema_alpha            0.1            [A] 1 | fsr_frontend.py: firmware config.h FSR_EMA_ALPHA; assumed, not sourced (repo file, no vendor document)
+fsr_sample_rate_hz   1000.0         [A] Hz | fsr_frontend.py: firmware FSR sampling and EMA rate (config.h: EMA at 1 kHz); assumed, not sourced
+fsr_e96_search_lo_ohm 1500.0         [A] ohm | fsr_frontend.py: lower edge of the R15 E96 search window; assumed, not sourced
+fsr_e96_search_hi_ohm 6000.0         [A] ohm | fsr_frontend.py: upper edge of the R15 E96 search window; assumed, not sourced
+esp_adc_resolution_bits 12             [A] bit | fsr_frontend.py and harness.py: ESP32 ADC resolution as used here; assumed, not sourced
+harness_awg_power    20             [A] AWG | harness.py: trunk gauge of the servo power pair; design choice; assumed, not sourced
+harness_awg_pigtail  22             [A] AWG | harness.py: servo extension lead pigtail gauge, not stated by the seller; assumed, not sourced
+harness_awg_signal   26             [A] AWG | harness.py: signal conductor gauge; design choice; assumed, not sourced
+harness_spare_fraction 0.15           [A] 1 | harness.py: spare wire length bought (brief); assumed, not sourced
+harness_pigtail_mm   100.0          [A] mm | harness.py: extension lead cut-off length kept with the male plug; assumed, not sourced
+harness_fsr_run_mm   150.0          [A] mm | harness.py: SM receptacle to the Clincher on finger B, with the service loop; assumed, not sourced
+harness_limit_run_mm 120.0          [A] mm | harness.py: SM receptacle to the microswitch; assumed, not sourced
+harness_cap_lead_mm  10.0           [A] mm | harness.py: capacitor lead length left after trimming; assumed, not sourced
+harness_unwired_length_mm 0              [A] mm | harness.py: wire length of a connector row with no wire; assumed, not sourced
+harness_adapter_cord_mm 1500.0         [S] mm | harness.py: Pololu WPA-1774 cord, 1.5 m (sourcing.HARNESS entry)
+harness_usb_cable_mm 914.0          [S] mm | harness.py: Adafruit 592 USB cable, 3 ft rounded to 914 mm (sourcing.HARNESS entry)
+harness_od_26awg_mm  1.5            [S] mm | harness.py: 26 AWG silicone wire OD, upper value of 1.4 to 1.5 mm (sourcing.HARNESS entry)
+harness_bend_factor  10.0           [A] 1 | harness.py: dynamic minimum bend radius in outer diameters; sourcing.EVIDENCE flex_wire (secondary page, tagged A there); assumed, not sourced
+harness_bend_factor_abs 5.0            [A] 1 | harness.py: absolute minimum bend radius in outer diameters (Parker Trilogy per sourcing.EVIDENCE flex_wire, tagged A there); assumed, not sourced
+harness_jaw_max_deg  20.0           [A] deg | harness.py: open end of the jaw range, DESIGN-BASIS R18; assumed, not sourced
+harness_cycle_s      35.0           [A] s | harness.py: grip cycle length, DESIGN-BASIS section 7; assumed, not sourced
+harness_design_life_cycles 100000.0       [A] 1 | harness.py: design life in grips, DESIGN-BASIS section 7 R25; assumed, not sourced
+harness_semester_fraction 0.1            [A] 1 | harness.py: a semester is about 1/10 of the design life, DESIGN-BASIS section 7; assumed, not sourced
+harness_plug_band_v  (6.35, 6.65)   [A] V | the one home of the servo plug band (low, high): harness.py, power_budget.py and margins.py rows; assumed, not sourced
+harness_force_error_limit_n 0.1            [A] N | margins.py force-reading-error row limit; assumed, not sourced: acceptable FSR force-reading error
+buck_junction_rise_limit_c 85.0           [A] C | margins.py buck-thermal row limit; assumed, not sourced: allowed U1 junction rise
+trace_temp_rise_limit_c 10.0           [A] C | margins.py trace-temperature row limit; assumed, not sourced: allowed wide-trace temperature rise
+trace_servo_drop_limit_mv 100.0          [A] mV | margins.py trace-drop row limit; assumed, not sourced: allowed servo path drop at stall
+ina_current_error_limit_a 0.05           [A] A | margins.py current-error row limit; assumed, not sourced: allowed current-reading error
+adapter_min_v        12.0           [A] V | margins.py uvlo-range row limit; assumed, not sourced: lowest adapter voltage the UVLO start must stay under
+adapter_current_a    3.0            [A] A | margins.py adapter-current row limit default; assumed, not sourced: adapter current rating
+fsr_adc_droop_limit_mv 1              [A] mV | margins.py adc-charge row limit; assumed, not sourced: acceptable ADC reservoir droop at 2450 mV
+harness_plug_rating_v 6.8            [A] V | harness.py: servo voltage rating, power_budget.py; assumed, not sourced
+harness_servo_v_min  4.8            [A] V | harness.py: servo minimum supply, droop_sim.py figure and dyno.md; assumed, not sourced
+harness_pwm_current_a 0.001          [A] A | harness.py: SERVO_PWM wire current, 5 V into the servo input behind R13 100 ohm; assumed, not sourced
+harness_fsr_force_cap_n 8.0            [A] N | harness.py: R15 force cap at which FSR current is sized, DESIGN-BASIS R15, ruled 8 N by Douglas 2026-10-12
+harness_vil_fraction 0.25           [A] 1 | harness.py: ESP32 input-low threshold as a fraction of VDD, from memory, to verify; assumed, not sourced
+harness_fsr_error_forces_n (5.0, 8.0)     [A] N | harness.py: forces at which the series-wire FSR error is reported; assumed, not sourced
+harness_servo_lead_ohm 0.0            [A] ohm | harness.py: selected servo lead resistance, not recorded and excluded from the path; assumed, not sourced
+fit_a_resistance_ohm 1.8            [A] ohm | _common.py: dyno motor fit A
+fit_a_torque_nm_per_a 0.861          [A] N*m/A | _common.py: dyno motor fit A
+fit_a_hold_a         1.35           [A] A | _common.py: dyno hold row
+fit_b_resistance_ohm 3.09           [A] ohm | _common.py: dyno motor fit B
+fit_b_torque_nm_per_a 1.474          [A] N*m/A | _common.py: dyno motor fit B
+fit_b_stall_a        2.2            [A] A | _common.py: dyno motor fit B
+fit_b_hold_a         0.8            [A] A | _common.py: dyno hold row
+wire_gauges_awg      (20, 26)       [A] AWG | assumed, not sourced: compared harness gauges
+buck_candidate_r_ohm (4700.0, 8200.0, 12000.0, 18000.0, 27400.0, 39000.0) [A] ohm | assumed, not sourced: compensation resistor candidates
+buck_candidate_c_f   (1e-08, 2.2e-08, 4.7e-08, 1e-07) [A] F | assumed, not sourced: compensation capacitor candidates
+buck_candidate_pole_f (4.7e-11, 1e-10, 2.2e-10, 4.7e-10, 1e-09) [A] F | assumed, not sourced: compensation pole capacitor candidates
+buck_phase_score_cap_deg 90             [A] degree | assumed, not sourced: compensation ranking cap
+buck_gain_score_cap_db 30             [A] dB | assumed, not sourced: compensation ranking cap
+
+264 entries, 176 tagged A: ams_dropout_typ, ams_dropout_max, ams_vout_tol, devkit_diode_drop, devkit_overhead_a, esp_bod_default, esp_adc_cs_pf, esp_adc_rsw_ohm, servo_stall_a, servo_idle_a, cu_rho, cu_tc, cable_l_per_m, c12_esr, c12_tol, c_wrist_esr, cer_esr, cer_derate_6v6, l1_dcr, tvs_vc, tvs_vwm, d2_vf, d7_vf_100ma, d7_vf_slope, rs1_tol, rs1_tcr, rs1_rating, mc_ridley, ibus_5v_idle, buck_servo_lead_resistance_ohm, buck_feedback_resistor_tolerance, buck_nominal_load_a, buck_nominal_input_v, buck_load_min_a, buck_load_light_a, buck_load_half_a, buck_load_two_a, buck_load_max_a, buck_bulk_esr_min_ohm, buck_bulk_esr_max_ohm, buck_bulk_scale_min, buck_bulk_scale_max, buck_ceramic_factor_min, buck_ceramic_factor_mid, buck_input_min_v, buck_input_max_v, buck_phase_margin_min_deg, buck_gain_margin_min_db, buck_load_resistance_floor_ohm, power_external_3v3_load_a, power_starting_efficiency, power_rating_margin_factor, power_five_volt_rail_v, power_3v3_rail_v, power_ldo_dropout_scale_cap, power_usb_min_v, power_usb_max_v, power_fsr_force_low_n, power_fsr_force_high_n, power_3v3_minus_1pct_mv, power_3v3_plus_1pct_mv, power_regen_min_mj, power_regen_low_mj, power_regen_basis_mj, power_regen_high_mj, power_regen_rotor_mj, power_switch_transition_time_s, power_log_current_floor_a, power_diode_reference_current_a, power_ldo_full_load_dropout_ratio, power_ldo_light_load_a, power_ldo_load_span_a, power_fit_a_stall_current_a, power_ground_wire_length_m, power_fsr_return_current_a, power_board_plane_resistance_ohm, ina_trip_current_a, ina_trip_window_s, ina_control_period_s, ina_force_caps_n, ina_gain_temperature_span_c, ina_shunt_temperature_rise_c, ina_saturation_error_fraction, ina_detection_limit_s, ina_chop_frequencies_hz, ina_chop_duty, ina_average_fit_limit_s, ina_recommended_sadc_code, trace_supply_current_a, trace_auxiliary_current_a, trace_temperature_rises_c, trace_hold_current_a, trace_via_plating_um, trace_via_drill_mm, trace_reference_length_mm, trace_reference_temperature_c, trace_ambient_temperature_c, trace_mm_per_mil, droop_comp_zero_v, droop_5v_load_a, droop_servo_idle_a, droop_step_time_s, droop_end_time_s, droop_diode_v, droop_fsw_hz, droop_default_rise_s, droop_default_vin_v, droop_fast_rise_s, droop_no_wrist_cap_f, droop_voltage_floor_v, droop_recovery_band_v, droop_sweep_cap_220_f, droop_sweep_cap_470_f, droop_sweep_cap_1000_f, droop_sweep_cap_2200_f, droop_low_vin_v, fsr_default_vcc_mv, servo_hold_torque_nm, gripper_pad_radius_m, gripper_train_efficiency, fsr_fit_r1n_ohm, fsr_fit_exponent, fsr_table_forces_n, fsr_unloaded_force_n, fsr_resolution_force_n, fsr_filter_gain_freqs_hz, ctrl_lag_budget_s, ema_alpha, fsr_sample_rate_hz, fsr_e96_search_lo_ohm, fsr_e96_search_hi_ohm, esp_adc_resolution_bits, harness_awg_power, harness_awg_pigtail, harness_awg_signal, harness_spare_fraction, harness_pigtail_mm, harness_fsr_run_mm, harness_limit_run_mm, harness_cap_lead_mm, harness_unwired_length_mm, harness_bend_factor, harness_bend_factor_abs, harness_jaw_max_deg, harness_cycle_s, harness_design_life_cycles, harness_semester_fraction, harness_plug_band_v, harness_force_error_limit_n, buck_junction_rise_limit_c, trace_temp_rise_limit_c, trace_servo_drop_limit_mv, ina_current_error_limit_a, adapter_min_v, adapter_current_a, fsr_adc_droop_limit_mv, harness_plug_rating_v, harness_servo_v_min, harness_pwm_current_a, harness_fsr_force_cap_n, harness_vil_fraction, harness_fsr_error_forces_n, harness_servo_lead_ohm, fit_a_resistance_ohm, fit_a_torque_nm_per_a, fit_a_hold_a, fit_b_resistance_ohm, fit_b_torque_nm_per_a, fit_b_stall_a, fit_b_hold_a, wire_gauges_awg, buck_candidate_r_ohm, buck_candidate_c_f, buck_candidate_pole_f, buck_phase_score_cap_deg, buck_gain_score_cap_db

@@ -1,0 +1,28 @@
+id: T02
+title: Horn pilot recess radial fit (Ø19.2 horn in the printed Ø19.51 recess)
+parts: ["wrist mount", "servo horn"]
+constants: basis.yaml
+units: mm diametral clearance
+requirement: Recess slides onto the horn by hand (clearance >= 0.02) and float stays small enough to centre the gripper (<= 0.30).
+spec: {lsl: "=fit_min_clear", usl: "=pilot_clear_max"}
+accept: {method: mc}
+fix: >-
+  Open the recess to CAD 19.56 and accept up to 0.40 diametral clearance (T02-relax40). The radial float then
+  stays inside the 0.30 concentricity budget (T04-relax40). Better still, print the coupon and size the
+  recess from the measured hole.
+fix_variant: relax40
+notes: >-
+  Rev A recess is CAD 19.51 with a 0.3 x 45 mouth chamfer, so first-layer squish stays in the chamfer. It prints
+  about 19.35 (large-hole bias -0.16), only 0.15 over the horn, so the slide-on limit (0.02) binds first. The
+  scatter of a 20 mm printed hole, not the CAD size, sets the verdict.
+contributors:
+  - {name: recess_d_printed, nominal: "=recess_d_cad", bias: "=fdm_hole_bias_large_d", tol: "=fdm_xy_tol_short", dist: normal, tag: S, source: "CAD 19.51 (params.json) + large-hole bias -0.16 [S low] + XY band 0.10 [S]"}
+  - {name: horn_od, nominal: "=horn_od", tol: "=horn_od_tol", direction: -1, dist: normal, tag: A, source: "so101.md row 2 nominal [D]; tol [A]"}
+variants:
+  - {id: relax40, label: "recess CAD 19.56 and accept clearance up to 0.40 (checked by T04-relax40)", set: {recess_d_cad: 19.56}, spec: {lsl: "=fit_min_clear", usl: "=pilot_clear_max_relaxed"}}
+  - id: stock20
+    role: rejected
+    label: "stock Ø20.0 recess, no chamfer"
+    set: {recess_d_cad: 20.0}
+    add:
+      - {name: recess_first_layer_residual, nominal: 0, tol: "=efc_resid_d", dist: uniform, tag: A, source: "no mouth chamfer: first layer flares"}

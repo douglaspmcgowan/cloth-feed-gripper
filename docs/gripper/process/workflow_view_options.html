@@ -1,0 +1,513 @@
+<title>Agent Workflow Views</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Public+Sans:wght@400;600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#EEF1F2; --tint:#E1E7EA; --raised:#F7F9FA; --ink:#162027; --ink-2:#4E5D67;
+  --accent:#1F58C9; --on-accent:#F7F9FA; --status:#A63E1A;
+  --shadow:0 8px 48px rgba(40,70,95,.14);
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:4px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px;
+  --fs-s:14px; --fs-m:16px; --fs-l:24px; --fs-h1:clamp(40px,7vw,60px);
+  --lab:176px; --row:16px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1317; --tint:#18222A; --raised:#131B21; --ink:#E1E8EB; --ink-2:#98A6AE;
+    --accent:#7CA3FF; --on-accent:#0E1317; --status:#F0936B;
+    --shadow:0 8px 48px rgba(2,6,10,.55);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1317; --tint:#18222A; --raised:#131B21; --ink:#E1E8EB; --ink-2:#98A6AE;
+  --accent:#7CA3FF; --on-accent:#0E1317; --status:#F0936B;
+  --shadow:0 8px 48px rgba(2,6,10,.55);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--fs-m)/1.6 var(--f-body);-webkit-text-size-adjust:100%}
+.wrap{max-width:880px;margin-inline:auto;padding-inline:var(--s4);padding-block:clamp(var(--s6),6vw,var(--s8))}
+h1,h2,h3,p{margin:0}
+h1{font:600 var(--fs-h1)/1 var(--f-display);margin-bottom:var(--s4)}
+h2{font:600 var(--fs-l)/1.2 var(--f-display);margin-top:var(--s8);margin-bottom:var(--s5)}
+h3{font:600 var(--fs-m)/1.3 var(--f-body);margin-bottom:var(--s1)}
+.lede{max-width:68ch;margin-bottom:var(--s4)}
+.jump{display:flex;flex-wrap:wrap;gap:0 var(--s4)}
+a{color:var(--accent);text-underline-offset:3px;border-radius:var(--r)}
+.jump a{display:inline-flex;align-items:center;min-height:44px}
+a:focus-visible,button:focus-visible,input:focus-visible,.scroll:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.note{font-weight:400;font-size:var(--fs-s);color:var(--ink-2);margin-left:var(--s2)}
+.spec{container-type:inline-size;margin-bottom:var(--s7);scroll-margin-top:var(--s4)}
+.ans{max-width:68ch;margin-bottom:var(--s3)}
+.gw{font-size:var(--fs-s);color:var(--ink-2);margin-top:var(--s2)}
+.rend{background:var(--tint);border-radius:var(--r);padding:var(--s4);overflow-wrap:anywhere}
+.ch{width:100%}
+.lg{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s4);margin-top:var(--s3);font-size:var(--fs-s);color:var(--ink-2)}
+.lg span{display:inline-flex;align-items:center;gap:var(--s2)}
+.lg i{display:inline-block;width:var(--s4);height:var(--s3);border-radius:var(--r);background:var(--accent)}
+.lg i.ghost{opacity:.3}
+.lg i.pzs{background:linear-gradient(90deg,var(--bg) 0 30%,var(--tint) 30% 70%,var(--bg) 70% 100%)}
+.lg i.f1{opacity:.75}.lg i.f2{opacity:.5}.lg i.f3{opacity:.3}.lg i.f4{opacity:.15}
+.lg i.bgb{background:var(--bg)}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* svg text and shapes, all from tokens */
+svg{display:block;max-width:none}
+.t{fill:currentColor;font:400 var(--fs-s)/1 var(--f-body)}
+.tb{fill:currentColor;font:600 var(--fs-s)/1 var(--f-body)}
+.t2{fill:var(--ink-2);font:400 var(--fs-s)/1 var(--f-body)}
+.ton{fill:var(--on-accent);font:600 var(--fs-s)/1 var(--f-body)}
+.fa{fill:var(--accent);stroke:none}
+.fa5{fill:var(--accent);fill-opacity:.5;stroke:none}
+.fa3{fill:var(--accent);fill-opacity:.3;stroke:none}
+.fa2{fill:var(--accent);fill-opacity:.2;stroke:none}
+.fbg{fill:var(--bg);stroke:none}
+.fpz{fill:var(--tint);stroke:none}
+.fb{fill:var(--bg);stroke:var(--ink-2);stroke-opacity:.5;stroke-width:1}
+.ln{fill:none;stroke:var(--ink-2);stroke-width:1.5}
+.ax1{fill:none;stroke:var(--ink-2);stroke-width:1}
+.stl{fill:var(--accent);fill-opacity:.3;stroke:none}
+.stk{fill:none;stroke:var(--accent);stroke-width:2}
+.arh{fill:var(--ink-2);stroke:none}
+
+/* swim lanes and replay */
+.sl{position:relative;--labw:0px}
+.row{display:grid;grid-template-columns:minmax(0,1fr);margin-bottom:var(--s2)}
+.row.axis,.row.pzrow{height:var(--s5);margin-bottom:0}
+.row.axis .lab,.row.pzrow .lab{display:none}
+.row > *{min-width:0}
+.lab{position:relative;z-index:1;display:block;width:fit-content;max-width:100%;background:var(--tint);font-size:var(--fs-s);line-height:var(--row);padding-right:var(--s2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trk{position:relative;height:var(--row);background:var(--bg);border-radius:var(--r)}
+.axis .trk{background:none;height:var(--s5)}
+.pzrow .trk{height:var(--s5)}
+.pz{position:absolute;top:0;bottom:0;background:var(--tint)}
+.plab{position:absolute;top:0;line-height:var(--s5);text-align:center;font-size:var(--fs-s);color:var(--ink-2)}
+.tk{position:absolute;bottom:0;transform:translateX(-50%);font-size:var(--fs-s);line-height:var(--s5);color:var(--ink-2);white-space:nowrap}
+.gh{position:relative;z-index:1;width:fit-content;max-width:100%;background:var(--tint);font-weight:600;font-size:var(--fs-s);line-height:var(--s5);margin-top:var(--s2)}
+.bar{position:absolute;top:2px;height:calc(var(--row) - 4px);min-width:3px;background:var(--accent);border-radius:var(--r)}
+.bar.nores{opacity:.3}
+.rp .bar{opacity:.12}
+.rp .bar.on{opacity:1}
+.rp .bar.on.nores{opacity:.45}
+.curw{position:absolute;top:calc(var(--s5) * 2);bottom:0;left:var(--labw);right:0;pointer-events:none;overflow:hidden}
+.cur{width:100%;height:100%;transform:translateX(0)}
+.cur::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--ink)}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s4);margin-bottom:var(--s3)}
+.ctl label{font-weight:600;font-size:var(--fs-s)}
+.ctl input[type=range]{flex:1 1 200px;min-width:0;min-height:44px;margin:0;accent-color:var(--accent)}
+.btn{min-height:44px;min-width:120px;padding:0 var(--s4);border:0;border-radius:var(--r);background:var(--accent);color:var(--on-accent);font:600 var(--fs-m)/1.2 var(--f-body);cursor:pointer}
+.frame{font-weight:600;font-size:var(--fs-m);margin-bottom:var(--s3)}
+
+/* tool mix */
+.tm{margin-bottom:var(--s4)}
+.tm:last-child{margin-bottom:0}
+.tm h4{margin:0 0 var(--s1);font:600 var(--fs-s)/1.4 var(--f-body)}
+.tbar{display:flex;gap:2px;height:24px;border-radius:var(--r);overflow:hidden;background:var(--bg)}
+.tbar .f{display:block;height:100%;background:var(--accent);min-width:2px}
+.tbar .f1{opacity:.75}.tbar .f2{opacity:.5}.tbar .f3{opacity:.3}.tbar .f4{opacity:.15}
+.tm .lg{margin-top:var(--s1)}
+.tm .lg i{width:var(--s3)}
+
+/* heatmap, scroll containers */
+.scroll{overflow-x:auto;border-radius:var(--r)}
+.hm{border-collapse:separate;border-spacing:2px;min-width:480px;width:100%;font-size:var(--fs-s)}
+.hm th{font-weight:600;text-align:center;padding:var(--s1) var(--s2);color:var(--ink)}
+.hm th.rh{text-align:left}
+.hm td{text-align:center;padding:var(--s2);background:var(--bg);border-radius:var(--r);font-variant-numeric:tabular-nums}
+.hm td span{display:block;line-height:1.3}
+.hm td .sh{opacity:.85}
+
+/* roster */
+.ros{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.ros svg{width:20px;height:20px}
+
+/* conversation */
+.th{display:flex;flex-direction:column;gap:var(--s3)}
+.msg{max-width:min(68ch,92%);padding:var(--s3) var(--s4);border-radius:var(--r)}
+.msg.c{align-self:flex-start;background:var(--raised)}
+.msg.u{align-self:flex-end;background:var(--bg)}
+.who{font-size:var(--fs-s);color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-left:var(--s6)}
+.chip{display:inline-flex;align-items:center;gap:var(--s2);padding:var(--s1) var(--s3);border-radius:var(--r);background:var(--bg);font-size:var(--fs-s)}
+.dot{display:inline-block;width:var(--s2);height:var(--s2);background:var(--accent);border-radius:50%}
+.dot.d{border-radius:0;transform:rotate(45deg)}
+
+@container (min-width:640px){
+  .sl{--labw:var(--lab)}
+  .row{grid-template-columns:var(--lab) minmax(0,1fr);height:var(--row);margin-bottom:0}
+  .row.axis,.row.pzrow{height:var(--s5)}
+  .row.axis .lab,.row.pzrow .lab{display:block;background:none}
+  .lab{width:auto}
+  .msg{max-width:min(68ch,80%)}
+}
+
+@media (prefers-reduced-motion: no-preference){
+  a,.btn,input[type=range]{transition:transform .2s var(--ease),opacity .2s var(--ease)}
+  a:hover,input[type=range]:hover{opacity:.8}
+  a:active{opacity:.6}
+  .btn:hover{opacity:.9;transform:translateY(-1px)}
+  .btn:active{opacity:.8;transform:translateY(0)}
+  .rp .bar{transition:opacity .2s var(--ease)}
+}
+@media (prefers-reduced-motion: reduce){
+  .btn:hover{opacity:.9}
+  .btn:active{opacity:.8}
+  a:hover,input[type=range]:hover{opacity:.8}
+  a:active{opacity:.6}
+}
+</style>
+<div class="wrap">
+<h1>Agent Workflow Views</h1>
+<p class="lede">Ten ways to draw the same evening: six workflows, 77 agent runs and one conductor, Sep 22 to 23, 2026.</p>
+<nav class="jump" aria-label="Specimens"><a href="#s1">Swim lanes</a><a href="#s2">Concurrency chart</a><a href="#s3">Icicle chart</a><a href="#s4">Pipeline diagrams</a><a href="#s5">Flow of runs</a><a href="#s6">Tool mix bars</a><a href="#s7">Role by tool heatmap</a><a href="#s8">Roster grid</a><a href="#s9">Replay</a><a href="#s10">Conversation thread</a></nav>
+<h2>When things ran, and how many at once</h2>
+<article class="spec" id="s1"><h3>Swim lanes <span class="note">in the build timeline now</span></h3>
+<p class="ans">Answers: when did each agent run, and how many ran side by side?</p>
+<div class="rend" id="r1"></div>
+<p class="gw">Good for parallelism and pacing; weak at structure.</p></article>
+<article class="spec" id="s2"><h3>Concurrency chart <span class="note">in the build timeline now</span></h3>
+<p class="ans">Answers: how many agents were alive at each minute, and when was the busiest moment?</p>
+<div class="rend" id="r2"></div>
+<p class="gw">Good for load at a glance; weak at who did what.</p></article>
+<article class="spec" id="s3"><h3>Icicle chart</h3>
+<p class="ans">Answers: how does the session split into workflows, lanes and runs, and how long did each last?</p>
+<div class="rend" id="r3"></div>
+<p class="gw">Good for nesting and duration; weak for readers new to the form.</p></article>
+<h2>How the work was structured</h2>
+<article class="spec" id="s4"><h3>Pipeline diagrams</h3>
+<p class="ans">Answers: how was each workflow designed, and which step feeds which?</p>
+<div class="rend" id="r4"></div>
+<p class="gw">Good for explaining the design; weak at time.</p></article>
+<article class="spec" id="s5"><h3>Flow of runs</h3>
+<p class="ans">Answers: where did the runs of each role end up, with a result or restarted?</p>
+<div class="rend" id="r5"></div>
+<p class="gw">Good for where runs went; weak at time.</p></article>
+<h2>Who did what, with which tools</h2>
+<article class="spec" id="s6"><h3>Tool mix bars <span class="note">in the build timeline now</span></h3>
+<p class="ans">Answers: which kinds of tools did each role lean on?</p>
+<div class="rend" id="r6"></div>
+<p class="gw">Good for comparing roles; weak at detail.</p></article>
+<article class="spec" id="s7"><h3>Role by tool heatmap</h3>
+<p class="ans">Answers: how do roles and tool families compare, cell by cell?</p>
+<div class="rend" id="r7"></div>
+<p class="gw">Good for density; weak on a phone.</p></article>
+<article class="spec" id="s8"><h3>Roster grid</h3>
+<p class="ans">Answers: how many runs were there, of which role, and which returned a result?</p>
+<div class="rend" id="r8"></div>
+<p class="gw">Good for scale at a glance; weak at everything else.</p></article>
+<h2>What it felt like</h2>
+<article class="spec" id="s9"><h3>Replay</h3>
+<p class="ans">Answers: what did the evening feel like as it unfolded, minute by minute?</p>
+<div class="rend" id="r9"></div>
+<p class="gw">Good for the feel of the night; weak as a still image.</p></article>
+<article class="spec" id="s10"><h3>Conversation thread</h3>
+<p class="ans">Answers: what did Douglas actually type, and how did the agents branch off?</p>
+<div class="rend" id="r10"><div class="th">
+<div class="msg u"><p class="who">Douglas, 17:43</p><p>develop a detailec concept cad demo for this</p></div>
+<div class="msg u"><p class="who">Douglas, 17:54</p><p>continue the gripper script build in opus 5.5 please</p></div>
+<div class="msg u"><p class="who">Douglas, 18:18</p><p>first give a full plan for completion. then i'll approve</p></div>
+<div class="msg c"><p class="who">Claude, 18:20</p><p>Here's the plan. Nothing starts until you approve.</p></div>
+<div class="msg u"><p class="who">Douglas, 18:22</p><p>all permissions granted. do waht you gotta do. assumptions are fine .stick with pwm. go</p></div>
+<div class="msg c"><p class="who">Claude, 18:25</p><p>Research (W1) has started with the PWM rule: six research agents, then a final one that checks for gaps.</p></div>
+<div class="chips" role="list" aria-label="Agents started by W1"><span class="chip"><i class="dot"></i>so101</span><span class="chip"><i class="dot"></i>actuators</span><span class="chip"><i class="dot"></i>tools</span><span class="chip"><i class="dot"></i>cloth_cv</span><span class="chip"><i class="dot"></i>tolerance</span><span class="chip"><i class="dot"></i>gears</span><span class="chip"><i class="dot d"></i>critic</span></div>
+<div class="msg c"><p class="who">Claude, 01:44</p><p>The full build-out is finished and waiting for your merge.</p></div>
+</div></div>
+<p class="gw">Good for showing the prompting; weak at scale.</p></article>
+
+</div>
+<script>
+const D={"win":481,"startMin":1063,"pa":192,"pb":292,"ticks":[{"m":17,"t":"18:00"},{"m":137,"t":"20:00"},{"m":257,"t":"22:00"},{"m":377,"t":"00:00"}],"runs":[{"role":"research","res":false,"s":42.09,"e":61.09,"lane":"research:so101","wf":"W1 research"},{"role":"research","res":true,"s":42.09,"e":48.87,"lane":"research:actuators","wf":"W1 research"},{"role":"research","res":true,"s":42.15,"e":54.64,"lane":"research:tools","wf":"W1 research"},{"role":"research","res":true,"s":42.15,"e":47.25,"lane":"research:cloth_cv","wf":"W1 research"},{"role":"research","res":true,"s":42.15,"e":55.0,"lane":"research:tolerance","wf":"W1 research"},{"role":"research","res":false,"s":42.15,"e":61.26,"lane":"research:gears","wf":"W1 research"},{"role":"review","res":false,"s":61.26,"e":64.37,"lane":"critic","wf":"W1 research"},{"role":"research","res":true,"s":70.11,"e":72.18,"lane":"research:actuators","wf":"W1 research"},{"role":"research","res":true,"s":70.11,"e":78.53,"lane":"research:so101","wf":"W1 research"},{"role":"research","res":true,"s":70.16,"e":72.5,"lane":"research:tools","wf":"W1 research"},{"role":"research","res":true,"s":70.16,"e":72.3,"lane":"research:cloth_cv","wf":"W1 research"},{"role":"research","res":true,"s":70.16,"e":72.52,"lane":"research:tolerance","wf":"W1 research"},{"role":"research","res":true,"s":70.16,"e":83.62,"lane":"research:gears","wf":"W1 research"},{"role":"review","res":true,"s":83.65,"e":91.44,"lane":"critic","wf":"W1 research"},{"role":"build","res":true,"s":93.32,"e":119.18,"lane":"basis","wf":"W2a basis, concept, torque"},{"role":"build","res":true,"s":96.54,"e":123.57,"lane":"build:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":false,"s":96.54,"e":103.75,"lane":"build:firmware","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":true,"s":96.59,"e":118.29,"lane":"build:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"review","res":true,"s":118.33,"e":128.21,"lane":"verify:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":true,"s":119.22,"e":140.47,"lane":"build:concept","wf":"W2a basis, concept, torque"},{"role":"build","res":true,"s":119.22,"e":140.31,"lane":"build:torque_actuator","wf":"W2a basis, concept, torque"},{"role":"review","res":true,"s":123.6,"e":138.65,"lane":"verify:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"fix","res":true,"s":128.23,"e":150.8,"lane":"fix:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"fix","res":false,"s":138.68,"e":159.13,"lane":"fix:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"review","res":true,"s":140.35,"e":148.22,"lane":"verify:torque_actuator","wf":"W2a basis, concept, torque"},{"role":"review","res":true,"s":140.51,"e":151.11,"lane":"verify:concept","wf":"W2a basis, concept, torque"},{"role":"fix","res":false,"s":148.25,"e":157.03,"lane":"fix:torque_actuator","wf":"W2a basis, concept, torque"},{"role":"fix","res":false,"s":151.13,"e":157.06,"lane":"fix:concept","wf":"W2a basis, concept, torque"},{"role":"fix","res":false,"s":157.03,"e":166.39,"lane":"fix:torque_actuator","wf":"W2a basis, concept, torque"},{"role":"fix","res":false,"s":157.06,"e":166.39,"lane":"fix:concept","wf":"W2a basis, concept, torque"},{"role":"build","res":false,"s":160.5,"e":166.39,"lane":"build:firmware","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"review","res":false,"s":160.5,"e":166.39,"lane":"verify:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"review","res":false,"s":160.55,"e":166.39,"lane":"verify:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":false,"s":161.5,"e":167.85,"lane":"build:gears","wf":"W2b-2 gears, dyno, camera"},{"role":"build","res":false,"s":161.5,"e":166.39,"lane":"build:camera","wf":"W2b-2 gears, dyno, camera"},{"role":"build","res":false,"s":161.55,"e":166.39,"lane":"build:dyno","wf":"W2b-2 gears, dyno, camera"},{"role":"fix","res":false,"s":166.39,"e":169.8,"lane":"fix:concept","wf":"W2a basis, concept, torque"},{"role":"fix","res":false,"s":166.39,"e":169.8,"lane":"fix:torque_actuator","wf":"W2a basis, concept, torque"},{"role":"review","res":false,"s":166.39,"e":169.8,"lane":"verify:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"review","res":false,"s":166.39,"e":169.8,"lane":"verify:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":false,"s":166.39,"e":169.8,"lane":"build:firmware","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":false,"s":166.39,"e":169.81,"lane":"build:dyno","wf":"W2b-2 gears, dyno, camera"},{"role":"build","res":false,"s":166.39,"e":169.8,"lane":"build:camera","wf":"W2b-2 gears, dyno, camera"},{"role":"review","res":true,"s":172.67,"e":188.13,"lane":"verify:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":false,"s":172.67,"e":179.02,"lane":"build:firmware","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":true,"s":172.69,"e":192.07,"lane":"build:gears","wf":"W2b-2 gears, dyno, camera"},{"role":"build","res":true,"s":172.71,"e":189.34,"lane":"build:camera","wf":"W2b-2 gears, dyno, camera"},{"role":"review","res":true,"s":172.72,"e":186.56,"lane":"verify:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":false,"s":172.74,"e":192.69,"lane":"build:dyno","wf":"W2b-2 gears, dyno, camera"},{"role":"review","res":true,"s":172.93,"e":180.92,"lane":"verify:torque_actuator","wf":"W2a basis, concept, torque"},{"role":"review","res":true,"s":172.93,"e":181.86,"lane":"verify:concept","wf":"W2a basis, concept, torque"},{"role":"fix","res":false,"s":180.95,"e":192.53,"lane":"fix:torque_actuator","wf":"W2a basis, concept, torque"},{"role":"fix","res":false,"s":181.88,"e":191.72,"lane":"fix:concept","wf":"W2a basis, concept, torque"},{"role":"fix","res":false,"s":186.59,"e":191.86,"lane":"fix:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"fix","res":false,"s":188.15,"e":192.0,"lane":"fix:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"review","res":false,"s":189.37,"e":193.32,"lane":"verify:camera","wf":"W2b-2 gears, dyno, camera"},{"role":"review","res":false,"s":192.1,"e":192.11,"lane":"verify:gears","wf":"W2b-2 gears, dyno, camera"},{"role":"build","res":false,"s":294.45,"e":300.61,"lane":"build:firmware","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"review","res":true,"s":294.45,"e":308.22,"lane":"verify:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"build","res":true,"s":294.48,"e":312.35,"lane":"build:dyno","wf":"W2b-2 gears, dyno, camera"},{"role":"review","res":true,"s":294.49,"e":305.84,"lane":"verify:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"review","res":true,"s":294.49,"e":309.67,"lane":"verify:gears","wf":"W2b-2 gears, dyno, camera"},{"role":"build","res":true,"s":294.56,"e":300.67,"lane":"build:camera","wf":"W2b-2 gears, dyno, camera"},{"role":"fix","res":true,"s":294.63,"e":306.08,"lane":"fix:concept","wf":"W2a basis, concept, torque"},{"role":"fix","res":true,"s":294.67,"e":308.03,"lane":"fix:torque_actuator","wf":"W2a basis, concept, torque"},{"role":"review","res":true,"s":300.72,"e":312.57,"lane":"verify:camera","wf":"W2b-2 gears, dyno, camera"},{"role":"fix","res":true,"s":305.86,"e":321.1,"lane":"fix:tolerance","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"fix","res":true,"s":308.24,"e":338.03,"lane":"fix:finger_fea","wf":"W2b-1 finger FEA, tolerance, firmware"},{"role":"fix","res":true,"s":309.7,"e":322.05,"lane":"fix:gears","wf":"W2b-2 gears, dyno, camera"},{"role":"review","res":true,"s":312.38,"e":324.8,"lane":"verify:dyno","wf":"W2b-2 gears, dyno, camera"},{"role":"fix","res":true,"s":312.59,"e":348.47,"lane":"fix:camera","wf":"W2b-2 gears, dyno, camera"},{"role":"fix","res":true,"s":324.81,"e":345.35,"lane":"fix:dyno","wf":"W2b-2 gears, dyno, camera"},{"role":"build","res":false,"s":339.13,"e":342.04,"lane":"code","wf":"Firmware"},{"role":"build","res":true,"s":352.07,"e":376.56,"lane":"cad","wf":"W3 CAD and review page"},{"role":"build","res":true,"s":376.58,"e":419.03,"lane":"viewer","wf":"W3 CAD and review page"},{"role":"review","res":true,"s":419.09,"e":430.65,"lane":"verify","wf":"W3 CAD and review page"},{"role":"fix","res":true,"s":430.67,"e":474.25,"lane":"fix","wf":"W3 CAD and review page"}],"wfs":[{"name":"W1 research","n":14,"res":11,"s":42.09,"e":91.44,"lanes":[{"label":"research so101","ids":[0,8]},{"label":"research actuators","ids":[1,7]},{"label":"research tools","ids":[2,9]},{"label":"research cloth_cv","ids":[3,10]},{"label":"research tolerance","ids":[4,11]},{"label":"research gears","ids":[5,12]},{"label":"critic","ids":[6,13]}]},{"name":"W2a basis, concept, torque","n":17,"res":9,"s":93.32,"e":308.03,"lanes":[{"label":"basis","ids":[14]},{"label":"build concept","ids":[19]},{"label":"build torque_actuator","ids":[20]},{"label":"review torque_actuator","ids":[24,49]},{"label":"review concept","ids":[25,50]},{"label":"fix torque_actuator","ids":[26,28,37,51,64]},{"label":"fix concept","ids":[27,29,36,52,63]}]},{"name":"W2b-1 finger FEA, tolerance, firmware","n":23,"res":11,"s":96.54,"e":338.03,"lanes":[{"label":"build finger_fea","ids":[15]},{"label":"build firmware","ids":[16,30,40,44,57]},{"label":"build tolerance","ids":[17]},{"label":"review tolerance","ids":[18,32,38,47,60]},{"label":"review finger_fea","ids":[21,31,39,43,58]},{"label":"fix tolerance","ids":[22,53,66]},{"label":"fix finger_fea","ids":[23,54,67]}]},{"name":"W2b-2 gears, dyno, camera","n":18,"res":10,"s":161.5,"e":348.47,"lanes":[{"label":"build gears","ids":[33,45]},{"label":"build camera","ids":[34,42,46,62]},{"label":"build dyno","ids":[35,41,48,59]},{"label":"review camera","ids":[55,65]},{"label":"review gears","ids":[56,61]},{"label":"fix gears","ids":[68]},{"label":"review dyno","ids":[69]},{"label":"fix camera","ids":[70]},{"label":"fix dyno","ids":[71]}]},{"name":"Firmware","n":1,"res":0,"s":339.13,"e":342.04,"lanes":[{"label":"code","ids":[72]}]},{"name":"W3 CAD and review page","n":4,"res":4,"s":352.07,"e":474.25,"lanes":[{"label":"cad","ids":[73]},{"label":"viewer","ids":[74]},{"label":"verify","ids":[75]},{"label":"fix","ids":[76]}]}],"conc":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,6,6,6,5,4,4,4,4,4,4,3,2,2,2,2,2,3,1,1,1,0,0,0,0,0,6,6,6,2,2,2,2,2,2,1,1,1,1,2,1,1,1,1,1,1,1,1,0,1,1,1,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,5,4,4,4,5,4,4,4,4,5,4,4,4,4,4,4,4,4,4,5,4,6,4,4,4,4,4,4,4,5,4,4,4,3,3,3,3,3,5,3,3,5,8,8,8,8,8,15,8,7,7,0,0,8,8,8,8,8,8,8,8,8,8,7,7,7,7,8,7,8,8,7,7,6,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,8,8,9,7,7,7,7,8,7,6,7,6,5,5,7,5,5,5,5,5,5,5,5,5,4,3,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],"peak":15,"peakM":166,"peakT":"20:29","roles":{"research":{"runs":12,"res":10,"tools":{"read":0,"shell":163,"write":13,"web":323,"other":22},"calls":521},"build":{"runs":23,"res":11,"tools":{"read":98,"shell":423,"write":92,"web":62,"other":31},"calls":706},"review":{"runs":22,"res":15,"tools":{"read":122,"shell":328,"write":11,"web":41,"other":63},"calls":565},"fix":{"runs":20,"res":9,"tools":{"read":73,"shell":374,"write":77,"web":22,"other":30},"calls":576}},"fams":["read","shell","write","web","other"],"roleOrder":["research","build","review","fix"],"total":77,"results":45,"pipes":[{"title":"W1 research","cols":0,"nodes":[{"id":"a0","label":"so101","col":0,"row":0},{"id":"a1","label":"actuators","col":0,"row":1},{"id":"a2","label":"tools","col":0,"row":2},{"id":"a3","label":"cloth_cv","col":0,"row":3},{"id":"a4","label":"tolerance","col":0,"row":4},{"id":"a5","label":"gears","col":0,"row":5},{"id":"z","label":"critic","col":1,"row":2.5}],"edges":[["a0","z"],["a1","z"],["a2","z"],["a3","z"],["a4","z"],["a5","z"]],"n":14},{"title":"W2a basis, concept, torque","nodes":[{"id":"b","label":"basis","col":0,"row":0.5},{"id":"c","label":"concept","col":1,"row":0},{"id":"t","label":"torque_actuator","col":1,"row":1},{"id":"rc","label":"review","col":2,"row":0},{"id":"rt","label":"review","col":2,"row":1},{"id":"fc","label":"fix","col":3,"row":0},{"id":"ft","label":"fix","col":3,"row":1}],"edges":[["b","c"],["b","t"],["c","rc"],["t","rt"],["rc","fc"],["rt","ft"]],"n":17},{"title":"W2b-1 finger FEA, tolerance, firmware","nodes":[{"id":"b0","label":"finger_fea","col":0,"row":0},{"id":"r0","label":"review","col":1,"row":0},{"id":"f0","label":"fix","col":2,"row":0},{"id":"b1","label":"tolerance","col":0,"row":1},{"id":"r1","label":"review","col":1,"row":1},{"id":"f1","label":"fix","col":2,"row":1},{"id":"b2","label":"firmware","col":0,"row":2},{"id":"r2","label":"review","col":1,"row":2},{"id":"f2","label":"fix","col":2,"row":2}],"edges":[["b0","r0"],["r0","f0"],["b1","r1"],["r1","f1"],["b2","r2"],["r2","f2"]],"n":23},{"title":"W2b-2 gears, dyno, camera","nodes":[{"id":"b0","label":"gears","col":0,"row":0},{"id":"r0","label":"review","col":1,"row":0},{"id":"f0","label":"fix","col":2,"row":0},{"id":"b1","label":"dyno","col":0,"row":1},{"id":"r1","label":"review","col":1,"row":1},{"id":"f1","label":"fix","col":2,"row":1},{"id":"b2","label":"camera","col":0,"row":2},{"id":"r2","label":"review","col":1,"row":2},{"id":"f2","label":"fix","col":2,"row":2}],"edges":[["b0","r0"],["r0","f0"],["b1","r1"],["r1","f1"],["b2","r2"],["r2","f2"]],"n":18},{"title":"Firmware","nodes":[{"id":"n0","label":"code","col":0,"row":0},{"id":"n1","label":"compile","col":1,"row":0,"ghost":true},{"id":"n2","label":"docs","col":2,"row":0,"ghost":true},{"id":"n3","label":"verify","col":3,"row":0,"ghost":true},{"id":"n4","label":"fix","col":4,"row":0,"ghost":true}],"edges":[["n0","n1"],["n1","n2"],["n2","n3"],["n3","n4"]],"note":"Planned in sequence; only the first stage ran.","n":1},{"title":"W3 CAD and review page","nodes":[{"id":"n0","label":"cad","col":0,"row":0},{"id":"n1","label":"viewer","col":1,"row":0},{"id":"n2","label":"verify","col":2,"row":0},{"id":"n3","label":"fix","col":3,"row":0}],"edges":[["n0","n1"],["n1","n2"],["n2","n3"]],"n":4}],"calls":2368};
+const NS="http://www.w3.org/2000/svg";
+const $=(s)=>document.querySelector(s);
+function h(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+function s(tag,attrs,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;return e}
+function svg(w,hh,label){return s("svg",{width:w,height:hh,viewBox:"0 0 "+w+" "+hh,role:"img","aria-label":label})}
+function fmt(m){const t=D.startMin+Math.floor(m);return String(Math.floor(t/60)%24).padStart(2,"0")+":"+String(t%60).padStart(2,"0")}
+const pc=(m)=>(m/D.win*100)+"%";
+const TW=(str)=>str.length*7.6;
+function pl(n,w){return n+" "+w+(n===1?"":"s")}
+function responsive(el,draw){let w=-1;const run=()=>{const cw=Math.floor(el.clientWidth);if(cw&&cw!==w){w=cw;draw(cw)}};if(window.ResizeObserver)new ResizeObserver(run).observe(el);run()}
+function mount(i,id){const r=$("#r"+i);const c=h("div","ch");c.id=id;r.appendChild(c);return c}
+function legend(items){const l=h("p","lg");items.forEach(([c,t])=>{const sp=h("span");sp.appendChild(h("i",c));sp.appendChild(document.createTextNode(t));l.appendChild(sp)});return l}
+
+/* swim lanes, shared with the replay */
+function swim(host,replay){
+  const sl=h("div","sl"+(replay?" rp":""));
+  const ax=h("div","row axis");ax.appendChild(h("div","lab"));
+  const at=h("div","trk");
+  D.ticks.forEach(t=>{const k=h("span","tk tnum",t.t);k.style.left=pc(t.m);at.appendChild(k)});
+  ax.appendChild(at);sl.appendChild(ax);
+  const pr=h("div","row pzrow");pr.appendChild(h("div","lab"));
+  const pt=h("div","trk");const pz0=h("div","pz");pz0.style.left=pc(D.pa);pz0.style.width=pc(D.pb-D.pa);pt.appendChild(pz0);
+  const plb=h("span","plab","paused");plb.style.left=pc(D.pa);plb.style.width=pc(D.pb-D.pa);pt.appendChild(plb);
+  pr.appendChild(pt);sl.appendChild(pr);
+  const bars=[];
+  D.wfs.forEach(w=>{
+    sl.appendChild(h("div","gh",w.name+", "+pl(w.n,"run")+", "+w.res+" with a result"));
+    w.lanes.forEach(l=>{
+      const row=h("div","row");row.appendChild(h("div","lab",l.label));
+      const tr=h("div","trk");const pz=h("div","pz");pz.style.left=pc(D.pa);pz.style.width=pc(D.pb-D.pa);tr.appendChild(pz);
+      l.ids.forEach(i=>{const r=D.runs[i];const b=h("div","bar"+(r.res?"":" nores"));
+        b.style.left=pc(r.s);b.style.width=pc(r.e-r.s);
+        b.title=l.label+", "+fmt(r.s)+" to "+fmt(r.e)+(r.res?", returned a result":", restarted run");
+        tr.appendChild(b);bars.push({b:b,r:r})});
+      row.appendChild(tr);sl.appendChild(row)});
+  });
+  let cur=null;
+  if(replay){const cw=h("div","curw");cur=h("div","cur");cw.appendChild(cur);sl.appendChild(cw)}
+  host.appendChild(sl);
+  return {bars,cur};
+}
+
+/* 1 swim lanes */
+(function(){
+  const c=mount(1,"c1");swim(c,false);
+  c.appendChild(legend([["","returned a result"],["ghost","restarted run"],["pzs","paused"]]));
+})();
+
+/* 2 concurrency */
+(function(){
+  const c=mount(2,"c2");
+  const cap=h("p","tb tnum","");cap.style.cssText="margin:0 0 8px;font-size:14px;font-weight:600";
+  cap.textContent="Agents alive, per minute. Peak "+D.peak+" at "+D.peakT;c.appendChild(cap);
+  const host=h("div");c.appendChild(host);
+  responsive(host,function(W){
+    host.textContent="";
+    const H=148,padl=32,pr=8,top=28,bot=28,ph=H-top-bot;
+    const x=m=>padl+(W-padl-pr)*m/D.win, y=v=>top+ph-v/D.peak*ph;
+    const sv=svg(W,H,"Agents alive per minute, peak "+D.peak+" at "+D.peakT);
+    sv.appendChild(s("rect",{x:padl,y:top,width:W-padl-pr,height:ph,class:"fbg"}));
+    sv.appendChild(s("rect",{x:x(D.pa),y:top,width:x(D.pb)-x(D.pa),height:ph,class:"fpz"}));
+    sv.appendChild(s("text",{x:(x(D.pa)+x(D.pb))/2,y:top+ph/2+5,"text-anchor":"middle",class:"t2"},"paused"));
+    let d="M"+x(0)+","+y(0);
+    for(let m=0;m<D.win;m++){d+=" H"+x(m)+" V"+y(D.conc[m])+" H"+x(m+1)}
+    sv.appendChild(s("path",{d:d+" V"+y(0)+" Z",class:"stl"}));
+    let dl="M"+x(0)+","+y(D.conc[0]);
+    for(let m=0;m<D.win;m++){dl+=" H"+x(m)+" V"+y(D.conc[m])+" H"+x(m+1)}
+    sv.appendChild(s("path",{d:dl,class:"stk"}));
+    sv.appendChild(s("path",{d:"M"+x(0)+","+y(0)+" H"+x(D.win),class:"ax1"}));
+    sv.appendChild(s("text",{x:padl-8,y:y(0)+5,"text-anchor":"end",class:"t2"},"0"));
+    sv.appendChild(s("text",{x:padl-8,y:y(D.peak)+5,"text-anchor":"end",class:"t2"},String(D.peak)));
+    const px=x(D.peakM+0.5),py=y(D.peak);
+    sv.appendChild(s("circle",{cx:px,cy:py,r:4,class:"fa"}));
+    const lbl="Peak "+D.peak+" at "+D.peakT;
+    const right=px>W-TW(lbl)-16;
+    sv.appendChild(s("text",{x:right?px-8:px+8,y:py-4,"text-anchor":right?"end":"start",class:"tb"},lbl));
+    D.ticks.forEach(t=>{sv.appendChild(s("text",{x:x(t.m),y:H-6,"text-anchor":"middle",class:"t2"},t.t))});
+    host.appendChild(sv);
+  });
+  c.appendChild(legend([["","agents alive"],["pzs","paused"]]));
+})();
+
+/* 3 icicle */
+(function(){
+  const c=mount(3,"c3");const host=h("div");c.appendChild(host);
+  responsive(host,function(W){
+    host.textContent="";
+    const x=m=>W*m/D.win;
+    const SH=24,WH=24,LH=20,G=2;
+    const XT=20;
+    const span=l=>[Math.min(...l.ids.map(i=>D.runs[i].s)),Math.max(...l.ids.map(i=>D.runs[i].e))];
+    const fits=l=>{const q=span(l),x0=x(q[0]),x1=Math.max(x(q[1]),x0+2),tw=TW(l.label);return x0-6>=tw+4||W-x1-6>=tw+4};
+    const total=SH+G+D.wfs.reduce((a,w)=>a+WH+G+w.lanes.reduce((b,l)=>b+LH+G+(fits(l)?0:XT),0)+G*2,0);
+    const sv=svg(W,total,"Icicle chart of the session: workflows, lanes and runs on the night clock");
+    sv.appendChild(s("rect",{x:0,y:SH+G,width:W,height:total-SH-G,class:"fbg"}));
+    sv.appendChild(s("rect",{x:x(D.pa),y:SH+G,width:x(D.pb)-x(D.pa),height:total-SH-G,class:"fpz"}));
+    sv.appendChild(s("text",{x:(x(D.pa)+x(D.pb))/2,y:total-8,"text-anchor":"middle",class:"t2"},"paused"));
+    sv.appendChild(s("rect",{x:0,y:0,width:W,height:SH,class:"fa"}));
+    sv.appendChild(s("text",{x:8,y:SH/2+5,class:"ton"},"Session, "+D.win+" min"));
+    function side(x0,x1,tw){const left=x0-6,right=W-x1-6;if(left>=tw+4&&left>=right)return["end",x0-6];if(right>=tw+4)return["start",x1+6];return left>=right?["end",Math.max(x0-6,tw)]:["start",Math.min(x1+6,W-tw)]}
+    let y=SH+G;
+    D.wfs.forEach(w=>{
+      const wx=x(w.s),ww=Math.max(x(w.e)-x(w.s),2);
+      sv.appendChild(s("rect",{x:wx,y:y,width:ww,height:WH,class:"fa5"}));
+      const wt=w.name+", "+pl(w.n,"run");
+      sv.appendChild(s("text",{x:Math.max(4,Math.min(wx+8,W-TW(wt)-4)),y:y+WH/2+5,class:"tb"},wt));
+      y+=WH+G;
+      w.lanes.forEach(l=>{
+        const q=span(l),ls=q[0],le=q[1],fit=fits(l);
+        if(!fit){sv.appendChild(s("text",{x:Math.max(4,Math.min(x(ls),W-TW(l.label)-4)),y:y+LH/2+5,class:"t"},l.label));y+=XT}
+        l.ids.forEach(i=>{const r=D.runs[i];
+          sv.appendChild(s("rect",{x:x(r.s),y:y+4,width:Math.max(x(r.e)-x(r.s),2),height:LH-8,rx:2,class:r.res?"fa":"fa3"}))});
+        if(fit){const sd=side(x(ls),Math.max(x(le),x(ls)+2),TW(l.label));
+          sv.appendChild(s("text",{x:sd[1],y:y+LH/2+5,"text-anchor":sd[0],class:"t"},l.label))}
+        y+=LH+G});
+      y+=G*2;
+    });
+    host.appendChild(sv);
+  });
+  c.appendChild(legend([["","returned a result"],["ghost","restarted run"],["pzs","paused"]]));
+  c.appendChild(h("p","lg","Top band is the session, then each workflow as a band at its span, then one row per lane with a strip for each run."));
+})();
+
+/* 4 pipelines */
+(function(){
+  const c=mount(4,"c4");
+  D.pipes.forEach((p,pi)=>{
+    const wrap=h("div");wrap.style.cssText="margin-bottom:24px";if(pi===D.pipes.length-1)wrap.style.marginBottom="0";
+    const t=h("p","tb",p.title+", "+pl(p.n,"run"));t.style.cssText="margin:0 0 8px;font-size:14px;font-weight:600";wrap.appendChild(t);
+    const sc=h("div","scroll");sc.tabIndex=0;sc.setAttribute("role","region");sc.setAttribute("aria-label",p.title+" pipeline");
+    const BH=28,GX=40,GY=12,PADX=8,PADY=8;
+    const colW=[];p.nodes.forEach(n=>{colW[n.col]=Math.max(colW[n.col]||72,TW(n.label)+20)});
+    const colX=[];let ax=PADX;colW.forEach((w,i)=>{colX[i]=ax;ax+=w+GX});
+    const W=ax-GX+PADX;
+    const rowsN=Math.max(...p.nodes.map(n=>n.row))+1;
+    const H=PADY*2+rowsN*BH+(rowsN-1)*GY;
+    const sv=svg(W,H,p.title+" pipeline");
+    const mid="mk"+pi;
+    const defs=s("defs",{});const mk=s("marker",{id:mid,viewBox:"0 0 10 10",refX:9,refY:5,markerWidth:8,markerHeight:8,orient:"auto"});
+    mk.appendChild(s("path",{d:"M0,1 L10,5 L0,9 Z",class:"arh"}));defs.appendChild(mk);sv.appendChild(defs);
+    const pos={};p.nodes.forEach(n=>{pos[n.id]={x:colX[n.col],y:PADY+n.row*(BH+GY),w:colW[n.col]}});
+    const gh={};p.nodes.forEach(n=>{gh[n.id]=!!n.ghost});
+    p.edges.forEach(e=>{const a=pos[e[0]],b=pos[e[1]];
+      const x0=a.x+a.w,y0=a.y+BH/2,x1=b.x-2,y1=b.y+BH/2,xm=(x0+x1)/2;
+      sv.appendChild(s("path",{d:"M"+x0+","+y0+" C"+xm+","+y0+" "+xm+","+y1+" "+x1+","+y1,class:"ln","marker-end":"url(#"+mid+")","opacity":gh[e[1]]?".4":"1"}))});
+    p.nodes.forEach(n=>{const q=pos[n.id];
+      const g=s("g",{opacity:n.ghost?".4":"1"});
+      g.appendChild(s("rect",{x:q.x,y:q.y,width:q.w,height:BH,rx:4,class:"fb"}));
+      g.appendChild(s("text",{x:q.x+q.w/2,y:q.y+BH/2+5,"text-anchor":"middle",class:"t"},n.label));sv.appendChild(g)});
+    sc.appendChild(sv);wrap.appendChild(sc);
+    if(p.note){const nt=h("p","lg",p.note);nt.style.marginTop="8px";wrap.appendChild(nt)}
+    c.appendChild(wrap);
+  });
+})();
+
+/* 5 flow of runs */
+(function(){
+  const c=mount(5,"c5");const host=h("div");c.appendChild(host);
+  responsive(host,function(W){
+    host.textContent="";
+    const k=3,gap=12,LW=96,RW=136,NW=12;
+    const roles=D.roleOrder;
+    const H=D.total*k+gap*3+8;
+    const sv=svg(W,H,"Flow of runs from role to outcome");
+    const lx=LW,rx=W-RW-NW;
+    let ly=4;const left={};
+    roles.forEach(r=>{const ro=D.roles[r];left[r]={y:ly,h:ro.runs*k};ly+=ro.runs*k+gap});
+    const resN=D.results,nonN=D.total-D.results;
+    const right={res:{y:4,h:resN*k},non:{y:4+resN*k+gap,h:nonN*k}};
+    const rin={res:right.res.y,non:right.non.y};
+    roles.forEach(r=>{
+      const ro=D.roles[r],L=left[r];
+      const parts=[["res",ro.res,"fa5"],["non",ro.runs-ro.res,"fa2"]];
+      let oy=L.y;
+      parts.forEach(([key,cnt,cls])=>{
+        if(!cnt)return;
+        const hh=cnt*k,y1=rin[key],xm=(lx+NW+rx)/2;
+        sv.appendChild(s("path",{d:"M"+(lx+NW)+","+oy+" C"+xm+","+oy+" "+xm+","+y1+" "+rx+","+y1+" L"+rx+","+(y1+hh)+" C"+xm+","+(y1+hh)+" "+xm+","+(oy+hh)+" "+(lx+NW)+","+(oy+hh)+" Z",class:cls}));
+        rin[key]+=hh;oy+=hh});
+      sv.appendChild(s("rect",{x:lx,y:L.y,width:NW,height:L.h,class:"fa"}));
+      sv.appendChild(s("text",{x:lx-8,y:L.y+L.h/2+5,"text-anchor":"end",class:"tb"},r+" "+ro.runs));
+    });
+    sv.appendChild(s("rect",{x:rx,y:right.res.y,width:NW,height:right.res.h,class:"fa"}));
+    sv.appendChild(s("rect",{x:rx,y:right.non.y,width:NW,height:right.non.h,class:"fa3"}));
+    const rl=rx+NW+8;
+    sv.appendChild(s("text",{x:rl,y:right.res.y+right.res.h/2-2,class:"tb"},"returned a result"));
+    sv.appendChild(s("text",{x:rl,y:right.res.y+right.res.h/2+16,class:"t"},String(resN)));
+    sv.appendChild(s("text",{x:rl,y:right.non.y+right.non.h/2-2,class:"tb"},"restarted run"));
+    sv.appendChild(s("text",{x:rl,y:right.non.y+right.non.h/2+16,class:"t"},String(nonN)));
+    host.appendChild(sv);
+  });
+  c.appendChild(legend([["","returned a result"],["ghost","restarted run"]]));
+})();
+
+/* 6 tool mix bars */
+(function(){
+  const c=mount(6,"c6");
+  D.roleOrder.forEach(r=>{
+    const ro=D.roles[r];const box=h("div","tm");
+    box.appendChild(h("h4","",r+", "+ro.calls+" tool calls"));
+    const bar=h("div","tbar");bar.setAttribute("role","img");
+    bar.setAttribute("aria-label",r+" tool calls by family: "+D.fams.map(f=>f+" "+ro.tools[f]).join(", "));
+    D.fams.forEach((f,i)=>{if(!ro.tools[f])return;const sg=h("span","f f"+i);sg.style.width=(ro.tools[f]/ro.calls*100)+"%";sg.title=f+" "+ro.tools[f];bar.appendChild(sg)});
+    box.appendChild(bar);
+    const lg=h("p","lg");D.fams.forEach((f,i)=>{const sp=h("span","tnum");sp.appendChild(h("i","f"+i));sp.appendChild(document.createTextNode(f+" "+ro.tools[f]));lg.appendChild(sp)});
+    box.appendChild(lg);c.appendChild(box);
+  });
+  const note=h("p","lg","read is Read, Grep and Glob; shell is Bash and PowerShell; write is Write and Edit; web is WebSearch and WebFetch; other is everything else.");
+  note.style.marginTop="12px";c.appendChild(note);
+})();
+
+/* 7 heatmap */
+(function(){
+  const c=mount(7,"c7");
+  const sc=h("div","scroll");sc.tabIndex=0;sc.setAttribute("role","region");sc.setAttribute("aria-label","Role by tool family heatmap");
+  const t=h("table","hm");
+  let hd="<tr><th class='rh' scope='col'>Role</th>"+D.fams.map(f=>"<th scope='col'>"+f+"</th>").join("")+"</tr>";
+  let mx=0;D.roleOrder.forEach(r=>D.fams.forEach(f=>{mx=Math.max(mx,D.roles[r].tools[f]/D.roles[r].calls)}));
+  let rows="";
+  D.roleOrder.forEach(r=>{const ro=D.roles[r];
+    rows+="<tr><th class='rh' scope='row'>"+r+"</th>";
+    D.fams.forEach(f=>{const n=ro.tools[f],sh=n/ro.calls,op=0.06+0.94*sh/mx;
+      const col=op>0.55?"var(--on-accent)":"var(--ink)";
+      rows+="<td style='background-image:linear-gradient(color-mix(in srgb,var(--accent) "+Math.round(op*100)+"%,transparent),color-mix(in srgb,var(--accent) "+Math.round(op*100)+"%,transparent));color:"+col+"'><span>"+n+"</span><span class='sh'>"+Math.round(sh*100)+"%</span></td>"});
+    rows+="</tr>"});
+  t.innerHTML=hd+rows;sc.appendChild(t);c.appendChild(sc);
+  c.appendChild(h("p","lg","Each cell prints its tool calls and its share of that role's calls; a deeper tint is a larger share of the row."));
+})();
+
+/* 8 roster */
+(function(){
+  const c=mount(8,"c8");const g=h("div","ros");g.setAttribute("role","list");
+  D.runs.forEach((r,i)=>{
+    const sv=s("svg",{viewBox:"0 0 20 20",role:"listitem","aria-label":"Run "+(i+1)+", "+r.role+", "+(r.res?"returned a result":"restarted run")});
+    const cls=r.res?"fa":"fa3";
+    let sh;
+    if(r.role==="research")sh=s("circle",{cx:10,cy:10,r:8,class:cls});
+    else if(r.role==="build")sh=s("rect",{x:2,y:2,width:16,height:16,class:cls});
+    else if(r.role==="review")sh=s("polygon",{points:"10,1 19,10 10,19 1,10",class:cls});
+    else sh=s("polygon",{points:"10,2 19,18 1,18",class:cls});
+    sv.appendChild(s("title",{},r.role+", "+fmt(r.s)+(r.res?", returned a result":", restarted run")));
+    sv.appendChild(sh);g.appendChild(sv)});
+  c.appendChild(g);
+  c.appendChild(h("p","lg",D.total+" runs in launch order. Circle is research, square is build, diamond is review, triangle is fix. Solid returned a result; faint is a restarted run."));
+})();
+
+/* 9 replay */
+(function(){
+  const c=mount(9,"c9");
+  const ctl=h("div","ctl");
+  const lb=h("label","","Time of night");lb.setAttribute("for","clock");
+  const inp=h("input");inp.type="range";inp.id="clock";inp.min=0;inp.max=D.win-1;inp.step=1;
+  const start=D.ticks[1].m;inp.value=start;
+  const btn=h("button","btn");btn.type="button";
+  ctl.appendChild(lb);ctl.appendChild(inp);ctl.appendChild(btn);c.appendChild(ctl);
+  const fr=h("p","frame tnum");c.appendChild(fr);
+  const host=h("div");c.appendChild(host);
+  const sw=swim(host,true);
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)");
+  let pos=start,playing=false,last=0;
+  function alive(r,m){return r.s<m+1&&r.e>=m}
+  function paint(){
+    const m=Math.min(D.win-1,Math.max(0,Math.floor(pos)));
+    inp.value=m;
+    let n=0;sw.bars.forEach(o=>{const on=alive(o.r,m);if(on)n++;o.b.classList.toggle("on",on)});
+    const paused=m>=D.pa&&m<D.pb;
+    fr.textContent=fmt(m)+", "+n+" agent"+(n===1?"":"s")+" alive"+(paused?", paused":"");
+    inp.setAttribute("aria-valuetext",fmt(m)+", "+n+" alive");
+    sw.cur.style.transform="translateX("+(m/D.win*100)+"%)";
+  }
+  function label(){btn.textContent=reduce.matches?"Step 10 minutes":(playing?"Pause":"Play")}
+  function tick(t){
+    if(!playing)return;
+    pos+=(t-last)/1000*20;last=t;
+    if(pos>=D.win-1){pos=D.win-1;playing=false;label();paint();return}
+    paint();requestAnimationFrame(tick);
+  }
+  btn.addEventListener("click",function(){
+    if(reduce.matches){pos=pos+10>D.win-1?0:pos+10;paint();return}
+    if(playing){playing=false;label();return}
+    if(pos>=D.win-1)pos=0;
+    playing=true;last=performance.now();label();requestAnimationFrame(tick);
+  });
+  inp.addEventListener("input",function(){pos=+inp.value;paint()});
+  if(reduce.addEventListener)reduce.addEventListener("change",function(){playing=false;label()});
+  label();paint();
+})();
+</script>

@@ -1,0 +1,163 @@
+{
+ "id": "T16-linereamed",
+ "title": "Axis tilt between plates, centre-distance change across the gear face",
+ "mode": "linear",
+ "units": "mm (a at front face - a at back face)",
+ "requirement": "Centre distance varies <= 0.07 mm across the 6 mm face (axes A and B parallel in the plane of centres).",
+ "notes": "Fit ruling: pin B is pressed into both plates (no float in the plate holes); knuckle B runs on the pin in its reamed bore, so it can cock by pin_clear / bore length. Axis A is the servo output shaft: it wobbles in the servo's own bearings and tilts with the servo flange seat. Every term is the change of a across face_b.",
+ "spec": {
+  "lsl": -0.07,
+  "usl": 0.07
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T16",
+ "variant_label": "dowelled + both plate holes line-reamed together",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T16_pin_tilt.yaml",
+ "nominal": 0.0,
+ "mid": 0.0,
+ "wc": [
+  -0.19324489795918398,
+  0.19324489795918398
+ ],
+ "rss_classic": [
+  -0.10640929247970245,
+  0.10640929247970245
+ ],
+ "rss_dist": [
+  -0.17992481075724645,
+  0.17992481075724645
+ ],
+ "rss_dist_unclipped": [
+  -0.17992481075724645,
+  0.17992481075724645
+ ],
+ "rss_clipped": false,
+ "warnings": [],
+ "requires": [],
+ "blocked_by": [],
+ "own_verdict": false,
+ "mc": {
+  "n": 100000,
+  "mean": -8.143532422236084e-05,
+  "std": 0.05995078366223866,
+  "min": -0.16978727741427543,
+  "max": 0.16847565728188837,
+  "p0135": -0.14385532117614752,
+  "p50": -0.00014818382810557681,
+  "p99865": 0.1436313313643428,
+  "out_lo_pct": 13.588000000000001,
+  "out_hi_pct": 13.531,
+  "out_pct": 27.119000000000003,
+  "out_pct_se": 0.1405866223721162,
+  "cpk_normal": 0.38875535566917263,
+  "cpk_percentile": 0.4860706118076896
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "mid_plate_hole_B",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.03,
+   "lower": -0.03,
+   "mid": 0.0,
+   "half": 0.03,
+   "sensitivity": -0.6,
+   "dist": "normal",
+   "sigma": 0.01,
+   "tag": "A",
+   "source": "printed hole position, same print",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 1.000835959787316
+  },
+  {
+   "name": "front_plate_hole_B",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.03,
+   "lower": -0.03,
+   "mid": 0.0,
+   "half": 0.03,
+   "sensitivity": 0.6,
+   "dist": "normal",
+   "sigma": 0.01,
+   "tag": "A",
+   "source": "",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 1.000835959787316
+  },
+  {
+   "name": "knuckleB_tilt_on_pin",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.07000000000000028,
+   "lower": -0.07000000000000028,
+   "mid": 0.0,
+   "half": 0.07000000000000028,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.04041451884327397,
+   "tag": "D",
+   "source": "reamed knuckle bore clearance over the bore length",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 45.408298175536004
+  },
+  {
+   "name": "shaftA_tilt",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.07500000000000001,
+   "lower": -0.07500000000000001,
+   "mid": 0.0,
+   "half": 0.07500000000000001,
+   "sensitivity": -1.0,
+   "dist": "uniform",
+   "sigma": 0.04330127018922194,
+   "tag": "A",
+   "source": "2 x per-bearing radial play / bearing span (basis servo_shaft_tilt)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 52.12687290558939
+  },
+  {
+   "name": "servo_tilt_on_flange_seat",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.012244897959183675,
+   "lower": -0.012244897959183675,
+   "mid": 0.0,
+   "half": 0.012244897959183675,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.004081632653061225,
+   "tag": "A",
+   "source": "flange seat flatness over the ear-hole span",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.46315699929997506
+  }
+ ],
+ "seed": 20260922
+}

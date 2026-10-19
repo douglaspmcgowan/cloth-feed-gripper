@@ -1,0 +1,20 @@
+{
+  "assumed_price_lines": [],
+  "board_parts_assumed_usd": 0,
+  "board_parts_usd": 36.0,
+  "bom_lines": 64,
+  "dnp_parts": 2,
+  "dnp_parts_usd": 0.0,
+  "harness_assumed_lines": [
+    "JST XH 4-position housing XHP-4 with 4 crimp contacts SXH-001T-P0.6",
+    "4-position latching wire-to-wire pair (wrist end), plug and receptacle"
+  ],
+  "harness_usd": 70.28,
+  "lines_without_mpn": [],
+  "note": "One set of parts, five bare boards, shipping and tax excluded. The servo and the FSR are in the mechanical BOM (cad/gripper/drawings/BOM.md) and are not counted here.",
+  "parts_without_source": [],
+  "pcb_5_boards_tag": "S",
+  "pcb_5_boards_usd_assumed": 2.0,
+  "placed_parts": 84,
+  "total_one_gripper_usd": 108.28
+}

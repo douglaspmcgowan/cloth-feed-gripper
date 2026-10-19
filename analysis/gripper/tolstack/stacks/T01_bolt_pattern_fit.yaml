@@ -1,0 +1,25 @@
+id: T01
+title: Horn-to-mount bolt pattern fit (4x M3 on the 14.0 BC)
+parts: ["wrist mount", "servo horn", "M3 horn screws"]
+constants: basis.yaml
+mode: radial
+units: mm radial interference (> 0 = screw hits hole wall)
+requirement: >-
+  All 4 M3 screws pass the printed clearance holes and thread into the horn with no hole-wall contact,
+  crediting no pilot float. Fixed-fastener case (screw threads into the horn): H = F + T1 + T2.
+spec: {usl: 0.0}
+accept: {method: wc}
+fix: "Open the 4 mount holes to CAD 3.7 (T01-cad37). The recess locates the mount, so larger holes cost nothing."
+fix_variant: cad37
+notes: >-
+  y = |e_hole + e_thread| + F/2 - H/2. Rev A prints the holes at CAD 3.6 (fix 1), which come out about 3.35.
+  With the MMC hole H = 3.20 (3.6 - 0.25 - 0.15) and F = 2.98, the fixed-fastener formula leaves T1 = 0.17 for the
+  printed hole position after T2 = 0.05 for the horn.
+contributors:
+  - {name: hole_d_printed, nominal: "=hole_cad_d", bias: "=fdm_hole_bias_small_d", tol: "=fdm_hole_scatter_d", sensitivity: -0.5, dist: normal, tag: S, source: "CAD 3.6 (params.json wrist_mount) + small-hole bias -0.25 [S] + scatter 0.15 [A] (basis.yaml)"}
+  - {name: screw_major_d, limits: ["=m3_major_min", "=m3_major_max"], sensitivity: 0.5, dist: uniform, tag: S, source: "ISO 965 6g (Brighton-Best)"}
+  - {name: hole_position, kind: radial, gdt: {type: position, zone: "=fdm_pos_dia"}, dist: disk, tag: A, source: "position dia 0.2 to A|B|C, printed (basis fdm_pos_dia)"}
+  - {name: horn_thread_position, kind: radial, gdt: {type: position, zone: "=horn_thread_pos_dia"}, dist: disk, tag: A, source: "molded horn pattern"}
+variants:
+  - {id: cad37, label: "mount holes CAD 3.7", set: {hole_cad_d: 3.7}}
+  - {id: stock32, role: rejected, label: "stock CAD hole 3.2 (SO-101 gripper)", set: {hole_cad_d: 3.2}}

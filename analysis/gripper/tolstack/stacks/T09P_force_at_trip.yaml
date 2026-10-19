@@ -1,0 +1,37 @@
+id: T09P
+title: Peak pad force when the FSR over-force trip fires (R15)
+parts: ["servo horn", "knuckle A", "knuckle B", "finger A", "finger B", "TPU pads"]
+constants: basis.yaml
+companion_of: T09
+mode: expression
+units: N (largest true pad force before the trip opens the jaw)
+requirement: "R15 ruled 8 N (Douglas 2026-10-12, DESIGN-BASIS R15): pad force <= 8 N."
+spec: {usl: "=F_cap"}
+accept: {method: mc}
+fix: >-
+  APPLIED in the firmware (config.h JAW_FLOOR_BELOW_C0_DEG 4.9; controls.md 6.4): the jaw floor theta_c0 - 4.9 deg is a
+  position bound the squeeze cannot pass whether or not the trip fires, so the peak is the smaller of the trip peak and
+  the force at the floor (T09P-floor49, same floor samples as T09F-relfloor8). No trip setting does it alone: the only
+  trip that passes by itself, F_TRIP_N 5.5 with F_TRIP_MS 10 (T09P-trip55), sits inside the hold band and falsely trips
+  grips, as F_TRIP_N 7.0 did (T09P-trip7, declined: 10 of 17 window grips, 34 of 1,000 drawn grips).
+fix_variant: floor49
+notes: >-
+  The trip fires when the FSR reads F_TRIP_N (7.75 N) for 20 ms. The true force is the reading divided by (1 + FSR
+  error), and the jaw keeps squeezing at up to 60 deg/s through the 20 ms hold plus the 9.5 ms filter lag, adding up to
+  k_pair * 2 r_c * radians(60 * 0.0295) = 2.5 N on the stiff finger. The base stack ignores the jaw floor.
+expression: "F_trip/(1 + fsr_error) + k_pair*2*r_c*radians(squeeze_deg)"
+contributors:
+  - {name: F_trip, nominal: "=F_trip", tol: 0, tag: D, source: "config.h F_TRIP_N"}
+  - {name: fsr_error, nominal: 0, tol: "=fsr_err", dist: normal, tag: A, source: "FSR error after span calibration"}
+  - {name: k_pair, limits: ["=k_pair_min", "=k_pair_max"], dist: uniform, tag: D, source: "finger.md 6.2"}
+  - {name: squeeze_deg, limits: [0, "=squeeze_rate_dps*trip_window_s"], dist: uniform, tag: D, source: "60 deg/s for 20 ms + 9.5 ms (config.h)"}
+variants:
+  - {id: r15p8, role: scenario, label: "R15 ruled: cap 8 N", spec: {usl: "=F_cap_proposed"}}
+  - {id: trip7, label: "firmware: F_TRIP_N 7.0, F_TRIP_MS 10", set: {F_trip: 7.0, trip_window_s: 0.0195}}
+  - {id: trip55, role: scenario, label: "firmware: F_TRIP_N 5.5, F_TRIP_MS 10, against the ruled 8 N cap", set: {F_trip: 5.5, trip_window_s: 0.0195}, spec: {usl: "=F_cap_proposed"}}
+  - id: floor49
+    label: "firmware: trip 7.75 N / 20 ms, peak bounded by the jaw floor theta_c0 - 4.9 deg (JAW_FLOOR_BELOW_C0_DEG)"
+    expression: "minimum(F_trip/(1 + fsr_error) + k_pair*2*r_c*radians(squeeze_deg), k_pair*2*r_c*radians(4.9 + cal_repeat - servo_angle_error))"
+    add:
+      - {name: cal_repeat, nominal: 0, tol: "=cal_rep_deg", dist: normal, tag: A, source: "calibrated contact repeatability (same term as T09F-relfloor8)"}
+      - {name: servo_angle_error, shared: servo_angle_error_at_floor, nominal: 0, tol: "=servo_angle_rep_deg", dist: normal, tag: A, source: "position error at the floor (same sample as T09F)"}

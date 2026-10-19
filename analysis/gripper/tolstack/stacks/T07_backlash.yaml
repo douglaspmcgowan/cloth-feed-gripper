@@ -1,0 +1,18 @@
+id: T07
+title: Gear backlash jt (circumferential, m 1.5 z 19, alpha 25)
+parts: ["knuckle A", "knuckle B"]
+constants: basis.yaml
+units: mm circumferential backlash
+requirement: jt between 0.05 (no binding) and 0.45 (open-jaw repeatability), design jt0 = 0.25 by flank offset.
+spec: {lsl: "=jt_min", usl: "=jt_max"}
+accept: {method: mc}
+notes: jt = jt0 + 2 tan(alpha) (a - a0) - ds_A - ds_B, plus pitch-circle runout of each gear (KHK Table 4.1 via W1).
+constant: "=jt0 - k_jt*a0"
+contributors:
+  - {name: centre_distance, from_stack: T06, sensitivity: "=k_jt", tag: D, source: "T06"}
+  - {name: tooth_thickness_A, nominal: 0, tol: "=tooth_thk_tol", direction: -1, dist: normal, tag: A, source: "printed PA6-CF tooth"}
+  - {name: tooth_thickness_B, nominal: 0, tol: "=tooth_thk_tol", direction: -1, dist: normal, tag: A, source: "printed PA6-CF tooth"}
+  - {name: runout_A, nominal: 0, tol: "=gear_runout_r", sensitivity: "=k_jt", dist: normal, tag: A, source: "pitch circle vs sleeve bore"}
+  - {name: runout_B, nominal: 0, tol: "=gear_runout_r", sensitivity: "=k_jt", dist: normal, tag: A, source: "pitch circle vs sleeve bore"}
+variants:
+  - {id: servoshaft, role: rejected, label: "pre-rev-A layout (T06-servoshaft)", replace_from: {T06: T06-servoshaft}}

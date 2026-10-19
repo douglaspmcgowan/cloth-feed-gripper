@@ -1,0 +1,24 @@
+FSR short in HOLD                t_state_ms 5  t_safe_ms 103  t_overcurrent_onset_ms None  t_fault_after_onset_ms None  state FAULT  fault 4  F_max_after_N 4.90  F_now_N 0.39  relaxed False  before HOLD
+FSR open in HOLD                 t_state_ms 163  t_safe_ms 263  t_overcurrent_onset_ms None  t_fault_after_onset_ms None  state RELEASE  fault 0  F_max_after_N 4.90  F_now_N 0.39  relaxed False  before HOLD
+FSR open before the grip, continuous t_state_ms 794  t_safe_ms 877  t_overcurrent_onset_ms None  t_fault_after_onset_ms None  state RELEASE  fault 0  F_max_after_N 3.31  F_now_N 0.44  relaxed False
+FSR open before the grip, discontinuous t_state_ms 794  t_safe_ms 877  t_overcurrent_onset_ms None  t_fault_after_onset_ms None  state FAULT  fault 9  F_max_after_N 3.31  F_now_N 0.44  relaxed False
+stall (finger jammed) in CLOSE   t_state_ms 374  t_safe_ms 434  t_overcurrent_onset_ms 274  t_fault_after_onset_ms 100  state FAULT  fault 3  F_max_after_N 0.00  F_now_N 0.00  relaxed False
+limit switch stuck closed        t_state_ms 414  t_safe_ms 414  t_overcurrent_onset_ms None  t_fault_after_onset_ms None  state FAULT  fault 8  F_max_after_N 0.00  F_now_N 0.00  relaxed False
+brown-out reset in HOLD          before HOLD  t_safe_ms 32  state_after_rehome IDLE  fault 0
+serial extremes in HOLD          before HOLD  state HOLD  F_max_N 4.90  t_safe_ms 0
+FSR stuck (ADC frozen) in HOLD   t_state_ms 500  t_safe_ms 603  t_overcurrent_onset_ms None  t_fault_after_onset_ms None  state FAULT  fault 10  F_max_after_N 4.90  F_now_N 0.39  relaxed False  before HOLD  frozen_mv 2070.00
+FSR reads 50 %, stiffest finger  F_peak_N 7.06  state HOLD  warns ['FORCE_SAT']  t_safe_ms 0
+FSR span halves in a FORCE_SAT hold before HOLD  hold_path FORCE_SAT  t_slip_ms 112  state HOLD  F_now_N 4.90  t_safe_ms 0
+INA219 fails in HOLD             t_state_ms 120  t_safe_ms 223  t_overcurrent_onset_ms None  t_fault_after_onset_ms None  state FAULT  fault 11  F_max_after_N 4.90  F_now_N 0.39  relaxed False  before HOLD
+hold current, Fit B, continuous  backoff_off {state HOLD, before HOLD, F4_reading_A 0.40, rail_A 0.40, motor_A 1.09, F_true_N 4.90, backoff_deg 0.00}  backoff_on {state HOLD, before HOLD, F4_reading_A 0.40, rail_A 0.19, motor_A 0.55, F_true_N 4.88, backoff_deg 0.66}
+stall after contact, Fit B, continuous state FAULT  fault 3  t_onset_ms 59  t_state_ms 159  t_detect_after_onset_ms 100  rail_A 3.75  overcurrent True  t_safe_ms 159
+stall in HOLD, Fit B, continuous state FAULT  fault 3  t_onset_ms 1  t_state_ms 120  t_detect_after_onset_ms 119  rail_A 3.75  overcurrent True  t_safe_ms 120  before HOLD
+hold current, Fit B, discontinuous backoff_off {state HOLD, before HOLD, F4_reading_A 1.10, rail_A 1.10, motor_A 1.10, F_true_N 4.90, backoff_deg 0.00}  backoff_on {state HOLD, before HOLD, F4_reading_A 1.10, rail_A 0.55, motor_A 0.55, F_true_N 4.88, backoff_deg 0.66}
+stall after contact, Fit B, discontinuous state FAULT  fault 3  t_onset_ms 59  t_state_ms 159  t_detect_after_onset_ms 100  rail_A 3.75  overcurrent True  t_safe_ms 159
+stall in HOLD, Fit B, discontinuous state FAULT  fault 3  t_onset_ms 1  t_state_ms 120  t_detect_after_onset_ms 119  rail_A 3.75  overcurrent True  t_safe_ms 120  before HOLD
+hold current, Fit A, continuous  backoff_off {state HOLD, before HOLD, F4_reading_A 0.41, rail_A 0.41, motor_A 1.16, F_true_N 4.90, backoff_deg 0.00}  backoff_on {state HOLD, before HOLD, F4_reading_A 0.41, rail_A 0.20, motor_A 0.57, F_true_N 4.88, backoff_deg 0.66}
+stall after contact, Fit A, continuous state FAULT  fault 3  t_onset_ms 59  t_state_ms 159  t_detect_after_onset_ms 100  rail_A 3.99  overcurrent True  t_safe_ms 159
+stall in HOLD, Fit A, continuous state FAULT  fault 3  t_onset_ms 1  t_state_ms 120  t_detect_after_onset_ms 119  rail_A 3.99  overcurrent True  t_safe_ms 120  before HOLD
+hold current, Fit A, discontinuous backoff_off {state HOLD, before HOLD, F4_reading_A 1.16, rail_A 1.16, motor_A 1.16, F_true_N 4.90, backoff_deg 0.00}  backoff_on {state HOLD, before HOLD, F4_reading_A 1.16, rail_A 0.57, motor_A 0.57, F_true_N 4.88, backoff_deg 0.66}
+stall after contact, Fit A, discontinuous state FAULT  fault 3  t_onset_ms 59  t_state_ms 159  t_detect_after_onset_ms 100  rail_A 3.99  overcurrent True  t_safe_ms 159
+stall in HOLD, Fit A, discontinuous state FAULT  fault 3  t_onset_ms 1  t_state_ms 120  t_detect_after_onset_ms 119  rail_A 3.99  overcurrent True  t_safe_ms 120  before HOLD

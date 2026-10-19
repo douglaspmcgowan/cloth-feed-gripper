@@ -1,0 +1,5574 @@
+{
+  "revision_a": {
+    "T01": [
+      {
+        "distribution": "normal",
+        "name": "hole_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "hole_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "uniform",
+        "name": "screw_major_d",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      }
+    ],
+    "T01-cad37": [
+      {
+        "distribution": "normal",
+        "name": "hole_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "hole_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "uniform",
+        "name": "screw_major_d",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      }
+    ],
+    "T01-stock32": [
+      {
+        "distribution": "normal",
+        "name": "hole_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "hole_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "uniform",
+        "name": "screw_major_d",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      }
+    ],
+    "T01H": [
+      {
+        "distribution": "normal",
+        "name": "cbore_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "cbore_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "head_dk",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2999999999999998
+      },
+      {
+        "distribution": "disk",
+        "name": "head_on_shank",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      }
+    ],
+    "T01H-stock60": [
+      {
+        "distribution": "normal",
+        "name": "cbore_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "cbore_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "head_dk",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2999999999999998
+      },
+      {
+        "distribution": "disk",
+        "name": "head_on_shank",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      }
+    ],
+    "T02": [
+      {
+        "distribution": "normal",
+        "name": "horn_od",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "recess_d_printed",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T02-relax40": [
+      {
+        "distribution": "normal",
+        "name": "horn_od",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "recess_d_printed",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T02-stock20": [
+      {
+        "distribution": "normal",
+        "name": "horn_od",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "recess_d_printed",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "recess_first_layer_residual",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T03": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.48
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_tip_chamfer",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T03-depth35": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.48
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_tip_chamfer",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T03-m3x5": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.48
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_tip_chamfer",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T03B": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.48
+      }
+    ],
+    "T03B-depth35": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.48
+      }
+    ],
+    "T03B-m3x5": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.48
+      }
+    ],
+    "T04": [
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T04-relax40": [
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T04-stock20": [
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T05": [
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": 1.2280701754385965,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "deck_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6259999999999999
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "inserts_to_recess",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_profile",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_profile",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_deck_holes",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_pinB_holes",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveA_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T05-deckpegs": [
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": 1.2280701754385965,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "deck_peg_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.04
+      },
+      {
+        "distribution": "uniform",
+        "name": "deck_peg_rotation",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "inserts_to_recess",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_profile",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_profile",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_deck_holes",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_pinB_holes",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveA_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T05-tcpcal": [
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": 1.2280701754385965,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveA_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "tcp_measure",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T06": [
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_pinB_holes",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveA_ecc",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.03
+      }
+    ],
+    "T06-servoshaft": [
+      {
+        "distribution": "normal",
+        "name": "pinB_pos_to_cradle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo_float_in_cradle",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.19999999999999574
+      },
+      {
+        "distribution": "normal",
+        "name": "shaft_in_case",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      }
+    ],
+    "T07": [
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "runout_A",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "runout_B",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "tooth_thickness_A",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "tooth_thickness_B",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      }
+    ],
+    "T07-servoshaft": [
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "runout_A",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "runout_B",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "tooth_thickness_A",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "tooth_thickness_B",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      }
+    ],
+    "T08": [
+      {
+        "distribution": "uniform",
+        "name": "float_A",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.30000000000000004
+      },
+      {
+        "distribution": "uniform",
+        "name": "float_B",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.30000000000000004
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_A_half",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.15
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_B_half",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.15
+      },
+      {
+        "distribution": "normal",
+        "name": "shim_A",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.04
+      },
+      {
+        "distribution": "normal",
+        "name": "shim_B",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.04
+      }
+    ],
+    "T09": [
+      {
+        "distribution": "normal",
+        "name": "backing_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": -1.0051891142646021,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "contact_gap",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_lash_offset",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.8185111359011761
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_trim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 2.0
+      },
+      {
+        "distribution": "normal",
+        "name": "nail_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_profile",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_profile",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T09F": [
+      {
+        "distribution": "normal",
+        "name": "jaw_floor",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "theta_c",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09F-r15p8": [
+      {
+        "distribution": "normal",
+        "name": "jaw_floor",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "theta_c",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09F-relfloor": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      }
+    ],
+    "T09F-relfloor8": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      }
+    ],
+    "T09H": [
+      {
+        "distribution": "normal",
+        "name": "jaw_floor",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "theta_c",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "u_max",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09H-r15p8": [
+      {
+        "distribution": "normal",
+        "name": "jaw_floor",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "theta_c",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "u_max",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09H-relfloor": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "u_max",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09H-relfloor8": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "u_max",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09P": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.77
+      }
+    ],
+    "T09P-floor49": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.77
+      }
+    ],
+    "T09P-r15p8": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.77
+      }
+    ],
+    "T09P-trip55": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.17
+      }
+    ],
+    "T09P-trip7": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.17
+      }
+    ],
+    "T09T": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "t_contact_sim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.008000000000000007
+      }
+    ],
+    "T09T-r19p075": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "t_contact_sim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.008000000000000007
+      }
+    ],
+    "T09T-slow3": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "slow_zone_cut",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "t_contact_sim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.008000000000000007
+      }
+    ],
+    "T10": [
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "closed_gap_design",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "root_block_A_angle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.5625
+      },
+      {
+        "distribution": "normal",
+        "name": "root_block_B_angle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.5625
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T10-toein": [
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "closed_gap_design",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "root_block_A_angle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.5625
+      },
+      {
+        "distribution": "normal",
+        "name": "root_block_B_angle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.5625
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T10B": [
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "finger_A_root_twist",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "finger_A_z_on_root",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "finger_B_root_twist",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "finger_B_z_on_root",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "knuckleA_wobble_on_pin",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2545454545454588
+      },
+      {
+        "distribution": "uniform",
+        "name": "knuckleB_wobble_on_pin",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2545454545454588
+      },
+      {
+        "distribution": "normal",
+        "name": "mesh_axial_offset",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.12
+      },
+      {
+        "distribution": "normal",
+        "name": "pinB_perpendicularity",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 1.12
+      }
+    ],
+    "T11": [
+      {
+        "distribution": "normal",
+        "name": "hub_offset",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_radius",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "lip_eccentricity",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_radius",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      }
+    ],
+    "T11-band2": [
+      {
+        "distribution": "normal",
+        "name": "hub_offset",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_radius",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "lip_eccentricity",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_radius",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      }
+    ],
+    "T11-stock12": [
+      {
+        "distribution": "normal",
+        "name": "hub_offset",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_radius",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "lip_eccentricity",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_radius",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      }
+    ],
+    "T12": [
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_height",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_top_above_H",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo5_axial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "servo5_seat",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "uniform",
+        "name": "widen_height_above_H",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      }
+    ],
+    "T12-stock45": [
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_height",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_top_above_H",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo5_axial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "servo5_seat",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "uniform",
+        "name": "widen_height_above_H",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      }
+    ],
+    "T12B": [
+      {
+        "distribution": "normal",
+        "name": "horn_above_case",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "rim_below_H",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo5_axial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T13": [
+      {
+        "distribution": "uniform",
+        "name": "board_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.8185111359011761
+      },
+      {
+        "distribution": "normal",
+        "name": "bracket_face_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.1459155902616465
+      },
+      {
+        "distribution": "uniform",
+        "name": "bracket_tab_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.954929658551372
+      },
+      {
+        "distribution": "normal",
+        "name": "housing_boss_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.1459155902616465
+      },
+      {
+        "distribution": "normal",
+        "name": "lens_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 2.0
+      }
+    ],
+    "T13-notab": [
+      {
+        "distribution": "uniform",
+        "name": "board_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.8185111359011761
+      },
+      {
+        "distribution": "normal",
+        "name": "bracket_face_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.1459155902616465
+      },
+      {
+        "distribution": "uniform",
+        "name": "bracket_rotation_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 8.856088388935685
+      },
+      {
+        "distribution": "normal",
+        "name": "housing_boss_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.1459155902616465
+      },
+      {
+        "distribution": "normal",
+        "name": "lens_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 2.0
+      }
+    ],
+    "T14": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-boss": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-boss205": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-cad205": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-w205": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-w205p209": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14B": [
+      {
+        "distribution": "normal",
+        "name": "cradle_to_pinA",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "dog_d",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_pos",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_servo_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hot_shaft_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.19999999999999574
+      },
+      {
+        "distribution": "normal",
+        "name": "shaft_in_case",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "slot_w",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T14B-boss": [
+      {
+        "distribution": "normal",
+        "name": "boss_bore_to_pinA",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "boss_fit",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "boss_to_shaft",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "boss_web_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1008
+      },
+      {
+        "distribution": "uniform",
+        "name": "dog_d",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_pos",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_servo_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hot_shaft_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_axis_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02238532110091743
+      },
+      {
+        "distribution": "normal",
+        "name": "slot_w",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T14B-boss34": [
+      {
+        "distribution": "normal",
+        "name": "boss_bore_to_pinA",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "boss_fit",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "boss_to_shaft",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "boss_web_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1008
+      },
+      {
+        "distribution": "uniform",
+        "name": "dog_d",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_pos",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_servo_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hot_shaft_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_axis_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02238532110091743
+      },
+      {
+        "distribution": "normal",
+        "name": "slot_w",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T14B-w205": [
+      {
+        "distribution": "normal",
+        "name": "cradle_to_pinA",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "dog_d",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_pos",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_servo_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hot_shaft_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.014000000000000234
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.29999999999999716
+      },
+      {
+        "distribution": "normal",
+        "name": "shaft_in_case",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "slot_w",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T15": [
+      {
+        "distribution": "normal",
+        "name": "front_plate_flatness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_endplay",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "knuckle_B_hub",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "mid_plate_flatness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "shim_B_back",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.04
+      },
+      {
+        "distribution": "normal",
+        "name": "shim_B_front",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.04
+      },
+      {
+        "distribution": "normal",
+        "name": "standoff_common",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "standoff_far",
+        "sensitivity": 2.809,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "standoff_near",
+        "sensitivity": 3.391,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "standoff_top",
+        "sensitivity": -5.2,
+        "sign": -1,
+        "tolerance": 0.1
+      }
+    ],
+    "T15-shimselect": [
+      {
+        "distribution": "uniform",
+        "name": "endplay_set",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "feeler_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.06
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_endplay",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T16": [
+      {
+        "distribution": "uniform",
+        "name": "knuckleA_tilt_on_pin",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.029090909090909577
+      },
+      {
+        "distribution": "uniform",
+        "name": "knuckleB_tilt_on_pin",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.029090909090909577
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_coax",
+        "sensitivity": -0.64,
+        "sign": -1,
+        "tolerance": 0.06
+      },
+      {
+        "distribution": "normal",
+        "name": "pinB_coax",
+        "sensitivity": 0.64,
+        "sign": 1,
+        "tolerance": 0.06
+      }
+    ],
+    "T16-noream": [
+      {
+        "distribution": "uniform",
+        "name": "knuckleA_tilt_on_pin",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.029090909090909577
+      },
+      {
+        "distribution": "uniform",
+        "name": "knuckleB_tilt_on_pin",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.029090909090909577
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_coax",
+        "sensitivity": -0.64,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "pinB_coax",
+        "sensitivity": 0.64,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T16B": [
+      {
+        "distribution": "uniform",
+        "name": "pin_d",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.006000000000000227
+      },
+      {
+        "distribution": "uniform",
+        "name": "sleeve_bore",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.016000000000000014
+      }
+    ],
+    "T16B-h8pin": [
+      {
+        "distribution": "uniform",
+        "name": "pin_d",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.01399999999999979
+      },
+      {
+        "distribution": "uniform",
+        "name": "sleeve_bore",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.016000000000000014
+      }
+    ]
+  },
+  "revision_b": {
+    "T01": [
+      {
+        "distribution": "normal",
+        "name": "hole_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "hole_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "uniform",
+        "name": "screw_major_d",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      }
+    ],
+    "T01-cad37": [
+      {
+        "distribution": "normal",
+        "name": "hole_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "hole_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "uniform",
+        "name": "screw_major_d",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      }
+    ],
+    "T01-stock32": [
+      {
+        "distribution": "normal",
+        "name": "hole_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "hole_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "uniform",
+        "name": "screw_major_d",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      }
+    ],
+    "T01H": [
+      {
+        "distribution": "normal",
+        "name": "cbore_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "cbore_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "head_dk",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2999999999999998
+      },
+      {
+        "distribution": "disk",
+        "name": "head_on_shank",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      }
+    ],
+    "T01H-stock60": [
+      {
+        "distribution": "normal",
+        "name": "cbore_d_printed",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "cbore_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "head_dk",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2999999999999998
+      },
+      {
+        "distribution": "disk",
+        "name": "head_on_shank",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_thread_position",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      }
+    ],
+    "T02": [
+      {
+        "distribution": "normal",
+        "name": "horn_od",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "recess_d_printed",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T02-relax40": [
+      {
+        "distribution": "normal",
+        "name": "horn_od",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "recess_d_printed",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T02-stock20": [
+      {
+        "distribution": "normal",
+        "name": "horn_od",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "recess_d_printed",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "recess_first_layer_residual",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T03": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.48
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_tip_chamfer",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T03-depth35": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.48
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_tip_chamfer",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T03-m3x5": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.48
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_tip_chamfer",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T03B": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.48
+      }
+    ],
+    "T03B-depth35": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.48
+      }
+    ],
+    "T03B-m3x5": [
+      {
+        "distribution": "uniform",
+        "name": "clamp_thickness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_face_runout",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_hole_depth",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "screw_length",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.48
+      }
+    ],
+    "T04": [
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T04-relax40": [
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T04-stock20": [
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T05": [
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": 1.2280701754385965,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "deck_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6259999999999999
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "inserts_to_recess",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_profile",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_profile",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_deck_holes",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_pinB_holes",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveA_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T05-deckpegs": [
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": 1.2280701754385965,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "deck_peg_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.023999999999999577
+      },
+      {
+        "distribution": "uniform",
+        "name": "deck_peg_rotation",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.016775573674267664
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "inserts_to_recess",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_profile",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_profile",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_deck_holes",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_pinB_holes",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveA_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": -0.5,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T05-tcpcal": [
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": 1.2280701754385965,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "horn_od_eccentricity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "pilot_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "disk",
+        "name": "servo5_radial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveA_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 0.5,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "tcp_measure",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T06": [
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_to_pinB_holes",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveA_ecc",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.03
+      }
+    ],
+    "T06-servoshaft": [
+      {
+        "distribution": "normal",
+        "name": "pinB_pos_to_cradle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "pin_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo_float_in_cradle",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.29999999999999716
+      },
+      {
+        "distribution": "normal",
+        "name": "shaft_in_case",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "sleeveB_ecc",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.03
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      }
+    ],
+    "T07": [
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "runout_A",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "runout_B",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "tooth_thickness_A",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "tooth_thickness_B",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      }
+    ],
+    "T07-servoshaft": [
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "runout_A",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "runout_B",
+        "sensitivity": 0.9326153163099972,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "tooth_thickness_A",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "tooth_thickness_B",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      }
+    ],
+    "T08": [
+      {
+        "distribution": "uniform",
+        "name": "float_A",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.30000000000000004
+      },
+      {
+        "distribution": "uniform",
+        "name": "float_B",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.30000000000000004
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_A_half",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.15
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_B_half",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.15
+      },
+      {
+        "distribution": "normal",
+        "name": "shim_A",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.04
+      },
+      {
+        "distribution": "normal",
+        "name": "shim_B",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.04
+      }
+    ],
+    "T09": [
+      {
+        "distribution": "normal",
+        "name": "backing_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": -1.0051891142646021,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "contact_gap",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_lash_offset",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.8185111359011761
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_trim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 2.0
+      },
+      {
+        "distribution": "normal",
+        "name": "nail_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_profile",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_profile",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T09F": [
+      {
+        "distribution": "normal",
+        "name": "jaw_floor",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "theta_c",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09F-r15p8": [
+      {
+        "distribution": "normal",
+        "name": "jaw_floor",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "theta_c",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09F-relfloor": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      }
+    ],
+    "T09F-relfloor8": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      }
+    ],
+    "T09H": [
+      {
+        "distribution": "normal",
+        "name": "jaw_floor",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "theta_c",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "u_max",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09H-r15p8": [
+      {
+        "distribution": "normal",
+        "name": "jaw_floor",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "theta_c",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "u_max",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09H-relfloor": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "u_max",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09H-relfloor8": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "u_max",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T09P": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.77
+      }
+    ],
+    "T09P-floor49": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.77
+      }
+    ],
+    "T09P-r15p8": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.77
+      }
+    ],
+    "T09P-trip55": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.17
+      }
+    ],
+    "T09P-trip7": [
+      {
+        "distribution": "normal",
+        "name": "F_trip",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "k_pair",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.09799999999999998
+      },
+      {
+        "distribution": "uniform",
+        "name": "squeeze_deg",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.17
+      }
+    ],
+    "T09T": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "t_contact_sim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.008000000000000007
+      }
+    ],
+    "T09T-r19p075": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "t_contact_sim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.008000000000000007
+      }
+    ],
+    "T09T-slow3": [
+      {
+        "distribution": "normal",
+        "name": "cal_repeat",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 0.05,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "slow_zone_cut",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "t_contact_sim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.008000000000000007
+      }
+    ],
+    "T10": [
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "closed_gap_design",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "root_block_A_angle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.5625
+      },
+      {
+        "distribution": "normal",
+        "name": "root_block_B_angle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.5625
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T10-toein": [
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "closed_gap_design",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": 0.6428571428571428,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.6
+      },
+      {
+        "distribution": "normal",
+        "name": "root_block_A_angle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.5625
+      },
+      {
+        "distribution": "normal",
+        "name": "root_block_B_angle",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.5625
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": -0.6428571428571428,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T10B": [
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "finger_A_root_twist",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.29357798165137616
+      },
+      {
+        "distribution": "uniform",
+        "name": "finger_A_z_on_root",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "finger_B_root_twist",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.29357798165137616
+      },
+      {
+        "distribution": "uniform",
+        "name": "finger_B_z_on_root",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "knuckleA_wobble_on_pin",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.28
+      },
+      {
+        "distribution": "uniform",
+        "name": "knuckleB_wobble_on_pin",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.28
+      },
+      {
+        "distribution": "normal",
+        "name": "mesh_axial_offset",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.9333333333333333
+      },
+      {
+        "distribution": "normal",
+        "name": "pinB_perpendicularity",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.9333333333333333
+      }
+    ],
+    "T11": [
+      {
+        "distribution": "normal",
+        "name": "hub_offset",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_radius",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "lip_eccentricity",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_radius",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      }
+    ],
+    "T11-band2": [
+      {
+        "distribution": "normal",
+        "name": "hub_offset",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_radius",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "lip_eccentricity",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_radius",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      }
+    ],
+    "T11-stock12": [
+      {
+        "distribution": "normal",
+        "name": "hub_offset",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hub_radius",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "lip_eccentricity",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_radius",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      }
+    ],
+    "T12": [
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_height",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_top_above_H",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo5_axial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "servo5_seat",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "uniform",
+        "name": "widen_height_above_H",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      }
+    ],
+    "T12-stock45": [
+      {
+        "distribution": "uniform",
+        "name": "datum_A_flatness_lift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_height",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "lip_top_above_H",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo5_axial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "servo5_seat",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "uniform",
+        "name": "widen_height_above_H",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      }
+    ],
+    "T12B": [
+      {
+        "distribution": "normal",
+        "name": "horn_above_case",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "rim_below_H",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo5_axial_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T13": [
+      {
+        "distribution": "uniform",
+        "name": "board_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.8185111359011761
+      },
+      {
+        "distribution": "normal",
+        "name": "bracket_face_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.1459155902616465
+      },
+      {
+        "distribution": "uniform",
+        "name": "bracket_tab_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.954929658551372
+      },
+      {
+        "distribution": "normal",
+        "name": "housing_boss_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.1459155902616465
+      },
+      {
+        "distribution": "normal",
+        "name": "lens_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 2.0
+      }
+    ],
+    "T13-notab": [
+      {
+        "distribution": "uniform",
+        "name": "board_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.8185111359011761
+      },
+      {
+        "distribution": "normal",
+        "name": "bracket_face_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.1459155902616465
+      },
+      {
+        "distribution": "uniform",
+        "name": "bracket_rotation_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 8.856088388935685
+      },
+      {
+        "distribution": "normal",
+        "name": "housing_boss_perpendicularity",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.1459155902616465
+      },
+      {
+        "distribution": "normal",
+        "name": "lens_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 2.0
+      }
+    ],
+    "T14": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-boss": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-boss205": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-cad205": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-w205": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14-w205p209": [
+      {
+        "distribution": "uniform",
+        "name": "hot_seat_creep",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "pocket_width",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_body_width",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.2
+      }
+    ],
+    "T14B": [
+      {
+        "distribution": "normal",
+        "name": "cradle_to_pinA",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "dog_d",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_pos",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_servo_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hot_shaft_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.29999999999999716
+      },
+      {
+        "distribution": "normal",
+        "name": "shaft_in_case",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "slot_w",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T14B-boss": [
+      {
+        "distribution": "normal",
+        "name": "boss_bore_to_pinA",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "boss_fit",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "boss_to_shaft",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "boss_web_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.084
+      },
+      {
+        "distribution": "uniform",
+        "name": "dog_d",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_pos",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_servo_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hot_shaft_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_axis_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02238532110091743
+      },
+      {
+        "distribution": "normal",
+        "name": "slot_w",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T14B-boss34": [
+      {
+        "distribution": "normal",
+        "name": "boss_bore_to_pinA",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "boss_fit",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "boss_to_shaft",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "boss_web_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.084
+      },
+      {
+        "distribution": "uniform",
+        "name": "dog_d",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_pos",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_servo_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hot_shaft_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_axis_tilt",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02238532110091743
+      },
+      {
+        "distribution": "normal",
+        "name": "slot_w",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T14B-w205": [
+      {
+        "distribution": "normal",
+        "name": "cradle_to_pinA",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "uniform",
+        "name": "dog_d",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.10599999999999987
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_pos",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_servo_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "hot_shaft_shift",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "uniform",
+        "name": "pinA_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.02
+      },
+      {
+        "distribution": "uniform",
+        "name": "servo_float",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.29999999999999716
+      },
+      {
+        "distribution": "normal",
+        "name": "shaft_in_case",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.4
+      },
+      {
+        "distribution": "normal",
+        "name": "slot_w",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "uniform",
+        "name": "spline_play",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      }
+    ],
+    "T15": [
+      {
+        "distribution": "normal",
+        "name": "front_plate_flatness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_endplay",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "knuckle_B_hub",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "mid_plate_flatness",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "shim_B_back",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.04
+      },
+      {
+        "distribution": "normal",
+        "name": "shim_B_front",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.04
+      },
+      {
+        "distribution": "normal",
+        "name": "standoff_common",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "standoff_far",
+        "sensitivity": 2.809,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "standoff_near",
+        "sensitivity": 3.391,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "standoff_top",
+        "sensitivity": -5.2,
+        "sign": -1,
+        "tolerance": 0.1
+      }
+    ],
+    "T15-shimselect": [
+      {
+        "distribution": "uniform",
+        "name": "endplay_set",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.05
+      },
+      {
+        "distribution": "normal",
+        "name": "feeler_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.06
+      },
+      {
+        "distribution": "uniform",
+        "name": "hot_endplay",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.0
+      }
+    ],
+    "T16": [
+      {
+        "distribution": "uniform",
+        "name": "knuckleA_tilt_on_pin",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.042
+      },
+      {
+        "distribution": "uniform",
+        "name": "knuckleB_tilt_on_pin",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.042
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_coax",
+        "sensitivity": -0.7,
+        "sign": -1,
+        "tolerance": 0.06
+      },
+      {
+        "distribution": "normal",
+        "name": "pinB_coax",
+        "sensitivity": 0.7,
+        "sign": 1,
+        "tolerance": 0.06
+      }
+    ],
+    "T16-noream": [
+      {
+        "distribution": "uniform",
+        "name": "knuckleA_tilt_on_pin",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.042
+      },
+      {
+        "distribution": "uniform",
+        "name": "knuckleB_tilt_on_pin",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.042
+      },
+      {
+        "distribution": "normal",
+        "name": "pinA_coax",
+        "sensitivity": -0.7,
+        "sign": -1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "pinB_coax",
+        "sensitivity": 0.7,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
+    "T16B": [
+      {
+        "distribution": "uniform",
+        "name": "pin_d",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.01399999999999979
+      },
+      {
+        "distribution": "uniform",
+        "name": "sleeve_bore",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.016000000000000014
+      }
+    ],
+    "T16B-h8pin": [
+      {
+        "distribution": "uniform",
+        "name": "pin_d",
+        "sensitivity": -1.0,
+        "sign": -1,
+        "tolerance": 0.01399999999999979
+      },
+      {
+        "distribution": "uniform",
+        "name": "sleeve_bore",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.016000000000000014
+      }
+    ]
+  }
+}

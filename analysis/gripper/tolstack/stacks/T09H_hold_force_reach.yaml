@@ -1,0 +1,43 @@
+id: T09H
+title: Largest hold force the firmware can reach on the softest finger (R14 under the R15 cap)
+parts: ["servo horn", "knuckle A", "knuckle B", "finger A", "finger B", "TPU pads"]
+constants: basis.yaml
+companion_of: T09
+mode: expression
+units: N (pad force at the firmware squeeze cap or the jaw floor, whichever comes first)
+requirement: The controller can reach the 5 N hold force (R14) on every finger within its squeeze cap. The squeeze cap stays sized for F_CAP_N 10 (9.5 N basis, config.h) under the ruled 8 N R15, which the floor and the trip hold (T09F, T09P); a cap sized for 8 N is T09H-r15p8.
+spec: {lsl: "=F_target"}
+accept: {method: mc}
+notes: >-
+  The firmware limits the squeeze past the calibrated contact to u_max (4.867 deg for a 10 N cap) and never goes
+  below the absolute floor. F = k_pair * 2 r_c * radians(min(u_max, theta_c - floor)).
+expression: "k_pair*2*r_c*radians(minimum(u_max, theta_c - jaw_floor))"
+contributors:
+  - {name: theta_c, from_stack: T09, tag: D, source: "T09 first-contact angle, deg"}
+  - {name: k_pair, limits: ["=k_pair_min", "=k_pair_max"], dist: uniform, tag: D, source: "finger.md 6.2"}
+  - {name: u_max, nominal: "=u_max_deg", tol: 0, tag: D, source: "firmware squeeze cap at F_CAP 10 N"}
+  - {name: jaw_floor, nominal: "=jaw_floor_deg", tol: 0, tag: D, source: "config.h JAW_MIN_DEG"}
+fix: >-
+  Needed only once the dog slots open to 3.4 (rev B row 1): the 1.5 deg of dog lash moves the first contact toward
+  the jaw floor, and the absolute floor then cuts the squeeze short (T09H falls to Cpk 0.99 in the combined rev B
+  run). The floor relative to the calibrated contact angle (the T09F firmware request, APPLIED in config.h
+  JAW_FLOOR_BELOW_C0_DEG 4.9 for the ruled 8 N; 6.2 in round 2): T09H-relfloor8. The 4.9 deg floor sits just past the
+  4.867 deg squeeze cap, so it is MARGINAL exactly as with 6.2 (T09H-relfloor); the softest pair at the cap is the
+  limit, not the floor.
+fix_variant: relfloor8
+variants:
+  - id: relfloor8
+    label: "firmware: floor = calibrated contact - 4.9 deg (JAW_FLOOR_BELOW_C0_DEG), the squeeze still limited by u_max"
+    expression: "k_pair*2*r_c*radians(minimum(u_max, 4.9) + cal_repeat + servo_angle_error)"
+    drop: [theta_c, jaw_floor]
+    add:
+      - {name: cal_repeat, nominal: 0, tol: "=cal_rep_deg", dist: normal, tag: A, source: "calibrated contact repeatability (same term as T09F-relfloor8)"}
+      - {name: servo_angle_error, nominal: 0, tol: "=servo_angle_rep_deg", dist: normal, tag: A, source: "position error at the squeeze point"}
+  - id: relfloor
+    label: "firmware round 2: floor = calibrated contact - 6.2 deg, so the squeeze is limited by u_max alone"
+    expression: "k_pair*2*r_c*radians(minimum(u_max, 6.2) + cal_repeat + servo_angle_error)"
+    drop: [theta_c, jaw_floor]
+    add:
+      - {name: cal_repeat, nominal: 0, tol: "=cal_rep_deg", dist: normal, tag: A, source: "calibrated contact repeatability (same term as T09F-relfloor)"}
+      - {name: servo_angle_error, nominal: 0, tol: "=servo_angle_rep_deg", dist: normal, tag: A, source: "position error at the squeeze point"}
+  - {id: r15p8, role: scenario, label: "squeeze cap sized for the ruled 8 N: 3.785 deg (basis u_max_8_deg, the firmware compiled with F_CAP_N 8)", set: {u_max_deg: 3.785}}

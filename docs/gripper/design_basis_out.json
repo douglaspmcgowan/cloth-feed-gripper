@@ -1,0 +1,1085 @@
+{
+ "inputs": {
+  "tension_N": {
+   "value": 2.0,
+   "tag": "A",
+   "note": "process/guide tension held against the feed (cloth_and_camera.md)"
+  },
+  "mu_pad_cloth": {
+   "value": 0.4,
+   "tag": "A",
+   "note": "TPU 95A on cotton, range 0.3-0.6 (cloth_and_camera.md)"
+  },
+  "mu_range": {
+   "value": [
+    0.3,
+    0.4,
+    0.5,
+    0.6
+   ],
+   "tag": "A",
+   "note": "sweep"
+  },
+  "SF_grip": {
+   "value": 2.0,
+   "tag": "A",
+   "note": "slip safety factor"
+  },
+  "F_cap_N": {
+   "value": 10.0,
+   "tag": "A",
+   "note": "pad force cap: keeps Fin Ray lattice compliant (cloth_and_camera.md)"
+  },
+  "pad_centroid_from_tip_mm": {
+   "value": 5.0,
+   "tag": "A",
+   "note": "tip-pad contact centroid measured up from the finger tip"
+  },
+  "eta": {
+   "value": 0.85,
+   "tag": "A",
+   "note": "combined mesh + pivot efficiency"
+  },
+  "r_c_design_mm": {
+   "value": 65.0,
+   "tag": "D",
+   "note": "design-point moment arm; chosen so >=3 standard PWM servos <=$25 hold LC1"
+  },
+  "V_servo": {
+   "value": 6.0,
+   "tag": "A",
+   "note": "gripper servo supply (dedicated regulator)"
+  },
+  "hold_fraction": {
+   "value": 0.4,
+   "tag": "A",
+   "note": "continuous hold <= 40 % of stall (actuators.md: 30-50 %)"
+  },
+  "pulse_span_us": {
+   "value": 2000.0,
+   "tag": "A",
+   "note": "500-2500 us maps to 180 deg"
+  },
+  "travel_deg": {
+   "value": 180.0,
+   "tag": "A",
+   "note": ""
+  },
+  "dF_resolution_N": {
+   "value": 0.5,
+   "tag": "A",
+   "note": "force change per servo deadband step (10 % of target)"
+  },
+  "theta_over_max_deg": {
+   "value": 10.0,
+   "tag": "A",
+   "note": "max finger rotation past first contact to reach F_cap"
+  },
+  "gearbox_limit_kgcm": {
+   "value": 2.5,
+   "tag": "S",
+   "note": "Pololu micro metal gearmotor 380:1/1000:1 instantaneous limit, https://www.pololu.com/category/60/micro-metal-gearmotors"
+  },
+  "c_fea_mm_per_N": {
+   "value": 2.8,
+   "tag": "D",
+   "note": "tools.md scikit-fem P1 smoke run, E=26 MPa, L=60 mm (stiff-biased)"
+  },
+  "E_fea_MPa": {
+   "value": 26.0,
+   "tag": "A",
+   "note": "value used in that run"
+  },
+  "E_tpu_xy_MPa": {
+   "value": 67.0,
+   "tag": "S",
+   "note": "Ultimaker TPU 95A TDS, ASTM D3039 XY, https://um-support-files.ultimaker.com/materials/2.85mm/tds/TPU-95A/Ultimaker-TPU95A-TDS-v5.00.pdf"
+  },
+  "E_tpu_z_MPa": {
+   "value": 56.0,
+   "tag": "S",
+   "note": "same TDS, Z"
+  },
+  "KA": {
+   "value": 1.25,
+   "tag": "A",
+   "note": "application factor on LC2 (impact at contact)"
+  },
+  "SF_static": {
+   "value": 1.5,
+   "tag": "A",
+   "note": "LC2 vs X-Y tensile"
+  },
+  "SF_fatigue": {
+   "value": 1.5,
+   "tag": "A",
+   "note": "LC1 vs fatigue strength at N_design"
+  },
+  "SF_overload": {
+   "value": 1.0,
+   "tag": "A",
+   "note": "LC3 (stall, one finger blocked, <=0.2 s) vs X-Y tensile: no fracture"
+  },
+  "N_design": {
+   "value": 100000.0,
+   "tag": "A",
+   "note": "grip cycles for fatigue sizing"
+  },
+  "face_width_mm": {
+   "value": 6.0,
+   "tag": "S",
+   "note": "params.json gear.face_width"
+  },
+  "hold_fraction_arm": {
+   "value": 0.5,
+   "tag": "A",
+   "note": "arm joints hold <= 50 % of stall (so101.md)"
+  },
+  "dyn_accel_g": {
+   "value": 0.5,
+   "tag": "A",
+   "note": "vertical acceleration during moves, in g"
+  },
+  "dyn_limit_fraction": {
+   "value": 0.8,
+   "tag": "A",
+   "note": "dynamic peak <= 80 % of stall"
+  },
+  "tension_vertical_offset_m": {
+   "value": 0.05,
+   "tag": "A",
+   "note": "work-cell rule: shoulder_lift axis within +-50 mm of the tension line"
+  },
+  "bed_height_m": {
+   "value": 0.1,
+   "tag": "A",
+   "note": "sewing bed above the table the arm base sits on"
+  },
+  "tilt_max_deg": {
+   "value": 45.0,
+   "tag": "A",
+   "note": "gripper axis within 45 deg of straight down at the bed"
+  },
+  "H_to_pivot_mm": {
+   "value": 40.7,
+   "tag": "D",
+   "note": "params.json: body_y - shaft_from_bottom + wall + mount_t"
+  },
+  "servo_design": {
+   "value": "A17 DSServo DS3218MG",
+   "tag": "A",
+   "note": "design-point servo for mass/torque bookkeeping; trade study decides"
+  },
+  "cloth_g": {
+   "value": 13.5,
+   "tag": "D",
+   "note": "300x300 mm, 150 g/m^2 cotton (cloth_and_camera.md)"
+  },
+  "camera_g": {
+   "value": 10.0,
+   "tag": "A",
+   "note": "32x32 UVC module (cloth_and_camera.md)"
+  },
+  "fsr_wiring_g": {
+   "value": 5.0,
+   "tag": "A",
+   "note": "FSR, backing puck, wires, connector"
+  },
+  "fasteners_g": {
+   "value": 8.0,
+   "tag": "A",
+   "note": "README.md estimate"
+  }
+ },
+ "grip": {
+  "N_required_by_mu": {
+   "0.3": 6.667,
+   "0.4": 5.0,
+   "0.5": 4.0,
+   "0.6": 3.333
+  },
+  "F_target_N": 5.0,
+  "F_cap_N": 10.0,
+  "r_c_current_cad_mm": 80.0,
+  "r_c_viewer_mm": 56.2,
+  "tip_radial_mm": 85.8,
+  "r_c_design_mm": 65.0,
+  "finger_length_for_design_mm": 45.0,
+  "T_servo_LC1_current_Nm": 0.941,
+  "T_servo_LC1_current_kgcm": 9.6,
+  "T_stall_needed_LC1_current_kgcm": 24.0,
+  "T_servo_LC2_current_Nm": 1.882,
+  "T_servo_LC2_current_kgcm": 19.19,
+  "T_stall_needed_LC2_current_kgcm": null,
+  "T_servo_LC1_design_Nm": 0.765,
+  "T_servo_LC1_design_kgcm": 7.8,
+  "T_stall_needed_LC1_design_kgcm": 19.5,
+  "T_servo_LC2_design_Nm": 1.529,
+  "T_servo_LC2_design_kgcm": 15.6,
+  "T_stall_needed_LC2_design_kgcm": null,
+  "deadband_deg": 0.27,
+  "k_tip_min_N_per_mm": 0.881,
+  "k_tip_max_N_per_mm": 1.632,
+  "k_tip_default_N_per_mm": 1.0,
+  "overtravel_LC1_mm_default": 5.0,
+  "overtravel_cap_mm_default": 10.0,
+  "theta_over_LC1_deg_default": 4.41,
+  "theta_over_cap_deg_default": 8.81,
+  "theta_min_deg_worst": -10.44,
+  "c_estimate_L60_mm_per_N_[E_xy,E_z]": [
+   1.087,
+   1.3
+  ],
+  "c_estimate_Ldesign_mm_per_N_[E_xy,E_z]": [
+   0.458,
+   0.548
+  ],
+  "overtravel_needed_current_cad_mm_5N_[c_lo,c_hi]": [
+   5.4,
+   14.0
+  ]
+ },
+ "actuators": {
+  "servos_at_6.0V": [
+   {
+    "id": "A19",
+    "model": "DSServo DS3235 coreless (180/270)",
+    "price": 24.49,
+    "mass_g": 60.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 31.5,
+    "hold_Nm": 1.236,
+    "r_max_mm": 105.0,
+    "passes_current_cad": true,
+    "passes_design": true,
+    "stock_note": "out of stock"
+   },
+   {
+    "id": "A18",
+    "model": "DSServo DS3225 (180)",
+    "price": 18.99,
+    "mass_g": 67.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 23.22,
+    "hold_Nm": 0.911,
+    "r_max_mm": 77.4,
+    "passes_current_cad": false,
+    "passes_design": true,
+    "stock_note": ""
+   },
+   {
+    "id": "A17",
+    "model": "DSServo DS3218MG (180; 270 variant same body)",
+    "price": 12.99,
+    "mass_g": 58.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 20.39,
+    "hold_Nm": 0.8,
+    "r_max_mm": 68.0,
+    "passes_current_cad": false,
+    "passes_design": true,
+    "stock_note": ""
+   },
+   {
+    "id": "A20",
+    "model": "JX PDI-6221MG",
+    "price": 18.05,
+    "mass_g": 62.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 20.32,
+    "hold_Nm": 0.797,
+    "r_max_mm": 67.8,
+    "passes_current_cad": false,
+    "passes_design": true,
+    "stock_note": "out of stock"
+   },
+   {
+    "id": "A13",
+    "model": "FEETECH FS5115M-FB",
+    "price": 35.77,
+    "mass_g": 62.0,
+    "feedback": "analog pot (green wire)",
+    "stall_kgcm_at_V": 15.5,
+    "hold_Nm": 0.608,
+    "r_max_mm": 51.7,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A16",
+    "model": "MG996R-class high-torque standard",
+    "price": 19.95,
+    "mass_g": 62.41,
+    "feedback": "none",
+    "stall_kgcm_at_V": 10.0,
+    "hold_Nm": 0.392,
+    "r_max_mm": 33.3,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A14",
+    "model": "TowerPro SG-5010",
+    "price": 12.0,
+    "mass_g": 47.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 6.5,
+    "hold_Nm": 0.255,
+    "r_max_mm": 21.7,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": "out of stock"
+   },
+   {
+    "id": "A12",
+    "model": "FEETECH FS5106B-FB",
+    "price": 25.64,
+    "mass_g": 43.0,
+    "feedback": "analog pot (green wire)",
+    "stall_kgcm_at_V": 6.0,
+    "hold_Nm": 0.235,
+    "r_max_mm": 20.0,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A15",
+    "model": "Hitec HS-485HB",
+    "price": 28.99,
+    "mass_g": 45.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 6.0,
+    "hold_Nm": 0.235,
+    "r_max_mm": 20.0,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A08",
+    "model": "Adafruit Analog Feedback Standard-Size Servo",
+    "price": 14.95,
+    "mass_g": 48.8,
+    "feedback": "analog pot wiper (4th wire)",
+    "stall_kgcm_at_V": 5.0,
+    "hold_Nm": 0.196,
+    "r_max_mm": 16.7,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": "out of stock"
+   },
+   {
+    "id": "A05",
+    "model": "Savox SH-0255MGP",
+    "price": 34.99,
+    "mass_g": 15.8,
+    "feedback": "none",
+    "stall_kgcm_at_V": 3.9,
+    "hold_Nm": 0.153,
+    "r_max_mm": 13.0,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": "out of stock"
+   },
+   {
+    "id": "A11",
+    "model": "FEETECH FT1117M-FB",
+    "price": 19.65,
+    "mass_g": 22.0,
+    "feedback": "analog pot (green wire)",
+    "stall_kgcm_at_V": 3.5,
+    "hold_Nm": 0.137,
+    "r_max_mm": 11.7,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A27",
+    "model": "Hitec HS-311",
+    "price": 16.99,
+    "mass_g": 43.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 3.5,
+    "hold_Nm": 0.137,
+    "r_max_mm": 11.7,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A02",
+    "model": "TowerPro SG92R",
+    "price": 5.95,
+    "mass_g": 9.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 2.5,
+    "hold_Nm": 0.098,
+    "r_max_mm": 8.3,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A03",
+    "model": "TowerPro MG90D (digital) / MG90S class",
+    "price": 9.95,
+    "mass_g": 13.4,
+    "feedback": "none",
+    "stall_kgcm_at_V": 2.4,
+    "hold_Nm": 0.094,
+    "r_max_mm": 8.0,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": "out of stock"
+   },
+   {
+    "id": "A24",
+    "model": "Hitec HS-65MG",
+    "price": 34.99,
+    "mass_g": 11.9,
+    "feedback": "none",
+    "stall_kgcm_at_V": 2.23,
+    "hold_Nm": 0.087,
+    "r_max_mm": 7.4,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A25",
+    "model": "Hitec HS-5065MG (digital)",
+    "price": 44.99,
+    "mass_g": 11.9,
+    "feedback": "none",
+    "stall_kgcm_at_V": 2.2,
+    "hold_Nm": 0.086,
+    "r_max_mm": 7.3,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A04",
+    "model": "EMAX ES08MA II",
+    "price": 7.75,
+    "mass_g": 12.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 2.0,
+    "hold_Nm": 0.078,
+    "r_max_mm": 6.7,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A07",
+    "model": "Adafruit Analog Feedback Micro Servo - Metal Gear",
+    "price": 14.95,
+    "mass_g": 15.81,
+    "feedback": "analog pot wiper (4th wire)",
+    "stall_kgcm_at_V": 1.8,
+    "hold_Nm": 0.071,
+    "r_max_mm": 6.0,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A06",
+    "model": "Adafruit Analog Feedback Micro Servo - Plastic Gear",
+    "price": 9.95,
+    "mass_g": 13.82,
+    "feedback": "analog pot wiper (4th wire)",
+    "stall_kgcm_at_V": 1.6,
+    "hold_Nm": 0.063,
+    "r_max_mm": 5.3,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A01",
+    "model": "Generic SG90-class 9 g micro (SparkFun ROB-09065)",
+    "price": 12.95,
+    "mass_g": 9.0,
+    "feedback": "none",
+    "stall_kgcm_at_V": 1.5,
+    "hold_Nm": 0.059,
+    "r_max_mm": 5.0,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A10",
+    "model": "FEETECH FS90-FB",
+    "price": 12.26,
+    "mass_g": 13.0,
+    "feedback": "analog pot (green wire)",
+    "stall_kgcm_at_V": 1.5,
+    "hold_Nm": 0.059,
+    "r_max_mm": 5.0,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   },
+   {
+    "id": "A09",
+    "model": "FEETECH FS0403-FB",
+    "price": 14.81,
+    "mass_g": 6.0,
+    "feedback": "analog pot (green wire)",
+    "stall_kgcm_at_V": 0.72,
+    "hold_Nm": 0.028,
+    "r_max_mm": 2.4,
+    "passes_current_cad": false,
+    "passes_design": false,
+    "stock_note": ""
+   }
+  ],
+  "gearmotors": [
+   {
+    "id": "M01",
+    "model": "Pololu 150:1 Micro Metal Gearmotor HPCB 6V + 12 CPR encoder",
+    "price": 32.45,
+    "mass_g": 11.0,
+    "stall_kgcm": 2.0,
+    "gearbox_limit_kgcm": 2.0
+   },
+   {
+    "id": "M02",
+    "model": "Pololu 380:1 Micro Metal Gearmotor HPCB 6V + 12 CPR encoder",
+    "price": 32.45,
+    "mass_g": 11.0,
+    "stall_kgcm": 5.0,
+    "gearbox_limit_kgcm": 2.5
+   },
+   {
+    "id": "M03",
+    "model": "Pololu 1000:1 Micro Metal Gearmotor HPCB 6V + 12 CPR encoder",
+    "price": 43.95,
+    "mass_g": 11.0,
+    "stall_kgcm": 11.0,
+    "gearbox_limit_kgcm": 2.5
+   },
+   {
+    "id": "M04",
+    "model": "Pololu 298:1 Micro Metal Gearmotor HP 6V + 12 CPR encoder",
+    "price": 29.95,
+    "mass_g": 11.0,
+    "stall_kgcm": 4.0,
+    "gearbox_limit_kgcm": 2.0
+   },
+   {
+    "id": "M05",
+    "model": "N20 6V 1:100 with magnetic encoder",
+    "price": 12.5,
+    "mass_g": null,
+    "stall_kgcm": 0.5,
+    "gearbox_limit_kgcm": null
+   },
+   {
+    "id": "M06",
+    "model": "DFRobot FIT0483 micro metal gearmotor 6V 100:1 + encoder",
+    "price": 11.9,
+    "mass_g": 18.0,
+    "stall_kgcm": 1.5,
+    "gearbox_limit_kgcm": null
+   },
+   {
+    "id": "M07",
+    "model": "DFRobot FIT0520 25 mm metal gearmotor 6V 20:1 + encoder (JGA25-class)",
+    "price": 19.9,
+    "mass_g": 96.0,
+    "stall_kgcm": 3.6,
+    "gearbox_limit_kgcm": null
+   },
+   {
+    "id": "M08",
+    "model": "NFP-JGA25-370-EN 25 mm gearmotor + Hall encoder",
+    "price": 16.5,
+    "mass_g": 110.0,
+    "stall_kgcm": 9.0,
+    "gearbox_limit_kgcm": null
+   }
+  ],
+  "gearmotor_extra_reduction": {
+   "ratio_LC1_current": 3.84,
+   "ratio_LC2_current": 7.68,
+   "ratio_LC1_design": 3.12,
+   "ratio_LC2_design": 6.24
+  },
+  "n_pass_current": 1,
+  "n_pass_design": 4,
+  "pass_design_ids": [
+   "A19",
+   "A18",
+   "A17",
+   "A20"
+  ]
+ },
+ "gears": {
+  "mesh_torque_Nm": {
+   "LC1": 0.383,
+   "LC2": 0.956,
+   "LC3": 2.0
+  },
+  "stall_servo": "A17 at 6.0 V",
+  "allowables_MPa": {
+   "PLA": {
+    "LC1": 15.0,
+    "LC2": 23.33,
+    "LC3": 35.0
+   },
+   "PETG": {
+    "LC1": 20.4,
+    "LC2": 34.0,
+    "LC3": 51.0
+   },
+   "PA6-CF": {
+    "LC1": 38.0,
+    "LC2": 68.0,
+    "LC3": 102.0
+   },
+   "POM": {
+    "LC1": 21.33,
+    "LC2": 46.0,
+    "LC3": 69.0
+   },
+   "Al6061-T6": {
+    "LC1": 64.67,
+    "LC2": 184.0,
+    "LC3": 276.0
+   }
+  },
+  "lewis_table": [
+   {
+    "m": 1.0,
+    "z": 24,
+    "a_mm": 24.0,
+    "sigma_per_Nm": 41.21,
+    "sigma_LC1": 15.8,
+    "pass_LC1": [
+     "PETG",
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ],
+    "sigma_LC2": 39.4,
+    "pass_LC2": [
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ],
+    "sigma_LC3": 82.4,
+    "pass_LC3": [
+     "PA6-CF",
+     "Al6061-T6"
+    ]
+   },
+   {
+    "m": 1.25,
+    "z": 24,
+    "a_mm": 30.0,
+    "sigma_per_Nm": 26.38,
+    "sigma_LC1": 10.1,
+    "pass_LC1": [
+     "PLA",
+     "PETG",
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ],
+    "sigma_LC2": 25.2,
+    "pass_LC2": [
+     "PETG",
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ],
+    "sigma_LC3": 52.7,
+    "pass_LC3": [
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ]
+   },
+   {
+    "m": 1.5,
+    "z": 18,
+    "a_mm": 27.0,
+    "sigma_per_Nm": 26.64,
+    "sigma_LC1": 10.2,
+    "pass_LC1": [
+     "PLA",
+     "PETG",
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ],
+    "sigma_LC2": 25.5,
+    "pass_LC2": [
+     "PETG",
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ],
+    "sigma_LC3": 53.3,
+    "pass_LC3": [
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ]
+   },
+   {
+    "m": 1.5,
+    "z": 20,
+    "a_mm": 30.0,
+    "sigma_per_Nm": 23.0,
+    "sigma_LC1": 8.8,
+    "pass_LC1": [
+     "PLA",
+     "PETG",
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ],
+    "sigma_LC2": 22.0,
+    "pass_LC2": [
+     "PLA",
+     "PETG",
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ],
+    "sigma_LC3": 46.0,
+    "pass_LC3": [
+     "PETG",
+     "PA6-CF",
+     "POM",
+     "Al6061-T6"
+    ]
+   }
+  ]
+ },
+ "arm": {
+  "stock_gravity_Nm_full_ext": {
+   "shoulder_pan": 0.0,
+   "shoulder_lift": -0.855,
+   "elbow_flex": -0.453,
+   "wrist_flex": -0.117,
+   "wrist_roll": -0.0
+  },
+  "arm_only_gravity_Nm_full_ext": {
+   "shoulder_pan": 0.0,
+   "shoulder_lift": -0.527,
+   "elbow_flex": -0.235,
+   "wrist_flex": -0.03,
+   "wrist_roll": 0.0
+  },
+  "lever_shoulder_lift_to_H_mm": 309.1,
+  "stock_gripper_mass_g": 99.0,
+  "mass_items": [
+   {
+    "name": "housing PLA (CAD)",
+    "g": 18.7,
+    "d_mm": 25.0,
+    "tag": "D gripper_concept.py mass table; d A"
+   },
+   {
+    "name": "knuckles PLA (CAD)",
+    "g": 6.0,
+    "d_mm": 40.7,
+    "tag": "D"
+   },
+   {
+    "name": "fingers TPU (CAD scaled to design length)",
+    "g": 6.6,
+    "d_mm": 80.7,
+    "tag": "D"
+   },
+   {
+    "name": "servo DSServo DS3218MG (180; 270 variant same body)",
+    "g": 58.0,
+    "d_mm": 29.0,
+    "tag": "S mass; d D from concept layout"
+   },
+   {
+    "name": "horn, pins, fasteners",
+    "g": 8.0,
+    "d_mm": 20.0,
+    "tag": "A"
+   },
+   {
+    "name": "FSR + wiring",
+    "g": 5.0,
+    "d_mm": 40.0,
+    "tag": "A"
+   },
+   {
+    "name": "cloth at tip",
+    "g": 13.5,
+    "d_mm": 105.7,
+    "tag": "D"
+   },
+   {
+    "name": "wrist camera (optional)",
+    "g": 10.0,
+    "d_mm": 20.0,
+    "tag": "A"
+   }
+  ],
+  "no_camera": {
+   "mass_g": 115.8,
+   "com_past_H_mm": 40.7,
+   "gravity_full_ext_Nm": {
+    "shoulder_pan": 0.0,
+    "shoulder_lift": -0.924,
+    "elbow_flex": -0.503,
+    "wrist_flex": -0.146,
+    "wrist_roll": 0.0
+   },
+   "mass_moment_gmm": 40507.0
+  },
+  "with_camera": {
+   "mass_g": 125.8,
+   "com_past_H_mm": 39.1,
+   "gravity_full_ext_Nm": {
+    "shoulder_pan": 0.0,
+    "shoulder_lift": -0.956,
+    "elbow_flex": -0.525,
+    "wrist_flex": -0.154,
+    "wrist_roll": 0.0
+   },
+   "mass_moment_gmm": 43798.0
+  },
+  "work_pose_sweep_n": 1661,
+  "work_pose_reach_range_m": [
+   0.103,
+   0.391
+  ],
+  "work_pose_max_tau_Nm": {
+   "shoulder_lift": 0.862,
+   "elbow_flex": 0.459,
+   "wrist_flex": 0.103
+  },
+  "tension_moment_Nm": 0.1,
+  "tension_worst_direction_full_ext_Nm": 0.84,
+  "kits": {
+   "C001_5V": {
+    "stall_Nm": 1.618,
+    "source": "S README 6 V rating used for the 5 V kit (A: 5 V gives slightly less)",
+    "hold_allow_Nm": 0.809,
+    "full_ext_gravity_only_ok_no_camera": false,
+    "full_ext_gravity_only_ok_with_camera": false,
+    "full_ext_gravity_plus_tension_ok_no_camera": false,
+    "mass_moment_budget_gmm_full_ext": 28720.0,
+    "mass_moment_budget_gmm_full_ext_with_tension": 18523.0,
+    "max_mass_g_at_40mm_gravity_only": 82.3,
+    "max_mass_g_at_40mm_with_tension": 53.1,
+    "feed_pose_ok_up_to_reach_m": 0.36,
+    "feed_pose_first_failing_bin_m": 0.36,
+    "dynamic_full_ext_ok": false
+   },
+   "C001_7p4V": {
+    "stall_Nm": 1.912,
+    "source": "S Seeed C001",
+    "hold_allow_Nm": 0.956,
+    "full_ext_gravity_only_ok_no_camera": true,
+    "full_ext_gravity_only_ok_with_camera": true,
+    "full_ext_gravity_plus_tension_ok_no_camera": false,
+    "mass_moment_budget_gmm_full_ext": 43720.0,
+    "mass_moment_budget_gmm_full_ext_with_tension": 33523.0,
+    "max_mass_g_at_40mm_gravity_only": 125.2,
+    "max_mass_g_at_40mm_with_tension": 96.0,
+    "feed_pose_ok_up_to_reach_m": 0.4,
+    "feed_pose_first_failing_bin_m": null,
+    "dynamic_full_ext_ok": true
+   },
+   "C018_12V": {
+    "stall_Nm": 2.942,
+    "source": "S Feetech C018",
+    "hold_allow_Nm": 1.471,
+    "full_ext_gravity_only_ok_no_camera": true,
+    "full_ext_gravity_only_ok_with_camera": true,
+    "full_ext_gravity_plus_tension_ok_no_camera": true,
+    "mass_moment_budget_gmm_full_ext": 96220.0,
+    "mass_moment_budget_gmm_full_ext_with_tension": 86023.0,
+    "max_mass_g_at_40mm_gravity_only": 275.6,
+    "max_mass_g_at_40mm_with_tension": 246.4,
+    "feed_pose_ok_up_to_reach_m": 0.4,
+    "feed_pose_first_failing_bin_m": null,
+    "dynamic_full_ext_ok": true
+   }
+  },
+  "sweep_sample": [
+   {
+    "reach_m": 0.1028,
+    "tau_sl": -0.0363,
+    "tau_el": -0.3677,
+    "tau_wf": -0.026,
+    "tip_z": 0.0973,
+    "q_sl": -2.6616,
+    "q_el": 2.3955,
+    "q_wf": 1.6581,
+    "tilt_deg": 10.25
+   },
+   {
+    "reach_m": 0.13,
+    "tau_sl": 0.0086,
+    "tau_el": -0.3901,
+    "tau_wf": -0.0731,
+    "tip_z": 0.1106,
+    "q_sl": -2.9671,
+    "q_el": 2.5198,
+    "q_wf": 1.4923,
+    "tilt_deg": 30.125
+   },
+   {
+    "reach_m": 0.1515,
+    "tau_sl": -0.0804,
+    "tau_el": -0.4118,
+    "tau_wf": -0.0659,
+    "tip_z": 0.1078,
+    "q_sl": -2.6616,
+    "q_el": 2.4369,
+    "q_wf": 1.3265,
+    "tilt_deg": 26.875
+   },
+   {
+    "reach_m": 0.1715,
+    "tau_sl": -0.192,
+    "tau_el": -0.4095,
+    "tau_wf": -0.0525,
+    "tip_z": 0.1015,
+    "q_sl": -2.3126,
+    "q_el": 2.2711,
+    "q_wf": 1.2435,
+    "tilt_deg": 21.125
+   },
+   {
+    "reach_m": 0.193,
+    "tau_sl": -0.2358,
+    "tau_el": -0.4201,
+    "tau_wf": -0.063,
+    "tip_z": 0.1107,
+    "q_sl": -2.2253,
+    "q_el": 2.1882,
+    "q_wf": 1.1606,
+    "tilt_deg": 25.625
+   },
+   {
+    "reach_m": 0.2161,
+    "tau_sl": -0.4518,
+    "tau_el": -0.3797,
+    "tau_wf": -0.0244,
+    "tip_z": 0.1106,
+    "q_sl": -1.6144,
+    "q_el": 1.525,
+    "q_wf": 1.4923,
+    "tilt_deg": 9.625
+   },
+   {
+    "reach_m": 0.2397,
+    "tau_sl": -0.281,
+    "tau_el": -0.4482,
+    "tau_wf": -0.1021,
+    "tip_z": 0.1003,
+    "q_sl": -2.1817,
+    "q_el": 2.4784,
+    "q_wf": 0.4974,
+    "tilt_deg": 44.5
+   },
+   {
+    "reach_m": 0.2625,
+    "tau_sl": -0.507,
+    "tau_el": -0.4165,
+    "tau_wf": -0.0587,
+    "tip_z": 0.099,
+    "q_sl": -1.5708,
+    "q_el": 1.6493,
+    "q_wf": 1.0777,
+    "tilt_deg": 23.75
+   },
+   {
+    "reach_m": 0.2847,
+    "tau_sl": -0.6412,
+    "tau_el": -0.3966,
+    "tau_wf": -0.0448,
+    "tip_z": 0.1042,
+    "q_sl": -1.1781,
+    "q_el": 1.0276,
+    "q_wf": 1.4094,
+    "tilt_deg": 17.875
+   },
+   {
+    "reach_m": 0.3026,
+    "tau_sl": -0.5218,
+    "tau_el": -0.4497,
+    "tau_wf": -0.0991,
+    "tip_z": 0.1096,
+    "q_sl": -1.6144,
+    "q_el": 1.8566,
+    "q_wf": 0.5803,
+    "tilt_deg": 42.875
+   },
+   {
+    "reach_m": 0.322,
+    "tau_sl": 0.8477,
+    "tau_el": 0.4313,
+    "tau_wf": 0.0976,
+    "tip_z": 0.1033,
+    "q_sl": -3.098,
+    "q_el": 0.3643,
+    "q_wf": -1.2435,
+    "tilt_deg": 42.125
+   },
+   {
+    "reach_m": 0.3474,
+    "tau_sl": -0.7515,
+    "tau_el": -0.436,
+    "tau_wf": -0.0812,
+    "tip_z": 0.101,
+    "q_sl": -0.9599,
+    "q_el": 0.8618,
+    "q_wf": 1.0777,
+    "tilt_deg": 33.875
+   },
+   {
+    "reach_m": 0.3884,
+    "tau_sl": -0.8512,
+    "tau_el": -0.4316,
+    "tau_wf": -0.1016,
+    "tip_z": 0.1009,
+    "q_sl": -0.4363,
+    "q_el": 0.0742,
+    "q_wf": 1.1606,
+    "tilt_deg": 44.25
+   }
+  ]
+ },
+ "duty_cycle": {
+  "phases_s": {
+   "approach_touchdown": 4.0,
+   "close": 0.5,
+   "lift_move_to_needle": 5.0,
+   "feed_hold": 20.0,
+   "release": 0.5,
+   "return": 5.0
+  },
+  "cycle_s": 35.0,
+  "cycles_per_hour": 102.9,
+  "hold_fraction": 0.729,
+  "seam_mm": 200.0,
+  "feed_mm_s": 10.0,
+  "feed_time_check_s": 20.0,
+  "machine_max_feed_mm_s": 45.8,
+  "demo_spm_at_feed": 240.0,
+  "servo_I2R_mean_fraction_of_stall": 0.117,
+  "hours_to_N_design": 972.0
+ }
+}

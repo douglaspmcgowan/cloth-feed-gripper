@@ -1,0 +1,116 @@
+{
+ "id": "T02-tight",
+ "title": "Horn pilot recess radial fit (\u00d819.2 horn in \u00d820.0 recess)",
+ "mode": "linear",
+ "units": "mm diametral clearance",
+ "requirement": "Recess slides onto the horn by hand (clearance >= 0.02) and float stays small enough to centre the gripper (<= 0.30).",
+ "notes": "so101.md row 12 states 0.4 mm diametral clearance; 20.0 - 19.2 = 0.8 diametral (0.4 radial). The recess is only 1.0 mm (5 layers) deep, so first-layer squish affects all of it when the mount face prints on the bed.",
+ "spec": {
+  "lsl": 0.02,
+  "usl": 0.3
+ },
+ "accept": {
+  "method": "mc"
+ },
+ "variant_of": "T02",
+ "variant_label": "recess CAD 19.55",
+ "path": "analysis\\gripper\\tolstack\\stacks\\T02_pilot_recess_fit.yaml",
+ "nominal": 0.3500000000000014,
+ "mid": 0.20000000000000284,
+ "wc": [
+  -0.04999999999999716,
+  0.45000000000000284
+ ],
+ "rss_classic": [
+  0.05000000000000282,
+  0.35000000000000286
+ ],
+ "rss_dist": [
+  -0.00615528128088022,
+  0.4061552812808859
+ ],
+ "mc": {
+  "n": 100000,
+  "mean": 0.19991450810167682,
+  "std": 0.06865132794164262,
+  "min": -0.03406545895693469,
+  "max": 0.42002196486674137,
+  "p0135": 0.022067526781211932,
+  "p50": 0.19994037994633374,
+  "p99865": 0.3762677894507443,
+  "out_lo_pct": 0.117,
+  "out_hi_pct": 7.285,
+  "out_pct": 7.402,
+  "out_pct_se": 0.0827895160029336,
+  "cpk_normal": 0.4859604560181817,
+  "cpk_percentile": 0.5674649241141572
+ },
+ "pass": {
+  "wc": false,
+  "rss": false,
+  "mc": false
+ },
+ "verdict": false,
+ "method": "mc",
+ "cpk_min": 1.33,
+ "contributors": [
+  {
+   "name": "recess_d_printed",
+   "kind": "linear",
+   "nominal": 19.55,
+   "bias": -0.15,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 19.400000000000002,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "normal",
+   "sigma": 0.03333333333333333,
+   "tag": "A",
+   "source": "CAD (so101.md) + large-hole bias [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 23.529411764705877
+  },
+  {
+   "name": "first_layer_residual",
+   "kind": "linear",
+   "nominal": 0.0,
+   "bias": 0.0,
+   "upper": 0.1,
+   "lower": -0.1,
+   "mid": 0.0,
+   "half": 0.1,
+   "sensitivity": 1.0,
+   "dist": "uniform",
+   "sigma": 0.05773502691896258,
+   "tag": "A",
+   "source": "Prusa KB elephant-foot compensation (via W1)",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 70.58823529411764
+  },
+  {
+   "name": "horn_od",
+   "kind": "linear",
+   "nominal": 19.2,
+   "bias": 0.0,
+   "upper": 0.05,
+   "lower": -0.05,
+   "mid": 19.2,
+   "half": 0.05,
+   "sensitivity": -1.0,
+   "dist": "normal",
+   "sigma": 0.016666666666666666,
+   "tag": "A",
+   "source": "so101.md row 2 nominal [D]; tol [A]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 5.882352941176469
+  }
+ ],
+ "seed": 20260922
+}

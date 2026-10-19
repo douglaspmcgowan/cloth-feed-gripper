@@ -1,0 +1,44 @@
+id: T09F
+title: Pad force at the jaw floor with the FSR trip failed (position-only cap, R15)
+parts: ["servo horn", "knuckle A", "knuckle B", "finger A", "finger B", "TPU pads"]
+constants: basis.yaml
+companion_of: T09
+mode: expression
+units: N (pad force with the jaw at JAW_MIN_DEG -7.4)
+requirement: "R15 ruled 8 N (Douglas 2026-10-12, DESIGN-BASIS R15): pad force <= 8 N even if the FSR trip fails."
+spec: {usl: "=F_cap"}
+accept: {method: mc}
+fix: >-
+  APPLIED in the firmware (config.h JAW_FLOOR_BELOW_C0_DEG 4.9, JAW_MIN_DEG -10.2 backstop; controls.md 6.4): the floor
+  is relative to the calibrated contact angle (theta_c0 - 4.9 deg) instead of the absolute -7.4 deg, so the contact
+  spread drops out, and 4.9 deg holds the ruled 8 N on the stiff pair (T09F-relfloor8). Round 2's 6.2 deg floor
+  (T09F-relfloor) held the superseded 10 N only; 5.0 deg is MARGINAL. The base stack is the firmware before round 2.
+fix_variant: relfloor8
+notes: >-
+  F = k_pair * 2 r_c * (theta_c - theta), finger.md 6.2 linear model. theta_c is the T09 first-contact angle
+  (same samples); the floor is absolute, so the uncalibrated spread of theta_c moves the force at the floor.
+  Reading used: the servo position errors at contact and at the floor are independent (deadband and gear play
+  settle afresh at each stop), so the floor error has its own sample key (shared: servo_angle_error_at_floor)
+  and T09's contact error stays inside theta_c. With one common bias instead (contact error cancelled
+  explicitly) the stack is still FAIL (third review, B1: Cpk 0.95 against 0.90 here); the shared T09 key used
+  before cancelled the floor error sample for sample and made the stack read MARGINAL.
+expression: "k_pair*2*r_c*radians(theta_c - (jaw_floor + servo_angle_error))"
+contributors:
+  - {name: theta_c, from_stack: T09, tag: D, source: "T09 first-contact angle, deg"}
+  - {name: k_pair, limits: ["=k_pair_min", "=k_pair_max"], dist: uniform, tag: D, source: "finger.md 6.2, E 56-67 MPa"}
+  - {name: jaw_floor, nominal: "=jaw_floor_deg", tol: 0, tag: D, source: "config.h JAW_MIN_DEG"}
+  - {name: servo_angle_error, shared: servo_angle_error_at_floor, nominal: 0, tol: "=servo_angle_rep_deg", dist: normal, tag: A, source: "position error at the floor (independent of the T09 contact error)"}
+variants:
+  - {id: r15p8, role: scenario, label: "R15 ruled: cap 8 N", spec: {usl: "=F_cap_proposed"}}
+  - id: relfloor
+    label: "firmware round 2: floor = calibrated contact - 6.2 deg (held the superseded 10 N at the stiff finger)"
+    expression: "k_pair*2*r_c*radians(6.2 + cal_repeat - servo_angle_error)"
+    drop: [theta_c, jaw_floor]
+    add:
+      - {name: cal_repeat, nominal: 0, tol: "=cal_rep_deg", dist: normal, tag: A, source: "calibrated contact repeatability"}
+  - id: relfloor8
+    label: "firmware: floor = calibrated contact - 4.9 deg (config.h JAW_FLOOR_BELOW_C0_DEG), against the ruled 8 N cap"
+    expression: "k_pair*2*r_c*radians(4.9 + cal_repeat - servo_angle_error)"
+    drop: [theta_c, jaw_floor]
+    add:
+      - {name: cal_repeat, nominal: 0, tol: "=cal_rep_deg", dist: normal, tag: A, source: "calibrated contact repeatability"}

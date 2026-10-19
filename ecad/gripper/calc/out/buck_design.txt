@@ -1,0 +1,39 @@
+TPS54560B buck design (400 kHz, 10 uH, 2 x 47 uF, compensator R5/C5/C6 from design.py)
+Tags: [S] constants.py, [D] derived, [A] assumed
+
+Frequency and set point
+item                                                      value
+--------------------------------------------------------  ----------------
+fsw from R4 = 243 kohm [D, S equation]                    399.8 kHz
+set point 0.8 x (1 + R6/R7) [D]                           6.581 V
+set point range (Vref 0.792 to 0.808 V [S], R6/R7 0.1 %)  6.504 to 6.659 V
+UVLO start / stop nominal [D]                             9.01 V / 8.01 V
+UVLO start range (EN thresholds and currents [S])         8.06 to 9.98 V
+UVLO stop range                                           6.73 to 9.33 V
+cable loop R (20 AWG, 1.2 m out and back) [D]             79.9 mohm
+cable loop L [A]                                          0.96 uH
+
+Inductor ripple, duty and minimum on-time
+Vin V  duty   ripple A pk-pk  on-time us  on-time / 135 ns  max DC load A (6.3 A limit)  fsw max MHz by on-time
+-----  -----  --------------  ----------  ----------------  ---------------------------  ----------------------
+10.8   0.609  0.643           1.52        11.3              5.98                         4.51
+12.0   0.548  0.743           1.37        10.2              5.93                         4.06
+13.2   0.499  0.825           1.25        9.2               5.89                         3.69
+
+Loop (peak-current-mode small-signal model, feedback at SERVO_V), 324 cases
+nominal (1 A, ESR 0.03 ohm, 1000 uF, ceramic 60 %, 12 V): crossover 2.49 kHz, PM 99.0 deg, GM 35.7 dB
+crossover over all cases: 2.05 to 18.61 kHz
+worst phase margin 91.1 deg at load 0.05 A, ESR 0.02 ohm, Cbulk x0.8, ceramic 65 %, Vin 13.2 V (crossover 2.91 kHz)
+worst gain margin  19.5 dB at load 4.00 A, ESR 0.20 ohm, Cbulk x0.8, ceramic 30 %, Vin 13.2 V
+cases failing PM >= 45 deg and GM >= 10 dB: 0 of 324  ->  PASS
+worst PM with the 470 uF forearm capacitor absent: 55.0 deg
+load A  worst PM deg  worst GM dB  crossover kHz
+------  ------------  -----------  -------------
+0.05    91.1          19.5         2.05 to 18.61
+0.15    91.1          19.5         2.05 to 18.61
+0.5     91.2          19.5         2.05 to 18.60
+1.0     91.3          19.5         2.05 to 18.60
+2.0     91.5          19.5         2.06 to 18.58
+4.0     92.0          19.5         2.06 to 18.56
+
+Notes: He(s) uses mc = 1.5 [A]; the servo is a resistor at its operating point [A]; the 5 V LDO load is a constant current [A].

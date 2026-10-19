@@ -7,19 +7,19 @@ Source: `douglaspmcgowan/berkeley-ai-tutor` at commit `1d7cff460da4783e492abb3a9
 - Tracked files in the six gripper folders: **1295** (124,881,664 bytes).
 - Counts: `cad/gripper/` 140, `firmware/gripper/` 23, `docs/gripper/` 228, `analysis/gripper/` 640, `ecad/gripper/` 148, `video/gripper/` 116.
 - Additional gripper-named path outside the six folders: `acd/handoffs/cloth-gripper-restyle.md`. Review whether this handoff belongs in the new repository.
-- No project files have been copied. The public-safety scan found six files with absolute local user paths. The fleet brief requires a stop when more than a handful of files need to be held back; these files cannot be copied byte-for-byte into the public repository.
+- Copied 1,294 files to this repository. Five files were sanitized before entering public history; the private conductor process file stays in berkeley-ai-tutor.
 - The scan checked text for email addresses, credential-like assignments, private-key headers, local hostnames, private IP addresses and absolute local user paths. This is a screening result, not a clearance to publish the other files; run gitleaks and inspect exceptions before the move resumes.
 
 ## Public-safety holdbacks
 
 | Source path | Reason to hold back from a byte-identical public copy |
 |---|---|
-| `docs/gripper/process/program-loop.md` | Absolute local user paths in three lines. |
-| `ecad/gripper/build.py` | Absolute local user path in one line. |
-| `ecad/gripper/kicad/gen/gen_sch.py` | Absolute local user path in one line. |
-| `ecad/gripper/kicad/gen/inspect_sym.py` | Absolute local user path in one line. |
-| `video/gripper/README.md` | Absolute local user paths in two lines. |
-| `video/gripper/REVIEW.md` | Absolute local user path in one line. |
+| `docs/gripper/process/program-loop.md` | Held back: private conductor process file, in use. |
+| `ecad/gripper/build.py` | Moved with local KiCad path derived from `LOCALAPPDATA`. |
+| `ecad/gripper/kicad/gen/gen_sch.py` | Moved with local KiCad path derived from `LOCALAPPDATA`. |
+| `ecad/gripper/kicad/gen/inspect_sym.py` | Moved with local KiCad path derived from `LOCALAPPDATA`. |
+| `video/gripper/README.md` | Moved with a portable film virtual-environment placeholder. |
+| `video/gripper/REVIEW.md` | Moved with the review frame named without its temporary folder. |
 
 ## Source files outside the gripper folders that reference them
 

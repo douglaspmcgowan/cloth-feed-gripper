@@ -1,0 +1,35 @@
+Servo stall step on the 6.58 V rail, averaged current-mode buck (Vin 12 V unless stated)
+Step 0.15 A -> stall at t = 3 ms; pre-step SERVO_V 6.581 V
+fit  rise   V_BUCK min V  SERVO_V min V  plug min V  plug final V  SERVO_V recov ms (0.15 V)  plug recov ms  peak iL A (limit min 6.3)  stall A
+---  -----  ------------  -------------  ----------  ------------  -------------------------  -------------  -------------------------  -------
+A    1 ms   6.60          6.50           6.13        6.20          0.00                       0.46           4.02                       3.45
+A    10 us  6.58          6.46           6.09        6.20          0.00                       0.01           4.08                       3.45
+B    1 ms   6.60          6.53           6.31        6.35          0.00                       0.24           2.60                       2.06
+B    10 us  6.59          6.51           6.29        6.35          0.00                       0.00           2.63                       2.06
+
+Bulk capacitor sweep (Fit A, 10 us rise, Cwrist 470 uF unless "no"; bulk ESR 30 mohm x sqrt(1000 uF / C) [A])
+Cbulk uF  Cwrist  ESR ohm  V_BUCK min V  SERVO_V min V  plug min V  recov ms  peak iL A  bulk charge uC
+--------  ------  -------  ------------  -------------  ----------  --------  ---------  --------------
+220       yes     0.064    6.56          6.46           6.09        0.00      3.97       28
+220       no      0.064    6.51          6.36           5.77        0.05      4.26       39
+470       yes     0.044    6.57          6.46           6.09        0.00      4.00       59
+470       no      0.044    6.54          6.42           5.80        0.04      3.96       69
+1000      yes     0.030    6.58          6.46           6.09        0.00      4.08       122
+1000      no      0.030    6.55          6.44           5.83        0.00      4.05       135
+2200      yes     0.020    6.58          6.47           6.10        0.00      4.21       250
+2200      no      0.020    6.57          6.46           5.86        0.00      4.19       264
+
+Feedback taken before the shunt (at V_BUCK) for comparison, Fit A
+rise   V_BUCK min V  SERVO_V min V  plug min V  recov ms  SERVO_V final V
+-----  ------------  -------------  ----------  --------  ---------------
+1 ms   6.51          6.20           5.85        inf       6.25
+10 us  6.49          6.19           5.83        inf       6.25
+
+Vin 10.8 V, Fit A, 10 us rise: V_BUCK min 6.58 V, SERVO_V min 6.46 V, plug min 6.09 V, peak iL 4.02 A
+
+Vin 10.8 V, Fit B, 10 us rise: V_BUCK min 6.59 V, SERVO_V min 6.51 V, plug min 6.29 V, peak iL 2.58 A
+
+Verdict on 1000 uF: ADEQUATE. Rule: plug >= 4.8 V (servo minimum [S]) and V_BUCK >= 5.6916 V (power_budget ldo_min_input_V: 5 V rail plus worst MCP1703A dropout [S]) in the worst stall step (Fit A, 10 us rise).
+  plug minimum: 470 uF 6.09 V, 1000 uF 6.09 V, 2200 uF 6.10 V (2200 gains 0.00 V over 1000)
+
+Model limits: averaged (no ripple), first-order inner loop, bulk ESR scaling, 100 mA 5 V load, servo lead 30 mohm: all [A].

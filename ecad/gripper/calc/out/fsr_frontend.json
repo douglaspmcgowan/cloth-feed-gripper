@@ -1,0 +1,160 @@
+{
+ "adc": {
+  "charge_share_mV_at_2450": 0.489902,
+  "cs_F": 2e-11,
+  "reservoir_droop_mV_at_2450": 0.608316,
+  "sample_tau_s": 2e-08,
+  "settle_12bit_s": 1.802183e-07
+ },
+ "caps": {
+  "10.0": {
+   "keeps_2k70": false,
+   "n_per_mV_5N_e96": 0.007808822,
+   "n_per_mV_cap_2k70": 0.01944853,
+   "n_per_mV_cap_e96": 0.01913274,
+   "node_at_02N_e96_mV": 338.3724,
+   "node_at_cap_2k70_mV": 2457.457,
+   "node_at_cap_e96_guard_mV": 2389.666,
+   "node_at_cap_e96_mV": 2436.01,
+   "over_2k70_mV": 7.456691,
+   "r_e96_guard_ohm": 2430.0,
+   "r_e96_ohm": 2610.0,
+   "r_exact_guard_ohm": 2431.233,
+   "r_exact_ohm": 2668.193
+  },
+  "8.0": {
+   "keeps_2k70": true,
+   "n_per_mV_5N_e96": 0.008229851,
+   "n_per_mV_cap_2k70": 0.01432039,
+   "n_per_mV_cap_e96": 0.01536745,
+   "node_at_02N_e96_mV": 401.0121,
+   "node_at_cap_2k70_mV": 2337.696,
+   "node_at_cap_e96_guard_mV": 2378.785,
+   "node_at_cap_e96_mV": 2441.329,
+   "over_2k70_mV": -112.3038,
+   "r_e96_guard_ohm": 2870.0,
+   "r_e96_ohm": 3160.0,
+   "r_exact_guard_ohm": 2919.069,
+   "r_exact_ohm": 3203.576
+  }
+ },
+ "ema_tau_s": 0.009491222,
+ "filter": [
+  {
+   "atten_1000Hz": 0.1571767,
+   "atten_500Hz": 0.3033145,
+   "atten_50Hz": 0.9540282,
+   "fc_Hz": 159.1549,
+   "force_N": 0.0,
+   "r_source_ohm": 0.0,
+   "tau_s": 0.001
+  },
+  {
+   "atten_1000Hz": 0.127159,
+   "atten_500Hz": 0.2483655,
+   "atten_50Hz": 0.9316493,
+   "fc_Hz": 128.1997,
+   "force_N": 0.2,
+   "r_source_ohm": 2414.612,
+   "tau_s": 0.001241461
+  },
+  {
+   "atten_1000Hz": 0.1297851,
+   "atten_500Hz": 0.2532503,
+   "atten_50Hz": 0.9341637,
+   "fc_Hz": 130.8921,
+   "force_N": 0.5,
+   "r_source_ohm": 2159.244,
+   "tau_s": 0.001215924
+  },
+  {
+   "atten_1000Hz": 0.1395476,
+   "atten_500Hz": 0.2712835,
+   "atten_50Hz": 0.9424408,
+   "fc_Hz": 140.9266,
+   "force_N": 3.0,
+   "r_source_ohm": 1293.467,
+   "tau_s": 0.001129347
+  },
+  {
+   "atten_1000Hz": 0.1429683,
+   "atten_500Hz": 0.2775535,
+   "atten_50Hz": 0.9449915,
+   "fc_Hz": 144.4523,
+   "force_N": 5.0,
+   "r_source_ohm": 1017.823,
+   "tau_s": 0.001101782
+  },
+  {
+   "atten_1000Hz": 0.1459586,
+   "atten_500Hz": 0.2830133,
+   "atten_50Hz": 0.9470914,
+   "fc_Hz": 147.5386,
+   "force_N": 8.0,
+   "r_source_ohm": 787.3395,
+   "tau_s": 0.001078734
+  },
+  {
+   "atten_1000Hz": 0.1472677,
+   "atten_500Hz": 0.2853972,
+   "atten_50Hz": 0.9479749,
+   "fc_Hz": 148.8911,
+   "force_N": 10.0,
+   "r_source_ohm": 689.3536,
+   "tau_s": 0.001068935
+  }
+ ],
+ "filter_delay_pct_of_budget": 1.633502,
+ "filter_delay_worst_s": 0.001241461,
+ "fit": {
+  "R1N_ohm": 6109.0,
+  "exp": 0.8195
+ },
+ "res": {
+  "n_per_mV_5N_2k70": 0.007872102
+ },
+ "table": [
+  {
+   "force_N": 0.2,
+   "in_span": true,
+   "n_per_mV": 0.0007823698,
+   "node_mV": 348.8071,
+   "r_fsr_ohm": 22844.2
+  },
+  {
+   "force_N": 0.5,
+   "in_span": true,
+   "n_per_mV": 0.001154334,
+   "node_mV": 660.9239,
+   "r_fsr_ohm": 10781.13
+  },
+  {
+   "force_N": 3.0,
+   "in_span": true,
+   "n_per_mV": 0.00444509,
+   "node_mV": 1719.096,
+   "r_fsr_ohm": 2482.957
+  },
+  {
+   "force_N": 5.0,
+   "in_span": true,
+   "n_per_mV": 0.007872102,
+   "node_mV": 2055.994,
+   "r_fsr_ohm": 1633.67
+  },
+  {
+   "force_N": 8.0,
+   "in_span": true,
+   "n_per_mV": 0.01432039,
+   "node_mV": 2337.696,
+   "r_fsr_ohm": 1111.445
+  },
+  {
+   "force_N": 10.0,
+   "in_span": false,
+   "n_per_mV": 0.01944853,
+   "node_mV": 2457.457,
+   "r_fsr_ohm": 925.6997
+  }
+ ]
+}

@@ -1,0 +1,772 @@
+{
+  "_units": "mm, degrees, grams, g/cm^3",
+  "revision": "B",
+  "_provenance": {
+    "_doc": "Which analysis set each value. Rev A = the 2026-09-22/23 rebuild; rev B (2026-10-11) = every change the six rev A studies asked for, one row each in cad/gripper/CHANGELOG.md. Tags: S sourced, D derived, A assumed.",
+    "servo": "torque_and_actuator.md 0 + actuators.csv A17 (DS3218MG body 40.0x20.5x40.5, 25T 5.9 mm spline, ears 49.5x10 on 54.5 span) [S]; case/boss split, ear height and shaft offset [A, measure M9]",
+    "servo.stall_torque_kgcm": "actuators.csv A17 [S] 19 @5.0 V, 21.5 @6.8 V; 6.5 V linear interpolation [D]; rail 6.5 +/-0.15 V per torque_and_actuator.md 0",
+    "gear": "gears.md 0 / results/gears.json recommendation.printed: PA6-CF m 1.5 z 19 alpha 25 x 0 b 8 a_w 28.5, jt 0.25 [D]; profile = cad/gripper/gear_profile.dxf (sector A 6 teeth, B 7 teeth, r_in 9.375) [D]",
+    "finger": "finger.md 1 item 1: L 45, 6 ribs at 30 deg, wall 0.8, rib 1.0, blunt tip 4 [D]; W 16, depth 20 unchanged [S params]",
+    "finger.closed_gap": "DESIGN-BASIS R21 / finger.md 2: rigid contact faces 1.0 apart at theta 0 [A]; TPU pad-face gap = 1.0 + nail 1.0 + backing 1.5 + FSR 0.45 [D]",
+    "knuckle": "tolerance_stacks.md fix 9 (pinned layout, dog coupling to the horn) and fix 8 (end play shimmed to 0.3) [D]; rev B row 2: ISO 2338 h8 3 x 16 pins in pressed 3 x 6 x 10 sintered bronze bushes (Ø6.0 H7 reamed bore) [D; CHANGELOG B4]; shims 3.2 x 7 bear on the PA6-CF hub faces, the 10.0 bush sits 0.25 below each face of the 10.5 hub, so end play = plate gap 12.5 - hub 10.5 - 2 x 0.85 = 0.3 [D; CHANGELOG B38]; fix 10 (2 pegs per finger) [D]; r_c 65 (DESIGN-BASIS D3) sets root_offset + root_thickness + root_tab = 25 [D]",
+    "housing": "DESIGN-BASIS 9: PETG housing [A]; tolerance_stacks.md fix 1 (clearance CAD 3.6) [D]; plate_radius 17.5 = gear ra 15.75 + 1.75 so the finger root clears the plates [D]",
+    "wrist_mount": "research/so101.md + params wrist_interface [D]; tolerance_stacks.md fixes 1, 2, 4, 5 (holes 3.6, counterbore 6.5, recess 19.51 + 0.3x45 chamfer, hub r 11.6 / 14.6, full width from H+5.0) [D]",
+    "camera_pad": "camera.md 6 / results/camera.json mount.wrist_option.pad_on_housing [D]; fixed off-arm camera is primary, so only the pad is modelled; locating tab per tolerance_stacks.md fix 11 [D]. PRE-CAD: camera.md placed the pad 13.7 above a pivot 40.7 from H (u 27); in the 2026-09-23 CAD the pad centre is y 10.3 (top edge under the lowered deck) with pivot 31.0 from H, so u 20.7. The camera lane's wrist clearances (1.2 mm to housing, 4.6 mm to the SO-101 links over roll) and its 105 % mass-budget figure were never rechecked on the CAD; rerun analysis/gripper camera.py against pivot-to-H 31.0 before building the wrist UVC option",
+    "nail_fsr": "DESIGN-BASIS D7/D8 + finger.md 2 (nail 1.0x12 PLA, backing 1.0 under, puck 6) [A]; FSR 402 head 18.28 dia, 0.45 thick [S Interlink datasheet via Adafruit 166]; backing length 19 to hold the head [A]",
+    "motion": "finger.md 6.3 recommends theta_min -7.4 deg (firmware); CAD fitcheck sweeps the DESIGN-BASIS R18 range -11..+20 [D]",
+    "materials": "DESIGN-BASIS 4 + 9 densities [S]; print fill 0.6 housing [A], 1.0 gear/knuckle region (DESIGN-BASIS 9) [A]",
+    "knuckle.root_relief": "fitcheck.py jaw sweep 2026-09-22: rigid root blocks clashed at theta <= -7.4 (overtravel); pad-side 4 mm relief + circle-only plate outline clear them [D]",
+    "servo.long_axis": "2026-09-23 mass-reduction repackaging (R10): servo long axis along X, shaft 10 from the outboard end, so the deck drops from y 37.75 to the plate/sector limit (housing.deck_y_min 19.0 = plate_radius 17.5 + 1.5) and pivot-to-H falls from 49.75 to 31.0 [D]; every analysis lane assumed 40.7",
+    "housing.deck_y_min": "plate_radius 17.5 + 1.5; knuckle sector tips reach y 15.4 over theta -11..+20 [D]",
+    "housing.standoffs": "2026-09-23: top standoff moved (0, 24) -> (0, 15.5) under the lowered deck; 2.3 mm to the sector tip circle ra 15.75 [D]",
+    "fasteners": "2026-09-23: fastener mass = catalogue mass per item where one is listed in gripper_concept.CATALOG_G [A], else envelope volume x item density (steel 7.85, brass 8.5 inserts, bronze 8.8 sleeves) [D]; horn = envelope x Al 2.7 [D]",
+    "grip.stale_fix_2026-09-23": "T_mesh_LC1/2/3 0.399/0.976/2.108 and shock 2.155 N*m from gears.md 1 / results/gears.json load_cases.at_rec_print [D]; stall_required 20.2 kg*cm from torque_and_actuator.md table [D]; design-point stall 21.08 kg*cm at 6.5 V from servo.stall_torque_kgcm [D]",
+    "mcu.power": "servo_rail_V 6.5 +/- 0.15 V per torque_and_actuator.md 'Primary' (was 6.0) [D]",
+    "revision_B": "cad/gripper/CHANGELOG.md rows B1-B20: tolerance_stacks.md rev B rows 1-12 (combined run rev_b.yaml), thermal.md 5 C1-C3, actuation_trade.md 0 + 8 C1/C2, test/README.md 5 rows 1 and 3, fit3d.json findings (agent/gripper-fitcheck-3d @ d74372c)",
+    "servo.models": "servo.model selects one entry of servo.models; gripper_concept.resolve() copies it over the servo block (the top-level servo keys are the selected row, kept for the viewer). DS3230 MG = actuation_trade.md 0 'wait' row (recommended) [S price/torque/mass, listing]; its body, ears, boss and shaft offset are not published and carry the DS3218MG values [A, measure on the delivered part]",
+    "servo.horn_gap": "rev B: horn bottom on the 2.5 mm output boss top (overall 40.5 = case 38 + boss 2.5 [A split]); rev A drew the horn 1.0 above the case top, inside its own 2.5 boss. The servo moves 1.5 mm further from the mid plate [A, measure M9]",
+    "housing.boss_web": "tolerance_stacks.md rev B row 1 (T14B-boss34): the Ø9 boss bore cannot sit in the 2.5 mm mid plate, because the horn lies between the case top and the mid plate; it is a 1.6 mm web (boss_web_t) of the same housing print at the case top, 6.5 mm behind the mid plate, printed Ø8.8 and reamed Ø9.0 [D; CHANGELOG B1]",
+    "knuckle.revB": "tolerance_stacks.md rows 1 + 2: dog slots 3.4; bore Ø6 (CAD 5.8, ream 6.0 H7) for a 3 x 6 x 10 sintered bronze bush [A length, catalogue class]; pins ISO 2338 h8 3 x 16, graded 0.000-0.020 to the pressed bush bore; actuation C1 face width 10.5",
+    "finger.toe_in_deg": "tolerance_stacks.md row 4 (T10-toein): rigid contact faces toed in 0.44 deg, hinged at the pad-contact point (5 mm above the tip) [D]",
+    "housing.revB": "thermal.md 5 C1 (ear seat holes Ø5.0 for limiter sleeves 5.0/3.2 x 2.55, washer under each nut, frame +1.5 per end), C3 (Ø1 thermocouple hole), fit3d.json deck-screw and horn-gap findings (deck screws moved to x +/-30.5 at z 6 / -7.5, side standoffs to x +/-23.0, deck half-width 34, horn relief 1.0 in the A end wall, nut/washer notches in the end walls), tolerance row 5 (2 h8 3 x 6 locating pins spider -> reamed deck holes) [D] Deck corners clipped to r 37.5 about the roll axis (stock envelope r 37.6 in fitcheck band z_I 6-12) [D].",
+    "wrist_mount.revB": "tolerance_stacks.md rows 6 and 7: recess 19.51 -> 19.56, mount holes 3.6 -> 3.7 (rev_b.yaml recess_d_cad, hole_cad_d) [D]",
+    "wrist_interface.horn_hole_depth": "tolerance_stacks.md row 8 / rev_b.yaml horn_hole_depth: 3.75 is the MINIMUM the M3x6 needs, not a measurement; measure the real depth (DB M15) and pick wrist_mount.horn_screw_len by the rule in wrist_mount.horn_screw_rule [A]",
+    "gear.face_width": "actuation_trade.md 8 C1: 8 -> 10.5 mm for the DS3230 MG (jam-shock SF 1.01 at 8 -> 1.15 at 10.5); gears.py re-run at 10.5 [D]"
+  },
+  "servo": {
+    "model": "DSServo DS3230 MG",
+    "models": {
+      "DSServo DS3218MG": {
+        "id": "A17",
+        "model": "DSServo DS3218MG",
+        "body_x": 20.1,
+        "body_y": 40.0,
+        "body_z": 38.0,
+        "overall_h": 40.5,
+        "shaft_from_bottom": 10.0,
+        "boss_d": 9.0,
+        "boss_h": 2.5,
+        "spline": "25T, 5.9 mm",
+        "ear_span": 54.5,
+        "ear_hole_pitch_y": 49.5,
+        "ear_hole_pitch_x": 10.0,
+        "ear_t": 2.5,
+        "ear_from_top": 10.0,
+        "ear_hole_d": 4.5,
+        "mass_g": 58,
+        "price_usd": 12.99,
+        "rail_V": 6.5,
+        "stall_torque_kgcm": {
+          "5.0V": 19.0,
+          "6.5V": 21.08,
+          "6.8V": 21.5
+        },
+        "gear_face_width": 8.0,
+        "_tags": "S body 40.0 x 20.1 (servodatabase; 20.5 in actuators.csv A17 text) and ears 49.5 x 10 on 54.5; A case/boss split, ear height, shaft offset (M9); gear width 8 is rev A (actuation_trade.md: hold margin 1.03, does not qualify at 1:1)"
+      },
+      "DSServo DS3230 MG": {
+        "id": "A32",
+        "model": "DSServo DS3230 MG",
+        "body_x": 20.1,
+        "body_y": 40.0,
+        "body_z": 38.0,
+        "overall_h": 40.5,
+        "shaft_from_bottom": 10.0,
+        "boss_d": 9.0,
+        "boss_h": 2.5,
+        "spline": "25T [A]",
+        "ear_span": 54.5,
+        "ear_hole_pitch_y": 49.5,
+        "ear_hole_pitch_x": 10.0,
+        "ear_t": 2.5,
+        "ear_from_top": 10.0,
+        "ear_hole_d": 4.5,
+        "mass_g": 60,
+        "price_usd": 27.0,
+        "rail_V": 6.5,
+        "stall_torque_kgcm": {
+          "5.0V": 26.0,
+          "6.5V": 29.33,
+          "6.8V": 30.0
+        },
+        "gear_face_width": 10.5,
+        "measure_on_delivered_part": [
+          "body width (3 places, 3 units)",
+          "body length and case height",
+          "ear span and hole pattern",
+          "ear thickness and height below the case top",
+          "output boss diameter and height",
+          "shaft offset from the outboard case end and from the case side",
+          "spline tooth count (25T assumed)",
+          "mass (60 g listing)",
+          "stall torque at 6.35 V >= 1.98 N m (actuation_trade.md 0 purchase gate)"
+        ],
+        "_tags": "S price 27.00, 26/30 kg cm at 5.0/6.8 V, 60 g (aifitlab listing, actuation_trade.md A32); 6.5 V stall 29.33 kg cm = 2.877 N m [D linear]; body 40 x 20 x 40.5 listing rounded; every dimension here is the DS3218MG value [A], list measure_on_delivered_part"
+      }
+    },
+    "id": "A32",
+    "body_x": 20.1,
+    "body_y": 40.0,
+    "body_z": 38.0,
+    "overall_h": 40.5,
+    "shaft_from_bottom": 10.0,
+    "boss_d": 9.0,
+    "boss_h": 2.5,
+    "spline": "25T [A]",
+    "ear_span": 54.5,
+    "ear_hole_pitch_y": 49.5,
+    "ear_hole_pitch_x": 10.0,
+    "ear_t": 2.5,
+    "ear_from_top": 10.0,
+    "ear_hole_d": 4.5,
+    "horn_d": 20.0,
+    "horn_t": 3.0,
+    "horn_counterbore_d": 7.0,
+    "horn_counterbore_depth": 1.8,
+    "horn_gap": 2.5,
+    "dog_r": 7.0,
+    "dog_d": 3.0,
+    "mass_g": 60,
+    "price_usd": 27.0,
+    "rail_V": 6.5,
+    "stall_torque_kgcm": {
+      "5.0V": 26.0,
+      "6.5V": 29.33,
+      "6.8V": 30.0
+    },
+    "_doc": "Case body_x (width) x body_y (length) x body_z (case height below the top face); overall 40.5 = case + 2.5 boss [A split]. servo.model picks one row of servo.models (copied over these keys by gripper_concept.resolve). long_axis X: case length along frame-G X, shaft 10 from the outboard (-X) end. Horn: 25T aluminium disc 20 x 3 [A] seated on the boss top (horn_gap = boss_h), 2 dog set screws at r 7.",
+    "long_axis": "X",
+    "gear_face_width": 10.5,
+    "horn_screw": "M3x6 ISO 7380 button head, 2.0 mm hex, replaces the Phillips centre screw (driven through the 3.0 pin A bore) [A]",
+    "dog_pin": "M3x10 ISO 4026 socket set screw, threaded into the tapped horn from the front through the mid-plate arc slots, thread-locker 243 [A]",
+    "dog_pin_len": 10.0
+  },
+  "gear": {
+    "module": 1.5,
+    "teeth": 19,
+    "pressure_angle": 25,
+    "profile_shift": 0.0,
+    "face_width": 10.5,
+    "center_distance": 28.5,
+    "backlash_jt": 0.25,
+    "sector": 113.7,
+    "sector_teeth_A": 6,
+    "sector_teeth_B": 7,
+    "sector_half_angle_A": 56.84,
+    "sector_half_angle_B": 66.32,
+    "r_in": 9.375,
+    "material": "PA6-CF (dried, annealed), 100 % infill",
+    "profile_dxf": "gear_profile.dxf",
+    "_doc": "sector (deg) is the viewer's sector key (2 x A half angle); the CAD uses the DXF polygons GEAR_A / GEAR_B (world frame, pivots at -/+ a/2). Rev B: face_width follows servo.models[model].gear_face_width (10.5 for the DS3230 MG, actuation C1)."
+  },
+  "knuckle": {
+    "hub_bore": 3.0,
+    "hub_r": 9.8,
+    "sleeve_od": 6.0,
+    "sleeve_id": 3.0,
+    "sleeve_len": 10.0,
+    "pin_d": 3.0,
+    "pin_len": 16.0,
+    "pin_hole_cad": 2.9,
+    "shim_t": 0.85,
+    "shim_od": 7.0,
+    "shim_id": 3.2,
+    "end_play": 0.3,
+    "dog_slot_w": 3.4,
+    "dog_slot_r0": 5.25,
+    "dog_slot_r1": 8.75,
+    "dog_slot_depth": 3.5,
+    "arm_top_width": 10.0,
+    "root_offset": 19.0,
+    "root_thickness": 3.0,
+    "root_tab": 3.0,
+    "root_cheek": 2.0,
+    "peg_d": 2.0,
+    "peg_pitch": 5.45,
+    "root_screw_d": 2.4,
+    "lightening_holes": 0,
+    "material": "PA6-CF (integral with the gear sector)",
+    "root_relief": 6.55,
+    "sleeve_bore_cad": 5.8,
+    "pin_spec": "ISO 2338 h8 3 x 16 (2.986-3.000), graded so each pin runs 0.000-0.020 in its pressed bush [tolerance row 2]",
+    "pin_back_recess": 0.5,
+    "pin_front_blind": 1.5
+  },
+  "finger": {
+    "lattice": "finray",
+    "length": 45.0,
+    "base_width": 16.0,
+    "depth": 20.0,
+    "wall": 0.8,
+    "ribs": 6,
+    "rib_thickness": 1.0,
+    "rib_angle": 30,
+    "closed_gap": 4.45,
+    "tip_width": 4.0,
+    "contact_gap": 1.0,
+    "material": "TPU 95A, printed flat",
+    "toe_in_deg": 0.44,
+    "contact_from_tip": 5.0
+  },
+  "nail": {
+    "finger": "A",
+    "material": "PLA",
+    "thickness": 1.0,
+    "length": 12.0,
+    "depth": 20.0
+  },
+  "fsr": {
+    "finger": "B",
+    "part": "Interlink FSR 402 (Adafruit 166)",
+    "head_d": 18.28,
+    "active_d": 12.7,
+    "thickness": 0.45,
+    "tail_w": 7.6,
+    "centre_from_tip": 9.0,
+    "backing_material": "PLA",
+    "backing_under": 1.0,
+    "pocket_depth": 0.5,
+    "backing_length": 19.0,
+    "puck_d": 6.0,
+    "puck_t": 1.0,
+    "puck_from_tip": 6.0,
+    "_doc": "Backing 1.5 total (1.0 under the FSR + 0.5 pocket); FSR head centred 9 mm above the tip (s 36), puck 6 dia at s 39 so it stays in the 12.7 active area [A]; nominal pad centroid s 40."
+  },
+  "housing": {
+    "wall": 2.5,
+    "plate": 2.5,
+    "plate_radius": 17.5,
+    "standoff_d": 6.0,
+    "mount_d": 32.0,
+    "mount_t": 4.0,
+    "lightened": true,
+    "material": "PETG",
+    "standoffs": [
+      [
+        -23.0,
+        13.0
+      ],
+      [
+        23.0,
+        13.0
+      ],
+      [
+        0.0,
+        15.5
+      ]
+    ],
+    "front_gap": 1.0,
+    "deck_t": 3.0,
+    "deck_clear_above_servo": 0.5,
+    "deck_z": [
+      -18.0,
+      12.5
+    ],
+    "deck_half_x": 34.0,
+    "deck_screws": [
+      [
+        -30.5,
+        6.0
+      ],
+      [
+        30.5,
+        6.0
+      ],
+      [
+        -30.5,
+        -7.5
+      ],
+      [
+        30.5,
+        -7.5
+      ]
+    ],
+    "clearance_hole_cad": 3.6,
+    "insert_bore": 4.2,
+    "insert_depth": 3.5,
+    "cradle_pocket_clear": 0.2,
+    "_doc": "mount_d / mount_t kept for viewer.html only; the real mount is the wrist_mount block.",
+    "deck_y_min": 19.0,
+    "cradle_pocket_rule": "pocket width = servo.body_x (largest measured case width) + 2 x cradle_pocket_clear = width + 0.40 (tolerance row 3)",
+    "ear_seat_hole": 5.0,
+    "frame_end_ext": 1.5,
+    "limiter": {
+      "od": 5.0,
+      "id": 3.2,
+      "len": 2.55,
+      "spec": "brass or steel tube 5.0 x 3.2, cut to 2.55 (thermal.md C1) [A]"
+    },
+    "washer": {
+      "od": 7.0,
+      "id": 3.2,
+      "t": 0.5,
+      "spec": "M3 ISO 7089 7 x 3.2 x 0.5 [S class]"
+    },
+    "nut": {
+      "af": 5.5,
+      "ac": 6.35,
+      "h": 2.4,
+      "spec": "M3 ISO 4032"
+    },
+    "nut_notch_r": 3.75,
+    "nut_notch_r_nut": 3.45,
+    "nut_notch_washer_h": 0.8,
+    "nut_notch_h": 3.5,
+    "horn_relief": 1.0,
+    "horn_face_relief_depth": 0.25,
+    "horn_face_relief_radial": 0.7,
+    "horn_face_seat_radius": 2.9,
+    "boss_web_t": 1.6,
+    "boss_web_gap": 0.15,
+    "boss_web_half_y": 7.0,
+    "boss_bore_cad": 8.8,
+    "boss_bore_ream": 9.0,
+    "tc_hole_d": 1.0,
+    "tc_hole_short_of_ear": 0.5,
+    "deck_pegs": [
+      [
+        -19.8,
+        3.9
+      ],
+      [
+        19.8,
+        -6.5
+      ]
+    ],
+    "deck_peg_hole_cad": 2.9,
+    "peg_pin": "2 x ISO 2338 h8 3 x 6, bonded (retaining compound) in the spider, slip in the reamed Ø3.0 deck holes [tolerance row 5, bought in place of printed pegs]",
+    "deck_r_max": 37.5
+  },
+  "wrist_mount": {
+    "material": "PETG, 100 % infill",
+    "roll_axis_xz": [
+      0.0,
+      0.0
+    ],
+    "bolt_circle_d": 14.0,
+    "bolt_count": 4,
+    "clearance_hole_cad": 3.7,
+    "counterbore_d": 6.5,
+    "clamp_t": 3.0,
+    "centre_hole_d": 5.4,
+    "recess_d_cad": 19.56,
+    "recess_depth": 1.0,
+    "recess_chamfer": 0.3,
+    "hub_r_low": 11.6,
+    "hub_low_to_H": 1.0,
+    "rim_below_H": 1.0,
+    "hub_r_band": 14.6,
+    "band_to_H": 5.0,
+    "arm_t": 4.0,
+    "arm_w": 9.0,
+    "boss_d": 9.0,
+    "screw": "4x M3 pan head ISO 7045 into the horn, length per horn_screw_rule (M3x6 at a measured depth >= 3.75)",
+    "deck_screw": "4x M3x6 pan head up through the deck into M3 heat-set inserts (4.2 x 3.5) in the spider",
+    "horn_screw_len": 6.0,
+    "horn_screw_rule": "measure horn hole depth d (DB M15). Screw length L must give tip clearance d - (L - clamp_t) >= 0.2 and full-thread engagement L - clamp_t >= 1.5 + 0.5 lead: M3x6 needs d >= 3.75 (PASS), 3.5-3.7 MARGINAL (hand-check each head seats); d < 3.5: drill and re-tap the horn holes to >= 3.75 (T03/T03B, tolerance row 8)",
+    "peg_hole_cad": 2.9,
+    "peg_hole_depth": 3.5
+  },
+  "camera_pad": {
+    "face": "+Z front plate",
+    "centre_rel_pivot": [
+      11.0,
+      10.3
+    ],
+    "size": [
+      12.0,
+      17.0
+    ],
+    "boss_h": 3.0,
+    "bolt_pitch": 8.1,
+    "bore_d": 4.2,
+    "bore_depth": 4.5,
+    "tab_slot": [
+      3.0,
+      2.0,
+      1.5
+    ],
+    "primary_camera": "fixed off-arm Pi Camera 3 (camera.md 0), 0 g on the arm",
+    "wrist_option": "32x32 UVC bracket on this pad, 16.3 g (not modelled)",
+    "camera_lane_status": "pre-CAD: camera.md clearances and mass figure assume pivot-to-H 40.7 and pad u 27; CAD has 31.0 and u 20.7 (see _provenance.camera_pad)"
+  },
+  "motion": {
+    "open_angle_max": 20,
+    "theta_min": -11.0,
+    "theta_min_recommended": -7.4
+  },
+  "materials": {
+    "PLA": 1.24,
+    "TPU": 1.22,
+    "print_fill": 0.6,
+    "_doc": "PLA/TPU/print_fill are the densities (g/cm^3) and PLA fill that gripper_concept.py reads. Everything below is additive design data (MPa unless noted); owner docs/gripper/DESIGN-BASIS.md, numbers from docs/gripper/design_basis.py. TPU 95A TDS density is 1.22.",
+    "safety_factors": {
+      "fatigue_LC1": 1.5,
+      "static_LC2": 1.5,
+      "overload_LC3": 1.0,
+      "KA_LC2": 1.25,
+      "N_design_cycles": 100000
+    },
+    "allowables": {
+      "PLA": {
+        "density": 1.24,
+        "E_xy": 2580,
+        "E_z": 2060,
+        "tensile_xy": 35,
+        "tensile_z": 31,
+        "flex_xy": 76,
+        "fatigue_smax_1e5": 22.5,
+        "fatigue_smax_1e6": 15.5,
+        "HDT_C": 57,
+        "allow_LC1": 15.0,
+        "allow_LC2": 23.33,
+        "allow_LC3": 35.0,
+        "tag": "S Bambu PLA Basic TDS; fatigue D Basquin fit (gears.md 2.1)"
+      },
+      "PETG": {
+        "density": 1.25,
+        "E_xy": 2780,
+        "E_z": 2550,
+        "tensile_xy": 51,
+        "tensile_z": 35,
+        "flex_xy": 75,
+        "fatigue_smax_1e5": 30.6,
+        "HDT_C": 71,
+        "allow_LC1": 20.4,
+        "allow_LC2": 34.0,
+        "allow_LC3": 51.0,
+        "tag": "S Bambu PETG Basic TDS; fatigue A (PLA ratio 0.60 x UTS)"
+      },
+      "PA6-CF": {
+        "density": 1.09,
+        "E_xy": 4430,
+        "E_z": 2170,
+        "tensile_xy": 102,
+        "tensile_z": 48,
+        "flex_xy": 151,
+        "gear_lewis_anchor": 57,
+        "HDT_C": 186,
+        "allow_LC1": 38.0,
+        "allow_LC2": 68.0,
+        "allow_LC3": 102.0,
+        "tag": "S Bambu PA6-CF TDS (dried, annealed); fatigue S gear-level Onyx 57 MPa at 6.3e6 cycles (gears.md 3)"
+      },
+      "POM": {
+        "density": 1.42,
+        "E": 2800,
+        "tensile": 69,
+        "fatigue_flex_1e6": 32,
+        "allow_LC1": 21.33,
+        "allow_LC2": 46.0,
+        "allow_LC3": 69.0,
+        "tag": "S DuPont Delrin design guide (machined); density A"
+      },
+      "Al6061-T6": {
+        "density": 2.7,
+        "E": 69000,
+        "yield": 276,
+        "UTS": 310,
+        "fatigue_5e8": 97,
+        "allow_LC1": 64.67,
+        "allow_LC2": 184.0,
+        "allow_LC3": 276.0,
+        "tag": "S gears.md 2.2 (typical values)"
+      },
+      "TPU95A": {
+        "density": 1.22,
+        "E_xy": 67,
+        "E_yz": 67,
+        "E_z": 56,
+        "break_xy": 23.7,
+        "break_yz": 37.9,
+        "break_z": 6.4,
+        "elong_break_xy_pct": 560,
+        "elong_break_z_pct": 82.3,
+        "flex_modulus_xy": 62.6,
+        "flex_strength_xy_at_9p4pct": 4.1,
+        "shore_A": 96,
+        "HDT_C": 50.3,
+        "poisson": 0.45,
+        "design_strain_max_pct": 10,
+        "tag": "S Ultimaker TPU 95A TDS (0.4 mm core, 0.15 mm layers, 100 % infill) https://um-support-files.ultimaker.com/materials/2.85mm/tds/TPU-95A/Ultimaker-TPU95A-TDS-v5.00.pdf; poisson and strain limit A"
+      }
+    },
+    "PETG": 1.25,
+    "PA6CF": 1.09,
+    "steel": 7.85,
+    "bronze": 8.8,
+    "print_fill_solid": 1.0,
+    "brass": 8.5,
+    "Al": 2.7
+  },
+  "grip": {
+    "_doc": "Load cases LC1-LC4 in docs/gripper/DESIGN-BASIS.md. Contact = tip pad; r_c = perpendicular distance pivot -> pad-normal line of action (invariant with jaw angle).",
+    "contact": "tip pad",
+    "pad_centroid_from_tip_mm": 5.0,
+    "F_target_N": 5.0,
+    "F_cap_N": 10.0,
+    "tension_N": 2.0,
+    "mu_pad_cloth": 0.4,
+    "SF_slip": 2.0,
+    "eta_mesh_pivot": 0.85,
+    "r_c_current_cad_mm": 64.9,
+    "r_c_viewer_stale_mm": 56.2,
+    "r_c_design_mm": 65.0,
+    "finger_length_design_mm": 45.0,
+    "T_servo_LC1_Nm": 0.765,
+    "T_servo_LC2_Nm": 1.529,
+    "T_mesh_LC1_Nm": 0.399,
+    "T_mesh_LC2_Nm": 0.976,
+    "T_mesh_LC3_Nm": 2.108,
+    "hold_fraction_of_stall": 0.4,
+    "stall_required_at_servo_V_kgcm": 20.2,
+    "k_tip_min_N_per_mm": 0.88,
+    "k_tip_max_N_per_mm": 1.63,
+    "k_tip_default_N_per_mm": 1.0,
+    "theta_min_deg": -11.0,
+    "theta_open_max_deg": 20.0,
+    "theta_hold_default_deg": -4.7,
+    "close_time_max_s": 0.5,
+    "near_contact_speed_deg_s": 20,
+    "finger_roles": {
+      "A": "driven; stiff PLA tip nail 1.0 mm slides under the cloth edge",
+      "B": "idler; FSR on the pad behind a rigid backing"
+    },
+    "fsr": {
+      "part": "Interlink FSR 402 class (Adafruit 166)",
+      "range_N": [
+        0.3,
+        10
+      ],
+      "finger": "B",
+      "backing": "1.0 mm PLA plate under, 6 mm dia puck over the active area",
+      "touch_N": 0.5,
+      "grip_setpoint_N": 5.0,
+      "slip_below_N": 3.0,
+      "overforce_trip_N": 8.0
+    },
+    "servo_design_point": {
+      "id": "A17",
+      "model": "DSServo DS3218MG",
+      "supply_V": 6.5,
+      "stall_kgcm": 21.08,
+      "mass_g": 58,
+      "price_usd": 12.99,
+      "deadband_us": 3,
+      "in_stock_alternative": "A18 DSServo DS3225",
+      "note": "bookkeeping choice; the W2a trade study owns the pick",
+      "stall_source": "servo.stall_torque_kgcm 6.5V (linear interpolation of actuators.csv A17 5.0/6.8 V) [D]"
+    },
+    "gearmotor_fallback": {
+      "extra_reduction_min_LC1": 3.12,
+      "extra_reduction_min_LC2": 6.24,
+      "rule": "Pololu HPCB 380:1 gearbox limit 2.5 kg*cm: add >= 4:1 stage (>= 6.3:1 if the gearbox must carry the cap) or a worm"
+    },
+    "T_mesh_shock_Nm": 2.155,
+    "T_mesh_source": "gears.md 1 / analysis/gripper/results/gears.json load_cases.at_rec_print [D]",
+    "stall_required_source": "torque_and_actuator.md required-stall table [D]"
+  },
+  "payload_scenarios": {
+    "_doc": "Static shoulder_lift check at full horizontal extension (MuJoCo so101_old_calib.xml, qfrc_bias) plus feed-pose sweep. Arm joints hold <= 50 % of stall.",
+    "hold_fraction_arm": 0.5,
+    "lever_shoulder_lift_to_H_mm": 309.1,
+    "arm_only_shoulder_lift_Nm": 0.527,
+    "stock_gripper": {
+      "mass_g": 99.0,
+      "shoulder_lift_Nm": 0.855
+    },
+    "new_gripper_estimate": {
+      "mass_g_incl_cloth": 115.8,
+      "com_past_H_mm": 40.7,
+      "mass_moment_gmm": 40507.0,
+      "with_camera_mass_g": 125.8,
+      "with_camera_mass_moment_gmm": 43798.0
+    },
+    "tension_moment_Nm": 0.1,
+    "tension_worst_direction_full_ext_Nm": 0.84,
+    "scenarios": {
+      "C001_5V": {
+        "stall_Nm": 1.618,
+        "hold_allow_Nm": 0.809,
+        "mass_moment_budget_gmm": 28720.0,
+        "max_mass_g_at_40mm": 82.3,
+        "full_ext_hold_ok_no_camera": false,
+        "feed_pose_ok_to_reach_m": 0.36
+      },
+      "C001_7p4V": {
+        "stall_Nm": 1.912,
+        "hold_allow_Nm": 0.956,
+        "mass_moment_budget_gmm": 43720.0,
+        "max_mass_g_at_40mm": 125.2,
+        "full_ext_hold_ok_no_camera": true,
+        "feed_pose_ok_to_reach_m": 0.4
+      },
+      "C018_12V": {
+        "stall_Nm": 2.942,
+        "hold_allow_Nm": 1.471,
+        "mass_moment_budget_gmm": 96220.0,
+        "max_mass_g_at_40mm": 275.6,
+        "full_ext_hold_ok_no_camera": true,
+        "feed_pose_ok_to_reach_m": 0.4
+      }
+    },
+    "design_point": "C001_7p4V"
+  },
+  "wrist_interface": {
+    "_doc": "SO-101 wrist-roll horn (servo 5) interface, frame I of docs/gripper/research/so101.md; z measured from horn face H (H is z = +1.0 in frame I). The concept housing.mount_* keys (32 mm square, 20 mm BC) are superseded by this block.",
+    "source": "docs/gripper/research/so101.md, cad/so101/measure_interface.py on SO-ARM100 @ eecbe3e0a9ebb23e25ad7b2759b03884c6660903",
+    "horn_od": 19.2,
+    "horn_height_above_servo_case": 4.8,
+    "bolt_count": 4,
+    "bolt_circle_d": 14.0,
+    "bolt_square": 9.9,
+    "horn_hole_d": 2.5,
+    "horn_hole_depth": 3.75,
+    "screw": "M3x6 pan head, DIN EN ISO 7045",
+    "clearance_hole_d_stock": 3.2,
+    "clearance_hole_d_cad_fdm": 3.7,
+    "clamp_thickness": 3.0,
+    "counterbore_d": 6.5,
+    "counterbore_depth": 6.0,
+    "centre_hole_d_min": 5.4,
+    "pilot_recess_d_stock": 20.0,
+    "pilot_recess_depth": 1.0,
+    "pilot_diametral_clearance_stock": 0.8,
+    "pilot_recess_d_cad_fdm": 19.56,
+    "hub_od_max": 23.2,
+    "keepout": [
+      {
+        "z_from_H_min": -1.0,
+        "z_from_H_max": 1.0,
+        "r_max": 11.6
+      },
+      {
+        "z_from_H_min": 1.0,
+        "z_from_H_max": 5.0,
+        "r_max": 14.6
+      }
+    ],
+    "wrist_flex_axis_to_H_mm": 61.55,
+    "wrist_flex_axis_to_roll_joint_urdf_mm": 61.1,
+    "roll_travel_deg": [
+      -157.2,
+      162.8
+    ],
+    "stock_tcp_from_roll_joint_mm": 98.45,
+    "camera_mount_stock": "2x M3 through holes with hex-nut recesses; the new housing replicates an M3 camera mount if the wrist camera is kept",
+    "horn_hole_depth_note": "minimum for M3x6 (rev_b.yaml assumes it), not a measurement: measure (DB M15) and see wrist_mount.horn_screw_rule"
+  },
+  "work_cell": {
+    "_doc": "Assumed work cell (A unless tagged). Reference machine Singer 4423 (S singer.com product page).",
+    "machine": "generic domestic, reference Singer 4423",
+    "max_stitches_per_min": 1100,
+    "needle_to_tower_mm": 159,
+    "machine_wdh_mm": [
+      394,
+      159,
+      305
+    ],
+    "bed_height_above_table_mm": 100,
+    "stitch_length_mm": 2.5,
+    "demo_stitches_per_min": 240.0,
+    "feed_speed_mm_s": 10.0,
+    "seam_length_mm": 200.0,
+    "release_before_presser_foot_mm": 20,
+    "cloth": {
+      "size_mm": [
+        300,
+        300
+      ],
+      "areal_density_g_m2": 150,
+      "thickness_mm": 0.3,
+      "mass_g": 13.5,
+      "plies": 1
+    },
+    "arm_base": "same table as the machine",
+    "feed_pose_reach_max_mm": 300,
+    "tension_line_to_shoulder_axis_max_mm": 50,
+    "gripper_tilt_max_deg": 45,
+    "overhead_camera_height_mm": 500,
+    "ambient_max_C": 40
+  },
+  "duty_cycle": {
+    "phases_s": {
+      "approach_touchdown": 4.0,
+      "close": 0.5,
+      "lift_move_to_needle": 5.0,
+      "feed_hold": 20.0,
+      "release": 0.5,
+      "return": 5.0
+    },
+    "cycle_s": 35.0,
+    "cycles_per_hour": 102.9,
+    "hold_fraction": 0.729,
+    "N_design_cycles": 100000,
+    "hours_to_N_design": 972.0,
+    "servo_mean_I2R_fraction_of_stall": 0.117,
+    "stall_detect_max_ms": 200
+  },
+  "mcu": {
+    "board": "ESP32 DevKitC (ESP32-WROOM-32)",
+    "ide": "Arduino IDE, esp32 core",
+    "libraries": [
+      "ESP32Servo",
+      "Button2",
+      "Adafruit_INA219"
+    ],
+    "logic_V": 3.3,
+    "adc_bits": 12,
+    "adc_rule": "analog inputs on ADC1 pins only (ADC2 is unavailable while Wi-Fi runs)",
+    "pins": {
+      "servo_pwm": 18,
+      "fsr_adc1": 34,
+      "servo_pot_adc1_optional": 32,
+      "button_start": 25,
+      "limit_open": 26,
+      "i2c_sda": 21,
+      "i2c_scl": 22,
+      "status_led": 2
+    },
+    "servo_pwm_hz": 50,
+    "pulse_us": [
+      500,
+      2500
+    ],
+    "servo_current_sense": "INA219 on I2C, high side of the 6.5 V servo rail (stall and hold-current detection)",
+    "power": {
+      "servo_rail_V": 6.5,
+      "servo_rail_A_min": 3.0,
+      "bulk_cap_uF": 1000,
+      "logic": "USB 5 V to the DevKit regulator",
+      "ground": "common",
+      "servo_rail_tol_V": 0.15
+    },
+    "host_link": {
+      "transport": "USB serial",
+      "baud": 115200,
+      "host_to_mcu": [
+        "G <newtons>",
+        "R",
+        "H",
+        "C",
+        "S"
+      ],
+      "mcu_to_host": "EVT <name> <millis>"
+    },
+    "states": [
+      "BOOT",
+      "HOME",
+      "CALIBRATE",
+      "IDLE",
+      "APPROACH",
+      "TOUCHDOWN",
+      "CLOSE",
+      "HOLD",
+      "FEED",
+      "RELEASE",
+      "RETRACT",
+      "FAULT"
+    ],
+    "uno_differences": "5 V logic, 10-bit ADC, Servo.h disables analogWrite on pins 9 and 10, external interrupts only on D2/D3, 2 KB SRAM, no Wi-Fi"
+  }
+}
