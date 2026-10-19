@@ -67,13 +67,14 @@ def main():
     T_allow = F_allow * r / 1000.0
     chosen = "hardened Ø2.9 shoulder M3 dog screw, Ø6 insert"
     horn_rim = s["horn_d"] / 2 - r - s.get("horn_insert_od", 6.0) / 2
+    center_web = r - s.get("horn_insert_od", 6.0) / 2 - s["horn_counterbore_d"] / 2
     chosen_one = rows[f"{chosen}, 1 dog"]
     chosen_margin = min(chosen_one["SF_bending"], chosen_one["SF_horn"], chosen_one["SF_insert"])
     out = {"T_stall_6p5V_Nm": round(T, 3), "dog_r_mm": r, "lever_L_mm": round(L, 2), "engagement_mm": round(engage, 2),
            "horn_t_mm": t, "rows": rows, "one_dog_T_allow_Nm": round(T_allow, 2),
            "one_dog_T_allow_over_stall": round(T_allow / T, 2),
            "T_servo_LC1_Nm": P["grip"]["T_servo_LC1_Nm"], "T_servo_LC2_Nm": P["grip"]["T_servo_LC2_Nm"],
-           "chosen": chosen, "horn_rim_mm": round(horn_rim, 2),
+           "chosen": chosen, "horn_rim_mm": round(horn_rim, 2), "center_web_mm": round(center_web, 2),
            "chosen_one_dog_min_SF": chosen_margin,
            "chosen_one_dog_T_allow_Nm": round(T * chosen_margin, 2),
            "chosen_passes": horn_rim >= MIN_HORN_RIM and all(rows[f"{chosen}, {n} dog{'s' if n > 1 else ''}"]["passes"] for n in (1, 2)),

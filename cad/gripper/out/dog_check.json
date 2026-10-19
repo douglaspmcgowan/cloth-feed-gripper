@@ -12,7 +12,11 @@
       "SF_bending": 0.83,
       "horn_bearing_MPa": 685,
       "horn_allow_MPa": 386.0,
-      "SF_horn": 0.56
+      "SF_horn": 0.56,
+      "insert_bearing_MPa": null,
+      "insert_allow_MPa": null,
+      "SF_insert": null,
+      "passes": false
     },
     "M3 set screw 45H (as drawn), 2 dogs": {
       "F_N": 205.4,
@@ -21,30 +25,100 @@
       "SF_bending": 1.65,
       "horn_bearing_MPa": 342,
       "horn_allow_MPa": 386.0,
-      "SF_horn": 1.13
+      "SF_horn": 1.13,
+      "insert_bearing_MPa": null,
+      "insert_allow_MPa": null,
+      "SF_insert": null,
+      "passes": true
     },
-    "hardened Ø3 dowel (ISO 8734 class), 1 dog": {
+    "hardened Ø3 dowel, bare aluminium, 1 dog": {
       "F_N": 410.9,
       "bending_MPa": 853,
       "bending_allow_MPa": 1700.0,
       "SF_bending": 1.99,
       "horn_bearing_MPa": 685,
       "horn_allow_MPa": 386.0,
-      "SF_horn": 0.56
+      "SF_horn": 0.56,
+      "insert_bearing_MPa": null,
+      "insert_allow_MPa": null,
+      "SF_insert": null,
+      "passes": false
     },
-    "hardened Ø3 dowel (ISO 8734 class), 2 dogs": {
+    "hardened Ø3 dowel, bare aluminium, 2 dogs": {
       "F_N": 205.4,
       "bending_MPa": 426,
       "bending_allow_MPa": 1700.0,
       "SF_bending": 3.99,
       "horn_bearing_MPa": 342,
       "horn_allow_MPa": 386.0,
-      "SF_horn": 1.13
+      "SF_horn": 1.13,
+      "insert_bearing_MPa": null,
+      "insert_allow_MPa": null,
+      "SF_insert": null,
+      "passes": true
+    },
+    "hardened Ø3 dowel, Ø6 steel insert, 1 dog": {
+      "F_N": 410.9,
+      "bending_MPa": 853,
+      "bending_allow_MPa": 1700.0,
+      "SF_bending": 1.99,
+      "horn_bearing_MPa": 342,
+      "horn_allow_MPa": 386.0,
+      "SF_horn": 1.13,
+      "insert_bearing_MPa": 685,
+      "insert_allow_MPa": 900.0,
+      "SF_insert": 1.31,
+      "passes": true
+    },
+    "hardened Ø3 dowel, Ø6 steel insert, 2 dogs": {
+      "F_N": 205.4,
+      "bending_MPa": 426,
+      "bending_allow_MPa": 1700.0,
+      "SF_bending": 3.99,
+      "horn_bearing_MPa": 171,
+      "horn_allow_MPa": 386.0,
+      "SF_horn": 2.25,
+      "insert_bearing_MPa": 342,
+      "insert_allow_MPa": 900.0,
+      "SF_insert": 2.63,
+      "passes": true
+    },
+    "hardened Ø2.9 shoulder M3 dog screw, Ø6 insert, 1 dog": {
+      "F_N": 410.9,
+      "bending_MPa": 944,
+      "bending_allow_MPa": 1400.0,
+      "SF_bending": 1.48,
+      "horn_bearing_MPa": 342,
+      "horn_allow_MPa": 386.0,
+      "SF_horn": 1.13,
+      "insert_bearing_MPa": 708,
+      "insert_allow_MPa": 900.0,
+      "SF_insert": 1.27,
+      "passes": true
+    },
+    "hardened Ø2.9 shoulder M3 dog screw, Ø6 insert, 2 dogs": {
+      "F_N": 205.4,
+      "bending_MPa": 472,
+      "bending_allow_MPa": 1400.0,
+      "SF_bending": 2.97,
+      "horn_bearing_MPa": 171,
+      "horn_allow_MPa": 386.0,
+      "SF_horn": 2.25,
+      "insert_bearing_MPa": 354,
+      "insert_allow_MPa": 900.0,
+      "SF_insert": 2.54,
+      "passes": true
     }
   },
   "one_dog_T_allow_Nm": 1.62,
   "one_dog_T_allow_over_stall": 0.56,
   "T_servo_LC1_Nm": 0.765,
   "T_servo_LC2_Nm": 1.529,
-  "basis": "D: geometry from gripper_concept.derive and params.json; A: D3_M3, SIGMA_45H, SIGMA_DOWEL, P_HORN"
+  "chosen": "hardened Ø2.9 shoulder M3 dog screw, Ø6 insert",
+  "horn_rim_mm": 1.0,
+  "center_web_mm": 0.5,
+  "chosen_one_dog_min_SF": 1.13,
+  "chosen_one_dog_T_allow_Nm": 3.25,
+  "chosen_passes": true,
+  "basis": "D: geometry from gripper_concept.derive and params.json; A: D3_M3, SIGMA_45H, SIGMA_DOWEL, SIGMA_SHOULDER, P_HORN, P_INSERT, MIN_HORN_RIM"
 }
