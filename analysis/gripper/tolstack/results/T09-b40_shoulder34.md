@@ -43,3 +43,5 @@ The rigid contact faces (PLA nail on A, FSR stack on B) are contact_gap apart at
 | Dominant contributor | horn_trim (68 %) |
 | Pass/fail by the declared method (MC) | PASS |
 | **Verdict (pass / marginal / fail)** | **PASS** |
+
+![T09-b40_shoulder34 histogram](figures/tol_T09-b40_shoulder34.png)
