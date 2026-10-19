@@ -304,7 +304,7 @@
    "value": {
     "analysis/gripper/results/dyno.json": "b691d414b707751c",
     "cad/gripper/params.json": "c8331ee9644d0910",
-    "docs/gripper/DESIGN-BASIS.md": "39ed2d051b168c92",
+    "docs/gripper/DESIGN-BASIS.md": "ea69c0fb3c6af147",
     "firmware/gripper/config.h": "4c30527fd2157b4d"
    }
   },

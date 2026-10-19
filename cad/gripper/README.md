@@ -106,7 +106,7 @@ The 309.1 mm lever makes the limit about 126 g at this COM, so 27 g has to go. *
 **Closest combination:** every counted row together (infill trims, short bushes, aluminium limiters, knuckle lightening holes, 40 mm fingers) gives 48,486 g·mm, 110.9 % of 43,720, still 4,766 g·mm (about 13.7 g at the COM lever) over. No qualifying servo is lighter than the DS3230, and moving the servo toward the wrist adds more than it saves in both forms the model can build. The servo alone is 20,406 g·mm and the cloth 5,469.
 
 <!-- r10-work-cell-rule:begin -->
-Douglas's 2026-10-11 ruling keeps R10 at **43,720 g·mm**. No option closes R10, and R10 honestly remains **FAIL at full extension**. The required work-cell rule is no holds with the gripper COM farther than r_limit = 285.9 mm from the shoulder_lift axis (43,720 g·mm / 152.9 g); the equivalent fingertip limit is 344.3 mm. The values come from the current CAD mass in `out/fitcheck.json`; TP-14 enforces the reach gate.
+Douglas's 2026-10-11 ruling keeps R10 at **43,720 g·mm**. No option closes R10, and R10 honestly remains **FAIL at full extension**. The required work-cell rule is no holds with the gripper COM farther than r_limit = 284.1 mm from the shoulder_lift axis (43,720 g·mm / 153.9 g); the equivalent fingertip limit is 342.6 mm. The values come from the current CAD mass in `out/fitcheck.json`; TP-14 enforces the reach gate.
 <!-- r10-work-cell-rule:end -->
 
 ## Still assumed

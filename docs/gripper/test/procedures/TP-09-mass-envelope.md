@@ -21,9 +21,9 @@
 | Quantity | Expected | Source |
 |---|---|---|
 <!-- current-mass:begin -->
-| Gripper, cloth and wiring: CAD revision B | 152.9 g | [D] `fitcheck.json` |
-| COM past H: CAD revision B | 37.6 mm | [D] `fitcheck.json` |
-| **Mass-moment: CAD revision B** | **52995 g·mm (121.2 %, predicted FAIL at full reach)** | [D] `fitcheck.json` |
+| Gripper, cloth and wiring: CAD revision B | 153.9 g | [D] `fitcheck.json` |
+| COM past H: CAD revision B | 37.5 mm | [D] `fitcheck.json` |
+| **Mass-moment: CAD revision B** | **53342 g·mm (122.0 %, predicted FAIL at full reach)** | [D] `fitcheck.json` |
 <!-- current-mass:end -->
 <!-- history:begin -->
 Revision A history: the design-basis estimate was 115.8 g including cloth at 40.7 mm past H, or 40,507 g·mm. The intermediate BOM estimate was 144.4 g and 50,511 g·mm. These values are not inputs or verdict criteria for this procedure.
@@ -92,7 +92,7 @@ One row per item: m_g (3), m_c, m_w, m_stock (3), d_COM (3 + check), D1, D2, z_w
 ## Pass / fail
 
 <!-- mass-verdict:begin -->
-- **R10:** U = 213.2836 g·mm. PASS if value ≤ 43507 g·mm (limit − U); FAIL if value ≥ 43933 g·mm (limit + U); INDETERMINATE in between. Stretch-goal PASS threshold: 33167 g·mm. CAD revision B predicts FAIL at full reach. The ruled disposition prohibits holds beyond measured `r_limit`; TP-14 enforces it.
+- **R10:** U = 214.4789 g·mm. PASS if value ≤ 43506 g·mm (limit − U); FAIL if value ≥ 43934 g·mm (limit + U); INDETERMINATE in between. Stretch-goal PASS threshold: 33166 g·mm. CAD revision B predicts FAIL at full reach. The ruled disposition prohibits holds beyond measured `r_limit`; TP-14 enforces it.
 <!-- mass-verdict:end -->
 - **R9:** report D1 against Ø23.2 (fix 5) **and** Ø24.0 (DB R9); D2 against Ø29.2 and Ø30.0. Pass on each if the reading + 0.05 mm ≤ the limit. The sweep passes if the paper never pinches.
 - **R17 (r_c ≤ 65 mm, one-sided; U = 0.077 mm, the whole r_c method: calipers 0.049 mm plus the square-blade contact ±0.05 mm and the dowel diameter ±0.01 mm [D `test_plan.py` `rc_mm`]).** Judge each finger on its own mean of 3 readings. **PASS** if r_c ≤ 64.92 mm (r_c + U ≤ 65). **FAIL** if r_c ≥ 65.08 mm (r_c − U ≥ 65). **INDETERMINATE** from 64.92 to 65.08 mm: measure again with a better gauge (a height gauge or the print shop's CMM, U smaller than 0.077 mm), or ask the CAD owner to shorten the finger. The sign-off line is the worse of the two fingers. A short arm is never a fail of R17 (it only raises the servo torque needed, DB D3).
