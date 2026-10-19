@@ -528,7 +528,9 @@
     "theta_min_deg": -11.0,
     "theta_open_max_deg": 20.0,
     "theta_hold_default_deg": -4.7,
-    "close_time_max_s": 0.5,
+    "close_time_max_s": 0.75,
+    "close_time_selection_basis_s": 0.5,
+    "close_time_selection_basis_note": "R19 value at actuator and concept selection; superseded as a requirement 2026-10-12. Douglas's 2026-10-12 ruling keeps the selected actuator, gear ratio, firmware and concept.",
     "near_contact_speed_deg_s": 20,
     "finger_roles": {
       "A": "driven; stiff PLA tip nail 1.0 mm slides under the cloth edge",
