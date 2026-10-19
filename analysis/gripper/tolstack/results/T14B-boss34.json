@@ -5,15 +5,15 @@
  "companion_of": "T14",
  "dominant": {
   "name": "slot_w",
-  "var_pct": 32.3750306
+  "var_pct": 37.2039058
  },
- "yield_pct": 99.804,
+ "yield_pct": 99.94,
  "id": "T14B-boss34",
  "title": "Dog coupling \u2014 servo shaft offset from pin A against the dog slot clearance",
  "mode": "expression",
  "units": "mm tangential interference at a dog (> 0 = the dogs force knuckle A sideways)",
  "requirement": "The servo shaft axis and pin A are two separate axes. The two M3 dogs on the horn sit in radial slots in knuckle A, so the slots absorb any offset along the slot, but an offset across the slot must fit inside the tangential half-clearance, or the coupling side-loads the servo bearing and pin A.",
- "notes": "Once the boss locates the servo (boss, boss34), the servo case width does not enter this stack at all; only the cradle-located layouts use servo_body_w. Offset across the slot = shaft in case + servo float in the cradle + cradle to pin A hole + spline play + dog screw position + knuckle A float on its pin. For boss variants, wall lean moves the web bore by boss_web_to_pinA * pin_perp_zone / pin_span = 6.30 * 0.10 / 15 = 0.042 mm. Servo-axis direction is set by the ear seats and cradle floor, not the 1.6 mm bore engagement; ear-seat flatness moves the dog plane by boss_to_dog_lever * mount_flatness / servo_ear_span = 3.05 * 0.20 / 54.5 = 0.011 mm. Both levers are CAD derived. Half-clearance = (printed slot width - screw major) / 2. Rev A has 0.06 nominal half-clearance against an offset that can reach 0.5.",
+ "notes": "Once the boss locates the servo (boss, boss34), the servo case width does not enter this stack at all; only the cradle-located layouts use servo_body_w. Offset across the slot = shaft in case + servo float in the cradle + cradle to pin A hole + spline play + dog screw position + knuckle A float on its pin. For boss variants, wall lean moves the web bore by boss_web_to_pinA * pin_perp_zone / pin_span = 6.30 * 0.10 / 15 = 0.042 mm. Servo-axis direction is set by the ear seats and cradle floor, not the 1.6 mm bore engagement; ear-seat flatness moves the dog plane by boss_to_dog_lever * mount_flatness / servo_ear_span = 3.05 * 0.20 / 54.5 = 0.011 mm. Both levers are CAD derived. Half-clearance = (printed slot width - screw major) / 2. Rev A has 0.06 nominal half-clearance against an offset that can reach 0.5. B40's smooth shoulder diameter limits 2.895..2.905 mm are [A] pending a pin gauge on the machined parts.",
  "spec": {
   "usl": 0.0
  },
@@ -21,27 +21,27 @@
   "method": "wc"
  },
  "variant_of": "T14B",
- "variant_label": "servo located by its \u00d89 boss in a reamed bore + dog slots 3.4",
+ "variant_label": "B40: \u00d89 boss location, \u00d82.9 hardened shoulders in \u00d86 steel inserts, dog slots 3.4",
  "path": "analysis/gripper/tolstack/stacks/T14B_dog_coupling.yaml",
- "nominal": -0.2365,
- "mid": -0.1865,
+ "nominal": -0.25,
+ "mid": -0.2,
  "wc": [
-  -0.282592661,
-  0.243592661
+  -0.272092661,
+  0.206092661
  ],
  "rss_classic": [
-  -0.266044013,
-  -0.106955987
+  -0.275041655,
+  -0.124958345
  ],
  "rss_dist": [
-  -0.27443037,
-  -0.0985696298
+  -0.272092661,
+  -0.124875104
  ],
  "rss_dist_unclipped": [
-  -0.27443037,
-  -0.0985696298
+  -0.275124896,
+  -0.124875104
  ],
- "rss_clipped": false,
+ "rss_clipped": true,
  "rss_nonlinear": true,
  "warnings": [],
  "requires": [],
@@ -49,21 +49,21 @@
  "own_verdict": false,
  "mc": {
   "n": 100000,
-  "mean": -0.143582528,
-  "std": 0.04350033,
-  "min": -0.28580258,
-  "max": 0.0979454689,
-  "p0135": -0.253922436,
-  "p50": -0.146562972,
-  "p99865": 0.00616143564,
+  "mean": -0.157112486,
+  "std": 0.0406515341,
+  "min": -0.292943266,
+  "max": 0.0702121236,
+  "p0135": -0.258169795,
+  "p50": -0.160652966,
+  "p99865": -0.0140770266,
   "out_lo_pct": 0.0,
-  "out_hi_pct": 0.196,
-  "out_pct": 0.196,
-  "out_pct_se": 0.0139862733,
-  "cpk_normal": 1.10024091,
-  "cpk_percentile": 0.95965651,
-  "cpk_normal_se": 0.00303486627,
-  "cpk_percentile_se": 0.0087108529
+  "out_hi_pct": 0.06,
+  "out_pct": 0.06,
+  "out_pct_se": 0.00774364255,
+  "cpk_normal": 1.28828665,
+  "cpk_percentile": 1.09603914,
+  "cpk_normal_se": 0.00268947402,
+  "cpk_percentile_se": 0.0104525476
  },
  "pass": {
   "wc": false,
@@ -91,7 +91,7 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 14.9615602
+   "var_pct": 16.8791345
   },
   {
    "name": "dog_pos",
@@ -110,7 +110,7 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 5.51017018
+   "var_pct": 6.34461223
   },
   {
    "name": "pinA_float",
@@ -129,7 +129,7 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 0.320715279
+   "var_pct": 0.362203453
   },
   {
    "name": "slot_w",
@@ -148,26 +148,7 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 32.3750306
-  },
-  {
-   "name": "dog_d",
-   "kind": "linear",
-   "nominal": 2.927,
-   "bias": 0.0,
-   "upper": 0.053,
-   "lower": -0.053,
-   "mid": 2.927,
-   "half": 0.053,
-   "sensitivity": 0.5,
-   "dist": "uniform",
-   "sigma": 0.0305995643,
-   "tag": "S",
-   "source": "M3 6g major",
-   "note": "",
-   "from_stack": null,
-   "gdt": null,
-   "var_pct": 12.5797902
+   "var_pct": 37.2039058
   },
   {
    "name": "hot_servo_shift",
@@ -208,6 +189,25 @@
    "var_pct": 0.0
   },
   {
+   "name": "dog_d",
+   "kind": "linear",
+   "nominal": 2.9,
+   "bias": 0.0,
+   "upper": 0.005,
+   "lower": -0.005,
+   "mid": 2.9,
+   "half": 0.005,
+   "sensitivity": 0.5,
+   "dist": "uniform",
+   "sigma": 0.00288675135,
+   "tag": "A",
+   "source": "custom hardened dog screw smooth shoulder diameter [A; gauge machined parts]",
+   "note": "",
+   "from_stack": null,
+   "gdt": null,
+   "var_pct": 0.16565037
+  },
+  {
    "name": "boss_bore_to_pinA",
    "kind": "linear",
    "nominal": 0.0,
@@ -224,7 +224,7 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 22.2789282
+   "var_pct": 25.3779197
   },
   {
    "name": "boss_fit",
@@ -243,7 +243,7 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 0.662068755
+   "var_pct": 0.758829356
   },
   {
    "name": "boss_to_shaft",
@@ -262,7 +262,7 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 5.34629137
+   "var_pct": 6.13576213
   },
   {
    "name": "boss_web_tilt",
@@ -281,7 +281,7 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 5.7603561
+   "var_pct": 6.55892363
   },
   {
    "name": "servo_axis_tilt",
@@ -300,19 +300,19 @@
    "note": "",
    "from_stack": null,
    "gdt": null,
-   "var_pct": 0.20508897
+   "var_pct": 0.21305881
   }
  ],
  "seed": 20260922,
- "own_verdict3": "fail",
- "verdict3": "fail",
+ "own_verdict3": "marginal",
+ "verdict3": "marginal",
  "verdict_decided": true,
  "verdict_band": [
-  "fail"
+  "marginal"
  ],
  "input_digest": {
   "algorithm": "sha256",
-  "digest": "e9a684583b47c30148ef5ea7a6f32625d13d7254fd0b5fed376a852109daf2db",
+  "digest": "d88ad45b1da7ba1f922a77260589abe4919ffad7ace2fef365f1b3fe9ef0070e",
   "files": [
    "stacks/basis.yaml",
    "stacks/rev_b.yaml",

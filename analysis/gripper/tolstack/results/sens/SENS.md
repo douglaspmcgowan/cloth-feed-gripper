@@ -21,17 +21,17 @@ No verdict change at 0.5x or 2x: XY print band over 30 mm only (0.20); Z print b
 
 | Input scaled | x | Stack | Verdict change | Cpk | Yield (MC) |
 |---|---:|---|---|---|---|
-| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 0.5 | T14B | FAIL -> **MARGINAL** | 0.98 ± 0.006 -> 1.16 ± 0.016 | 99.84 % -> 99.97 % |
 | XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T02 | PASS -> **FAIL** | 1.61 ± 0.056 -> 0.87 ± 0.016 | 100 % -> 99.35 % |
 | XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T06 | PASS -> **MARGINAL** | 2.01 ± 0.031 -> 1.04 ± 0.016 | 100 % -> 99.84 % |
 | XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T07 | PASS -> **FAIL** | 1.43 ± 0.033 -> 0.93 ± 0.019 | 99.998 % -> 99.48 % |
 | XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T09 | PASS -> **MARGINAL** | 1.49 ± 0.046 -> 1.25 ± 0.032 | 100 % -> 99.990 % |
 | XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T10 | PASS -> **MARGINAL** | 1.67 ± 0.033 -> 1.08 ± 0.057 | 100 % -> 99.88 % |
+| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T14B | MARGINAL -> **FAIL** | 1.11 ± 0.023 -> 0.70 ± 0.012 | 99.95 % -> 98.56 % |
 | Z print band (0.15) | 2 | T03 | PASS -> **MARGINAL** | 2.46 ± 0.032 -> 1.82 ± 0.013 | 100 % -> 100 % |
 | Z print band (0.15) | 2 | T03B | PASS -> **MARGINAL** | 1.68 ± 0.055 -> 1.27 ± 0.032 | 100 % -> 100 % |
 | hole diameter scatter (0.15) | 2 | T01 | PASS -> **MARGINAL** | 1.77 ± 0.064 -> 1.13 ± 0.039 | 100 % -> 99.96 % |
-| pocket width scatter (0.15) | 0.5 | T14B | FAIL -> **MARGINAL** | 0.98 ± 0.006 -> 1.07 ± 0.022 | 99.84 % -> 99.93 % |
 | pocket width scatter (0.15) | 2 | T14 | PASS -> **FAIL** | 1.68 ± 0.043 -> 0.94 ± 0.039 | 100 % -> 99.77 % |
+| pocket width scatter (0.15) | 2 | T14B | MARGINAL -> **FAIL** | 1.11 ± 0.023 -> 0.83 ± 0.024 | 99.95 % -> 99.40 % |
 | TPU pad face band (0.30) | 2 | T10 | PASS -> **MARGINAL** | 1.67 ± 0.033 -> 1.05 ± 0.024 | 100 % -> 99.85 % |
 | servo angle repeatability (0.5 deg) | 0.5 | T09H | MARGINAL -> **PASS** | 1.28 ± 0.025 -> 1.54 ± 0.038 | 99.996 % -> 100 % |
 | servo angle repeatability (0.5 deg) | 2 | T09 | PASS -> **MARGINAL** | 1.49 ± 0.046 -> 1.20 ± 0.031 | 100 % -> 99.98 % |

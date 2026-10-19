@@ -248,7 +248,8 @@ for c in bought:
     if name in ("Servo", "Horn", "FSR") or name in ("Servo tester or controller", "Thermocouple", "Consumables"):
         continue
     hit = next((m for m in FAST_MAP if name == m[0]), None)
-    if not hit and name not in ("Horn centre screw", "Camera-pad inserts (optional)"):
+    integrated_horn_item = name == "Dog steel inserts"
+    if not hit and name not in ("Horn centre screw", "Camera-pad inserts (optional)", "Dog steel inserts"):
         raise SystemExit(f"BOM line {name!r} has no current fastener item mapping in parts.json")
     if hit:
         item, group = hit[1:]
@@ -257,9 +258,10 @@ for c in bought:
             unit_mass = 0.59 if name == "Finger pegs" else 0.65
         g = round(unit_mass * q, 3)
     else:
-        item, group, g = "", "", 0.0  # horn centre screw is not represented in the CAD assembly
+        # The insert rings are already inside the horn's composite mass; keep their cost as a separate BOM row.
+        item, group, g = "", "horn" if integrated_horn_item else "", 0.0
     bom["fast"].append([name, q, each])
-    rows.append({"k": "fx-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-"), "name": name, "qty": q, "mat": "", "proc": "bought" if hit else "bought; not modelled in CAD", "g": g,
+    rows.append({"k": "fx-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-"), "name": name, "qty": q, "mat": "", "proc": "bought" if hit else "bought; included in horn model" if integrated_horn_item else "bought; not modelled in CAD", "g": g,
                  "usd": round(each * q, 2), "each": each, "kind": "fastener" if hit else "bought", "part": group, "item": item})
 D["bom"] = bom
 asm_items = J(ROOT / "cad/gripper/assembly/steps.json").get("fastener_items", []) if (ROOT / "cad/gripper/assembly/steps.json").exists() else []

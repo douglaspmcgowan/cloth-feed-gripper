@@ -25,9 +25,9 @@
 | Feed speed at the demo setting (M5b) | 10 mm/s = 240 stitches/min × 2.5 mm, i.e. 40 stitches in 10 s | [A]/[D] DB section 6 |
 | Process tension (M3) | 2 N | [A] DB LC4 |
 <!-- current-prediction:begin -->
-| Gripper, cloth and wiring: CAD revision B | 152.9 g | [D] `fitcheck.json` |
-| COM past H: CAD revision B | 37.6 mm | [D] `fitcheck.json` |
-| Full-extension mass-moment | 52995 g·mm = 121.2 % of the R10 budget (predicted FAIL) | [D] `fitcheck.json` |
+| Gripper, cloth and wiring: CAD revision B | 153.9 g | [D] `fitcheck.json` |
+| COM past H: CAD revision B | 37.5 mm | [D] `fitcheck.json` |
+| Full-extension mass-moment | 53342 g·mm = 122.0 % of the R10 budget (predicted FAIL) | [D] `fitcheck.json` |
 | Full-extension shoulder torque | Not predicted here: the repository has no validated mapping from revision B mass-moment to total shoulder torque; measure at the safe pose and extrapolate as steps 8–10 specify | [A] explicit linear gravity scaling |
 <!-- current-prediction:end -->
 | Feed pose inside 300 mm reach | passes: allowance ≥ 217 g at 40 mm | [D] `torque_and_actuator.md` section 0 |
@@ -72,7 +72,7 @@ Tape measure, plumb line (a nut on a thread), spirit level, painter's tape, stop
 **D. Layout (R24).**
 
 <!-- reach-rule:begin -->
-The revision B R10 rule limits horizontal reach to **285.9 mm from the shoulder_lift axis to the gripper COM**. The fingertip is 58.4 mm beyond that COM (`fitcheck.json` pad position 96.0 minus COM 37.6), so the equivalent fingertip limit is 344.3 mm. The existing 300.0 mm fingertip rule is tighter. Step 7 measures to the **fingertip** with the arm unpowered, then records COM reach = fingertip reach − 58.4 mm.
+The revision B R10 rule limits horizontal reach to **284.1 mm from the shoulder_lift axis to the gripper COM**. The fingertip is 58.5 mm beyond that COM (`fitcheck.json` pad position 96.0 minus COM 37.5), so the equivalent fingertip limit is 342.6 mm. The existing 300.0 mm fingertip rule is tighter. Step 7 measures to the **fingertip** with the arm unpowered, then records COM reach = fingertip reach − 58.5 mm.
 <!-- reach-rule:end -->
 
 6. Find the shoulder_lift axis height above the table (centre of the servo horn; tape from the table). h_off = axis height − bed height (step 2). [D `design_basis.py`: the ±50 mm rule is a vertical offset.]
@@ -83,9 +83,9 @@ The revision B R10 rule limits horizontal reach to **285.9 mm from the shoulder_
 **E. Shoulder load (M19).** Read `shoulder_lift`'s present load and present current through LeRobot's motor bus (the same connection and config used for teleoperation; use its read call for the present-load and present-current items of the Feetech control table; do not write any register).
 
 <!-- powered-poses:begin -->
-8. Turn the arm motor rail off. Put a rigid prop under the wrist link so the arm cannot drop, then place it by hand in the farthest measurement pose. Datum: shoulder_lift horn-screw centre. Measure horizontal fingertip reach using largest of three independent plumb-line placements. PASS if largest fingertip reach ≤ 297.0 mm; FAIL if largest fingertip reach ≥ 303.0 mm; INDETERMINATE in between or if spread > 4.0 mm. Do not energize or command this pose unless it passes. <!-- gate-record:tp14-farthest --> The revision B full-extension pose (COM reach 346.7 mm) is therefore **not commanded or held with the rail on**.
+8. Turn the arm motor rail off. Put a rigid prop under the wrist link so the arm cannot drop, then place it by hand in the farthest measurement pose. Datum: shoulder_lift horn-screw centre. Measure horizontal fingertip reach using largest of three independent plumb-line placements. PASS if largest fingertip reach ≤ 297.0 mm; FAIL if largest fingertip reach ≥ 303.0 mm; INDETERMINATE in between or if spread > 4.0 mm. Do not energize or command this pose unless it passes. <!-- gate-record:tp14-farthest --> The revision B full-extension pose (COM reach 346.6 mm) is therefore **not commanded or held with the rail on**.
 9. Only after the feed pose gate and farthest measurement pose gate passed, turn the motor rail on. Command only the feed pose and the farthest measurement pose (target fingertip reach 297.0 mm), with gripper and cloth installed. Read shoulder load and current 3 times at each; hold each ≤ 10 s. No other powered pose is permitted by this procedure. <!-- poses:feed pose|farthest measurement pose gate-records:tp14-feed|tp14-farthest -->
-10. Calculate the analysed full-extension torque as `T_full = T_arm,full + (T_meas − T_arm,meas) × r_g,full / r_g,meas`. `T_meas` is the step-9 reading converted using the documented servo-load calibration. `T_arm,meas` and `T_arm,full` are model assumptions from `docs/gripper/research/so101.md`: arm-only torque is 0.527 N·m at full extension and is scaled linearly by horizontal reach. `r_g,meas` is the measured horizontal shoulder_lift-to-COM reach; `r_g,full` is 346.7 mm. This is analysis only; full extension is not commanded.
+10. Calculate the analysed full-extension torque as `T_full = T_arm,full + (T_meas − T_arm,meas) × r_g,full / r_g,meas`. `T_meas` is the step-9 reading converted using the documented servo-load calibration. `T_arm,meas` and `T_arm,full` are model assumptions from `docs/gripper/research/so101.md`: arm-only torque is 0.527 N·m at full extension and is scaled linearly by horizontal reach. `r_g,meas` is the measured horizontal shoulder_lift-to-COM reach; `r_g,full` is 346.6 mm. This is analysis only; full extension is not commanded.
 <!-- powered-poses:end -->
 
 ## Data to record
@@ -100,7 +100,7 @@ One row per item: servo label, supply label, bed height, needle offsets, stitch 
 ## Pass / fail
 
 <!-- reach-pass:begin -->
-- **R24 layout / R10 reach rule** (tape and repeated plumb-line placement U = 3 mm; use the largest of three reaches; spread over 4.0 mm is INDETERMINATE): **pass** if |h_off| ≤ 47 mm, computed COM reach ≤ 282.9 mm, and measured fingertip reach ≤ 297.0 mm. The fingertip criterion is tighter than the R10-equivalent 344.3 mm. **Fail** if |h_off| ≥ 53 mm, COM reach ≥ 288.9 mm, or fingertip reach ≥ 303.0 mm; **indeterminate** otherwise.
+- **R24 layout / R10 reach rule** (tape and repeated plumb-line placement U = 3 mm; use the largest of three reaches; spread over 4.0 mm is INDETERMINATE): **pass** if |h_off| ≤ 47 mm, computed COM reach ≤ 281.1 mm, and measured fingertip reach ≤ 297.0 mm. The fingertip criterion is tighter than the R10-equivalent 342.6 mm. **Fail** if |h_off| ≥ 53 mm, COM reach ≥ 287.1 mm, or fingertip reach ≥ 303.0 mm; **indeterminate** otherwise.
 <!-- reach-pass:end -->
 - **M19 / R24 load:** limit 50 % of stall (0.956 N·m on C001 at 7.4 V) in the feed pose. U of T = the load-register resolution plus the 3 repeats: use their spread as U. **Pass** if T + U ≤ limit, **fail** if T − U ≥ limit, else **indeterminate**. Report the step-10 analysed full-extension result too: TP-09's R10 result corresponds to full extension, which is analysed here and never commanded.
 - **M1, M3, M5, M5b:** measurements, no pass; enter them in `cad/gripper/params.json` and re-run `design_basis.py` if they differ from the defaults. A tension over 2 N re-opens the slip margin of R14 (TP-02).

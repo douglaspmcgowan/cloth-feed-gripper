@@ -3,15 +3,15 @@
  "seed": 20261011,
  "retrieved": "2026-10-11",
  "inputs_sha256_16": {
-  "design_basis": "39ed2d051b168c92",
+  "design_basis": "ea69c0fb3c6af147",
   "design_basis_out": "774dd8cb2bee4938",
   "fw_sim": "48adccee104e2be3",
-  "dyno": "356b000c2e3cb9d6",
+  "dyno": "b691d414b707751c",
   "fea_summary": "be1a380e3393aa94",
   "payload_torque": "551ef47efb566bfb",
   "config_h": "4c30527fd2157b4d",
-  "bom": "3a1ba77d631b7f60",
-  "cad_fitcheck": "ac7de715766c0d3d"
+  "bom": "3d52fccb5f0a0497",
+  "cad_fitcheck": "62c7cd20fd68d179"
  },
  "open_requirements": {
   "R15_cap_N": {
@@ -239,21 +239,21 @@
    "db_com_mm": 40.7,
    "db_mass_moment_gmm": 40507.0,
    "db_check_gmm": 40506.84,
-   "bom_on_arm_g": 134.4,
-   "bom_plus_cloth_wiring_g": 152.9,
-   "bom_mass_moment_at_db_com_gmm": 53484.42,
-   "bom_fraction_of_budget": 1.22333989,
+   "bom_on_arm_g": 135.4,
+   "bom_plus_cloth_wiring_g": 153.9,
+   "bom_mass_moment_at_db_com_gmm": 53834.22,
+   "bom_fraction_of_budget": 1.231340805,
    "max_mass_at_db_com_g": 124.9857061,
    "stretch_gmm": 33380.0,
-   "cad_total_g": 152.9,
-   "cad_com_mm": 37.6,
-   "cad_mass_moment_gmm": 52995,
-   "cad_fraction_of_budget": 1.212,
+   "cad_total_g": 153.9,
+   "cad_com_mm": 37.5,
+   "cad_mass_moment_gmm": 53342,
+   "cad_fraction_of_budget": 1.22,
    "cad_revision": "B",
-   "reach_limit_com_mm": 285.9385219,
-   "full_reach_com_mm": 346.7,
-   "fingertip_past_com_mm": 58.4,
-   "reach_limit_fingertip_mm": 344.3385219,
+   "reach_limit_com_mm": 284.0805718,
+   "full_reach_com_mm": 346.6,
+   "fingertip_past_com_mm": 58.5,
+   "reach_limit_fingertip_mm": 342.5805718,
    "work_cell_existing_fingertip_limit_mm": 300.0,
    "powered_pose_rules": [
     {
@@ -262,7 +262,7 @@
      "gate_step": 7,
      "command_step": 9,
      "max_fingertip_reach_mm": 299.0,
-     "max_com_reach_mm": 240.6
+     "max_com_reach_mm": 240.5
     },
     {
      "name": "farthest measurement pose",
@@ -270,13 +270,13 @@
      "gate_step": 8,
      "command_step": 9,
      "max_fingertip_reach_mm": 299.0,
-     "max_com_reach_mm": 240.6
+     "max_com_reach_mm": 240.5
     },
     {
      "name": "full extension",
      "commanded": false,
      "gate_step": 8,
-     "com_reach_mm": 346.7
+     "com_reach_mm": 346.6
     }
    ],
    "history": {
@@ -672,19 +672,19 @@
     },
     {
      "name": "COM: knife-edge balance ±1.0 mm [A]",
-     "value": 152.9,
+     "value": 153.9,
      "dist": "rect",
-     "u": 88.27685616
+     "u": 88.85420643
     },
     {
      "name": "lever 309.1 mm from MuJoCo model, ±0.5 mm [D design_basis.py, A]",
-     "value": 76.45,
+     "value": 76.95,
      "dist": "rect",
-     "u": 44.13842808
+     "u": 44.42710321
     }
    ],
-   "u_c": 106.64179,
-   "U_k2": 213.2835799,
+   "u_c": 107.2394736,
+   "U_k2": 214.4789472,
    "dominant": "COM: knife-edge balance ±1.0 mm [A]"
   },
   "finger_k_rel": {
@@ -1192,16 +1192,16 @@
    "quantity": "mass-moment, CAD revision B",
    "limit": 43720.0,
    "side": "upper",
-   "predicted": 52995,
-   "U_k2": 213.2835799,
+   "predicted": 53342,
+   "U_k2": 214.4789472,
    "unit": "g·mm",
-   "limit_over_U": 204.9853065,
-   "margin": -9275.0,
-   "margin_over_U": -43.48670443,
+   "limit_over_U": 203.8428506,
+   "margin": -9622.0,
+   "margin_over_U": -44.862212,
    "resolves_limit": true,
    "verdict_decidable": true,
    "predicted_verdict": "FAIL",
-   "note": "Predicted FAIL at full reach; disposition: prohibit holds beyond 285.9 mm COM reach and enforce the tighter work-cell fingertip limit"
+   "note": "Predicted FAIL at full reach; disposition: prohibit holds beyond 284.1 mm COM reach and enforce the tighter work-cell fingertip limit"
   },
   {
    "test": "TP-12",
@@ -1782,8 +1782,8 @@
    "requirement": "Light: mass-moment ≤ 43,720 g·mm",
    "method": "Test (measurement) + analysis",
    "procedure": "TP-09",
-   "pass_criterion": "m × (309.1 mm + COM past H) ≤ 43,720 g·mm with cloth and wiring; stretch ≤ 33,380 (PASS needs ≤ 33167 g·mm after U). CAD revision B predicts 52995 g·mm (121.2 %): FAIL at full reach; PASS if value ≤ 43507 g·mm (limit − U); FAIL if value ≥ 43933 g·mm (limit + U); INDETERMINATE in between. Disposition: no holds beyond 285.9 mm COM reach, enforced by TP-14. The DB and BOM estimates are retained as history",
-   "instrument": "Balance 0.1 g; knife edge ±1 mm; U = 213 g·mm",
+   "pass_criterion": "m × (309.1 mm + COM past H) ≤ 43,720 g·mm with cloth and wiring; stretch ≤ 33,380 (PASS needs ≤ 33166 g·mm after U). CAD revision B predicts 53342 g·mm (122.0 %): FAIL at full reach; PASS if value ≤ 43506 g·mm (limit − U); FAIL if value ≥ 43934 g·mm (limit + U); INDETERMINATE in between. Disposition: no holds beyond 284.1 mm COM reach, enforced by TP-14. The DB and BOM estimates are retained as history",
+   "instrument": "Balance 0.1 g; knife edge ±1 mm; U = 214 g·mm",
    "sample_size": "3 weighings, 3 balance points: averages out placement",
    "status": "analysed only"
   },
@@ -1922,7 +1922,7 @@
    "requirement": "Work cell",
    "method": "Inspection + test",
    "procedure": "TP-14",
-   "pass_criterion": "Shoulder_lift axis within ±50 mm of the cloth tension line; COM reach ≤ 285.9 mm (R10 budget / CAD mass), equivalent fingertip reach ≤ 344.3 mm; existing feed-pose fingertip reach ≤ 300 mm is tighter; arm shoulder load ≤ 50 % of stall (M19)",
+   "pass_criterion": "Shoulder_lift axis within ±50 mm of the cloth tension line; COM reach ≤ 284.1 mm (R10 budget / CAD mass), equivalent fingertip reach ≤ 342.6 mm; existing feed-pose fingertip reach ≤ 300 mm is tighter; arm shoulder load ≤ 50 % of stall (M19)",
    "instrument": "Tape ±1 mm; STS3215 load register",
    "sample_size": "1 layout; 3 load readings",
    "status": "analysed only"

@@ -1,17 +1,17 @@
 {
-  "base_g": 152.9,
-  "base_gmm": 52995,
+  "base_g": 153.9,
+  "base_gmm": 53342,
   "limit_gmm": 43720.0,
   "lever_mm": 309.1,
   "rows": [
     {
       "option": "Housing and front plate 60 → 40 % gyroid",
-      "d_g": -5.28,
-      "d_gmm": -1755,
+      "d_g": -5.27,
+      "d_gmm": -1751,
       "basis": "D model, A strength",
       "cost": "pin-plate and boss-web stiffness unchecked (T14B, T16 line-ream); coupon first",
       "in_combo": true,
-      "running_gmm": 51240
+      "running_gmm": 51591
     },
     {
       "option": "Wrist plate 100 → 60 % (4 walls)",
@@ -20,7 +20,7 @@
       "basis": "A: 40 % of the solid mass",
       "cost": "clamp under the 4 horn screws and the Ø19.56 pilot recess (T02) unchecked",
       "in_combo": true,
-      "running_gmm": 50077
+      "running_gmm": 50428
     },
     {
       "option": "Bushes 3 × 6 × 10 → 3 × 6 × 8",
@@ -29,7 +29,7 @@
       "basis": "D model",
       "cost": "bearing length 8 in a 10.5 hub; T16 / T10B re-base (tolerance owner)",
       "in_combo": true,
-      "running_gmm": 49825
+      "running_gmm": 50176
     },
     {
       "option": "Limiter sleeves brass → aluminium",
@@ -38,7 +38,7 @@
       "basis": "D volume, A densities",
       "cost": "aluminium creep and fretting under the nut at 60 °C (thermal owner)",
       "in_combo": true,
-      "running_gmm": 49592
+      "running_gmm": 49943
     },
     {
       "option": "Lighter servo: DS3218MG at 1:1 (58 g)",
@@ -60,8 +60,8 @@
     },
     {
       "option": "Servo case turned up toward the wrist (long-Y layout; case 10 mm up from pivot A, but the deck rises so pivot-to-H +18.8 mm and servo u 31.0 → 39.8)",
-      "d_g": 3.04,
-      "d_gmm": 2762,
+      "d_g": 3.08,
+      "d_gmm": 2796,
       "basis": "D model",
       "cost": "whole gripper moves away from H with the taller deck; housing redesign; wrist flex / keep-out re-check",
       "in_combo": false,
@@ -83,7 +83,7 @@
       "basis": "A: 20 % removed",
       "cost": "arm and gear-root stress unchecked (gears.py); PA6-CF print",
       "in_combo": true,
-      "running_gmm": 48730
+      "running_gmm": 49081
     },
     {
       "option": "Finger 45 → 40 mm (cloth, nail, FSR 5 mm nearer H; a hollow finger buys nothing more: the Fin Ray is already open cells)",
@@ -92,12 +92,12 @@
       "basis": "D model",
       "cost": "r_c 65 → about 60 (R17, gear and servo sizing), tip stiffness R12 rises about (45/40)³, reach; finger lane",
       "in_combo": true,
-      "running_gmm": 48486
+      "running_gmm": 48837
     }
   ],
-  "combo_gmm": 48486,
-  "combo_use": 1.109,
-  "combo_short_gmm": 4766,
-  "combo_short_g_at_com": 13.7,
+  "combo_gmm": 48837,
+  "combo_use": 1.117,
+  "combo_short_gmm": 5117,
+  "combo_short_g_at_com": 14.8,
   "basis": "D = rebuilt model with one parameter changed; A = assumed fraction; S = sourced"
 }

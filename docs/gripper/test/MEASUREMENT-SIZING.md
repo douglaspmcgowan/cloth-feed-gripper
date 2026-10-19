@@ -61,9 +61,9 @@ For TP-05, the analyser derives each run's uncertainty from the observed control
 | case_temp_C | bead-to-case contact under Kapton tape and paste ±1.0 °C [A] | 1 | rect | 0.5774 |
 | case_temp_C | **combined u_c / expanded U (k = 2)** |  |  | **0.8197 / 1.639** |
 | mass_moment_gmm | mass: balance ±0.2 g [A] | 69.96 | rect | 40.39 |
-| mass_moment_gmm | COM: knife-edge balance ±1.0 mm [A] | 152.9 | rect | 88.28 |
-| mass_moment_gmm | lever 309.1 mm from MuJoCo model, ±0.5 mm [D design_basis.py, A] | 76.45 | rect | 44.14 |
-| mass_moment_gmm | **combined u_c / expanded U (k = 2)** |  |  | **106.6 / 213.3** |
+| mass_moment_gmm | COM: knife-edge balance ±1.0 mm [A] | 153.9 | rect | 88.85 |
+| mass_moment_gmm | lever 309.1 mm from MuJoCo model, ±0.5 mm [D design_basis.py, A] | 76.95 | rect | 44.43 |
+| mass_moment_gmm | **combined u_c / expanded U (k = 2)** |  |  | **107.2 / 214.5** |
 | finger_k_rel | deflection: dial indicator ±0.02 mm on ~4.5 mm [A] | 0.0044 | rect | 0.00254 |
 | finger_k_rel | load: hanger masses ±0.2 % [A] | 0.002 | rect | 0.001155 |
 | finger_k_rel | load point ±0.5 mm at s = 40 mm, k ∝ s^-3 [D beam, A placement] | 0.0375 | rect | 0.02165 |
@@ -105,7 +105,7 @@ Notes on the [A] entries:
 | TP-03 | R19 | time to 5.0 N, k 0.88 (R19 proposed 0.75 s) | 0.75 s | 0.772 | 0.0129 | 58 | -1.70 | FAIL | yes / yes |  |
 | TP-07 | R26 | case temperature after 30 min (Fit B, 25 °C, Rth2 ×1) | 60 °C | 61.2 | 1.64 | 37 | -0.73 | INDETERMINATE | yes / **no** | model is an upper bound; spans 43-115 °C |
 | TP-09 | R17 | moment arm r_c, both fingers (CAD nominal) | 65 mm | 65 | 0.0766 | 849 | 0.00 | INDETERMINATE | yes / **no** | CAD nominal sits on the limit: a perfect part reads INDETERMINATE; see Requested changes in the README |
-| TP-09 | R10 | mass-moment, CAD revision B | 4.37e+04 g·mm | 5.3e+04 | 213 | 205 | -43.49 | FAIL | yes / yes | Predicted FAIL at full reach; disposition: prohibit holds beyond 285.9 mm COM reach and enforce the tighter work-cell fingertip limit |
+| TP-09 | R10 | mass-moment, CAD revision B | 4.37e+04 g·mm | 5.33e+04 | 214 | 204 | -44.86 | FAIL | yes / yes | Predicted FAIL at full reach; disposition: prohibit holds beyond 284.1 mm COM reach and enforce the tighter work-cell fingertip limit |
 | TP-12 | R12 | finger tip stiffness, low end | 0.88 N/mm | 1.07 | 0.0483 | 18 | 3.93 | PASS | yes / yes |  |
 | TP-12 | R12 | finger tip stiffness, high end | 1.63 N/mm | 1.29 | 0.0583 | 28 | 5.84 | PASS | yes / yes |  |
 | TP-13 | R16 | stall torque at 6.35 V | 1.98 N·m | 2.02 | 0.0326 | 61 | 1.31 | PASS | yes / yes | 1 % margin: run at 6.50 V too |

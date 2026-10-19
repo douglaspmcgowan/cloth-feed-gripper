@@ -12,11 +12,9 @@ requirement: >-
 spec: {usl: 0.0}
 accept: {method: wc}
 fix: >-
-  Locate the servo by its Ø9 output boss in a reamed bore in the 1.6 mm housing web at the case top (the boss is concentric with the
-  shaft) and open the dog slots to 3.4 (lash about +/-1.5 deg [A: arithmetic here, (3.4 - 0.1 - 2.927) /
-  (2 x 7 mm) rad]). With the web terms T14B-boss34 fails at Cpk 0.98. A 3.42 mm slot adds 0.010 mm
-  half-clearance and restores about Cpk 1.05, but costs the closure window; the robust fix is a zero-lash
-  coupling that takes offset, such as an Oldham disc.
+  B40 keeps the Ø9 boss location and 3.4 mm slots. Custom hardened M3 shoulder dog screws (Ø2.9 at the horn
+  face) load two Ø6 steel inserts in the horn. The chosen boss34 id is retained for the combined rev B overlay;
+  its contributor now models the B40 shoulder. Verify insert retention, horn rim and lash on a coupon.
 fix_variant: boss34
 notes: >-
   Once the boss locates the servo (boss, boss34), the servo case width does not enter this stack at all; only the
@@ -26,7 +24,8 @@ notes: >-
   the ear seats and cradle floor, not the 1.6 mm bore engagement; ear-seat flatness moves the dog plane by
   boss_to_dog_lever * mount_flatness / servo_ear_span = 3.05 * 0.20 / 54.5 = 0.011 mm. Both levers are CAD
   derived. Half-clearance = (printed slot width - screw major) / 2.
-  Rev A has 0.06 nominal half-clearance against an offset that can reach 0.5.
+  Rev A has 0.06 nominal half-clearance against an offset that can reach 0.5. B40's smooth shoulder
+  diameter limits 2.895..2.905 mm are [A] pending a pin gauge on the machined parts.
 expression: "abs(shaft_in_case + servo_float + cradle_to_pinA + spline_play + dog_pos + pinA_float + hot_servo_shift + hot_shaft_shift) - (slot_w - dog_d)/2"
 contributors:
   - {name: shaft_in_case, nominal: 0, tol: "=servo_shaft_pos_tol", dist: normal, tag: A, source: "unpublished"}
@@ -42,11 +41,12 @@ contributors:
 variants:
   - {id: w205, role: scenario, label: "servo body 20.5 (actuators.csv A17) in a pocket opened to 20.9, rev A cradle-located: servo float 0.15 per side", set: {servo_body_w: 20.5, cradle_pocket_w: 20.9}}
   - id: boss34
-    label: "servo located by its Ø9 boss in a reamed bore + dog slots 3.4"
+    label: "B40: Ø9 boss location, Ø2.9 hardened shoulders in Ø6 steel inserts, dog slots 3.4"
     set: {dog_slot_w: 3.4}
     expression: "abs(boss_bore_to_pinA + boss_fit + boss_to_shaft + boss_web_tilt + servo_axis_tilt + spline_play + dog_pos + pinA_float + hot_servo_shift + hot_shaft_shift) - (slot_w - dog_d)/2"
-    drop: [shaft_in_case, servo_float, cradle_to_pinA]
+    drop: [shaft_in_case, servo_float, cradle_to_pinA, dog_d]
     add:
+      - {name: dog_d, limits: [2.895, 2.905], dist: uniform, tag: A, source: "custom hardened dog screw smooth shoulder diameter [A; gauge machined parts]"}
       - {name: boss_bore_to_pinA, nominal: 0, tol: "=fdm_xy_tol_short", dist: normal, tag: S, source: "boss bore and pin A hole, one print"}
       - {name: boss_fit, nominal: 0, tol: 0.01, dist: uniform, tag: A, source: "boss in a reamed Ø9 bore: assumed a near line-to-line fit (H7 reamer on a molded boss), no measured data; check the boss diameter on 3 servos"}
       - {name: boss_to_shaft, nominal: 0, tol: 0.05, dist: normal, tag: A, source: "output boss to shaft, unpublished"}

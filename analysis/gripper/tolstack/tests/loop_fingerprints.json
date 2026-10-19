@@ -1179,6 +1179,113 @@
         "tolerance": 0.2
       }
     ],
+    "T09-b40_shoulder34": [
+      {
+        "distribution": "normal",
+        "name": "backing_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": -1.0051891142646021,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "contact_gap",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_lash_offset",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.8185111359011761
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_trim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 2.0
+      },
+      {
+        "distribution": "normal",
+        "name": "nail_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_profile",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_profile",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
     "T09F": [
       {
         "distribution": "normal",
@@ -2473,7 +2580,7 @@
         "name": "dog_d",
         "sensitivity": 1.0,
         "sign": 1,
-        "tolerance": 0.10599999999999987
+        "tolerance": 0.009999999999999787
       },
       {
         "distribution": "normal",
@@ -3965,6 +4072,113 @@
         "tolerance": 0.2
       }
     ],
+    "T09-b40_shoulder34": [
+      {
+        "distribution": "normal",
+        "name": "backing_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "backlash_lag_B",
+        "sensitivity": -1.0051891142646021,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "centre_distance",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "contact_gap",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.0
+      },
+      {
+        "distribution": "normal",
+        "name": "dog_lash_offset",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 0.8185111359011761
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_A_root_float",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "disk",
+        "name": "finger_B_root_float",
+        "sensitivity": -0.44073676548524865,
+        "sign": -1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "fsr_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.1
+      },
+      {
+        "distribution": "normal",
+        "name": "horn_trim",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 2.0
+      },
+      {
+        "distribution": "normal",
+        "name": "nail_thickness",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_A_profile",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "pad_B_profile",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.3
+      },
+      {
+        "distribution": "normal",
+        "name": "servo_angle_error",
+        "sensitivity": 1.0,
+        "sign": 1,
+        "tolerance": 1.0
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_A",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.2
+      },
+      {
+        "distribution": "normal",
+        "name": "xf_B",
+        "sensitivity": 0.44073676548524865,
+        "sign": 1,
+        "tolerance": 0.2
+      }
+    ],
     "T09F": [
       {
         "distribution": "normal",
@@ -5259,7 +5473,7 @@
         "name": "dog_d",
         "sensitivity": 1.0,
         "sign": 1,
-        "tolerance": 0.10599999999999987
+        "tolerance": 0.009999999999999787
       },
       {
         "distribution": "normal",

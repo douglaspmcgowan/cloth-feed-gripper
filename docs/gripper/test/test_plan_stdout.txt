@@ -16,7 +16,7 @@ Expected values
   Slip capacity 2*mu*F = 4.00 N at mu 0.4, F 5.0 N; SF 2.0 against 2.0 N
   Stall needed 1.980 N m (20.19 kg cm); predicted 2.051 N m at 6.5 V, 2.023 at 6.35 V; 41.0 N on a 50 mm lever; winding 125 C in 8.1-11.1 s
   Case temperature at 30 min (dyno model, upper bound): 42.1-172.2 C
-  History only (superseded by CAD revision B): DB 116 g (check 40507 g mm = 40507); BOM 134.4 g + cloth + wiring = 152.9 g -> 53484 g mm = 122 % of 43720; max mass at COM 40.7 mm: 125.0 g
+  History only (superseded by CAD revision B): DB 116 g (check 40507 g mm = 40507); BOM 135.4 g + cloth + wiring = 153.9 g -> 53834 g mm = 123 % of 43720; max mass at COM 40.7 mm: 125.0 g
 
 Instrument budgets (expanded, k = 2)
   Probe sensitivity 33.65 uV/N, noise 0.0027 N rms, full scale 98.1 N
@@ -28,7 +28,7 @@ Instrument budgets (expanded, k = 2)
   force_time_stream_s    U =  12.9099 ms   (dominant: `STREAM 50` status lines every 20 ms, crossing interpolated ±10 ms [D config.h])
   close_time_video_s     U =   6.8041 ms   (dominant: start frame ±1 frame at 240 fps [D])
   case_temp_C            U =   1.6394 C    (dominant: type K + MAX31855 after an ice-point check, residual ±1.0 °C [A; unchecked ±2 to ±6 °C S Adafruit 269])
-  mass_moment_gmm        U = 213.2836 g mm (dominant: COM: knife-edge balance ±1.0 mm [A])
+  mass_moment_gmm        U = 214.4789 g mm (dominant: COM: knife-edge balance ±1.0 mm [A])
   finger_k_rel           U =   4.5161 %    (dominant: load point ±0.5 mm at s = 40 mm, k ∝ s^-3 [D beam, A placement])
   stall_torque_rel       U =   1.6107 %    (dominant: lever 50 mm: calipers ±0.05 mm and contact ±0.5 mm [A])
   current_A              U =   0.0208 A    (dominant: 0.1 Ω shunt ±1 % at 1.8 A [A])
@@ -58,7 +58,7 @@ Can each instrument resolve its criterion? (limit/U >= 10; |margin|/U >= 1 = ver
   TP-03 R19  time to 5.0 N, k 0.88 (R19 proposed 0.75 s)                limit     0.750 pred     0.772 U  0.0129 s    limit/U    58.1 margin/U  -1.70
   TP-07 R26  case temperature after 30 min (Fit B, 25 °C, Rth2 ×1)      limit    60.000 pred    61.200 U  1.6394 °C   limit/U    36.6 margin/U  -0.73
   TP-09 R17  moment arm r_c, both fingers (CAD nominal)                 limit    65.000 pred    65.000 U  0.0766 mm   limit/U   848.6 margin/U   0.00
-  TP-09 R10  mass-moment, CAD revision B                                limit 43720.000 pred 52995.000 U 213.2836 g·mm limit/U   205.0 margin/U -43.49
+  TP-09 R10  mass-moment, CAD revision B                                limit 43720.000 pred 53342.000 U 214.4789 g·mm limit/U   203.8 margin/U -44.86
   TP-12 R12  finger tip stiffness, low end                              limit     0.880 pred     1.070 U  0.0483 N/mm limit/U    18.2 margin/U   3.93
   TP-12 R12  finger tip stiffness, high end                             limit     1.630 pred     1.290 U  0.0583 N/mm limit/U    28.0 margin/U   5.84
   TP-13 R16  stall torque at 6.35 V                                     limit     1.980 pred     2.023 U  0.0326 N·m  limit/U    60.8 margin/U   1.31

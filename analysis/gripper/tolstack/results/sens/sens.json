@@ -233,23 +233,6 @@
    "design": "revb",
    "factor": "xy_band",
    "label": "XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together",
-   "scale": 0.5,
-   "stack": "T14B",
-   "from": "fail",
-   "to": "marginal",
-   "cpk_from": 0.982325086,
-   "cpk_to": 1.158749,
-   "cpk_min": 1.33,
-   "cpk_u_from": 0.00642487532,
-   "cpk_u_to": 0.0162775537,
-   "yield_from": 99.84,
-   "yield_to": 99.969,
-   "sample_head_sha256": "22258bdbe6024c06bc6409712c304c27d98397b16f2d05a0f3edbe756b2c6091"
-  },
-  {
-   "design": "revb",
-   "factor": "xy_band",
-   "label": "XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together",
    "scale": 2.0,
    "stack": "T02",
    "from": "pass",
@@ -333,6 +316,23 @@
   },
   {
    "design": "revb",
+   "factor": "xy_band",
+   "label": "XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together",
+   "scale": 2.0,
+   "stack": "T14B",
+   "from": "marginal",
+   "to": "fail",
+   "cpk_from": 1.10777285,
+   "cpk_to": 0.704910719,
+   "cpk_min": 1.33,
+   "cpk_u_from": 0.0227311188,
+   "cpk_u_to": 0.0120408568,
+   "yield_from": 99.952,
+   "yield_to": 98.559,
+   "sample_head_sha256": "a0a261b2abfe564aa1ddfae8c78b0a1ee31b16b37762de9c190352ee19412690"
+  },
+  {
+   "design": "revb",
    "factor": "z_band",
    "label": "Z print band (0.15)",
    "scale": 2.0,
@@ -386,23 +386,6 @@
    "design": "revb",
    "factor": "cavity",
    "label": "pocket width scatter (0.15)",
-   "scale": 0.5,
-   "stack": "T14B",
-   "from": "fail",
-   "to": "marginal",
-   "cpk_from": 0.982325086,
-   "cpk_to": 1.0713623,
-   "cpk_min": 1.33,
-   "cpk_u_from": 0.00642487532,
-   "cpk_u_to": 0.0217874446,
-   "yield_from": 99.84,
-   "yield_to": 99.933,
-   "sample_head_sha256": "30fb49034f0b06112dd17be2a2a53c7178c3dfb19213940495214dee006fd726"
-  },
-  {
-   "design": "revb",
-   "factor": "cavity",
-   "label": "pocket width scatter (0.15)",
    "scale": 2.0,
    "stack": "T14",
    "from": "pass",
@@ -415,6 +398,23 @@
    "yield_from": 100.0,
    "yield_to": 99.773,
    "sample_head_sha256": "c35516de0513ae5e047dbbddc3214452525559ff26119f0b59299011300554b9"
+  },
+  {
+   "design": "revb",
+   "factor": "cavity",
+   "label": "pocket width scatter (0.15)",
+   "scale": 2.0,
+   "stack": "T14B",
+   "from": "marginal",
+   "to": "fail",
+   "cpk_from": 1.10777285,
+   "cpk_to": 0.832388507,
+   "cpk_min": 1.33,
+   "cpk_u_from": 0.0227311188,
+   "cpk_u_to": 0.0244097078,
+   "yield_from": 99.952,
+   "yield_to": 99.4,
+   "sample_head_sha256": "49f54dca56d3f892fb3b7201449ed681a2cef5c3996dc92bcdc52fe9bcf0fd7a"
   },
   {
    "design": "revb",
@@ -571,11 +571,11 @@
   }
  ],
  "generated_blocks": {
-  "sens": "**CAD rev A as drawn**\n\n| Input scaled | x | Stack | Verdict change | Cpk | Yield (MC) |\n|---|---:|---|---|---|---|\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 0.5 | T02 | MARGINAL -> **PASS** | 1.16 \u00b1 0.040 -> 1.83 \u00b1 0.036 | 99.98 % -> 100 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 0.5 | T05 | FAIL -> **MARGINAL** | 0.92 \u00b1 0.030 -> 1.07 \u00b1 0.011 | 99.36 % -> 99.93 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T02 | MARGINAL -> **FAIL** | 1.16 \u00b1 0.040 -> 0.63 \u00b1 0.011 | 99.98 % -> 95.51 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T06 | PASS -> **MARGINAL** | 2.04 \u00b1 0.010 -> 1.05 \u00b1 0.015 | 100 % -> 99.85 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T07 | PASS -> **FAIL** | 1.44 \u00b1 0.039 -> 0.93 \u00b1 0.024 | 99.998 % -> 99.50 % |\n| hole diameter scatter (0.15) | 0.5 | T01 | MARGINAL -> **PASS** (at threshold: before within sampling error of 1.33) | 1.31 \u00b1 0.047 -> 1.72 \u00b1 0.046 | 99.996 % -> 100 % |\n| hole diameter scatter (0.15) | 2 | T01 | MARGINAL -> **FAIL** (at threshold: before within sampling error of 1.33) | 1.31 \u00b1 0.047 -> 0.83 \u00b1 0.029 | 99.996 % -> 99.37 % |\n| line-reamed coaxiality (0.03) | 2 | T16 | PASS -> **MARGINAL** | 1.67 \u00b1 0.031 -> 1.08 \u00b1 0.027 | 100 % -> 99.89 % |\n\nNo verdict change at 0.5x or 2x: XY print band over 30 mm only (0.20); Z print band (0.15); pocket width scatter (0.15); TPU pad face band (0.30); servo shaft position in case (0.20); servo angle repeatability (0.5 deg); servo case width tolerance (0.10); plate flatness / standoff top (0.05); FSR force error (10 %).\n\n**CAD rev B, all changes at once**\n\n| Input scaled | x | Stack | Verdict change | Cpk | Yield (MC) |\n|---|---:|---|---|---|---|\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 0.5 | T14B | FAIL -> **MARGINAL** | 0.98 \u00b1 0.006 -> 1.16 \u00b1 0.016 | 99.84 % -> 99.97 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T02 | PASS -> **FAIL** | 1.61 \u00b1 0.056 -> 0.87 \u00b1 0.016 | 100 % -> 99.35 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T06 | PASS -> **MARGINAL** | 2.01 \u00b1 0.031 -> 1.04 \u00b1 0.016 | 100 % -> 99.84 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T07 | PASS -> **FAIL** | 1.43 \u00b1 0.033 -> 0.93 \u00b1 0.019 | 99.998 % -> 99.48 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T09 | PASS -> **MARGINAL** | 1.49 \u00b1 0.046 -> 1.25 \u00b1 0.032 | 100 % -> 99.990 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T10 | PASS -> **MARGINAL** | 1.67 \u00b1 0.033 -> 1.08 \u00b1 0.057 | 100 % -> 99.88 % |\n| Z print band (0.15) | 2 | T03 | PASS -> **MARGINAL** | 2.46 \u00b1 0.032 -> 1.82 \u00b1 0.013 | 100 % -> 100 % |\n| Z print band (0.15) | 2 | T03B | PASS -> **MARGINAL** | 1.68 \u00b1 0.055 -> 1.27 \u00b1 0.032 | 100 % -> 100 % |\n| hole diameter scatter (0.15) | 2 | T01 | PASS -> **MARGINAL** | 1.77 \u00b1 0.064 -> 1.13 \u00b1 0.039 | 100 % -> 99.96 % |\n| pocket width scatter (0.15) | 0.5 | T14B | FAIL -> **MARGINAL** | 0.98 \u00b1 0.006 -> 1.07 \u00b1 0.022 | 99.84 % -> 99.93 % |\n| pocket width scatter (0.15) | 2 | T14 | PASS -> **FAIL** | 1.68 \u00b1 0.043 -> 0.94 \u00b1 0.039 | 100 % -> 99.77 % |\n| TPU pad face band (0.30) | 2 | T10 | PASS -> **MARGINAL** | 1.67 \u00b1 0.033 -> 1.05 \u00b1 0.024 | 100 % -> 99.85 % |\n| servo angle repeatability (0.5 deg) | 0.5 | T09H | MARGINAL -> **PASS** | 1.28 \u00b1 0.025 -> 1.54 \u00b1 0.038 | 99.996 % -> 100 % |\n| servo angle repeatability (0.5 deg) | 2 | T09 | PASS -> **MARGINAL** | 1.49 \u00b1 0.046 -> 1.20 \u00b1 0.031 | 100 % -> 99.98 % |\n| servo angle repeatability (0.5 deg) | 2 | T09F | PASS -> **FAIL** | 1.46 \u00b1 0.008 -> 0.98 \u00b1 0.005 | 100 % -> 99.83 % |\n| servo angle repeatability (0.5 deg) | 2 | T09H | MARGINAL -> **FAIL** | 1.28 \u00b1 0.025 -> 0.86 \u00b1 0.012 | 99.996 % -> 99.45 % |\n| servo angle repeatability (0.5 deg) | 2 | T09P | PASS -> **FAIL** | 1.46 \u00b1 0.009 -> 0.99 \u00b1 0.007 | 100 % -> 99.85 % |\n| servo case width tolerance (0.10) | 2 | T14 | PASS -> **MARGINAL** | 1.68 \u00b1 0.043 -> 1.21 \u00b1 0.036 | 100 % -> 99.99 % |\n| line-reamed coaxiality (0.03) | 0.5 | T16 | MARGINAL -> **PASS** | 1.30 \u00b1 0.021 -> 1.56 \u00b1 0.019 | 99.998 % -> 100 % |\n| line-reamed coaxiality (0.03) | 2 | T16 | MARGINAL -> **FAIL** | 1.30 \u00b1 0.021 -> 0.91 \u00b1 0.016 | 99.998 % -> 99.32 % |\n\nNo verdict change at 0.5x or 2x: XY print band over 30 mm only (0.20); servo shaft position in case (0.20); plate flatness / standoff top (0.05); FSR force error (10 %).\n\nCpk \u00b1 is the 99 % sampling uncertainty: 2.576 x the delete-a-batch jackknife standard error of the percentile Cpk (20 interleaved batches of the run's samples). A change is marked *at threshold* when the Cpk before or after lies within that uncertainty of 1.00 or of the stack's cpk_min (1.33 unless set); the label names that side, whose verdict is not resolved; a side not named is resolved."
+  "sens": "**CAD rev A as drawn**\n\n| Input scaled | x | Stack | Verdict change | Cpk | Yield (MC) |\n|---|---:|---|---|---|---|\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 0.5 | T02 | MARGINAL -> **PASS** | 1.16 \u00b1 0.040 -> 1.83 \u00b1 0.036 | 99.98 % -> 100 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 0.5 | T05 | FAIL -> **MARGINAL** | 0.92 \u00b1 0.030 -> 1.07 \u00b1 0.011 | 99.36 % -> 99.93 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T02 | MARGINAL -> **FAIL** | 1.16 \u00b1 0.040 -> 0.63 \u00b1 0.011 | 99.98 % -> 95.51 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T06 | PASS -> **MARGINAL** | 2.04 \u00b1 0.010 -> 1.05 \u00b1 0.015 | 100 % -> 99.85 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T07 | PASS -> **FAIL** | 1.44 \u00b1 0.039 -> 0.93 \u00b1 0.024 | 99.998 % -> 99.50 % |\n| hole diameter scatter (0.15) | 0.5 | T01 | MARGINAL -> **PASS** (at threshold: before within sampling error of 1.33) | 1.31 \u00b1 0.047 -> 1.72 \u00b1 0.046 | 99.996 % -> 100 % |\n| hole diameter scatter (0.15) | 2 | T01 | MARGINAL -> **FAIL** (at threshold: before within sampling error of 1.33) | 1.31 \u00b1 0.047 -> 0.83 \u00b1 0.029 | 99.996 % -> 99.37 % |\n| line-reamed coaxiality (0.03) | 2 | T16 | PASS -> **MARGINAL** | 1.67 \u00b1 0.031 -> 1.08 \u00b1 0.027 | 100 % -> 99.89 % |\n\nNo verdict change at 0.5x or 2x: XY print band over 30 mm only (0.20); Z print band (0.15); pocket width scatter (0.15); TPU pad face band (0.30); servo shaft position in case (0.20); servo angle repeatability (0.5 deg); servo case width tolerance (0.10); plate flatness / standoff top (0.05); FSR force error (10 %).\n\n**CAD rev B, all changes at once**\n\n| Input scaled | x | Stack | Verdict change | Cpk | Yield (MC) |\n|---|---:|---|---|---|---|\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T02 | PASS -> **FAIL** | 1.61 \u00b1 0.056 -> 0.87 \u00b1 0.016 | 100 % -> 99.35 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T06 | PASS -> **MARGINAL** | 2.01 \u00b1 0.031 -> 1.04 \u00b1 0.016 | 100 % -> 99.84 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T07 | PASS -> **FAIL** | 1.43 \u00b1 0.033 -> 0.93 \u00b1 0.019 | 99.998 % -> 99.48 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T09 | PASS -> **MARGINAL** | 1.49 \u00b1 0.046 -> 1.25 \u00b1 0.032 | 100 % -> 99.990 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T10 | PASS -> **MARGINAL** | 1.67 \u00b1 0.033 -> 1.08 \u00b1 0.057 | 100 % -> 99.88 % |\n| XY print band, features 3-18 mm (0.10) and over 30 mm (0.20) together | 2 | T14B | MARGINAL -> **FAIL** | 1.11 \u00b1 0.023 -> 0.70 \u00b1 0.012 | 99.95 % -> 98.56 % |\n| Z print band (0.15) | 2 | T03 | PASS -> **MARGINAL** | 2.46 \u00b1 0.032 -> 1.82 \u00b1 0.013 | 100 % -> 100 % |\n| Z print band (0.15) | 2 | T03B | PASS -> **MARGINAL** | 1.68 \u00b1 0.055 -> 1.27 \u00b1 0.032 | 100 % -> 100 % |\n| hole diameter scatter (0.15) | 2 | T01 | PASS -> **MARGINAL** | 1.77 \u00b1 0.064 -> 1.13 \u00b1 0.039 | 100 % -> 99.96 % |\n| pocket width scatter (0.15) | 2 | T14 | PASS -> **FAIL** | 1.68 \u00b1 0.043 -> 0.94 \u00b1 0.039 | 100 % -> 99.77 % |\n| pocket width scatter (0.15) | 2 | T14B | MARGINAL -> **FAIL** | 1.11 \u00b1 0.023 -> 0.83 \u00b1 0.024 | 99.95 % -> 99.40 % |\n| TPU pad face band (0.30) | 2 | T10 | PASS -> **MARGINAL** | 1.67 \u00b1 0.033 -> 1.05 \u00b1 0.024 | 100 % -> 99.85 % |\n| servo angle repeatability (0.5 deg) | 0.5 | T09H | MARGINAL -> **PASS** | 1.28 \u00b1 0.025 -> 1.54 \u00b1 0.038 | 99.996 % -> 100 % |\n| servo angle repeatability (0.5 deg) | 2 | T09 | PASS -> **MARGINAL** | 1.49 \u00b1 0.046 -> 1.20 \u00b1 0.031 | 100 % -> 99.98 % |\n| servo angle repeatability (0.5 deg) | 2 | T09F | PASS -> **FAIL** | 1.46 \u00b1 0.008 -> 0.98 \u00b1 0.005 | 100 % -> 99.83 % |\n| servo angle repeatability (0.5 deg) | 2 | T09H | MARGINAL -> **FAIL** | 1.28 \u00b1 0.025 -> 0.86 \u00b1 0.012 | 99.996 % -> 99.45 % |\n| servo angle repeatability (0.5 deg) | 2 | T09P | PASS -> **FAIL** | 1.46 \u00b1 0.009 -> 0.99 \u00b1 0.007 | 100 % -> 99.85 % |\n| servo case width tolerance (0.10) | 2 | T14 | PASS -> **MARGINAL** | 1.68 \u00b1 0.043 -> 1.21 \u00b1 0.036 | 100 % -> 99.99 % |\n| line-reamed coaxiality (0.03) | 0.5 | T16 | MARGINAL -> **PASS** | 1.30 \u00b1 0.021 -> 1.56 \u00b1 0.019 | 99.998 % -> 100 % |\n| line-reamed coaxiality (0.03) | 2 | T16 | MARGINAL -> **FAIL** | 1.30 \u00b1 0.021 -> 0.91 \u00b1 0.016 | 99.998 % -> 99.32 % |\n\nNo verdict change at 0.5x or 2x: XY print band over 30 mm only (0.20); servo shaft position in case (0.20); plate flatness / standoff top (0.05); FSR force error (10 %).\n\nCpk \u00b1 is the 99 % sampling uncertainty: 2.576 x the delete-a-batch jackknife standard error of the percentile Cpk (20 interleaved batches of the run's samples). A change is marked *at threshold* when the Cpk before or after lies within that uncertainty of 1.00 or of the stack's cpk_min (1.33 unless set); the label names that side, whose verdict is not resolved; a side not named is resolved."
  },
  "input_digest": {
   "algorithm": "sha256",
-  "digest": "e9a684583b47c30148ef5ea7a6f32625d13d7254fd0b5fed376a852109daf2db",
+  "digest": "d88ad45b1da7ba1f922a77260589abe4919ffad7ace2fef365f1b3fe9ef0070e",
   "files": [
    "stacks/basis.yaml",
    "stacks/rev_b.yaml",

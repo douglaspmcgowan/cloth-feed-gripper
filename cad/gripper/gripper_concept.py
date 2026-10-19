@@ -580,6 +580,14 @@ def servo_parts(P, G):
     boss = cyl_z(-a / 2, 0, s["boss_d"] / 2, G.z_ct, G.z_horn0)
     servo = fuse(body, ears, boss)
     horn = cyl_z(-a / 2, 0, s["horn_d"] / 2, G.z_horn0, G.z_horn1)
+    if s.get("horn_insert_od"):
+        horn = cut(horn, [cyl_z(-a / 2, yy, s["horn_insert_od"] / 2,
+                                G.z_horn0 - 0.01, G.z_horn1 + 0.01)
+                          for yy in (-s["dog_r"], s["dog_r"])])
+        inserts = [cut(cyl_z(-a / 2, yy, s["horn_insert_od"] / 2, G.z_horn0, G.z_horn1),
+                       [cyl_z(-a / 2, yy, s["horn_insert_id"] / 2, G.z_horn0 - 0.01, G.z_horn1 + 0.01)])
+                   for yy in (-s["dog_r"], s["dog_r"])]
+        horn = cq.Compound.makeCompound([horn, *inserts])
     if s.get("horn_counterbore_d"):
         recess = cyl_z(-a / 2, 0, s["horn_counterbore_d"] / 2,
                        G.z_horn1 - s["horn_counterbore_depth"], G.z_horn1 + 0.01)
@@ -616,7 +624,13 @@ def fasteners(P, G):
             st.append((sh_name, cut(cyl_z(x, 0, k["shim_od"] / 2, z0, z0 + k["shim_t"]),
                                     [cyl_z(x, 0, k["shim_id"] / 2, z0 - 1, z0 + 2)]), "steel"))
     for yy in (-s["dog_r"], s["dog_r"]):
-        if rev_b:  # M3x10 set screw threaded into the horn from the front; its tail is flush with the horn's back face
+        if s.get("horn_insert_od"):
+            L = s["dog_pin_len"]
+            shoulder_z = G.z_horn1 - 0.1
+            dog = fuse(cyl_z(0, yy, s["horn_insert_id"] / 2, G.z_horn0, shoulder_z),
+                       cyl_z(0, yy, s["dog_d"] / 2, shoulder_z, G.z_horn0 + L))
+            sa.append((f"dog set screw M3x{L:g}", dog, "steel"))
+        elif rev_b:  # M3x10 set screw threaded into the horn from the front; its tail is flush with the horn's back face
             L = s["dog_pin_len"]
             sa.append((f"dog set screw M3x{L:g}", cyl_z(0, yy, s["dog_d"] / 2, G.z_horn0, G.z_horn0 + L), "steel"))
         else:
@@ -662,7 +676,7 @@ SIDE = {"knuckle_a": "A", "finger_a": "A", "nail_a": "A",
         "fasteners_a": "A", "fasteners_b": "B"}
 MATERIAL = {"housing": "PETG", "front_plate": "PETG", "wrist_mount": "PETG", "knuckle_a": "PA6CF", "knuckle_b": "PA6CF",
             "finger_a": "TPU", "finger_b": "TPU", "nail_a": "PLA", "fsr_backing_b": "PLA", "fsr_puck_b": "PLA",
-            "fsr_sensor_b": "bought", "servo": "bought", "horn": "bought Al", "fasteners": "steel",
+            "fsr_sensor_b": "bought", "servo": "bought", "horn": "bought Al/steel", "fasteners": "steel",
             "fasteners_a": "steel", "fasteners_b": "steel"}
 FILL = {"housing": "print_fill", "front_plate": "print_fill"}
 COLOR = {"housing": (0.78, 0.80, 0.83), "front_plate": (0.70, 0.74, 0.80), "wrist_mount": (0.55, 0.58, 0.64),
@@ -766,6 +780,10 @@ def mass_props(P, parts_w, G):
             g = BOUGHT_G[n]
             if n == "servo":
                 c = s.Center()
+        elif n == "horn" and P["servo"].get("horn_insert_od"):
+            insert_v = 2 * math.pi * ((P["servo"]["horn_insert_od"] / 2) ** 2
+                                      - (P["servo"]["horn_insert_id"] / 2) ** 2) * P["servo"]["horn_t"]
+            g = (V * mt["Al"] + insert_v * (mt["steel"] - mt["Al"])) / 1000.0
         elif n in BOUGHT_RHO:
             g = V / 1000.0 * mt[BOUGHT_RHO[n]]
         else:
@@ -1005,9 +1023,10 @@ def bought_rows(P):
     Lh = w.get("horn_screw_len", 6.0)
     return [
         ("Servo", 1, f"{s['model']} ({s['id']}), 25T spline, {s['rail_V']} V rail", "hobby RC vendor (aifitlab listing)", s["price_usd"], "S price; dimensions [A]: measure on the delivered part (README)"),
-        ("Horn", 1, "25T aluminium disc horn Ø20 x 3 with a counterbored centre (screw head flush or below the face), two M3 holes drilled and tapped at r 7, ±90 deg", "hobby RC vendor", 3.00, "A; the head may stand at most 0.4 above the horn face (0.5 gap to the mid plate)"),
+        ("Horn", 1, f"25T aluminium disc horn Ø{s['horn_d']:g} x {s['horn_t']:g} with a counterbored centre and two Ø{s['horn_insert_od']:g} hardened steel threaded inserts at r {s['dog_r']:g}", "machined horn / hobby RC blank", 3.00, "A; bore and spline concentricity, insert retention and 1 mm outer rim need coupon verification"),
         ("Horn centre screw", 1, "M3x6 ISO 7380 button head, 2.0 mm hex", "hardware (McMaster/Misumi class)", 0.10, "replaces the Phillips screw; driven through the Ø3 pin A bore"),
-        ("Dog set screws", 2, f"M3x{s['dog_pin_len']:g} ISO 4026 socket set screw, flat point, 45H", "hardware", 0.10, "thread-locker 243"),
+        ("Dog set screws", 2, f"custom M3x{s['dog_pin_len']:g} hardened dog screw with smooth Ø{s['dog_d']:g} shoulder starting 0.1 below the horn face", "machined hardware", 0.50, "threaded into steel insert; verify shoulder hardness, root radius and retention on coupon"),
+        ("Dog steel inserts", 2, f"Ø{s['horn_insert_od']:g} outer x M3 threaded bore x {s['horn_t']:g} long hardened steel sleeve", "machined hardware", 0.50, "pressed into aluminium horn; verify 1 mm outer rim on coupon"),
         ("Knuckle pins", 2, f"{k['pin_spec']}", "precision pins (Misumi/McMaster class)", 0.40, "buy 10 to grade; retaining compound 638 in the mid plate"),
         ("Knuckle bushes", 2, f"sintered bronze plain bush 3 x {k['sleeve_od']:g} x {k['sleeve_len']:g} (oil-impregnated)", "bearing supplier (Oilite class)", 0.60, "no 3 x 5 found [A]; buy 5 for the coupon"),
         ("Shims", 4, f"shim washer {k['shim_id']:g} x {k['shim_od']:g}, 0.05 mm step assortment (0.1-1.0) [A]", "hardware (RC shim class)", 0.10,

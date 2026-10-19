@@ -1,8 +1,8 @@
 # Cloth-feed gripper — CAD revision B.1
 
-**Revision B.1 adds CHANGELOG rows B42 and B43 to the revision B solid and checks their geometry with named tests.** Six earlier rows remain open (B25–B28, B33, B34), and R10 fails (B24). The DSServo DS3230 MG model uses a 10.5 mm gear face, a reamed Ø9 boss bore, h8 pins in bronze bushes, 3.2 × 7 shims for 0.3 mm end play, metal limiter sleeves, and 0.44° pad toe-in. The 2D fit check found zero moving-to-static clash volume at −11, −7.4, 0, 10, and 20°; the full 3D audit samples every degree from −11 to +20° and reports intentional contacts separately. Assembly driver rays pass, and the wrist-flex check covers the angles stated below. **R10 mass moment is 52,995 g·mm, 121.2 % of the 43,720 limit** — see *Mass*. Tags: [S] sourced, [D] derived, [A] assumed.
+**Revision B.1 adds CHANGELOG rows B42 and B43 to the revision B solid and checks their geometry with named tests.** Six earlier rows remain open (B25–B28, B33, B34), and R10 fails (B24). The DSServo DS3230 MG model uses a 10.5 mm gear face, a reamed Ø9 boss bore, h8 pins in bronze bushes, 3.2 × 7 shims for 0.3 mm end play, metal limiter sleeves, and 0.44° pad toe-in. The 2D fit check found zero moving-to-static clash volume at −11, −7.4, 0, 10, and 20°; the full 3D audit samples every degree from −11 to +20° and reports intentional contacts separately. Assembly driver rays pass, and the wrist-flex check covers the angles stated below. **R10 mass moment is 53,342 g·mm, 122.0 % of the 43,720 limit** — see *Mass*. Tags: [S] sourced, [D] derived, [A] assumed.
 
-**The dog coupling is not strong enough at stall (CHANGELOG B40).** If lash leaves one dog carrying the DS3230's stall (LC3, 2.876 N·m at 6.5 V, 411 N at r 7), the M3 set screw sees 1,693 MPa in bending against about 1,400 for class 45H, and the 3 mm aluminium horn socket 685 MPa in bearing against about 386 [A] [D `dog_check.py`]. Both dogs sharing: 846 / 342 MPa, safety factors 1.65 / 1.13. A hardened Ø3 dowel in place of the set screw halves the bending (853 MPa one dog) but not the horn bearing, so no swap that fits the 3.4 slots and the bought horn clears stall. One dog carries 1.62 N·m (0.56 × stall). **Until the coupling is fixed:** set the bench supply's current limit to 0.5 × the stall current measured in TP-13 on the delivered servo (about 1.44 N·m if torque follows current [A]; the 5 N hold needs 0.765 N·m), and never jam the jaw on a rigid stop. **The fix needs the coupling's owner:** a deeper steel socket (a 6 mm steel horn hub or clamp disc) or the Oldham disc of B27, then the dogs as hardened dowels.
+**B40 strengthens the dog coupling on calculated stall loads (CHANGELOG B45).** The former M3 set screws in bare aluminium fail when lash leaves one dog carrying the DS3230 stall (LC3, 2.876 N·m at 6.5 V, 411 N at r 7): one dog bends at 1,693 MPa and bears on the horn at 685 MPa, safety factors 0.83 and 0.56. That as-drawn dog carries only 1.62 N·m (0.56 × stall). For an unreworked horn, retain the interim bench limit of 0.5 × the stall current measured in TP-13 and never jam the jaw on a rigid stop. The chosen Ø22 horn instead carries two custom hardened M3×10 screws with Ø2.9 smooth shoulders in Ø6×3×3 steel inserts; the 3.4 mm slots stay. One loaded shoulder dog has safety factors 1.48 in bending, 1.27 in steel bearing and 1.13 in aluminium bearing; both dogs sharing have 2.97, 2.54 and 2.25 respectively [D `dog_check.py`, A allowables]. The chosen one-dog horn-socket limit is 3.25 N·m, 1.13 × stall. **This is unbuilt:** coupon-test the insert retention, 1 mm horn rim, shoulder root and fatigue before releasing the coupling.
 
 ## What changed and why
 
@@ -10,7 +10,7 @@ Full table with sources, rev A / rev B values and the test for each row: [`CHANG
 
 | Change | Why (source) |
 |---|---|
-| Servo located by its Ø9 boss in a reamed bore (a web of the housing at the case top); dog slots 3.14 → 3.4; cradle pocket = measured case width + 0.40 (20.5 for 20.1) | Dog coupling and servo fit failed (tolerance rows 1, 3: T14B 40.68 % → 99.88 %, T14 → 100 %) |
+| Servo located by its Ø9 boss in a reamed bore (a web of the housing at the case top); Ø2.9 shoulder dogs in Ø6 steel inserts and Ø22 horn; dog slots 3.14 → 3.4; cradle pocket = measured case width + 0.40 (20.5 for 20.1) | B40 raises the combined dog coupling from FAIL, 40.68 % yield to MARGINAL, 99.952 % yield (T14B Cpk 1.11); T14 passes. Coupon validation remains required |
 | Knuckle bore Ø6 for 3 × 6 × 10 bronze bushes; ISO 2338 h8 3 × 16 pins graded 0.000-0.020; front-plate pin holes blind | m6 dowel is a press size, not a running fit (row 2, T16B); pins walked out (row 10, F06) |
 | Pad faces toed in 0.44° about the contact point | Faces parallel at first contact (row 4, T10); r_c becomes 64.90 ≤ 64.95 (test plan row 1) |
 | Two h8 3 × 6 locating pins, spider → reamed deck holes; one-time TCP calibration | Jaw centreline (row 5, T05) |
@@ -18,7 +18,7 @@ Full table with sources, rev A / rev B values and the test for each row: [`CHANG
 | Ear seat holes Ø5.0 with metal limiter sleeves, washer under each nut, frame 1.5 longer per end; Ø1 thermocouple hole; servo body left open | PETG under the nut creeps hot (thermal C1-C3) |
 | Gear face 8 → 10.5; servo is a named parameter set (`servo.model`) | DS3230 MG jam shock (actuation C1, C2) |
 | Deck screws moved to (±30.5, 6) / (±30.5, −7.5), side standoffs to x ±23, deck half-width 34 with corners clipped to r 37.5 | Three of four deck screws could not be fitted (fit check, F19) |
-| Dog pins = M3x10 set screws threaded in from the front; B.1 horn-face annular relief and centre counterbore; knuckle root relief 6 → 6.55 (peg pitch 6 → 5.45) | Fit audit: former horn gap 0.500 mm and cross-side gap 0.703 mm at −11°; fine-step B.1 minima 0.750 and 1.215 mm |
+| Shoulder dogs = custom hardened M3×10 screws threaded in from the front; B.1 horn-face annular relief and centre counterbore; knuckle root relief 6 → 6.55 (peg pitch 6 → 5.45) | Fit audit: former horn gap 0.500 mm and cross-side gap 0.703 mm at −11°; fine-step B.1 minima 0.750 and 1.215 mm |
 
 ## What to print
 
@@ -35,11 +35,11 @@ One sheet per part in [`drawings/`](drawings/) (four views and a *check after pr
 
 ## What to buy
 
-[`drawings/BOM.md`](drawings/BOM.md): servo, horn (tap two M3 holes at r 7), M3x6 ISO 7380 centre screw, 2 × M3x10 set screws, 2 × h8 3 × 16 pins (buy 10 to grade), 2 × 3 × 6 × 10 bushes, 3.2 × 7 shim assortment, 2 × h8 3 × 6 pins, 4 × M3 horn screws (length from the measured depth), 4 × M3x6 deck screws, 4 inserts, 4 × M3x10 ear screws with 4 limiter sleeves, washers and nuts, 3 × M3x16, finger dowels and M2 bolts, FSR 402, retaining compound 638, thread-locker 243, three H7 hand reamers (3, 6, 9 mm).
+[`drawings/BOM.md`](drawings/BOM.md): servo, horn (tap two M3 holes at r 7), M3x6 ISO 7380 centre screw, 2 × custom hardened M3×10 shoulder dog screws and 2 × Ø6×3×3 steel horn inserts, 2 × h8 3 × 16 pins (buy 10 to grade), 2 × 3 × 6 × 10 bushes, 3.2 × 7 shim assortment, 2 × h8 3 × 6 pins, 4 × M3 horn screws (length from the measured depth), 4 × M3x6 deck screws, 4 inserts, 4 × M3x10 ear screws with 4 limiter sleeves, washers and nuts, 3 × M3x16, finger dowels and M2 bolts, FSR 402, retaining compound 638, thread-locker 243, three H7 hand reamers (3, 6, 9 mm).
 
 ## How to assemble
 
-[`assembly/ASSEMBLY.md`](assembly/ASSEMBLY.md) and [`assembly/steps.json`](assembly/steps.json) (generator `assembly/assembly_plan.py`, which checks every insertion path and driver ray on the STL files). Order: ream and press on the bench → wrist plate onto the arm's horn → housing on the bench (sleeves, horn slid in from below, servo in from behind, centre screw through the pin A bore, ear screws, dog set screws, pins) → housing onto the wrist plate (4 deck screws from below) → shims, knuckles, front plate → fingers, FSR and nail → jaw check and TCP calibration.
+[`assembly/ASSEMBLY.md`](assembly/ASSEMBLY.md) and [`assembly/steps.json`](assembly/steps.json) (generator `assembly/assembly_plan.py`, which checks every insertion path and driver ray on the STL files). Order: ream and press on the bench → wrist plate onto the arm's horn → housing on the bench (sleeves, horn with steel inserts slid in from below, servo in from behind, centre screw through the pin A bore, ear screws, shoulder dogs, pins) → housing onto the wrist plate (4 deck screws from below) → shims, knuckles, front plate → fingers, FSR and nail → jaw check and TCP calibration.
 
 ## Measure before assembly
 
@@ -53,7 +53,7 @@ One sheet per part in [`drawings/`](drawings/) (four views and a *check after pr
 
 ## Fit check (`out/fitcheck.json`, revision B)
 
-- **Jaw sweep (R18)** at −11, −7.4, 0, 10, 20°: 0 mm³ between every moving part (knuckles, fingers, nail, FSR stack, bushes, pegs, dog set screws) and every static part; the horn (turns with knuckle A) clashes with nothing but the set screws threaded into it. Gear mesh overlap 0; knuckle-to-plate gaps 1.0 [D].
+- **Jaw sweep (R18)** at −11, −7.4, 0, 10, 20°: 0 mm³ between every moving part (knuckles, fingers, nail, FSR stack, bushes, pegs, shoulder dogs) and every static part; the horn (turns with knuckle A) contacts only the shoulder dogs threaded into it. Gear mesh overlap 0; knuckle-to-plate gaps 1.0 [D].
 - **Keep-out (R9 hub):** r_max 11.62 (H−1…H+1) and 14.61 (H+1…H+5.0) against 11.6 / 14.6. That is a pass because r_max is a bisection upper bound with a 0.02 mm tolerance (`fitcheck.py` passes r_max ≤ limit + 0.02) and the exact test, the BRep volume outside the r 11.6 / 14.6 ring (band ends inset 0.01 mm), is 0 mm³ in both bands [D].
 - **Roll ring gap to the wrist link:** 0.95 mm at z_I 0–1, 1.27 at 1–2, **0.59 at 2–5.3** (unchanged from rev A; tolerance stack T11 passes, Cpk 2.17) [D].
 - **Envelope against the stock gripper:** inside in every band except z_I 40–60 (servo r 52.5 vs stock 37.3; rev A 51.2, the servo now sits 1.5 mm further back on its boss). R9 allows this when wrist flex is re-checked: **wrist flex clear** at φ −95…+95° and roll 0/90/180/270° for both grippers [D]. The deck corners are clipped to r 37.5 so band 6–12 stays inside (37.6 vs 37.6).
@@ -62,13 +62,13 @@ One sheet per part in [`drawings/`](drawings/) (four views and a *check after pr
 
 ## Mass (R10)
 
-**R10 fails: 152.9 g including 13.5 g cloth and 5 g wiring, COM 37.6 mm past H, 52,995 g·mm = 121.2 % of 43,720** (C001 at 7.4 V) [D `fitcheck.py`]. 58,505 with the wrist UVC option.
+**R10 fails: 153.9 g including 13.5 g cloth and 5 g wiring, COM 37.5 mm past H, 53,342 g·mm = 122.0 % of 43,720** (C001 at 7.4 V) [D `fitcheck.py`]. 58,852 with the wrist UVC option.
 
-**Revision A for comparison:** 144.4 g, 50,131 g·mm, 115 % (`fitcheck.py` on master `899265a`). DESIGN-BASIS R10's 40,507 g·mm (93 %) is the pre-CAD estimate (115.8 g, `design_basis.py`), and the test plan's 50,511 used the same CAD mass. **B.1 is 8.5 g and 2,864 g·mm heavier than rev A:** the selected 60 g servo, wider gears, boss web, fasteners, and limiters dominate; the B.1 relief and counterbore reduce the rev B mass slightly.
+**Revision A for comparison:** 144.4 g, 50,131 g·mm, 115 % (`fitcheck.py` on master `899265a`). DESIGN-BASIS R10's 40,507 g·mm (93 %) is the pre-CAD estimate (115.8 g, `design_basis.py`), and the test plan's 50,511 used the same CAD mass. **B.1 with B40 is 9.5 g and 3,211 g·mm heavier than rev A:** the selected 60 g servo, wider gears, boss web, fasteners, and limiters dominate; the B.1 relief and counterbore reduce the rev B mass slightly.
 
 | Item | g | u past H mm | g·mm |
 |---|---:|---:|---:|
-| housing | 11.71 | 21.5 | 3,871 |
+| housing | 11.66 | 21.4 | 3,854 |
 | front_plate | 4.14 | 28.4 | 1,397 |
 | wrist_mount | 9.25 | 5.3 | 2,908 |
 | knuckle_a | 6.11 | 36.3 | 2,110 |
@@ -80,33 +80,33 @@ One sheet per part in [`drawings/`](drawings/) (four views and a *check after pr
 | fsr_sensor_b | 0.60 | 92.0 | 241 |
 | fsr_puck_b | 0.04 | 95.0 | 16 |
 | servo | 60.00 | 31.0 | 20,406 |
-| horn | 2.36 | 31.0 | 803 |
+| horn | 3.43 | 31.0 | 1,167 |
 | fasteners | 15.51 | 20.7 | 5,115 |
 | fasteners_a | 4.55 | 40.5 | 1,591 |
 | fasteners_b | 3.69 | 42.7 | 1,298 |
 | cloth at the pad [D DB] | 13.50 | 96.0 | 5,469 |
 | FSR + servo wiring [A DB] | 5.00 | 40.0 | 1,746 |
-| **total** | **152.9** | COM 37.6 | **52,995** |
+| **total** | **153.9** | COM 37.5 | **53,342** |
 
-The 309.1 mm lever makes the limit about 126 g at this COM, so 27 g has to go. **What each real option buys** (estimates, none built; `python3 cad/gripper/r10_options.py` → `out/r10_options.json`; D = the model rebuilt with that one parameter changed, A = an assumed fraction, S = sourced). Running total counts only options that reduce the moment and qualify:
+The 309.1 mm lever makes the limit about 126 g at this COM, so about 28 g has to go. **What each real option buys** (estimates, none built; `python3 cad/gripper/r10_options.py` → `out/r10_options.json`; D = the model rebuilt with that one parameter changed, A = an assumed fraction, S = sourced). Running total counts only options that reduce the moment and qualify:
 
 | Option | Δ g | Δ g·mm | Basis | What it costs | Running total g·mm |
 |---|---:|---:|---|---|---:|
-| Housing and front plate 60 → 40 % gyroid | -5.28 | -1,755 | D model, A strength | pin-plate and boss-web stiffness unchecked (T14B, T16 line-ream); coupon first | 51,240 |
-| Wrist plate 100 → 60 % (4 walls) | -3.70 | -1,163 | A: 40 % of the solid mass | clamp under the 4 horn screws and the Ø19.56 pilot recess (T02) unchecked | 50,077 |
-| Bushes 3 × 6 × 10 → 3 × 6 × 8 | -0.74 | -252 | D model | bearing length 8 in a 10.5 hub; T16 / T10B re-base (tolerance owner) | 49,825 |
-| Limiter sleeves brass → aluminium | -0.69 | -233 | D volume, A densities | aluminium creep and fretting under the nut at 60 °C (thermal owner) | 49,592 |
+| Housing and front plate 60 → 40 % gyroid | -5.27 | -1,751 | D model, A strength | pin-plate and boss-web stiffness unchecked (T14B, T16 line-ream); coupon first | 51,591 |
+| Wrist plate 100 → 60 % (4 walls) | -3.70 | -1,163 | A: 40 % of the solid mass | clamp under the 4 horn screws and the Ø19.56 pilot recess (T02) unchecked | 50,428 |
+| Bushes 3 × 6 × 10 → 3 × 6 × 8 | -0.74 | -252 | D model | bearing length 8 in a 10.5 hub; T16 / T10B re-base (tolerance owner) | 50,176 |
+| Limiter sleeves brass → aluminium | -0.69 | -233 | D volume, A densities | aluminium creep and fretting under the nut at 60 °C (thermal owner) | 49,943 |
 | Lighter servo: DS3218MG at 1:1 (58 g) | -2.00 | -680 | S mass (actuators.csv A17) | fails the actuation study: R16 hold P 0.53 (actuation_trade.md 0); not a qualifying option | not counted |
 | Lighter servo: DS3218MG + 1.5:1 stage (58 + 8.2 g) | +6.20 | +2,109 | S/A (actuation_trade.md 5.2) | qualifies on torque but is heavier; new bay, +0.95° backlash | not counted |
-| Servo case turned up toward the wrist (long-Y layout; case 10 mm up from pivot A, but the deck rises so pivot-to-H +18.8 mm and servo u 31.0 → 39.8) | +3.04 | +2,762 | D model | whole gripper moves away from H with the taller deck; housing redesign; wrist flex / keep-out re-check | not counted |
+| Servo case turned up toward the wrist (long-Y layout; case 10 mm up from pivot A, but the deck rises so pivot-to-H +18.8 mm and servo u 31.0 → 39.8) | +3.08 | +2,796 | D model | whole gripper moves away from H with the taller deck; housing redesign; wrist flex / keep-out re-check | not counted |
 | Servo body 10 mm nearer the wrist on a 1:1 stage (shaft off pivot A) | +8.20 | +2,189 | D lever, A stage 8.2 g as actuation_trade.md 5.2 | net heavier: the stage's own moment exceeds the 600 g·mm the move saves | not counted |
-| Lightening holes, both knuckles (20 % of each) | -2.50 | -862 | A: 20 % removed | arm and gear-root stress unchecked (gears.py); PA6-CF print | 48,730 |
-| Finger 45 → 40 mm (cloth, nail, FSR 5 mm nearer H; a hollow finger buys nothing more: the Fin Ray is already open cells) | -0.40 | -244 | D model | r_c 65 → about 60 (R17, gear and servo sizing), tip stiffness R12 rises about (45/40)³, reach; finger lane | 48,486 |
+| Lightening holes, both knuckles (20 % of each) | -2.50 | -862 | A: 20 % removed | arm and gear-root stress unchecked (gears.py); PA6-CF print | 49,081 |
+| Finger 45 → 40 mm (cloth, nail, FSR 5 mm nearer H; a hollow finger buys nothing more: the Fin Ray is already open cells) | -0.40 | -244 | D model | r_c 65 → about 60 (R17, gear and servo sizing), tip stiffness R12 rises about (45/40)³, reach; finger lane | 48,837 |
 
-**Closest combination:** every counted row together (infill trims, short bushes, aluminium limiters, knuckle lightening holes, 40 mm fingers) gives 48,486 g·mm, 110.9 % of 43,720, still 4,766 g·mm (about 13.7 g at the COM lever) over. No qualifying servo is lighter than the DS3230, and moving the servo toward the wrist adds more than it saves in both forms the model can build. The servo alone is 20,406 g·mm and the cloth 5,469.
+**Closest combination:** every counted row together (infill trims, short bushes, aluminium limiters, knuckle lightening holes, 40 mm fingers) gives 48,837 g·mm, 111.7% of 43,720, still 5,117 g·mm (about 14.8 g at the COM lever) over. No qualifying servo is lighter than the DS3230, and moving the servo toward the wrist adds more than it saves in both forms the model can build. The servo alone is 20,406 g·mm and the cloth 5,469.
 
 <!-- r10-work-cell-rule:begin -->
-Douglas's 2026-10-11 ruling keeps R10 at **43,720 g·mm**. No option closes R10, and R10 honestly remains **FAIL at full extension**. The required work-cell rule is no holds with the gripper COM farther than r_limit = 285.9 mm from the shoulder_lift axis (43,720 g·mm / 152.9 g); the equivalent fingertip limit is 344.3 mm. The values come from the current CAD mass in `out/fitcheck.json`; TP-14 enforces the reach gate.
+Douglas's 2026-10-11 ruling keeps R10 at **43,720 g·mm**. No option closes R10, and R10 honestly remains **FAIL at full extension**. The required work-cell rule is no holds with the gripper COM farther than r_limit = 284.1 mm from the shoulder_lift axis (43,720 g·mm / 153.9 g); the equivalent fingertip limit is 342.6 mm. The values come from the current CAD mass in `out/fitcheck.json`; TP-14 enforces the reach gate.
 <!-- r10-work-cell-rule:end -->
 
 ## Still assumed
@@ -114,7 +114,7 @@ Douglas's 2026-10-11 ruling keeps R10 at **43,720 g·mm**. No option closes R10,
 - Every DS3230 MG dimension (listed above) [A]; horn: 25T aluminium disc Ø20 × 3 seated on the 2.5 mm boss top (`servo.horn_gap`), two M3 holes tapped by hand [A].
 - The horn centre screw can be an M3x6 ISO 7380 (2.0 mm hex) driven through the Ø3.0 pin A bore [A].
 - Bush length 10 (catalogue class 3 × 6 × 10) [A]; h8 limits 2.986-3.000 [A, `basis.yaml`].
-- Dog coupling allowables: 45H set screw about 1,400 MPa, hardened dowel about 1,700, aluminium horn socket bearing about 386 (6061-T6 class; the horn alloy is unknown) [A, `dog_check.py`]; see the top of this page.
+- Dog coupling allowables and insert retention remain assumptions: the chosen hardened shoulder has 1.48 bending safety factor with one dog loaded; its steel insert has 1.27 bearing safety factor and the Ø22 aluminium horn 1.13 [A/D `dog_check.py`]. Gauge the delivered parts and coupon-test the 1 mm outer rim before assembly.
 - Torques for every screw are starting values [A]; printed hole bias and scatter from `basis.yaml` until the coupon is measured.
 
 ## Files and commands

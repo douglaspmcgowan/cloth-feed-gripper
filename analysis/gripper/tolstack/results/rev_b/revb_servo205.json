@@ -4,21 +4,20 @@
  "tally": {
   "n": 26,
   "pass": 23,
-  "marginal": 2,
-  "fail": 1,
+  "marginal": 3,
+  "fail": 0,
   "undecided": 0,
-  "own_fail": 1,
-  "thinnest": "T14B",
-  "thinnest_cpk": 0.982325086,
-  "thinnest_ex_horn": "T14B",
-  "thinnest_ex_horn_cpk": 0.982325086,
+  "own_fail": 0,
+  "thinnest": "T16B",
+  "thinnest_cpk": 1.05418363,
+  "thinnest_ex_horn": "T16B",
+  "thinnest_ex_horn_cpk": 1.05418363,
   "marginal_ids": [
    "T09H",
+   "T14B",
    "T16"
   ],
-  "fail_ids": [
-   "T14B"
-  ]
+  "fail_ids": []
  },
  "stacks": [
   {
@@ -959,49 +958,26 @@
    "title": "Dog coupling \u2014 servo shaft offset from pin A against the dog slot clearance",
    "role": "option",
    "variant_of": "T14B",
-   "nominal": -0.2365,
+   "nominal": -0.25,
    "wc": [
-    -0.287192661,
-    0.238192661
+    -0.276692661,
+    0.200692661
    ],
    "spec": {
     "usl": 0.0
    },
    "units": "mm tangential interference at a dog (> 0 = the dogs force knuckle A sideways)",
    "method": "wc",
-   "verdict3": "fail",
-   "own_verdict3": "fail",
+   "verdict3": "marginal",
+   "own_verdict3": "marginal",
    "verdict_band": [
-    "fail"
+    "marginal"
    ],
    "verdict_decided": true,
-   "sampling_runs": [
-    {
-     "n": 100000,
-     "cpk_percentile": 0.977125869,
-     "cpk_percentile_se": 0.0128260311,
-     "verdict_band": [
-      "marginal",
-      "fail"
-     ],
-     "seed": 20260922,
-     "sample_head_sha256": "6e4bbc22d85f6bd1d825017422fbd8bda5800431c316edf95401905b30822f8d"
-    },
-    {
-     "n": 1000000,
-     "cpk_percentile": 0.982325086,
-     "cpk_percentile_se": 0.00249412862,
-     "verdict_band": [
-      "fail"
-     ],
-     "seed": 21260925,
-     "sample_head_sha256": "5ac1c8ea49b24716fbace1f2f9470615063c1650090a17d992ff354d18da3403"
-    }
-   ],
-   "yield_pct": 99.84,
+   "yield_pct": 99.952,
    "dominant": {
     "name": "slot_w",
-    "var_pct": 33.4124169
+    "var_pct": 37.82935
    },
    "blocked_by": [],
    "rss_clipped": false,
@@ -1009,14 +985,14 @@
    "base_id": "T14B",
    "picked_variant": "T14B-boss34",
    "mc": {
-    "mean": -0.144312933,
-    "std": 0.0429621967,
-    "p0135": -0.253922281,
-    "p99865": 0.0026479747,
-    "out_pct": 0.16,
-    "cpk_percentile": 0.982325086,
-    "cpk_percentile_se": 0.00249412862,
-    "n": 1000000
+    "mean": -0.157633404,
+    "std": 0.0403254128,
+    "p0135": -0.258466801,
+    "p99865": -0.0156715282,
+    "out_pct": 0.048,
+    "cpk_percentile": 1.10777285,
+    "cpk_percentile_se": 0.00882419206,
+    "n": 100000
    }
   },
   {
@@ -1344,7 +1320,7 @@
  ],
  "input_digest": {
   "algorithm": "sha256",
-  "digest": "e9a684583b47c30148ef5ea7a6f32625d13d7254fd0b5fed376a852109daf2db",
+  "digest": "d88ad45b1da7ba1f922a77260589abe4919ffad7ace2fef365f1b3fe9ef0070e",
   "files": [
    "stacks/basis.yaml",
    "stacks/rev_b.yaml",

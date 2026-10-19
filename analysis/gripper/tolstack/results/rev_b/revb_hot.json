@@ -9,9 +9,9 @@
   "undecided": 0,
   "own_fail": 1,
   "thinnest": "T14B",
-  "thinnest_cpk": 0.656787937,
+  "thinnest_cpk": 0.751251352,
   "thinnest_ex_horn": "T14B",
-  "thinnest_ex_horn_cpk": 0.656787937,
+  "thinnest_ex_horn_cpk": 0.751251352,
   "marginal_ids": [
    "T09H",
    "T14",
@@ -960,10 +960,10 @@
    "title": "Dog coupling \u2014 servo shaft offset from pin A against the dog slot clearance",
    "role": "option",
    "variant_of": "T14B",
-   "nominal": -0.2365,
+   "nominal": -0.25,
    "wc": [
-    -0.277192661,
-    0.388192661
+    -0.266692661,
+    0.350692661
    ],
    "spec": {
     "usl": 0.0
@@ -976,24 +976,24 @@
     "fail"
    ],
    "verdict_decided": true,
-   "yield_pct": 97.64,
+   "yield_pct": 98.757,
    "dominant": {
     "name": "hot_servo_shift",
-    "var_pct": 33.8104086
+    "var_pct": 36.7881033
    },
    "blocked_by": [],
-   "rss_clipped": false,
+   "rss_clipped": true,
    "warnings": [],
    "base_id": "T14B",
    "picked_variant": "T14B-boss34",
    "mc": {
-    "mean": -0.121433276,
-    "std": 0.0550468429,
-    "p0135": -0.24928989,
-    "p99865": 0.0663471641,
-    "out_pct": 2.36,
-    "cpk_percentile": 0.656787937,
-    "cpk_percentile_se": 0.00538353783,
+    "mean": -0.134963234,
+    "std": 0.0527762994,
+    "p0135": -0.252324354,
+    "p99865": 0.0467450033,
+    "out_pct": 1.243,
+    "cpk_percentile": 0.751251352,
+    "cpk_percentile_se": 0.00523601113,
     "n": 100000
    }
   },
@@ -1322,7 +1322,7 @@
  ],
  "input_digest": {
   "algorithm": "sha256",
-  "digest": "e9a684583b47c30148ef5ea7a6f32625d13d7254fd0b5fed376a852109daf2db",
+  "digest": "d88ad45b1da7ba1f922a77260589abe4919ffad7ace2fef365f1b3fe9ef0070e",
   "files": [
    "stacks/basis.yaml",
    "stacks/rev_b.yaml",
