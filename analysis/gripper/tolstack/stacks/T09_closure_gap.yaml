@@ -32,3 +32,8 @@ contributors:
   - {name: servo_angle_error, nominal: 0, tol: "=servo_angle_rep_deg", dist: normal, tag: A, source: "deadband + gear play"}
   - {name: dog_lash_offset, nominal: "=-degrees(dog_lash)", tol: "=degrees(fdm_xy_tol_short/(2*dog_r))", dist: normal, tag: D, source: "dog clearance / (2 r_dog), taken up in the closing direction; tol from the printed slot width"}
   - {name: backlash_lag_B, from_stack: T07, sensitivity: "=-degrees(1/(4*r_pitch))", tag: D, source: "B lags A by jt/(2r) rad; contact needs half of it more servo travel"}
+variants:
+  - id: b40_shoulder34
+    role: option
+    label: "B40 hardened Ø2.9 shoulders (2.900 mm mid [A]) in 3.4 mm printed dog slots"
+    set: {dog_slot_w: 3.4, m3_mid: 2.900}
