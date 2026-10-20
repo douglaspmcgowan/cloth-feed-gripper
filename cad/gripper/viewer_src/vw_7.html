@@ -33,8 +33,9 @@ function renderConcepts(){
   const tight=window.innerWidth<=600,xm=tight?0.7:0.65,SHORT={"Unequal sectors":"Unequal","1:1 sectors":"1:1","Rack, ball rail":"Rack, rail","Rack, printed slide":"Rack, slide","Worm, 1-start":"Worm, 1","Worm, 2-start":"Worm, 2"};
   const P=plot($("#transChart"),{w:680,h:320,m:{l:62,b:44},x:{min:0.2,max:xm,label:"Close time to 5 N, model (s)"},y:{min:24000,max:46000,label:"Mass-moment ("+GMM+")",fmt:v=>fmt(v/1000,0)+"k"}});
   P.vband(0.5,xm,"var(--bad-soft)");P.hband(lim,46000,"var(--bad-soft)");
-  P.vline(0.5,"var(--bad)","4 3","selection basis 0.5 s (superseded 2026-10-12)");P.hline(lim,"var(--bad)","4 3","budget "+fmt(lim,0),"start");
+  P.vline(0.5,"var(--bad)","4 3");P.hline(lim,"var(--bad)","4 3","budget "+fmt(lim,0),"start");
   TRANS.forEach(t=>{if(t[4]===null)return;P.dot(t[4],t[2],t[5]?"var(--c1)":"var(--c5)",5,t[0]);P.text(t[4],t[2],tight&&SHORT[t[6]]||t[6],"var(--ink2)",t[7],t[8],t[9]);});
+  keyRow($("#transChart"),[["Selection basis 0.5 s (superseded 2026-10-12)","var(--bad)","4 3"]]);
   $("#transTable tbody").innerHTML=TRANS.map(t=>`<tr><td>${esc(t[0])}</td><td class="n">${t[1]}</td><td class="n">${fmt(t[2],0)}</td><td class="n">${fmt(t[3],1)} %</td><td class="n">${t[4]===null?"–":fmt(t[4],2)}</td><td>${t[5]?st("pass","yes"):st("fail",t[4]===null?"no servo fits":"no")}</td></tr>`).join("");
   pics($("#sketches"),SKETCH.map((sk,i)=>[sk[0],sk[1],SKROWS[i].map(r=>skNote(TRANS[r],SKROWS[i].length>1))]));
   const C=D.pugh.concepts;
