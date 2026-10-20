@@ -1,0 +1,10 @@
+{
+  "dog_check": {
+    "exit": 0,
+    "last": "as drawn one dog carries 1.62 N m (0.56 x stall); chosen one dog 3.25 N m (1.13 x stall); LC1 hold 0.765, LC2 cap 1.529 N m"
+  },
+  "cad_pytest": {
+    "exit": 1,
+    "last": "1 failed, 147 passed in 294.29s (0:04:54)"
+  }
+}

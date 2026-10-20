@@ -1,0 +1,5 @@
+{
+  "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --python 3.12 --no-project --with cadquery python cad/gripper/fitcheck.py",
+  "exit": 0,
+  "last": "153.9 53342 1.22"
+}

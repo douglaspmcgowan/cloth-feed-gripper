@@ -1,0 +1,34 @@
+........................................................................ [ 48%]
+...................F.................................................... [ 97%]
+...F                                                                     [100%]
+================================== FAILURES ===================================
+____________________ test_B24_mass_moment_matches_fitcheck ____________________
+
+    def test_B24_mass_moment_matches_fitcheck():
+        import re
+        fc = json.loads((CAD / "out/fitcheck.json").read_text(encoding="utf-8"))["mass"]
+        txt = (CAD / "README.md").read_text(encoding="utf-8")
+        m = re.search(r"\*\*R10 fails: ([0-9.]+) g .*?, ([0-9,]+) g·mm", txt)
+        assert m, "README R10 line"
+>       assert float(m.group(1)) == pytest.approx(fc["total_g_incl_cloth"], abs=0.05)
+E       assert 152.9 == 153.9 ± 0.05
+E         
+E         comparison failed
+E         Obtained: 152.9
+E         Expected: 153.9 ± 0.05
+
+cad\gripper\tests\test_revb.py:601: AssertionError
+_____________________ test_stored_fit_audit_is_unchanged ______________________
+
+    def test_stored_fit_audit_is_unchanged():
+>       assert hashlib.sha256(FIT_PATH.read_bytes()).hexdigest() == FIT_SHA256
+E       AssertionError: assert 'ef750ca38479...0c5545e2693eb' == '28f31be3faa6...625e2872add14'
+E         
+E         - 28f31be3faa691e1eb97aa95f17c161f07d464788b83bab6e96625e2872add14
+E         + ef750ca384796d58beecc2ae0d74d8e6ae22582b0f6d72c42620c5545e2693eb
+
+cad\gripper\tests\test_viewer_static.py:318: AssertionError
+=========================== short test summary info ===========================
+FAILED cad/gripper/tests/test_revb.py::test_B24_mass_moment_matches_fitcheck
+FAILED cad/gripper/tests/test_viewer_static.py::test_stored_fit_audit_is_unchanged
+2 failed, 146 passed in 303.18s (0:05:03)

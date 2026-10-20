@@ -1,0 +1,5 @@
+{
+  "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --python 3.12 --no-project --with cadquery python cad/gripper/fit3d.py",
+  "exit": 0,
+  "last": "VERDICT PASS"
+}

@@ -1,0 +1,5 @@
+{
+  "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy python analysis/gripper/thermal/thermal.py",
+  "exit": 0,
+  "last": "VERDICT: not safe without back-off; with back-off, acceptable only when every section-0 condition holds; discontinuous conduction: do not operate."
+}

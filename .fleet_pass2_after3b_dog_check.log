@@ -1,0 +1,11 @@
+LC3 stall 2.876 N m at 6.5 V; dogs at r 7.0; lever 5.50 mm (engagement 3.00); horn socket 3.0
+candidate                                        F N  bend MPa    SF  horn MPa    SF  insert MPa    SF
+M3 set screw 45H (as drawn), 1 dog             410.9      1693  0.83       685  0.56           -     -
+M3 set screw 45H (as drawn), 2 dogs            205.4       846  1.65       342  1.13           -     -
+hardened Ø3 dowel, bare aluminium, 1 dog       410.9       853  1.99       685  0.56           -     -
+hardened Ø3 dowel, bare aluminium, 2 dogs      205.4       426  3.99       342  1.13           -     -
+hardened Ø3 dowel, Ø6 steel insert, 1 dog      410.9       853  1.99       342  1.13         685  1.31
+hardened Ø3 dowel, Ø6 steel insert, 2 dogs     205.4       426  3.99       171  2.25         342  2.63
+hardened Ø2.9 shoulder M3 dog screw, Ø6 insert, 1 dog   410.9       944  1.48       342  1.13         708  1.27
+hardened Ø2.9 shoulder M3 dog screw, Ø6 insert, 2 dogs   205.4       472  2.97       171  2.25         354  2.54
+as drawn one dog carries 1.62 N m (0.56 x stall); chosen one dog 3.25 N m (1.13 x stall); LC1 hold 0.765, LC2 cap 1.529 N m

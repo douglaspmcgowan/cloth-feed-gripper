@@ -1,0 +1,584 @@
+...EE..E.EEEEEEEEEEEEEEEEE....EE........................................ [ 48%]
+...................F...............................E...............EE..E [ 97%]
+EEEF                                                                     [100%]
+=================================== ERRORS ====================================
+________ ERROR at setup of test_digest_ignores_unread_tolerance_values ________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_________ ERROR at setup of test_digest_follows_read_tolerance_values _________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+________ ERROR at setup of test_source_byte_change_invalidates_digest _________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+____ ERROR at setup of test_viewer_build_refuses_transitive_source_change _____
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+____________ ERROR at setup of test_importlib_module_is_in_closure ____________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+____________ ERROR at setup of test_analysis_module_is_in_closure _____________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_______ ERROR at setup of test_data_file_named_in_params_is_in_closure ________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+__________ ERROR at setup of test_data_suffixes_are_in_closure[.csv] __________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+__________ ERROR at setup of test_data_suffixes_are_in_closure[.txt] __________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+__________ ERROR at setup of test_data_suffixes_are_in_closure[.stl] __________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+__________ ERROR at setup of test_data_suffixes_are_in_closure[.svg] __________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+__________ ERROR at setup of test_data_suffixes_are_in_closure[.npz] __________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+______________ ERROR at setup of test_m_a_csv_read_is_in_digest _______________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+____________ ERROR at setup of test_m_b_fstring_path_is_in_digest _____________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_________ ERROR at setup of test_m_c_computed_import_name_is_refused __________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+____________ ERROR at setup of test_m_d_os_path_join_is_in_digest _____________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_ ERROR at setup of test_unresolvable_read_fails_closed[\n_p = compute_path()\nopen(_p)\n-input path is a variable] _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_ ERROR at setup of test_unresolvable_read_fails_closed[\nopen(some_helper(1))\n-cannot be resolved] _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_ ERROR at setup of test_unresolvable_read_fails_closed[\n(HERE / "blob.dat").read_bytes()\n-not in DATA_SUFFIXES] _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_ ERROR at setup of test_unresolvable_read_fails_closed[\nimportStep(helper_path)\n-input path is a variable] _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_ ERROR at setup of test_viewer_build_refuses_stale_audit[input_digest_sha256] _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+______ ERROR at setup of test_viewer_build_refuses_stale_audit[distance] ______
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+__________________ ERROR at setup of test_built_page_is_utf8 __________________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad'), _trace=<pluggy._tracing.TagTracerSub object at 0x0000023DE04604D0>, _basetemp=None, _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def built(tmp_path_factory):
+>       return build(tmp_path_factory.mktemp("viewer") / "viewer.html")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad\gripper\tests\test_viewer_static.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:136: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:117: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:158: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_______ ERROR at setup of test_page_has_no_fallback_numeric_requirement _______
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad'), _trace=<pluggy._tracing.TagTracerSub object at 0x0000023DE04604D0>, _basetemp=None, _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def built(tmp_path_factory):
+>       return build(tmp_path_factory.mktemp("viewer") / "viewer.html")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad\gripper\tests\test_viewer_static.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:136: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:117: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:158: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+__ ERROR at setup of test_embedded_pair_counts_match_audit_and_requirements ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad'), _trace=<pluggy._tracing.TagTracerSub object at 0x0000023DE04604D0>, _basetemp=None, _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def built(tmp_path_factory):
+>       return build(tmp_path_factory.mktemp("viewer") / "viewer.html")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad\gripper\tests\test_viewer_static.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:136: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:117: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:158: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+________________ ERROR at setup of test_servo_name_keeps_case _________________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad'), _trace=<pluggy._tracing.TagTracerSub object at 0x0000023DE04604D0>, _basetemp=None, _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def built(tmp_path_factory):
+>       return build(tmp_path_factory.mktemp("viewer") / "viewer.html")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad\gripper\tests\test_viewer_static.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:136: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:117: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:158: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+_ ERROR at setup of test_finding_picker_label_is_short_and_full_reading_is_shown _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad'), _trace=<pluggy._tracing.TagTracerSub object at 0x0000023DE04604D0>, _basetemp=None, _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def built(tmp_path_factory):
+>       return build(tmp_path_factory.mktemp("viewer") / "viewer.html")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad\gripper\tests\test_viewer_static.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:136: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:117: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:158: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+________________ ERROR at setup of test_build_is_deterministic ________________
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+____________ ERROR at setup of test_committed_viewer_matches_build ____________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad'), _trace=<pluggy._tracing.TagTracerSub object at 0x0000023DE04604D0>, _basetemp=None, _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def built(tmp_path_factory):
+>       return build(tmp_path_factory.mktemp("viewer") / "viewer.html")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad\gripper\tests\test_viewer_static.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:136: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:117: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Temp\uv-dog-b40\archive-v0\u7W2Yt4gLdfDOzt7\Lib\site-packages\_pytest\tmpdir.py:158: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/before-cad')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\dougl\\AppData\\Local\\Temp\\pw\\pt-dog-b40-2\\before-cad'
+
+..\..\..\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1311: FileNotFoundError
+================================== FAILURES ===================================
+____________________ test_B24_mass_moment_matches_fitcheck ____________________
+
+    def test_B24_mass_moment_matches_fitcheck():
+        import re
+        fc = json.loads((CAD / "out/fitcheck.json").read_text(encoding="utf-8"))["mass"]
+        txt = (CAD / "README.md").read_text(encoding="utf-8")
+        m = re.search(r"\*\*R10 fails: ([0-9.]+) g .*?, ([0-9,]+) g·mm", txt)
+        assert m, "README R10 line"
+>       assert float(m.group(1)) == pytest.approx(fc["total_g_incl_cloth"], abs=0.05)
+E       assert 152.9 == 153.9 ± 0.05
+E         
+E         comparison failed
+E         Obtained: 152.9
+E         Expected: 153.9 ± 0.05
+
+cad\gripper\tests\test_revb.py:601: AssertionError
+_____________________ test_stored_fit_audit_is_unchanged ______________________
+
+    def test_stored_fit_audit_is_unchanged():
+>       assert hashlib.sha256(FIT_PATH.read_bytes()).hexdigest() == FIT_SHA256
+E       AssertionError: assert 'ef750ca38479...0c5545e2693eb' == '28f31be3faa6...625e2872add14'
+E         
+E         - 28f31be3faa691e1eb97aa95f17c161f07d464788b83bab6e96625e2872add14
+E         + ef750ca384796d58beecc2ae0d74d8e6ae22582b0f6d72c42620c5545e2693eb
+
+cad\gripper\tests\test_viewer_static.py:318: AssertionError
+=========================== short test summary info ===========================
+FAILED cad/gripper/tests/test_revb.py::test_B24_mass_moment_matches_fitcheck
+FAILED cad/gripper/tests/test_viewer_static.py::test_stored_fit_audit_is_unchanged
+ERROR cad/gripper/tests/test_fit3d_basis.py::test_digest_ignores_unread_tolerance_values
+ERROR cad/gripper/tests/test_fit3d_basis.py::test_digest_follows_read_tolerance_values
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_source_byte_change_invalidates_digest
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_viewer_build_refuses_transitive_source_change
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_importlib_module_is_in_closure
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_analysis_module_is_in_closure
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_data_file_named_in_params_is_in_closure
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_data_suffixes_are_in_closure[.csv]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_data_suffixes_are_in_closure[.txt]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_data_suffixes_are_in_closure[.stl]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_data_suffixes_are_in_closure[.svg]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_data_suffixes_are_in_closure[.npz]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_m_a_csv_read_is_in_digest
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_m_b_fstring_path_is_in_digest
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_m_c_computed_import_name_is_refused
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_m_d_os_path_join_is_in_digest
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_unresolvable_read_fails_closed[\n_p = compute_path()\nopen(_p)\n-input path is a variable]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_unresolvable_read_fails_closed[\nopen(some_helper(1))\n-cannot be resolved]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_unresolvable_read_fails_closed[\n(HERE / "blob.dat").read_bytes()\n-not in DATA_SUFFIXES]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_unresolvable_read_fails_closed[\nimportStep(helper_path)\n-input path is a variable]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_viewer_build_refuses_stale_audit[input_digest_sha256]
+ERROR cad/gripper/tests/test_fit3d_integrity.py::test_viewer_build_refuses_stale_audit[distance]
+ERROR cad/gripper/tests/test_viewer_static.py::test_built_page_is_utf8 - File...
+ERROR cad/gripper/tests/test_viewer_static.py::test_page_has_no_fallback_numeric_requirement
+ERROR cad/gripper/tests/test_viewer_static.py::test_embedded_pair_counts_match_audit_and_requirements
+ERROR cad/gripper/tests/test_viewer_static.py::test_servo_name_keeps_case - F...
+ERROR cad/gripper/tests/test_viewer_static.py::test_finding_picker_label_is_short_and_full_reading_is_shown
+ERROR cad/gripper/tests/test_viewer_static.py::test_build_is_deterministic - ...
+ERROR cad/gripper/tests/test_viewer_static.py::test_committed_viewer_matches_build
+2 failed, 117 passed, 29 errors in 317.17s (0:05:17)

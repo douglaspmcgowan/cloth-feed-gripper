@@ -1,0 +1,8 @@
+...............................                                          [100%]
+============================== warnings summary ===============================
+analysis/gripper/actuation/test_actuation.py::test_ideal_actuator_bounds_the_close_time
+  C:\Users\dougl\Worktrees\cloth-feed-gripper\dog-coupling-b40\analysis\gripper\actuation\actuation_trade.py:596: RuntimeWarning: Mean of empty slice
+    "t_contact_s": r(np.nanmean(res["t_contact"])), "t_45_s": r(np.nanmean(res["t_45"])),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+31 passed, 1 warning in 370.92s (0:06:10)

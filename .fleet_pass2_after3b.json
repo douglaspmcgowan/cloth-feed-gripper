@@ -1,0 +1,62 @@
+{
+  "dog_check": {
+    "exit": 0,
+    "last": "as drawn one dog carries 1.62 N m (0.56 x stall); chosen one dog 3.25 N m (1.13 x stall); LC1 hold 0.765, LC2 cap 1.529 N m"
+  },
+  "cad_pytest": {
+    "exit": 0,
+    "last": "148 passed in 292.49s (0:04:52)"
+  },
+  "tolstack_pytest": {
+    "exit": 0,
+    "last": "647 passed in 898.26s (0:14:58)"
+  },
+  "actuation_pytest": {
+    "exit": 0,
+    "last": "31 passed, 1 warning in 681.30s (0:11:21)"
+  },
+  "pin": {
+    "exit": 0,
+    "last": "rev A pin: fresh"
+  },
+  "tolstack_check": {
+    "exit": 0,
+    "last": "generated output current: 7 blocks, 84 files, 70 verdicts checked"
+  },
+  "ecad": {
+    "exit": 0,
+    "last": "check: all generated outputs match"
+  },
+  "gears": {
+    "exit": 0,
+    "last": ""
+  },
+  "thermal": {
+    "exit": 0,
+    "last": ""
+  },
+  "test_plan": {
+    "exit": 0,
+    "last": "generated files are current"
+  },
+  "dyno": {
+    "exit": 0,
+    "last": "FRESH: all 6 input hashes match dyno.json"
+  },
+  "finger_beam": {
+    "exit": 0,
+    "last": "FRESH: finger_beam.json matches recomputed values"
+  },
+  "lint": {
+    "exit": 0,
+    "last": "> python -m py_compile scripts/sync.py scripts/check_public.py && node --check scripts/extract_facts.mjs && node --check scripts/serve.mjs && node --check scripts/screens.mjs && node --check scripts/check_live.mjs"
+  },
+  "public": {
+    "exit": 0,
+    "last": "check_public: scanned 16 files, 18 hits, 18 allowlisted, 0 open, 0 allowlist errors"
+  },
+  "sync": {
+    "exit": 0,
+    "last": "OK"
+  }
+}

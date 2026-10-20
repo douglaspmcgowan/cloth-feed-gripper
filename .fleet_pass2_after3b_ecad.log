@@ -1,0 +1,15 @@
+constants          ok    0.4 s  267 lines
+power_budget       ok    5.9 s  110 lines
+buck_design        ok    0.6 s  39 lines
+fsr_frontend       ok    0.0 s  31 lines
+ina219_budget      ok    0.0 s  48 lines
+trace_width        ok    0.0 s  22 lines
+droop_sim          ok    0.2 s  35 lines
+open_requirements  ok    0.0 s  40 lines
+fault_limit        ok    0.0 s  13 lines
+margins            ok    0.7 s  36 lines
+pinmap_check       ok    0.0 s  74 lines
+harness            ok    0.0 s  89 lines
+done: 12 scripts, 0 failed []
+kept solver values: 0; largest relative difference 0
+check: all generated outputs match

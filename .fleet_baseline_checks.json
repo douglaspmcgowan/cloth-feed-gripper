@@ -1,0 +1,42 @@
+{
+  "actuation": {
+    "exit": 0,
+    "last": "rev A pin: fresh",
+    "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy python analysis/gripper/actuation/pin_rev_a.py --check"
+  },
+  "tolstack": {
+    "exit": 0,
+    "last": "generated output current: 7 blocks, 83 files, 69 verdicts checked",
+    "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with pyyaml --with numpy python analysis/gripper/tolstack/tolstack.py --check"
+  },
+  "ecad": {
+    "exit": 0,
+    "last": "check: all generated outputs match",
+    "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy python ecad/gripper/calc/run_all.py --check"
+  },
+  "gears": {
+    "exit": 0,
+    "last": "",
+    "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy --with matplotlib --with shapely python analysis/gripper/gears.py --check"
+  },
+  "thermal": {
+    "exit": 0,
+    "last": "",
+    "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy python analysis/gripper/thermal/thermal.py --check"
+  },
+  "test_plan": {
+    "exit": 0,
+    "last": "generated files are current",
+    "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy --with pyyaml python docs/gripper/test/test_plan.py --check"
+  },
+  "dyno": {
+    "exit": 1,
+    "last": "  cad/gripper/params.json recorded aed2f4cfc0a8ae54, on disk 3d4a4daf573cfd59",
+    "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy --with matplotlib --with shapely --with pylife --with packaging python analysis/gripper/dyno.py --check"
+  },
+  "finger_beam": {
+    "exit": 0,
+    "last": "FRESH: finger_beam.json matches recomputed values",
+    "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy --with matplotlib python analysis/gripper/finger_beam.py --check"
+  }
+}

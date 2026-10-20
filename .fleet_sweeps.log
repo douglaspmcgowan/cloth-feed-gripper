@@ -1,0 +1,7 @@
+sweep_T03_horn_hole_depth.json: exit 0: | 4.2 | 2.500 | 1.885 … 2.915 | 2.034 … 2.773 | 0 | 2.46 | PASS |
+sweep_T03B_horn_hole_depth.json: exit 0: | 4.2 | 1.200 | 0.685 … 1.915 | 0.913 … 1.679 | 0 | 2.84 | PASS |
+sweep_T09_dog_slot.json: exit 0: | 3.8 | -3.856 | -6.576 … -1.135 | -5.053 … -2.633 | 35.9 | 0.12 | FAIL |
+sweep_T14_pocket_servo201.json: exit 0: | 21 | 0.900 | 0.550 … 1.050 | 0.621 … 0.980 | 0 | 4.47 | PASS |
+sweep_T14_pocket_servo205.json: exit 0: | 21 | 0.500 | 0.150 … 0.650 | 0.221 … 0.580 | 0 | 2.23 | PASS |
+sweep_T14B_dog_slot.json: exit 0: | 3.8 | -0.436 | -0.483 … 0.044 | -0.454 … -0.194 | 0 | 2.27 | MARGINAL |
+sweep_T16_pin_clear.json: exit 0: | 0.03 | 0.000 | -0.101 … 0.101 | -0.069 … 0.069 | 0.218 | 1.01 | MARGINAL |

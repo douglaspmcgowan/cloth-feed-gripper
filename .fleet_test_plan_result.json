@@ -1,0 +1,5 @@
+{
+  "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy --with pyyaml python docs/gripper/test/test_plan.py",
+  "exit": 0,
+  "last": "Sessions: 0 Desk checks and first power-up 40 min; 1 Parts, before assembly 280 min; 2 Core afternoon (R14, R15, R19, R20) 314 min; 3 On the arm 90 min; 4 Unattended 30 min"
+}

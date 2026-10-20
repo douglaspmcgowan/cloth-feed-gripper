@@ -1,0 +1,314 @@
+jaw + static 545 s
+detail knuckle_a|knuckle_b 11 s
+detail fasteners_a|housing 18 s
+detail horn|housing 24 s
+detail finger_a|knuckle_b 25 s
+detail knuckle_a|finger_b 26 s
+overlaps 105 s
+builds 110 s
+{
+"pairs": [
+[
+"finger_a",
+"finger_b",
+0.0,
+-11.0,
+736.299
+],
+[
+"finger_a",
+"fsr_backing_b",
+0.0,
+-7.4,
+275.205
+],
+[
+"finger_a",
+"fsr_puck_b",
+0.0,
+-4.0,
+7.738
+],
+[
+"finger_a",
+"fsr_sensor_b",
+0.0,
+-7.0,
+37.096
+],
+[
+"horn",
+"servo",
+0.0,
+-11.0,
+0.0
+],
+[
+"nail_a",
+"finger_b",
+0.0,
+-5.0,
+179.829
+],
+[
+"nail_a",
+"fsr_backing_b",
+0.0,
+-2.0,
+17.539
+],
+[
+"nail_a",
+"fsr_puck_b",
+0.0,
+-1.0,
+21.339
+],
+[
+"nail_a",
+"fsr_sensor_b",
+0.0,
+-1.0,
+42.849
+],
+[
+"fasteners_a",
+"fasteners",
+0.01,
+-11.0,
+0.0
+],
+[
+"fasteners_b",
+"fasteners",
+0.01,
+-11.0,
+0.0
+],
+[
+"knuckle_a",
+"fasteners",
+0.075,
+-11.0,
+0.0
+],
+[
+"knuckle_b",
+"fasteners",
+0.075,
+-11.0,
+0.0
+],
+[
+"knuckle_a",
+"knuckle_b",
+0.113,
+-7.4,
+0.0
+],
+[
+"fasteners_a",
+"housing",
+0.748,
+-10.0,
+0.0
+],
+[
+"horn",
+"housing",
+0.75,
+-11.0,
+0.0
+],
+[
+"fasteners_a",
+"servo",
+1.0,
+-11.0,
+0.0
+],
+[
+"knuckle_a",
+"front_plate",
+1.0,
+-11.0,
+0.0
+],
+[
+"knuckle_a",
+"housing",
+1.0,
+-11.0,
+0.0
+],
+[
+"knuckle_b",
+"front_plate",
+1.0,
+-11.0,
+0.0
+],
+[
+"knuckle_b",
+"housing",
+1.0,
+-11.0,
+0.0
+],
+[
+"finger_a",
+"knuckle_b",
+1.215,
+-11.0,
+0.0
+],
+[
+"knuckle_a",
+"finger_b",
+1.215,
+-11.0,
+0.0
+],
+[
+"fasteners_a",
+"front_plate",
+1.25,
+-11.0,
+0.0
+],
+[
+"fasteners_b",
+"front_plate",
+1.25,
+-11.0,
+0.0
+]
+],
+"static": [
+{
+"a": "housing",
+"b": "servo",
+"v": 4.474,
+"at": [
+-14.25,
+0.0,
+-7.55
+],
+"finished_v": 0.0
+},
+{
+"a": "housing",
+"b": "pin h8 3x16",
+"v": 0.927,
+"at": [
+-14.25,
+0.0,
+-1.0
+]
+},
+{
+"a": "housing",
+"b": "pin h8 3x16",
+"v": 0.927,
+"at": [
+14.25,
+0.0,
+-1.0
+]
+},
+{
+"a": "housing",
+"b": "locating pin h8 3x6",
+"v": 1.158,
+"at": [
+-19.8,
+20.75,
+3.9
+]
+},
+{
+"a": "housing",
+"b": "locating pin h8 3x6",
+"v": 1.158,
+"at": [
+19.8,
+20.75,
+-6.5
+]
+},
+{
+"a": "housing",
+"b": "M3x16 plate screw",
+"v": 27.909,
+"at": [
+-23.0,
+13.0,
+5.75
+]
+},
+{
+"a": "housing",
+"b": "M3x16 plate screw",
+"v": 27.909,
+"at": [
+23.0,
+13.0,
+5.75
+]
+},
+{
+"a": "housing",
+"b": "M3x16 plate screw",
+"v": 27.909,
+"at": [
+0.0,
+15.5,
+5.75
+]
+},
+{
+"a": "front_plate",
+"b": "pin h8 3x16",
+"v": 0.695,
+"at": [
+-14.25,
+0.0,
+13.25
+]
+},
+{
+"a": "front_plate",
+"b": "pin h8 3x16",
+"v": 0.695,
+"at": [
+14.25,
+0.0,
+13.25
+]
+},
+{
+"a": "wrist_mount",
+"b": "locating pin h8 3x6",
+"v": 1.622,
+"at": [
+-19.8,
+23.75,
+3.9
+]
+},
+{
+"a": "wrist_mount",
+"b": "locating pin h8 3x6",
+"v": 1.622,
+"at": [
+19.8,
+23.75,
+-6.5
+]
+}
+],
+"roll_frame_check_mm": 0.06,
+"roll_error": null,
+"runtime_s": 2033.5
+}
+VERDICT PASS 

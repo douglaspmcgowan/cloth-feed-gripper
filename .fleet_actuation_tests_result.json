@@ -1,0 +1,5 @@
+{
+  "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --python 3.12 --no-project --with-requirements requirements-dev.txt python -m pytest -q -p no:cacheprovider --basetemp C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-act analysis/gripper/actuation",
+  "exit": 0,
+  "last": "31 passed, 1 warning in 443.22s (0:07:23)"
+}

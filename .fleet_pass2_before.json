@@ -1,0 +1,50 @@
+{
+  "dog_check": {
+    "exit": 1,
+    "last": "ModuleNotFoundError: No module named 'cadquery'"
+  },
+  "cad_pytest": {
+    "exit": 1,
+    "last": "2 failed, 117 passed, 29 errors in 317.17s (0:05:17)"
+  },
+  "tolstack_pytest": {
+    "exit": 1,
+    "last": "6 failed, 456 passed, 185 errors in 316.54s (0:05:16)"
+  },
+  "actuation_pytest": {
+    "exit": 1,
+    "last": "30 passed, 1 warning, 1 error in 346.49s (0:05:46)"
+  },
+  "pin": {
+    "exit": 0,
+    "last": "rev A pin: fresh"
+  },
+  "tolstack_check": {
+    "exit": 0,
+    "last": "generated output current: 7 blocks, 84 files, 70 verdicts checked"
+  },
+  "ecad": {
+    "exit": 0,
+    "last": "check: all generated outputs match"
+  },
+  "gears": {
+    "exit": 0,
+    "last": ""
+  },
+  "thermal": {
+    "exit": 1,
+    "last": "inputs.input_file_sha256_16.value.docs/gripper/DESIGN-BASIS.md: '39ed2d051b168c92' != 'ea69c0fb3c6af147'"
+  },
+  "test_plan": {
+    "exit": 0,
+    "last": "generated files are current"
+  },
+  "dyno": {
+    "exit": 0,
+    "last": "FRESH: all 6 input hashes match dyno.json"
+  },
+  "finger_beam": {
+    "exit": 0,
+    "last": "FRESH: finger_beam.json matches recomputed values"
+  }
+}

@@ -1,0 +1,169 @@
+........................................................................ [ 11%]
+........................F............................................... [ 22%]
+.................F...................................................... [ 33%]
+........................................................................ [ 44%]
+........................................................................ [ 55%]
+........................................................................ [ 66%]
+........................................................................ [ 77%]
+........................................................................ [ 89%]
+.....FF.FF........................................................F....  [100%]
+================================== FAILURES ===================================
+______________ test_fingerprints_match_resolved_stack_structure _______________
+
+tmp_path = WindowsPath('C:/Users/dougl/AppData/Local/Temp/pw/pt-dog-b40-2/corrected-tolstack/test_fingerprints_match_resolv0')
+
+    def test_fingerprints_match_resolved_stack_structure(tmp_path):
+        generated = tmp_path / "fingerprints.json"
+        command = [sys.executable, str(ROOT / "tolstack.py"), "fingerprints", "--out", str(generated)]
+        subprocess.run(command, check=True, capture_output=True, text=True)
+        expected = json.loads((Path(__file__).parent / "loop_fingerprints.json").read_text(encoding="utf-8"))
+        actual = json.loads(generated.read_text(encoding="utf-8"))
+        for revision in sorted(expected):
+>           assert set(actual[revision]) == set(expected[revision]), f"{revision}: stack set changed"
+E           AssertionError: revision_a: stack set changed
+E           assert {'T01', 'T01-...', 'T02', ...} == {'T01', 'T01-...', 'T02', ...}
+E             
+E             Extra items in the left set:
+E             'T09-b40_shoulder34'
+E             Use -v to get more diff
+
+analysis\gripper\tolstack\tests\test_loop_goldens.py:77: AssertionError
+__ test_engine_statistics_match_independent_sampler[revision_a:T14B-boss34] ___
+
+result = {'role': 'option', 'fix': '', 'fix_variant': None, 'companion_of': 'T14', ...}
+overrides = {}
+
+    @pytest.mark.parametrize("revision,result,overrides", CASES,
+                             ids=[f"{revision}:{result['id']}" for revision, result, _ in CASES])
+    def test_engine_statistics_match_independent_sampler(revision, result, overrides):
+        del revision
+        stack_id = result.get("picked_variant") or result["id"]
+        values = _samples(stack_id, overrides)
+        low, high, cpk, out_count, normal_cpk, mean, sigma = _capability(values, result["spec"])
+        engine = result["mc"]
+        for probability, sampled, key in zip(QUANTILES, (low, high), ("p0135", "p99865")):
+            tolerance = 3 * _quantile_se(values, probability, engine["n"])
+>           assert abs(sampled - engine[key]) <= tolerance
+E           assert 0.005440554493380923 <= 0.005308236822742716
+E            +  where 0.005440554493380923 = abs((-0.019517581093380924 - -0.0140770266))
+
+analysis\gripper\tolstack\tests\test_loop_sampled.py:97: AssertionError
+________________ test_changelog_t14b_cpk_matches_the_rev_b_run ________________
+
+    def test_changelog_t14b_cpk_matches_the_rev_b_run():
+        """Follow-up 2: the CHANGELOG's T14B Cpk is the combined rev B result."""
+        revb = json.loads((RESULTS / "rev_b" / "revb.json").read_text(encoding="utf-8"))
+        t14b = next(s for s in revb["stacks"] if s["base_id"] == "T14B")
+        quoted = re.findall(r"T14B Cpk (\d+\.\d\d)", CHANGELOG.read_text(encoding="utf-8"))
+>       assert quoted and all(float(q) == round(t14b["mc"]["cpk_percentile"], 2) for q in quoted)
+E       AssertionError: assert (['0.98'] and False)
+E        +  where False = all(<generator object test_changelog_t14b_cpk_matches_the_rev_b_run.<locals>.<genexpr> at 0x00000261D118AA70>)
+
+analysis\gripper\tolstack\tests\test_result_freshness.py:213: AssertionError
+___ test_stack_cpk_and_yield_quoted_in_prose_equal_a_stored_result[RISK.md] ___
+
+doc = WindowsPath('C:/Users/dougl/Worktrees/cloth-feed-gripper/dog-coupling-b40/docs/gripper/RISK.md')
+
+    @pytest.mark.parametrize("doc", [RISK, CONTROLS, NOTE], ids=lambda p: p.name)
+    def test_stack_cpk_and_yield_quoted_in_prose_equal_a_stored_result(doc):
+        """Fourth review B3 and follow-up 5: `<stack> ... Cpk x.xx` (and the paired yield) is one of that stack's rows."""
+        rows = _result_rows()
+        checked, bad = 0, []
+        for no, stack, clause in _quotes(doc):
+            known = rows.get(stack)
+            if known is None:
+                continue
+            cpk = _CPK.search(clause)
+            if cpk:
+                quoted = float(cpk.group(1).replace("\u2212", "-"))
+                checked += 1
+                if quoted not in {c for c, _ in known}:
+                    bad.append(f"{doc.name}:{no}: {stack} Cpk {quoted} is in no stored {stack} result")
+            for y in _YIELD.finditer(clause):
+                quoted = float(y.group(1) or y.group(2))
+                checked += 1
+                figure = y.group(1) or y.group(2)
+                places = len(figure.split(".")[1]) if "." in figure else 0
+                if not any(abs(quoted - v) <= 0.5 * 10 ** -places + 1e-9 for _, v in known if v is not None):
+                    bad.append(f"{doc.name}:{no}: {stack} {quoted} % is in no stored {stack} result")
+>       assert not bad, "\n".join(bad)
+E       AssertionError: RISK.md:16: T14B Cpk 0.66 is in no stored T14B result
+E         RISK.md:16: T14B 97.64 % is in no stored T14B result
+E         RISK.md:155: T14B Cpk 0.66 is in no stored T14B result
+E         RISK.md:155: T14B 97.64 % is in no stored T14B result
+E         RISK.md:168: T14B Cpk 0.98 is in no stored T14B result
+E         RISK.md:169: T14B-boss34 Cpk 0.98 is in no stored T14B-boss34 result
+E         RISK.md:171: T14B Cpk 0.98 is in no stored T14B result
+E       assert not ['RISK.md:16: T14B Cpk 0.66 is in no stored T14B result', 'RISK.md:16: T14B 97.64 % is in no stored T14B result', 'RIS...14B Cpk 0.98 is in no stored T14B result', 'RISK.md:169: T14B-boss34 Cpk 0.98 is in no stored T14B-boss34 result', ...]
+
+analysis\gripper\tolstack\tests\test_result_freshness.py:284: AssertionError
+_ test_stack_cpk_and_yield_quoted_in_prose_equal_a_stored_result[tolerance_stacks.md] _
+
+doc = WindowsPath('C:/Users/dougl/Worktrees/cloth-feed-gripper/dog-coupling-b40/docs/gripper/analysis/tolerance_stacks.md')
+
+    @pytest.mark.parametrize("doc", [RISK, CONTROLS, NOTE], ids=lambda p: p.name)
+    def test_stack_cpk_and_yield_quoted_in_prose_equal_a_stored_result(doc):
+        """Fourth review B3 and follow-up 5: `<stack> ... Cpk x.xx` (and the paired yield) is one of that stack's rows."""
+        rows = _result_rows()
+        checked, bad = 0, []
+        for no, stack, clause in _quotes(doc):
+            known = rows.get(stack)
+            if known is None:
+                continue
+            cpk = _CPK.search(clause)
+            if cpk:
+                quoted = float(cpk.group(1).replace("\u2212", "-"))
+                checked += 1
+                if quoted not in {c for c, _ in known}:
+                    bad.append(f"{doc.name}:{no}: {stack} Cpk {quoted} is in no stored {stack} result")
+            for y in _YIELD.finditer(clause):
+                quoted = float(y.group(1) or y.group(2))
+                checked += 1
+                figure = y.group(1) or y.group(2)
+                places = len(figure.split(".")[1]) if "." in figure else 0
+                if not any(abs(quoted - v) <= 0.5 * 10 ** -places + 1e-9 for _, v in known if v is not None):
+                    bad.append(f"{doc.name}:{no}: {stack} {quoted} % is in no stored {stack} result")
+>       assert not bad, "\n".join(bad)
+E       AssertionError: tolerance_stacks.md:16: T14B Cpk 0.98 is in no stored T14B result
+E         tolerance_stacks.md:16: T14B 99.84 % is in no stored T14B result
+E         tolerance_stacks.md:79: T14B-boss34 Cpk 0.98 is in no stored T14B-boss34 result
+E         tolerance_stacks.md:79: T14B-boss34 99.84 % is in no stored T14B-boss34 result
+E         tolerance_stacks.md:172: T14B Cpk 0.98 is in no stored T14B result
+E         tolerance_stacks.md:172: T14B 99.84 % is in no stored T14B result
+E         tolerance_stacks.md:280: T14B Cpk 0.98 is in no stored T14B result
+E         tolerance_stacks.md:280: T14B 97.64 % is in no stored T14B result
+E       assert not ['tolerance_stacks.md:16: T14B Cpk 0.98 is in no stored T14B result', 'tolerance_stacks.md:16: T14B 99.84 % is in no s...: T14B Cpk 0.98 is in no stored T14B result', 'tolerance_stacks.md:172: T14B 99.84 % is in no stored T14B result', ...]
+
+analysis\gripper\tolstack\tests\test_result_freshness.py:284: AssertionError
+________________ test_changelog_hot_t14b_cpk_matches_revb_hot _________________
+
+    def test_changelog_hot_t14b_cpk_matches_revb_hot():
+        """Follow-up 4: the CHANGELOG's `N.NN hot` quote is the T14B Cpk of revb_hot.json."""
+        hot = json.loads((RESULTS / "rev_b" / "revb_hot.json").read_text(encoding="utf-8"))
+        t14b = next(s for s in hot["stacks"] if s["base_id"] == "T14B")
+        quoted = re.findall(r"(\d+\.\d\d) hot\b", CHANGELOG.read_text(encoding="utf-8"))
+>       assert quoted and all(float(q) == round(t14b["mc"]["cpk_percentile"], 2) for q in quoted)
+E       AssertionError: assert (['0.66'] and False)
+E        +  where False = all(<generator object test_changelog_hot_t14b_cpk_matches_revb_hot.<locals>.<genexpr> at 0x00000261D0DDDF30>)
+
+analysis\gripper\tolstack\tests\test_result_freshness.py:293: AssertionError
+____________ test_verdict_multiple_and_t14_first_run_are_uncertain ____________
+
+    def test_verdict_multiple_and_t14_first_run_are_uncertain():
+        assert VERDICT_SE_MULTIPLE == pytest.approx(2.576)
+        result = run_all([STACKS], n=100_000, const_overrides=_revision_b_inputs(),
+                         only={"T14B-boss34"})[0]
+>       first, second = result["sampling_runs"]
+                        ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'sampling_runs'
+
+analysis\gripper\tolstack\tests\test_verdict_uncertainty.py:64: KeyError
+=========================== short test summary info ===========================
+FAILED analysis/gripper/tolstack/tests/test_loop_goldens.py::test_fingerprints_match_resolved_stack_structure
+FAILED analysis/gripper/tolstack/tests/test_loop_sampled.py::test_engine_statistics_match_independent_sampler[revision_a:T14B-boss34]
+FAILED analysis/gripper/tolstack/tests/test_result_freshness.py::test_changelog_t14b_cpk_matches_the_rev_b_run
+FAILED analysis/gripper/tolstack/tests/test_result_freshness.py::test_stack_cpk_and_yield_quoted_in_prose_equal_a_stored_result[RISK.md]
+FAILED analysis/gripper/tolstack/tests/test_result_freshness.py::test_stack_cpk_and_yield_quoted_in_prose_equal_a_stored_result[tolerance_stacks.md]
+FAILED analysis/gripper/tolstack/tests/test_result_freshness.py::test_changelog_hot_t14b_cpk_matches_revb_hot
+FAILED analysis/gripper/tolstack/tests/test_verdict_uncertainty.py::test_verdict_multiple_and_t14_first_run_are_uncertain
+7 failed, 640 passed in 672.98s (0:11:12)

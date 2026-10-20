@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\dougl\Worktrees\cloth-feed-gripper\dog-coupling-b40\cad\gripper\dog_check.py", line 17, in <module>
+    import gripper_concept as gc
+  File "C:\Users\dougl\Worktrees\cloth-feed-gripper\dog-coupling-b40\cad\gripper\gripper_concept.py", line 23, in <module>
+    import cadquery as cq
+ModuleNotFoundError: No module named 'cadquery'

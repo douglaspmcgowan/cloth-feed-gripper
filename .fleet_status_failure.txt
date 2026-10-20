@@ -1,0 +1,4 @@
+2026-10-19 dog coupling B40 fleet lane status heartbeat attempt:
+Status write refused for agent-status/route-ccc1a283.json because .lock access denied.
+The worktree .agents/work/statusboard/route-ccc1a283.jsonl write was also denied.
+Invocation: Write-FleetAgentStatus.ps1 -AgentId route-ccc1a283 -Surface route -Repository route -State working -LastStep 'baseline checks'.

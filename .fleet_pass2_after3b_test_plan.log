@@ -1,0 +1,95 @@
+Gripper verification plan calculator (docs/gripper/test/test_plan.py)
+Requirements found in DESIGN-BASIS section 1: 27 (R1 ... R27)
+Matrix rows: 27
+
+Open requirements, reported at both values
+  R15 cap written  10.0 N: U_max 4.87 deg; squeeze-cap reach of the softest R12 finger 5.36 N (the firmware sim holds less, see Expected values); k for 5 N >= 0.815 N/mm (0.938 with 0.64 deg lag); FSR-50% peak 9.66 N -> pass
+  R15 cap proposed  8.0 N: U_max 3.79 deg; squeeze-cap reach of the softest R12 finger 4.28 N (the firmware sim holds less, see Expected values); k for 5 N >= 1.048 N/mm (1.261 with 0.64 deg lag); FSR-50% peak 9.66 N -> FAIL
+  For the 8 N cap the firmware would need: trip 6.9 N, soft limit 6.6 N, F_SET_MAX 5.6 N, U_max 3.79 deg
+  R19 written  0.50 s: contact 0.583-0.590 s (FAIL); 4.5 N 0.669-0.723 s (FAIL); 5.0 N 0.676-0.718 s at k >= 1.0 (FAIL), 0.772 s at k 0.88 (FAIL); HOLD 0.798-0.929 s
+  R19 proposed 0.75 s: contact 0.583-0.590 s (pass); 4.5 N 0.669-0.723 s (pass); 5.0 N 0.676-0.718 s at k >= 1.0 (pass), 0.772 s at k 0.88 (FAIL); HOLD 0.798-0.929 s
+  Jaw speed, last 3 deg: command 20 deg/s (DB limit 20 -> PASS); video fit U 2.22 deg/s over 36 frames; a conforming jaw (21 deg/s) against the DB limit is INDETERMINATE, against the 25 deg/s screening limit PASS
+  Close-time scatter per gripper: frame phase 5.8 ms, servo 5.0 ms [A], total 7.6 ms
+
+Expected values
+  Hold force (sim, R12 window): 5.22-6.14 N; peak 5.22-7.41 N
+  Slip capacity 2*mu*F = 4.00 N at mu 0.4, F 5.0 N; SF 2.0 against 2.0 N
+  Stall needed 1.980 N m (20.19 kg cm); predicted 2.051 N m at 6.5 V, 2.023 at 6.35 V; 41.0 N on a 50 mm lever; winding 125 C in 8.1-11.1 s
+  Case temperature at 30 min (dyno model, upper bound): 42.1-172.2 C
+  History only (superseded by CAD revision B): DB 116 g (check 40507 g mm = 40507); BOM 135.4 g + cloth + wiring = 153.9 g -> 53834 g mm = 123 % of 43720; max mass at COM 40.7 mm: 125.0 g
+
+Instrument budgets (expanded, k = 2)
+  Probe sensitivity 33.65 uV/N, noise 0.0027 N rms, full scale 98.1 N
+  pad_force_5N           U =   0.0964 N    (dominant: load cell combined error ±0.05 % FS [S TAL220])
+  pad_force_8N           U =   0.1034 N    (dominant: load cell combined error ±0.05 % FS [S TAL220])
+  pad_force_10N          U =   0.1095 N    (dominant: contact point ±1 mm on the probe, 0.5 %/mm off-centre error [A, measured in TP-01 step 4])
+  pull_force_4N          U =   0.0963 N    (dominant: load cell combined error ±0.05 % FS [S TAL220])
+  close_time_eventlog_s  U =   3.5590 ms   (dominant: FSR EMA lag 9.5 ms + 1 ms poll, corrected; residual ±3 ms [D controls.md 3, A residual])
+  force_time_stream_s    U =  12.9099 ms   (dominant: `STREAM 50` status lines every 20 ms, crossing interpolated ±10 ms [D config.h])
+  close_time_video_s     U =   6.8041 ms   (dominant: start frame ±1 frame at 240 fps [D])
+  case_temp_C            U =   1.6394 C    (dominant: type K + MAX31855 after an ice-point check, residual ±1.0 °C [A; unchecked ±2 to ±6 °C S Adafruit 269])
+  mass_moment_gmm        U = 214.4789 g mm (dominant: COM: knife-edge balance ±1.0 mm [A])
+  finger_k_rel           U =   4.5161 %    (dominant: load point ±0.5 mm at s = 40 mm, k ∝ s^-3 [D beam, A placement])
+  stall_torque_rel       U =   1.6107 %    (dominant: lever 50 mm: calipers ±0.05 mm and contact ±0.5 mm [A])
+  current_A              U =   0.0208 A    (dominant: 0.1 Ω shunt ±1 % at 1.8 A [A])
+  rail_V                 U =   0.0606 V    (dominant: handheld DMM ±(0.5 % + 2 counts at 10 mV) at 6.5 V [A, check the meter's manual])
+  pulse_us               U =   1.6330 us   (dominant: logic analyser or scope at ≥ 1 MS/s: ±1 µs per edge, two edges [A])
+  caliper_mm             U =   0.0490 mm   (dominant: digital calipers ±0.03 mm [A, typical 150 mm class])
+  rc_mm                  U =   0.0766 mm   (dominant: pad plane set by the steel-square blade, contact ±0.05 mm [A])
+  jaw_angle_deg          U =   0.5774 deg  (dominant: printed protractor on the knuckle, read off video ±0.5° [A])
+  backlash_mm            U =   0.0258 mm   (dominant: dial indicator 0.01 mm, ±0.02 mm [A])
+  slip_mm                U =   0.2309 mm   (dominant: ink mark against a 0.5 mm printed grid, macro photo ±0.2 mm [A])
+
+Can each instrument resolve its criterion? (limit/U >= 10; |margin|/U >= 1 = verdict decidable at the predicted value)
+  TP-01 R14  hold force, softest R12 finger                             limit     5.000 pred     5.216 U  0.0964 N    limit/U    51.9 margin/U   2.24
+  TP-01 R14  hold force, D7 finger (k 1.24)                             limit     5.000 pred     6.029 U  0.0964 N    limit/U    51.9 margin/U  10.68
+  TP-04 R15  peak force, FSR reading 50 %, k 1.63 (cap written 10 N)    limit    10.000 pred     9.662 U  0.1095 N    limit/U    91.3 margin/U   3.09
+  TP-04 R15  peak force, normal G 5, k 1.63 (cap written 10 N)          limit    10.000 pred     7.414 U  0.1034 N    limit/U    96.7 margin/U  25.00
+  TP-04 R15  peak force, FSR reading 50 %, k 1.63 (cap proposed 8 N)    limit     8.000 pred     9.662 U  0.1095 N    limit/U    73.1 margin/U -15.18
+  TP-04 R15  peak force, normal G 5, k 1.63 (cap proposed 8 N)          limit     8.000 pred     7.414 U  0.1034 N    limit/U    77.4 margin/U   5.66
+  TP-02 R14  pull to slip (SF 2 at mu 0.4)                              limit     4.000 pred     4.000 U  0.0963 N    limit/U    41.5 margin/U   0.00
+  TP-03 R19  contact time, event log (R19 written 0.50 s)               limit     0.500 pred     0.590 U  0.0036 s    limit/U   140.5 margin/U -25.29
+  TP-03 R19  time to 4.5 N, stream (R19 written 0.50 s)                 limit     0.500 pred     0.723 U  0.0129 s    limit/U    38.7 margin/U -17.27
+  TP-03 R19  time to 5.0 N, k ≥ 1.0 (R19 written 0.50 s)                limit     0.500 pred     0.718 U  0.0129 s    limit/U    38.7 margin/U -16.89
+  TP-03 R19  time to 5.0 N, k 0.88 (R19 written 0.50 s)                 limit     0.500 pred     0.772 U  0.0129 s    limit/U    38.7 margin/U -21.07
+  TP-03 R19  contact time, event log (R19 proposed 0.75 s)              limit     0.750 pred     0.590 U  0.0036 s    limit/U   210.7 margin/U  44.96
+  TP-03 R19  time to 4.5 N, stream (R19 proposed 0.75 s)                limit     0.750 pred     0.723 U  0.0129 s    limit/U    58.1 margin/U   2.09
+  TP-03 R19  time to 5.0 N, k ≥ 1.0 (R19 proposed 0.75 s)               limit     0.750 pred     0.718 U  0.0129 s    limit/U    58.1 margin/U   2.48
+  TP-03 R19  time to 5.0 N, k 0.88 (R19 proposed 0.75 s)                limit     0.750 pred     0.772 U  0.0129 s    limit/U    58.1 margin/U  -1.70
+  TP-07 R26  case temperature after 30 min (Fit B, 25 °C, Rth2 ×1)      limit    60.000 pred    61.200 U  1.6394 °C   limit/U    36.6 margin/U  -0.73
+  TP-09 R17  moment arm r_c, both fingers (CAD nominal)                 limit    65.000 pred    65.000 U  0.0766 mm   limit/U   848.6 margin/U   0.00
+  TP-09 R10  mass-moment, CAD revision B                                limit 43720.000 pred 53342.000 U 214.4789 g·mm limit/U   203.8 margin/U -44.86
+  TP-12 R12  finger tip stiffness, low end                              limit     0.880 pred     1.070 U  0.0483 N/mm limit/U    18.2 margin/U   3.93
+  TP-12 R12  finger tip stiffness, high end                             limit     1.630 pred     1.290 U  0.0583 N/mm limit/U    28.0 margin/U   5.84
+  TP-13 R16  stall torque at 6.35 V                                     limit     1.980 pred     2.023 U  0.0326 N·m  limit/U    60.8 margin/U   1.31
+  TP-05 R20  back-off begins after over-current onset                   limit     0.200 pred     0.140 U  0.0200 s    limit/U    10.0 margin/U   3.00
+  TP-13 R27  rail voltage band low end                                  limit     6.350 pred     6.500 U  0.0606 V    limit/U   104.7 margin/U   2.47
+  TP-13 R27  rail voltage band high end                                 limit     6.650 pred     6.500 U  0.0606 V    limit/U   109.7 margin/U   2.47
+
+Sample sizes
+  R19_written_contact        {"n": 5, "margin": -0.09, "k": 3.3998, "rule": "predicted to fail: 5 trials confirm the verdict"}
+  R19_written_F4p5           {"n": 5, "margin": -0.223, "k": 3.3998, "rule": "predicted to fail: 5 trials confirm the verdict"}
+  R19_written_F5_k_ge_1      {"n": 5, "margin": -0.218, "k": 3.3998, "rule": "predicted to fail: 5 trials confirm the verdict"}
+  R19_proposed_contact       {"n": 3, "margin": 0.16, "k": 5.3115, "rule": "tolerance bound clears"}
+  R19_proposed_F4p5          {"n": 9, "margin": 0.027, "k": 2.6499, "rule": "tolerance bound clears"}
+  R19_proposed_F5_k_ge_1     {"n": 6, "margin": 0.032, "k": 3.0919, "rule": "tolerance bound clears"}
+  R14_hold                   {"n": 3, "margin": 1.0293, "k": 5.3115, "rule": "tolerance bound clears"}
+  R14_hold_softest           {"n": 5, "margin": 0.2162, "k": 3.3998, "rule": "predicted to pass, but no n <= 30 brings the 95/90 bound inside the margin: 5 trials give the estimate"}
+  R14_hold_per_finger        {"n": 11, "n_softest": 11, "n_stiffest": 3, "n_total": 14, "fingers": 2, "softest_mode": "attribute", "n_bound_softest": 56, "rule": "11 holds on the softest pair and 3 on the stiffest (k from TP-12) = 14 holds. Softest: predicted hold 5.216 N, margin 0.216 N = 2.2 U, so each hold's F_min is decidable on its own; the 95/90 bound needs n 56 (k <= 1.95 at sigma 0.111 N), so the pair is a zero-failure run on F_min: 11 holds, every F_min PASS shows R 0.80 at C 0.90; its bound L is reported, not judged. Risk: at that sigma one hold clears 5.0 N + U with p 0.86 and 11 clean holds with p 0.19; the sigma is the FSR-span loop scatter, and this finger holds at the squeeze cap (FORCE_SAT), where position, not the FSR, sets the force, so TP-01's measured scatter decides whether the run is realistic. Stiffest: the 95/90 bound clears 5.0 N at n 3 (margin 1.029 N)"}
+  R15_written_peak_normal    {"n": 3, "margin": 2.5856, "k": 5.3115, "rule": "tolerance bound clears"}
+  R15_proposed_peak_normal   {"n": 4, "margin": 0.5856, "k": 3.9566, "rule": "tolerance bound clears"}
+  R26_temp                   {"n": 1, "rule": "one 30 min soak; repeat once if within 5 \u00b0C of 60 \u00b0C [A]"}
+  attribute_function         {"n": 11, "rule": "zero failures shows R 0.80 at C 0.90"}
+  attribute_safety           {"n": 22, "rule": "zero failures shows R 0.90 at C 0.90"}
+  R25_life                   {"cycles_needed_one_unit": 256491.978, "beta_A": 2.0, "C": 0.5, "R": 0.9, "rule": "Lipson single-unit zero-failure test: (t/T)^beta = ln(1-C)/ln(R)"}
+  tolerance factor k(10, 95 %, 90 %) = 2.5684; Monte Carlo confidence 0.9019 (n_mc 20000, seed 20261011)
+
+Alternative for Bench supply with current readout, ≥ 7 V 5 A: supply readout U = 0.032 A [A: ±(1 % + 10 mA)] at 1.8 A -> INA219 U = 0.021 A (budget `current_A`); DMM U = 0.061 V. The INA219 saturates above 3.2 A (±320 mV / 0.1 Ω), so it cannot log a 3.75 A Fit A stall: in TP-13 read that peak on the DMM in series, U ≈ 0.04 A [A]
+Alternative for Oscilloscope or USB logic analyser: scope / analyser at ≥ 1 MS/s: U = 1.6 µs -> ESP32 micros(): U = 3.4 µs [A: 1 µs resolution, ±2 µs interrupt latency]. The R7 open-stop check (1722 ± 3 µs) becomes INDETERMINATE with this U; check the frame (19.61-20.41 ms) and the 1200-1900 µs clamp with it and take the 1722 µs reading on a borrowed scope
+Alternative for Handheld IR thermometer (cross-check only): IR on a plastic or anodised case: U ≈ 2.3 °C [A] plus an emissivity error (`thermal.md` section 6: anodised shell 0.77-0.88 reads low) -> contact bead U = 1.6 °C. The R26 verdict uses the bead in both cases, so the verdict's U does not change
+Alternative for Phone with 240 fps slow motion: 240 fps: close time U = 6.8 ms; jaw-speed fit U = 2.2 °/s over 36 frames -> 120 fps: 13.6 ms, 3.1 °/s (18 frames); 60 fps: 27.2 ms, 4.4 °/s (9 frames). A conforming jaw (21 °/s) against the 25 °/s screening limit is PASS at 120 fps and INDETERMINATE at 60 fps. The R19 verdict does not use the video (event log U = 3.6 ms), so the video only cross-checks it
+Equipment: buy total US$98.14 (minimum without spares US$77.20) against a US$100 budget; with fallbacks US$158.14
+TP-01: 14 holds, 14 data-sheet rows, 64 min (62 min for 12 holds + 31.5 s per further hold: 25.5 s hold, 5.0 s RETRACT, 1.0 s close)
+Procedures: 16; bench time 664 min (11.1 h) excluding the TP-06 unattended run
+Sessions: 0 Desk checks and first power-up 40 min; 1 Parts, before assembly 280 min; 2 Core afternoon (R14, R15, R19, R20) 314 min; 3 On the arm 90 min; 4 Unattended 30 min
+generated files are current

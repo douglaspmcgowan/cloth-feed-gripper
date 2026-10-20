@@ -1,0 +1,285 @@
+{
+ "keepout_params": [
+  {
+   "z_from_H": [
+    -1.0,
+    1.0
+   ],
+   "r_max_allowed": 11.6,
+   "r_max_new": 11.62,
+   "ok": true,
+   "brep_volume_outside_mm3": 0.0
+  },
+  {
+   "z_from_H": [
+    1.0,
+    5.0
+   ],
+   "r_max_allowed": 14.6,
+   "r_max_new": 14.61,
+   "ok": true,
+   "brep_volume_outside_mm3": 0.0
+  }
+ ],
+ "keepout_tolerance_fix5": [
+  {
+   "z_from_H": [
+    -1.0,
+    1.0
+   ],
+   "r_max_fix5": 11.6,
+   "r_max_new": 11.62,
+   "ok": true,
+   "brep_volume_outside_mm3": 0.0
+  },
+  {
+   "z_from_H": [
+    1.0,
+    5.0
+   ],
+   "r_max_fix5": 14.6,
+   "r_max_new": 14.61,
+   "ok": true,
+   "brep_volume_outside_mm3": 0.0
+  }
+ ],
+ "roll_ring_clearance": [
+  {
+   "z_I": [
+    -4.0,
+    -3.0
+   ],
+   "gripper_r_max": null,
+   "stationary_r_min": 1.23,
+   "radial_gap": null
+  },
+  {
+   "z_I": [
+    -3.0,
+    -2.0
+   ],
+   "gripper_r_max": null,
+   "stationary_r_min": 12.41,
+   "radial_gap": null
+  },
+  {
+   "z_I": [
+    -2.0,
+    -1.0
+   ],
+   "gripper_r_max": 8.5,
+   "stationary_r_min": 12.67,
+   "radial_gap": 4.17
+  },
+  {
+   "z_I": [
+    -1.0,
+    0.0
+   ],
+   "gripper_r_max": 8.5,
+   "stationary_r_min": 12.57,
+   "radial_gap": 4.07
+  },
+  {
+   "z_I": [
+    0.0,
+    1.0
+   ],
+   "gripper_r_max": 11.62,
+   "stationary_r_min": 12.57,
+   "radial_gap": 0.95
+  },
+  {
+   "z_I": [
+    1.0,
+    2.0
+   ],
+   "gripper_r_max": 11.62,
+   "stationary_r_min": 12.89,
+   "radial_gap": 1.27
+  },
+  {
+   "z_I": [
+    2.0,
+    5.3
+   ],
+   "gripper_r_max": 14.61,
+   "stationary_r_min": 15.2,
+   "radial_gap": 0.59
+  },
+  {
+   "z_I": [
+    5.3,
+    12.0
+   ],
+   "gripper_r_max": 37.51,
+   "stationary_r_min": null,
+   "radial_gap": null
+  }
+ ],
+ "roll_min_radial_gap_mm": 0.59,
+ "envelope_vs_stock": [
+  {
+   "z_I": [
+    0,
+    6
+   ],
+   "new_r_max": 14.7,
+   "stock_r_max": 26.5,
+   "inside": true
+  },
+  {
+   "z_I": [
+    6,
+    12
+   ],
+   "new_r_max": 37.6,
+   "stock_r_max": 37.6,
+   "inside": true
+  },
+  {
+   "z_I": [
+    12,
+    25
+   ],
+   "new_r_max": 52.5,
+   "stock_r_max": 88.5,
+   "inside": true
+  },
+  {
+   "z_I": [
+    25,
+    40
+   ],
+   "new_r_max": 52.5,
+   "stock_r_max": 102.2,
+   "inside": true
+  },
+  {
+   "z_I": [
+    40,
+    60
+   ],
+   "new_r_max": 52.5,
+   "stock_r_max": 37.3,
+   "inside": false
+  },
+  {
+   "z_I": [
+    60,
+    80
+   ],
+   "new_r_max": 23.9,
+   "stock_r_max": 30.2,
+   "inside": true
+  },
+  {
+   "z_I": [
+    80,
+    125
+   ],
+   "new_r_max": 20.3,
+   "stock_r_max": 22.8,
+   "inside": true
+  }
+ ],
+ "jaw_sweep_static_clash_free": true
+}
+runtime_s 238.9
+{
+ "axis": "parallel to Y_I through (x 0, z_I -60.55)",
+ "forearm_parts": [
+  "Under_arm_SO101 v12:1",
+  "Motor_holder_SO101_Wrist v8:1",
+  "ST3215 Servo v2:4"
+ ],
+ "phi_deg": [
+  -95,
+  -70,
+  -45,
+  -20,
+  0,
+  20,
+  45,
+  70,
+  95
+ ],
+ "roll_angles_deg": [
+  0,
+  90,
+  180,
+  270
+ ],
+ "new_gripper_pose": "jaw open +20 deg",
+ "per_case": {
+  "new_open@roll0": {
+   "clear_phi_deg": [
+    -95,
+    95
+   ],
+   "clash_phi_deg": [],
+   "max_clash_mm3": 0.0
+  },
+  "new_open@roll90": {
+   "clear_phi_deg": [
+    -95,
+    95
+   ],
+   "clash_phi_deg": [],
+   "max_clash_mm3": 0.0
+  },
+  "new_open@roll180": {
+   "clear_phi_deg": [
+    -95,
+    95
+   ],
+   "clash_phi_deg": [],
+   "max_clash_mm3": 0.0
+  },
+  "new_open@roll270": {
+   "clear_phi_deg": [
+    -95,
+    95
+   ],
+   "clash_phi_deg": [],
+   "max_clash_mm3": 0.0
+  },
+  "stock@roll0": {
+   "clear_phi_deg": [
+    -95,
+    95
+   ],
+   "clash_phi_deg": [],
+   "max_clash_mm3": 0.0
+  },
+  "stock@roll90": {
+   "clear_phi_deg": [
+    -95,
+    95
+   ],
+   "clash_phi_deg": [],
+   "max_clash_mm3": 0.0
+  },
+  "stock@roll180": {
+   "clear_phi_deg": [
+    -95,
+    95
+   ],
+   "clash_phi_deg": [],
+   "max_clash_mm3": 0.0
+  },
+  "stock@roll270": {
+   "clear_phi_deg": [
+    -95,
+    95
+   ],
+   "clash_phi_deg": [],
+   "max_clash_mm3": 0.0
+  }
+ },
+ "phi_where_new_clashes_and_stock_does_not": [],
+ "ok_vs_stock": true,
+ "limits": "bounding-box prefilter + boolean volume at the listed angles only; forearm = Under_arm, wrist motor holder and servo-4 body (servo-4 horn and Wrist_Roll_Pitch move with flex)"
+}
+[{"th": -11.0, "clash": {}}, {"th": -7.4, "clash": {}}, {"th": 0.0, "clash": {}}, {"th": 10.0, "clash": {}}, {"th": 20.0, "clash": {}}]
+153.9 53342 1.22

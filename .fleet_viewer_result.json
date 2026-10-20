@@ -1,0 +1,5 @@
+{
+  "command": "python cad/gripper/viewer_src/viewer_build.py",
+  "exit": 0,
+  "last": "fea meshes ['m0', 'm1']"
+}

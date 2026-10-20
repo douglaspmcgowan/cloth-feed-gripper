@@ -1,0 +1,4 @@
+
+> cloth-feed-gripper-site@0.1.0 lint
+> python -m py_compile scripts/sync.py scripts/check_public.py && node --check scripts/extract_facts.mjs && node --check scripts/serve.mjs && node --check scripts/screens.mjs && node --check scripts/check_live.mjs
+

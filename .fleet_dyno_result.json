@@ -1,0 +1,5 @@
+{
+  "command": "uv --cache-dir C:/Users/dougl/AppData/Local/Temp/uv-dog-b40 run --no-project --with numpy --with scipy --with matplotlib --with shapely --with pylife --with packaging python analysis/gripper/dyno.py",
+  "exit": 0,
+  "last": "runtime 45.03893303871155"
+}

@@ -1,0 +1,5 @@
+
+> cloth-feed-gripper-site@0.1.0 check:public
+> python scripts/check_public.py
+
+check_public: scanned 16 files, 18 hits, 18 allowlisted, 0 open, 0 allowlist errors
