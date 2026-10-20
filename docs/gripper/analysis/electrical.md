@@ -419,7 +419,7 @@ Neither is settled here. Every result below is given for both values (`calc/out/
 | Best standard value for R15 | 2.61 kohm (node 2436.0 mV) | 3.16 kohm (node 2441.3 mV) |
 | Shunt dissipation at the cap, Fit A / Fit B | 0.50 / 0.18 W | 0.36 / 0.12 W |
 
-| Quantity | R19 close in 0.5 s | R19 close in 0.75 s (proposed) |
+| Quantity | Historical R19 close in 0.5 s (superseded 2026-10-12) | R19 close in 0.75 s (ruled 2026-10-12) |
 |---|---|---|
 | Grip cycle time | 35.00 s | 35.25 s |
 | Mean adapter current over the cycle, Fit A / Fit B | 660 / 419 mA | 662 / 419 mA |

@@ -394,7 +394,7 @@
   "R14_true_force_closed_loop": "True pad force at least 5.0 N through the hold with the shipped firmware. Not modelled here; measured by the firmware study (see firmware_study).",
   "t_contact": "First millisecond at which the filtered force reaches F_TOUCH (0.5 N). R19 does not name this event.",
   "t_45": "First millisecond at which the true pad force reaches 4.5 N (90 % of the 5 N setpoint). Every close-time number in the note (t_close, P_R19) ends on this event.",
-  "R19_words": "Full close in <= 0.5 s. The last 3 deg before contact at <= 20 deg/s to limit impact [A] (DESIGN-BASIS R19, verbatim)",
+  "R19_words": "Full close in <= 0.75 s. The last 3 deg before contact at <= 20 deg/s to limit impact [A] (ruled DESIGN-BASIS R19, 2026-10-12); selection basis 0.5 s (R19 at selection; superseded 2026-10-12)",
   "hold_margin": "Capacity at the rail low end divided by the hold torque (2 F r_c + T x_f) / eta, capacity = hold rule x stall."
  },
  "firmware_study": {
@@ -2507,7 +2507,7 @@
    "t_contact_s": "First millisecond at which the filtered force reaches F_TOUCH (0.5 N). R19 does not name this event.",
    "t_45_s": "First millisecond at which the true pad force reaches 4.5 N (90 % of the 5 N setpoint). Every close-time number in the note (t_close, P_R19) ends on this event."
   },
-  "R19": "Full close in <= 0.5 s. The last 3 deg before contact at <= 20 deg/s to limit impact [A] (DESIGN-BASIS R19, verbatim)",
+  "R19": "Full close in <= 0.75 s. The last 3 deg before contact at <= 20 deg/s to limit impact [A] (ruled DESIGN-BASIS R19, 2026-10-12); selection basis 0.5 s (R19 at selection; superseded 2026-10-12)",
   "cases": {
    "shipped servo | fw profile": {
     "R12 min": {

@@ -32,7 +32,7 @@ if QUICK and CHECK:
 N_MC = 200 if QUICK else 2000
 SEED = 20261011
 CAPS = (10.0, 8.0)          # R15 as written / proposed (N)
-TIMES = (0.5, 0.75)         # R19 as written / proposed (s)
+TIMES = (0.5, 0.75)         # selection basis (R19 at selection; superseded 2026-10-12) / ruled R19 requirement (s)
 PROFILES = ("fw", "fast")   # shipped close profile / fastest R19-compliant profile found by profile_search()
 PROFILE_PARAMS = {"fw": None, "fast": None}  # "fast" is filled by profile_search()
 HOLD_BIAS_SETPOINT_N = 6.0  # N: regulated hold force of the firmware (5 N setpoint + F_HOLD_BIAS_N 1.0 N, force_ctrl.cpp spReg)
@@ -402,7 +402,8 @@ def main():
             mc["I_hold_p95_hold6N_scaled"] = r(mc["I_hold_p95_fw_cap10"] * ratio6)
             mc["n"] = N_MC
             c["mc"] = mc
-            # requirement sets: as written = 10 N, 0.5 s with the fastest compliant profile; proposed = 8 N, 0.75 s, shipped
+            # historical selection comparison = 10 N, 0.5 s with the fastest compliant profile (superseded 2026-10-12);
+            # ruled requirement = 8 N, 0.75 s, shipped profile
             c["req_sets"] = {
                 "as_written": {"P_R16_sim_force": mc["P_R16_sim_force_fast_cap10"], "P_R15": mc["P_R15_fast_cap10"],
                                "P_R19": mc["P_R19_0.5s_fast_cap10"], "profile": "fast", "cap_N": 10, "t_s": 0.5},
@@ -512,8 +513,8 @@ DEFINITIONS = {
     "t_contact": "First millisecond at which the filtered force reaches F_TOUCH (0.5 N). R19 does not name this event.",
     "t_45": "First millisecond at which the true pad force reaches 4.5 N (90 % of the 5 N setpoint). Every close-time "
             "number in the note (t_close, P_R19) ends on this event.",
-    "R19_words": "Full close in <= 0.5 s. The last 3 deg before contact at <= 20 deg/s to limit impact [A] "
-                 "(DESIGN-BASIS R19, verbatim)",
+    "R19_words": "Full close in <= 0.75 s. The last 3 deg before contact at <= 20 deg/s to limit impact [A] "
+                 "(ruled DESIGN-BASIS R19, 2026-10-12); selection basis 0.5 s (R19 at selection; superseded 2026-10-12)",
     "hold_margin": "Capacity at the rail low end divided by the hold torque (2 F r_c + T x_f) / eta, capacity = hold rule x stall.",
 }
 FIRMWARE_STUDY = {
@@ -885,7 +886,7 @@ def report(configs, ranking, stability, validation, rec, extra):
            f" {'P19p':>5s} | {'tc50':>5s} {'tc95':>5s} | {'env':14s} {'evidence':14s} gates")
     out("\nall configurations. hold = 40 % rule margin at the rail low end; p05 = MC 5th percentile; SF3 = gear SF at stall;"
         "\narm = SO-101 hold utilisation; Isz = stall current for rail sizing; Fstl = pad force at stall;"
-        "\nP14 = P(R14 and R16); w = as written (10 N, 0.5 s, fastest compliant profile); p = proposed (8 N, 0.75 s, shipped"
+        "\nP14 = P(R14 and R16); w = historical selection basis (10 N, 0.5 s, superseded 2026-10-12); p = ruled (8 N, 0.75 s, shipped"
         " profile); tc = close time to F >= 4.5 N, shipped profile, 8 N")
     out(hdr)
     for c in sorted(configs, key=lambda c: (-c["utilities"]["proposed"]["requirements"], c["cfg"])):

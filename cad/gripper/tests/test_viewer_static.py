@@ -14,7 +14,7 @@ VIEWER = ROOT / "cad/gripper/viewer.html"
 SOURCE = ROOT / "cad/gripper/viewer_src"
 FIT_PATH = ROOT / "cad/gripper/out/fit3d.json"
 REQ_PATH = ROOT / "cad/gripper/fit_requirements.json"
-FIT_SHA256 = "ef750ca384796d58beecc2ae0d74d8e6ae22582b0f6d72c42620c5545e2693eb"
+FIT_SHA256 = "2990e67f6c8ab37e5f4301ff276ddb0fdc654b42fc882c00ef57c77b644e397b"
 
 
 def load(path):

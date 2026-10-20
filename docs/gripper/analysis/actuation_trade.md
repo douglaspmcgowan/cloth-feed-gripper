@@ -11,7 +11,7 @@ What this study does and does not fix:
 **Ordering status.** No part is both in stock and clearly passing. The DS3230 MG is backordered at the one vendor checked, with no ship date. The DS3230 **PRO** product page lists the same figures as the MG, $25.00, and also says the 180° version is backordered, while the collection page read earlier the same day showed "In stock" [S, `actuators.csv` row A39]. Which is right is unresolved; check it on the day of ordering.
 
 - **Script:** `analysis/gripper/actuation/actuation_trade.py`. The model is in `model.py`, the add-on calculations in `extras.py`, and the tests in `test_actuation.py`.
-  - Inputs: `docs/gripper/research/actuators.csv`, `analysis/gripper/results/payload_torque.json`, `analysis/gripper/results/gears.json` and `gears.py`, and the rev A (DS3218MG, A17) `firmware/gripper/config.h`, `analysis/gripper/firmware_sim/results/fw_sim.json` and `analysis/gripper/thermal/results/thermal.json`, pinned from commit `7e1039a` into `analysis/gripper/actuation/rev_a/` by `pin_rev_a.py` (rev B.1 re-based the live files on the DS3230 MG this study chose; read live, they would make the winner the reference).
+  - Inputs: `docs/gripper/research/actuators.csv`, `analysis/gripper/results/gears.json` and `gears.py`, and the rev A (DS3218MG, A17) payload geometry/grip/arm-fit reference, `firmware/gripper/config.h`, `analysis/gripper/firmware_sim/results/fw_sim.json` and `analysis/gripper/thermal/results/thermal.json`, pinned from commit `7e1039a` into `analysis/gripper/actuation/rev_a/` by `pin_rev_a.py`. The historical study reads `rev_a/payload_reference.json`; the live `analysis/gripper/results/payload_torque.json` separately reports current catalogue ranks and ruled selections. Rev B.1 re-based the live firmware on the DS3230 MG this study chose; live CAD geometry must not move the rev A reference either.
 - **Re-run** from the repository root: `python3 analysis/gripper/actuation/actuation_trade.py`.
   - `python3 analysis/gripper/actuation/actuation_trade.py --check` recomputes without writing, prints differing JSON keys, and exits nonzero when the committed result is stale.
   - It is seeded and deterministic and takes about 12 min [A, one timed run]. A rerun leaves `git status` clean.
@@ -64,7 +64,7 @@ What this study does and does not fix:
 
 **Why the choice comes out this way:**
 
-- **0.5 s is out of reach for every actuator in the set.** First contact can come at 0.42–0.44 s with a faster profile, but an ideal actuator reaches 4.5 N before 0.5 s only with the fast profile and a stiff finger (0.491 s at 1.63 N/mm), never with the shipped profile on a soft one (section 3).
+- **0.5 s is out of reach for every actuator in the set.** First contact can come at 0.42–0.44 s with a faster profile, but an ideal actuator reaches 4.5 N before 0.5 s only with the fast profile and a stiff finger (0.491 s at 1.63 N/mm), never with the shipped profile on a soft one (section 3). (0.5 s comparison superseded 2026-10-12)
 - **The current DS3218MG (A17) at 1:1 does not qualify.** Hold margin 1.03; the hold rule is met with probability only 0.53 once a ±15 % unit-to-unit spread is applied.
 - **The DS3230's own torque is a vendor claim with no datasheet.** It must pass the bench stall test before more units are bought.
 
@@ -81,7 +81,7 @@ Full comparison of the three rows plus the present servo:
 | P(R16 and simulated force), 10 N / 8 N cap | 0.97 / 0.92 | 1.00 / 0.96 | 0.53 / 0.51 |
 | **R14 closed-loop true force ≥ 5 N** | not modelled; firmware study: 45.1 % with the present servo | same | **45.1 %** (firmware study) |
 | P(R15), 10 N / 8 N cap | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
-| P(R19) with 4.5 N and an ideal sensor, 0.5 s / 0.75 s, 10 N cap (8 N cap at 0.75 s) | 0.00 / 1.00 (0.992) | 0.00 / 1.00 (0.994) | 0.00 / 1.00 (0.995) |
+| P(R19) with 4.5 N and an ideal sensor, 0.5 s / 0.75 s, 10 N cap (8 N cap at 0.75 s) | 0.00 / 1.00 (0.992) | 0.00 / 1.00 (0.994) | 0.00 / 1.00 (0.995) (0.5 s comparison superseded 2026-10-12) |
 | R19 closed loop, 5 N within 0.75 s | not modelled; firmware study: 49.3 % with the present servo | same | 49.3 % (firmware study) |
 | Close to 4.5 N, shipped profile, 8 N cap, median / 95th percentile | 0.632 / 0.656 s | 0.632 / 0.655 s | 0.632 / 0.656 s |
 | Pad force if the servo stalls (firmware cap failed) | 18.9 N | 22.1 N | 13.5 N |
@@ -203,15 +203,15 @@ Both are open with Douglas, so here they are treated as parameters, and every re
 
   P(R16) at these fingers is the same as in section 0, because the hold-torque rule does not depend on stiffness (DS3230 0.974, DS3218MG with the stage 0.994; these are separate 2,000-sample draws, so they differ from section 0's 0.969 and 0.996 by Monte Carlo noise).
 
-**R19 close time: 0.5 s as written, 0.75 s proposed.**
+**R19 close time: 0.75 s ruled requirement; 0.5 s selection comparison, superseded 2026-10-12.**
 
-R19 reads: *"Full close in ≤ 0.5 s. The last 3° before contact at ≤ 20 °/s to limit impact [A]"* (DESIGN-BASIS). It does not say which event ends the close. Every close-time number in this note ends on **t_45: the first millisecond at which the true pad force reaches 4.5 N** (90 % of the 5 N setpoint [A]). First contact (filtered force ≥ 0.5 N, **t_contact**) is quoted separately.
+R19 now reads: *"Full close in ≤ 0.75 s. The last 3° before contact at ≤ 20 °/s to limit impact [A]"* (DESIGN-BASIS). It does not say which event ends the close. Every close-time number in this note ends on **t_45: the first millisecond at which the true pad force reaches 4.5 N** (90 % of the 5 N setpoint [A]). First contact (filtered force ≥ 0.5 N, **t_contact**) is quoted separately.
 
 - **What changes is the close profile, not the actuator.**
 - With the shipped profile (120 °/s fast leg, then 20 °/s for the last 6° above θ_c0), every servo touches the cloth at 0.50–0.52 s and reaches 4.5 N at 0.60–0.64 s.
 - **The fastest profile that still respects R19's impact clause** uses a looser reading of it than R19 states. R19 says ≤ 20 °/s over the last 3°. The shipped profile commands 20 °/s but the jaw is still at about 21.5 °/s 3° before touch (stdout, `v3_worst`), so the search allows ≤ 21.5 °/s [A]; a strict 20 °/s limit would be slower still. That profile uses 240 °/s, a 4° slow zone and 1,000 °/s² deceleration. It reaches 4.5 N in 0.536 s median, and in 0.555 s for the softest finger.
 - Dropping the impact clause gets the worst case to 0.426 s.
-- **Result: P(R19 at 0.5 s) = 0.00 for all 81 configurations. At 0.75 s it is 1.00 for every eligible configuration with the 10 N cap, and 0.988–0.994 with the 8 N cap** (soft sampled fingers stop at the smaller squeeze cap before 4.5 N).
+- **Result: P(R19 at 0.5 s) = 0.00 for all 81 configurations. At 0.75 s it is 1.00 for every eligible configuration with the 10 N cap, and 0.988–0.994 with the 8 N cap** (soft sampled fingers stop at the smaller squeeze cap before 4.5 N). (0.5 s comparison superseded 2026-10-12)
 
 **The claim, demonstrated** (`ideal_actuator_R19`, committed case and test): an ideal actuator (5000 °/s, 2 ms lag, 20 N·m [A]) on the fw_sim plant, FEA E56 finger (1.05 N/mm), mean over 20 control-tick phases:
 
@@ -222,15 +222,15 @@ R19 reads: *"Full close in ≤ 0.5 s. The last 3° before contact at ≤ 20 °/s
 | Shipped servo, fast profile | 0.439 s | 0.548 s |
 | Ideal actuator, fast profile | 0.418 s | 0.511 s |
 
-- **For "4.5 N reached" on the shipped profile the claim holds against 0.5 s, but the ideal actuator is now earlier, not later.** With the firmware's hold bias and gain schedule the ideal actuator reaches 4.5 N 0.058 s before the servo on E56 (0.570 against 0.628 s), 0.064 s before it on E67 (0.552 against 0.616 s) and 0.027 s before it at R12 maximum (0.570 against 0.597 s); every one is still after 0.5 s. At R12 minimum it stops at 4.41 N and never reaches 4.5 N; that case was not investigated further. (Before the rerun the ideal actuator was later than the servo on soft and mid fingers.)
-- **With the fast profile it reaches 4.5 N inside 0.5 s on stiff fingers:** 0.492 s on E67 and 0.491 s at R12 maximum (E56: 0.511 s). Its peak at R12 maximum is 8.16 N, over the 8 N trip level.
-- **For "first contact" the claim does not hold:** servo lag moves first contact from 0.519 s to 0.479 s, 0.040 s earlier, and under 0.5 s.
-- **What the common lag draw hides** is therefore up to about 0.04 s on first contact and up to about 0.06 s on t_45. A candidate with a shorter lag than the 30–60 ms draw could close that much earlier. It cannot change the verdict on 0.5 s with the shipped profile.
+- **For "4.5 N reached" on the shipped profile the claim holds against 0.5 s, but the ideal actuator is now earlier, not later.** With the firmware's hold bias and gain schedule the ideal actuator reaches 4.5 N 0.058 s before the servo on E56 (0.570 against 0.628 s), 0.064 s before it on E67 (0.552 against 0.616 s) and 0.027 s before it at R12 maximum (0.570 against 0.597 s); every one is still after 0.5 s. At R12 minimum it stops at 4.41 N and never reaches 4.5 N; that case was not investigated further. (Before the rerun the ideal actuator was later than the servo on soft and mid fingers.) (0.5 s comparison superseded 2026-10-12)
+- **With the fast profile it reaches 4.5 N inside 0.5 s on stiff fingers:** 0.492 s on E67 and 0.491 s at R12 maximum (E56: 0.511 s). Its peak at R12 maximum is 8.16 N, over the 8 N trip level. (0.5 s comparison superseded 2026-10-12)
+- **For "first contact" the claim does not hold:** servo lag moves first contact from 0.519 s to 0.479 s, 0.040 s earlier, and under 0.5 s. (0.5 s comparison superseded 2026-10-12)
+- **What the common lag draw hides** is therefore up to about 0.04 s on first contact and up to about 0.06 s on t_45. A candidate with a shorter lag than the 30–60 ms draw could close that much earlier. It cannot change the verdict on 0.5 s with the shipped profile. (0.5 s comparison superseded 2026-10-12)
 
 What this means for the choice:
 
-- **R19 at 0.5 s cannot be met by buying a motor.** Every eligible servo is already faster at the jaw than the 120 °/s fast leg (A32: 328 °/s). The time goes into the 20 °/s approach that R19's own impact clause demands, and into the force ramp after contact.
-- **Meeting 0.5 s needs a requirement change instead.** Either drop the last-3°-at-20 °/s clause, or count "closed" at contact rather than at 4.5 N: contact comes at 0.42–0.44 s with the fast profile.
+- **R19 at 0.5 s cannot be met by buying a motor.** Every eligible servo is already faster at the jaw than the 120 °/s fast leg (A32: 328 °/s). The time goes into the 20 °/s approach that R19's own impact clause demands, and into the force ramp after contact. (0.5 s comparison superseded 2026-10-12)
+- **Meeting 0.5 s needs a requirement change instead.** Either drop the last-3°-at-20 °/s clause, or count "closed" at contact rather than at 4.5 N: contact comes at 0.42–0.44 s with the fast profile. (0.5 s comparison superseded 2026-10-12)
 - **The fast profile is not free.** It doubles the pre-close speed to 240 °/s. The jam-shock basis in `dyno.md` (2.69 N·m at 120 °/s [D, `dyno.md`]) does not cover that speed, so the fast profile must not ship until the shock is re-run (requested change FW-3).
 - **Gearmotors are out.** The gearmotor configurations that reach 4.5 N take 0.95–1.7 s; the rest never reach it within 2 s (stdout table, `tc50`).
 
@@ -418,10 +418,10 @@ IDs F1–F4 elsewhere in this note are `thermal.md`'s firmware asks (F1 is the f
 | T1 | Thermal lane: `analysis/gripper/thermal/` | Rerun for the chosen servo. Inputs: stall torque 2.877 N·m at 6.5 V, listed stall current 3.8 A at 6.8 V (sizing 3.99 A at 6.5 V), no-load speed 328 °/s, mass 60 g, body 40 × 20 × 40.5 mm, hold torque 0.792 N·m at 5 N and 0.944 N·m at the 6 N regulated hold (both with cloth tension; `thermal.md` used 0.7647, without), rail 6.5 V; simulated hold current 1.62 A median, 2.12 A at the 95th percentile (10 N cap) | Scaling estimate: DS3230 case 85.7 °C against 74.4 °C (Fit B, discontinuous, 25 °C, no F1); `thermal.md` verdict "not safe as drawn" |
 | FW-1 | `firmware/gripper/config.h` | `SERVO_STALL_NM` 2.877, `SERVO_SPEED_DPS` 328, `SERVO_STALL_A` 3.8 (at 6.8 V) | Listing [S]; model at 6.5 V |
 | FW-2 | `firmware/gripper/config.h` | If R15 becomes 8 N: `F_SOFT_LIMIT_N` 7.0, `F_TRIP_N` 7.5 | Keeps the 6.0–6.6 N hold band (setpoint + 1 N bias, + 0.6 N integrator deadband) below the soft limit [A] |
-| FW-3 | `firmware/gripper/config.h` + `analysis/gripper/dyno.py` | Do not raise `JAW_SPEED_FAST_DPS` above 120 °/s until the jam shock is re-run at the new speed | The as-written R19 profile needs 240 °/s; the shock basis is 120 °/s |
+| FW-3 | `firmware/gripper/config.h` + `analysis/gripper/dyno.py` | Do not raise `JAW_SPEED_FAST_DPS` above 120 °/s until the jam shock is re-run at the new speed | The historical R19 profile (superseded 2026-10-12) needs 240 °/s; the shock basis is 120 °/s |
 | FW-4 | `firmware/gripper/config.h` hold-current trip (pull request 20, not merged: 2.0 A in the force loop, 1.8 A elsewhere) | Do not apply the 1.8 A trip to the hold. Set the hold trip from the measured hold and stall rail currents (M6, M7): above the hold's 95th percentile and below stall | DS3230 simulated hold current with the hold bias 1.62 A median, 2.12 A at the 95th percentile (10 N cap; above the 2.0 A trip), 1.42 / 1.87 A with the 8 N cap; stall 3.6–4.0 A |
 | E1 | Electrical design, DESIGN-BASIS R27 | Rail stays at 6.5 ± 0.15 V; supply and wiring for ≥ 5 A [A] | Sizing current 3.99 A for a nominal unit, which leaves no headroom in a 4 A supply. A19 would need 6.98 A at 7.1 V |
-| R-1 | DESIGN-BASIS R19 | Choose 0.75 s, define "closed" as contact, or drop the last-3°-at-20 °/s clause. With the clause and the shipped profile, 0.5 s to 4.5 N is unreachable even for an ideal actuator (0.570 s at 1.05 N/mm); only the fast profile on a stiff finger reaches it (0.491–0.492 s) | P(R19 at 0.5 s) = 0.00 for all 81 configurations |
+| R-1 | DESIGN-BASIS R19 | Ruled 0.75 s on 2026-10-12; the former alternatives were to define "closed" as contact, or drop the last-3°-at-20 °/s clause. With the clause and the shipped profile, 0.5 s to 4.5 N is unreachable even for an ideal actuator (0.570 s at 1.05 N/mm); only the fast profile on a stiff finger reaches it (0.491–0.492 s) | P(R19 at 0.5 s) = 0.00 for all 81 configurations (0.5 s comparison superseded 2026-10-12) |
 | R-2 | DESIGN-BASIS R12 | If R15 becomes 8 N, raise the lower tip stiffness bound from 0.88 to ≥ 1.05 N/mm | Stiffness floor at 8 N is 1.048 N/mm (squeeze cap less the firmware's 0.5 N margin); an R12-minimum finger holds 4.14 N |
 | R-3 | DESIGN-BASIS R8, BOM | DS3230 MG at $27.00 (or PRO at $25.00 if its stock is confirmed) | Under the $50 cap [S] |
 | R-4 | DESIGN-BASIS R14 | Record that R14 (true force ≥ 5 N) is met in 45.1 % of grips with the present servo and shipped firmware, and that the cause is not the actuator | Firmware study, pull request 20, not merged, as of 2026-10-11 |

@@ -8,10 +8,10 @@ For TP-05, the analyser derives each run's uncertainty from the observed control
 
 - **Force.** The pinch probe (TAL220 10 kg bar load cell and HX711) has U ≈ 0.10 N from 5 to 10 N. The 5 N (R14), 8 N and 10 N (R15) limits are 50-90 times U, so it resolves every force criterion. A kitchen scale used as a force gauge would not: the pads squeeze, so a scale needs a lever fixture, and 1 g resolution with ±1-2 % accuracy [A] gives about ±0.1-0.2 N plus fixture error.
 - **The FSR on finger B is not a measuring instrument here.** It is the sensor under test. Its error is what TP-01 measures.
-- **Time.** The firmware's own event log (1 ms timestamps, FSR lag corrected) has U ≈ 3.6 ms; the 240 fps video ≈ 6.8 ms. The 0.5 s and 0.75 s limits are 70-200 times U. Force-crossing times read from the 50 Hz status stream have U ≈ 13 ms.
+- **Time.** The firmware's own event log (1 ms timestamps, FSR lag corrected) has U ≈ 3.6 ms; the 240 fps video ≈ 6.8 ms. The historical 0.5 s limit (superseded 2026-10-12) and ruled 0.75 s limit are 70-200 times U. Force-crossing times read from the 50 Hz status stream have U ≈ 13 ms.
 - **R20 interval bound.** `analyze_log.py` reads both endpoints from `ST` lines: each line carries controller `millis()` (`gripper.ino` `statusLine`), not the CSV host time. The true onset and back-off each occur after the preceding 50 Hz sample and no later than the first line that shows the condition. If their unknown delays are `q_on,q_off ∈ [0,20 ms]`, the interval error is `q_on − q_off ∈ [−20,+20] ms`, even when correlated. Therefore U is a ±20 ms bound with 100 % coverage under uninterrupted `STREAM 50`; host timestamping, serial latency and the separate `EVT` timestamp do not enter.
 - **Temperature.** A type K thermocouple on a MAX31855, checked in ice water, has U ≈ 1.6 °C, 37 times inside the 60 °C limit. An IR thermometer on a plastic case depends on the emissivity setting; it is a cross-check only.
-- **Where the instrument is not the limit:** R16 at 6.35 V is within about one U of its limit in the analysis. R14 on the softest R12 finger is 2.2 U clear, so each hold is decidable, but too close for a 95/90 bound at a bench-sized n (section 3). No affordable instrument changes that; more trials and the design margin do. R15 with a half-reading FSR and R19-proposed to 5.0 N were in this list until the firmware began regulating 1 N above the setpoint (`F_HOLD_BIAS_N`); both now clear their limits by more than U.
+- **Where the instrument is not the limit:** R16 at 6.35 V is within about one U of its limit in the analysis. R14 on the softest R12 finger is 2.2 U clear, so each hold is decidable, but too close for a 95/90 bound at a bench-sized n (section 3). No affordable instrument changes that; more trials and the design margin do. R15 with a half-reading FSR and ruled R19 to 5.0 N were in this list until the firmware began regulating 1 N above the setpoint (`F_HOLD_BIAS_N`); both now clear their limits by more than U.
 
 ## 1. Uncertainty budgets
 
@@ -95,20 +95,20 @@ Notes on the [A] entries:
 | TP-04 | R15 | peak force, FSR reading 50 %, k 1.63 (cap proposed 8 N) | 8 N | 9.66 | 0.109 | 73 | -15.18 | FAIL | yes / yes |  |
 | TP-04 | R15 | peak force, normal G 5, k 1.63 (cap proposed 8 N) | 8 N | 7.41 | 0.103 | 77 | 5.66 | PASS | yes / yes |  |
 | TP-02 | R14 | pull to slip (SF 2 at mu 0.4) | 4 N | 4 | 0.0963 | 42 | 0.00 | INDETERMINATE | yes / **no** | predicted equals the limit by construction; the measured mu (M2) decides |
-| TP-03 | R19 | contact time, event log (R19 written 0.50 s) | 0.5 s | 0.59 | 0.00356 | 140 | -25.29 | FAIL | yes / yes |  |
-| TP-03 | R19 | time to 4.5 N, stream (R19 written 0.50 s) | 0.5 s | 0.723 | 0.0129 | 39 | -17.27 | FAIL | yes / yes |  |
-| TP-03 | R19 | time to 5.0 N, k ≥ 1.0 (R19 written 0.50 s) | 0.5 s | 0.718 | 0.0129 | 39 | -16.89 | FAIL | yes / yes |  |
-| TP-03 | R19 | time to 5.0 N, k 0.88 (R19 written 0.50 s) | 0.5 s | 0.772 | 0.0129 | 39 | -21.07 | FAIL | yes / yes |  |
-| TP-03 | R19 | contact time, event log (R19 proposed 0.75 s) | 0.75 s | 0.59 | 0.00356 | 211 | 44.96 | PASS | yes / yes |  |
-| TP-03 | R19 | time to 4.5 N, stream (R19 proposed 0.75 s) | 0.75 s | 0.723 | 0.0129 | 58 | 2.09 | PASS | yes / yes |  |
-| TP-03 | R19 | time to 5.0 N, k ≥ 1.0 (R19 proposed 0.75 s) | 0.75 s | 0.718 | 0.0129 | 58 | 2.48 | PASS | yes / yes | k 1.05 lands 32 ms under 0.75 s: decidable |
-| TP-03 | R19 | time to 5.0 N, k 0.88 (R19 proposed 0.75 s) | 0.75 s | 0.772 | 0.0129 | 58 | -1.70 | FAIL | yes / yes |  |
+| TP-03 | R19 | contact time, event log (R19 written (superseded 2026-10-12) 0.50 s) | 0.5 s | 0.59 | 0.00356 | 140 | -25.29 | FAIL | yes / yes |  |
+| TP-03 | R19 | time to 4.5 N, stream (R19 written (superseded 2026-10-12) 0.50 s) | 0.5 s | 0.723 | 0.0129 | 39 | -17.27 | FAIL | yes / yes |  |
+| TP-03 | R19 | time to 5.0 N, k ≥ 1.0 (R19 written (superseded 2026-10-12) 0.50 s) | 0.5 s | 0.718 | 0.0129 | 39 | -16.89 | FAIL | yes / yes |  |
+| TP-03 | R19 | time to 5.0 N, k 0.88 (R19 written (superseded 2026-10-12) 0.50 s) | 0.5 s | 0.772 | 0.0129 | 39 | -21.07 | FAIL | yes / yes |  |
+| TP-03 | R19 | contact time, event log (R19 proposed (ruled 2026-10-12) 0.75 s) | 0.75 s | 0.59 | 0.00356 | 211 | 44.96 | PASS | yes / yes |  |
+| TP-03 | R19 | time to 4.5 N, stream (R19 proposed (ruled 2026-10-12) 0.75 s) | 0.75 s | 0.723 | 0.0129 | 58 | 2.09 | PASS | yes / yes |  |
+| TP-03 | R19 | time to 5.0 N, k ≥ 1.0 (R19 proposed (ruled 2026-10-12) 0.75 s) | 0.75 s | 0.718 | 0.0129 | 58 | 2.48 | PASS | yes / yes | k 1.05 lands 32 ms under 0.75 s: decidable |
+| TP-03 | R19 | time to 5.0 N, k 0.88 (R19 proposed (ruled 2026-10-12) 0.75 s) | 0.75 s | 0.772 | 0.0129 | 58 | -1.70 | FAIL | yes / yes |  |
 | TP-07 | R26 | case temperature after 30 min (Fit B, 25 °C, Rth2 ×1) | 60 °C | 61.2 | 1.64 | 37 | -0.73 | INDETERMINATE | yes / **no** | model is an upper bound; spans 43-115 °C |
 | TP-09 | R17 | moment arm r_c, both fingers (CAD nominal) | 65 mm | 65 | 0.0766 | 849 | 0.00 | INDETERMINATE | yes / **no** | CAD nominal sits on the limit: a perfect part reads INDETERMINATE; see Requested changes in the README |
 | TP-09 | R10 | mass-moment, CAD revision B | 4.37e+04 g·mm | 5.33e+04 | 214 | 204 | -44.86 | FAIL | yes / yes | Predicted FAIL at full reach; disposition: prohibit holds beyond 284.1 mm COM reach and enforce the tighter work-cell fingertip limit |
 | TP-12 | R12 | finger tip stiffness, low end | 0.88 N/mm | 1.07 | 0.0483 | 18 | 3.93 | PASS | yes / yes |  |
 | TP-12 | R12 | finger tip stiffness, high end | 1.63 N/mm | 1.29 | 0.0583 | 28 | 5.84 | PASS | yes / yes |  |
-| TP-13 | R16 | stall torque at 6.35 V | 1.98 N·m | 2.02 | 0.0326 | 61 | 1.31 | PASS | yes / yes | 1 % margin: run at 6.50 V too |
+| TP-13 | R16 | stall torque at 6.35 V | 1.98 N·m | 2.02 | 0.0326 | 61 | 1.23 | PASS | yes / yes | 1 % margin: run at 6.50 V too |
 | TP-05 | R20 | back-off begins after over-current onset | 0.2 s | 0.14 | 0.02 | 10 | 3.00 | PASS | yes / yes |  |
 | TP-13 | R27 | rail voltage band low end | 6.35 V | 6.5 | 0.0606 | 105 | 2.47 | PASS | yes / yes | TUR about 3: set the rail to 6.50 V with the DMM |
 | TP-13 | R27 | rail voltage band high end | 6.65 V | 6.5 | 0.0606 | 110 | 2.47 | PASS | yes / yes | TUR about 3: set the rail to 6.50 V with the DMM |

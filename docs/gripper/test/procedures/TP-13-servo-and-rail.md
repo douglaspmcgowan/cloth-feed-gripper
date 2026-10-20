@@ -129,7 +129,7 @@ Per trial: trial, rail_set_V, lever_mm, force_N (plateau), torque_Nm, rail_A, ra
 
 ## Pass / fail
 
-- **R16 torque:** pass if every 6.35 V trial ≥ 2.013 N·m (1.98 + U) **and** the lower bound ≥ 1.98; indeterminate if any trial is within 1.948-2.013; fail if any is below 1.948. Also report the 6.50 V trials against 1.98 N·m and 2.051 expected.
+- **R16 torque:** pass if every 6.35 V trial ≥ 2.015 N·m (1.98 + U) **and** the lower bound ≥ 1.98; indeterminate if any trial is within 1.948-2.013; fail if any is below 1.948. Also report the 6.50 V trials against 1.98 N·m and 2.051 expected.
 - **R16 current:** ratio limit 0.40. U of the ratio is about 2.8 % of its value (two current readings, U 0.021 A each at 1.4 A and 2.1 A; check with `analyze_log.py judge --value <ratio> --limit 0.40 --u <ratio × 0.03> --side upper`). **Pass** if ratio + U ≤ 0.40, **fail** if ratio − U ≥ 0.40, else **indeterminate** (measure the hold current again at a second force).
 - **M6:** stall current near 2.1 A means Fit B; near 3.75 A, Fit A (then R26 heat is about 1.7× worse, `dyno.md` 8).
 - **R27** (DMM U = 0.061 V): **pass** if the buck setting is 6.41-6.59 V (6.5 ± 0.15 less U), **fail** outside 6.28-6.71 V (6.5 ± 0.15 plus U), **indeterminate** in the strips between, and the stall minimum − 0.06 V ≥ 6.35 V, the capacitor and common ground are present, and the supply is rated ≥ 3 A and ≥ 1.3 × I_stall. With Fit A that is 4.9 A, more than the 4 A that `dyno.md` 3 advises: report it.

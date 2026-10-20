@@ -6,14 +6,18 @@ Concepts to iterate, the design space of each subsystem, the calculations each c
 - **Tags:** **[S]** sourced (research note or URL), **[D]** derived (script named, or equation shown), **[A]** assumed and reversible. `[D cf]` means derived by `concept_figures.py`; `[D DB]` means derived by `docs/gripper/design_basis.py` and stated in `DESIGN-BASIS.md`.
 - **Level:** first-order statics, kinematics and the W2a close-time model, good enough to rank concepts. The owning scripts in the calculation register (section 8) replace these numbers.
 
+**R19 ruling (2026-10-12):** full close within 0.75 s. C0 remains the selected build baseline by ruling. The actuator and Pugh screens below retain the selection basis 0.5 s (R19 at selection; superseded 2026-10-12); their computed ranks are evidence, not a new selection. `concept_numbers.json` reports the current 0.75 s check separately.
+
+**Current generated timing (unchanged model):** C0 0.284 s; C1 0.403 s; C2 0.535 s; C2p 0.535 s; C3 0.624 s; C3b 0.409 s. All six meet the ruled 0.75 s timing limit; the retained 0.5 s selection screen (superseded 2026-10-12) still ranks C3b, C1, C0. C0 stays selected by ruling. Earlier rounded screening examples below are historical comparisons, not new selections.
+
 ## 0. Headline
 
 1. **The baseline (C0) closes, but only just.** DS3218MG hold margin is +4.6 % at LC1 on the design-basis torque and 6.0 V [D cf], and +1.0 % on W2a's 0.792 N·m hold torque [D `payload_torque.py`]. The arm mass-moment is 92.7 % of the C001 7.4 V budget [D DB]. **Only A17 DS3218MG passes on a 1:1 drive with verified stock** [S `actuators.csv` stock_checked; D cf]; DS3225 (A18) is recorded unavailable.
-2. **R19 (close ≤ 0.5 s, last 3° at ≤ 20 °/s) is now a pass/fail screen ahead of the matrix**, using the `payload_torque.py` close model for every concept [D cf]. It removes three concepts: **C3** 1-start worm 0.59 s, **C2** ball-rail rack 0.53 s, **C2p** printed-slide rack 0.53 s. C0 0.28 s, C1 0.39 s and **C3b** 2-start worm 0.39 s pass.
+2. **The selection basis 0.5 s (R19 at selection; superseded 2026-10-12), with last 3° at ≤ 20 °/s, remains the pass/fail screen ahead of the matrix**, using the `payload_torque.py` close model for every concept [D cf]. It removes three concepts: **C3** 1-start worm 0.59 s, **C2** ball-rail rack 0.53 s, **C2p** printed-slide rack 0.53 s. C0 0.28 s, C1 0.39 s and **C3b** 2-start worm 0.39 s pass.
 3. **Among the passers, C3b (2-start worm on the Pololu M01) and C1 (4:1 pinion stage on the FS5106B-FB) trade first place.** On the base weights C3b leads (+45 vs +30). C1 leads when K1 is dropped (the GSI accepts the servo), when K2 is scored like-for-like, and it ties with the K2/K3 thresholds at ×0.75 [D cf]. C3b runs its gearbox at 92 % of the 2.0 kg·cm limit at LC1. It self-locks only for μ 0.20–0.29 and exceeds the limit at μ 0.30 [D cf].
 4. **The high-load parts of C1 and C3 need PA6-CF.** C1's z12 m1 pinion carries 33.5 N at LC1 (22.8 MPa) and 98.1 N at LC3 (66.7 MPa); PETG fails every case, and z12 needs profile shift x ≥ 0.29 [D cf]. The C3 worm wheel carries the full knuckle torque: 76.5 N of worm thrust at LC1 and 109 N at the gearbox limit, so the worm needs its own thrust bearing (Pololu 5193 publishes no axial rating). A z20 m1 wheel needs b ≥ 6.3 mm in PA6-CF; b 8 is used [D cf].
-5. **Rack jaws (C2) do not jam.** The drive force F (1 + 2μh/l) stays finite. Above μ = 0.22 (rack B, h 67 mm) the slide friction exceeds F, so the pad force cannot back-drive the slide. The printed slide at μ 0.30 still holds on A12 (margin +3.7 %) [D cf]. Both rack variants fail R19 by 0.03 s.
-6. **Recommendation.** Keep C0 as the build-now baseline. Iterate to C1 first, because its lead holds when the judgment calls move and it keeps a PWM servo (D1). Bench-prototype the C3b worm, which must prove the μ window. Park C3 unless R19 is relaxed to 0.6 s. Park C2, C2p, T4 and T6.
+5. **Rack jaws (C2) do not jam.** The drive force F (1 + 2μh/l) stays finite. Above μ = 0.22 (rack B, h 67 mm) the slide friction exceeds F, so the pad force cannot back-drive the slide. The printed slide at μ 0.30 still holds on A12 (margin +3.7 %) [D cf]. Both rack variants fail the selection basis (superseded 2026-10-12) by 0.03 s.
+6. **Recommendation.** Keep C0 as the build-now baseline. Iterate to C1 first, because its lead holds when the judgment calls move and it keeps a PWM servo (D1). Bench-prototype the C3b worm, which must prove the μ window. Park C3 unless the historical screen is relaxed to 0.6 s (superseded 2026-10-12; current R19 is 0.75 s). Park C2, C2p, T4 and T6.
 
 ## 1. Problem statement
 
@@ -28,7 +32,7 @@ Phases and durations are from DESIGN-BASIS section 7 [A]; the firmware states ar
 | 0 | Boot, home to the open limit, close empty until the FSR reads 0.5 N, store θ_c0 | BOOT → HOME → CALIBRATE → IDLE | once | Repeatable closed reference | R21, R4 |
 | 1 | Arm moves over the cloth edge (overhead camera, later) | APPROACH | 4.0 s incl. step 2 | Jaw open, +20° | R18, R24 |
 | 2 | Lower until the nail finger A touches the table (FSR or current spike) | TOUCHDOWN | (in step 1) | Nail slides under one ply | D7, R20 |
-| 3 | Close. Fast to the pre-grasp angle, then ≤ 20 °/s for the last 3°, then step toward θ_hold until the FSR reads ≥ 5 N | CLOSE | 0.5 s | 5 N per pad, never below θ_min | R14, R15, R19 |
+| 3 | Close. Fast to the pre-grasp angle, then ≤ 20 °/s for the last 3°, then step toward θ_hold until the FSR reads ≥ 5 N | CLOSE | 0.75 s (ruled R19) | 5 N per pad, never below θ_min | R14, R15, R19 |
 | 4 | Lift and move to the needle, then present the edge ≥ 20 mm before the presser foot | HOLD | 5.0 s | No slip under 0.5 g dynamic loading | LC5, R10 |
 | 5 | Machine feeds 200 mm at 10 mm/s while the gripper holds 2 N of tension | FEED | 20.0 s | Hold ≥ 5 N; re-step if < 4.5 N; SLIP if < 3 N | LC1, LC4, R26 |
 | 6 | Open | RELEASE | 0.5 s | Clear the cloth without dragging it | R18 |
@@ -55,7 +59,7 @@ The full table, with values and proofs, is DESIGN-BASIS section 1. This column s
 | R13, R25 | Gear strength LC1–LC3; 1e5-cycle life | Transmission, material | K7 |
 | R14, R15, R16 | 5 N hold; 10 N cap; hold ≤ 40 % of stall | Actuator × transmission | K2 |
 | R17, R18 | r_c ≤ 65 mm; θ ∈ [−11°, +20°] | Transmission, finger | K2, K4 |
-| R19 | ≤ 0.5 s close; last 3° at ≤ 20 °/s | Actuator × transmission | **Pass/fail screen** before the matrix (section 7) |
+| R19 | ≤ 0.75 s close; last 3° at ≤ 20 °/s (ruled 2026-10-12) | Kept actuator × transmission | Current requirement check; the matrix retains the superseded 0.5 s selection basis |
 | R20, R21 | Stall back-off ≤ 200 ms; calibration | Sensing, firmware | K5 |
 | R22 | Wrist interface (horn, Ø14 bolt circle, pilot) | Wrist mount | K6, K8 |
 | R23 | Camera provision | Camera | — |
@@ -75,14 +79,14 @@ t = k_trap · (θ_open − θ_c − 3°)/ω₀ + 3°/min(20 °/s, ω₀) + θ_ov
 
 Here ω₀ is the no-load jaw speed, k_trap = 1.3 [A], θ_c = −0.31° [D], and θ_over = F/(k_tip r_c) = 4.41° [D]. The parallel jaws use jaw-equivalent degrees (same pad travel per degree).
 
-| ID | Alternative | How it works | Actuator torque at LC1 | Lightest actuator (stock) | Mass-moment (% of budget) | Close, R19 ≤ 0.5 s | Kinematics | Main risk | Status |
+| ID | Alternative | How it works | Actuator torque at LC1 | Lightest actuator (stock) | Mass-moment (% of budget) | Close, selection basis ≤ 0.5 s (superseded 2026-10-12) | Kinematics | Main risk | Status |
 |---|---|---|---|---|---|---|---|---|---|
 | T1 | **1:1 spur sector (baseline)** | Servo spline drives knuckle A; sector A meshes sector B at a = m z | 0.765 N·m [D DB] | A17 DS3218MG, margin +4.6 %, in stock [S] | 40,507 g·mm (92.7 %) [D DB] | 0.28 s, pass [D cf] | Pads tilt 20° each when open; tip rises 0.29 mm [D cf] | Thin torque margin; LC3 puts full stall across the mesh | Baseline |
 | T2a | **Unequal-ratio sector, reduction**: pinion z12 → sector A z48 (i = 4), then A:B 1:1 | The extra stage divides the servo torque by i·η_stage (η_stage 0.95 [A]) | 0.201 N·m [D cf] | A12 FS5106B-FB\*, 43 g, feedback wire, margin +17 % [D cf; stock A] | 36,792 (84.2 %) [D cf] | 0.39 s, pass [D cf] | As T1; jaw step 0.068° [A: A12 deadband not published, DS3218MG 3 µs borrowed]; servo sweep 124° [D cf] | The pinion tooth force does not fall with i: 33.5 N at LC1 (22.8 MPa), 98.1 N at LC3 (66.7 MPa). It fails PETG (20.4 / 51), passes PA6-CF, and z12 needs x ≥ 0.29. A12 stall × i puts 2.24 N·m on the A:B mesh at LC3 (vs 2.00) [D cf] | **Carry (C1)** |
 | T2b | **Unequal-ratio sector, asymmetric**: z_A:z_B = k with the servo on A; B turns k times A | T = F r_c (1 + k)/η | k = 0.5: 0.574 N·m; k = 2: 1.147 N·m [D cf] | k = 0.5: A17. k = 2: none [D cf] | 40,857 (93.5 %) at k = 0.5 [D cf] | as T1 | k = 2 keeps nail finger A within 13.3° of closed while B sweeps 26.7° [D cf] | k > 1 is only possible with a reduction stage ahead of it | Variant of T2a |
 | T3 | **Rack-and-pinion parallel jaw**: pinion z19 (r 9.5) between two racks; one carriage per rack | T = Σ_j (F + 2 μ F h_j/l) r_p/η_mesh; h_A 48, h_B 67 mm from the drawn layout, l 30 [D cf; A layout] | Printed slide μ 0.30: 0.227 N·m. Ball rail μ 0.01: 0.110 N·m [D cf] | A12\* on both (printed margin +3.7 %, rail +115 %). FT1117M-FB has the torque but only 120° of travel against a 148° sweep [D cf] | Ball rail 43,403 (99.3 %); printed slide 36,461 (83.4 %) [A mass; D cf] | 0.53 s, **fail** on both; no listed servo passes at this pinion size [D cf] | Pads parallel; tip height constant; 0.045 mm per deadband step [D cf] | Friction exceeds F above μ = 0.22 (rack B) / 0.31 (rack A), so the slide cannot be back-driven; it does not jam in the drive direction [D cf]; stick-slip; no CAD yet | Park (R19); C2 / C2p kept in the matrix |
 | T4 | **4-bar parallelogram**, sides synced by a 1:1 pair on the driven links | T = 2 F l cos ψ/η, l = 40 [A], η 0.80 [A] | 0.500 N·m [D cf] | A17 [D cf] | 41,045 (93.9 %) [D cf] | 0.33 s, pass [D cf] | Pads parallel; opens at ψ 38°; tip rises 8.5 mm; fingers hang 18 mm lower [D cf] | Tip rises while closing (bad for table pickup); 8 pins of wobble | Park |
-| T5 | **Worm, self-locking, 1-start**: Pololu HPCB 150:1 (M01) drives a worm (d 10, λ 5.71°) into a z20 wheel sector on A; A:B 1:1 | η_w = tan λ / tan(λ + φ); locks if λ < φ = atan μ; motor T = T_wheel/(N η_w), N = z/starts | 1.40 kg·cm at the gearbox output, 70 % of its 2.0 limit [D cf] | M01\*, 11 g, $32.45 [S price; stock A: "listed"] | 28,287 (64.7 %) incl. +3 g thrust bearings [D cf; A mass] | **0.59 s, fail** (0.34 free + 0.15 last 3° + 0.10 overtravel at 43 °/s) [D cf]; W2a gets 0.57 s for M01 + 20:1 | As T1; 66 °/s no-load; 100 counts per jaw degree [D cf] | Wheel carries the full T_servo: worm thrust 76.5 N at LC1, 109 N at the gearbox limit; z20 m1 b6 Lewis 39.6 MPa > PA6-CF 38, so b ≥ 6.3 (b 8: 29.7 MPa); printed worm wear at η 0.28; unlocks at μ ≤ 0.10 [D cf] | Park unless R19 is relaxed to 0.6 s (C3) |
+| T5 | **Worm, self-locking, 1-start**: Pololu HPCB 150:1 (M01) drives a worm (d 10, λ 5.71°) into a z20 wheel sector on A; A:B 1:1 | η_w = tan λ / tan(λ + φ); locks if λ < φ = atan μ; motor T = T_wheel/(N η_w), N = z/starts | 1.40 kg·cm at the gearbox output, 70 % of its 2.0 limit [D cf] | M01\*, 11 g, $32.45 [S price; stock A: "listed"] | 28,287 (64.7 %) incl. +3 g thrust bearings [D cf; A mass] | **0.59 s, fail** (0.34 free + 0.15 last 3° + 0.10 overtravel at 43 °/s) [D cf]; W2a gets 0.57 s for M01 + 20:1 | As T1; 66 °/s no-load; 100 counts per jaw degree [D cf] | Wheel carries the full T_servo: worm thrust 76.5 N at LC1, 109 N at the gearbox limit; z20 m1 b6 Lewis 39.6 MPa > PA6-CF 38, so b ≥ 6.3 (b 8: 29.7 MPa); printed worm wear at η 0.28; unlocks at μ ≤ 0.10 [D cf] | Park unless the historical screen is relaxed to 0.6 s (superseded 2026-10-12; current R19 is 0.75 s) (C3) |
 | T5b | **Worm, 2-start** (same d, module and wheel): λ 11.31°, N = 10 | As T5 | 1.85 kg·cm, **92 % of the gearbox limit** [D cf] | M01\* | 28,287 (64.7 %) [D cf] | 0.39 s, pass [D cf] | 132 °/s no-load; 50 counts per jaw degree [D cf] | Self-locks only if μ > tan λ = 0.20; at μ 0.30 the LC1 motor torque is 2.07 kg·cm, over the limit; pad force at the limit only 5.4 N; thrust 83 N at the limit [D cf] | **Carry (C3b)**, bench first |
 | T6 | **Cable / tendon**: servo pulley r_p 10 → floating (whiffletree) pulley → finger levers r_t 12; torsion return springs [A] | Tension = F r_c/r_t + F_spring; T = 2 · tension · r_p/η | 0.708 N·m, 30.1 N per tendon [D cf] | A17 [D cf] | 41,863 (95.8 %) [D cf] | 0.29 s, pass [D cf] | Equal pad forces (adaptive); no sync gears | Tendon creep shifts θ_c0 | Park |
 | T6p | Tendon with the servo moved behind the wrist, Bowden sheath (η 0.60 [A]) | As T6 | 1.003 N·m [D cf] | None passes [D cf] | 36,209 (82.8 %), booked with the A17 mass [D cf] | — | As T6 | Winds up across the 320° roll; Bowden loss | Park |
@@ -90,7 +94,7 @@ Here ω₀ is the no-load jaw speed, k_trap = 1.3 [A], θ_c = −0.31° [D], and
 What decides between them:
 
 - **Torque vs moment arm.** The design-space chart (`concept_design_space_rc.svg`) shows the stall each ratio needs as r_c varies. On a 1:1 drive at r_c 65 only A17 passes among parts not recorded unavailable (A18, A19, A20 are) [D cf]. At i = 4 the feedback servos A12\* and A13\* pass too [D cf].
-- **Speed vs reduction.** Every added reduction trades R19 time for torque. A 4:1 stage on a standard servo leaves 0.11 s of margin. A 1-start worm on M01 does not fit in 0.5 s; a 2-start does, at 92 % of the gearbox limit.
+- **Speed vs reduction.** Every added reduction trades R19 time for torque. A 4:1 stage on a standard servo leaves 0.11 s of margin. A 1-start worm on M01 does not fit in 0.5 s; a 2-start does, at 92 % of the gearbox limit. (0.5 s comparison superseded 2026-10-12)
 - **Pad kinematics.** A rotating finger (T1, T2, T5, T6) keeps the tip nearly level: it rises 0.29 mm over the stroke [D cf], but the pad tilts by θ. The pads are parallel only at θ = 0, which is where a 0.3 mm ply is gripped, so tilt matters only for thick stacks. The parallel jaws (T3, T4) keep the pads flat; T4 lifts the tip 8.5 mm while doing it [D cf].
 - **Where the finger moment goes.** In T1, T2, T5 and T6 it becomes actuator torque, which scales with r_c. In T3 it becomes a carriage couple, which becomes friction. In T4 it becomes link axial force, so finger length is free.
 
@@ -214,16 +218,16 @@ Parked, with reasons: **T2b** (asymmetric) needs a reduction ahead of it, since 
 
 **Step 1: R19 screen (pass/fail)** [D cf, `pugh.R19_screen`]. The close runs from θ_open to θ_hold, using the section 4.1 model.
 
-| Concept | Free travel | Last 3° at ≤ 20 °/s | Overtravel (loaded speed) | Total | R19 ≤ 0.5 s |
+| Concept | Free travel | Last 3° at ≤ 20 °/s | Overtravel (loaded speed) | Total | Selection basis ≤ 0.5 s (superseded 2026-10-12) |
 |---|---|---|---|---|---|
-| C0 | 0.06 s | 0.15 s | 0.07 s (capped at 60 °/s) | 0.28 s | Pass |
-| C1 | 0.17 s | 0.15 s | 0.07 s (capped at 60 °/s) | 0.39 s | Pass |
-| C2 | 0.31 s | 0.15 s | 0.07 s | 0.53 s | **Fail** |
-| C2p | 0.31 s | 0.15 s | 0.07 s | 0.53 s | **Fail** |
-| C3 | 0.34 s | 0.15 s | 0.10 s (43 °/s loaded) | 0.59 s | **Fail** |
-| C3b | 0.17 s | 0.15 s | 0.07 s (capped at 60 °/s) | 0.39 s | Pass |
+| C0 | 0.060 s | 0.150 s | 0.073 s | 0.284 s | Pass |
+| C1 | 0.180 s | 0.150 s | 0.073 s | 0.403 s | Pass |
+| C2 | 0.312 s | 0.150 s | 0.073 s | 0.535 s | **Fail** |
+| C2p | 0.312 s | 0.150 s | 0.073 s | 0.535 s | **Fail** |
+| C3 | 0.371 s | 0.150 s | 0.103 s | 0.624 s | **Fail** |
+| C3b | 0.185 s | 0.150 s | 0.073 s | 0.409 s | Pass |
 
-C3 passes only if R19 is relaxed to 0.6 s. W2a reaches the same verdict (M01 + 20:1, 0.57 s). C2 and C2p need a faster servo or a larger pinion, and no listed servo passes at the current pinion size, so both are parked. All six are still scored below, so the effect of the screen stays visible.
+C3 passes only if the historical screen is relaxed to 0.6 s (superseded 2026-10-12; current R19 is 0.75 s). W2a reaches the same verdict (M01 + 20:1, 0.57 s). C2 and C2p need a faster servo or a larger pinion, and no listed servo passes at the current pinion size, so both are parked. All six are still scored below, so the effect of the screen stays visible.
 
 **Step 2: Pugh matrix.** Scores run from −2 to +2 against C0. K2 and K3 are scored by rule from the computed numbers. The rule [A]: K2 from the change in force margin, ±1 at 0.10 and ±2 at 0.30; K3 from the change in mass-moment, ±1 at 1,500 g·mm and ±2 at 4,000 g·mm. The other criteria are judged [A], with the reason recorded in `concept_numbers.json` → `pugh.scores`.
 
@@ -248,11 +252,11 @@ C3 passes only if R19 is relaxed to 0.6 s. W2a reaches the same verdict (M01 + 2
 | **Weighted total (C0 = 0)** [D cf] | 100 | **+30** | +15 | +25 | +80 | **+45** | |
 | **R19 screen** | | pass | fail | fail | fail | pass | |
 
-**Rank of the R19 passers: C3b (+45) > C1 (+30) > C0.** Without the screen, C3 would rank first (+80).
+**Rank of the selection-basis passers (superseded 2026-10-12): C3b (+45) > C1 (+30) > C0.** Without the screen, C3 would rank first (+80).
 
 **Sensitivity** [D cf, `pugh.sensitivity`]. The cases vary the weights, score K2 on like-for-like bases, and move the K2/K3 thresholds by ±25 %. First place is **not** stable:
 
-| Case | C1 | C2 | C2p | C3 | C3b | Rank of the R19 passers |
+| Case | C1 | C2 | C2p | C3 | C3b | Rank of the selection-basis passers (superseded 2026-10-12) |
 |---|---|---|---|---|---|---|
 | Base weights | 30 | 15 | 25 | 80 | 45 | C3b > C1 > C0 |
 | Equal weights | 11.1 | 0 | 0 | 55.6 | 22.2 | C3b > C1 > C0 |
@@ -275,7 +279,7 @@ How to read this table: C3b's lead depends on K1 (the GSI question) and on scori
    - the no-back-drive torque (the worm must lock, which needs μ > 0.20);
    - the peak output torque against the 2.0 kg·cm limit (it is over the limit at μ 0.30);
    - the wear after 1e4 grips.
-4. Promote C3b only if the bench passes **and** the GSI rules that the servo does not count as the DC motor (M20). That reopens D1 (section 11). C3 (1-start) needs R19 relaxed to 0.6 s.
+4. Promote C3b only if the bench passes **and** the GSI rules that the servo does not count as the DC motor (M20). That reopens D1 (section 11). C3 (1-start) needs a 0.6 s historical screen (superseded 2026-10-12; current R19 is 0.75 s).
 5. Drop **C2 / C2p** unless table pickup (K4) fails on the rotating fingers and R19 is relaxed.
 
 ## 8. Calculation register
@@ -358,13 +362,13 @@ All are [A] and reversible. Values live in `concept_figures.py` → `ASSUMED` an
 
 ## 11. Conflicts and open items
 
-1. **The decision matrix and D1.** D1 makes the PWM servo primary and the DC gearmotor a fallback. On the base weights the 2-start worm + gearmotor (C3b) ranks first among the R19 passers, but its lead disappears when K1 is dropped or K2 is scored like-for-like (section 7). This file does not change D1. Reopen it after the GSI answer (M20) and the C3b bench test.
+1. **The decision matrix and D1.** D1 makes the PWM servo primary and the DC gearmotor a fallback. On the base weights the 2-start worm + gearmotor (C3b) ranks first among the selection-basis passers (superseded 2026-10-12), but its lead disappears when K1 is dropped or K2 is scored like-for-like (section 7). This file does not change D1. Reopen it after the GSI answer (M20) and the C3b bench test.
 2. **W2a (`payload_torque.py`, `torque_and_actuator.md`) differs from the inputs this screen uses:**
    - **Hold torque:** 0.792 N·m including the tension moment on the pads, vs 0.765 N·m here (DESIGN-BASIS). The C0 margin at 6.0 V falls from +4.6 % to +1.0 %.
    - **Rail:** W2a moves the servo rail to 6.8 V (A17 margin +6.5 %); this screen and DESIGN-BASIS R16/R27 use 6.0 V.
-   - **DC branch:** W2a rejects worm gearmotors and M01 + 20:1 on speed (0.57 s), and picks M02 380:1 + 8:1 at 0.58 s, which needs R19 relaxed to 0.6 s. This screen agrees for the 1-start worm (C3, 0.59 s). It finds a 2-start worm on M01 at 0.39 s, but only at 92 % of the gearbox limit, which W2a's 25 %-of-stall rule for gearmotors would reject.
+   - **DC branch:** W2a rejects worm gearmotors and M01 + 20:1 on speed (0.57 s), and picks M02 380:1 + 8:1 at 0.58 s, which needs a 0.6 s historical screen (superseded 2026-10-12; current R19 is 0.75 s). This screen agrees for the 1-start worm (C3, 0.59 s). It finds a 2-start worm on M01 at 0.39 s, but only at 92 % of the gearbox limit, which W2a's 25 %-of-stall rule for gearmotors would reject.
    - Re-running this screen on 0.792 N·m and 6.8 V is open; the owner of `params.json` / DESIGN-BASIS decides the inputs.
-3. **The close-time models disagree.** `dyno.py` (time-domain, `config.h` 4° slow zone) gives C0 0.64 s, which fails R19. The `payload_torque.py` model used here gives 0.28 s. The screen ranks concepts on one model; the absolute pass for C0 is disputed until the firmware slow zone matches R19's 3° and M-series timing video exists.
+3. **The close-time models disagree.** `dyno.py` (time-domain, `config.h` 4° slow zone) gives C0 0.64 s, which passes the ruled 0.75 s R19 but failed the selection basis (superseded 2026-10-12). The `payload_torque.py` model used here gives 0.28 s. The screen ranks concepts on one model; the absolute pass for C0 is disputed until the firmware slow zone matches R19's 3° and M-series timing video exists.
 4. **Stock data bug, for the `docs/gripper/design_basis.py` owner.** `design_basis_out.json` gives A18 (DS3225) a blank `stock_note`, while `actuators.csv` `stock_checked` says "unavailable (MakerFocus, 2026-09-22)". This script now reads the csv; `concept_numbers.json` → `db_stock_note_bug` lists the IDs. Not edited here.
 5. **`firmware/gripper/config.h` (another lane) does not match DESIGN-BASIS.**
    - It uses the FS5115M-FB servo. That servo fails the hold rule at r_c 65 (maximum r_c 51.7 mm [D DB]).

@@ -1,5 +1,9 @@
 # Payload, finger torque and PWM actuator trade study
 
+**Refreshed catalogue result:** computed vendor-consistent rank = A39, A32, A33, A34, A19, A17, M09+15.75:1, A28. Ruled selections remain A17 / A19; their 0.75 s checks are A17 0.282 s PASS, A19 0.272 s PASS. The computed DC branch is M09+15.75:1; the M02 comparison tables below preserve the earlier catalogue snapshot and the superseded 2026-10-12 selection basis.
+
+**Selection held by ruling:** A17 primary, A19 backup (Douglas 2026-10-12 ruling; selection held, not recomputed). The refreshed catalogue's computed rank is reported in `payload_torque.json` beside these selections. Screening below retains selection basis 0.5 s (R19 at selection; superseded 2026-10-12); current R19 is 0.75 s and both ruled actuators are checked separately.
+
 Lane W2a, 2026-09-22 (fix pass 2). This note works backwards: the arm's payload sets a mass budget, the grip sets a torque, and the torque picks the actuator. It then scores every PWM actuator in the market scan. The design basis is `docs/gripper/DESIGN-BASIS.md` (it wins where the two disagree).
 
 - **Script:** `analysis/gripper/payload_torque.py`. Inputs are `cad/gripper/params.json`, `cad/so101/so101_old_calib.urdf`, `cad/so101/Simulation/SO101/so101_old_calib.xml` and `docs/gripper/research/actuators.csv`. Outputs are `analysis/gripper/results/payload_torque.json`, its stdout `analysis/gripper/results/payload_torque_stdout.txt`, and the figures `docs/gripper/figures/payload_*.png` and `actuator_*.png`.
@@ -20,7 +24,7 @@ Lane W2a, 2026-09-22 (fix pass 2). This note works backwards: the arm's payload 
 | Passing every hard constraint (40 % rule, design rail) | Servos **A17 DS3218MG, A19 DS3235**. A18 DS3225 now fails the arm budget at the worst pose (100.8 %); A20 PDI-6221MG fails the rail (6.0 V maximum). Three DC gearmotor + printed-stage configurations also pass, but only by running their Pololu motors above Pololu's own 25 % rule (section 3.3) |
 | **Primary** | **DS3218MG (A17) on the 6.5 ± 0.15 V rail.** Scripted rule (`recommendation.rule`). In stock, $12.99, 58 g, 25T spline. LC3 at 6.65 V is 2.09 N·m, so PETG m1.5 z20 gears pass |
 | **Backup** | **DS3235 (A19).** Drop-in (same 40 × 20 body, 25T spline, 54.5 mm ear span), hold margin 1.62, the only servo that holds at the 25 % rule (1.014). Sold out at the cited vendor; its 3.28 N·m LC3 needs PA6-CF gears |
-| DC gearmotor branch | **M02 Pololu 380:1 HPCB + encoder + printed two-stage 8:1 + DRV8833** (scripted `dc_pick`, same pick under both hold rules). Holds at Pololu's 25 % rule (1.006), 15.9 g, gripper at 83 % of the arm budget. Closes in **0.58 s, so R19 must be relaxed to 0.6 s**. No DC configuration that respects its vendor's hold rule meets 0.5 s within the arm budget |
+| DC gearmotor branch | **M02 Pololu 380:1 HPCB + encoder + printed two-stage 8:1 + DRV8833** (scripted `dc_pick`, same pick under both hold rules). Holds at Pololu's 25 % rule (1.006), 15.9 g, gripper at 83 % of the arm budget. Closes in **0.58 s, so the old screen would need 0.6 s (superseded 2026-10-12; current R19 is 0.75 s)**. No DC configuration that respects its vendor's hold rule meets 0.5 s within the arm budget |
 | Score (design rail, vendor-consistent pool) | A19 0.514 ≈ A17 0.502. Monte Carlo over weights ±50 %: P(rank 1) A19 58 %, A17 42 %. A statistical tie; stock decides |
 
 ## 1. SO-101 payload
@@ -188,7 +192,7 @@ The preliminary FEA-lane values (0.42–0.76 N/mm, `analysis/gripper/results/fea
 
 ### 2.6 Speed
 
-The close runs from +20° to θ_hold within 0.5 s (R19):
+The selection screen uses +20° to θ_hold within the selection basis 0.5 s (R19 at selection; superseded 2026-10-12). The current R19 requirement is 0.75 s:
 
 - The last 3° before contact are held to 20 °/s, which takes 0.15 s.
 - The 4.4° of overtravel is limited to 60 °/s [A] so the FSR loop can ramp force, which takes 0.073 s.
@@ -233,7 +237,7 @@ Constraints, in order:
    - every brushed-DC drive (servo or gearmotor): hold fraction × stall, 40 % in this run and 25 % in the `r25_*` runs; gearmotors are further capped at the Pololu gearbox limit [S];
    - worm: the gearbox rating, because it self-locks [A];
    - linear: back-drive force × crank arm.
-5. Close ≤ 0.5 s (R19).
+5. Close ≤ 0.5 s selection basis (R19 at selection; superseded 2026-10-12); the kept design is separately checked at the ruled 0.75 s.
 6. Arm budget: worst-pose hold utilisation ≤ 100 % of C001 7.4 V (section 1.2).
 7. Envelope: body ≤ 45 × 25 × 45 mm [A], **mounting ears excluded**; the ear-to-ear span is checked separately against the 56 mm servo bay [A] where `flange_span_mm` is published (A17, A19: 54.5 mm, pass). Rows whose dimensions are not in public text (W01/W02, some micros and gearmotors) are marked "not checked" in the JSON.
 
@@ -273,7 +277,7 @@ Each DC motor gets a printed spur stage (m0.8, z12 pinion, one or two stages, la
 | **40 % for all** | A17 (1.034), A19 (1.622) | M02 + 4.5:1 one stage (43 mm gear, 16.8 g, 0.42 s), M01 + 12.75:1 (18.5 g, 0.44 s), M04 + 6.25:1 (14.9 g, 0.46 s) | M02 + 8:1 (cap-sized, margin 1.60, 0.58 s) |
 | **25 % for all** | A19 only (1.014; 0.991 at 6.0 V, so it needs the design rail) | **None within the arm budget.** M07 JGA25 + 11.25:1 closes in 0.36 s but loads the arm to 113 % | M02 + 8:1 (1.006, 0.58 s), M01 + 20:1 (1.002, 0.57 s) |
 
-So the earlier claim "no DC configuration closes within 0.5 s" was true only on a mixed basis. Under one 40 % rule, three Pololu configurations pass. But Pololu publishes its own rule for exactly these motors: **"25% or less of the stall current"** [S, Pololu micro metal gearmotor page]. At that rule the three 40 %-passing configurations hold only 0.63–0.64 of the requirement (`hold_margin_vendor_rule`). The 40 % rule for servos is an open assumption that M6/M7 test; for the Pololu motors it contradicts the vendor. The recommendation therefore draws only from configurations that also hold under their vendor's published rule (`vendor_hold_rule` input [S], `trade_vendor_consistent`).
+So the earlier claim "no DC configuration closes within 0.5 s" was true only on a mixed basis. Under one 40 % rule, three Pololu configurations pass. But Pololu publishes its own rule for exactly these motors: **"25% or less of the stall current"** [S, Pololu micro metal gearmotor page]. At that rule the three 40 %-passing configurations hold only 0.63–0.64 of the requirement (`hold_margin_vendor_rule`). The 40 % rule for servos is an open assumption that M6/M7 test; for the Pololu motors it contradicts the vendor. The recommendation therefore draws only from configurations that also hold under their vendor's published rule (`vendor_hold_rule` input [S], `trade_vendor_consistent`). (0.5 s comparison superseded 2026-10-12)
 
 Fallback table (40 % run; in the 25 % run the hold-sized M01, M02, M04 and M06–M08 configurations need larger N, as shown in the extra M01 + 20:1 row):
 
@@ -282,16 +286,16 @@ Fallback table (40 % run; in the 25 % run the hold-sized M01, M02, M04 and M06�
 | M02 380:1 HPCB + enc + 4.5:1 | 4.5 (1) | 43 mm | 16.8 g | 1.002 / 0.63 | 0.42 s | 0.99 N·m | 83 % | Passes at 40 %; exceeds Pololu's 25 % |
 | M01 150:1 HPCB + enc + 12.75:1 | 12.75 (2) | 34 mm | 18.5 g | 1.017 / 0.64 | 0.44 s | 2.03 | 84 % | Same |
 | M04 298:1 HP + enc + 6.25:1 | 6.25 (2) | 24 mm | 14.9 g | 1.004 / 0.63 | 0.46 s | 0.99 | 83 % | Same |
-| **M02 380:1 HPCB + enc + 8:1** | 8 (2) | 27 mm | **15.9 g** | 1.604 / **1.006** | **0.58 s** | 1.59 | 83 % | Fails R19 by 0.08 s |
-| M04 298:1 HP + enc + 10:1 | 10 (2) | 30 mm | 17.0 g | 1.606 / 1.002 | 0.61 s | 1.59 | 83 % | Fails R19; precious-metal brushes [S] |
-| M01 150:1 + 20:1 (25 % run) | 20 (2) | 43 mm | 22.4 g | – / 1.002 | 0.57 s | 3.18 | 85 % | Fails R19; LC3 needs PA6-CF |
-| M03 1000:1 HPCB + enc + 3.75:1 / 8:1 | 3.75 / 8 | 36 / 27 mm | 15.1 / 15.9 g | 1.04 / 2.0 | 0.67 / 1.25 s | 0.83 / 1.59 | 83 % | Fails R19 |
-| M06 DFRobot 100:1 + 16.75:1 | 16.75 (2) | 39 mm | 27.6 g | 1.01 | 0.65 s | 2.00 | 87 % | Fails R19 |
+| **M02 380:1 HPCB + enc + 8:1** | 8 (2) | 27 mm | **15.9 g** | 1.604 / **1.006** | **0.58 s** | 1.59 | 83 % | Fails the selection basis (superseded 2026-10-12) by 0.08 s |
+| M04 298:1 HP + enc + 10:1 | 10 (2) | 30 mm | 17.0 g | 1.606 / 1.002 | 0.61 s | 1.59 | 83 % | Fails the selection basis (superseded 2026-10-12); precious-metal brushes [S] |
+| M01 150:1 + 20:1 (25 % run) | 20 (2) | 43 mm | 22.4 g | – / 1.002 | 0.57 s | 3.18 | 85 % | Fails the selection basis (superseded 2026-10-12); LC3 needs PA6-CF |
+| M03 1000:1 HPCB + enc + 3.75:1 / 8:1 | 3.75 / 8 | 36 / 27 mm | 15.1 / 15.9 g | 1.04 / 2.0 | 0.67 / 1.25 s | 0.83 / 1.59 | 83 % | Fails the selection basis (superseded 2026-10-12) |
+| M06 DFRobot 100:1 + 16.75:1 | 16.75 (2) | 39 mm | 27.6 g | 1.01 | 0.65 s | 2.00 | 87 % | Fails the selection basis (superseded 2026-10-12) |
 | M07 JGA25 20:1 + 7:1 | 7 (2) | 25 mm | 100.3 g | 1.01 | 0.31 s | 2.00 | 113 % | Fails the arm budget |
-| M08 JGA25-370 + 2.5:1 | 2.5 (1) | 24 mm | 112.0 g | 1.00 | 1.12 s | 1.99 | 117 % | Fails R19 and arm budget |
-| W01/W02 worm + 3:1 (hold) / 6.75:1 (cap) | 3 / 6.75 | 29 / 25 mm | 15.7 / 17.2 g | 1.0 / 2.0 | 0.86 / 1.60 s | 0.79 / 1.61 | 83 % | Fails R19. Self-locking, so zero hold current |
+| M08 JGA25-370 + 2.5:1 | 2.5 (1) | 24 mm | 112.0 g | 1.00 | 1.12 s | 1.99 | 117 % | Fails the selection basis (superseded 2026-10-12) and arm budget |
+| W01/W02 worm + 3:1 (hold) / 6.75:1 (cap) | 3 / 6.75 | 29 / 25 mm | 15.7 / 17.2 g | 1.0 / 2.0 | 0.86 / 1.60 s | 0.79 / 1.61 | 83 % | Fails the selection basis (superseded 2026-10-12). Self-locking, so zero hold current |
 
-**DC pick** (scripted `dc_pick`, `recommendation.dc`): best score among vendor-consistent DC configurations that pass every hard constraint; if none, best among those whose only failure is R19 with close ≤ 0.6 s. None passes, so the pool is the R19 near-misses. **Pick: M02 + 8:1 under both rules** (score 0.743 at 40 %, 0.545 at 25 %). M01 + 20:1 closes 15 ms faster but is 6.5 g heavier and doubles LC3 (3.18 N·m, PA6-CF gears), so it scores lower (0.493). The DC branch saves about 42 g against the servo, keeps LC3 at 1.59 N·m (PETG m1.5 z20 passes at 36.5 MPa) and meets the DC-motor rule without argument, but it needs **R19 relaxed to 0.6 s** and closed-loop position control on the encoder in firmware.
+**DC pick** (scripted `dc_pick`, `recommendation.dc`): best score among vendor-consistent DC configurations that pass every hard constraint; if none, best among those whose only failure is R19 with close ≤ 0.6 s. None passes, so the pool is the R19 near-misses. **Pick: M02 + 8:1 under both rules** (score 0.743 at 40 %, 0.545 at 25 %). M01 + 20:1 closes 15 ms faster but is 6.5 g heavier and doubles LC3 (3.18 N·m, PA6-CF gears), so it scores lower (0.493). The DC branch saves about 42 g against the servo, keeps LC3 at 1.59 N·m (PETG m1.5 z20 passes at 36.5 MPa) and meets the DC-motor rule without argument, but it needs **the historical 0.6 s screen (superseded 2026-10-12; current R19 is 0.75 s)** and closed-loop position control on the encoder in firmware.
 
 ### 3.4 Weighted scoring
 
@@ -306,7 +310,7 @@ Fallback table (40 % run; in the 25 % run the hold-sized M01, M02, M04 and M06�
 | Sensing (pot / encoder) | 0.05 | 1 / 0 |
 | Course DC-motor certainty | 0.05 | servo 0.5 (pending the GSI), DC motor 1 |
 | Simplicity | 0.05 | servo 1, motor + driver + stage 0.3 |
-| Speed margin | 0.05 | 1 − t_close / 0.5 s |
+| Speed margin | 0.05 | 1 − t_close / 0.5 s (0.5 s comparison superseded 2026-10-12) |
 
 Plots: `actuator_scores.png` (stacked utilities of every passing configuration at 6.35 V; `*` marks those that exceed their vendor's rule) and `actuator_weight_sensitivity.png` (rank under each weight × 0.5 / × 1.5).
 
@@ -338,7 +342,7 @@ The three are the primary, the backup and the DC branch (A18 is out on the arm b
 | Hold margin, 6.0 V / 6.35 V (40 %) | 1.010 / 1.034 | 1.585 / 1.622 | 1.604 (motor at 6 V) |
 | At the 25 % hold rule | 0.631 / 0.646 | 0.991 / 1.014 | 1.006 |
 | r_c,max at 6.35 V (40 %) | 67.3 mm | 106.9 mm | – |
-| Close time | 0.28 s | 0.27 s | **0.58 s (fails R19 0.5 s)** |
+| Close time | 0.28 s | 0.27 s | **0.58 s (fails selection basis 0.5 s, superseded 2026-10-12)** |
 | LC3 through the mesh (6.65 V) | 2.09 N·m | 3.28 N·m | 1.59 N·m |
 | Gear that survives LC3 (b = 6) | m1.5 z20 PETG (48.0 MPa ≤ 51) | m1.5 z20 PA6-CF only (75.3 MPa) | m1.5 z20 PETG (36.5 MPa) |
 | Actuator mass / price | 58 g / $12.99 | 60 g (80 g in some listings) / $24.49 | 15.9 g / $37.45 incl. H-bridge [A] |
@@ -354,7 +358,7 @@ Scripted rule (`recommendation.rule`): from the vendor-consistent passing pool, 
 - **Primary: A17 DS3218MG on a 6.5 ± 0.15 V servo rail** [D; the rail is a reversible assumption, A]. It is the best in-stock part in the pool. At the 6.35 V low end both datasheets give a hold margin ≥ 1.022, and PETG m1.5 z20 gears survive LC3 at the 6.65 V high end. Buy 3 (two spares for the M6/M7 destructive tests). Downstream change: `mcu.power.servo_rail_V` goes from 6.0 to 6.5 V with a ±0.15 V tolerance, which needs an adjustable buck rather than a fixed 6 V UBEC.
 - **Backup: A19 DS3235.** Drop-in (same ear pattern, 25T spline). Switch to it if M6 measures the DS3218MG stall below 20.2 kg·cm at the rail, if M7 shows the 40 % hold overheats (the 25 % rule would then govern, and A19 is the only servo that passes it), if tension (M3) exceeds 2.07 N, or if μ (M2) falls below 0.386. Switching costs PA6-CF gears, or a firmware current limit that keeps LC3 under 2.1 N·m. It also cuts the hardware margin to 4.6 g.
 - **Under the 25 % rule** (`recommendation_25pct_rule`): primary A19 (flagged: not in stock at the cited vendor), no servo backup, DC branch M02 + 8:1.
-- **DC branch (if the GSI says a servo does not count, or the 25 % rule governs and A19 cannot be bought):** M02 380:1 HPCB + encoder + printed 8:1 two-stage + DRV8833, with R19 relaxed to 0.6 s. Same pick under both rules.
+- **DC branch (if the GSI says a servo does not count, or the 25 % rule governs and A19 cannot be bought):** M02 380:1 HPCB + encoder + printed 8:1 two-stage + DRV8833, with the historical 0.6 s screen (superseded 2026-10-12; current R19 is 0.75 s). Same pick under both rules.
 - **Rejected:** feedback servos (A06–A13; the best, FS5115M-FB, reaches only 77 %); A18 (arm budget), A20 (6.0 V rating); worm gearmotors (too slow once geared to torque); PQ12-R (3× over budget, 4× too slow).
 
 ### 3.7 Mass roll-up with the primary
@@ -396,7 +400,7 @@ In the feed envelope (≤ 0.30 m) every kit passes. If the camera must fly at th
 | Finger / FEA lane | Preliminary k 0.42–0.76 N/mm is below the 0.88 window: θ_min −11° then caps force at 5.1–9.2 N. Stiffen the tip or widen θ_min | D |
 | Finger A nail | Keep the PLA nail out of the pad contact, or skin it with TPU: 23 % more force otherwise | D |
 | Operating rule | Never hold the gripper horizontal at full extension. Inside 0.30 m reach the payload margin is ≥ 1.5× on every kit | D |
-| R19 | Relax to 0.6 s only if the DC branch is taken | D |
+| R19 | Ruled 0.75 s; the historical 0.6 s DC-branch request is superseded 2026-10-12 | D |
 
 ## 5. Team must measure (in priority order)
 

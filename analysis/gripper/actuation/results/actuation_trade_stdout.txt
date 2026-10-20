@@ -58,7 +58,7 @@ arm fit: util = 0.7737 + 0.00350 x mass_g (max residual 0.0006)
 
 all configurations. hold = 40 % rule margin at the rail low end; p05 = MC 5th percentile; SF3 = gear SF at stall;
 arm = SO-101 hold utilisation; Isz = stall current for rail sizing; Fstl = pad force at stall;
-P14 = P(R14 and R16); w = as written (10 N, 0.5 s, fastest compliant profile); p = proposed (8 N, 0.75 s, shipped profile); tc = close time to F >= 4.5 N, shipped profile, 8 N
+P14 = P(R14 and R16); w = historical selection basis (10 N, 0.5 s, superseded 2026-10-12); p = ruled (8 N, 0.75 s, shipped profile); tc = close time to F >= 4.5 N, shipped profile, 8 N
 config            $     V  hold   p05   SF3   arm      g  w0jaw  Ihold   Isz  Fstl |  P14w  P15w  P19w |  P14p  P15p  P19p |  tc50  tc95 | env            evidence       gates
 A19@1:1       24.49  7.10  1.69  1.33  1.09 0.984   60.0    533   0.52  6.98  22.1 |  1.00  1.00  0.00 |  0.96  1.00  0.99 | 0.632 0.655 | drop-in        datasheet      fails available_ge_0.3
 A37@1:1       25.06  7.40  1.72  1.23  1.07 1.008   67.0    296   0.90  4.03  22.6 |  1.00  1.00  0.00 |  0.96  1.00  0.99 | 0.631 0.655 | pocket change  vendor claim   eligible

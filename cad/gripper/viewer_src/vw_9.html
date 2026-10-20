@@ -32,7 +32,7 @@ function renderDyno(){
       {label:"Current (A)",min:0,max:4,series:[[pts("i"),"var(--c4)",1.6,null,"motor current"]],hl:[[3,"var(--bad)","3 A rail"]]}];
     multiPlot($("#dutyChart"),panels,"Time (s)",xr);}
   $("#dutyWin").addEventListener("change",duty);duty();
-  kv($("#dutyNums"),[["Close to contact",fmt(DC.close_to_contact_s,2)+" s"],["Close to 5 N",fmt(DC.close_to_5N_s,2)+" s","limit 0.5 s; the torque model says 0.278",DC.close_to_5N_s>0.5?"cell-bad":"cell-ok"],["Mean hold force",fmt(DC.F_hold_mean_N,2)+" N","setpoint 5 N"],["Peak servo torque",fmt(DC.T_servo_peak_Nm,2)+" "+NM]]);
+  kv($("#dutyNums"),[["Close to contact",fmt(DC.close_to_contact_s,2)+" s"],["Close to 5 N",fmt(DC.close_to_5N_s,2)+" s",`ruled limit ${R19_CLOSE_S} s`,DC.close_to_5N_s>R19_CLOSE_S?"cell-bad":"cell-ok"],["Mean hold force",fmt(DC.F_hold_mean_N,2)+" N","setpoint 5 N"],["Peak servo torque",fmt(DC.T_servo_peak_Nm,2)+" "+NM]]);
   const T=D.therm,tm=T.t.map(x=>x/60);
   const R=plot($("#thermChart"),{w:640,h:300,x:{min:0,max:30,label:"Time (min)"},y:{min:20,max:160,label:"Temperature (°C)"}});
   R.hband(20,60,"var(--band)");R.hline(60,"var(--bad)","4 3","60 °C limit","end");
