@@ -178,7 +178,7 @@
   "value": 0.001
  },
  "buck_gain_margin_min_db": {
-  "note": "assumed, not sourced: loop stability acceptance limit",
+  "note": "owner decision 2026-10-19: keep 10 dB, the design module's acceptance limit; worst computed gain margin 19.50 dB",
   "retrieved": "2026-10-11",
   "tag": "A",
   "unit": "dB",

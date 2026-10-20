@@ -159,7 +159,7 @@ C = {
     'buck_input_min_v': _e(10.8, 'V', 'A', NONE, 'assumed, not sourced: adapter low-voltage corner'),
     'buck_input_max_v': _e(13.2, 'V', 'A', NONE, 'assumed, not sourced: adapter high-voltage corner'),
     'buck_phase_margin_min_deg': _e(45.0, 'deg', 'A', NONE, 'assumed, not sourced: loop stability acceptance limit'),
-    'buck_gain_margin_min_db': _e(10.0, 'dB', 'A', NONE, 'assumed, not sourced: loop stability acceptance limit'),
+    'buck_gain_margin_min_db': _e(10.0, 'dB', 'A', NONE, "owner decision 2026-10-19: keep 10 dB, the design module's acceptance limit; worst computed gain margin 19.50 dB"),
     'tps_en_i1_min': _e(0.58e-6, 'A', 'S', TPS, 'EN pull-up current minimum'),
     'tps_en_i1_max': _e(1.8e-6, 'A', 'S', TPS, 'EN pull-up current maximum'),
     'tps_en_ihys_min': _e(2.2e-6, 'A', 'S', TPS, 'EN hysteresis current minimum'),

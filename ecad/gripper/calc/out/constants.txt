@@ -120,7 +120,7 @@ buck_ceramic_factor_mid 0.65           [A] 1 | assumed, not sourced: ceramic bia
 buck_input_min_v     10.8           [A] V | assumed, not sourced: adapter low-voltage corner
 buck_input_max_v     13.2           [A] V | assumed, not sourced: adapter high-voltage corner
 buck_phase_margin_min_deg 45.0           [A] deg | assumed, not sourced: loop stability acceptance limit
-buck_gain_margin_min_db 10.0           [A] dB | assumed, not sourced: loop stability acceptance limit
+buck_gain_margin_min_db 10.0           [A] dB | owner decision 2026-10-19: keep 10 dB, the design module's acceptance limit; worst computed gain margin 19.50 dB
 tps_en_i1_min        5.8e-07        [S] A | EN pull-up current minimum
 tps_en_i1_max        1.8e-06        [S] A | EN pull-up current maximum
 tps_en_ihys_min      2.2e-06        [S] A | EN hysteresis current minimum

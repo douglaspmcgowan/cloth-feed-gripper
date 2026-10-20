@@ -873,8 +873,11 @@ def feature_check(source, value, valid, requirements):
     margin = min(value - rule["minimum_mm"], rule["maximum_mm"] - value)
     status = ("fail" if not valid or margin < -allowance else
               "at risk" if margin <= allowance else "met")
-    return {"requirement_id": source, "measured_mm": round(value, 3), "margin_mm": round(margin, 4) + 0.0,
-            "status": status, "feature": rule["feature"]}
+    check = {"requirement_id": source, "measured_mm": round(value, 3), "margin_mm": round(margin, 4) + 0.0,
+             "status": status, "feature": rule["feature"]}
+    if "disposition" in rule:
+        check["disposition"] = rule["disposition"]
+    return check
 
 
 def margin_text(margin):

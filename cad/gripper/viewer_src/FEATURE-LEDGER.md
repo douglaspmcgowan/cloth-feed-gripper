@@ -35,7 +35,7 @@ Reading help for a figure sits behind its "i" button. On a desktop the "i" and F
 | One-screen app rather than a long document | rail plus figure tabs; no view is a scroll of sections |
 | Plain titles | tab numbers and compound titles removed |
 | Helper text behind "i" buttons | every how-to-read note moved behind the figure's "i" |
-| No internal codes shown to readers | requirement, measurement, load-case, concept, actuator, stack and criterion codes replaced by plain names; sourced/derived/assumed letter tags removed |
+| No internal codes shown to readers | requirement, measurement, load-case, concept, actuator, stack and criterion codes replaced by plain names; sourced/derived/assumed letter tags removed. Fit-audit requirement ids B4, B18, B19, B38 and F09 are allowed because they identify the graded checks beside their measured values. |
 | Full-screen figures | every figure has Full screen |
 
 ## Ledger
@@ -245,7 +245,7 @@ Ledger rows: 108. Kept 61, merged 27, cut 20. Added 16. Every cut is text, a til
 | Images (drawings, sketches, camera figures) | 0 | 16 |
 | Number tiles | 25 | 0 |
 | Controls (buttons, selects, inputs) | 65 plus 11 tab links | 329, of which most are score buttons, figure tabs, Full screen, "i", zoom and sort headers |
-| Internal codes in reader-facing text | throughout | 0 found by the test's pattern |
+| Internal codes in reader-facing text | throughout | 0 found by the test's pattern after allowing the five fit-audit requirement ids |
 
 Review fixes, 2026-10-09: the "Status by view" list under the model was removed because the rail already carries it; the torque chain tiles were merged into the key numbers; the open Method and assumptions button measures 6.31:1 in light and 7.79:1 in dark.
 

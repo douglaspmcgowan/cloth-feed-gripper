@@ -14,7 +14,7 @@ VIEWER = ROOT / "cad/gripper/viewer.html"
 SOURCE = ROOT / "cad/gripper/viewer_src"
 FIT_PATH = ROOT / "cad/gripper/out/fit3d.json"
 REQ_PATH = ROOT / "cad/gripper/fit_requirements.json"
-FIT_SHA256 = "2990e67f6c8ab37e5f4301ff276ddb0fdc654b42fc882c00ef57c77b644e397b"
+FIT_SHA256 = "1b80cebb002168f269c05dc97b7b32028b40c5a998bd4c99a490dbbd11f2cd46"
 
 
 def load(path):
@@ -204,12 +204,23 @@ def test_met_governing_checks_clear_the_rounding_resolution(data):
             assert check["status"] == "at risk" and abs(check["margin_mm"]) <= rounding, check
 
 
+def test_b4_assembly_disposition_is_recorded_in_audit(data):
+    fit, spec = data
+    expected = spec["feature_requirements"]["B4"]["disposition"]
+    assert "Grade the drawn bore at assembly" in expected
+    checks = [check for row in fit["jaw_pairs"] for check in row.get("governing_checks", [])
+              if check["requirement_id"] == "B4"]
+    assert checks
+    assert all(check["disposition"] == expected for check in checks)
+
+
 def test_required_pair_statuses(data):
     fit, spec = data
     pairs = pair_map(fit)
     requirements = spec["requirements"]
     allowances = spec["sampling"]["allowance_mm"]
-    for key in ("horn|housing", "finger_a|knuckle_b", "knuckle_a|finger_b"):
+    for key in ("horn|housing", "finger_a|knuckle_b", "knuckle_a|finger_b",
+                "fasteners_a|finger_b", "finger_a|fasteners_b"):
         assert status(pairs[key], requirements[key], allowances[key]) == "met"
         assert pairs[key]["status"] == "met"
         assert fit["detail"][key]["section"]
@@ -229,7 +240,9 @@ def test_fixed_allowances_and_current_sampling_margins(data):
         index = values.index(pair["d_min"])
         changes = [abs(values[index] - values[j]) for j in (index - 1, index + 1) if 0 <= j < len(values)]
         observed_bound = max(changes, default=0) / 2 + rounding
-        assert recorded == pytest.approx({"horn|housing": 0.0005, "fasteners_a|housing": 0.001}.get(key, 0.4155))
+        assert recorded == pytest.approx({"horn|housing": 0.0005, "fasteners_a|housing": 0.001,
+                                          "fasteners_a|finger_b": 0.4065,
+                                          "finger_a|fasteners_b": 0.4065}.get(key, 0.4155))
         required = spec["requirements"][key]["minimum_clearance_mm"]
         assert pair["d_min"] - required > max(recorded, observed_bound)
 
