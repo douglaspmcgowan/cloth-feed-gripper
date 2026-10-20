@@ -142,7 +142,7 @@ const REQ=[
  ["Hold at most 40 % of stall","risk",`Needs 20.2 ${KGCMU} of stall; the ${BUILD.model} gives ${fmt(BUILD_STALL,2)} at 6.5 V, a vendor listing figure; not yet measured on the delivered part.`],
  ["Moment arm at most 65 mm","pass","65.0 mm in CAD."],
  ["Jaw range −11° to +20°",SWEEP_CLASH.length?"fail":"pass",`The jaw sweep in CAD is ${SWEEP_TXT}.`],
- [`Full close within ${R19_CLOSE_S} s`,"risk",`R19 was ruled on 2026-10-12. The firmware simulation touches at ${fwr("t_contact_s")} s and reaches 4.5 N at ${fwr("t_F90_s")} s. Confirm the force-arrival time with a timed video.`],
+ [`Full close within ${R19_CLOSE_S} s`,"risk",`R19 was ruled on 12 Oct 2026. The firmware simulation touches at ${fwr("t_contact_s")} s and reaches 4.5 N at ${fwr("t_F90_s")} s. Confirm the force-arrival time with a timed video.`],
  ["Back off a stall within 200 ms","risk",`Host test: the back-off begins ${FWB} ms after over-current starts and its command completes at 200 ms. The current threshold and the blocked-finger test are pending.`],
  ["Calibration stores the contact angle","pass","Calibration zeroes the sensor, closes at 20 °/s to 0.5 N and stores the contact angle. The simulation lands within 0.2° of the true angle."],
  ["Wrist interface","risk","A separate wrist-mount plate on the horn. The pilot fit reaches a capability of only 1.25, so a coupon is needed."],

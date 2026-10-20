@@ -6654,7 +6654,7 @@
  },
  "frame": "G (README), mm",
  "horn_note": "the servo horn turns with knuckle A on the servo shaft; gripper_concept leaves it unposed, which is invisible for a disc",
- "input_digest_sha256": "b18966782d3c55843e11d229b9bb9be346703bce6baea2c9970beb692bd9adfb",
+ "input_digest_sha256": "99123c911433fe82cae55f6b8e4cf0c7080b0e72c34ea0f1676bdb9de905b6a3",
  "jaw_pairs": [
   {
    "a": "finger_a",
@@ -22123,7 +22123,7 @@
    "fasteners"
   ]
  },
- "result_sha256": "f036fd0dd0bb733723db0446657d3373c5bb4a0e2df44bf9293578773ac57879",
+ "result_sha256": "72912de01aadd2440b9355387e5c37467a01ee668da2e2d2d698963f1f58851e",
  "roll": [
   {
    "psi": 0.0,

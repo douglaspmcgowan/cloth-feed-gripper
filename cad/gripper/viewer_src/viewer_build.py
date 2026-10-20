@@ -22,6 +22,9 @@ def J(p):
 
 
 def clean(o, nd=4):
+    if isinstance(o, str):
+        # Display the fixed R19 decision date consistently; source JSON keeps its ISO provenance.
+        return o.replace("2026-10-12", "12 Oct 2026")
     if isinstance(o, float):
         if math.isnan(o) or math.isinf(o):
             return None
@@ -89,7 +92,7 @@ for a in run["actuators"] + run["fallback_branch"]:
     })
 D["acts"] = clean(acts, 3)
 D["actrec"] = clean(run["recommendation"], 3)
-D["weights"] = run["trade_vendor_consistent"]["weights"]
+D["weights"] = clean(run["trade_vendor_consistent"]["weights"])
 
 # ---- FEA
 fea = {}
