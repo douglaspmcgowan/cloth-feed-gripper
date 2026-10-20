@@ -13,6 +13,7 @@ import ina219_budget
 import margin_inputs
 import power_budget
 import trace_width
+import sourcing
 
 FW = Path(cm.REPO) / "firmware/gripper/config.h"
 UNEVIDENCED = "margin positive, uncertainty not evidenced"
@@ -85,6 +86,73 @@ def _source_tag(name):
     return cm.K.C[name]["tag"] if name in cm.K.C else None
 
 
+def _evidence_for_read(name):
+    """Classify the recorded read using the constant's actual provenance.
+
+    A sourced nominal is quoted without pretending it supplies an uncertainty
+    band. An assumed physical input is missing until its part or assembly is
+    characterized. Declared design cases are evaluated at their chosen point.
+    """
+    registered = margin_inputs.evidence(name)
+    if registered["class"] != "unclassified":
+        return registered
+    if name.startswith("ELEC."):
+        return {"class": "quoted", "band": None, "value": cm.ELEC._source[name[5:]],
+                "file": "ecad/gripper/design.py", "figure": name,
+                "source": "nominal schematic value; component tolerance not supplied"}
+    if name not in cm.K.C:
+        raise AssertionError("unregistered observed input " + name)
+    entry = cm.K.C[name]
+    source = sourcing.CALC_CONSTANTS.get(name)
+    if entry["tag"] == "S":
+        if not source or source["tag"] != "S":
+            raise AssertionError("sourced constant lacks matching part evidence " + name)
+        return {"class": "quoted", "band": None, "value": entry["value"],
+                "file": source["datasheet_url"], "figure": source["table"],
+                "page": source["page"], "quote": source["quote"],
+                "source": source["mpn"] + ": " + source["quote"]}
+    note = entry["note"]
+    if ("sweep" in note or "scenario" in note or "corner" in note or
+            "acceptance limit" in note or "numerical" in note or
+            "finite " in note):
+        return {"class": "evaluated at extreme", "band": None,
+                "value": entry["value"], "reason": note,
+                "source": "declared calculation case: " + note}
+    if (note.startswith(("firmware", "design.py", "owner decision", "selected ",
+                         "standard unit", "derived from", "_common.py: firmware")) or
+            name in {"trace_mm_per_mil", "fsr_default_vcc_mv"}):
+        return {"class": "exact", "band": None, "value": entry["value"],
+                "reason": "declared nominal definition: " + note,
+                "source": note}
+    if name.startswith("f1_"):
+        part, where = "F1 RUILON SMD1812P260TF/16", "RUILON electrical-characteristics datasheet"
+    elif name.startswith("q1_"):
+        part, where = "Q1 MSKSEMI AO4407A", "MSKSEMI electrical-characteristics datasheet"
+    elif name.startswith("tps_") or name.startswith("buck_"):
+        part, where = "U1 TPS54560B buck stage", "U1 datasheet or assembled loop measurement"
+    elif name.startswith("ina_"):
+        part, where = "U2 INA219AIDR current-sense stage", "U2 datasheet or current-calibration measurement"
+    elif name.startswith("mcp_"):
+        part, where = "U4 MCP1703AT-5002E/DB", "Microchip datasheet and assembled-board thermal measurement"
+    elif name.startswith("esp_") or name.startswith("power_3v3_"):
+        part, where = "ESP32 DevKitC V4 assembly", "module and board documentation or rail measurement"
+    elif name.startswith("servo_") or name.startswith("fit_"):
+        part, where = "selected servo and dyno specimen", "manufacturer datasheet or DESIGN-BASIS section 10 force/current bench step"
+    elif name.startswith("harness_") or name.startswith("awg") or name.startswith("cable_"):
+        part, where = "finished servo harness", "selected wire datasheet or finished-harness measurement"
+    elif name.startswith("fsr_"):
+        part, where = "FSR sensor and analog front end", "manufacturer curve or DESIGN-BASIS section 10 force/ADC sweep"
+    elif name.startswith("trace_") or name.startswith("ipc_") or name.startswith("cu_"):
+        part, where = "fabricated PCB copper", "fabricator stack-up or finished-trace measurement"
+    else:
+        part, where = "assembled gripper controller", "DESIGN-BASIS section 10 corresponding bench step"
+    return {"class": "missing", "band": None, "value": entry["value"],
+            "part": part, "parameter": name + " uncertainty or qualification",
+            "where": where, "method": "datasheet lookup or bench measurement",
+            "source": "missing: %s — %s; find in %s" % (part, name, where),
+            "reason": source["reason"] if source and source["tag"] == "A" else note}
+
+
 def _row(
     key,
     quantity,
@@ -119,7 +187,7 @@ def _row(
     observed_inputs = sorted(observed_inputs)
     if not observed_inputs:
         raise AssertionError("%s has zero observed inputs" % key)
-    observed_evidence = {name: dict(margin_inputs.evidence(name), source_tag=_source_tag(name))
+    observed_evidence = {name: dict(_evidence_for_read(name), source_tag=_source_tag(name))
                          for name in observed_inputs}
     observed_missing = [name for name in observed_inputs
                         if observed_evidence[name]["class"] == "missing"]

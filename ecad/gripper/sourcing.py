@@ -375,7 +375,7 @@ _calc_group('MCP1703AT-5002E/DB', 'Microchip',
     ('mcp_vin_max', 3, 'DC Characteristics', '16.0 V maximum operating input'),
     ('mcp_dropout_typ', 4, 'DC Characteristics', '330 mV typical at 250 mA, VR = 5.0 V'),
     ('mcp_dropout_max', 4, 'DC Characteristics', '650 mV maximum at 250 mA, VR = 5.0 V'),
-    ('mcp_vout_tol', 3, 'DC Characteristics', 'VR +/-3.0% standard output regulation'),
+    ('mcp_vout_tol', 29, 'Product Identification System', '5002 ordering code: 2.0% standard tolerance'),
     ('mcp_isc', 3, 'DC Characteristics', '400 mA typical short-circuit current at stated test condition'),
     ('mcp_iout_max', 3, 'DC Characteristics', '250 mA maximum output current for VR >= 2.5 V'),
 ])
@@ -385,7 +385,7 @@ _calc_group('ESP32-D0WD', 'Espressif Systems',
     ('esp_vdd_min', 51, 'Table 5-2', '2.3 V minimum for chip without in-package flash'),
     ('esp_vdd_min_flash', 51, 'Table 5-2 note 2', '3.0 V minimum for chip with in-package 3.3 V flash'),
     ('esp_vdd_max', 51, 'Table 5-2', '3.6 V maximum operating supply'),
-    ('esp_i_active_nowifi', 52, 'Table 5-4', '30 to 68 mA CPU active, radio off'),
+    ('esp_i_active_nowifi', 30, 'Table 4-2', '30 to 68 mA CPU powered, 240 MHz modem sleep'),
     ('esp_i_wifi_rx', 53, 'Table 5-5', '95 to 100 mA Wi-Fi receive'),
     ('esp_i_wifi_tx_peak', 53, 'Table 5-5', '240 mA typical, 802.11b 1 Mbps +19.5 dBm'),
     ('esp_adc_min_mv', 44, 'ADC Calibration Results', '150 mV lower end at attenuation 3'),
@@ -453,6 +453,9 @@ CALC_CONSTANTS['power_3v3_minus_3pct_mv'] = _calc_source('MCP1703AT-5002E/DB', '
 CALC_CONSTANTS['esp_vdd_min_flash']['tag'] = 'A'
 CALC_CONSTANTS['esp_vdd_min_flash']['reason'] = (
     'The 3.0 V footnote applies to chips with in-package flash; the WROOM-32E module has external flash.')
+CALC_CONSTANTS['mcp_vout_tol']['tag'] = 'A'
+CALC_CONSTANTS['mcp_vout_tol']['reason'] = (
+    'The selected 5002 ordering code specifies 2% tolerance; the stored 3% is the generic family limit.')
 for _key in ('f1_hold', 'f1_trip', 'f1_rmin', 'f1_r1max', 'f1_vmax', 'f1_ttrip'):
     CALC_CONSTANTS[_key]['tag'] = 'A'
     CALC_CONSTANTS[_key]['reason'] = (

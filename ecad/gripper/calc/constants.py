@@ -74,7 +74,7 @@ C = {
     'mcp_vin_max': _e(16.0, 'V', 'S', MCP, 'input operating range top (2.7 to 16 V)'),
     'mcp_dropout_typ': _e(0.330, 'V', 'S', MCP, 'dropout at 250 mA, 5.0 V output, typ'),
     'mcp_dropout_max': _e(0.650, 'V', 'S', MCP, 'dropout at 250 mA, 5.0 V output, max'),
-    'mcp_vout_tol': _e(0.03, '1', 'S', MCP, 'output tolerance over temperature, max (typ 0.4 % at 25 C)'),
+    'mcp_vout_tol': _e(0.03, '1', 'A', MCP, 'DS20005122B ordering code 5002 denotes 2 percent tolerance, while stored 3 percent is the looser generic family limit; value retained for review'),
     'mcp_isc': _e(0.400, 'A', 'S', MCP, 'output short-circuit current, typ (rated output 250 mA)'),
     'mcp_iout_max': _e(0.250, 'A', 'S', MCP, 'rated output current for a 5.0 V part'),
     'mcp_rth_sot223': _e(62.0, 'K/W', 'A', MCP, 'Microchip DS20005122B page 15 prints 62.9 K/W for SOT-223, not 62.0; value retained for review'),

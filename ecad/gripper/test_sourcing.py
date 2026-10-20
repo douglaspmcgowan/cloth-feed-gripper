@@ -1,5 +1,7 @@
 import os
 import sys
+import json
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -70,3 +72,12 @@ def test_calculation_constant_sources():
         assert record['tag'] == constants.C[key]['tag'], key
         if record['tag'] == 'A':
             assert record['reason'], key
+
+
+def test_generated_margin_inputs_are_classified():
+    path = Path(__file__).parent / 'calc/out/margins.json'
+    rows = json.loads(path.read_text(encoding='utf-8'))['rows']
+    assert rows
+    assert not [(row['id'], name) for row in rows
+                for name, item in row['input_evidence'].items()
+                if item['class'] == 'unclassified']
