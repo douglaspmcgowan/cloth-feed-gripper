@@ -65,7 +65,7 @@
       {
         "name": "Mass-moment within 43,720 g mm",
         "status": "fail",
-        "evidence": "152.9 g with cloth, centred 37.6 mm past the horn: 52,995 g mm, 121 % of budget.",
+        "evidence": "153.9 g with cloth, centred 37.5 mm past the horn: 53,342 g mm, 122 % of budget.",
         "evidenceId": "mass-payload"
       },
       {
@@ -89,7 +89,7 @@
       {
         "name": "Hold at least 5 N per pad",
         "status": "risk",
-        "evidence": "The DSServo DS3230 MG holds 1.151 N m against 0.792 needed. Rev A's DS3218MG fails if tension exceeds 2.07 N or friction drops below 0.386.",
+        "evidence": "The DSServo DS3230 MG holds 1.151 N m against 0.793 needed. Rev A's DS3218MG fails if tension exceeds 2.07 N or friction drops below 0.386.",
         "evidenceId": "torque-arm"
       },
       {
@@ -117,9 +117,9 @@
         "evidenceId": "fit-3d"
       },
       {
-        "name": "Full close within 0.5 s",
+        "name": "Full close within 0.75 s",
         "status": "risk",
-        "evidence": "The firmware simulation touches at 0.58 to 0.59 s and reaches 4.5 N at 0.67 to 0.72 s. The torque model says 0.278 s. Needs a ruling and a timed video.",
+        "evidence": "R19 was ruled on 12 Oct 2026. The firmware simulation touches at 0.58 to 0.59 s and reaches 4.5 N at 0.67 to 0.72 s. Confirm the force-arrival time with a timed video.",
         "evidenceId": "firmware-step"
       },
       {
@@ -174,13 +174,13 @@
     "design_basis_total": 27
   },
   "mass": {
-    "total_g_incl_cloth": 152.9,
-    "com_mm_past_horn": 37.6,
-    "mass_moment_gmm": 52995,
+    "total_g_incl_cloth": 153.9,
+    "com_mm_past_horn": 37.5,
+    "mass_moment_gmm": 53342,
     "budget_gmm": 43720,
-    "budget_use": 1.212,
+    "budget_use": 1.22,
     "within_budget": false,
-    "mass_limit_g": 126.10325930199018
+    "mass_limit_g": 126.13964223889208
   },
   "thermal": {
     "cases_failing": 9,
@@ -188,7 +188,7 @@
   },
   "tolerances": {
     "stacks_total": 26,
-    "stacks_passing_as_designed": 13
+    "stacks_passing_as_designed": 14
   },
   "decisions": {
     "total": 6,
@@ -203,7 +203,7 @@
       },
       {
         "id": "open-decision-close",
-        "title": "Close time: contact or 5 N within 0.5 s"
+        "title": "Close time: 5 N within 0.75 s"
       },
       {
         "id": "open-decision-fold",
@@ -225,7 +225,7 @@
   },
   "source": {
     "repository": "https://github.com/douglaspmcgowan/cloth-feed-gripper",
-    "commit": "487c9843f2fac18ed296ef2fa75d10c1f93337c2",
-    "committed": "2026-10-19T03:15:17-07:00"
+    "commit": "94e8d9a0b58ed46b86db3fe8d6a23905563c0a97",
+    "committed": "2026-10-19T21:14:15-07:00"
   }
 }
