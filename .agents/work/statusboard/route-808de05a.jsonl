@@ -1,0 +1,27 @@
+{"state":"starting","agent_id":"route-808de05a","surface":"route","heartbeat_at":"2026-10-19T05:00:06.0630901Z","last_step":"registered"}
+{"heartbeat_at":"2026-10-19T05:00:36.6479779Z","state":"starting","agent_id":"route-808de05a","surface":"codex","last_step":"selected"}
+{"state":"working","surface":"codex","heartbeat_at":"2026-10-19T05:00:47.3600922Z","agent_id":"route-808de05a","last_step":"starting"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:00:48.6159898Z","progress":false,"state":"working","surface":"codex","last_step":"starting"}
+{"last_step":"working 2026-10-19T05:02:05.5815067Z","state":"working","heartbeat_at":"2026-10-19T05:02:09.1477686Z","agent_id":"route-808de05a","surface":"codex"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:02:10.0705625Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:02:05.5815067Z"}
+{"state":"working","heartbeat_at":"2026-10-19T05:03:13.2675061Z","agent_id":"route-808de05a","last_step":"working 2026-10-19T05:03:10.2075045Z","surface":"codex"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:03:14.6049169Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:03:10.2075045Z"}
+{"last_step":"working 2026-10-19T05:04:15.5105894Z","surface":"codex","heartbeat_at":"2026-10-19T05:04:18.5278626Z","agent_id":"route-808de05a","state":"working"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:04:19.8633713Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:04:15.5105894Z"}
+{"last_step":"working 2026-10-19T05:05:20.9602651Z","agent_id":"route-808de05a","surface":"codex","heartbeat_at":"2026-10-19T05:05:24.3759427Z","state":"working"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:05:25.3654916Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:05:20.9602651Z"}
+{"last_step":"working 2026-10-19T05:06:25.4191320Z","agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:06:28.2397138Z","state":"working","surface":"codex"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:06:29.7638278Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:06:25.4191320Z"}
+{"agent_id":"route-808de05a","surface":"codex","heartbeat_at":"2026-10-19T05:07:32.2933168Z","last_step":"working 2026-10-19T05:07:29.7982856Z","state":"working"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:07:33.1502750Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:07:29.7982856Z"}
+{"agent_id":"route-808de05a","surface":"codex","state":"working","heartbeat_at":"2026-10-19T05:08:35.2558657Z","last_step":"working 2026-10-19T05:08:33.8904375Z"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:08:35.9008368Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:08:33.8904375Z"}
+{"heartbeat_at":"2026-10-19T05:09:37.5893968Z","surface":"codex","last_step":"working 2026-10-19T05:09:36.3715705Z","agent_id":"route-808de05a","state":"working"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:09:38.0840155Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:09:36.3715705Z"}
+{"surface":"codex","agent_id":"route-808de05a","last_step":"working 2026-10-19T05:10:38.6713492Z","heartbeat_at":"2026-10-19T05:10:40.0360465Z","state":"working"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:10:40.4410641Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:10:38.6713492Z"}
+{"heartbeat_at":"2026-10-19T05:11:42.8431956Z","last_step":"working 2026-10-19T05:11:41.0566720Z","surface":"codex","state":"working","agent_id":"route-808de05a"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:11:43.3883490Z","progress":true,"state":"working","surface":"codex","last_step":"working 2026-10-19T05:11:41.0566720Z"}
+{"heartbeat_at":"2026-10-19T05:11:46.8198176Z","state":"finished","agent_id":"route-808de05a","surface":"codex","last_step":"completed exit=0"}
+{"agent_id":"route-808de05a","heartbeat_at":"2026-10-19T05:11:47.4373632Z","progress":true,"state":"working","surface":"codex","last_step":"completed exit=0"}
+{"last_step":"exit-zero-clean","agent_id":"route-808de05a","surface":"codex","state":"finished","heartbeat_at":"2026-10-19T05:12:09.5162654Z"}
