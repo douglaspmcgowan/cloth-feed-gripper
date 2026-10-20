@@ -51,7 +51,7 @@
     "knuckle_a|knuckle_b": ["T07"]
   },
   "feature_requirements": {
-    "B4": {"minimum_mm": 0.0, "maximum_mm": 0.02, "feature": "drawn pin/bush diametral running clearance"},
+    "B4": {"minimum_mm": 0.0, "maximum_mm": 0.02, "feature": "drawn pin/bush diametral running clearance", "disposition": "Grade the drawn bore at assembly. It sits exactly at the band top (margin -1.8e-17 mm); redrawing it changes no fit outcome."},
     "B38": {"minimum_mm": 0.25, "maximum_mm": 0.35, "feature": "drawn knuckle axial end play"},
     "T07": {"minimum_mm": 0.05, "maximum_mm": 0.45, "feature": "gear backlash jt, circumferential, 2 d / cos(alpha) from the mesh gap d, alpha from params.json gear.pressure_angle"}
   },
