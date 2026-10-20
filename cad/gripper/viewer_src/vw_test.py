@@ -529,7 +529,8 @@ async def run(pw, wrap, w, hgt, scheme):
             fails.append("menu link did not open its view and close the menu")
     counts.update(await pg.evaluate("""({tables:document.querySelectorAll('main table').length,charts:document.querySelectorAll('main .chart > svg').length,
       controls:document.querySelectorAll('main button,main select,main input').length,images:document.querySelectorAll('main img').length,
-      codes:(document.querySelector('main').innerText.match(/\\b(?:R|D|A|T|DB|FM)-?\\d{1,3}\\b/g)||[]).slice(0,12)})"""))
+      codes:(document.querySelector('main').innerText.match(/\\b(?:DB|FM|R|D|A|T|B|F)-?\\d{1,3}\\b/g)||[])
+        .filter(code=>!new Set(['B4','B18','B19','B38','F09']).has(code)).slice(0,12)})"""))
     if counts["codes"]:
         fails.append(f"internal codes visible: {counts['codes']}")
     if await pg.evaluate("!!document.getElementById('statusList')||!!document.querySelector('.chain')"):
