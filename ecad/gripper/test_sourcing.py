@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import csv
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -81,3 +82,22 @@ def test_generated_margin_inputs_are_classified():
     assert not [(row['id'], name) for row in rows
                 for name, item in row['input_evidence'].items()
                 if item['class'] == 'unclassified']
+
+
+def test_selected_fuse_and_mosfet_sources_match_locked_bom():
+    bom = Path(__file__).parent / 'kicad/fab/gripper-bom.csv'
+    with bom.open(newline='', encoding='utf-8') as stream:
+        fitted = {row['References']: row for row in csv.DictReader(stream) if row['Fit'] == 'fit'}
+    for ref, src, keys in (
+        ('F1', 'ptc', ('f1_hold', 'f1_trip', 'f1_rmin', 'f1_r1max', 'f1_vmax', 'f1_ttrip')),
+        ('Q1', 'pfet', ('q1_rds',)),
+    ):
+        part = sourcing.SRC[src]
+        assert part['mpn'] == fitted[ref]['MPN']
+        assert part['mfr'] == fitted[ref]['Manufacturer']
+        for key in keys:
+            record = sourcing.CALC_CONSTANTS[key]
+            assert record['mpn'] == part['mpn']
+            assert record['manufacturer'] == part['mfr']
+            assert record['datasheet_url'] == part['datasheet']
+            assert record['tag'] == constants.C[key]['tag'] == 'S'

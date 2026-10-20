@@ -15,8 +15,8 @@ TPS = 'https://www.ti.com/lit/ds/symlink/tps54560b.pdf'
 INA = 'https://www.ti.com/lit/ds/symlink/ina219.pdf'
 MCP = 'https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf'
 ESP = 'https://documentation.espressif.com/esp32_datasheet_en.pdf'
-BRN = 'https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf'
-AOS = 'https://www.aosmd.com/res/data_sheets/AO4407A.pdf'
+RUILON = 'https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf'
+MSK = 'https://xonstorage.z8.web.core.windows.net/pdf/msksemi_ao4407a_apr22_xonlink.pdf'
 AWG = 'https://en.wikipedia.org/wiki/American_wire_gauge'
 IPC = 'https://www.advancedpcb.com/en-us/tools/trace-width-calculator/'
 SPD = 'https://speedyfpv.com/products/ds3218mg-digital-servo-high-speed-high-torque-metal-gear-waterproof-20kg-torque-180-degrees-w-accessories'
@@ -74,19 +74,19 @@ C = {
     'mcp_vin_max': _e(16.0, 'V', 'S', MCP, 'input operating range top (2.7 to 16 V)'),
     'mcp_dropout_typ': _e(0.330, 'V', 'S', MCP, 'dropout at 250 mA, 5.0 V output, typ'),
     'mcp_dropout_max': _e(0.650, 'V', 'S', MCP, 'dropout at 250 mA, 5.0 V output, max'),
-    'mcp_vout_tol': _e(0.03, '1', 'A', MCP, 'DS20005122B ordering code 5002 denotes 2 percent tolerance, while stored 3 percent is the looser generic family limit; value retained for review'),
+    'mcp_vout_tol': _e(0.02, '1', 'S', MCP, 'DS20005122B page 29 Product Identification System: selected 5002 code has standard 2 percent output tolerance'),
     'mcp_isc': _e(0.400, 'A', 'S', MCP, 'output short-circuit current, typ (rated output 250 mA)'),
     'mcp_iout_max': _e(0.250, 'A', 'S', MCP, 'rated output current for a 5.0 V part'),
-    'mcp_rth_sot223': _e(62.0, 'K/W', 'A', MCP, 'Microchip DS20005122B page 15 prints 62.9 K/W for SOT-223, not 62.0; value retained for review'),
+    'mcp_rth_sot223': _e(62.9, 'K/W', 'S', MCP, 'DS20005122B page 15, Thermal Considerations: SOT-223 junction-to-ambient 62.9 C/W'),
     # ---- AMS1117-3.3 on the DevKitC V4 --------------------------------------------------------
-    'ams_dropout_typ': _e(1.1, 'V', 'A', NONE, 'datasheet fetch failed (SSL handshake error on the vendor server). Value is the usual published typical at 800 mA; a 1.0 V typical is used at 100 mA. Verify on the vendor PDF'),
-    'ams_dropout_max': _e(1.3, 'V', 'A', NONE, 'usual published maximum at 800 mA; not fetched this session'),
-    'ams_vout_tol': _e(0.01, '1', 'A', NONE, '3.3 V fixed version output tolerance, +/-1 % assumed (not fetched)'),
+    'ams_dropout_typ': _e(1.1, 'V', 'S', 'https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf', 'AMS1117 page 3 Electrical Characteristics: 1.1 V typical dropout at 800 mA'),
+    'ams_dropout_max': _e(1.3, 'V', 'S', 'https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf', 'AMS1117 page 3 Electrical Characteristics: 1.3 V maximum dropout at 800 mA'),
+    'ams_vout_tol': _e(0.01, '1', 'S', 'https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf', 'AMS1117-3.3 page 2 Electrical Characteristics: +/-1 % at 25 C (3.267 to 3.333 V); over temperature it spans 3.235 to 3.365 V, not modeled by this input; DevKitC V4 schematic U2 is AMS1117-3.3'),
     'devkit_diode_drop': _e(0.30, 'V', 'A', NONE, 'DevKitC V4 puts a Schottky between the USB 5 V and its 5V rail; drop at 0.1 A assumed'),
     'devkit_overhead_a': _e(0.015, 'A', 'A', NONE, 'DevKitC V4 board overhead (USB bridge, LED, AMS1117 ground current) on the 5 V rail'),
     # ---- ESP32 (datasheet v5.3) ---------------------------------------------------------------
-    'esp_vdd_min': _e(2.3, 'V', 'S', ESP, 'chip supply minimum (3.0 V when the module has a 3.3 V in-package flash, as the WROOM-32 does)'),
-    'esp_vdd_min_flash': _e(3.0, 'V', 'A', ESP, 'ESP32 chip datasheet applies 3.0 V to in-package flash; the DevKitC WROOM-32E module uses external flash, so this value is not sourced for this assembly'),
+    'esp_vdd_min': _e(2.3, 'V', 'S', ESP, 'ESP32-D0WD-V3 chip supply minimum; WROOM-32E module requires 3.0 V because it includes external flash'),
+    'esp_vdd_min_flash': _e(3.0, 'V', 'S', 'https://documentation.espressif.com/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf', 'Legacy key name; ESP32-WROOM-32E module datasheet v2.1 page 28 Table 14 specifies 3.0 V minimum VDD33. Its flash is external to the chip package, so the chip in-package-flash footnote does not apply'),
     'esp_vdd_max': _e(3.6, 'V', 'S', ESP, 'chip supply maximum'),
     'esp_bod_default': _e(2.43, 'V', 'A', NONE, 'default brown-out detector level in the Arduino-ESP32 / ESP-IDF default sdkconfig (level 7); the datasheet fetched does not state it, verify in the core in use'),
     'esp_i_active_nowifi': _e(0.068, 'A', 'S', ESP, 'CPU powered, 240 MHz dual core, radio off: 30 to 68 mA; top of the range is used'),
@@ -118,20 +118,20 @@ C = {
     'cer_esr': _e(0.003, 'ohm', 'A', NONE, '47 uF 1210 X5R/X7R ceramic ESR, order of a few mohm'),
     'cer_derate_6v6': _e(0.6, '1', 'A', NONE, '47 uF 16 V 1210 X5R retains roughly 50 to 70 % at 6.6 V bias; swept 30 to 100 % in buck_design.py'),
     'l1_dcr': _e(0.015, 'ohm', 'A', NONE, 'Bourns SRP1245A-100M DCR order of 10 to 15 mohm; not fetched'),
-    'f1_hold': _e(2.6, 'A', 'A', BRN, 'Bourns MF-MSMF260/16X hold current; selected F1 is RUILON SMD1812P260TF/16, whose datasheet is needed'),
-    'f1_trip': _e(5.0, 'A', 'A', BRN, 'Bourns MF-MSMF260/16X trip current; selected RUILON part is not covered'),
-    'f1_rmin': _e(0.015, 'ohm', 'A', BRN, 'Bourns MF-MSMF260/16X minimum resistance; selected RUILON part is not covered'),
-    'f1_r1max': _e(0.050, 'ohm', 'A', BRN, 'Bourns MF-MSMF260/16X R1max; selected RUILON part is not covered'),
-    'f1_vmax': _e(16.0, 'V', 'A', BRN, 'Bourns MF-MSMF260/16X maximum voltage; selected RUILON part needs its own rating'),
-    'f1_ttrip': _e(5.0, 's', 'A', BRN, 'Bourns MF-MSMF260/16X trip time; selected RUILON part is not covered'),
+    'f1_hold': _e(2.6, 'A', 'S', RUILON, 'RUILON SMD1812 Series revision 2021-12-09 page 2 Performance Specification: SMD1812P260TF/16 Ihold at 25 C'),
+    'f1_trip': _e(5.0, 'A', 'S', RUILON, 'RUILON page 2 Performance Specification: SMD1812P260TF/16 Itrip at 25 C'),
+    'f1_rmin': _e(0.010, 'ohm', 'S', RUILON, 'RUILON page 2 Performance Specification: SMD1812P260TF/16 Ri minimum'),
+    'f1_r1max': _e(0.050, 'ohm', 'S', RUILON, 'RUILON page 2 Performance Specification: SMD1812P260TF/16 R1 maximum one hour post-reflow'),
+    'f1_vmax': _e(16.0, 'V', 'S', RUILON, 'RUILON page 2 Performance Specification: SMD1812P260TF/16 maximum operating voltage'),
+    'f1_ttrip': _e(2.5, 's', 'S', RUILON, 'RUILON page 2 Performance Specification: SMD1812P260TF/16 maximum trip time at 35 A; not an 8 A trip time'),
     'ipc_k_ext': _e(0.048, '1', 'A', IPC, 'secondary calculator quotes IPC-2221 external-layer fit; standard not read'),
     'ipc_b': _e(0.44, '1', 'A', IPC, 'secondary calculator quotes IPC-2221 exponent; standard not read'),
     'ipc_c': _e(0.725, '1', 'A', IPC, 'secondary calculator quotes IPC-2221 exponent; standard not read'),
     'ipc_mil_per_oz': _e(1.378, 'mil/oz', 'A', IPC, 'secondary calculator quotes copper-weight conversion; no finished stack-up evidence'),
     'tvs_vc': _e(26.0, 'V', 'A', NONE, 'SMBJ16A maximum clamping voltage at its peak pulse current (about 23 A, 600 W class); datasheet fetch returned 404. Verify'),
     'tvs_vwm': _e(16.0, 'V', 'A', NONE, 'SMBJ16A stand-off voltage'),
-    'q1_rds': _e(0.013, 'ohm', 'A', AOS, '13 mohm at -10 V belongs to AOS AO4407A; selected PFET is MSKSEMI AO4407A, not covered by this datasheet'),
-    'q1_rds_6v': _e(0.017, 'ohm', 'A', AOS, '17 mohm at -6 V belongs to AOS AO4407A; selected MSKSEMI PFET is not covered'),
+    'q1_rds': _e(0.013, 'ohm', 'S', MSK, 'MSKSEMI AO4407A Product Specification page 4 On Characteristics: 13 mohm maximum at VGS=-10 V, ID=-10 A'),
+    'q1_rds_6v': _e(0.020, 'ohm', 'A', MSK, 'MSKSEMI AO4407A page 4 specifies 20 mohm maximum at VGS=-4.5 V, not -6 V; 20 mohm is a conservative -6 V design estimate, not a directly tested limit'),
     'd2_vf': _e(0.50, 'V', 'A', NONE, 'B540C forward drop at about 3 to 5 A, 25 C; datasheet fetch returned 404. Verify'),
     'd7_vf_100ma': _e(0.30, 'V', 'A', NONE, 'BAT60A-class Schottky forward drop at 100 mA, about 0.3 V; not fetched'),
     'd7_vf_slope': _e(0.05, 'V/decade', 'A', NONE, 'forward drop change per decade of current'),
@@ -178,7 +178,7 @@ C = {
     'power_fsr_force_high_n': _e(8.0, 'N', 'A', NONE, 'assumed, not sourced: FSR error high-force scenario'),
     'power_3v3_minus_1pct_mv': _e(3267.0, 'mV', 'A', NONE, 'derived from nominal 3.3 V rail and assumed one-percent tolerance'),
     'power_3v3_plus_1pct_mv': _e(3333.0, 'mV', 'A', NONE, 'derived from nominal 3.3 V rail and assumed one-percent tolerance'),
-    'power_3v3_minus_3pct_mv': _e(3201.0, 'mV', 'A', MCP, '3 percent is from the 5 V MCP1703A, not the DevKitC 3.3 V regulator; value retained as an assumed scenario'),
+    'power_3v3_minus_3pct_mv': _e(3201.0, 'mV', 'A', NONE, '3 percent low 3.3 V sensitivity case; the DevKitC AMS1117-3.3 datasheet specifies about 2 percent, so this is an intentionally wider scenario'),
     'power_regen_min_mj': _e(2.0, 'mJ', 'A', NONE, 'assumed, not sourced: regeneration sweep point'),
     'power_regen_low_mj': _e(5.0, 'mJ', 'A', NONE, 'assumed, not sourced: regeneration sweep point'),
     'power_regen_basis_mj': _e(20.0, 'mJ', 'A', NONE, 'assumed, not sourced: half stall torque through one degree backlash'),
@@ -315,7 +315,15 @@ C = {
                                    'assumed, not sourced: compensation ranking cap'),
     'buck_gain_score_cap_db': _e(30, 'dB', 'A', NONE,
                                  'assumed, not sourced: compensation ranking cap'),
+    'ams_iout_max': _e(0.800, 'A', 'S', 'https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf',
+                       'AMS1117 page 1 Features: 800 mA output current; actual DevKitC available load is board-thermal limited'),
 }
+
+for _key in ('mcp_vout_tol', 'mcp_rth_sot223', 'ams_dropout_typ', 'ams_dropout_max',
+             'ams_vout_tol', 'ams_iout_max', 'esp_vdd_min', 'esp_vdd_min_flash',
+             'f1_hold', 'f1_trip', 'f1_rmin', 'f1_r1max', 'f1_vmax', 'f1_ttrip',
+             'q1_rds', 'q1_rds_6v', 'power_3v3_minus_3pct_mv'):
+    C[_key]['retrieved'] = '2026-10-19'
 
 
 def val(name):

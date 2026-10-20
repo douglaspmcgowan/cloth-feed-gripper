@@ -16,27 +16,35 @@
   "value": 12.0
  },
  "ams_dropout_max": {
-  "note": "usual published maximum at 800 mA; not fetched this session",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "AMS1117 page 3 Electrical Characteristics: 1.3 V maximum dropout at 800 mA",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "V",
-  "url": "",
+  "url": "https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf",
   "value": 1.3
  },
  "ams_dropout_typ": {
-  "note": "datasheet fetch failed (SSL handshake error on the vendor server). Value is the usual published typical at 800 mA; a 1.0 V typical is used at 100 mA. Verify on the vendor PDF",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "AMS1117 page 3 Electrical Characteristics: 1.1 V typical dropout at 800 mA",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "V",
-  "url": "",
+  "url": "https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf",
   "value": 1.1
  },
+ "ams_iout_max": {
+  "note": "AMS1117 page 1 Features: 800 mA output current; actual DevKitC available load is board-thermal limited",
+  "retrieved": "2026-10-19",
+  "tag": "S",
+  "unit": "A",
+  "url": "https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf",
+  "value": 0.8
+ },
  "ams_vout_tol": {
-  "note": "3.3 V fixed version output tolerance, +/-1 % assumed (not fetched)",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "AMS1117-3.3 page 2 Electrical Characteristics: +/-1 % at 25 C (3.267 to 3.333 V); over temperature it spans 3.235 to 3.365 V, not modeled by this input; DevKitC V4 schematic U2 is AMS1117-3.3",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "1",
-  "url": "",
+  "url": "https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf",
   "value": 0.01
  },
  "awg20_ohm_m": {
@@ -658,67 +666,67 @@
   "value": 3.6
  },
  "esp_vdd_min": {
-  "note": "chip supply minimum (3.0 V when the module has a 3.3 V in-package flash, as the WROOM-32 does)",
-  "retrieved": "2026-10-11",
+  "note": "ESP32-D0WD-V3 chip supply minimum; WROOM-32E module requires 3.0 V because it includes external flash",
+  "retrieved": "2026-10-19",
   "tag": "S",
   "unit": "V",
   "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
   "value": 2.3
  },
  "esp_vdd_min_flash": {
-  "note": "ESP32 chip datasheet applies 3.0 V to in-package flash; the DevKitC WROOM-32E module uses external flash, so this value is not sourced for this assembly",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "Legacy key name; ESP32-WROOM-32E module datasheet v2.1 page 28 Table 14 specifies 3.0 V minimum VDD33. Its flash is external to the chip package, so the chip in-package-flash footnote does not apply",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "V",
-  "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+  "url": "https://documentation.espressif.com/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf",
   "value": 3.0
  },
  "f1_hold": {
-  "note": "Bourns MF-MSMF260/16X hold current; selected F1 is RUILON SMD1812P260TF/16, whose datasheet is needed",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "RUILON SMD1812 Series revision 2021-12-09 page 2 Performance Specification: SMD1812P260TF/16 Ihold at 25 C",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "A",
-  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "url": "https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf",
   "value": 2.6
  },
  "f1_r1max": {
-  "note": "Bourns MF-MSMF260/16X R1max; selected RUILON part is not covered",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "RUILON page 2 Performance Specification: SMD1812P260TF/16 R1 maximum one hour post-reflow",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "ohm",
-  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "url": "https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf",
   "value": 0.05
  },
  "f1_rmin": {
-  "note": "Bourns MF-MSMF260/16X minimum resistance; selected RUILON part is not covered",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "RUILON page 2 Performance Specification: SMD1812P260TF/16 Ri minimum",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "ohm",
-  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
-  "value": 0.015
+  "url": "https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf",
+  "value": 0.01
  },
  "f1_trip": {
-  "note": "Bourns MF-MSMF260/16X trip current; selected RUILON part is not covered",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "RUILON page 2 Performance Specification: SMD1812P260TF/16 Itrip at 25 C",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "A",
-  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "url": "https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf",
   "value": 5.0
  },
  "f1_ttrip": {
-  "note": "Bourns MF-MSMF260/16X trip time; selected RUILON part is not covered",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "RUILON page 2 Performance Specification: SMD1812P260TF/16 maximum trip time at 35 A; not an 8 A trip time",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "s",
-  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
-  "value": 5.0
+  "url": "https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf",
+  "value": 2.5
  },
  "f1_vmax": {
-  "note": "Bourns MF-MSMF260/16X maximum voltage; selected RUILON part needs its own rating",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "RUILON page 2 Performance Specification: SMD1812P260TF/16 maximum operating voltage",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "V",
-  "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
+  "url": "https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf",
   "value": 16.0
  },
  "fit_a_hold_a": {
@@ -1508,12 +1516,12 @@
   "value": 0.4
  },
  "mcp_rth_sot223": {
-  "note": "Microchip DS20005122B page 15 prints 62.9 K/W for SOT-223, not 62.0; value retained for review",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "DS20005122B page 15, Thermal Considerations: SOT-223 junction-to-ambient 62.9 C/W",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "K/W",
   "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
-  "value": 62.0
+  "value": 62.9
  },
  "mcp_vin_max": {
   "note": "input operating range top (2.7 to 16 V)",
@@ -1524,12 +1532,12 @@
   "value": 16.0
  },
  "mcp_vout_tol": {
-  "note": "DS20005122B ordering code 5002 denotes 2 percent tolerance, while stored 3 percent is the looser generic family limit; value retained for review",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "DS20005122B page 29 Product Identification System: selected 5002 code has standard 2 percent output tolerance",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "1",
   "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
-  "value": 0.03
+  "value": 0.02
  },
  "power_3v3_minus_1pct_mv": {
   "note": "derived from nominal 3.3 V rail and assumed one-percent tolerance",
@@ -1540,11 +1548,11 @@
   "value": 3267.0
  },
  "power_3v3_minus_3pct_mv": {
-  "note": "3 percent is from the 5 V MCP1703A, not the DevKitC 3.3 V regulator; value retained as an assumed scenario",
-  "retrieved": "2026-10-11",
+  "note": "3 percent low 3.3 V sensitivity case; the DevKitC AMS1117-3.3 datasheet specifies about 2 percent, so this is an intentionally wider scenario",
+  "retrieved": "2026-10-19",
   "tag": "A",
   "unit": "mV",
-  "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
+  "url": "",
   "value": 3201.0
  },
  "power_3v3_plus_1pct_mv": {
@@ -1756,20 +1764,20 @@
   "value": 4.75
  },
  "q1_rds": {
-  "note": "13 mohm at -10 V belongs to AOS AO4407A; selected PFET is MSKSEMI AO4407A, not covered by this datasheet",
-  "retrieved": "2026-10-11",
-  "tag": "A",
+  "note": "MSKSEMI AO4407A Product Specification page 4 On Characteristics: 13 mohm maximum at VGS=-10 V, ID=-10 A",
+  "retrieved": "2026-10-19",
+  "tag": "S",
   "unit": "ohm",
-  "url": "https://www.aosmd.com/res/data_sheets/AO4407A.pdf",
+  "url": "https://xonstorage.z8.web.core.windows.net/pdf/msksemi_ao4407a_apr22_xonlink.pdf",
   "value": 0.013
  },
  "q1_rds_6v": {
-  "note": "17 mohm at -6 V belongs to AOS AO4407A; selected MSKSEMI PFET is not covered",
-  "retrieved": "2026-10-11",
+  "note": "MSKSEMI AO4407A page 4 specifies 20 mohm maximum at VGS=-4.5 V, not -6 V; 20 mohm is a conservative -6 V design estimate, not a directly tested limit",
+  "retrieved": "2026-10-19",
   "tag": "A",
   "unit": "ohm",
-  "url": "https://www.aosmd.com/res/data_sheets/AO4407A.pdf",
-  "value": 0.017
+  "url": "https://xonstorage.z8.web.core.windows.net/pdf/msksemi_ao4407a_apr22_xonlink.pdf",
+  "value": 0.02
  },
  "rs1_rating": {
   "note": "design.py value text \"0.1R 1% 2W\"",
