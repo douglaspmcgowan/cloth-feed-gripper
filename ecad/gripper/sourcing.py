@@ -105,12 +105,14 @@ SRC = {
     'screw3': s('1715734', 'Phoenix Contact', DIGI, '277-1264-ND', 1.71, 1, DK + 'phoenix-contact/1715734/260632',
                 'MKDS 1,5/ 3-5,08, 3 position 5.08 mm, 300 V 15 A; 4,556 in stock. $1.403 at 10.'),
     'ptc': lc('SMD1812P260TF/16', 'RUILON', 'C20814', 0.1498, 5,
-              '1812 resettable fuse: hold 2.6 A, trip 5 A, V max 16 V, resistance 10 mOhm (50 mOhm max after trip); 1,310 in stock. '
-              'V max 16 V meets the 16 V requirement but not the 24 V preference; a 24 V part was not found on LCSC in one search.'),
+              '1812 resettable fuse: hold 2.6 A, trip 5 A, V max 16 V, resistance 10 mOhm minimum (50 mOhm maximum one hour post-reflow); 1,310 in stock. '
+              'V max 16 V meets the 16 V requirement but not the 24 V preference; a 24 V part was not found on LCSC in one search.',
+              datasheet='https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf'),
     'pfet': lc('AO4407A', 'MSKSEMI', 'C7379957', 0.0618, 5,
-               'P-channel 30 V, 12 A, 9 mOhm at 10 V, SOP-8, a second-source part marked AO4407A. OUT OF STOCK at LCSC on retrieval. '
+               'P-channel 30 V, 12 A, 9 mOhm typical and 13 mOhm maximum at -10 V, SOP-8, a second-source part marked AO4407A. OUT OF STOCK at LCSC on retrieval. '
                'Genuine Alpha and Omega AO4407A (30 V, -12 A, 13 mOhm max) is on DigiKey/Mouser; search snippets also listed LCSC '
-               'C5155211 (JSMSEMI) and C6430946 (GOODWORK).', datasheet='https://aosmd.com/products/mosfets/p-channel-mosfets-8v-60v/ao4407a'),
+               'C5155211 (JSMSEMI) and C6430946 (GOODWORK).',
+               datasheet='https://xonstorage.z8.web.core.windows.net/pdf/msksemi_ao4407a_apr22_xonlink.pdf'),
     'zener': lc('BZT52C15', 'JSCJ', 'C2104', 0.0202, 50, '15 V (13.8 to 15.6 V) 500 mW zener SOD-123; 28,150 in stock.'),
     'tvs': lc('SMBJ16A-M3/52', 'VISHAY', 'C1979375', 0.1836, 1,
               'Unidirectional TVS, stand-off 16 V, breakdown 19.7 V, clamp 26 V at 23.1 A, 600 W 10/1000 us, DO-214AA (SMB). '
@@ -151,7 +153,9 @@ SRC = {
     'devkitc': s('ESP32-DEVKITC-32E', 'Espressif', DIGI, '1965-ESP32-DEVKITC-32E-ND', 10.00, 1,
                  DK + 'espressif-systems/ESP32-DEVKITC-32E/12091810',
                  'ESP32-WROOM-32E 4 MB board. DigiKey stock 0 (252 expected 11-Jun-2027); Mouser also 0 per a search snippet. The two 1x19 '
-                 '2.54 mm female sockets are bought with it and priced in socket19. Check Mouser (356-ESP32-DEVKITC32E, $10.00) and Amazon for stock.',
+                 '2.54 mm female sockets are bought with it and priced in socket19. DevKitC V4 schematic U2 is AMS1117-3.3; '
+                 'its datasheet rates 800 mA output, subject to board thermal and ESP32 load limits. Check Mouser '
+                 '(356-ESP32-DEVKITC32E, $10.00) and Amazon for stock.',
                  datasheet='https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html'),
     'socket19': s('HDR-29-G', 'ProtoSupplies', 'ProtoSupplies', 'HDR-29-G', 0.80, 1, 'https://protosupplies.com/product/header-female-1x19/',
                   '2-pack of 1x19 female 2.54 mm headers: exactly the two sockets for the DevKitC; 7 in stock. One pack per board.'),
@@ -378,6 +382,16 @@ _calc_group('MCP1703AT-5002E/DB', 'Microchip',
     ('mcp_vout_tol', 29, 'Product Identification System', '5002 ordering code: 2.0% standard tolerance'),
     ('mcp_isc', 3, 'DC Characteristics', '400 mA typical short-circuit current at stated test condition'),
     ('mcp_iout_max', 3, 'DC Characteristics', '250 mA maximum output current for VR >= 2.5 V'),
+    ('mcp_rth_sot223', 15, '6.4 Thermal Considerations', '62.9 degC/W SOT-223 junction-to-ambient'),
+])
+
+_calc_group('AMS1117-3.3', 'Advanced Monolithic Systems',
+            'https://www.datasheets.com/advanced-monolithic-systems/ams1117/datasheet.pdf',
+            'AMS1117 datasheet, undated; DevKitC V4 schematic U2', [
+    ('ams_dropout_typ', 3, 'Electrical Characteristics', '1.1 V typical dropout at 800 mA'),
+    ('ams_dropout_max', 3, 'Electrical Characteristics', '1.3 V maximum dropout at 800 mA'),
+    ('ams_vout_tol', 2, 'Electrical Characteristics', '3.267 to 3.333 V at 25 C, +/-1%; 3.235 to 3.365 V over temperature'),
+    ('ams_iout_max', 1, 'Features', '800 mA output current, subject to dissipation limits'),
 ])
 
 _calc_group('ESP32-D0WD', 'Espressif Systems',
@@ -395,20 +409,26 @@ _calc_group('ESP32-D0WD', 'Espressif Systems',
     ('fsr_adc_max_mv', 44, 'ADC Calibration Results', '2450 mV upper end at attenuation 3'),
 ])
 
-_calc_group('MF-MSMF260/16X', 'Bourns',
-            'https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf', 'MF-MSMF series, current web PDF', [
-    ('f1_hold', 2, 'Electrical Characteristics', '2.60 A hold at 23 degC'),
-    ('f1_trip', 2, 'Electrical Characteristics', '5.00 A trip at 23 degC'),
-    ('f1_rmin', 2, 'Electrical Characteristics', '0.015 Ohm Rmin'),
-    ('f1_r1max', 2, 'Electrical Characteristics', '0.050 Ohm R1max'),
-    ('f1_vmax', 2, 'Electrical Characteristics', '16 V maximum'),
-    ('f1_ttrip', 2, 'Electrical Characteristics', '5.0 s maximum at 8.0 A'),
+_calc_group('ESP32-WROOM-32E', 'Espressif Systems',
+            'https://documentation.espressif.com/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf',
+            'v2.1, August 2026', [
+    ('esp_vdd_min_flash', 28, 'Table 14 Recommended Operating Conditions', '3.0 V minimum module VDD33; QSPI flash is external to chip package'),
 ])
 
-_calc_group('AO4407A', 'Alpha & Omega Semiconductor',
-            'https://www.aosmd.com/res/data_sheets/AO4407A.pdf', 'Rev. 11.1, March 2024', [
-    ('q1_rds', 1, 'Product Summary', '13 mOhm maximum at VGS = -10 V'),
-    ('q1_rds_6v', 1, 'Product Summary', '17 mOhm maximum at VGS = -6 V'),
+_calc_group('SMD1812P260TF/16', 'RUILON',
+            'https://ruilon.com.cn/Uploads/pdf/smd1812%20series.pdf', 'SMD1812 Series, revised 2021-12-09', [
+    ('f1_hold', 2, 'Performance Specification', '2.60 A hold at 25 degC'),
+    ('f1_trip', 2, 'Performance Specification', '5.00 A trip at 25 degC'),
+    ('f1_rmin', 2, 'Performance Specification', '0.010 Ohm Ri minimum'),
+    ('f1_r1max', 2, 'Performance Specification', '0.050 Ohm R1 maximum, one hour post-reflow'),
+    ('f1_vmax', 2, 'Performance Specification', '16 V maximum'),
+    ('f1_ttrip', 2, 'Performance Specification', '2.5 s maximum trip time at 35 A'),
+])
+
+_calc_group('AO4407A', 'MSKSEMI',
+            'https://xonstorage.z8.web.core.windows.net/pdf/msksemi_ao4407a_apr22_xonlink.pdf',
+            'AO4407A Product Specification, undated', [
+    ('q1_rds', 4, 'On Characteristics', '13 mOhm maximum at VGS = -10 V, ID = -10 A'),
 ])
 
 # These are reference or seller pages, rather than a selected manufacturer's
@@ -439,28 +459,18 @@ for _key, _quote in [('ipc_k_ext', 'k = 0.048 external'),
         'undated calculator', 'web page', 'Notes / external-layer formula', _quote,
         tag='A', reason='Secondary calculator, not the IPC standard or a part datasheet.')
 
-CALC_CONSTANTS['mcp_rth_sot223'] = _calc_source('MCP1703AT-5002E/DB', 'Microchip',
-    'https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf',
-    'DS20005122B, 2013', 'page 15', '6.4 Thermal Considerations',
-    '62.9 degC/W SOT-223', tag='A',
-    reason='Stored 62.0 K/W differs from the printed 62.9 degC/W; value retained pending design review.')
-CALC_CONSTANTS['power_3v3_minus_3pct_mv'] = _calc_source('MCP1703AT-5002E/DB', 'Microchip',
-    'https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf',
-    'DS20005122B, 2013', 'page 3', 'DC Characteristics',
-    'VR +/-3.0%', tag='A',
-    reason='3.3 V rail is on the DevKitC, not the 5.0 V MCP1703A; the PDF does not state 3201 mV.')
-
-CALC_CONSTANTS['esp_vdd_min_flash']['tag'] = 'A'
-CALC_CONSTANTS['esp_vdd_min_flash']['reason'] = (
-    'The 3.0 V footnote applies to chips with in-package flash; the WROOM-32E module has external flash.')
-CALC_CONSTANTS['mcp_vout_tol']['tag'] = 'A'
-CALC_CONSTANTS['mcp_vout_tol']['reason'] = (
-    'The selected 5002 ordering code specifies 2% tolerance; the stored 3% is the generic family limit.')
-for _key in ('f1_hold', 'f1_trip', 'f1_rmin', 'f1_r1max', 'f1_vmax', 'f1_ttrip'):
-    CALC_CONSTANTS[_key]['tag'] = 'A'
-    CALC_CONSTANTS[_key]['reason'] = (
-        'Bourns data do not qualify the selected RUILON SMD1812P260TF/16; obtain its datasheet.')
-for _key in ('q1_rds', 'q1_rds_6v'):
-    CALC_CONSTANTS[_key]['tag'] = 'A'
-    CALC_CONSTANTS[_key]['reason'] = (
-        'AOS data do not qualify the selected MSKSEMI AO4407A second-source device.')
+CALC_CONSTANTS['power_3v3_minus_3pct_mv'] = _calc_source('ESP32-DEVKITC-32E', 'Espressif Systems',
+    'https://dl.espressif.com/dl/schematics/esp32_devkitc_v4-sch.pdf',
+    'DevKitC V4 schematic, December 2017', 'page 1', 'Power Supply',
+    '3201 mV is a 3% low sensitivity case', tag='A',
+    reason='The schematic identifies AMS1117-3.3 but does not specify a 3% output tolerance; this is a wider stress case.')
+CALC_CONSTANTS['q1_rds_6v'] = _calc_source('AO4407A', 'MSKSEMI',
+    'https://xonstorage.z8.web.core.windows.net/pdf/msksemi_ao4407a_apr22_xonlink.pdf',
+    'AO4407A Product Specification, undated', 'page 4', 'On Characteristics',
+    '20 mOhm maximum at VGS = -4.5 V', tag='A',
+    reason='No -6 V resistance limit is printed; 20 mOhm is a conservative design estimate for -6 V.')
+for _key in ('mcp_vout_tol', 'mcp_rth_sot223', 'ams_dropout_typ', 'ams_dropout_max',
+             'ams_vout_tol', 'ams_iout_max', 'esp_vdd_min_flash',
+             'f1_hold', 'f1_trip', 'f1_rmin', 'f1_r1max', 'f1_vmax', 'f1_ttrip',
+             'q1_rds', 'q1_rds_6v', 'power_3v3_minus_3pct_mv'):
+    CALC_CONSTANTS[_key]['retrieved'] = '2026-10-19'
