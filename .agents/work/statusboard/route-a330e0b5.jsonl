@@ -1,0 +1,16 @@
+{"last_step":"registered","heartbeat_at":"2026-10-19T20:42:55.6945147Z","agent_id":"route-a330e0b5","surface":"route","state":"starting"}
+{"surface":"codex","agent_id":"route-a330e0b5","state":"starting","heartbeat_at":"2026-10-19T20:43:07.0992381Z","last_step":"selected"}
+{"agent_id":"route-a330e0b5","last_step":"starting","state":"working","heartbeat_at":"2026-10-19T20:43:10.6465767Z","surface":"codex"}
+{"heartbeat_at":"2026-10-19T20:43:11.0442647Z","last_step":"starting","agent_id":"route-a330e0b5","progress":false,"surface":"codex","state":"working"}
+{"state":"working","agent_id":"route-a330e0b5","heartbeat_at":"2026-10-19T20:44:13.1067567Z","last_step":"working 2026-10-19T20:44:11.8085635Z","surface":"codex"}
+{"heartbeat_at":"2026-10-19T20:44:13.4770015Z","last_step":"working 2026-10-19T20:44:11.8085635Z","agent_id":"route-a330e0b5","progress":true,"surface":"codex","state":"working"}
+{"state":"working","surface":"codex","heartbeat_at":"2026-10-19T20:45:14.9680223Z","agent_id":"route-a330e0b5","last_step":"working 2026-10-19T20:45:13.8958308Z"}
+{"heartbeat_at":"2026-10-19T20:45:15.3875488Z","last_step":"working 2026-10-19T20:45:13.8958308Z","agent_id":"route-a330e0b5","progress":true,"surface":"codex","state":"working"}
+{"state":"working","agent_id":"route-a330e0b5","heartbeat_at":"2026-10-19T20:46:16.6575331Z","surface":"codex","last_step":"working 2026-10-19T20:46:15.8291816Z"}
+{"heartbeat_at":"2026-10-19T20:46:17.0741179Z","last_step":"working 2026-10-19T20:46:15.8291816Z","agent_id":"route-a330e0b5","progress":true,"surface":"codex","state":"working"}
+{"last_step":"impact","agent_id":"route-a330e0b5","surface":"route","heartbeat_at":"2026-10-19T20:46:50.3484396Z","state":"working"}
+{"heartbeat_at":"2026-10-19T20:47:18.1973251Z","surface":"codex","agent_id":"route-a330e0b5","last_step":"working 2026-10-19T20:47:17.5399882Z","state":"working"}
+{"heartbeat_at":"2026-10-19T20:47:18.4949649Z","last_step":"working 2026-10-19T20:47:17.5399882Z","agent_id":"route-a330e0b5","progress":true,"surface":"codex","state":"working"}
+{"state":"finished","surface":"codex","last_step":"completed exit=0","agent_id":"route-a330e0b5","heartbeat_at":"2026-10-19T20:47:57.8943275Z"}
+{"heartbeat_at":"2026-10-19T20:47:58.1014353Z","last_step":"completed exit=0","agent_id":"route-a330e0b5","progress":true,"surface":"codex","state":"working"}
+{"surface":"codex","heartbeat_at":"2026-10-19T20:48:18.9484959Z","state":"finished","last_step":"exit-zero-clean","agent_id":"route-a330e0b5"}
