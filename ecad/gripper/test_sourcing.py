@@ -1,10 +1,13 @@
 import os
 import sys
+import json
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import design  # noqa: E402
 import sourcing  # noqa: E402
+from calc import constants  # noqa: E402
 
 FIELDS = ['mpn', 'mfr', 'supplier', 'spn', 'price_usd', 'price_qty', 'url', 'datasheet', 'retrieved', 'tag', 'notes']
 FAB_KEYS = ['min_track_mm', 'min_space_mm', 'min_drill_mm', 'min_via_pad_mm', 'min_annular_ring_mm',
@@ -52,3 +55,29 @@ def test_evidence():
         assert e['finding'] and e['retrieved']
         assert e['url'] or e['tag'] == 'A'
         assert e['tag'] in ('S', 'A')
+
+
+def test_calculation_constant_sources():
+    for key, constant in constants.C.items():
+        if constant['tag'] != 'S':
+            continue
+        assert key in sourcing.CALC_CONSTANTS, key
+        record = sourcing.CALC_CONSTANTS[key]
+        assert record['tag'] == 'S', key
+        assert all(record[field] for field in (
+            'mpn', 'manufacturer', 'datasheet_url', 'datasheet_revision',
+            'page', 'table', 'quote')), key
+    for key, record in sourcing.CALC_CONSTANTS.items():
+        assert key in constants.C, key
+        assert record['tag'] == constants.C[key]['tag'], key
+        if record['tag'] == 'A':
+            assert record['reason'], key
+
+
+def test_generated_margin_inputs_are_classified():
+    path = Path(__file__).parent / 'calc/out/margins.json'
+    rows = json.loads(path.read_text(encoding='utf-8'))['rows']
+    assert rows
+    assert not [(row['id'], name) for row in rows
+                for name, item in row['input_evidence'].items()
+                if item['class'] == 'unclassified']

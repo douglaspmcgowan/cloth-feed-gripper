@@ -40,41 +40,41 @@
   "value": 0.01
  },
  "awg20_ohm_m": {
-  "note": "AWG 20",
+  "note": "general AWG copper reference, not selected stranded wire datasheet",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm/m",
   "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
   "value": 0.03331
  },
  "awg22_ohm_m": {
-  "note": "AWG 22",
+  "note": "general AWG copper reference, not selected stranded wire datasheet",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm/m",
   "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
   "value": 0.05296
  },
  "awg24_ohm_m": {
-  "note": "AWG 24",
+  "note": "general AWG copper reference, not selected stranded wire datasheet",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm/m",
   "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
   "value": 0.08422
  },
  "awg26_ohm_m": {
-  "note": "AWG 26",
+  "note": "general AWG copper reference, not selected stranded wire datasheet",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm/m",
   "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
   "value": 0.1339
  },
  "awg28_ohm_m": {
-  "note": "AWG 28",
+  "note": "general AWG copper reference, not selected stranded wire datasheet",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm/m",
   "url": "https://en.wikipedia.org/wiki/American_wire_gauge",
   "value": 0.2129
@@ -666,57 +666,57 @@
   "value": 2.3
  },
  "esp_vdd_min_flash": {
-  "note": "minimum when a 3.3 V flash is in the package",
+  "note": "ESP32 chip datasheet applies 3.0 V to in-package flash; the DevKitC WROOM-32E module uses external flash, so this value is not sourced for this assembly",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "V",
   "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
   "value": 3.0
  },
  "f1_hold": {
-  "note": "MF-MSMF260/16X hold current at 23 C",
+  "note": "Bourns MF-MSMF260/16X hold current; selected F1 is RUILON SMD1812P260TF/16, whose datasheet is needed",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "A",
   "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
   "value": 2.6
  },
  "f1_r1max": {
-  "note": "R1max (max resistance one hour after trip or reflow); used as the worst-case resistance",
+  "note": "Bourns MF-MSMF260/16X R1max; selected RUILON part is not covered",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm",
   "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
   "value": 0.05
  },
  "f1_rmin": {
-  "note": "resistance min",
+  "note": "Bourns MF-MSMF260/16X minimum resistance; selected RUILON part is not covered",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm",
   "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
   "value": 0.015
  },
  "f1_trip": {
-  "note": "trip current at 23 C (5.2 A for the /6X /8X /12X parts)",
+  "note": "Bourns MF-MSMF260/16X trip current; selected RUILON part is not covered",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "A",
   "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
   "value": 5.0
  },
  "f1_ttrip": {
-  "note": "maximum time to trip at 8 A (column read from the part table)",
+  "note": "Bourns MF-MSMF260/16X trip time; selected RUILON part is not covered",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "s",
   "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
   "value": 5.0
  },
  "f1_vmax": {
-  "note": "maximum operating voltage of the /16X; the 13.2 V adapter top needs this version, not /6X or /8X",
+  "note": "Bourns MF-MSMF260/16X maximum voltage; selected RUILON part needs its own rating",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "V",
   "url": "https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf",
   "value": 16.0
@@ -909,9 +909,9 @@
   "value": 0.85
  },
  "harness_adapter_cord_mm": {
-  "note": "harness.py: Pololu WPA-1774 cord, 1.5 m (sourcing.HARNESS entry)",
+  "note": "seller page specifies 1.5 m, but the generic adapter has no manufacturer datasheet or length tolerance",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "mm",
   "url": "https://www.pololu.com/product/1774",
   "value": 1500.0
@@ -1032,9 +1032,9 @@
   "value": 120.0
  },
  "harness_od_26awg_mm": {
-  "note": "harness.py: 26 AWG silicone wire OD, upper value of 1.4 to 1.5 mm (sourcing.HARNESS entry)",
+  "note": "26 AWG silicone wire outer diameter needs a manufacturer datasheet or measurement",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "mm",
   "url": "https://www.adafruit.com/product/1877",
   "value": 1.5
@@ -1115,9 +1115,9 @@
   "value": 0
  },
  "harness_usb_cable_mm": {
-  "note": "harness.py: Adafruit 592 USB cable, 3 ft rounded to 914 mm (sourcing.HARNESS entry)",
+  "note": "seller page says approximately 3 feet / 1 meter; 914 mm is an exact conversion of the approximate feet figure",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "mm",
   "url": "https://www.adafruit.com/product/592",
   "value": 914.0
@@ -1428,33 +1428,33 @@
   "value": 0.0002
  },
  "ipc_b": {
-  "note": "exponent on temperature rise",
+  "note": "secondary calculator quotes IPC-2221 exponent; standard not read",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "1",
   "url": "https://www.advancedpcb.com/en-us/tools/trace-width-calculator/",
   "value": 0.44
  },
  "ipc_c": {
-  "note": "exponent on cross-section area",
+  "note": "secondary calculator quotes IPC-2221 exponent; standard not read",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "1",
   "url": "https://www.advancedpcb.com/en-us/tools/trace-width-calculator/",
   "value": 0.725
  },
  "ipc_k_ext": {
-  "note": "IPC-2221 curve-fit constant k, external layers",
+  "note": "secondary calculator quotes IPC-2221 external-layer fit; standard not read",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "1",
   "url": "https://www.advancedpcb.com/en-us/tools/trace-width-calculator/",
   "value": 0.048
  },
  "ipc_mil_per_oz": {
-  "note": "copper thickness per ounce",
+  "note": "secondary calculator quotes copper-weight conversion; no finished stack-up evidence",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "mil/oz",
   "url": "https://www.advancedpcb.com/en-us/tools/trace-width-calculator/",
   "value": 1.378
@@ -1508,9 +1508,9 @@
   "value": 0.4
  },
  "mcp_rth_sot223": {
-  "note": "SOT-223 junction-to-ambient, JESD51-7 4-layer board",
+  "note": "Microchip DS20005122B page 15 prints 62.9 K/W for SOT-223, not 62.0; value retained for review",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "K/W",
   "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
   "value": 62.0
@@ -1524,9 +1524,9 @@
   "value": 16.0
  },
  "mcp_vout_tol": {
-  "note": "output tolerance over temperature, max (typ 0.4 % at 25 C)",
+  "note": "DS20005122B ordering code 5002 denotes 2 percent tolerance, while stored 3 percent is the looser generic family limit; value retained for review",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "1",
   "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
   "value": 0.03
@@ -1540,9 +1540,9 @@
   "value": 3267.0
  },
  "power_3v3_minus_3pct_mv": {
-  "note": "derived from nominal 3.3 V and MCP1703A three-percent tolerance",
+  "note": "3 percent is from the 5 V MCP1703A, not the DevKitC 3.3 V regulator; value retained as an assumed scenario",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "mV",
   "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf",
   "value": 3201.0
@@ -1756,17 +1756,17 @@
   "value": 4.75
  },
  "q1_rds": {
-  "note": "AO4407A RDS(on) max at VGS -10 V (11 mohm at -20 V, 17 mohm at -6 V); VDS -30 V, ID -12 A",
+  "note": "13 mohm at -10 V belongs to AOS AO4407A; selected PFET is MSKSEMI AO4407A, not covered by this datasheet",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm",
   "url": "https://www.aosmd.com/res/data_sheets/AO4407A.pdf",
   "value": 0.013
  },
  "q1_rds_6v": {
-  "note": "AO4407A RDS(on) max at VGS -6 V",
+  "note": "17 mohm at -6 V belongs to AOS AO4407A; selected MSKSEMI PFET is not covered",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "ohm",
   "url": "https://www.aosmd.com/res/data_sheets/AO4407A.pdf",
   "value": 0.017
@@ -1820,17 +1820,17 @@
   "value": 2.2
  },
  "servo_vmax": {
-  "note": "operating voltage high end (vendor page)",
+  "note": "operating voltage high end on a seller page; manufacturer datasheet not verified",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "V",
   "url": "https://speedyfpv.com/products/ds3218mg-digital-servo-high-speed-high-torque-metal-gear-waterproof-20kg-torque-180-degrees-w-accessories",
   "value": 6.8
  },
  "servo_vmin": {
-  "note": "operating voltage low end (vendor page)",
+  "note": "operating voltage low end on a seller page; manufacturer datasheet not verified",
   "retrieved": "2026-10-11",
-  "tag": "S",
+  "tag": "A",
   "unit": "V",
   "url": "https://speedyfpv.com/products/ds3218mg-digital-servo-high-speed-high-torque-metal-gear-waterproof-20kg-torque-180-degrees-w-accessories",
   "value": 4.8

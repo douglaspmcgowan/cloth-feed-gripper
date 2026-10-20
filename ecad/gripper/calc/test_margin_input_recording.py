@@ -1,4 +1,5 @@
 import ast
+import copy
 import importlib
 import math
 import sys
@@ -208,9 +209,9 @@ def test_empty_module_read_set_is_detectable(monkeypatch):
 
 
 def test_order_gate_revalidates_tampered_unclassified_row():
-    result = margins.run()
-    row = next(row for row in result["rows"]
-               if any(x["class"] == "unclassified" for x in row["input_evidence"].values()))
+    result = copy.deepcopy(margins.run())
+    row = result["rows"][0]
+    row["input_evidence"]["test_injected"] = {"class": "unclassified"}
     row["status"] = "met"
     with pytest.raises(AssertionError, match="unclassified"):
         margins.order_block(result)

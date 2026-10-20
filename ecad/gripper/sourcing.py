@@ -295,3 +295,172 @@ EVIDENCE = {
                    'confirmed from JLCPCB.',
         'url': 'https://zbotic.in/bom-management-in-kicad-and-easyeda-export-for-jlcpcb/', 'retrieved': D, 'tag': 'A'},
 }
+
+
+# Calculation input provenance. `quote` is the short printed value (in the
+# document's units), not a conversion of constants.C. A record marked A keeps
+# the calculation's value as an assumption until evidence for that *part* is
+# available. Page numbers are the numbers printed on the PDFs.
+def _calc_source(mpn, maker, url, revision, page, table, quote, tag='S', reason=''):
+    return dict(mpn=mpn, manufacturer=maker, datasheet_url=url,
+                datasheet_revision=revision, page=page, table=table,
+                quote=quote, tag=tag, reason=reason)
+
+
+CALC_CONSTANTS = {}
+
+
+def _calc_group(mpn, maker, url, revision, rows):
+    for key, page, table, quote in rows:
+        CALC_CONSTANTS[key] = _calc_source(mpn, maker, url, revision, page, table, quote)
+
+
+_calc_group('TPS54560BDDAR', 'Texas Instruments',
+            'https://www.ti.com/lit/ds/symlink/tps54560b.pdf', 'SLVSF00, January 2019', [
+    ('tps_vin_min', 5, '6.5 Electrical Characteristics', '4.5 V minimum operating input'),
+    ('tps_vin_max', 5, '6.5 Electrical Characteristics', '60 V maximum operating input'),
+    ('tps_vref', 5, '6.5 Electrical Characteristics', '0.8 V typical reference'),
+    ('tps_vref_min', 5, '6.5 Electrical Characteristics', '0.792 V minimum reference'),
+    ('tps_vref_max', 5, '6.5 Electrical Characteristics', '0.808 V maximum reference'),
+    ('tps_ea_gm', 6, '6.5 Electrical Characteristics', '350 uA/V typical transconductance'),
+    ('tps_ea_gain', 5, '6.5 Electrical Characteristics', '10,000 V/V dc gain'),
+    ('tps_ea_imax', 5, '6.5 Electrical Characteristics', '+/-30 uA source/sink'),
+    ('tps_ps_gm', 5, '6.5 Electrical Characteristics', '17 A/V COMP to SW'),
+    ('tps_ilim_min', 5, '6.5 Electrical Characteristics', '6.3 A minimum current limit'),
+    ('tps_ilim_typ', 5, '6.5 Electrical Characteristics', '7.9 A typical current limit'),
+    ('tps_en_thresh', 5, '6.5 Electrical Characteristics', '1.2 V typical enable threshold'),
+    ('tps_en_thresh_min', 5, '6.5 Electrical Characteristics', '1.1 V minimum enable threshold'),
+    ('tps_en_thresh_max', 5, '6.5 Electrical Characteristics', '1.3 V maximum enable threshold'),
+    ('tps_en_i1', 5, '6.5 Electrical Characteristics', '-1.2 uA typical below threshold'),
+    ('tps_en_ihys', 5, '6.5 Electrical Characteristics', '-3.4 uA typical hysteresis current'),
+    ('tps_rt_coeff', 7, 'Figure 6', 'fsw (kHz) = 92471 x RT (kOhm)^-0.991'),
+    ('tps_rt_exp', 7, 'Figure 6', 'exponent -0.991'),
+    ('tps_uvlo_rise', 5, '6.5 Electrical Characteristics', '4.3 V typical rising UVLO'),
+    ('tps_uvlo_hyst', 5, '6.5 Electrical Characteristics', '325 mV UVLO hysteresis'),
+    ('tps_ton_min', 14, '7.3.9 Switching Frequency', '135 ns typical minimum controllable on-time'),
+    ('tps_rds_typ', 5, '6.5 Electrical Characteristics', '92 mOhm typical on-resistance'),
+    ('tps_rds_max', 5, '6.5 Electrical Characteristics', '190 mOhm maximum on-resistance'),
+    ('tps_rth_ja', 4, '6.4 Thermal Information', '42 degC/W junction-to-ambient'),
+    ('tps_iq', 5, '6.5 Electrical Characteristics', '146 uA typical nonswitching current'),
+    ('tps_en_i1_min', 5, '6.5 Electrical Characteristics', '-0.58 uA below threshold'),
+    ('tps_en_i1_max', 5, '6.5 Electrical Characteristics', '-1.8 uA below threshold'),
+    ('tps_en_ihys_min', 5, '6.5 Electrical Characteristics', '-2.2 uA hysteresis'),
+    ('tps_en_ihys_max', 5, '6.5 Electrical Characteristics', '-4.5 uA hysteresis'),
+])
+
+_calc_group('INA219AIDR', 'Texas Instruments',
+            'https://www.ti.com/lit/ds/symlink/ina219.pdf', 'SBOS448G, December 2015', [
+    ('ina_vos_pga1', 5, '7.5 Electrical Characteristics', '+/-100 uV maximum, PGA /1'),
+    ('ina_vos_pga2', 5, '7.5 Electrical Characteristics', '+/-125 uV maximum, PGA /2'),
+    ('ina_vos_pga4', 5, '7.5 Electrical Characteristics', '+/-150 uV maximum, PGA /4'),
+    ('ina_vos_pga8', 5, '7.5 Electrical Characteristics', '+/-200 uV maximum, PGA /8, A grade'),
+    ('ina_gain_err_typ', 5, '7.5 Electrical Characteristics', '+/-40 m% typical current-sense gain error'),
+    ('ina_meas_err_max', 5, '7.5 Electrical Characteristics', '+/-0.5% maximum at 25 degC, A grade'),
+    ('ina_gain_tc', 5, '7.5 Electrical Characteristics', '1 m%/degC gain drift'),
+    ('ina_conv_12bit', 5, '7.5 Electrical Characteristics', '532 us typical 12-bit conversion'),
+    ('ina_conv_12bit_max', 5, '7.5 Electrical Characteristics', '586 us maximum 12-bit conversion'),
+    ('ina_default_cfg', 18, 'Table 2', '399F hex configuration reset value'),
+    ('ina_fs_pga8', 19, 'Table 4', '+/-320 mV PGA /8 range'),
+    ('ina_lsb', 5, '7.5 Electrical Characteristics', '10 uV shunt-voltage LSB'),
+    ('ina_ibias', 5, '7.5 Electrical Characteristics', '20 uA typical active input bias'),
+    ('ina_filter_note', 11, 'Figure 14 and 8.4.1', '10 Ohm series; 0.1 to 1 uF ceramic'),
+    ('ina_input_impedance_ohm', 5, '7.5 Electrical Characteristics', '320 kOhm IN- input impedance'),
+    ('ina_average_codes_samples', 20, 'Table 5', 'codes 8..F: 1, 2, 4, 8, 16, 32, 64, 128 samples'),
+    ('ina_sadc_mask', 20, '8.6.2 Configuration Register', 'SADC uses four bits, bits 3..6'),
+    ('ina_sadc_shift', 20, '8.6.2 Configuration Register', 'SADC starts at bit 3'),
+])
+
+_calc_group('MCP1703AT-5002E/DB', 'Microchip',
+            'https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf', 'DS20005122B, 2013', [
+    ('mcp_vin_max', 3, 'DC Characteristics', '16.0 V maximum operating input'),
+    ('mcp_dropout_typ', 4, 'DC Characteristics', '330 mV typical at 250 mA, VR = 5.0 V'),
+    ('mcp_dropout_max', 4, 'DC Characteristics', '650 mV maximum at 250 mA, VR = 5.0 V'),
+    ('mcp_vout_tol', 29, 'Product Identification System', '5002 ordering code: 2.0% standard tolerance'),
+    ('mcp_isc', 3, 'DC Characteristics', '400 mA typical short-circuit current at stated test condition'),
+    ('mcp_iout_max', 3, 'DC Characteristics', '250 mA maximum output current for VR >= 2.5 V'),
+])
+
+_calc_group('ESP32-D0WD', 'Espressif Systems',
+            'https://documentation.espressif.com/esp32_datasheet_en.pdf', 'ESP32 Series v5.3', [
+    ('esp_vdd_min', 51, 'Table 5-2', '2.3 V minimum for chip without in-package flash'),
+    ('esp_vdd_min_flash', 51, 'Table 5-2 note 2', '3.0 V minimum for chip with in-package 3.3 V flash'),
+    ('esp_vdd_max', 51, 'Table 5-2', '3.6 V maximum operating supply'),
+    ('esp_i_active_nowifi', 30, 'Table 4-2', '30 to 68 mA CPU powered, 240 MHz modem sleep'),
+    ('esp_i_wifi_rx', 53, 'Table 5-5', '95 to 100 mA Wi-Fi receive'),
+    ('esp_i_wifi_tx_peak', 53, 'Table 5-5', '240 mA typical, 802.11b 1 Mbps +19.5 dBm'),
+    ('esp_adc_min_mv', 44, 'ADC Calibration Results', '150 mV lower end at attenuation 3'),
+    ('esp_adc_max_mv', 44, 'ADC Calibration Results', '2450 mV upper end at attenuation 3'),
+    ('esp_adc_err_mv', 44, 'ADC Calibration Results', '+/-60 mV total calibrated error at attenuation 3'),
+    ('fsr_adc_min_mv', 44, 'ADC Calibration Results', '150 mV lower end at attenuation 3'),
+    ('fsr_adc_max_mv', 44, 'ADC Calibration Results', '2450 mV upper end at attenuation 3'),
+])
+
+_calc_group('MF-MSMF260/16X', 'Bourns',
+            'https://www.bourns.com/docs/Product-Datasheets/mfmsmf.pdf', 'MF-MSMF series, current web PDF', [
+    ('f1_hold', 2, 'Electrical Characteristics', '2.60 A hold at 23 degC'),
+    ('f1_trip', 2, 'Electrical Characteristics', '5.00 A trip at 23 degC'),
+    ('f1_rmin', 2, 'Electrical Characteristics', '0.015 Ohm Rmin'),
+    ('f1_r1max', 2, 'Electrical Characteristics', '0.050 Ohm R1max'),
+    ('f1_vmax', 2, 'Electrical Characteristics', '16 V maximum'),
+    ('f1_ttrip', 2, 'Electrical Characteristics', '5.0 s maximum at 8.0 A'),
+])
+
+_calc_group('AO4407A', 'Alpha & Omega Semiconductor',
+            'https://www.aosmd.com/res/data_sheets/AO4407A.pdf', 'Rev. 11.1, March 2024', [
+    ('q1_rds', 1, 'Product Summary', '13 mOhm maximum at VGS = -10 V'),
+    ('q1_rds_6v', 1, 'Product Summary', '17 mOhm maximum at VGS = -6 V'),
+])
+
+# These are reference or seller pages, rather than a selected manufacturer's
+# datasheet. Retain the quoted observation but do not present it as part proof.
+for _key, _mpn, _maker, _url, _where, _quote, _why in [
+    ('servo_vmin', 'DS3218MG', 'unconfirmed', 'https://speedyfpv.com/products/ds3218mg-digital-servo-high-speed-high-torque-metal-gear-waterproof-20kg-torque-180-degrees-w-accessories', 'vendor product page', '4.8 V operating low end', 'No manufacturer datasheet identified.'),
+    ('servo_vmax', 'DS3218MG', 'unconfirmed', 'https://speedyfpv.com/products/ds3218mg-digital-servo-high-speed-high-torque-metal-gear-waterproof-20kg-torque-180-degrees-w-accessories', 'vendor product page', '6.8 V operating high end', 'No manufacturer datasheet identified.'),
+    ('harness_adapter_cord_mm', '1774', 'Generic / Pololu listing', 'https://www.pololu.com/product/1774', 'Details for item #1774', '1.5 m (5 ft) DC power cord', 'Seller listing; no manufacturer datasheet.'),
+    ('harness_usb_cable_mm', '592', 'Adafruit', 'https://www.adafruit.com/product/592', 'Description', 'Approximately 3 feet / 1 meter long', 'Seller states approximate length; 914 mm is a conversion, not a specified tolerance.'),
+    ('harness_od_26awg_mm', '1877', 'Adafruit', 'https://www.adafruit.com/product/1877', 'product description', '', 'No manufacturer datasheet specifying 1.5 mm OD was verified.'),
+]:
+    CALC_CONSTANTS[_key] = _calc_source(_mpn, _maker, _url, 'undated web page', _where, '', _quote,
+                                        tag='A', reason=_why)
+
+for _key, _gauge in [('awg20_ohm_m', 20), ('awg22_ohm_m', 22),
+                     ('awg24_ohm_m', 24), ('awg26_ohm_m', 26),
+                     ('awg28_ohm_m', 28)]:
+    CALC_CONSTANTS[_key] = _calc_source('unselected AWG %s conductor' % _gauge,
+        'unselected', 'https://en.wikipedia.org/wiki/American_wire_gauge',
+        'undated reference page', 'web page', 'wire resistance table', 'AWG %s reference resistance' % _gauge,
+        tag='A', reason='A general copper-wire reference is not the selected stranded harness wire datasheet.')
+
+for _key, _quote in [('ipc_k_ext', 'k = 0.048 external'),
+                     ('ipc_b', 'b = 0.44'), ('ipc_c', 'c = 0.725'),
+                     ('ipc_mil_per_oz', '1.378 mil/oz')]:
+    CALC_CONSTANTS[_key] = _calc_source('IPC-2221 curve fit', 'AdvancedPCB',
+        'https://www.advancedpcb.com/en-us/tools/trace-width-calculator/',
+        'undated calculator', 'web page', 'Notes / external-layer formula', _quote,
+        tag='A', reason='Secondary calculator, not the IPC standard or a part datasheet.')
+
+CALC_CONSTANTS['mcp_rth_sot223'] = _calc_source('MCP1703AT-5002E/DB', 'Microchip',
+    'https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf',
+    'DS20005122B, 2013', 'page 15', '6.4 Thermal Considerations',
+    '62.9 degC/W SOT-223', tag='A',
+    reason='Stored 62.0 K/W differs from the printed 62.9 degC/W; value retained pending design review.')
+CALC_CONSTANTS['power_3v3_minus_3pct_mv'] = _calc_source('MCP1703AT-5002E/DB', 'Microchip',
+    'https://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf',
+    'DS20005122B, 2013', 'page 3', 'DC Characteristics',
+    'VR +/-3.0%', tag='A',
+    reason='3.3 V rail is on the DevKitC, not the 5.0 V MCP1703A; the PDF does not state 3201 mV.')
+
+CALC_CONSTANTS['esp_vdd_min_flash']['tag'] = 'A'
+CALC_CONSTANTS['esp_vdd_min_flash']['reason'] = (
+    'The 3.0 V footnote applies to chips with in-package flash; the WROOM-32E module has external flash.')
+CALC_CONSTANTS['mcp_vout_tol']['tag'] = 'A'
+CALC_CONSTANTS['mcp_vout_tol']['reason'] = (
+    'The selected 5002 ordering code specifies 2% tolerance; the stored 3% is the generic family limit.')
+for _key in ('f1_hold', 'f1_trip', 'f1_rmin', 'f1_r1max', 'f1_vmax', 'f1_ttrip'):
+    CALC_CONSTANTS[_key]['tag'] = 'A'
+    CALC_CONSTANTS[_key]['reason'] = (
+        'Bourns data do not qualify the selected RUILON SMD1812P260TF/16; obtain its datasheet.')
+for _key in ('q1_rds', 'q1_rds_6v'):
+    CALC_CONSTANTS[_key]['tag'] = 'A'
+    CALC_CONSTANTS[_key]['reason'] = (
+        'AOS data do not qualify the selected MSKSEMI AO4407A second-source device.')
