@@ -245,7 +245,7 @@ Ledger rows: 108. Kept 61, merged 27, cut 20. Added 16. Every cut is text, a til
 | Images (drawings, sketches, camera figures) | 0 | 16 |
 | Number tiles | 25 | 0 |
 | Controls (buttons, selects, inputs) | 65 plus 11 tab links | 329, of which most are score buttons, figure tabs, Full screen, "i", zoom and sort headers |
-| Internal codes in reader-facing text | throughout | 0 outside the five fit-audit requirement ids allowed by the test |
+| Internal codes in reader-facing text | throughout | 0 found by the test's pattern after allowing the five fit-audit requirement ids |
 
 Review fixes, 2026-10-09: the "Status by view" list under the model was removed because the rail already carries it; the torque chain tiles were merged into the key numbers; the open Method and assumptions button measures 6.31:1 in light and 7.79:1 in dark.
 
