@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import design  # noqa: E402
 import sourcing  # noqa: E402
+from calc import constants  # noqa: E402
 
 FIELDS = ['mpn', 'mfr', 'supplier', 'spn', 'price_usd', 'price_qty', 'url', 'datasheet', 'retrieved', 'tag', 'notes']
 FAB_KEYS = ['min_track_mm', 'min_space_mm', 'min_drill_mm', 'min_via_pad_mm', 'min_annular_ring_mm',
@@ -52,3 +53,20 @@ def test_evidence():
         assert e['finding'] and e['retrieved']
         assert e['url'] or e['tag'] == 'A'
         assert e['tag'] in ('S', 'A')
+
+
+def test_calculation_constant_sources():
+    for key, constant in constants.C.items():
+        if constant['tag'] != 'S':
+            continue
+        assert key in sourcing.CALC_CONSTANTS, key
+        record = sourcing.CALC_CONSTANTS[key]
+        assert record['tag'] == 'S', key
+        assert all(record[field] for field in (
+            'mpn', 'manufacturer', 'datasheet_url', 'datasheet_revision',
+            'page', 'table', 'quote')), key
+    for key, record in sourcing.CALC_CONSTANTS.items():
+        assert key in constants.C, key
+        assert record['tag'] == constants.C[key]['tag'], key
+        if record['tag'] == 'A':
+            assert record['reason'], key
