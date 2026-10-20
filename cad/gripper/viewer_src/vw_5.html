@@ -94,7 +94,7 @@ function sortableTable(table,cols,rows,opt={}){
 function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
 /* plain names for the codes the analysis files use */
 const CN={C0:"Baseline",C1:"Geared-down servo",C2:"Rack jaw, ball rail",C2p:"Rack jaw, printed slide",C3:"1-start worm",C3b:"2-start worm"};
-const RN={1:"the transmission requirement",2:"the DC motor requirement",5:"the microcontroller requirement",12:"the stiffness window",20:"the stall back-off limit",21:"the calibration requirement",8:"the $50 cap",9:"compactness",10:"the mass budget",14:"the 5 N hold",15:"the 10 N cap",16:"the 40 % hold rule",17:"the moment-arm limit",18:"the jaw range",19:"the 0.5 s close limit",25:"the life target",26:"the 60 °C limit",27:"the 3 A rail"};
+const RN={1:"the transmission requirement",2:"the DC motor requirement",5:"the microcontroller requirement",12:"the stiffness window",20:"the stall back-off limit",21:"the calibration requirement",8:"the $50 cap",9:"compactness",10:"the mass budget",14:"the 5 N hold",15:"the 10 N cap",16:"the 40 % hold rule",17:"the moment-arm limit",18:"the jaw range",19:"the 0.75 s close limit",25:"the life target",26:"the 60 °C limit",27:"the 3 A rail"};
 function decode(t){return String(t??"")
   .replace(/\bC(0|1|2p|2|3b|3)\b/g,(m,k)=>CN["C"+k].toLowerCase()).replace(/\(?\bDB D7\)?/g,"").replace(/\bD7\b/g,"single-ply pickup")
   .replace(/\bR(\d+)\b/g,(m,n)=>RN[n]||"a requirement").replace(/\bM20\b/g,"the instructor's ruling").replace(/\bGSI\b/g,"instructor")
@@ -111,7 +111,7 @@ const WF=FIT.wrist_flex||null;
 const R9_ST=!(FIT.keepout_params.every(k=>k.ok)&&FIT.roll_min_radial_gap_mm>0)?"fail":((WF&&WF.ok_vs_stock&&FIT.roll_min_radial_gap_mm>=1.0&&!ENV_OUT.length)?"pass":"risk");
 const A17=D.acts.find(a=>a.id==="A17"),A19=D.acts.find(a=>a.id==="A19");
 /* limits from Douglas's ruling of 12 October 2026: close within 0.75 s, pad force capped at about 8 N */
-const R19_CLOSE_S=0.75, R15_CAP_N=8;
+const R19_CLOSE_S=D.params.grip.close_time_max_s, R15_CAP_N=8;
 /* the build servo is the one params.json names; the DS3218MG (A17) is the rev A comparison only */
 const BUILD=D.params.servo.models[D.parts.servo_model], BUILD_STALL=BUILD.stall_torque_kgcm["6.5V"];
 const HOLD_FRAC=D.params.grip.hold_fraction_of_stall, T_HOLD=D.grip.T_hold_Nm;
@@ -142,7 +142,7 @@ const REQ=[
  ["Hold at most 40 % of stall","risk",`Needs 20.2 ${KGCMU} of stall; the ${BUILD.model} gives ${fmt(BUILD_STALL,2)} at 6.5 V, a vendor listing figure; not yet measured on the delivered part.`],
  ["Moment arm at most 65 mm","pass","65.0 mm in CAD."],
  ["Jaw range −11° to +20°",SWEEP_CLASH.length?"fail":"pass",`The jaw sweep in CAD is ${SWEEP_TXT}.`],
- ["Full close within 0.5 s","risk",`The firmware simulation touches at ${fwr("t_contact_s")} s and reaches 4.5 N at ${fwr("t_F90_s")} s. The torque model says 0.278 s. Needs a ruling and a timed video.`],
+ [`Full close within ${R19_CLOSE_S} s`,"risk",`R19 was ruled on 2026-10-12. The firmware simulation touches at ${fwr("t_contact_s")} s and reaches 4.5 N at ${fwr("t_F90_s")} s. Confirm the force-arrival time with a timed video.`],
  ["Back off a stall within 200 ms","risk",`Host test: the back-off begins ${FWB} ms after over-current starts and its command completes at 200 ms. The current threshold and the blocked-finger test are pending.`],
  ["Calibration stores the contact angle","pass","Calibration zeroes the sensor, closes at 20 °/s to 0.5 N and stores the contact angle. The simulation lands within 0.2° of the true angle."],
  ["Wrist interface","risk","A separate wrist-mount plate on the horn. The pilot fit reaches a capability of only 1.25, so a coupon is needed."],
@@ -177,10 +177,10 @@ const VIEWS={
  torque:{st:"risk",v:`The ${BUILD.model} holds ${fmt(BUILD_CAP,3)} ${NM} against ${fmt(T_HOLD,3)} needed, a ${fmt((BUILD_CAP/T_HOLD-1)*100,0)} % margin. Rev A's DS3218MG holds ${fmt(A17CAP,3)} ${NM} and fails above 2.07 N of tension or below 0.386 friction.`},
  finger:{st:"risk",v:"Tip stiffness of 1.10 N/mm is inside the window, but the tip folds at 8.9 N, below the 10 N cap."},
  gears:{st:GP.pass?"pass":"fail",v:`The printed PA6-CF pair keeps a root safety factor of ${fmt(GP.SF.F_LC3,2)} at full stall and ${fmt(GP.SF.F_shock,2)} in shock.`},
- dyno:{st:"fail",v:`The servo case passes 60 °C in ${THERM_FAIL} of ${THERM_N} thermal cases, and the close reaches 5 N at ${fmt(D.dyno_close.A_mech.close_to_5N_s,2)} s against a 0.5 s limit.`},
+ dyno:{st:"fail",v:`The servo case passes 60 °C in ${THERM_FAIL} of ${THERM_N} thermal cases, and the close reaches 5 N at ${fmt(D.dyno_close.A_mech.close_to_5N_s,2)} s against the ruled ${R19_CLOSE_S} s limit.`},
  tolerances:{st:"fail",v:`${TOLB.filter(r=>r.v).length} of ${TOLB.length} stacks pass as designed with the assumed printer; ${TOLF.filter(r=>r.v).length} of ${TOLF.length} fixes pass. A printed coupon decides.`},
  camera:{st:"pass",v:"A fixed Pi Camera 3 off the arm sees all of the critical cloth edge at 5.5 pixels per mm and adds no wrist mass."},
- firmware:{st:"risk",w:(D.fw.verdict||"conditional").toLowerCase(),v:`The host tests pass ${FWN} checks; the ESP32 compile has not run. Simulated grips peak at ${fwr("F_max_N")} N, but 4.5 N arrives at ${fwr("t_F90_s")} s against the 0.5 s limit, and two decisions are open.`},
+ firmware:{st:"risk",w:(D.fw.verdict||"conditional").toLowerCase(),v:`The host tests pass ${FWN} checks; the ESP32 compile has not run. Simulated grips peak at ${fwr("F_max_N")} N, but 4.5 N arrives at ${fwr("t_F90_s")} s against the ruled ${R19_CLOSE_S} s limit; the bench proof is pending.`},
  open:{st:"open",v:`${REQC.pass} requirements pass, ${REQC.risk} are at risk, ${REQC.fail} fail and ${REQC.open} are open. ${document.querySelectorAll('#open-decisions section').length} decisions and ${NCHECK} bench checks are waiting.`},
 };
 const VLINK={model:[[/[\d.,]+ g with cloth/,"mass-rollup"]],fit:[[/tightest gap between a moving part and the body is [\d.]+ mm/,"fit-f-horn-housing"],[/\d+ findings? fails?/,"fit-findings"]],

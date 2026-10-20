@@ -33,7 +33,7 @@ function renderConcepts(){
   const tight=window.innerWidth<=600,xm=tight?0.7:0.65,SHORT={"Unequal sectors":"Unequal","1:1 sectors":"1:1","Rack, ball rail":"Rack, rail","Rack, printed slide":"Rack, slide","Worm, 1-start":"Worm, 1","Worm, 2-start":"Worm, 2"};
   const P=plot($("#transChart"),{w:680,h:320,m:{l:62,b:44},x:{min:0.2,max:xm,label:"Close time to 5 N, model (s)"},y:{min:24000,max:46000,label:"Mass-moment ("+GMM+")",fmt:v=>fmt(v/1000,0)+"k"}});
   P.vband(0.5,xm,"var(--bad-soft)");P.hband(lim,46000,"var(--bad-soft)");
-  P.vline(0.5,"var(--bad)","4 3","0.5 s limit");P.hline(lim,"var(--bad)","4 3","budget "+fmt(lim,0),"start");
+  P.vline(0.5,"var(--bad)","4 3","selection basis 0.5 s (superseded 2026-10-12)");P.hline(lim,"var(--bad)","4 3","budget "+fmt(lim,0),"start");
   TRANS.forEach(t=>{if(t[4]===null)return;P.dot(t[4],t[2],t[5]?"var(--c1)":"var(--c5)",5,t[0]);P.text(t[4],t[2],tight&&SHORT[t[6]]||t[6],"var(--ink2)",t[7],t[8],t[9]);});
   $("#transTable tbody").innerHTML=TRANS.map(t=>`<tr><td>${esc(t[0])}</td><td class="n">${t[1]}</td><td class="n">${fmt(t[2],0)}</td><td class="n">${fmt(t[3],1)} %</td><td class="n">${t[4]===null?"–":fmt(t[4],2)}</td><td>${t[5]?st("pass","yes"):st("fail",t[4]===null?"no servo fits":"no")}</td></tr>`).join("");
   pics($("#sketches"),SKETCH.map((sk,i)=>[sk[0],sk[1],SKROWS[i].map(r=>skNote(TRANS[r],SKROWS[i].length>1))]));
@@ -47,13 +47,13 @@ function renderConcepts(){
     let html=`<thead><tr><th>Criterion</th><th class="n">Weight</th><th>Baseline</th>${cs.map(c=>`<th>${CN[c]}</th>`).join("")}</tr></thead><tbody>`;
     Object.keys(D.pugh.weights).forEach(k=>{html+=`<tr><td>${esc(KLAB[k]||k)}</td><td class="n">${D.pugh.weights[k]}</td><td class="sc">0</td>`+cs.map(c=>{const sc=D.pugh.scores[c][k];return `<td class="sc"><button type="button" class="${cls(sc.score)}" aria-pressed="false" data-c="${c}" data-k="${k}">${sc.score>0?"+":""}${sc.score}</button></td>`;}).join("")+"</tr>";});
     html+=`<tr><td><b>Weighted total</b></td><td class="n">100</td><td class="sc">0</td>`+cs.map(c=>`<td class="sc"><b>${tot[c]>0?"+":""}${fmt(tot[c],tot[c]%1?1:0)}</b></td>`).join("")+"</tr>";
-    html+=`<tr><td>Closes in 0.5 s</td><td></td><td class="sc">${st("pass","yes")}</td>`+cs.map(c=>`<td class="sc">${C[c].passes_R19?st("pass","yes"):st("fail","no")}</td>`).join("")+"</tr></tbody>";
+    html+=`<tr><td>Selection basis 0.5 s (superseded 2026-10-12)</td><td></td><td class="sc">${st("pass","yes")}</td>`+cs.map(c=>`<td class="sc">${C[c].passes_R19?st("pass","yes"):st("fail","no")}</td>`).join("")+"</tr></tbody>";
     tbl.innerHTML=html;
     const top=cse==="base"?D.pugh.rank[0]:D.pugh.top_by_case[cse];
     $("#pughTop").textContent=`Top concept that closes in time: ${CN[top]||decode(top)}.`;$("#pughWhy").textContent="";
     const sg=v=>(v>0?"+":"")+fmt(v,v%1?1:0);
     const rk=[["Baseline",0]].concat(cs.map(c=>[CN[c],tot[c]])).sort((a,b)=>b[1]-a[1]);
-    $("#pughSum").innerHTML=`<li>Weighted total, best first${rk.map(([n,v],i)=>`<div class="rk"><span class="rn">${i+1}</span><span>${esc(n)}</span><b>${sg(v)}</b></div>`).join("")}</li><li>Close in 0.5 s<div class="rk"><span class="rn"></span><span>${["Baseline"].concat(cs.filter(c=>C[c].passes_R19).map(c=>CN[c])).join(", ")}</span></div>${cs.some(c=>!C[c].passes_R19)?`<div class="rk"><span class="rn"></span><span>Too slow: ${cs.filter(c=>!C[c].passes_R19).map(c=>CN[c].toLowerCase()).join(", ")}</span></div>`:""}</li>`;
+    $("#pughSum").innerHTML=`<li>Weighted total, best first${rk.map(([n,v],i)=>`<div class="rk"><span class="rn">${i+1}</span><span>${esc(n)}</span><b>${sg(v)}</b></div>`).join("")}</li><li>Selection basis 0.5 s (superseded 2026-10-12)<div class="rk"><span class="rn"></span><span>${["Baseline"].concat(cs.filter(c=>C[c].passes_R19).map(c=>CN[c])).join(", ")}</span></div>${cs.some(c=>!C[c].passes_R19)?`<div class="rk"><span class="rn"></span><span>Too slow: ${cs.filter(c=>!C[c].passes_R19).map(c=>CN[c].toLowerCase()).join(", ")}</span></div>`:""}</li>`;
   }
   tbl.addEventListener("click",e=>{const b=e.target.closest("button[data-k]");if(!b)return;$$("button[data-k]",tbl).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
     $("#pughWhy").textContent=`${CN[b.dataset.c]}, ${KLAB[b.dataset.k].toLowerCase()}: ${decode(D.pugh.scores[b.dataset.c][b.dataset.k].why)}.`;});
