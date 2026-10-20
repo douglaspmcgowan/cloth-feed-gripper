@@ -3,12 +3,14 @@
     "horn|housing": {"minimum_clearance_mm": 0.6, "direction_or_feature": "axial, horn face to housing face", "source": "B18"},
     "finger_a|knuckle_b": {"minimum_clearance_mm": 0.7, "direction_or_feature": "cross-side moving solids through jaw travel", "source": "B19"},
     "knuckle_a|finger_b": {"minimum_clearance_mm": 0.7, "direction_or_feature": "cross-side moving solids through jaw travel", "source": "B19"},
+    "fasteners_a|finger_b": {"minimum_clearance_mm": 0.7, "direction_or_feature": "cross-side fastener and finger through jaw travel", "source": "B19"},
+    "finger_a|fasteners_b": {"minimum_clearance_mm": 0.7, "direction_or_feature": "cross-side finger and fastener through jaw travel", "source": "B19"},
     "fasteners_a|housing": {"minimum_clearance_mm": 0.0, "direction_or_feature": "dog set screw in mid-plate arc slot, no rub or stop contact through -11..+20 (F09, R18)", "source": "F09"}
   },
   "sampling": {
     "method": "Half the largest absolute change from the stored minimum to an adjacent sampled pose, plus 0.0005 mm for rounding.",
     "rounding_allowance_mm": 0.0005,
-    "allowance_mm": {"horn|housing": 0.0005, "finger_a|knuckle_b": 0.4155, "knuckle_a|finger_b": 0.4155, "fasteners_a|housing": 0.001}
+    "allowance_mm": {"horn|housing": 0.0005, "finger_a|knuckle_b": 0.4155, "knuckle_a|finger_b": 0.4155, "fasteners_a|finger_b": 0.4065, "finger_a|fasteners_b": 0.4065, "fasteners_a|housing": 0.001}
   },
   "no_requirement": {
     "finger_a|finger_b": "TPU gripping surfaces intentionally meet below contact angle; pad interference is checked separately.",
@@ -22,8 +24,6 @@
     "nail_a|fsr_sensor_b": "The nail presses against the FSR sensor in service.",
     "fasteners_a|servo": "No design-basis row assigns a clearance for this dog-fastener gap.",
     "horn|fasteners": "No whole-solid clearance minimum is assigned to the horn centre fastener.",
-    "fasteners_a|finger_b": "No design-basis row assigns a cross-side fastener clearance; monitored without a pass verdict.",
-    "finger_a|fasteners_b": "No design-basis row assigns a cross-side fastener clearance; monitored without a pass verdict.",
     "finger_a|front_plate": "Separated moving finger and fixed plate; no adjacent assembly fit is defined.",
     "finger_a|housing": "Separated moving finger and fixed housing; no adjacent assembly fit is defined.",
     "finger_b|front_plate": "Separated moving finger and fixed plate; no adjacent assembly fit is defined.",
