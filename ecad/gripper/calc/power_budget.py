@@ -265,11 +265,11 @@ def report(r):
     print('\n(d) Dissipation (set point high, ESP32 100 mA load on +5V)')
     print(cm.table([[x['vin'], x['fit'], x['scenario'], '%.2f' % x['i_A'], '%.2f (%.0f %%)' % (x['RS1_W'], x['RS1_pct_rating']), '%.2f' % x['D2_W'], '%.3f' % x['Q1_W'], '%.3f' % x['F1_W'],
                      '%.2f + %.2f' % (x['U1_cond_W'], x['U1_switch_W']), '%.0f' % x['U1_rise_K'], '%.3f' % x['L1_W'], '%.2f' % x['U3_W'], '%.0f' % x['U3_rise_K']] for x in r['dissipation']],
-                   ['Vin V', 'fit', 'case', 'servo A', 'RS1 W (of 2 W)', 'D2 W', 'Q1 W', 'F1 W', 'U1 cond + switch W', 'U1 rise K (42 K/W)', 'L1 W', 'U3 W', 'U3 rise K (62 K/W)']))
+                   ['Vin V', 'fit', 'case', 'servo A', 'RS1 W (of 2 W)', 'D2 W', 'Q1 W', 'F1 W', 'U1 cond + switch W', 'U1 rise K (42 K/W)', 'L1 W', 'U3 W', 'U3 rise K (%.1f K/W)' % v('mcp_rth_sot223')]))
     print('\n(e) ESP32 supply chain with V_BUCK at its lowest in a stall (droop_sim.py, Vin 10.8 V): %.2f V' % r['esp_stall_vbuck_min'])
     print(cm.table([[x['case'], '%.3f' % x['i5_A'], '%.2f' % x['v5_V'], '%.2f' % x['d7_V'], '%.2f' % x['v5pin_V'], '%.2f' % x['ams_dropout_V'], '%+.2f' % x['ams_headroom_V'],
                      '%.3f' % x['v33_V'], '%+.2f' % x['margin_bod_V'], 'yes' if x['ldo_over_rating'] else 'no'] for x in r['esp_board_power']],
-                   ['board power case', '+5V A', '+5V V (LDO -3 %)', 'D7 drop V', 'DevKit 5V pin V', 'AMS1117 dropout V (max)', 'headroom to 3.267 V reg', '3V3 V', 'margin to BOD 2.43 V', '+5V load > 250 mA']))
+                   ['board power case', '+5V A', '+5V V (LDO -%.0f %%)' % (100 * v('mcp_vout_tol')), 'D7 drop V', 'DevKit 5V pin V', 'AMS1117 dropout V (max)', 'headroom to 3.267 V reg', '3V3 V', 'margin to BOD 2.43 V', '+5V load > 250 mA']))
     print('USB power (D7 reverse-biased, DevKitC diode drop %.2f V [A]):' % v('devkit_diode_drop'))
     print(cm.table([['%.2f' % x['v_usb_V'], '%.2f' % x['v5pin_V'], '%.2f' % x['ams_dropout_V'], '%+.2f' % x['ams_headroom_V'], '%.3f' % x['v33_V'], '%+.2f' % x['margin_bod_V']] for x in r['esp_usb']],
                    ['USB V', 'DevKit 5V pin V', 'AMS1117 dropout V (max)', 'headroom to 3.267 V reg', '3V3 V', 'margin to BOD 2.43 V']))

@@ -12,7 +12,7 @@ def test_every_entry_is_tagged_and_cited():
     for name, e in K.C.items():
         assert set(e) == {'value', 'unit', 'tag', 'url', 'retrieved', 'note'}, name
         assert e['tag'] in ('S', 'A'), name
-        assert e['retrieved'] == '2026-10-11', name
+        assert e['retrieved'] in ('2026-10-11', '2026-10-19'), name
         assert e['note'], name
         if e['tag'] == 'S':
             assert e['url'].startswith('https://'), name       # sourced means a URL was fetched
@@ -43,7 +43,7 @@ def test_ina219_default_config_is_pga8():
 
 def test_tags_present_for_assumed_parts():
     assumed = [k for k, e in K.C.items() if e['tag'] == 'A']
-    assert 'ams_dropout_typ' in assumed and 'esp_bod_default' in assumed
+    assert 'devkit_diode_drop' in assumed and 'esp_bod_default' in assumed
 
 
 def _unit_forms(value, unit):
