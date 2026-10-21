@@ -39,7 +39,7 @@ test("guide opens, walks every door, goes back and finishes with focus restored"
   for (const [title, hash, , door] of stops) {
     await page.locator("#tour-next").click();
     await expect(page.locator("#tour-title")).toHaveText(title);
-    await expect(page.locator("#tour-link")).toHaveAttribute("href", `/review/${hash}`);
+    await expect(page.locator("#tour-link")).toHaveAttribute("href", hash === "#fit-findings" ? /^\/review\/#fit-findings(?::~:text=.+)?$/ : `/review/${hash}`);
     await expect(page.locator(door)).toHaveAttribute("aria-current", "step");
     const { scrollWidth, clientWidth } = await noHorizontalScroll(page);
     expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
@@ -65,7 +65,7 @@ for (let n = 0; n < stops.length; n++) {
     await page.locator("#start-tour").click();
     for (let step = 0; step <= n; step++) await page.locator("#tour-next").click();
     await page.locator("#tour-link").click();
-    await page.waitForURL(`**/review/${hash}`);
+    await page.waitForURL(url => url.pathname === "/review/" && url.hash.split(":~:")[0] === hash);
     await expect(page.locator(`.view#${view}`)).toBeVisible();
     await page.locator("#rail .homelink").click();
     await expect(page.locator("#start-tour")).toBeVisible();
@@ -87,6 +87,41 @@ test("guide and motion preference remain usable when changed at runtime", async 
   await expect(page.locator("#tour-title")).toHaveText("Check the fits");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect.poll(() => page.locator("#teaser").evaluate(e => e.paused)).toBe(true);
+});
+
+test("guided fit handoff reveals the named horn-clearance finding inside the table", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#start-tour").click();
+  await page.locator("#tour-next").click();
+  await page.locator("#tour-next").click();
+  await page.locator("#tour-link").click();
+  const finding = page.getByRole("cell", { name: "Horn rim to housing wall", exact: true });
+  await expect(finding).toBeAttached();
+  // toBeVisible alone ignores clipping by the nested table scroller.
+  await expect.poll(() => finding.evaluate(cell => {
+    const r = cell.getBoundingClientRect();
+    let top = 0, bottom = innerHeight, left = 0, right = innerWidth;
+    for (let parent = cell.parentElement; parent; parent = parent.parentElement) {
+      const css = getComputedStyle(parent);
+      const p = parent.getBoundingClientRect();
+      if (/(auto|scroll|hidden)/.test(css.overflowY)) { top = Math.max(top, p.top); bottom = Math.min(bottom, p.bottom); }
+      if (/(auto|scroll|hidden)/.test(css.overflowX)) { left = Math.max(left, p.left); right = Math.min(right, p.right); }
+    }
+    return r.top >= top && r.bottom <= bottom && r.left >= left && r.right <= right;
+  }), { timeout: 10_000 }).toBe(true);
+});
+
+test("fit guide preserves the ordinary review route when text fragments are unsupported", async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(document, "fragmentDirective", { value: undefined }));
+  await page.goto("/");
+  await page.locator("#start-tour").click();
+  await page.locator("#tour-next").click();
+  await page.locator("#tour-next").click();
+  await expect(page.locator("#tour-copy")).toContainText("Find command");
+  await expect(page.locator("#tour-link")).toHaveAttribute("href", "/review/#fit-findings");
+  await expect(page.locator("#door-fit")).toHaveAttribute("href", "/review/#fit-findings");
+  await page.locator("#tour-link").click();
+  await expect(page.locator(".view#fit")).toBeVisible();
 });
 
 test("explainer and captions download only after play, with native playback and a recovery message", async ({ page }) => {

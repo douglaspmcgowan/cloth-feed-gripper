@@ -25,6 +25,7 @@ try {
     const scroll = await page.evaluate(() => ({ width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth }));
     await page.locator("#tour-link").click();
     await page.locator("#fit-findings").waitFor();
+    await page.waitForTimeout(1000); // Allow the browser's native text-fragment highlight to settle.
     await page.screenshot({ path: resolve(out, `review-fit-${scheme}-${width}.png`) });
     await page.locator("#rail .homelink").click();
     await page.locator("#play-explainer").click();

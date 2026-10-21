@@ -179,7 +179,6 @@ a {
 
 .hero-text {
   display: grid;
-  gap: var(--s3);
   align-content: center;
   align-items: start;
   gap: var(--s5);
@@ -359,7 +358,6 @@ a {
   border-radius: var(--r2);
 }
 
-.fails li:first-child { color: var(--ink); }
 .fails li b { color: var(--bad); }
 
 .fails b {

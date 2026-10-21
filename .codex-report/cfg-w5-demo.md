@@ -6,9 +6,9 @@ Source: fleet-route-ca0d60b247f240d2a2508df46c234639.md; local lane on SYSTEMATI
 
 - [x] Read craft, impeccable, design-review, slides, PRODUCT.md, DESIGN.md, SPEC.md and README.md.
 - [x] Baseline both pages at 1440, 768 and 375, light and dark; screenshots inspected.
-- [ ] Remake landing hierarchy, purposeful motion and accessible five-step tour.
-- [ ] Capture captioned 60–90 second walkthrough; encode H.264 faststart under 15 MB with small poster.
-- [ ] Add behavioral regression tests and observable specification criteria.
+- [x] Remake landing hierarchy, purposeful motion and accessible five-step tour.
+- [x] Capture captioned 60–90 second walkthrough; encode H.264 faststart under 15 MB with small poster.
+- [x] Add behavioral regression tests and observable specification criteria.
 - [ ] Inspect final renders, exercise primary flow and run all proving commands.
 - [ ] Update branch, commit, push and open PR.
 
@@ -36,15 +36,16 @@ Ordered checks: baseline/detector → critique/audit → layout/clarify/onboard 
 | onboard, animate | Run: optional guided route and sequence motion | Tour/reduced-motion tests |
 | adapt, harden, optimize, polish | Run: mobile, focus, media failure and lazy loading | Browser tests and network assertions |
 | document, spec | Run: record shipped rules and criteria | DESIGN.md and SPEC.md |
-| ui-feature-ledger | Run as preservation check: film play/back, doors, home, evidence and credits remain | Existing regression suite |
+| ui-feature-ledger | Skip formal ledger creation: FEATURES.md is outside lane ownership; preserve the existing controls through their live regression checks | Existing regression suite; no claim of a new ledger |
 | shape, init, stack, hue, colorize, extract | Skip: established static stack and shared palette are pinned; no new system or product discovery |
 | bolder, quieter, delight, overdrive, live | Skip: evidence called for hierarchy and teaching, not stronger ornament, variants or effects |
 | visualize, image-artist, imagegen-frontend-web, brandkit | Skip: real film and screen recording are the required assets; no synthetic product imagery |
 | slides, frontend-slides, html-slides | Skip: this deliverable is a website and screen recording, not a deck |
 | voice, tune | Skip: preserve factual engineering prose; no personal-voice rewrite requested |
 | compare-options, grill-me, brainstorming | Skip: audience, scope, navigation and visual system are settled by brief; no questions requested |
-| present, user | Run as independent rendered exercise: visitor must identify status and reach a finding | Browser primary-flow evidence |
-| probe | Run covering-risk check: test navigation boundaries, reduced motion, deferred requests and failures | New test inventory |
+| present | Skip a separate first-viewer study: the requested independent design review covers clarity; no separate naive-viewer rubric is claimed | Independent review answers and bounded limitations below |
+| user | Run the bounded independent matrix: identify status, use guide, reach fit evidence, return Home, play/close walkthrough | Six live primary-flow combinations |
+| probe | Skip a formal test-effectiveness campaign and unowned root ledger; focused failure detection belongs to this feature's regression work | Red/green tour and clipping regressions; no mutation score claimed |
 | hone, spar, tech-debt-audit | Skip: no measured performance incident, adversarial campaign or architecture audit in this bounded lane |
 | review | Run final diff and behavior review within owned paths | Checks and PR |
 
@@ -58,6 +59,9 @@ Prior art: W3C APG disclosure pattern (https://www.w3.org/WAI/ARIA/apg/patterns/
 - Get-Volume was denied; Python shutil.disk_usage read 16.35 GB free, above the 11 GB stop threshold.
 - Linked-worktree merge metadata was denied in sandbox; scoped elevated Git execution succeeded, Already up to date.
 - Host browser installation is not visible to sandboxed Chromium launch; scoped host execution captures successfully. No source workaround.
+- The sanctioned absolute PowerShell fleet-review invocation was rejected by `checkVisiblePowershell` when its inline brief contained command recipes. The complete refusal was filed with report-hook-misfire.js (Recorded); the same router accepted a file brief.
+- The reviewer’s additional time-boxed suite completed 127 assertions but exited 1 during plugin teardown at its 180-second ceiling. No assertion failed. The primary full suite separately exited 0 with 220 passed and 80 viewport-independent skips before the fit correction; a final full run covers the correction.
+- The live catalogue reported legacy PRODUCT.md schema drift. It was not repaired: product-record migration is outside this lane's owned paths and scope.
 
 ## Specs checked:
 

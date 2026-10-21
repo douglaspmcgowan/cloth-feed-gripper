@@ -69,7 +69,7 @@
   var tourSteps = [
     { title: "Begin with a question", copy: "This is a design record, not proof of a working prototype. The next stops show where to inspect the mechanism, question its clearances, check the assembly and find the claims still waiting for a test." },
     { title: "See the model", copy: "Start with the gripper on the arm wrist. Drag to orbit, move the jaw slider, then use Explode to see how the fingers and housing relate. Ask whether the proposed motion makes sense before reading the calculations.", door: "door-model" },
-    { title: "Check the fits", copy: "Look for the servo horn clearance finding. Read the measured gap and the method behind it. A CAD clearance is a prediction; it still needs to survive manufacturing and a real assembly.", door: "door-fit" },
+    { title: "Check the fits", copy: "Open the horn clearance finding. If it is not highlighted, use your browser’s Find command for ‘Horn rim to housing wall’. Scroll inside the table sideways to compare the gap, method and verdict. These CAD predictions still need a real assembly check.", door: "door-fit" },
     { title: "Follow the assembly", copy: "Step through the build order and watch parts enter along their intended paths. Check tool reach and the at-risk steps. A part fitting in its final position does not prove it can be installed.", door: "door-assembly" },
     { title: "Read what is still open", copy: "Finish with the requirement statuses, unresolved decisions and bench checks. Separate calculation from measurement. Use the failed and at-risk items to decide what a first prototype must establish.", door: "door-open" },
   ];
@@ -99,6 +99,11 @@
       var door = document.getElementById(step.door);
       door.setAttribute("aria-current", "step");
       tourLink.href = door.getAttribute("href");
+      // A native text fragment reveals the existing row without changing generated review code.
+      // Unsupported browsers keep the ordinary view link and explicit Find instructions.
+      if (step.door === "door-fit" && document.fragmentDirective) {
+        tourLink.setAttribute("href", door.getAttribute("href") + ":~:text=" + encodeURIComponent("Horn rim to housing wall"));
+      }
       tourLink.textContent = {
         "door-model": "Open the model",
         "door-fit": "Open the fit findings",
