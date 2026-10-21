@@ -33,7 +33,7 @@
   }
   reduced.addEventListener("change", function () {
     if (reduced.matches) stopTeaser();
-    else if (full.hidden) startTeaser();
+    else if (full.hidden && (!explainer || explainer.paused)) startTeaser();
   });
   startTeaser();
 
@@ -64,6 +64,149 @@
     startTeaser();
     playBtn.focus();
   });
+
+  /* Optional inline disclosure: the ordinary doors remain usable with no guide or script. */
+  var tourSteps = [
+    { title: "Begin with a question", copy: "This is a design record, not proof of a working prototype. The next stops show where to inspect the mechanism, question its clearances, check the assembly and find the claims still waiting for a test." },
+    { title: "See the model", copy: "Start with the gripper on the arm wrist. Drag to orbit, move the jaw slider, then use Explode to see how the fingers and housing relate. Ask whether the proposed motion makes sense before reading the calculations.", door: "door-model" },
+    { title: "Check the fits", copy: "Look for the servo horn clearance finding. Read the measured gap and the method behind it. A CAD clearance is a prediction; it still needs to survive manufacturing and a real assembly.", door: "door-fit" },
+    { title: "Follow the assembly", copy: "Step through the build order and watch parts enter along their intended paths. Check tool reach and the at-risk steps. A part fitting in its final position does not prove it can be installed.", door: "door-assembly" },
+    { title: "Read what is still open", copy: "Finish with the requirement statuses, unresolved decisions and bench checks. Separate calculation from measurement. Use the failed and at-risk items to decide what a first prototype must establish.", door: "door-open" },
+  ];
+  var tourIndex = 0;
+  var tourStart = document.getElementById("start-tour");
+  var tourPanel = document.getElementById("tour-panel");
+  var tourTitle = document.getElementById("tour-title");
+  var tourCopy = document.getElementById("tour-copy");
+  var tourLink = document.getElementById("tour-link");
+  var tourBack = document.getElementById("tour-back");
+  var tourNext = document.getElementById("tour-next");
+  var tourMotion;
+
+  function clearTourStop() {
+    document.querySelectorAll(".door[aria-current]").forEach(function (door) { door.removeAttribute("aria-current"); });
+  }
+  function showTourStep() {
+    var step = tourSteps[tourIndex];
+    clearTourStop();
+    tourTitle.textContent = step.title;
+    tourCopy.textContent = step.copy;
+    document.getElementById("tour-progress").textContent = "Step " + (tourIndex + 1) + " of " + tourSteps.length;
+    tourBack.disabled = tourIndex === 0;
+    tourNext.textContent = tourIndex === tourSteps.length - 1 ? "Finish tour" : "Next";
+    tourLink.hidden = !step.door;
+    if (step.door) {
+      var door = document.getElementById(step.door);
+      door.setAttribute("aria-current", "step");
+      tourLink.href = door.getAttribute("href");
+      tourLink.textContent = {
+        "door-model": "Open the model",
+        "door-fit": "Open the fit findings",
+        "door-assembly": "Open the assembly",
+        "door-open": "Open the remaining work"
+      }[step.door];
+    } else tourLink.removeAttribute("href");
+    if (tourMotion) tourMotion.cancel();
+    if (!reduced.matches) {
+      var motionTokens = getComputedStyle(document.documentElement);
+      tourMotion = document.getElementById("tour-content").animate(
+        [{ opacity: .65, transform: "translateY(" + motionTokens.getPropertyValue("--s2").trim() + ")" }, { opacity: 1, transform: "none" }],
+        { duration: parseFloat(motionTokens.getPropertyValue("--motion-step")), easing: motionTokens.getPropertyValue("--motion-ease").trim() }
+      );
+    }
+    tourTitle.focus({ preventScroll: true });
+  }
+  function closeTour() {
+    if (tourMotion) tourMotion.cancel();
+    tourPanel.hidden = true;
+    tourStart.setAttribute("aria-expanded", "false");
+    clearTourStop();
+    tourStart.focus({ preventScroll: true });
+  }
+  tourStart.hidden = false;
+  tourStart.addEventListener("click", function () {
+    if (!tourPanel.hidden) return closeTour();
+    tourIndex = 0;
+    tourPanel.hidden = false;
+    tourStart.setAttribute("aria-expanded", "true");
+    showTourStep();
+    tourPanel.scrollIntoView({ block: "nearest", behavior: reduced.matches ? "instant" : "smooth" });
+  });
+  document.getElementById("close-tour").addEventListener("click", closeTour);
+  tourBack.addEventListener("click", function () { if (tourIndex > 0) { tourIndex--; showTourStep(); } });
+  tourNext.addEventListener("click", function () {
+    if (tourIndex === tourSteps.length - 1) return closeTour();
+    tourIndex++; showTourStep();
+  });
+  tourPanel.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") { event.preventDefault(); closeTour(); }
+  });
+  reduced.addEventListener("change", function () { if (reduced.matches && tourMotion) tourMotion.cancel(); });
+
+  /* Observe one explanatory sequence, once. Never hide content behind the observer. */
+  if ("IntersectionObserver" in window) {
+    var sequence = document.querySelector(".mechanism");
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries.some(function (entry) { return entry.isIntersecting; })) {
+        sequence.classList.add("in-view");
+        observer.disconnect();
+      }
+    }, { threshold: .3 });
+    observer.observe(sequence);
+  }
+
+  /* No src or caption track exists until an explicit play. Closing releases both. */
+  var explainer = document.getElementById("explainer");
+  var explainerPlay = document.getElementById("play-explainer");
+  var explainerClose = document.getElementById("close-explainer");
+  var explainerStatus = document.getElementById("explainer-status");
+  explainer.controls = false;
+  explainerPlay.hidden = false;
+  explainerPlay.addEventListener("click", function () {
+    full.pause();
+    stopTeaser();
+    explainerStatus.textContent = "Loading the captioned walkthrough…";
+    explainerPlay.hidden = true;
+    explainerClose.hidden = false;
+    explainer.controls = true;
+    if (!explainer.querySelector("track")) {
+      var track = document.createElement("track");
+      track.kind = "captions";
+      track.label = "English";
+      track.srclang = "en";
+      track.default = true;
+      track.src = "/media/review-walkthrough.vtt";
+      explainer.append(track);
+      track.track.mode = "showing";
+    }
+    explainer.src = "/media/review-walkthrough.mp4";
+    var promise = explainer.play();
+    if (promise && promise.catch) promise.catch(function () {
+      if (explainer.error) return;
+      explainerStatus.textContent = "Use the video controls to begin playback. Captions included; no audio.";
+      explainer.focus();
+    });
+  });
+  explainer.addEventListener("playing", function () { explainerStatus.textContent = "Captions included; no audio. Pause or seek with the video controls."; });
+  explainer.addEventListener("error", function () {
+    explainerStatus.textContent = "The walkthrough could not be played. Try play again, or follow the guided tour above.";
+    explainerPlay.hidden = false;
+    explainerPlay.textContent = "Try the walkthrough again";
+  });
+  explainerClose.addEventListener("click", function () {
+    explainer.pause();
+    explainer.removeAttribute("src");
+    explainer.querySelectorAll("track").forEach(function (track) { track.remove(); });
+    explainer.load();
+    explainer.controls = false;
+    explainerClose.hidden = true;
+    explainerPlay.hidden = false;
+    explainerPlay.textContent = "Play the walkthrough";
+    explainerStatus.textContent = "Captions included; no audio. Use full screen for the review details.";
+    explainerPlay.focus();
+    if (full.hidden) startTeaser();
+  });
+  playBtn.addEventListener("click", function () { explainer.pause(); });
 
   /* Figures. */
   var facts = document.getElementById("facts");
