@@ -145,6 +145,22 @@ The landing page's three page tokens live in its own `:root` and not in `tokens.
 - Both pages hold at 375, 768 and 1440 widths with no horizontal page scroll.
 - Both pages are checked in light and dark schemes, with no console errors and no mojibake.
 
+### Professor first-visit route
+
+The landing is a reading surface in the established review system: Public Sans, shared blue-gray neutrals, one blue accent, semantic status colours, tonal secondary actions and proportional numerals. A professor may open it on a projected desktop or a phone, so the system follows the viewer's light/dark preference rather than forcing a presentation theme. The shared generated palette and type remain authoritative.
+
+- Wide landing: compact title and honest design status beside the real film. Narrow landing: title, status, film and controls stack. Play is the primary film action; the direct review remains available.
+- The mechanism is an unboxed ordered explanation: close the fingers, sense the squeeze, let the cloth move. The tour is a distinct optional disclosure beside ordinary deep-link doors. Evidence follows, with failed requirements given explicit semantic colour and their own evidence links. Credits form a quiet two-column directory on wide screens.
+- The tour never opens itself and never blocks navigation. A native button exposes `aria-expanded` and `aria-controls`; each step focuses its heading and marks the corresponding ordinary door with `aria-current="step"`. Previous is disabled at the first step; Finish and Close return focus to the start. Escape closes from within the panel. The live step count is navigation state, not a measured claim.
+- Motion has two jobs: a once-only mechanism sequence on entry (480 ms, staggered 80 ms), and tour state continuity (240 ms). Both use the named exponential ease-out token; content is already visible before script or observer. Reduced motion removes both, cancels an active tour animation and retains all controls.
+- Additional landing-only tokens in `landing.css`: `--section-space` is `clamp(48px, 7vw, 96px)`; `--motion-enter` is 480 ms; `--motion-step` is 240 ms; `--motion-ease` is `cubic-bezier(.16, 1, .3, 1)`; `--fs-caption` is `clamp(15px, 1.4vw, 24px)` so captions remain readable on a phone. The existing spacing scale supplies component padding and gaps.
+- The authored walkthrough assets are `media/review-walkthrough.mp4`, its JPEG poster and its English VTT captions. They are produced by `tests/capture-walkthrough.mjs`, separate from sync-generated films, which are unchanged. The video and caption track receive a source only on explicit play; native controls handle pause and seek. Closing releases both sources. Failure displays a recovery message and retry action while the guide remains usable.
+- The four doors are a bounded list of review jobs. Additional evidence belongs inside the review app; expanding from nine to ninety findings does not create ninety landing links.
+
+Interaction prior art: the W3C APG disclosure pattern (https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) supports the native optional disclosure. The guide uses it rather than a modal or a new tour dependency. The existing authored SVG arrow remains the only icon grammar; no new logo, font, trademark or third-party visual assets are introduced.
+
+The guided fit stop progressively enhances its ordinary view link with a native text fragment targeting the existing “Horn rim to housing wall” label when `document.fragmentDirective` is available. This reveals and highlights the named cell inside the nested table without modifying generated review code. The ordinary fit door remains unchanged; unsupported browsers retain its normal hash route and the guide names the browser Find command and horizontal table scrolling as recovery. Native text fragments are documented at https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment/Text_fragments. The browser test checks the cell against every clipping ancestor and the viewport, rather than treating DOM presence as successful arrival.
+
 ### Exceptions
 
 None recorded.

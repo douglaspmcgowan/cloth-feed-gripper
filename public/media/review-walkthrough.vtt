@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:00.347 --> 00:00:05.407
+Cloth-feed gripper: a design for guiding cotton into a sewing machine. Designed and simulated; not built or measured.
+
+00:00:05.407 --> 00:00:11.432
+Start the guided tour. Each stop gives you a question to ask and a direct route into the working review.
+
+00:00:11.432 --> 00:00:21.849
+See the model. Check how the mechanism moves before reading the calculations.
+
+00:00:21.849 --> 00:00:33.892
+Orbit the model, move the jaw and explode the parts. This is CAD geometry, not a physical prototype.
+
+00:00:33.892 --> 00:00:38.004
+Check the fits. Start with the servo horn clearance finding.
+
+00:00:38.004 --> 00:00:48.323
+Read the gap and its method. Manufacturing and assembly still need to confirm these predicted clearances.
+
+00:00:48.323 --> 00:00:52.410
+Follow the assembly. A final position does not prove that a part can be installed.
+
+00:00:52.410 --> 00:01:02.706
+Inspect the build sequence, insertion directions and tool reach. Pay attention to the at-risk steps.
+
+00:01:02.706 --> 00:01:06.821
+Read what is still open. Separate calculated results from measurements.
+
+00:01:06.821 --> 00:01:16.979
+Review requirement statuses, unresolved decisions and bench checks. Use these to plan what a first prototype must establish.
+
+00:01:16.979 --> 00:01:21.981
+Return to the evidence summary. Follow a failed requirement to its source, or open the remaining work to continue the review yourself.

@@ -42,3 +42,17 @@ Source of every requirement below: Douglas, 2026-10-10, "put the video in the we
 - [x] No console errors, no horizontal page scroll and no mojibake on either page at 1440x900, 768x1024 and 375x812, light and dark. Proof: `npm test`.
 - [x] The review app's 3D canvas draws non-blank pixels. Proof: `npm test`.
 - [x] A stranger on a phone can watch the film, learn the gripper is an unbuilt design and reach a specific fit finding. Proof: the three real-browser jobs recorded in the pull request.
+
+## Professor walkthrough
+
+Source: Douglas, 2026-10-19, "remake the layout, animations, tutorials, explainer video", refined by the professor-demo fleet brief on 2026-10-20.
+
+- [x] The landing page presents the cloth-feeding task and film first, explains the mechanism, offers a guided review, then shows evidence and remaining work; the unbuilt/unmeasured statement remains explicit. Proof: inspected light/dark captures of `/` at 1440, 768 and 375; existing landing assertions in `npm test`.
+- [x] An optional, replayable five-step "How to read this design" tour explains the model, fits, assembly and open-work doors, each with a working deep link. Previous, next, finish, close and Escape work; closing restores focus, current-stop state clears, and keyboard use completes the route. Proof: `tests/tour.spec.mjs` in the six-project browser matrix.
+- [x] Motion communicates the mechanism sequence and tour state changes, keeps content visible without animation, and stops when reduced motion is requested at startup or at runtime. Proof: the tour motion test, existing teaser test and inspected reduced-motion browser flow.
+- [x] A captioned 60–90 second headless screen recording of the actual tour and review app is served as H.264 MP4 under 15 MB, with moov before mdat and a poster under 250 KB. It has native pause/seek controls, English captions and no audio. Proof: `tests/tour.spec.mjs` asset and playback checks; reproducible capture via `tests/capture-walkthrough.mjs <ffmpeg>`.
+- [x] Neither the walkthrough video nor captions are requested before its explicit play action, including after scrolling to its poster. Close pauses and releases playback, and a failed media load offers retry and the tour as recovery. Proof: deferred network, close and aborted-response assertions in `tests/tour.spec.mjs`.
+- [x] Missing facts do not block the tour or direct review links. Proof: a forced facts response failure in `tests/tour.spec.mjs`; the existing fallback points into the review.
+- [x] When the browser exposes `document.fragmentDirective`, the guided fit link reveals the named horn-clearance cell within the real table viewport. Otherwise it retains the ordinary fit view link plus explicit Find and table-scroll instructions; ordinary doors keep their original routes. Proof: the clipped-viewport regression and unsupported-feature scenario in `tests/tour.spec.mjs`, plus inspected phone and desktop handoff captures.
+
+Tour step counters are navigation state derived from the step array, not engineering figures. All engineering figures remain sourced from `facts.json`.

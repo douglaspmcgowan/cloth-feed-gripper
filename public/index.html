@@ -28,12 +28,19 @@
 <link rel="stylesheet" href="/landing.css">
 </head>
 <body>
+<!-- THESIS: A professor can move from mechanism to evidence without guessing a route.
+OWN-WORLD: Preserve Public Sans, blue-gray tokens and the film's real gripper imagery.
+STORY: Understand the task, watch the design, inspect it, then identify untested claims.
+FIRST VIEWPORT: A compact title and honest status beside a large film; play is primary.
+FORM: Extend the established review system with a reading sequence and inline disclosure tour.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
+<a class="skip-link" href="#title">Skip to content</a>
 <header class="wrap top">
   <a class="brand" href="/">Cloth-feed gripper</a>
   <nav aria-label="Page">
-    <a href="#what">What it is</a>
-    <a href="#stands">Where it stands</a>
-    <a href="#inside">Inside the review</a>
+    <a href="#what">How it works</a>
+    <a href="#inside">Guided review</a>
+    <a href="#stands">Evidence and open work</a>
     <a class="btn tonal" href="/review/">Design review</a>
   </nav>
 </header>
@@ -41,8 +48,9 @@
 <main>
   <section class="wrap hero" aria-labelledby="title">
     <div class="hero-text">
-      <h1 id="title">A gripper that feeds cloth</h1>
-      <p class="lede">Two fingers pinch one layer of cotton and feed it to a sewing machine. Designed and simulated, not built.</p>
+      <h1 id="title" tabindex="-1">Cloth-feed gripper</h1>
+      <p class="lede">Pinch cotton. Guide it into a sewing machine. Designed and simulated; not built or measured.</p>
+      <a class="tour-jump" href="#inside">How to read this design <span aria-hidden="true">↓</span></a>
     </div>
 
     <figure class="film" id="film">
@@ -53,7 +61,7 @@
         <video id="full" controls playsinline preload="none" hidden width="1920" height="1080" aria-label="The full film about the gripper"></video>
       </div>
       <div class="film-actions" id="film-actions">
-        <button class="btn tonal" type="button" id="play-full">
+        <button class="btn" type="button" id="play-full">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
           Play the full film
         </button>
@@ -64,29 +72,35 @@
   </section>
 
   <section class="wrap band" id="what" aria-labelledby="what-h">
-    <h2 id="what-h">What it is</h2>
+    <h2 id="what-h">Pinch, sense, feed</h2>
     <div class="prose">
       <p>The cloth-feed gripper is a hand for the SO-101 robot arm: two fingers that pinch one layer of cotton and hold it under light tension while a sewing machine pulls it through.</p>
-      <p>One small servo drives both fingers through a pair of gears, and a force sensor behind one finger tells the controller how hard it is squeezing.</p>
+      <ol class="mechanism" aria-label="How the gripper works">
+        <li><b>Close the fingers</b><p>One servo drives both fingers through a pair of gears.</p></li>
+        <li><b>Sense the squeeze</b><p>A force sensor behind one finger tells the controller how hard it is squeezing.</p></li>
+        <li><b>Let the cloth move</b><p>The fingers hold light tension while the sewing machine pulls the cotton through.</p></li>
+      </ol>
       <p>It is a design for the ME102B course at UC Berkeley.</p>
     </div>
   </section>
 
-  <section class="wrap band" id="stands" aria-labelledby="stands-h">
-    <h2 id="stands-h">Where the design stands</h2>
-    <div class="stands">
-      <p>This design has not been built or measured. Every result comes from CAD, simulation and calculation, and the review marks which numbers are assumed.</p>
-      <div id="facts" aria-live="polite">
-        <p class="note">Loading the current requirement counts from the review.</p>
-      </div>
-      <noscript><p>Turn on JavaScript to see the current requirement counts here, or <a href="/review/#open-requirements">read them in the review</a>.</p></noscript>
-    </div>
-  </section>
-
   <section class="wrap band" id="inside" aria-labelledby="inside-h">
-    <h2 id="inside-h">Inside the review</h2>
-    <div class="prose">
-      <p>The review is the working record of the design. Pick the job you came to do.</p>
+    <div class="review-intro">
+      <h2 id="inside-h">How to read this design</h2>
+      <p>Start with the mechanism, then question the fits, the assembly and the claims that still need testing.</p>
+      <button class="btn" id="start-tour" type="button" aria-expanded="false" aria-controls="tour-panel" hidden>Start the guided tour</button>
+      <noscript><p>Follow the links below to explore each part of the review.</p></noscript>
+    </div>
+    <div class="review-route">
+      <section id="tour-panel" class="tour-panel" aria-label="Guided design review" hidden>
+        <div class="tour-top"><p id="tour-progress" class="note" role="status"></p><button class="btn tonal" id="close-tour" type="button">Close tour</button></div>
+        <div id="tour-content">
+          <h3 id="tour-title" tabindex="-1"></h3>
+          <p id="tour-copy"></p>
+          <a id="tour-link" class="tour-stop" hidden>Open this view</a>
+        </div>
+        <div class="tour-controls"><button id="tour-back" class="btn tonal" type="button">Previous</button><button id="tour-next" class="btn" type="button">Next</button></div>
+      </section>
       <ul class="doors" id="doors">
         <li>
           <a class="door" id="door-model" href="/review/#model">
@@ -117,6 +131,37 @@
           </a>
         </li>
       </ul>
+    </div>
+  </section>
+
+  <section class="wrap walkthrough-section" aria-labelledby="walkthrough-h">
+    <div class="prose">
+      <h2 id="walkthrough-h">Watch a review in motion</h2>
+      <p>A captioned walkthrough of the tour and the working review. Pause at any point, then try the same view yourself.</p>
+      <p class="note">Screen recording of the design record, not a physical prototype. The walkthrough loads only when you press play.</p>
+    </div>
+    <figure class="walkthrough">
+      <video id="explainer" playsinline controls preload="none" poster="/media/review-walkthrough-poster.jpg" width="1280" height="720" aria-label="Captioned walkthrough of the design review"></video>
+      <figcaption>
+        <button class="btn" id="play-explainer" type="button" hidden>Play the walkthrough</button>
+        <button class="btn tonal" id="close-explainer" type="button" hidden>Close walkthrough</button>
+        <p id="explainer-status" class="note" role="status">Captions included; no audio. Use full screen for the review details.</p>
+        <noscript><p>Enable JavaScript to play the walkthrough, or follow the review links above.</p></noscript>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap band" id="stands" aria-labelledby="stands-h">
+    <div class="evidence-intro">
+      <h2 id="stands-h">Evidence before a build</h2>
+      <p>This design has not been built or measured. Every result comes from CAD, simulation and calculation, and the review marks which numbers are assumed.</p>
+      <a class="btn tonal" href="/review/#open-requirements">Review the remaining work</a>
+    </div>
+    <div class="stands">
+      <div id="facts" aria-live="polite">
+        <p class="note">Loading the current requirement counts from the review.</p>
+      </div>
+      <noscript><p>Turn on JavaScript to see the current requirement counts here, or <a href="/review/#open-requirements">read them in the review</a>.</p></noscript>
     </div>
   </section>
 
