@@ -25,9 +25,12 @@ INK, SEC, LIGHT, ACC = (0x15, 0x18, 0x1b), (0x5b, 0x61, 0x68), (0xaa, 0xb1, 0xb8
 FILL = (0xe9, 0xec, 0xef)
 WHITE = (255, 255, 255)
 
-# config.h F_TARGET_DEFAULT_N, F_TRIP_N, F_CAP_N (read, not typed)
-_hold, _trip, _cap = FN.force_refs()
-REFS = [(_hold, f"{FN.g(_hold)} N hold"), (_trip, f"{FN.g(_trip)} N trip"), (_cap, f"{FN.g(_cap)} N cap")]
+# Firmware values and the separately authoritative R15 requirement (all read, not typed).
+_hold, _trip, _requirement, _cap = FN.force_semantics()
+REFS = [(_hold, f"{FN.g(_hold)} N hold"),
+        (_trip, f"{FN.g(_trip)} N trip"),
+        (_requirement, f"{FN.g(_requirement)} N requirement (R15)"),
+        (_cap, f"{FN.g(_cap)} N conditional controller ceiling")]
 T0, T1 = 0.3, 1.2          # S7 simulated-time window (s)
 YMAX = 11.0
 
@@ -157,6 +160,22 @@ def s7_geom(layout):
                 ytit=(80, 196), xtit=(575, 868), foot=(80, 966), foota="la", xtita="ma", head_y=72)
 
 
+def s7_reference_layout(layout):
+    """Reference label positions and measured boxes; close 7.75/8 N labels are separated."""
+    g = s7_geom(layout)
+    px1, py0, py1 = g["px1"], g["py0"], g["py1"]
+    y = lambda force: py1 - force/YMAX*(py1 - py0)
+    offsets = (0, 30, -30, 0)
+    entries = []
+    for (force, label), offset in zip(REFS, offsets):
+        label_y = y(force) + offset
+        box = font(700, g["lab"]).getbbox(label)
+        width, height = (box[2] - box[0]) / SS, (box[3] - box[1]) / SS
+        entries.append(dict(force=force, label=label, line_y=y(force), label_y=label_y,
+                            bounds=(px1 - 8 - width, label_y - height, px1 - 8, label_y + 4)))
+    return entries
+
+
 def s7_frame(layout, i):
     w, h = LAYOUTS[layout]; g = s7_geom(layout); c = Canvas(w, h)
     t = i / FPS
@@ -187,7 +206,9 @@ def s7_frame(layout, i):
     c.line([(px0, py0), (px0, py1)], SEC, 3, enter(t, 0.1, 0.4)[0])
 
     # reference lines
-    for k, (f, _) in enumerate(REFS):
+    ref_layout = s7_reference_layout(layout)
+    for k, ref in enumerate(ref_layout):
+        f = ref["force"]
         p = ease_out(prog(t, 0.3 + 0.1*k, 1.0))
         c.dashed(px0, px0 + (px1 - px0)*p, Y(f), SEC, 3, 0.9)
 
@@ -206,12 +227,15 @@ def s7_frame(layout, i):
     t5 = None
     above = np.where(FF >= 2.5)[0]
     t5 = 1.0 + (float(tt[above[0]]) - T0)/(T1 - T0)*4.0
-    for k, (f, lab) in enumerate(REFS):
+    for k, ref in enumerate(ref_layout):
+        f, lab = ref["force"], ref["label"]
         ts0 = t5 + 0.45*k
         e = ease_out(prog(t, ts0, ts0 + 0.35))
         pop = 1 + 0.12*math.sin(math.pi*clamp((t - ts0)/0.35))*(1 if t > ts0 else 0)
         if e > 0:
-            c.text((px1 - 8, Y(f) - 14 + 10*(1 - e)), lab, 700, g["lab"]*pop, INK, e, 0, "rd")
+            ly = ref["label_y"] - 14 + 10*(1 - e)
+            c.line([(px1 - 230, Y(f)), (px1 - 210, ly), (px1 - 8, ly)], SEC, 2, e)
+            c.text((px1 - 8, ly), lab, 700, g["lab"]*pop, INK, e, 0, "rd")
     # head dot and readout
     if p > 0:
         breathe = 0.5 + 0.5*math.sin(2*math.pi*(t - 5.0)/2.0 - math.pi/2) if t > 5.0 else 1.0
@@ -392,6 +416,7 @@ def main():
     ap.add_argument("shot", nargs="?", default="all", choices=["all", "S7", "S8"])
     ap.add_argument("--layout", choices=["land", "sq"])
     ap.add_argument("--frames", help="comma list of frame indices (default: all)")
+    ap.add_argument("--only-frame", type=int, help="render one frame")
     ap.add_argument("--jobs", type=int, default=os.cpu_count() or 1)
     a = ap.parse_args()
     shots = ["S7", "S8"] if a.shot == "all" else [a.shot]
@@ -399,7 +424,9 @@ def main():
     work = []
     for s in shots:
         n = SHOTS[s][0]
-        idx = [int(x) for x in a.frames.split(",")] if a.frames else range(n)
+        if a.only_frame is not None and a.frames:
+            ap.error("--only-frame and --frames are mutually exclusive")
+        idx = [a.only_frame] if a.only_frame is not None else ([int(x) for x in a.frames.split(",")] if a.frames else range(n))
         for l in layouts:
             work += [(s, l, i) for i in idx]
     with Pool(a.jobs) as p:

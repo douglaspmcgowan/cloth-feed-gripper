@@ -62,6 +62,32 @@ def force_refs():
     return config_define("F_TARGET_DEFAULT_N"), config_define("F_TRIP_N"), config_define("F_CAP_N")
 
 
+def requirement_force_limit_n():
+    """R15 pad-force limit from the current docs/gripper/DESIGN-BASIS.md requirement row.
+
+    The row is the authority. Missing, duplicate, or ambiguous criteria fail closed rather
+    than substituting the firmware's conditional internal ceiling.
+    """
+    rel = "docs/gripper/DESIGN-BASIS.md"
+    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+        rows = [line.rstrip("\n") for line in f if re.match(r"^\|\s*R15\s*\|", line)]
+    if len(rows) != 1:
+        raise ValueError(f"expected exactly one R15 row in {rel}; found {len(rows)}")
+    cells = [cell.strip() for cell in rows[0].strip().strip("|").split("|")]
+    if len(cells) < 3 or cells[0] != "R15":
+        raise ValueError(f"malformed R15 row in {rel}")
+    values = re.findall(r"Pad force\s*≤\s*\*\*([0-9]+(?:\.[0-9]+)?)\s*N\*\*", cells[2])
+    if len(values) != 1:
+        raise ValueError(f"expected one explicit 'Pad force ≤ **… N**' criterion in {rel} R15")
+    return float(values[0])
+
+
+def force_semantics():
+    """Hold, trip, R15 requirement, and conditional internal ceiling, in newtons."""
+    hold, trip, internal_ceiling = force_refs()
+    return hold, trip, requirement_force_limit_n(), internal_ceiling
+
+
 def jaw_floor_deg():
     """config.h JAW_MIN_DEG, the absolute firmware backstop."""
     return config_define("JAW_MIN_DEG")
@@ -79,3 +105,4 @@ def g(v):
 if __name__ == "__main__":
     print("mass g", total_mass_g(), "| servo", servo_label(), servo_price_usd(), "| gear pair g", gear_pair_g())
     print("refs N", force_refs(), "| floor deg", jaw_floor_deg(), "| lever mm", lever_mm())
+    print("R15 requirement N", requirement_force_limit_n(), "| F_CAP_N conditional internal ceiling N", force_refs()[2])

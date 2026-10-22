@@ -2,6 +2,8 @@
 
 A 62-second motion graphics film of the ME102B cloth-feed gripper, built from the real CAD meshes, the real jaw kinematics and the firmware simulation. Shot list, on-screen numbers and their sources: `STORYBOARD.md`. Rev B.1 numbers (mass, servo, gear pair, force lines, floor) are read from the committed CAD and firmware files by `src/film_numbers.py`; run it to print them. Review: `REVIEW.md`. Licences: `CREDITS.md`.
 
+Source correction 2026-10-22: S2 and S6 are configured as sharp engineering views; S7 distinguishes the R15 ≤ 8 N requirement from the 7.75 N firmware trip and conditional 10 N controller ceiling; S10 still reads its mass from canonical `fitcheck.json` (currently 153.9 g). Existing encoded deliverables have not been regenerated and remain pending native materialization and an independent whole-film review.
+
 ## Deliverables (`renders/`)
 
 | File | What |
@@ -30,6 +32,8 @@ SHOTS="S6 S9" SPP=128 sh video/gripper/src/render_3d.sh                         
 ```
 
 Every frame logs the device that rendered it (`FRAME S2 12 3.10s 1920x1080 64spp high mblur pid 19220 on GPU OPTIX NVIDIA RTX A4500 Laptop GPU`). Rendering is resumable: a frame is written as `NNNN.part.png` and renamed when complete, and frames already on disk are skipped.
+
+Production materialization must start with an empty native frame cache (or independently prove every required frame exists): S1 120, S2 150, S3 210, S4 180, S5 180, S6 180, S9 150 and S11 84, plus the separate 3413 × 1920 S10 plate. Do not use `compose.py`'s nearest-previous-frame preview fallback for a production encode. On the existing host pipeline, run `src/render_3d.sh` with Blender/bpy 5.1.2, OptiX, 1920 × 1080, 64 spp, high OIDN, motion blur and threshold 0.01; render the plate separately, then run the existing audio → graphics → compose → deliver chain. No CPU fallback is acceptance evidence for this correction.
 
 | Step | Script | Output |
 |---|---|---|
