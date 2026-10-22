@@ -6,9 +6,9 @@ Complete the original gripper program's current film deliverable using its exist
 
 ## Specs
 
-- [ ] S2hero/poster and S6contact comparison remain readable in actual native output; source-specific DOF control preserves other shots and intentional S10backgroundblur. Prove with real native1920referenceframes and encoded film review, not sharpening.
+- [x] S2hero/poster and S6contact comparison remain readable in actual native output; source-specific DOF control preserves other shots and intentional S10backgroundblur. Prove with real native1920referenceframes and encoded film review, not sharpening. Independent actual encoded-film review confirms this specific condition; whole-film remains NOT_READY due portrait V01.
 - [ ] S7distinguishes currentR15≤8Nrequirement,7.75Ntrip,5Nhold and conditionalinternal10Nceiling; actual landscape/square labels do not collide. Source values come from current authority, not stale JSONassumptions.
-- [ ] S10actual encodes show current authoritative153.9g mass; existing massgetter remains source-backed. Source-only tests cannot close stale encoded152.9.
+- [x] S10actual encodes show current authoritative153.9g mass; existing massgetter remains source-backed. Source-only tests cannot close stale encoded152.9. Independent actual encoded-film review confirms this specific condition; whole-film remains NOT_READY due portrait V01.
 - [ ] Every declared1254nativeframe plus3413x1920S10plate exists at productionsettings, with only the authoredS11endcardhold allowed; canonical audio/graphics/compose/deliver fullydecode and pass fresh independent encoded-film review. No sparse preview/upscaling/CPUfallback acceptance.
 
 ## Goal
@@ -17,11 +17,11 @@ Repair F01focus/F02stale encodedmass/F03force-label semantics from the independe
 
 ## Active
 
-- [~] Obtain fresh independent acceptance of actual regenerated films: native1254+1 and correctedgraphics780 complete; canonicalcompose/deliver and all3strictH264/AACdecodes/counts1860/1860/300 passed, producerfinished2026-10-22T12:14:31.558787Z beforeoriginal12:32:02UTCdeadline. Exact4newdeliverables and native/materializationreceipts now preserved in this owned branch; no defaultmerge/deploy. Nativecode46adf3c+graphics2431028+docsonly057627c, sourcepasses9Windowschecks7.71s. Sourcefinishing3ofmax3done; no furtherautomaticproducerrepair afterdeadline or failurebudget. Done when: new independent whole-film reviewer accepts actual encodedbytes/currentclaims, then combine with accepted UI21 and regenerate served projection once; hardware/wholeprogramgates remain separate.
+- [~] Rejected portrait V01: fresh independent review NOT_READY; landscape, teaser and poster accepted. Annotation backing erases orange plateau at38/39s, actual Windows gaps168/167pixels;37s negative control normal4pixel dot outline. Complete cloud result and host corroboration in PDS PR86c912490. Original producer503bb69 completed12:14:31 before12:32:02UTC and is CLOSED. Three finishing passes contain two failed repairs and one successful docs pass. Read-only tactician task_e_6ada09b2b67c83209a86f049086662ca adjudicates the unchanged unit boundary; no new repair or render window armed. Done when: contract boundary resolved and any actually authorized correction independently accepted, then combinedUI21/film22 served projection verified.
 
 ## Queue
 
-- [ ] Preserve verified encoded replacements on this owned branch and commission independent actual-film review. Original7200secondproducer ceiling2026-10-22T12:32:02.0335977Z remains absolute; no reset on correction/timeout/resume. Done when: all1254+1nativeframes, canonical3encodes/poster, currentclaims and fullvideo/audio decodes pass or deadline stops honestly, with every recoverableframe/receipt preserved. A separately bounded reviewer may inspect completed output afterward; it cannot restart an exhausted producer.
+- [x] Preserve and independently review exact replacements: source503bb69 contains four actual media artifacts and complete materialization/native receipts; all3strictH264AACdecodes/4020frames passed. Reviewer accepted three artifacts but rejected portrait V01. Review is terminal, no completion/quality pass inferred from decoding. Original7200second producer ceiling12:32:02UTC remains closed and cannot be restarted by review.
 
 ## Blocked
 
