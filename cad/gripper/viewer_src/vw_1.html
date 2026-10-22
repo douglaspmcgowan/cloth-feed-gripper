@@ -167,7 +167,8 @@ td.pick{background:var(--accent-soft);font-weight:600}
 /* 3D and drawings */
 .v3d{position:relative;height:var(--stage-h);background:var(--mesh)}
 .v3d canvas{display:block;width:100%;height:100%;touch-action:none}
-.v3d .msg{position:absolute;inset:0;display:grid;place-items:center;color:var(--ink2);padding:var(--s4);text-align:center}
+.v3d .msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s3);color:var(--ink2);padding:var(--s4);text-align:center}
+.v3d .msg .v3dreload{background:var(--surface);color:var(--ink);border-color:var(--line)}
 .v3d .hud{position:absolute;left:var(--s3);bottom:var(--s2);max-width:calc(100% - var(--s5));font-size:var(--fs-s);color:var(--ink);background:color-mix(in srgb,var(--surface) 85%,transparent);padding:2px var(--s2);border-radius:var(--r1);pointer-events:none;font-variant-numeric:tabular-nums}
 .v3d .hud:empty{display:none}
 .plist{display:grid;font-size:var(--fs-s)}

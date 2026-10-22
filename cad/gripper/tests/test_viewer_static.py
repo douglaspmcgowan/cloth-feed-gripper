@@ -329,3 +329,26 @@ def test_committed_viewer_matches_build(built):
 
 def test_stored_fit_audit_is_unchanged():
     assert hashlib.sha256(FIT_PATH.read_bytes()).hexdigest() == FIT_SHA256
+
+
+def test_dependency_waiting_has_recovery_and_distinct_terminal_state():
+    markup = (SOURCE / "vw_2.html").read_text(encoding="utf-8")
+    engine = (SOURCE / "vw_6.html").read_text(encoding="utf-8")
+    assert markup.count('class="v3dreload"') == 4
+    assert markup.count('role="status" aria-live="polite"') == 4
+    assert 'Still loading the 3D library.' in engine
+    assert 'V3.stillTimer=setTimeout' in engine
+    assert 'V3.failTimer=setTimeout' in engine
+    assert 'V3.waiting=false;V3.failed=false;V3.started=false;init3D()' in engine
+    assert 'if(!window.THREE&&!V3.failed)' in engine
+    assert '},20000)' not in engine
+
+
+def test_finding_frame_uses_projected_content_bounds():
+    source = (SOURCE / "vw_11.html").read_text(encoding="utf-8")
+    assert 'function findingFramePoints(f)' in source
+    assert 'const pq=f.pair.p[thIdx(FST.th)]' in source
+    assert 'new THREE.Vector3(-16,12,0)' in source
+    assert 'halfW=Math.max' in source and 'halfH=Math.max' in source
+    assert '/asp)*pad' in source
+    assert '55)/Math.sqrt' not in source
