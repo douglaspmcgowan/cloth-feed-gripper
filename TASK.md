@@ -17,11 +17,11 @@ Repair F01focus/F02stale encodedmass/F03force-label semantics from the independe
 
 ## Active
 
-- [~] Receive cloudsourcecandidate task_e_6ad9e63551fc832097ef556b6c83e2d7 / route-b0b4795b, builder6luna/xhigh/CodexCloud,1800secondchildbound. Temporary PDSinput agent/gripper-film-fix-input-20261022 at1073d14 contains exactsourcebaseline/archive/nativeprobes. Done when: guardedcarrierimport and verified product-onlytransfer to this actualsourceowner, meaningfulsource/graphics checks and nativecandidateframeproof pass; source-only result remains pendingfullmaterialization.
+- [~] Materialize and independently accept verified source46adf3c: cloudwriter terminal/harvested17exactpaths, six original blob hashes audited before six product-only paths transferred. Seven actual Windows source tests passed1.40s. NativeGPU verifier98242/PID31116 active, original12:32:02UTCdeadline. Audio and780graphicsframes completed exit0. Event-gated compositor61974/PID8648 waits on actual nativeprocess handle, then validates1254+1native hashes/dimensions and fullydecodes780graphics before canonicalcompose/deliver/full3movieproof. Sampled S7square7.75Nlabel is crossed by a reference line; preserve as concrete legibility finding pending independent review. Done when: verified actual encoded replacements and fresh independent acceptance; no source-only/hardware/default/deploy closure.
 
 ## Queue
 
-- [ ] Materialize and verify actual native films only after sourcecandidate passes, livehardwareadmission and remaining originalunit/globalbounds suffice. Filmparent admitted2026-10-22T10:32:02.0335977Z,7200secondhardceiling12:32:02.0335977Z; no reset on correction/timeout/resume. Done when: complete1254+1nativeframeoracle/canonicalencodes/decodedframes/currentclaims/freshindependentreview pass or deadline honestlystops incomplete, preserving everyrecoverableframe/receipt.
+- [ ] Preserve verified encoded replacements on this owned branch and commission independent actual-film review. Original7200secondproducer ceiling2026-10-22T12:32:02.0335977Z remains absolute; no reset on correction/timeout/resume. Done when: all1254+1nativeframes, canonical3encodes/poster, currentclaims and fullvideo/audio decodes pass or deadline stops honestly, with every recoverableframe/receipt preserved. A separately bounded reviewer may inspect completed output afterward; it cannot restart an exhausted producer.
 
 ## Blocked
 
@@ -30,7 +30,7 @@ Repair F01focus/F02stale encodedmass/F03force-label semantics from the independe
 ## Completed
 
 - [x] Prepared isolated owned sourcebranch fromb05a2b8/currentmaind4861b3 plus installed canonicalharness. StableCFG Get-WorkResume confirmsnotenrolled; TASKauthored. No UIchanges onthisbranch.
-- [x] NativeGPUdiagnosis: officialbpy5.1.2 isolateduvruntime, actualRTXA4500OptiX/1920x1080/64spp/highOIDN/mblur. Five shortreferenceframes, perprobe300secondnoCPUfallbackbound; actualS2/S6unchanged-sourceblur reproduced, in-memoryDOFoff resolvesmacrolegibility. Source/geometry/fit/moviebytes unchanged; sourcecodefix/fullmovie stillpending. Evidence in PDS PR86 film-gpu-diagnosis-20261022.
+- [x] NativeGPUdiagnosis: officialbpy5.1.2 isolateduvruntime, actualRTXA4500OptiX/1920x1080/64spp/highOIDN/mblur. Five shortreferenceframes, perprobe300secondnoCPUfallbackbound; actualS2/S6unchanged-sourceblur reproduced, in-memoryDOFoff resolvesmacrolegibility. Source/geometry/fit/moviebytes unchanged; sourcecodefix46adf3c verified; fullmovie stillpending. Evidence in PDS PR86 film-gpu-diagnosis-20261022.
 - [x] Currentfilm_numbersCLI reports153.9g/$27servo/2.56gear pair. Actual currentR15row in DESIGN-BASIS.mdlimits8N; legacydesign_basis_out.json10Nassumptions are not currentauthority.
 
 ## Verification
