@@ -2,6 +2,8 @@
 
 A 62-second motion graphics film of the ME102B cloth-feed gripper, built from the real CAD meshes, the real jaw kinematics and the firmware simulation. Shot list, on-screen numbers and their sources: `STORYBOARD.md`. Rev B.1 numbers (mass, servo, gear pair, force lines, floor) are read from the committed CAD and firmware files by `src/film_numbers.py`; run it to print them. Review: `REVIEW.md`. Licences: `CREDITS.md`.
 
+Source correction 2026-10-22: S2 and S6 disable shot-specific optical depth of field; the S10 plate inherits S2's disabled optical depth of field while retaining the compositor Gaussian blur. S7 distinguishes four values: 5 N hold, 7.75 N firmware trip, the R15 ≤ 8 N requirement and the conditional 10 N controller ceiling. S10 reads its mass through the canonical source getter from `fitcheck.json` (153.9 g). Source tests and source-graphic proof do not accept checked-in encodes. Accepting replacement films requires an executed receipt for a complete native manifest—1,254 regular frames (S1 120, S2 150, S3 210, S4 180, S5 180, S6 180, S9 150 and S11 84) plus the separate S10 plate—followed by the canonical audio → graphics → compose → deliver chain, full H.264/AAC decode, frame-count and poster checks, and a fresh independent whole-film review with exact artifact hashes. Historical reviews apply only to their dated bytes; current status and hashes belong in the actual executed receipts associated with this source PR. No native-render, encoded-film, hardware or bench acceptance is claimed here.
+
 ## Deliverables (`renders/`)
 
 | File | What |
@@ -30,6 +32,8 @@ SHOTS="S6 S9" SPP=128 sh video/gripper/src/render_3d.sh                         
 ```
 
 Every frame logs the device that rendered it (`FRAME S2 12 3.10s 1920x1080 64spp high mblur pid 19220 on GPU OPTIX NVIDIA RTX A4500 Laptop GPU`). Rendering is resumable: a frame is written as `NNNN.part.png` and renamed when complete, and frames already on disk are skipped.
+
+Production materialization must start with an empty native frame cache (or independently prove every required frame exists): S1 120, S2 150, S3 210, S4 180, S5 180, S6 180, S9 150 and S11 84, plus the separate 3413 × 1920 S10 plate. Do not use `compose.py`'s nearest-previous-frame preview fallback for a production encode. On the existing host pipeline, run `src/render_3d.sh` with Blender/bpy 5.1.2, OptiX, 1920 × 1080, 64 spp, high OIDN, motion blur and threshold 0.01; render the plate separately, then run the existing audio → graphics → compose → deliver chain. No CPU fallback is acceptance evidence for this correction.
 
 | Step | Script | Output |
 |---|---|---|

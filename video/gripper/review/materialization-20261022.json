@@ -1,0 +1,139 @@
+{
+  "state": "encoded-complete-pending-independent-review",
+  "pid": 34860,
+  "native_pid": 31116,
+  "source_owner_head": "2431028766f36bee6c82f7798a0042dfb13cfefa",
+  "native_source_head": "46adf3cec47964eda8f523fa8776bb02823a62ba",
+  "graphics_only_overlay": {
+    "task_id": "task_e_6ad9f4630958832087ffcb77de6d1ecd",
+    "carrier_head": "827b4a232d14684818fef5e80c09d20178a98ba3",
+    "native_source_head": "46adf3cec47964eda8f523fa8776bb02823a62ba",
+    "source_owner_head": "2431028766f36bee6c82f7798a0042dfb13cfefa",
+    "product_paths": [
+      "video/gripper/graphics/make_graphics.py",
+      "video/gripper/tests/test_film_sources.py"
+    ],
+    "verified_candidate_baselines": 2,
+    "patch_sha256": "852331ff8566f07a0bbb4f2a9bf3222207665ed82440500307e58e675ba770c2",
+    "snapshot_source_sha256": {
+      "video/gripper/graphics/make_graphics.py": "c878980c7f01130f4f44ccfd1bd879f16d6ae87b76f4c9801d67289f2d9b5b3b",
+      "video/gripper/tests/test_film_sources.py": "0b0d4b54835ba6e5b0020645dc023ccb177930815e0483a60b17c1bc2867d26c"
+    },
+    "native_critical_hashes_unchanged": true,
+    "recorded_utc": "2026-10-22T11:45:19.791721+00:00",
+    "hard_deadline": "2026-10-22T12:32:02.033597+00:00",
+    "full_graphics_regeneration": "PENDING",
+    "encoded_acceptance": "PENDING"
+  },
+  "hard_deadline": "2026-10-22T12:32:02.033597+00:00",
+  "started_at": "2026-10-22T11:49:02.038882+00:00",
+  "original_deliverable_sha256": {
+    "gripper_hype_1080p.mp4": "083499c3fd2d4a235e32fa6099f0e71ec3063ab464e12907905872b1b394e2a5",
+    "gripper_hype_vertical.mp4": "e6098898dbef87fb1b153babec1fd4ca342b8b0dcb85e28e2fd9847306e5c8e7",
+    "teaser_10s.mp4": "d403d5276f388f5c4d2eae042aead31fcd61831f1d12f0986113189763056b60",
+    "poster.png": "18ad989ce3d2bbdd44caa8087e01d2fe2d52abf4e68a1a7eb8cd8c0f8ea744e6"
+  },
+  "steps": [
+    {
+      "step": "compose",
+      "exit": 0,
+      "log_sha256": "a347f473f412f7c28739948a3d89278f46ea508d7f8c00084f39d16e96abaf58",
+      "completed_at": "2026-10-22T12:14:16.296373+00:00"
+    },
+    {
+      "step": "deliver",
+      "exit": 0,
+      "log_sha256": "df2046e41c41aeb72ee6f74a4186f84b5ace91dc9851ff404593c9d53407b29f",
+      "completed_at": "2026-10-22T12:14:21.308940+00:00"
+    },
+    {
+      "step": "decode-gripper_hype_1080p",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "completed_at": "2026-10-22T12:14:26.660592+00:00"
+    },
+    {
+      "step": "decode-gripper_hype_vertical",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "completed_at": "2026-10-22T12:14:31.022122+00:00"
+    },
+    {
+      "step": "decode-teaser_10s",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "completed_at": "2026-10-22T12:14:31.512674+00:00"
+    }
+  ],
+  "outputs": [
+    {
+      "bytes": 11537153,
+      "sha256": "1394bb6214d7ef494754b1a1c2a056776e30cdb82c8e0f0c1421607d6f41f721",
+      "frames": 1860,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "full_video_audio_decode_exit": 0,
+      "original_bytes_changed": true,
+      "path": "video/gripper/renders/gripper_hype_1080p.mp4"
+    },
+    {
+      "bytes": 8866422,
+      "sha256": "68d841f98cf8ff88b12329a9ff6e2e871c642dd2cc8c3007551cdefe7d583c46",
+      "frames": 1860,
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "full_video_audio_decode_exit": 0,
+      "original_bytes_changed": true,
+      "path": "video/gripper/renders/gripper_hype_vertical.mp4"
+    },
+    {
+      "bytes": 821097,
+      "sha256": "39265dfff6dbbb6add45f2d775cae130d0701104b370918d796fda23edc8a707",
+      "frames": 300,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "full_video_audio_decode_exit": 0,
+      "original_bytes_changed": true,
+      "path": "video/gripper/renders/teaser_10s.mp4"
+    },
+    {
+      "bytes": 1322773,
+      "sha256": "59cbaa8f8d6c7531c5675dd1f9a53d73d7802bbe8d8adf41ee2e8803bda36ef9",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "path": "video/gripper/renders/poster.png"
+    }
+  ],
+  "encoded_materialization_complete": true,
+  "independent_acceptance": "PENDING",
+  "subjective_listening_performed": false,
+  "native_exit_code": 0,
+  "native_frames": 1255,
+  "graphics_frames": 780,
+  "unexpected_sparse_fallback_allowed": false,
+  "authored_S11_last_frame_hold": true,
+  "child_pid": 57616,
+  "completed_at": "2026-10-22T12:14:31.558787+00:00",
+  "documentation_only_source_head": "057627c29b79856fde51dd82518e5aa8acdaba79",
+  "source_code_tests": {
+    "windows_passed": 9,
+    "seconds": 7.71
+  },
+  "graphics": {
+    "fully_decoded": 780,
+    "audio_unchanged": true,
+    "native_critical_inputs_unchanged": true
+  },
+  "native_manifest_path": "video/gripper/review/native-frames-20261022.json",
+  "native_manifest_sha256": "a35a61039153f358c8a4c4952b7372991cc3df0509b2163b5f26a71e82268781",
+  "public_projection": "PENDING combined UI/film integration after independent film acceptance",
+  "no_default_merge_or_deployment": true
+}

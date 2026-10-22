@@ -156,7 +156,8 @@ def shot_S2():
         th = lerp(0.0, 20.0, seg(t, 0.8, 3.6))
         tgt = c["rig"].g2w((0, -20, 0))
         eye = orbit(tgt, lerp(-42, -18, seg(t, 0, 5)), lerp(20, 14, seg(t, 0, 5)), lerp(0.42, 0.38, seg(t, 0, 5)))
-        return dict(theta=th, eye=eye, target=tgt, lens=60, fstop=5.6, focus=tgt)
+        # Engineering overview: keep the complete mechanism readable throughout the orbit.
+        return dict(theta=th, eye=eye, target=tgt, lens=60, fstop=5.6, focus=tgt, use_dof=False)
     return 150, None, state
 
 
@@ -217,7 +218,8 @@ def shot_S6():
         th = lerp(6.0, THETA_CONTACT, seg(t, 0.8, 3.8))
         tgt = c["rig"].g2w((CLOTH_X, -64, 5))
         eye = orbit(tgt, lerp(-34, -18, seg(t, 0, 6)), lerp(16, 10, seg(t, 0, 6)), lerp(0.17, 0.15, seg(t, 0, 6)))
-        return dict(theta=th, eye=eye, target=tgt, lens=100, fstop=6.3, focus=tgt)
+        # Engineering comparison: both contact faces and the cloth edge must stay readable.
+        return dict(theta=th, eye=eye, target=tgt, lens=100, fstop=6.3, focus=tgt, use_dof=False)
     return 180, setup, state
 
 
@@ -307,11 +309,13 @@ def prepare(a):
         rig.key(f)
         S.look_at(cam, st["eye"], st["target"])
         cam.data.lens = st["lens"]
+        cam.data.dof.use_dof = st.get("use_dof", True)
         cam.data.dof.aperture_fstop = st["fstop"]
         focus_empty.location = st["focus"]
         cam.keyframe_insert("location", frame=f)
         cam.keyframe_insert("rotation_euler", frame=f)
         cam.data.keyframe_insert("lens", frame=f)
+        cam.data.dof.keyframe_insert("use_dof", frame=f)
         focus_empty.keyframe_insert("location", frame=f)
         bpy.context.view_layer.update()
         pts = {}

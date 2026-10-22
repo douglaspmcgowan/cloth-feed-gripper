@@ -25,9 +25,12 @@ INK, SEC, LIGHT, ACC = (0x15, 0x18, 0x1b), (0x5b, 0x61, 0x68), (0xaa, 0xb1, 0xb8
 FILL = (0xe9, 0xec, 0xef)
 WHITE = (255, 255, 255)
 
-# config.h F_TARGET_DEFAULT_N, F_TRIP_N, F_CAP_N (read, not typed)
-_hold, _trip, _cap = FN.force_refs()
-REFS = [(_hold, f"{FN.g(_hold)} N hold"), (_trip, f"{FN.g(_trip)} N trip"), (_cap, f"{FN.g(_cap)} N cap")]
+# Firmware values and the separately authoritative R15 requirement (all read, not typed).
+_hold, _trip, _requirement, _cap = FN.force_semantics()
+REFS = [(_hold, f"{FN.g(_hold)} N hold"),
+        (_trip, f"{FN.g(_trip)} N trip"),
+        (_requirement, f"{FN.g(_requirement)} N requirement (R15)"),
+        (_cap, f"{FN.g(_cap)} N conditional controller ceiling")]
 T0, T1 = 0.3, 1.2          # S7 simulated-time window (s)
 YMAX = 11.0
 
@@ -130,6 +133,12 @@ class Canvas:
         if a <= 0.004: return
         self.d.ellipse(((cx-r)*SS, (cy-r)*SS, (cx+r)*SS, (cy+r)*SS), fill=color + (int(255*clamp(a)),))
 
+    def restore_background(self, box):
+        """Clear chart strokes behind an annotation without adding a visible panel."""
+        scaled = tuple(int(round(v*SS)) for v in box)
+        clean = background(self.w, self.h)
+        self.img.paste(clean.crop(scaled), scaled)
+
     def finish(self):
         return self.img.convert("RGB").resize((self.w, self.h), Image.LANCZOS)
 
@@ -155,6 +164,26 @@ def s7_geom(layout):
                     ytit=(96, 200), xtit=(190, 950), foot=(1824, 950), foota="ra", xtita="la", head_y=84)
     return dict(M=80, hs=60, ro=56, px0=150, px1=1000, py0=250, py1=800, lab=42, ax=36,
                 ytit=(80, 196), xtit=(575, 868), foot=(80, 966), foota="la", xtita="ma", head_y=72)
+
+
+def s7_reference_layout(layout):
+    """Reference label positions and measured boxes; close 7.75/8 N labels are separated."""
+    g = s7_geom(layout)
+    px1, py0, py1 = g["px1"], g["py0"], g["py1"]
+    y = lambda force: py1 - force/YMAX*(py1 - py0)
+    offsets = (0, 30, -30, 0)
+    entries = []
+    for (force, label), offset in zip(REFS, offsets):
+        label_y = y(force) + offset
+        baseline = label_y - 14
+        box = font(700, g["lab"]).getbbox(label, anchor="rd")
+        bounds = (px1 - 8 + box[0]/SS, baseline + box[1]/SS,
+                  px1 - 8 + box[2]/SS, baseline + box[3]/SS)
+        entries.append(dict(force=force, label=label, line_y=y(force), label_y=label_y,
+                            bounds=bounds,
+                            clearance=(bounds[0] - 10, bounds[1] - 8,
+                                       px1 + 2, bounds[3] + 28)))
+    return entries
 
 
 def s7_frame(layout, i):
@@ -187,7 +216,9 @@ def s7_frame(layout, i):
     c.line([(px0, py0), (px0, py1)], SEC, 3, enter(t, 0.1, 0.4)[0])
 
     # reference lines
-    for k, (f, _) in enumerate(REFS):
+    ref_layout = s7_reference_layout(layout)
+    for k, ref in enumerate(ref_layout):
+        f = ref["force"]
         p = ease_out(prog(t, 0.3 + 0.1*k, 1.0))
         c.dashed(px0, px0 + (px1 - px0)*p, Y(f), SEC, 3, 0.9)
 
@@ -206,12 +237,20 @@ def s7_frame(layout, i):
     t5 = None
     above = np.where(FF >= 2.5)[0]
     t5 = 1.0 + (float(tt[above[0]]) - T0)/(T1 - T0)*4.0
-    for k, (f, lab) in enumerate(REFS):
+    for k, ref in enumerate(ref_layout):
+        f, lab = ref["force"], ref["label"]
         ts0 = t5 + 0.45*k
         e = ease_out(prog(t, ts0, ts0 + 0.35))
         pop = 1 + 0.12*math.sin(math.pi*clamp((t - ts0)/0.35))*(1 if t > ts0 else 0)
         if e > 0:
-            c.text((px1 - 8, Y(f) - 14 + 10*(1 - e)), lab, 700, g["lab"]*pop, INK, e, 0, "rd")
+            ly = ref["label_y"] - 14 + 10*(1 - e)
+            label_size = g["lab"]*pop
+            box = font(700, label_size).getbbox(lab, anchor="rd")
+            clear = (px1 - 8 + box[0]/SS - 10, ly + box[1]/SS - 8,
+                     px1 + 2, ly + box[3]/SS + 28)
+            c.line([(clear[0] - 42, Y(f)), (clear[0] - 22, ly), (clear[0] - 8, ly)], SEC, 2, e)
+            c.restore_background(clear)
+            c.text((px1 - 8, ly), lab, 700, label_size, INK, e, 0, "rd")
     # head dot and readout
     if p > 0:
         breathe = 0.5 + 0.5*math.sin(2*math.pi*(t - 5.0)/2.0 - math.pi/2) if t > 5.0 else 1.0
@@ -392,6 +431,7 @@ def main():
     ap.add_argument("shot", nargs="?", default="all", choices=["all", "S7", "S8"])
     ap.add_argument("--layout", choices=["land", "sq"])
     ap.add_argument("--frames", help="comma list of frame indices (default: all)")
+    ap.add_argument("--only-frame", type=int, help="render one frame")
     ap.add_argument("--jobs", type=int, default=os.cpu_count() or 1)
     a = ap.parse_args()
     shots = ["S7", "S8"] if a.shot == "all" else [a.shot]
@@ -399,7 +439,9 @@ def main():
     work = []
     for s in shots:
         n = SHOTS[s][0]
-        idx = [int(x) for x in a.frames.split(",")] if a.frames else range(n)
+        if a.only_frame is not None and a.frames:
+            ap.error("--only-frame and --frames are mutually exclusive")
+        idx = [a.only_frame] if a.only_frame is not None else ([int(x) for x in a.frames.split(",")] if a.frames else range(n))
         for l in layouts:
             work += [(s, l, i) for i in idx]
     with Pool(a.jobs) as p:
