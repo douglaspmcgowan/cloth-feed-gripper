@@ -16,7 +16,7 @@ Fix actual phone fit framing and loading feedback from the independently verifie
 
 ## Active
 
-- [~] Receive and verify cloud UI repair task_e_6ad9d84cc10c8320b378f27ce4995c95, route-6656d456, builder gpt-6-luna/xhigh/cloud, hard3600s. Temporary PDS carrier agent/gripper-ui-fix-input-20261022 f938e6c contains exact source baselines and full same-commit dependency closure; never merge that branch into either production default. Done when: guarded full carrier patch inspected, exact product-only diff transferred against verified CFG blob identities, relevant Windows checks and fresh actual browser acceptance pass.
+- [~] Independent acceptance of candidate source7706b8b: both cloud corrections terminal/harvested through exact canonical guards; six original blob hashes verified and seven product-only paths transferred. Windows static/build30passed6.40s; actual Chrome finding cases at390/768/1440 and delayed recovery passed. Existing sync.py generated public review/facts/provenance from7706b8b; check_public scanned19files,18allowlisted,0open/0errors. Producer ceiling remains11:32:38UTC, source materialized before it. Done when: fresh independent actual-browser acceptance returns and its concrete findings are adjudicated; no default merge/deployment or physical proof inferred.
 
 ## Queue
 

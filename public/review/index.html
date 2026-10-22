@@ -196,7 +196,8 @@ td.pick{background:var(--accent-soft);font-weight:600}
 /* 3D and drawings */
 .v3d{position:relative;height:var(--stage-h);background:var(--mesh)}
 .v3d canvas{display:block;width:100%;height:100%;touch-action:none}
-.v3d .msg{position:absolute;inset:0;display:grid;place-items:center;color:var(--ink2);padding:var(--s4);text-align:center}
+.v3d .msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s3);color:var(--ink2);padding:var(--s4);text-align:center}
+.v3d .msg .v3dreload{background:var(--surface);color:var(--ink);border-color:var(--line)}
 .v3d .hud{position:absolute;left:var(--s3);bottom:var(--s2);max-width:calc(100% - var(--s5));font-size:var(--fs-s);color:var(--ink);background:color-mix(in srgb,var(--surface) 85%,transparent);padding:2px var(--s2);border-radius:var(--r1);pointer-events:none;font-variant-numeric:tabular-nums}
 .v3d .hud:empty{display:none}
 .plist{display:grid;font-size:var(--fs-s)}
@@ -432,6 +433,10 @@ tr.tot td{background:var(--accent-soft)}
 @media (prefers-reduced-motion:reduce){*{transition-duration:0s}}
 </style>
 
+<script>
+/* This timer starts while the deferred Three.js module is still in flight, before the viewer engine runs. */
+window.__threeStillTimer=setTimeout(()=>{if(!window.THREE)document.querySelectorAll(".v3dmsg").forEach(m=>{const t=m.querySelector("span");if(t&&m.dataset.state!=="failed"){t.textContent="Still loading the 3D library. You can reload now or keep using Parts and the other views.";m.dataset.state="loading";}});},2500);
+</script>
 <div class="app">
 <nav class="rail" id="rail" aria-label="Views">
   <div class="rail-top"><a class="brand" href="#model">Cloth-feed gripper</a><span class="here" id="here"></span><button type="button" id="menuBtn" aria-expanded="false" aria-controls="railList">Views</button></div>
@@ -450,7 +455,7 @@ tr.tot td{background:var(--accent-soft)}
   <div class="fig" id="model-3d" data-fig="Model" data-info="Drag to orbit; scroll or pinch to zoom. Click a part to select it in every view; Open in the list shows it alone.|X is the jaw-closing axis, Y points up to the wrist and Z points out of the gear plane.|Below 0° the pads overlap on purpose. That is overtravel into the grip, and the firmware stops on the force sensor at 5 N.">
     <div class="fig-in two">
       <div class="stage flush">
-        <div class="v3d" id="v3d"><div class="msg v3dmsg" id="v3dmsg">Loading the model&hellip;</div><div class="hud" id="v3dhud"></div></div>
+        <div class="v3d" id="v3d"><div class="msg v3dmsg" id="v3dmsg" role="status" aria-live="polite"><span>Loading the model&hellip;</span><button type="button" class="v3dreload">Reload</button></div><div class="hud" id="v3dhud"></div></div>
         <div class="ctrl">
           <label>Jaw angle <input type="range" id="jaw" min="-11" max="20" step="0.5" value="0"><output id="jawv">0.0&deg;</output></label>
           <button id="explode" type="button" aria-pressed="false">Explode</button>
@@ -492,7 +497,7 @@ tr.tot td{background:var(--accent-soft)}
     <div class="fig-in two fgrid">
       <p id="fitAns" class="fans"></p>
       <div class="stage flush">
-        <div class="v3d" id="fit3d"><div class="msg v3dmsg">Loading the model&hellip;</div>
+        <div class="v3d" id="fit3d"><div class="msg v3dmsg" role="status" aria-live="polite"><span>Loading the model&hellip;</span><button type="button" class="v3dreload">Reload</button></div>
           <div class="vtools" role="toolbar" aria-label="View">
             <button type="button" data-view="front" title="Front ( 1 )">Front</button><button type="button" data-view="side" title="Side ( 2 )">Side</button><button type="button" data-view="top" title="Top ( 3 )">Top</button><button type="button" data-view="iso" title="Iso ( 4 )">Iso</button><button type="button" data-view="fit" title="Frame the finding ( F )">Finding</button><button type="button" data-view="reset" title="Whole assembly ( 0 )">Reset</button>
           </div>
@@ -549,7 +554,7 @@ class="n">Value</th><th>Limit or reason</th><th>Verdict</th><th></th></tr></thea
       <div class="stage flush pstage">
         <div class="ptabs" role="tablist" aria-label="Part view"><button type="button" role="tab" id="ptab3d" aria-selected="true" aria-controls="part3dWrap">3D</button><button type="button" role="tab" id="ptabDraw" aria-selected="false" aria-controls="partDrawWrap">Drawing</button></div>
         <div id="part3dWrap">
-          <div class="v3d" id="part3d"><div class="msg v3dmsg">Loading the model&hellip;</div><div class="hud" id="parthud"></div></div>
+          <div class="v3d" id="part3d"><div class="msg v3dmsg" role="status" aria-live="polite"><span>Loading the model&hellip;</span><button type="button" class="v3dreload">Reload</button></div><div class="hud" id="parthud"></div></div>
           <div class="ctrl">
             <label>Where it sits <select id="partCtx"><option value="ghost">in place, others faded</option><option value="alone">alone</option><option value="explode">exploded, others faded</option></select></label>
             <button id="partDims" type="button" aria-pressed="true">Dimensions</button>
@@ -579,7 +584,7 @@ class="n">Value</th><th>Limit or reason</th><th>Verdict</th><th></th></tr></thea
   <div class="fig" id="assembly-steps" data-fig="Steps" data-info="Each step moves its parts into place along the direction they really go in. Play runs every step in order; the slider scrubs the whole build.|Parts already fitted stay in place. Choose a part name to open it in Parts.">
     <div class="agrid">
       <div class="stage flush astage">
-        <div class="v3d" id="asm3d"><div class="msg v3dmsg">Loading the model&hellip;</div><div class="hud" id="asmhud" aria-live="polite"></div></div>
+        <div class="v3d" id="asm3d"><div class="msg v3dmsg" role="status" aria-live="polite"><span>Loading the model&hellip;</span><button type="button" class="v3dreload">Reload</button></div><div class="hud" id="asmhud" aria-live="polite"></div></div>
         <div class="ctrl">
           <button id="asmPrev" type="button" aria-label="Previous step">Previous</button>
           <button id="asmPlay" type="button" aria-pressed="false">Play</button>
@@ -1283,13 +1288,17 @@ function init3D(){
   if(V3.started)return;V3.started=true;
   renderMassPanel();
   const msg=$("#v3dmsg");
-  if(!window.THREE){/* the library loads as a module after this script; wait for it, or say it failed */
-    if(!V3.waiting){V3.waiting=true;window.addEventListener("three-ready",()=>{V3.started=false;init3D();},{once:true});
-      setTimeout(()=>{if(!window.THREE){V3.failed=true;$$(".v3dmsg").forEach(m=>{m.textContent="The 3D library did not load, so the model cannot be shown. Check the connection and reload; the parts list and every other view still work.";m.hidden=false;});fireReady();}},20000);}
+  const showLoad=(text,terminal=false)=>{$$(".v3dmsg").forEach(m=>{const t=$("span",m);if(t&&t.textContent!==text)t.textContent=text;m.hidden=false;m.dataset.state=terminal?"failed":"loading";});};
+  if(!V3.reloadBound){V3.reloadBound=true;document.addEventListener("click",e=>{if(e.target.closest(".v3dreload"))location.reload();});}
+  if(!window.THREE){/* the library loads as a module after this script; keep recovery available while waiting */
+    if(!V3.waiting){V3.waiting=true;showLoad("Loading the model…");window.addEventListener("three-ready",()=>{clearTimeout(V3.stillTimer);clearTimeout(V3.failTimer);V3.waiting=false;V3.failed=false;V3.started=false;init3D();},{once:true});
+      V3.stillTimer=setTimeout(()=>{if(!window.THREE&&!V3.failed)showLoad("Still loading the 3D library. You can reload now or keep using Parts and the other views.");},2500);
+      V3.failTimer=setTimeout(()=>{if(!window.THREE&&!V3.failed){V3.failed=true;showLoad("The 3D library did not load, so the model cannot be shown. Check the connection and reload; the parts list and every other view still work.",true);fireReady();}},10000);}
     V3.started=false;return;}
+  clearTimeout(window.__threeStillTimer);clearTimeout(V3.stillTimer);clearTimeout(V3.failTimer);V3.failed=false;
   const T=window.THREE;
   let renderer;
-  try{renderer=new T.WebGLRenderer({antialias:true,alpha:false,stencil:true,powerPreference:"high-performance"});}catch(err){V3.failed=true;$$(".v3dmsg").forEach(m=>{m.textContent="This browser has 3D graphics turned off, so the model cannot be shown. The drawings show the same parts.";m.hidden=false;});console.warn(err);fireReady();return;}
+  try{renderer=new T.WebGLRenderer({antialias:true,alpha:false,stencil:true,powerPreference:"high-performance"});}catch(err){V3.failed=true;showLoad("This browser has 3D graphics turned off, so the model cannot be shown. The drawings show the same parts.",true);console.warn(err);fireReady();return;}
   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
   renderer.outputColorSpace=T.SRGBColorSpace;
   renderer.toneMapping=T.NeutralToneMapping||T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
@@ -1371,7 +1380,7 @@ function init3D(){
         list.forEach(o=>{o.parent.remove(o);o.geometry.dispose();});node.add(me);if(id)V3.items[id]=[me];});}
     V3.ready=true;$$(".v3dmsg").forEach(m=>m.hidden=true);applyPose();renderMassPanel();applyVis();
     if(V3.onready)V3.onready.forEach(f=>{try{f();}catch(err){console.error(err);}});fireReady();
-  },err=>{$$(".v3dmsg").forEach(m=>{m.textContent="The embedded model could not be read.";m.hidden=false;});console.error(err);fireReady();});
+  },err=>{showLoad("The embedded model could not be read.",true);console.error(err);fireReady();});
   /* picking: a click (not a drag) on a part selects it everywhere */
   const ray=new T.Raycaster();let down=null;
   V3.cv.addEventListener("pointerdown",e=>{down=[e.clientX,e.clientY];});
@@ -1728,7 +1737,7 @@ function secPlane(f){
     /* the cut follows the closest points as the jaw moves; at the worst pose it is exactly the cut the inset draws */
     const o=s&&Math.abs(FST.th-d.theta)<1e-6?s.o:pq?mid3(pq[0],pq[1]):mid3(d.p,d.q);return {o,m:s?s.m:[0,0,1]};}
   if(f.kind==="roll"){const s=f.det.section;return s?{o:s.o,m:s.m}:{o:mid3(f.det.p,f.det.q),m:[0,0,1]};}
-  if(f.kind==="overlap"){const s=f.ov.section;return s?{o:s.o,m:s.m}:{o:f.ov.at,m:[0,0,1]};}
+  if(f.kind==="overlap"||(f.kind==="overlaps"&&f.err)||f.kind==="padov"){const o=f.ov||f.err||(f.ovs&&f.ovs[0]),s=o.section;return s?{o:s.o,m:s.m}:{o:o.at,m:[0,0,1]};}
   if(f.kind==="build"){const s=f.b.section;return s?{o:s.o,m:s.m}:{o:f.b.touch_at||f.b.seat,m:[0,0,1]};}
   if(f.kind==="dog")return {o:[f.b.xy[0],f.b.xy[1],0],m:[1,0,0]};
   return null;}
@@ -1751,16 +1760,24 @@ function flyTo(pos,tgt,anim){const c=V3.cam,ctl=V3.ctl;if(!c)return;stopSweep();
   const p0=c.position.clone(),t0=ctl.target.clone();let st=null;
   V3.anim=t=>{if(st===null)st=t;const k=Math.min(1,(t-st)/520),e=1-Math.pow(1-k,3);c.position.lerpVectors(p0,pos,e);ctl.target.lerpVectors(t0,tgt,e);ctl.update();V3.dirty=true;if(k>=1){V3.anim=null;relink();}};}
 const HOME_T=[0,22,0],HOME_D=310,HOME_DIR=[210,95,300];
+function findingFramePoints(f){
+  const pts=[],push=a=>{if(a&&a.length===3)pts.push(vec(a));},sp=secPlane(f);if(sp)push(sp.o);
+  if(f.kind==="gap"){const pq=f.pair.p[thIdx(FST.th)];if(pq){push(pq[0]);push(pq[1]);const n=vec(pq[1]).sub(vec(pq[0])).normalize();pts.push(vec(pq[0]).addScaledVector(n,-2.5),vec(pq[1]).addScaledVector(n,2.5));}}
+  else if(f.kind==="overlap"||f.kind==="overlaps"||f.kind==="padov"){const o=f.ov||f.err||(f.ovs&&f.ovs[0]);push(o.at);const a=vec(o.at);pts.push(a.clone().add(new THREE.Vector3(-16,12,0)));if(o.size){const h=vec(o.size).multiplyScalar(.5);for(const x of [-1,1])for(const y of [-1,1])for(const z of [-1,1])pts.push(a.clone().add(new THREE.Vector3(h.x*x,h.y*y,h.z*z)));}}
+  else if(f.kind==="build"){push(f.b.seat);push(f.b.touch_at);if(f.b.seat&&f.b.dir)pts.push(vec(f.b.seat).addScaledVector(vec(f.b.dir),-f.b.path_len));}
+  return pts.length?pts:[vec(sp.o)];}
 function frameFinding(f,anim){
-  if(!V3.ready)return;const T=THREE;const sp=secPlane(f);
+  if(!V3.ready)return;const T=THREE,sp=secPlane(f);
   if(!f||!sp){const t=vec(f&&f.kind==="padov"?[0,-30,0]:HOME_T),dir=vec(HOME_DIR).normalize();flyTo(t.clone().addScaledVector(dir,f&&f.kind!=="band"?200:HOME_D),t,anim);return;}
-  const tgt=vec(sp.o),n=FS.cut.on?FS.plane.normal.clone():vec(sp.m);
-  /* a portrait stage is narrower than it is tall, so the camera stands further back to keep the same width of the gripper in view */
-  const asp=V3.cam&&V3.cam.aspect||1,dist=(f.kind==="build"||f.kind==="dog"?70:f.kind==="overlap"?60:f.kind==="roll"?60:55)/Math.sqrt(Math.min(1,Math.max(0.36,asp)));
-  /* look at the cut face from the side that is cut away, a little off square so depth reads */
+  const points=findingFramePoints(f),box=new T.Box3().setFromPoints(points),tgt=box.getCenter(new T.Vector3()),n=FS.cut.on?FS.plane.normal.clone():vec(sp.m);
   const up=Math.abs(n.y)>0.9?new T.Vector3(0,0,1):new T.Vector3(0,1,0),side=new T.Vector3().crossVectors(n,up).normalize();
-  const dir=n.clone().negate().addScaledVector(side,0.35).addScaledVector(up,0.3).normalize();
-  flyTo(tgt.clone().addScaledVector(dir,dist),tgt,anim);}
+  const dir=n.clone().negate().addScaledVector(side,0.35).addScaledVector(up,0.3).normalize(),right=new T.Vector3().crossVectors(dir,up).normalize(),screenUp=new T.Vector3().crossVectors(right,dir).normalize();
+  let halfW=0,halfH=0;points.forEach(p=>{const d=p.clone().sub(tgt);halfW=Math.max(halfW,Math.abs(d.dot(right)));halfH=Math.max(halfH,Math.abs(d.dot(screenUp)));});
+  const vfov=T.MathUtils.degToRad(V3.cam.fov),asp=Math.max(.25,V3.cam.aspect||1),pad=asp<.7?1.55:1.35;
+  /* Include both comparison anchors, the overlap leader, and room for their DOM labels in the actual stage projection. */
+  const fitDist=Math.max((halfH+8)/Math.tan(vfov/2),(halfW+16)/Math.tan(vfov/2)/asp)*pad;
+  const floor=f.kind==="build"||f.kind==="dog"?70:f.kind==="roll"?60:48;
+  flyTo(tgt.clone().addScaledVector(dir,Math.max(floor,fitDist)),tgt,anim);}
 function preset(v){if(!V3.ready)return;const T=THREE;
   if(v==="fit"){if(FS.cur&&!FS.whole)frameFinding(FS.cur,true);else preset("reset");return;}
   if(v==="reset"){const t=vec(HOME_T);flyTo(t.clone().addScaledVector(vec(HOME_DIR).normalize(),HOME_D),t,true);return;}
