@@ -41,4 +41,4 @@
 
 **Sound sync points.** Beat 0.5 s. Downbeat hits at 0:04 (title), 0:16, 0:34; gear clicks in S4; a soft servo whir under S5; a tick on each S8 transition (0:41.5 to 0:45.0); a resolving hit at 0:57.
 
-**Materialization status (2026-10-22).** Source semantics above are current at source commit `d4861b3`; checked-in films predate this correction and still show the reviewed soft S2/S6 and stale 152.9 g S10. Verdict: `PENDING_NATIVE_MATERIALIZATION_AND_REVIEW`.
+**Materialization acceptance gate (2026-10-22).** The corrected source semantics and source-graphic proof do not accept checked-in encodes. Acceptance of replacement films requires an executed receipt for all 1,254 regular native frames plus the separate S10 plate, the canonical audio → graphics → compose → deliver chain, full H.264/AAC decode, frame-count and poster checks, and a fresh independent whole-film review with exact artifact hashes. Historical reviews describe only their dated bytes; current generation status and hashes belong in the actual executed receipts associated with this source PR. No native-render, encoded-film, hardware or bench acceptance is claimed here.
