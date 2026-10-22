@@ -17,7 +17,7 @@ Close actual gripper framing and camera-state ownership failures with rendered r
 
 ## Active
 
-- [~] Build one bounded camera correction on the accepted UI baseline. First source worker terminal ERROR/no recoverable diff after its1800-second bound; one failed attempt, no source fix. No second worker armed; routing quota-undetermined and insufficient remaining review time. Parent deadline remains16:03:59UTC. Done when: cause trace and old-candidate red tests precede the minimal source fix; green focused browser/static checks and real screenshots prove both repairs, with no control/data drift. Parent unit14:03:59→16:03:59UTC stays absolute; worker30minutes from its own admission, no reset.
+- [~] Build one bounded camera correction on the accepted UI baseline. First source worker terminal ERROR/no recoverable diff after its1800-second bound; one failed attempt, no source fix. No second worker armed; canonical measured quota refresh now available, but insufficient remaining time for producer plus fresh review. Parent deadline remains16:03:59UTC. Done when: cause trace and old-candidate red tests precede the minimal source fix; green focused browser/static checks and real screenshots prove both repairs, with no control/data drift. Parent unit14:03:59→16:03:59UTC stays absolute; worker30minutes from its own admission, no reset.
 
 ## Queue
 
