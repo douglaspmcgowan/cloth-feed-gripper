@@ -17,7 +17,7 @@ Repair F01focus/F02stale encodedmass/F03force-label semantics from the independe
 
 ## Active
 
-- [~] Rejected portrait V01: fresh independent review NOT_READY; landscape, teaser and poster accepted. Annotation backing erases orange plateau at38/39s, actual Windows gaps168/167pixels;37s negative control normal4pixel dot outline. Complete cloud result and host corroboration in PDS PR86c912490. Original producer503bb69 completed12:14:31 before12:32:02UTC and is CLOSED. Three finishing passes contain two failed repairs and one successful docs pass. Read-only tactician task_e_6ada09b2b67c83209a86f049086662ca adjudicates the unchanged unit boundary; no new repair or render window armed. Done when: contract boundary resolved and any actually authorized correction independently accepted, then combinedUI21/film22 served projection verified.
+- [~] Rejected portrait V01: fresh independent review NOT_READY; landscape, teaser and poster accepted. Annotation backing erases orange plateau at38/39s, actual Windows gaps168/167pixels;37s negative control normal4pixel dot outline. Complete cloud result and host corroboration in PDS PR86c912490. Original producer503bb69 completed12:14:31 before12:32:02UTC and is CLOSED. Three finishing passes contain two failed repairs and one successful docs pass. Read-only tactician returned OPERATOR_REQUIRED; concrete1800s portrait-only plan in PDS PR86 awaits actual operator approval. No new repair or render window armed. Done when: contract boundary resolved and any actually authorized correction independently accepted, then combinedUI21/film22 served projection verified.
 
 ## Queue
 
