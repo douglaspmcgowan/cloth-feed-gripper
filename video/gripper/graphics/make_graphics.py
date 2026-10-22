@@ -133,6 +133,12 @@ class Canvas:
         if a <= 0.004: return
         self.d.ellipse(((cx-r)*SS, (cy-r)*SS, (cx+r)*SS, (cy+r)*SS), fill=color + (int(255*clamp(a)),))
 
+    def restore_background(self, box):
+        """Clear chart strokes behind an annotation without adding a visible panel."""
+        scaled = tuple(int(round(v*SS)) for v in box)
+        clean = background(self.w, self.h)
+        self.img.paste(clean.crop(scaled), scaled)
+
     def finish(self):
         return self.img.convert("RGB").resize((self.w, self.h), Image.LANCZOS)
 
@@ -169,10 +175,14 @@ def s7_reference_layout(layout):
     entries = []
     for (force, label), offset in zip(REFS, offsets):
         label_y = y(force) + offset
-        box = font(700, g["lab"]).getbbox(label)
-        width, height = (box[2] - box[0]) / SS, (box[3] - box[1]) / SS
+        baseline = label_y - 14
+        box = font(700, g["lab"]).getbbox(label, anchor="rd")
+        bounds = (px1 - 8 + box[0]/SS, baseline + box[1]/SS,
+                  px1 - 8 + box[2]/SS, baseline + box[3]/SS)
         entries.append(dict(force=force, label=label, line_y=y(force), label_y=label_y,
-                            bounds=(px1 - 8 - width, label_y - height, px1 - 8, label_y + 4)))
+                            bounds=bounds,
+                            clearance=(bounds[0] - 10, bounds[1] - 8,
+                                       px1 + 2, bounds[3] + 28)))
     return entries
 
 
@@ -234,8 +244,13 @@ def s7_frame(layout, i):
         pop = 1 + 0.12*math.sin(math.pi*clamp((t - ts0)/0.35))*(1 if t > ts0 else 0)
         if e > 0:
             ly = ref["label_y"] - 14 + 10*(1 - e)
-            c.line([(px1 - 230, Y(f)), (px1 - 210, ly), (px1 - 8, ly)], SEC, 2, e)
-            c.text((px1 - 8, ly), lab, 700, g["lab"]*pop, INK, e, 0, "rd")
+            label_size = g["lab"]*pop
+            box = font(700, label_size).getbbox(lab, anchor="rd")
+            clear = (px1 - 8 + box[0]/SS - 10, ly + box[1]/SS - 8,
+                     px1 + 2, ly + box[3]/SS + 28)
+            c.line([(clear[0] - 42, Y(f)), (clear[0] - 22, ly), (clear[0] - 8, ly)], SEC, 2, e)
+            c.restore_background(clear)
+            c.text((px1 - 8, ly), lab, 700, label_size, INK, e, 0, "rd")
     # head dot and readout
     if p > 0:
         breathe = 0.5 + 0.5*math.sin(2*math.pi*(t - 5.0)/2.0 - math.pi/2) if t > 5.0 else 1.0

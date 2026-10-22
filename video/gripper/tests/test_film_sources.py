@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 import pytest
+from PIL import ImageChops
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -78,3 +79,37 @@ def test_s7_has_four_distinct_nonoverlapping_references():
         for i, a in enumerate(bounds):
             for b in bounds[i + 1:]:
                 assert a[3] <= b[1] or b[3] <= a[1], (layout, a, b)
+
+
+@pytest.mark.parametrize("layout", ["land", "sq"])
+def test_s7_reference_lines_do_not_intrude_into_label_clearance(layout):
+    """Rendered reference/grid strokes must yield to the four annotation labels."""
+    graphics = load("make_graphics", ROOT / "video/gripper/graphics/make_graphics.py")
+    original_text = graphics.Canvas.text
+
+    def suppress_reference_text(canvas, xy, text, *args, **kwargs):
+        if text not in {label for _, label in graphics.REFS}:
+            original_text(canvas, xy, text, *args, **kwargs)
+
+    graphics.Canvas.text = suppress_reference_text
+    image = graphics.s7_frame(layout, 120)
+    clean = graphics.background(*graphics.LAYOUTS[layout]).convert("RGB").resize(
+        graphics.LAYOUTS[layout], graphics.Image.Resampling.LANCZOS
+    )
+    lines = [entry["line_y"] for entry in graphics.s7_reference_layout(layout)]
+    lines += [graphics.s7_geom(layout)["py1"] - force / graphics.YMAX *
+              (graphics.s7_geom(layout)["py1"] - graphics.s7_geom(layout)["py0"])
+              for force in range(0, 11, 2)]
+    checked = 0
+    for entry in graphics.s7_reference_layout(layout):
+        fallback = (entry["bounds"][0] - 10, entry["bounds"][1] - 8,
+                    entry["bounds"][2] + 6, entry["bounds"][3] + 28)
+        x0, y0, x1, y1 = map(round, entry.get("clearance", fallback))
+        intruders = [round(y) for y in lines if y0 <= y <= y1]
+        for y in intruders:
+            checked += 1
+            # With glyphs suppressed, their interior must be pristine plot background.
+            diff = ImageChops.difference(image.crop((x0 + 30, y - 2, x1 - 10, y + 3)),
+                                         clean.crop((x0 + 30, y - 2, x1 - 10, y + 3)))
+            assert diff.getbbox() is None, (layout, entry["label"], y)
+    assert checked >= 3, layout
