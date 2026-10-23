@@ -1,0 +1,3 @@
+data KB 6461 glb KB 3968 ctx KB 2623 total MB 13.7
+gear pts {'GEAR_A': (5488, 297), 'GEAR_B': (6402, 330)}
+fea meshes ['m0', 'm1']
