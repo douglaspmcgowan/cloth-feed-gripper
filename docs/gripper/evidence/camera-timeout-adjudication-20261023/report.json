@@ -1,0 +1,97 @@
+{
+  "role": "tactician",
+  "scope": "Report only; original camera source2 timeout adjudication",
+  "input_head": "b6c7712c292dc83cbfe17a89aae3e4ef0fa2d20d",
+  "prepared_head": "214f7c847c226ec4f6851d3c4b6158b4780a3b3f",
+  "source_head": "ed77773de9654ac05940a5ea3f623be5cdb46a8a",
+  "preserved_report_sha256": "0cc270d67d315ef5d1c5cb57447ef52ddc3251fd269c5523b287a51a44b1566c",
+  "decision": "ALLOW_EXISTING_CANDIDATE_VALIDATION_ONLY",
+  "implementation_acceptance": "PENDING_FRESH_INDEPENDENT_RENDERED_ACCEPTANCE",
+  "reason": "The continuation contract requires stopping production and report-only tactics after source2 failure. It does not discard preserved artifacts or prohibit independent validation. Actual red/green receipts, unchanged inputs and completed parent host proof support reviewing this existing candidate. The route remains failed; maker READY is not terminal route success or visual acceptance.",
+  "authority": {
+    "contract": "C:/Users/dougl/Worktrees/berkeley-ai-tutor/gripper-conductor/docs/gripper/process/continuation-20261022/camera-continuation-20261023.json",
+    "checkpoint": "C:/Users/dougl/Worktrees/berkeley-ai-tutor/gripper-conductor/docs/gripper/process/continuation-20261022/camera-source2-next-checkpoint.md",
+    "failure_policy": "Retain first failure. If source2 fails, stop production and obtain report-only qualified tactics; no automatic third producer.",
+    "interpretation": "Checkpoint terminal READY precondition was not met by the route: timeout supersedes maker READY. This report does not relabel it. Verification of a preserved candidate is distinct from renewing its producer; publication remains gated by exact-source proof and fresh review.",
+    "deadlines_unchanged": true,
+    "source_attempts_used": 2,
+    "failed_execution_outcomes": 2,
+    "additional_production_allowed": false,
+    "a1_c4_restart_allowed": false
+  },
+  "route": {
+    "id": "78847bd7",
+    "evidence": "C:/Users/dougl/Projects/product-design-system/camera-source2-route-result.json",
+    "success": false,
+    "outcome": "timed-out-with-work",
+    "adapter_exit": 124,
+    "timed_out": true,
+    "worker_may_be_live": false,
+    "produced_work": true,
+    "artifact_confirmation": "confirmed",
+    "brief_scope_verified": true,
+    "brief_scope_escape": false,
+    "remote_confirmation": "Route records remote-branch-moved/new-commit-confirmed. This lane's fresh ls-remote failed SEC_E_NO_CREDENTIALS; no fresh remote listing claimed."
+  },
+  "artifact": {
+    "classification": "Preserved candidate with substantive source and regression receipts; not accepted implementation",
+    "source_changed_paths": 78,
+    "non_evidence_paths": ["SPEC.md", "cad/gripper/tests/test_viewer_fit_framing.py", "cad/gripper/viewer.html", "cad/gripper/viewer_src/FEATURE-LEDGER.md", "cad/gripper/viewer_src/vw_11.html", "cad/gripper/viewer_src/vw_6.html"],
+    "preservation_changed_paths": ["docs/gripper/evidence/camera-resume-20261023/source2-result.json"],
+    "source_is_ancestor_of_preservation": true,
+    "retained_source2_pngs": 33,
+    "original_source_manifest_population": 7,
+    "original_source_manifest_matches_prepared_and_baseline": 7,
+    "unchanged_input_hash_population": 87,
+    "unchanged_input_hash_matches_read_by_this_lane": 87,
+    "unchanged_input_hash_mismatches": []
+  },
+  "receipts": {
+    "prefix": "docs/gripper/evidence/camera-resume-20261023/",
+    "red": {"file": "source2-red/camera-assertions.json", "result_rows": 21, "failure_rows": 9, "passed": false, "failures": "Six exploded midpoint/endpoint framing failures across three viewports; cold permalink retention, warm camera and warm permalink retention."},
+    "green": {"file": "source2-green/camera-assertions.json", "result_rows": 28, "failure_rows": 0, "passed": true},
+    "population_note": "Counts are actual result rows, including control inventory and pre-existing scenario receipts; not 28 independent camera assertions.",
+    "green_depth_measurements": "All nine recorded model pose/viewport bounds have outsideDepth=0.",
+    "worker_static": "Not collected: missing pygments in restricted worker; retained as an execution limitation, not a passing static run.",
+    "parent_host": {
+      "file": "C:/Users/dougl/Projects/product-design-system/camera-source2-host-proof/result.json",
+      "status_read": "PASS_PENDING_FRESH_REVIEW",
+      "candidate_head": "b6c7712c292dc83cbfe17a89aae3e4ef0fa2d20d",
+      "completed_at": "2026-10-23T05:37:29.997823+00:00",
+      "generator_exit": 0,
+      "static_exit": 0,
+      "static_log_read": "29 passed, 1 skipped in 6.30s",
+      "focused_browser_exit": 0,
+      "browser_receipt_rows_read": 28,
+      "browser_receipt_failures_read": 0,
+      "geometry_before_and_after": true,
+      "generated_viewer_deterministic": true,
+      "pngs_decoded_and_commit_exact": 49,
+      "png_population_note": "Host count includes prior-diagnosis PNGs; source2 red/green count remains 33.",
+      "verification_server_closed": true,
+      "provenance": "Existing parent host proof read, not re-executed by this report lane."
+    }
+  },
+  "exact_source_assessment": {
+    "changes": "vw_6 adds visible-gripper bounds fitting at model entry, explosion request and camera Reset. vw_11 suppresses premature hash serialization and restores explicit camera before writing the link. Geometry builder is unchanged. Tests extend actual browser framing and permalink lifecycle coverage.",
+    "confirmed_remaining_product_defects": [],
+    "concrete_test_limits": [
+      "Reset is rewired but the camera regression does not click Reset or prove jaw/explode state preservation after Reset. Fresh reviewer should exercise it without source edits.",
+      "Projected depth and XY-outside counts are measured but goodMargins asserts only finite XY margins >=8. Existing nine green depth measurements are zero; no demonstrated depth failure.",
+      "Control inventory records counts; its row passes unconditionally and does not itself compare baseline inventories or exercise every control. Fresh review must verify retained primary controls.",
+      "Late-host-attach case changes hash from an already ready model; cold case covers initialization separately. It is not a deliberately delayed dependency/host race injection."
+    ]
+  },
+  "smallest_remaining_validation": [
+    "Parent pins b6c7712 with source ed77773 and confirms exact clean review input; retain completed host receipts rather than repeat a competing heavy suite.",
+    "A NEW independent browser-capable reviewer performs design-review/user/present on native phone/tablet/desktop renders and the original framing/reload flow, including Reset and retained controls. This tactics report supplies no visual verdict.",
+    "If exact-source review rejects the candidate, stop and return findings under the existing no-production boundary. No automatic repair, third producer, clock reset, publication or A1/C4 restart."
+  ],
+  "uncertainties": [
+    "Fresh independent rendered acceptance is not established by evidence read in this lane.",
+    "Controlled pinned Three dependency proof does not establish public CDN availability or deployment.",
+    "Original worker helper PID 29048 cleanup was guard-refused; this lane performed no process cleanup and makes no claim that it is closed.",
+    "This lane cannot establish current remote source tip from its restricted credential context."
+  ],
+  "writes": "Only adjudication report JSON/markdown. No product, tests, SPEC, prior evidence, input hashes or task-state writes; no producer, server or heavy suite launched."
+}
