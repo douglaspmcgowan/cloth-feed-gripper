@@ -12,20 +12,21 @@ Douglas asked on 2026-10-22 to fix poor CAD in the ongoing product design progra
 
 ## Goal
 
-Fix actual phone fit framing and loading feedback from the independently verified current main d4861b3, retaining honest unbuilt and physical-failure claims. No merge or deployment is authorized here.
+Fix actual phone fit framing and loading feedback from the independently verified current main d4861b3, retaining honest unbuilt and physical-failure claims. The source-only worker restriction was superseded for publication by the later operator72-hour grant; accepted source was merged and deployed2026-10-23.
 
 ## Active
 
 
 ## Queue
 
-- [ ] Deliver accepted source PR21 when explicit default-branch/deployment authority is available. Done when: authorized merge/deployment and actual endpoint checks complete; source repair and independent local acceptance are already finished, physical and broader program gates remain separate.
 
 ## Blocked
 
 ## Needs decision
 
 ## Completed
+
+- [x] Deliver accepted source PR21. Done when: authorized default merge/deployment and actual endpoint checks complete. Completed main2018f46/deploymentCMsREADY, exact3public-file identity,27liveguards, deployed3-width fit/loading regression and9decoded nativePNGs. Evidence docs/gripper/evidence/ui-publication-20261023/. WholeC2/camera/film/physical acceptance remains separate.
 
 - [x] Independent local UI acceptance complete: task_e_6ad9f051eb9c83208e2b066ea030a064 returns READY/no actionable findings for corrected fit/loading and exercised primary flows at source/publicreview. Both actual browser CLIs pass; focused independent control exercise passes; cloud static29pass/1CadQueryskip and Windows30pass. All10returnedPNGs fullydecoded/staged-identical; archive-free evidence PDS PR87 head d6604e3. Controlled exact Three.js fixture is explicit; no deployed CDN, wholeC2/C3 or hardware certification. Initial contended timing failure retained; serial source/served runs passed unchanged.
 
