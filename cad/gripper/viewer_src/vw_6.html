@@ -72,13 +72,17 @@ function init3D(){
   if(V3.started)return;V3.started=true;
   renderMassPanel();
   const msg=$("#v3dmsg");
-  if(!window.THREE){/* the library loads as a module after this script; wait for it, or say it failed */
-    if(!V3.waiting){V3.waiting=true;window.addEventListener("three-ready",()=>{V3.started=false;init3D();},{once:true});
-      setTimeout(()=>{if(!window.THREE){V3.failed=true;$$(".v3dmsg").forEach(m=>{m.textContent="The 3D library did not load, so the model cannot be shown. Check the connection and reload; the parts list and every other view still work.";m.hidden=false;});fireReady();}},20000);}
+  const showLoad=(text,terminal=false)=>{$$(".v3dmsg").forEach(m=>{const t=$("span",m);if(t&&t.textContent!==text)t.textContent=text;m.hidden=false;m.dataset.state=terminal?"failed":"loading";});};
+  if(!V3.reloadBound){V3.reloadBound=true;document.addEventListener("click",e=>{if(e.target.closest(".v3dreload"))location.reload();});}
+  if(!window.THREE){/* the library loads as a module after this script; keep recovery available while waiting */
+    if(!V3.waiting){V3.waiting=true;showLoad("Loading the model…");window.addEventListener("three-ready",()=>{clearTimeout(V3.stillTimer);clearTimeout(V3.failTimer);V3.waiting=false;V3.failed=false;V3.started=false;init3D();},{once:true});
+      V3.stillTimer=setTimeout(()=>{if(!window.THREE&&!V3.failed)showLoad("Still loading the 3D library. You can reload now or keep using Parts and the other views.");},2500);
+      V3.failTimer=setTimeout(()=>{if(!window.THREE&&!V3.failed){V3.failed=true;showLoad("The 3D library did not load, so the model cannot be shown. Check the connection and reload; the parts list and every other view still work.",true);fireReady();}},10000);}
     V3.started=false;return;}
+  clearTimeout(window.__threeStillTimer);clearTimeout(V3.stillTimer);clearTimeout(V3.failTimer);V3.failed=false;
   const T=window.THREE;
   let renderer;
-  try{renderer=new T.WebGLRenderer({antialias:true,alpha:false,stencil:true,powerPreference:"high-performance"});}catch(err){V3.failed=true;$$(".v3dmsg").forEach(m=>{m.textContent="This browser has 3D graphics turned off, so the model cannot be shown. The drawings show the same parts.";m.hidden=false;});console.warn(err);fireReady();return;}
+  try{renderer=new T.WebGLRenderer({antialias:true,alpha:false,stencil:true,powerPreference:"high-performance"});}catch(err){V3.failed=true;showLoad("This browser has 3D graphics turned off, so the model cannot be shown. The drawings show the same parts.",true);console.warn(err);fireReady();return;}
   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
   renderer.outputColorSpace=T.SRGBColorSpace;
   renderer.toneMapping=T.NeutralToneMapping||T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
@@ -160,7 +164,7 @@ function init3D(){
         list.forEach(o=>{o.parent.remove(o);o.geometry.dispose();});node.add(me);if(id)V3.items[id]=[me];});}
     V3.ready=true;$$(".v3dmsg").forEach(m=>m.hidden=true);applyPose();renderMassPanel();applyVis();
     if(V3.onready)V3.onready.forEach(f=>{try{f();}catch(err){console.error(err);}});fireReady();
-  },err=>{$$(".v3dmsg").forEach(m=>{m.textContent="The embedded model could not be read.";m.hidden=false;});console.error(err);fireReady();});
+  },err=>{showLoad("The embedded model could not be read.",true);console.error(err);fireReady();});
   /* picking: a click (not a drag) on a part selects it everywhere */
   const ray=new T.Raycaster();let down=null;
   V3.cv.addEventListener("pointerdown",e=>{down=[e.clientX,e.clientY];});
