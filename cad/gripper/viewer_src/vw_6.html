@@ -106,6 +106,19 @@ function init3D(){
   ctl.addEventListener("change",()=>V3.dirty=true);
   function resize(){if(!V3.host)return;const box=V3.host,w=box.clientWidth,hh=box.clientHeight;if(!w||!hh)return;renderer.setSize(w,hh,false);cam.aspect=w/hh;cam.updateProjectionMatrix();if(V3.composer)V3.composer.setSize(w,hh);V3.dirty=true;}
   V3.resize=resize;V3.ro=new ResizeObserver(resize);
+  function gripperBoundsAt(explode){const old=V3.explode;V3.explode=explode;applyPose();V3.grip.updateMatrixWorld(true);const box=new T.Box3().makeEmpty();
+    const shown=o=>{for(let p=o;p;p=p.parent){if(!p.visible)return false;if(p===V3.grip)break;}return true;};
+    V3.grip.traverse(o=>{if(!o.isMesh||!o.geometry||!shown(o))return;const b=new T.Box3().setFromObject(o);if(!b.isEmpty())box.union(b);});
+    V3.explode=old;applyPose();return box;}
+  function frameGripper(explodeEnd){if(!V3.ready||!V3.grip||!V3.host||!V3.cam||!V3.ctl)return;const T=window.THREE,box=new T.Box3().makeEmpty();
+    if(explodeEnd===1){[0,0.5,1].forEach(e=>box.union(gripperBoundsAt(e)));}else box.copy(gripperBoundsAt(V3.explode));if(box.isEmpty())return;
+    const cam=V3.cam,ctl=V3.ctl,w=Math.max(1,V3.host.clientWidth),hh=Math.max(1,V3.host.clientHeight),margin=16;
+    const tanV=Math.tan(cam.fov*Math.PI/360),tanH=tanV*cam.aspect*((w-2*margin)/w),tanY=tanV*((hh-2*margin)/hh);
+    const center=box.getCenter(new T.Vector3()),q=cam.quaternion,right=new T.Vector3(1,0,0).applyQuaternion(q),up=new T.Vector3(0,1,0).applyQuaternion(q),forward=cam.getWorldDirection(new T.Vector3()),corners=[];
+    for(let i=0;i<8;i++)corners.push(new T.Vector3(i&1?box.max.x:box.min.x,i&2?box.max.y:box.min.y,i&4?box.max.z:box.min.z));
+    let distance=cam.near*3;for(const p of corners){const rel=p.sub(center),x=Math.abs(rel.dot(right)),y=Math.abs(rel.dot(up)),z=rel.dot(forward);distance=Math.max(distance,z+x/Math.max(0.001,tanH),z+y/Math.max(0.001,tanY),z+cam.near*3);}
+    cam.position.copy(center).addScaledVector(forward,-distance*1.03);ctl.target.copy(center);cam.updateProjectionMatrix();ctl.update();V3.dirty=true;}
+  V3.frameGripper=frameGripper;
   /* post-processing: ambient occlusion through the effect composer when the machine can afford it */
   function setQuality(q){V3.quality=q;key.castShadow=q>0;ground.visible=q>0;
     if(q>=2&&!T.GTAOPass&&window.loadPost&&!V3.postLoading){V3.postLoading=true;window.loadPost().then(()=>{if(V3.quality>=2)setQuality(V3.quality);}).catch(err=>console.warn("ambient occlusion unavailable",err));}
@@ -261,13 +274,13 @@ function placeLabels(){
 function renderModel(){
   init3D();
   $("#jaw").addEventListener("input",e=>{V3.theta=+e.target.value;$("#jawv").textContent=fmt(V3.theta,1)+"°";applyPose();renderMassPanel();});
-  $("#explode").addEventListener("click",e=>{V3.explodeTarget=V3.explodeTarget?0:1;e.target.setAttribute("aria-pressed",String(!!V3.explodeTarget));});
+  $("#explode").addEventListener("click",e=>{const target=V3.explodeTarget?0:1;if(target===1)V3.frameGripper(1);V3.explodeTarget=target;e.target.setAttribute("aria-pressed",String(!!target));});
   $("#ctxBtn").addEventListener("click",e=>{const on=e.target.getAttribute("aria-pressed")!=="true";e.target.setAttribute("aria-pressed",String(on));if(V3.arm)V3.arm.visible=on;V3.dirty=true;});
   $("#stockBtn").addEventListener("click",e=>{const on=e.target.getAttribute("aria-pressed")!=="true";e.target.setAttribute("aria-pressed",String(on));if(V3.stock)V3.stock.visible=on;V3.dirty=true;});
-  $("#resetCam").addEventListener("click",()=>V3.home&&V3.home());
+  $("#resetCam").addEventListener("click",()=>{if(V3.home)V3.home();V3.frameGripper();});
   $("#lookBtn").addEventListener("click",e=>{if(!V3.setQuality)return;const q=V3.quality>=2?0:2;V3.setQuality(q);e.target.setAttribute("aria-pressed",String(V3.quality>=2));});
 }
-ENTER.model=()=>{setMode("model",$("#model .v3d"));const lb=$("#lookBtn");if(lb)lb.setAttribute("aria-pressed",String(V3.quality>=2));};
+ENTER.model=()=>{setMode("model",$("#model .v3d"));const lb=$("#lookBtn");if(lb)lb.setAttribute("aria-pressed",String(V3.quality>=2));if(V3.ready)V3.frameGripper();else if(!V3.modelFrameQueued){V3.modelFrameQueued=true;(V3.onready=V3.onready||[]).push(()=>{V3.modelFrameQueued=false;if(CUR==="model"&&V3.mode==="model")V3.frameGripper();});}};
 RENDER.model=renderModel;
 function tick3D(){if(!V3.running)return;try{V3.loop();}catch(err){console.error(err);V3.running=false;return;}requestAnimationFrame(tick3D);}
 function pause3D(on){if(!V3.loop){V3.running=false;return;}if(on&&!V3.running){V3.running=true;V3.dirty=true;V3.warm=12;requestAnimationFrame(tick3D);}else if(!on)V3.running=false;}

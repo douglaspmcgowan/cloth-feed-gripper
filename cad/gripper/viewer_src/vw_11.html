@@ -512,10 +512,10 @@ function renderChart(){
 
 /* ---------- pose, selection and links ---------- */
 function setPose(th,psi){if(th!=null)FST.th=th;if(psi!=null)FST.roll=psi;fitSync();}
-function fitSync(){
+function fitSync(updateHash=true){
   $("#fitJaw").value=FST.th;$("#fitRoll").value=FST.roll;$("#fitJawv").textContent=deg(FST.th)+"°";$("#fitRollv").textContent=deg(FST.roll)+"°";
   V3.theta=FST.th;if(V3.ready){applyPose();setCut();drawFit();}renderChart();renderCardLive();
-  if(CUR==="fit"&&FS.cur&&!FS.whole&&/^#fit-f-/.test(location.hash))setHash(linkHash());}
+  if(updateHash&&V3.ready&&CUR==="fit"&&FS.cur&&!FS.whole&&/^#fit-f-/.test(location.hash))setHash(linkHash());}
 function renderCardLive(){const f=FS.cur;if(!f||FS.whole||f.kind!=="gap")return;let el=$("#fitLive");
   if(poseMatches(f)){if(el)el.remove();return;}if(!el)el=h("p",{class:"note",id:"fitLive"},$("#fitCard"));el.textContent=`At ${deg(FST.th)}°: ${gapTxt(f.pair.d[thIdx(FST.th)])}`;}
 function linkHash(){const f=FS.cur;if(!f||FS.whole)return "fit-3d";let s=`fit-f-${f.id}~j=${FST.th}~r=${FST.roll}`;
@@ -534,9 +534,9 @@ function selectFinding(id,opt={}){
   V3.fitSolid=f.solid?new Set(f.solid):null;FS.armSolid=!!f.arm;
   FS.cut={on:!!secPlane(f),mode:"f",flip:false,off:0};
   if(opt.s){if(opt.s==="off")FS.cut.on=false;else{const [md,fl,of]=opt.s.split(",");if(/^[xyzf]$/.test(md)){FS.cut={on:true,mode:md,flip:fl==="1",off:Number.isFinite(+of)?+of:0};}}}
-  syncPick();renderCard();renderSec();fitSync();
+  syncPick();renderCard();renderSec();fitSync(false);
   if(V3.ready){if(opt.cam){V3.cam.position.set(opt.cam[0],opt.cam[1],opt.cam[2]);V3.ctl.target.set(opt.cam[3],opt.cam[4],opt.cam[5]);V3.ctl.update();V3.dirty=true;}else frameFinding(f,!opt.instant);}
-  if(opt.hash!==false)setHash(linkHash());}
+  if(opt.hash!==false&&(V3.ready||!opt.cam))setHash(linkHash());}
 function wholeView(anim=true){FS.whole=true;V3.fitSolid=null;FS.armSolid=true;FS.cut.on=false;stopSweep();syncPick();renderCard();renderSec();fitSync();
   if(V3.ready){const t=vec(HOME_T);flyTo(t.clone().addScaledVector(vec(HOME_DIR).normalize(),HOME_D),t,anim);}setHash("fit-3d");}
 function step(d){const i=FS.whole||!FS.cur?(d>0?-1:0):FF.indexOf(FS.cur);selectFinding(FF[(i+d+FF.length)%FF.length].id);}
