@@ -1,0 +1,916 @@
+{
+  "status": "COULD_NOT_TELL",
+  "reviewed_input_hash": "b6c7712c292dc83cbfe17a89aae3e4ef0fa2d20d",
+  "reviewed_source_commit": "ed77773de9654ac05940a5ea3f623be5cdb46a8a",
+  "reviewer": "gpt-6.1-sol at xhigh; new independent reviewer, single-reader visual assessment",
+  "scope": "Two camera requirements only. No engineering or whole C2 acceptance; hardware is unbuilt.",
+  "started_at": "2026-10-23T05:44:19.957739+00:00",
+  "finished_at": "2026-10-23T05:47:18.976563+00:00",
+  "commands": [
+    {
+      "name": "focused-browser",
+      "command": "python cad/gripper/tests/test_viewer_fit_framing.py --url http://127.0.0.1:4200/cad/gripper/viewer.html --dependency-dir C:/Users/dougl/Projects/product-design-system/gripper-ui-fixture/package --cached-module C:/Users/dougl/Projects/product-design-system/gripper-ui-runtime/cdn-three.module.min.js --playwright-module C:/Users/dougl/Worktrees/product-design-system/pds-ux-linked-selection-20261022/studio/web/node_modules/@playwright/test/index.js --browser-channel chrome --output docs/gripper/evidence/camera-independent-review-20261023/browser",
+      "admission": "C:/Users/dougl/.agents/tools/Invoke-HeavyTestAdmission.ps1",
+      "exit": 0,
+      "elapsed_seconds": 113.425
+    },
+    {
+      "name": "independent-browser",
+      "command": "node docs/gripper/evidence/camera-independent-review-20261023/independent.cjs",
+      "admission": "C:/Users/dougl/.agents/tools/Invoke-HeavyTestAdmission.ps1",
+      "exit": 2,
+      "elapsed_seconds": 64.938
+    },
+    {
+      "command": "Invoke-ImpeccableDetector.ps1 -Json cad/gripper/viewer.html",
+      "exit": 1,
+      "evidence": "detector.json"
+    }
+  ],
+  "summary": "Focused browser suite passed 28 result records. Independent geometry and native visual inspection support framing at all three widths. The independent real copied-link scenario stopped on a review-script TypeError before cold/warm/late-host replay; no rerun is permitted, so complete independent acceptance is withheld.",
+  "findings": [
+    {
+      "rank": 1,
+      "severity": "acceptance blocker",
+      "kind": "review execution defect, not a proven product defect",
+      "locator": "independent.cjs:49",
+      "observed": "TypeError: URL is not a constructor. The local string named URL shadows the standard URL constructor. Browser finally closed.",
+      "evidence": [
+        "independent-results.json",
+        "independent-browser.stdout.txt",
+        "copied-permalink.json"
+      ],
+      "user_impact": "Cannot certify a newly orbited, actually copied permalink against independent cold/warm/reveal six-component measurements. Actual CDN scenario and separately authored control-count pass were also not reached.",
+      "next_owner": "parent review coordinator; a separately authorized review may correct the reviewer helper and complete only missing acceptance, without reopening source production",
+      "fix_direction": "Rename the review helper URL constant before any future independently authorized run. This lane stops under its no-rerun instruction.",
+      "observed_vs_inferred": "Observed exception and unexecuted tail; no inference that the product fails."
+    },
+    {
+      "rank": 2,
+      "severity": "coverage gap",
+      "kind": "partial state coverage",
+      "locator": "copied-permalink.json before.section and linked.section",
+      "observed": "Actual copied link captured pads, jaw 7, roll 40 and a newly orbited camera; section was off. Independent reload/reveal and non-default section retention were not proven.",
+      "evidence": [
+        "copied-permalink.json",
+        "ind-fit-selected-orbit.png"
+      ],
+      "user_impact": "The broader state-retention claim remains incomplete.",
+      "next_owner": "parent review coordinator",
+      "fix_direction": "Include an enabled section on a supported finding in any future authorized independent acceptance.",
+      "observed_vs_inferred": "Observed state and missing proof."
+    }
+  ],
+  "visual_judgment": {
+    "useful": true,
+    "looks_good": "Yes for the bounded technical inspection task: complete assembled gripper, separated fasteners/fingers and readable highlights. Light and dark native images inspected.",
+    "is_clear": "Assembled/exploded views, labels and recovery states were clear to this reader. Saved-view conceptual outcome remains incomplete because the independent replay was not executed.",
+    "smallest_improvement": "Finish the missing independent copied-link replay evidence; no source visual change is justified by this review."
+  },
+  "present": {
+    "rubric_authored_before_images": "rubric.md",
+    "axis_A": "partial: A1/A2 pass; A3 confused due incomplete restoration proof",
+    "axis_B": "partial: B1/B3 pass; B2 confused due incomplete independent replay",
+    "single_reader_limit": "gpt-6.1-sol only; not universal user comprehension",
+    "items": [
+      {
+        "id": "A1",
+        "axis": "discrete-data",
+        "grade": "pass",
+        "observation": "I can identify both orange fingers, blue housing and the separated fasteners at all three widths. All 63 gripper meshes stayed visible with positive measured margins.",
+        "control_reachability": "Real Explode and Jaw controls exercised; manual orbit changed the bearing."
+      },
+      {
+        "id": "A2",
+        "axis": "discrete-data",
+        "grade": "pass",
+        "observation": "I can read Fasteners, side B, Fasteners, body and 0.01 mm; the pads view says 736 mm3 by design.",
+        "control_reachability": "Real finding selector used for pads; focused runner additionally selected and rendered gap/overlap at three widths."
+      },
+      {
+        "id": "A3",
+        "axis": "discrete-data",
+        "grade": "confused",
+        "observation": "I can read jaw 7 degrees, roll 40 degrees and copy the actual inspection URL, but I cannot confirm its restored state because my replay did not run.",
+        "fix": "Complete an authorized independent replay and enabled-section case."
+      },
+      {
+        "id": "B1",
+        "axis": "abstract-conceptual",
+        "grade": "pass",
+        "observation": "Assembled shows the working gripper; Explode separates its components; Fit isolates a named gap or intentional pad overlap."
+      },
+      {
+        "id": "B2",
+        "axis": "abstract-conceptual",
+        "grade": "confused",
+        "observation": "The supplied explicit-link regression restored numerically, but I did not independently reopen my new saved bearing; I cannot certify the same inspection context.",
+        "fix": "Complete cold, warm and late-host replay of the actual copied link."
+      },
+      {
+        "id": "B3",
+        "axis": "abstract-conceptual",
+        "grade": "pass",
+        "observation": "Loading, still loading and failed are visibly distinct; Reload and Parts are named recovery routes.",
+        "control_reachability": "Focused runner exercised keyboard Enter on Reload, Parts during failure and delayed-library recovery."
+      }
+    ]
+  },
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light and focused fit dark"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "theme": "dark"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "theme": "light and focused fit dark"
+    }
+  ],
+  "framing_independent": [
+    {
+      "width": 390,
+      "pose": "assembled",
+      "explode": 0,
+      "margins_px": {
+        "left": 40.33859138641624,
+        "right": 79.35801147844897,
+        "top": 98.65484806719599,
+        "bottom": 74.57592648692072
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.992748924594255,
+        0.994632952460542
+      ],
+      "evidence": "ind-framing-390.json"
+    },
+    {
+      "width": 390,
+      "pose": "transition",
+      "explode": 0,
+      "margins_px": {
+        "left": 117.3396828438912,
+        "right": 137.88154376647594,
+        "top": 184.38036060401618,
+        "bottom": 183.19992749324356
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9973101857236177,
+        0.9976621040178202
+      ],
+      "evidence": "ind-framing-390.json"
+    },
+    {
+      "width": 390,
+      "pose": "exploded",
+      "explode": 1,
+      "margins_px": {
+        "left": 58.336092927086746,
+        "right": 104.57819206520966,
+        "top": 133.2366209995955,
+        "bottom": 108.58869864799117
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9970802866461839,
+        0.9977913182015896
+      ],
+      "evidence": "ind-framing-390.json"
+    },
+    {
+      "width": 390,
+      "pose": "manual-orbit-exploded",
+      "explode": 1,
+      "margins_px": {
+        "left": 82.51057403922194,
+        "right": 93.37311740153645,
+        "top": 146.31914769008367,
+        "bottom": 124.90315614368419
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9970267709378924,
+        0.9977461810095405
+      ],
+      "evidence": "ind-framing-390.json"
+    },
+    {
+      "width": 768,
+      "pose": "assembled",
+      "explode": 0,
+      "margins_px": {
+        "left": 198.2115956709852,
+        "right": 243.50387673322086,
+        "top": 88.54275576136536,
+        "bottom": 60.374465883368174
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9919021998046464,
+        0.9941675498387663
+      ],
+      "evidence": "ind-framing-768.json"
+    },
+    {
+      "width": 768,
+      "pose": "transition",
+      "explode": 0,
+      "margins_px": {
+        "left": 277.5811358047044,
+        "right": 305.8073195783009,
+        "top": 175.4177292700127,
+        "bottom": 173.45122634363688
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9964565042866808,
+        0.9970168127155632
+      ],
+      "evidence": "ind-framing-768.json"
+    },
+    {
+      "width": 768,
+      "pose": "exploded",
+      "explode": 1,
+      "margins_px": {
+        "left": 196.54114100263155,
+        "right": 262.37984390178826,
+        "top": 105.78331252941209,
+        "bottom": 70.09489598292673
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9960701412061952,
+        0.99721369401042
+      ],
+      "evidence": "ind-framing-768.json"
+    },
+    {
+      "width": 768,
+      "pose": "manual-orbit-exploded",
+      "explode": 1,
+      "margins_px": {
+        "left": 250.45870762800436,
+        "right": 227.4836467108147,
+        "top": 122.95699106068277,
+        "bottom": 88.3876986969029
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9959633361289404,
+        0.9971317385599997
+      ],
+      "evidence": "ind-framing-768.json"
+    },
+    {
+      "width": 1440,
+      "pose": "assembled",
+      "explode": 0,
+      "margins_px": {
+        "left": 180.26470532083044,
+        "right": 237.43505904401815,
+        "top": 107.96857622570226,
+        "bottom": 72.37853276654563
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9917929162019965,
+        0.9941093057526299
+      ],
+      "evidence": "ind-framing-1440.json"
+    },
+    {
+      "width": 1440,
+      "pose": "transition",
+      "explode": 0,
+      "margins_px": {
+        "left": 280.6725426740657,
+        "right": 316.35310622868036,
+        "top": 217.90324816970738,
+        "bottom": 215.39602845906424
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9964132107920336,
+        0.9969851799987508
+      ],
+      "evidence": "ind-framing-1440.json"
+    },
+    {
+      "width": 1440,
+      "pose": "exploded",
+      "explode": 1,
+      "margins_px": {
+        "left": 178.23123935649195,
+        "right": 261.59859566864947,
+        "top": 129.92360427243756,
+        "bottom": 84.69710184293737
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9960177303064103,
+        0.9971857212737005
+      ],
+      "evidence": "ind-framing-1440.json"
+    },
+    {
+      "width": 1440,
+      "pose": "manual-orbit-exploded",
+      "explode": 1,
+      "margins_px": {
+        "left": 239.39363869661418,
+        "right": 222.5969361413219,
+        "top": 150.48652146564413,
+        "bottom": 120.41538591813455
+      },
+      "all_meshes": 63,
+      "shown_meshes": 63,
+      "vertices": 240240,
+      "hidden_mesh_names": [],
+      "depth": [
+        0.9959196942421119,
+        0.9971043346166474
+      ],
+      "evidence": "ind-framing-1440.json"
+    }
+  ],
+  "embedded_model_and_fit_data_identity": {
+    "original_source_ref": "ed77773de9654ac05940a5ea3f623be5cdb46a8a^:cad/gripper/viewer.html",
+    "candidate_ref": "b6c7712c292dc83cbfe17a89aae3e4ef0fa2d20d:cad/gripper/viewer.html",
+    "literal": "const D= embedded model and fit data",
+    "original_sha256": "1289a4d5ce8e0d31000af3c1e43be864e48cbe06e40ab722be32e8e9a7c67912",
+    "candidate_sha256": "1289a4d5ce8e0d31000af3c1e43be864e48cbe06e40ab722be32e8e9a7c67912",
+    "identical": true,
+    "method": "Read and hash the embedded data literal only; no geometry or data replacement."
+  },
+  "framing_scope_note": "Independent oracle projects every vertex from all descendant mesh buffers with full ancestor visibility. All observed 63/63 meshes and 240240 vertices were retained. No component was hidden or reclassified. The UI transition sample happened to catch explode=0; the focused suite independently captured an explicit 0.5 midpoint at all widths. Do not mislabel that UI transition as a midpoint.",
+  "focused_suite": {
+    "exit": 0,
+    "passed": true,
+    "result_records": 28,
+    "failures": [],
+    "claims_executed": [
+      "three-width gap and overlap labels and insets",
+      "initial/still/terminal loading",
+      "keyboard Reload",
+      "Parts during missing dependency",
+      "delayed dependency recovery",
+      "three-width assembled, midpoint, endpoint framing",
+      "supplied explicit permalink cold/warm/late host",
+      "manual orbit after fit",
+      "ordinary resize aspect update with camera preserved",
+      "rendered model/fit/Parts/Assembly controls"
+    ],
+    "evidence": "browser/camera-assertions.json",
+    "limitation": "Existing runner is complementary evidence, not a substitute for the failed independent copied-link replay."
+  },
+  "six_component_measurements": {
+    "component_order": [
+      "camera.x",
+      "camera.y",
+      "camera.z",
+      "target.x",
+      "target.y",
+      "target.z"
+    ],
+    "tolerance": 0.1,
+    "focused_runner": [
+      {
+        "name": "explicit fit camera cold",
+        "passed": true,
+        "camera": [
+          111,
+          20.19999999999999,
+          158.6,
+          0,
+          -30,
+          0
+        ],
+        "expected": [
+          111,
+          20.2,
+          158.6,
+          0,
+          -30,
+          0
+        ],
+        "delta": [
+          0,
+          1.0658141036401503e-14,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hash": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+        "host": "fit3d"
+      },
+      {
+        "name": "explicit fit camera warm",
+        "passed": true,
+        "camera": [
+          111,
+          20.19999999999999,
+          158.6,
+          0,
+          -30,
+          0
+        ],
+        "expected": [
+          111,
+          20.2,
+          158.6,
+          0,
+          -30,
+          0
+        ],
+        "delta": [
+          0,
+          1.0658141036401503e-14,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hash": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+        "host": "fit3d"
+      },
+      {
+        "name": "explicit fit camera late-host-attach",
+        "passed": true,
+        "camera": [
+          111,
+          20.19999999999999,
+          158.6,
+          0,
+          -30,
+          0
+        ],
+        "expected": [
+          111,
+          20.2,
+          158.6,
+          0,
+          -30,
+          0
+        ],
+        "delta": [
+          0,
+          1.0658141036401503e-14,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hash": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+        "host": "fit3d"
+      },
+      {
+        "name": "manual orbit remains interactive",
+        "passed": true,
+        "before": [
+          111,
+          20.19999999999999,
+          158.6,
+          0,
+          -30,
+          0
+        ],
+        "after": [
+          14.513246042838603,
+          97.88095400662384,
+          153.07131439840646,
+          0,
+          -30,
+          0
+        ],
+        "delta": [
+          96.4867539571614,
+          77.68095400662385,
+          5.528685601593537,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "resize preserves manual camera",
+        "passed": true,
+        "before": [
+          14.513246042838603,
+          97.88095400662384,
+          153.07131439840646,
+          0,
+          -30,
+          0
+        ],
+        "after": [
+          14.513246042838599,
+          97.88095400662384,
+          153.07131439840646,
+          0,
+          -30,
+          0
+        ],
+        "delta": [
+          3.552713678800501e-15,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "independent_real_copy": {
+      "before": {
+        "url": "http://127.0.0.1:4200/cad/gripper/viewer.html#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=f,0,0",
+        "hash": "#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=f,0,0",
+        "camera": [
+          -71.2604061286606,
+          23.993205253137717,
+          -174.494017510459,
+          -8,
+          -30.229999999999997,
+          6.25
+        ],
+        "host": "fit3d",
+        "finding": "pads",
+        "jaw": "7",
+        "roll": "40",
+        "section": {
+          "pressed": "false",
+          "mode": [],
+          "offset": "0"
+        },
+        "aspect": 0.6845124282982792,
+        "canvas": {
+          "width": 358,
+          "height": 523.265625
+        }
+      },
+      "linked": {
+        "url": "http://127.0.0.1:4200/cad/gripper/viewer.html#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=off",
+        "hash": "#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=off",
+        "camera": [
+          -71.2604061286606,
+          23.993205253137717,
+          -174.494017510459,
+          -8,
+          -30.229999999999997,
+          6.25
+        ],
+        "host": "fit3d",
+        "finding": "pads",
+        "jaw": "7",
+        "roll": "40",
+        "section": {
+          "pressed": "false",
+          "mode": [],
+          "offset": "0"
+        },
+        "aspect": 0.6845124282982792,
+        "canvas": {
+          "width": 358,
+          "height": 523.265625
+        }
+      },
+      "actual_copied_url": "http://127.0.0.1:4200/cad/gripper/viewer.html#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=off",
+      "encoded_camera": [
+        -71.3,
+        24.0,
+        -174.5,
+        -8.0,
+        -30.2,
+        6.3
+      ],
+      "serialization_deltas": [
+        0.03959387133939174,
+        0.0067947468622833185,
+        0.005982489540997449,
+        0.0,
+        0.029999999999997584,
+        0.04999999999999982
+      ],
+      "cold": null,
+      "warm": null,
+      "late_host": null,
+      "later_readiness": null,
+      "resize": null,
+      "reason": "Review script stopped before replay. Serialization alone is not restoration proof."
+    }
+  },
+  "controls": {
+    "actual_focused_counts": {
+      "model": 60,
+      "fit": 83,
+      "parts": 55,
+      "assembly": 46
+    },
+    "whole_control_records_equal_original_baseline": false,
+    "baseline": "../camera-resume-20261023/source2-red/control-counts.json",
+    "independent_second_count": "not reached",
+    "reset_camera_only": [
+      {
+        "scenario": "framing-390",
+        "observed": {
+          "jawBefore": "20",
+          "jawAfter": "20",
+          "explode": 1
+        }
+      },
+      {
+        "scenario": "framing-768",
+        "observed": {
+          "jawBefore": "20",
+          "jawAfter": "20",
+          "explode": 1
+        }
+      },
+      {
+        "scenario": "framing-1440",
+        "observed": {
+          "jawBefore": "20",
+          "jawAfter": "20",
+          "explode": 1
+        }
+      }
+    ]
+  },
+  "console": {
+    "independent_errors": [],
+    "independent_page_errors": [],
+    "independent_failed_requests": [],
+    "focused_runner_console": "not collected by existing runner; empty stderr is not proof of zero console errors",
+    "server_http_errors": "favicon.ico 404 retained in server.log; not a JavaScript exception"
+  },
+  "dependency": {
+    "fixture": "Only exact pinned Three 0.186.1 URL prefix fulfilled from original declared fixture; no source, HTML, geometry or fit-data interception.",
+    "fixture_manifest_version": "0.186.1",
+    "cached_module_sha256": "3bc833fceb6577bd1a380388f832ae61cd6e2f78ad02b0bf0d5adf5a4a9334fe",
+    "actual_cdn_availability": "not exercised: independent runner stopped before un-intercepted context; no claim of real CDN availability",
+    "pygments": "not exercised or installed; inherited static results are not an independent result"
+  },
+  "legacy_gaps_separate": [
+    {
+      "locator": "DESIGN.md:172-181",
+      "observed": "Stack-selection section explicitly says template, six answers and slots were not recorded; static vanilla stack is documented.",
+      "next_owner": "stack/documentation owner",
+      "scope": "Historical gap, not caused by camera patch; no migration requested."
+    },
+    {
+      "locator": "detector.json, cad/gripper/viewer.html:504 and related data-img elements",
+      "observed": "Canonical detector scanned the target and reported eight broken-image warnings for img elements whose source is populated dynamically.",
+      "next_owner": "existing design/browser harness owner",
+      "scope": "Static detector finding only; those drawing sheets were not inspected, so no live broken-image claim or camera-blocker inference."
+    }
+  ],
+  "inspected_images": [
+    {
+      "path": "browser/dependency-initial-390.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Loading the model and Reload are distinct from live geometry."
+    },
+    {
+      "path": "browser/dependency-still-390.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Still-loading text offers reload or continuing in Parts."
+    },
+    {
+      "path": "browser/dependency-terminal-390.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Terminal missing-library message is explicit and Reload remains visible."
+    },
+    {
+      "path": "browser/finding-gap-1440x1000.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Read the selected fastener pair and 0.01 mm gap label; location inset distinguishes local detail from assembly context."
+    },
+    {
+      "path": "browser/finding-gap-390x844.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Read the selected fastener pair and 0.01 mm gap label; location inset distinguishes local detail from assembly context."
+    },
+    {
+      "path": "browser/finding-gap-768x1024.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Read the selected fastener pair and 0.01 mm gap label; location inset distinguishes local detail from assembly context."
+    },
+    {
+      "path": "browser/finding-overlap-1440x1000.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Read 736 mm3, green by-design overlap and the two fingers; label remains readable."
+    },
+    {
+      "path": "browser/finding-overlap-390x844.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Read 736 mm3, green by-design overlap and the two fingers; label remains readable."
+    },
+    {
+      "path": "browser/finding-overlap-768x1024.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Read 736 mm3, green by-design overlap and the two fingers; label remains readable."
+    },
+    {
+      "path": "browser/fit-cold.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Phone screenshot is dominated by introductory text; only top of canvas appears. This image alone cannot prove camera equivalence."
+    },
+    {
+      "path": "browser/fit-late-host-attach.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Rendered local pads inspection and green volume label are visible after host attachment."
+    },
+    {
+      "path": "browser/fit-warm.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Phone screenshot is dominated by introductory text; only top of canvas appears. This image alone cannot prove camera equivalence."
+    },
+    {
+      "path": "browser/model-1440x1000/assembled.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Complete blue gripper and orange fingers are legible at useful assembled scale; upper white arm context is intentionally cropped."
+    },
+    {
+      "path": "browser/model-1440x1000/exploded-midpoint.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "browser/model-1440x1000/exploded.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "browser/model-390x844/assembled.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Complete blue gripper and orange fingers are legible at useful assembled scale; upper white arm context is intentionally cropped."
+    },
+    {
+      "path": "browser/model-390x844/exploded-midpoint.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "browser/model-390x844/exploded.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "browser/model-768x1024/assembled.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Complete blue gripper and orange fingers are legible at useful assembled scale; upper white arm context is intentionally cropped."
+    },
+    {
+      "path": "browser/model-768x1024/exploded-midpoint.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "browser/model-768x1024/exploded.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "ind-fit-selected-orbit.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "7 degree jaw and 40 degree wrist roll controls, Copy link and selected pads explanation are readable; canvas is partly above viewport after controls scroll."
+    },
+    {
+      "path": "ind-model-1440-assembled.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Complete blue gripper and orange fingers are legible at useful assembled scale; upper white arm context is intentionally cropped."
+    },
+    {
+      "path": "ind-model-1440-exploded.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "ind-model-1440-orbit.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "New oblique bearing exposes separated fasteners and fingers; gripper remains within canvas. Cropped white arm context is retained."
+    },
+    {
+      "path": "ind-model-390-assembled.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Complete blue gripper and orange fingers are legible at useful assembled scale; upper white arm context is intentionally cropped."
+    },
+    {
+      "path": "ind-model-390-exploded.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "ind-model-390-orbit.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "New oblique bearing exposes separated fasteners and fingers; gripper remains within canvas. Cropped white arm context is retained."
+    },
+    {
+      "path": "ind-model-768-assembled.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Complete blue gripper and orange fingers are legible at useful assembled scale; upper white arm context is intentionally cropped."
+    },
+    {
+      "path": "ind-model-768-exploded.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "Separated fingers and fasteners remain framed at useful inspection scale; white arm context may be cropped."
+    },
+    {
+      "path": "ind-model-768-orbit.png",
+      "native_dimensions_inspected": true,
+      "reviewer": "gpt-6.1-sol",
+      "observation": "New oblique bearing exposes separated fasteners and fingers; gripper remains within canvas. Cropped white arm context is retained."
+    }
+  ],
+  "inspected_png_count": 31,
+  "cleanup": {
+    "owned_server_pid": 57924,
+    "owned_server_exited": true,
+    "server_exit": 1,
+    "other_processes_touched": false,
+    "browser_closed": true,
+    "focused_browser_closed": "existing runner completed its explicit browser.close on exit 0",
+    "all_opened_tabs": "owned Playwright browsers closed; no user tabs opened or closed",
+    "no_other_processes_stopped": true
+  },
+  "preservation": {
+    "source_tests_SPEC_TASK_LOG_public_geometry_changes": "none; git diff scoped verification performed",
+    "task_state": "No enrollment, repair or reconcile. Brief used as lane scope.",
+    "failed_run_policy": "No rerun or production repair after independent helper failure.",
+    "reviewed_bytes": "Raw PNG and JSON evidence preserved; local .gitattributes disables text normalization. Staged blob hashes verified before commit.",
+    "commit_push": "Own agent/gripper-camera-review-20261023 branch only; no PR/default merge/deploy. Final commit and remote reachability are returned to parent after verification."
+  },
+  "receipt": "Canonical Write-DesignReviewReceipt.ps1, verdict partial, under receipt/; exact inputs hashed there."
+}

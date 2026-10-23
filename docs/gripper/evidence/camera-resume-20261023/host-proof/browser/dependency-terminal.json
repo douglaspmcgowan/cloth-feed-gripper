@@ -1,0 +1,6 @@
+{
+  "text": "The 3D library did not load, so the model cannot be shown. Check the connection and reload; the parts list and every other view still work.",
+  "stage": "failed",
+  "reload": true,
+  "parts": false
+}

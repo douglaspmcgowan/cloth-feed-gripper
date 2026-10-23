@@ -1,0 +1,21 @@
+{
+  "hash": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+  "host": "fit3d",
+  "camera": [
+    111,
+    20.19999999999999,
+    158.6,
+    0,
+    -30,
+    0
+  ],
+  "finding": "pads",
+  "theta": -10,
+  "roll": 0,
+  "cut": {
+    "on": false,
+    "mode": "f",
+    "flip": false,
+    "off": 0
+  }
+}

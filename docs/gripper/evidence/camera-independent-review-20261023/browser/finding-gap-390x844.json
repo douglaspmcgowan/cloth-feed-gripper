@@ -1,0 +1,86 @@
+{
+  "id": "fasteners-b-fasteners",
+  "title": "Fasteners, side B to fasteners, body",
+  "kind": "gap",
+  "stage": {
+    "left": 16,
+    "top": 321,
+    "right": 374,
+    "bottom": 844.265625,
+    "width": 358,
+    "height": 523.265625
+  },
+  "labels": [
+    {
+      "text": "0.01 mm",
+      "r": {
+        "left": 162.6171875,
+        "top": 592.203125,
+        "right": 227.3828125,
+        "bottom": 609.796875,
+        "width": 64.765625,
+        "height": 17.59375
+      }
+    },
+    {
+      "text": "Fasteners, side B",
+      "r": {
+        "left": 125.4765625,
+        "top": 572.203125,
+        "right": 234.5234375,
+        "bottom": 589.796875,
+        "width": 109.046875,
+        "height": 17.59375
+      }
+    },
+    {
+      "text": "Fasteners, body",
+      "r": {
+        "left": 158.65625,
+        "top": 612.203125,
+        "right": 261.34375,
+        "bottom": 629.796875,
+        "width": 102.6875,
+        "height": 17.59375
+      }
+    }
+  ],
+  "pts": [
+    {
+      "x": 194.9703231504762,
+      "y": 582.6299811944735,
+      "z": 0.9874442439260471,
+      "source": [
+        15.73,
+        -0.29,
+        11.25
+      ]
+    },
+    {
+      "x": 195.02967745734466,
+      "y": 582.6356438635154,
+      "z": 0.9874439799394376,
+      "source": [
+        15.72,
+        -0.29,
+        11.25
+      ]
+    }
+  ],
+  "locator": {
+    "left": 270,
+    "top": 381,
+    "width": 96,
+    "height": 96,
+    "hidden": false
+  },
+  "canvas": {
+    "width": 358,
+    "height": 523.265625
+  },
+  "scrollWidth": 390,
+  "innerWidth": 390,
+  "ready": true,
+  "parts": 16,
+  "locDrawn": 2
+}

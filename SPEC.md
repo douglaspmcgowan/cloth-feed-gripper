@@ -56,3 +56,6 @@ Source: Douglas, 2026-10-19, "remake the layout, animations, tutorials, explaine
 - [x] When the browser exposes `document.fragmentDirective`, the guided fit link reveals the named horn-clearance cell within the real table viewport. Otherwise it retains the ordinary fit view link plus explicit Find and table-scroll instructions; ordinary doors keep their original routes. Proof: the clipped-viewport regression and unsupported-feature scenario in `tests/tour.spec.mjs`, plus inspected phone and desktop handoff captures.
 
 Tour step counters are navigation state derived from the step array, not engineering figures. All engineering figures remain sourced from `facts.json`.
+
+- [ ] The model camera keeps every visible gripper component and fastener inside the canvas at the assembled pose, explosion midpoint and endpoint, with at least 8 CSS pixels of projected margin at 390×844, 768×1024 and 1440×1000; the arm remains context only. Proof: actual browser projected-vertex bounds and inspected native screenshots.
+- [ ] A fit-finding permalink preserves its six camera and target coordinates within 0.1 after cold load, warm reload and delayed host attachment, while retaining finding, jaw, roll and section state. Proof: actual browser lifecycle regression using the explicit camera-bearing fit URL.

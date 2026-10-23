@@ -1,0 +1,55 @@
+{
+  "before": {
+    "url": "http://127.0.0.1:4200/cad/gripper/viewer.html#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=f,0,0",
+    "hash": "#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=f,0,0",
+    "camera": [
+      -71.2604061286606,
+      23.993205253137717,
+      -174.494017510459,
+      -8,
+      -30.229999999999997,
+      6.25
+    ],
+    "host": "fit3d",
+    "finding": "pads",
+    "jaw": "7",
+    "roll": "40",
+    "section": {
+      "pressed": "false",
+      "mode": [],
+      "offset": "0"
+    },
+    "aspect": 0.6845124282982792,
+    "canvas": {
+      "width": 358,
+      "height": 523.265625
+    }
+  },
+  "linked": {
+    "url": "http://127.0.0.1:4200/cad/gripper/viewer.html#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=off",
+    "hash": "#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=off",
+    "camera": [
+      -71.2604061286606,
+      23.993205253137717,
+      -174.494017510459,
+      -8,
+      -30.229999999999997,
+      6.25
+    ],
+    "host": "fit3d",
+    "finding": "pads",
+    "jaw": "7",
+    "roll": "40",
+    "section": {
+      "pressed": "false",
+      "mode": [],
+      "offset": "0"
+    },
+    "aspect": 0.6845124282982792,
+    "canvas": {
+      "width": 358,
+      "height": 523.265625
+    }
+  },
+  "copied": "http://127.0.0.1:4200/cad/gripper/viewer.html#fit-f-pads~j=7~r=40~c=-71.3,24.0,-174.5,-8.0,-30.2,6.3~s=off"
+}

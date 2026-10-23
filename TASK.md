@@ -6,6 +6,9 @@ Douglas asked on 2026-10-22 to fix poor CAD in the ongoing product design progra
 
 ## Specs
 
+- [ ] Gripper fasteners and fingers remain visible with positive canvas-pixel margin in assembled and exploded poses at390/768/1440 widths, excluding only existing arm context; readable scale and manual orbit retained.
+- [ ] Explicit fit-camera permalink restores all six camera/target components within0.1 precision after cold/warm reload and attachment; existing finding/jaw/roll/section controls preserved.
+
 - [x] At a 390px phone viewport, the first gap and overlap findings show both comparison anchors, complete relevant labels and locator within the fit stage, proven by actual browser bounds and inspected screenshots.
 - [x] A blocked pinned 3D dependency exposes distinct initial, early still-loading/reload and terminal recovery states, with keyboard recovery and usable Parts; slow eventual success clears loading correctly.
 - [x] Model/fit/parts/assembly controls and exact data/fit artifacts remain intact; deterministic source-owned viewer build and focused static/browser tests pass before fresh independent acceptance.
@@ -15,6 +18,8 @@ Douglas asked on 2026-10-22 to fix poor CAD in the ongoing product design progra
 Fix actual phone fit framing and loading feedback from the independently verified current main d4861b3, retaining honest unbuilt and physical-failure claims. The source-only worker restriction was superseded for publication by the later operator72-hour grant; accepted source was merged and deployed2026-10-23.
 
 ## Active
+
+- [~] Repair original confirmed camera defects, source attempt2 after preserved failure1. Owner: bounded qualified builder in this worktree. Done when: actual baseline red/corrected green, unchanged geometry, framing and reload proof plus fresh independent acceptance. New parent 2026-10-23T06:27:51.588902+00:00 explicitly renews old expired unit under later human CAD/UI request and standing duration ruling; no automatic third producer.
 
 
 ## Queue

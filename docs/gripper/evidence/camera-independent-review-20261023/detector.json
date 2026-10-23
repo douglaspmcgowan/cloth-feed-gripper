@@ -1,0 +1,96 @@
+{
+  "verdict": "fail",
+  "findings": [
+    {
+      "antipattern": "broken-image",
+      "name": "Broken or placeholder image",
+      "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\cad\\gripper\\viewer.html",
+      "line": 504,
+      "snippet": "<img data-img=\"draw_fitcheck\" alt=\"Fit check section through the wrist and gripper\">"
+    },
+    {
+      "antipattern": "broken-image",
+      "name": "Broken or placeholder image",
+      "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\cad\\gripper\\viewer.html",
+      "line": 505,
+      "snippet": "<img data-img=\"draw_fitcheck_iso\" alt=\"Isometric view of the gripper on the wrist\">"
+    },
+    {
+      "antipattern": "broken-image",
+      "name": "Broken or placeholder image",
+      "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\cad\\gripper\\viewer.html",
+      "line": 536,
+      "snippet": "<img id=\"partSheet\" alt=\"\">"
+    },
+    {
+      "antipattern": "broken-image",
+      "name": "Broken or placeholder image",
+      "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\cad\\gripper\\viewer.html",
+      "line": 583,
+      "snippet": "<img data-img=\"draw_housing\" alt=\"Housing drawing\">"
+    },
+    {
+      "antipattern": "broken-image",
+      "name": "Broken or placeholder image",
+      "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\cad\\gripper\\viewer.html",
+      "line": 584,
+      "snippet": "<img data-img=\"draw_knuckle_a\" alt=\"Knuckle A drawing\">"
+    },
+    {
+      "antipattern": "broken-image",
+      "name": "Broken or placeholder image",
+      "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\cad\\gripper\\viewer.html",
+      "line": 585,
+      "snippet": "<img data-img=\"draw_knuckle_b\" alt=\"Knuckle B drawing\">"
+    },
+    {
+      "antipattern": "broken-image",
+      "name": "Broken or placeholder image",
+      "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\cad\\gripper\\viewer.html",
+      "line": 586,
+      "snippet": "<img data-img=\"draw_finger_a\" alt=\"Finger drawing\">"
+    },
+    {
+      "antipattern": "broken-image",
+      "name": "Broken or placeholder image",
+      "description": "<img> tags with empty src, missing src, or placeholder values ship as broken-image boxes. Use real images, generated assets, or remove the tag.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\cad\\gripper\\viewer.html",
+      "line": 587,
+      "snippet": "<img data-img=\"draw_wrist_mount\" alt=\"Wrist mount drawing\">"
+    }
+  ],
+  "not_scanned": [],
+  "reason": [],
+  "targets": [
+    {
+      "target": "cad/gripper/viewer.html",
+      "scanned": true,
+      "process_id": 8552,
+      "exit_code": 2,
+      "reason": null
+    }
+  ]
+}

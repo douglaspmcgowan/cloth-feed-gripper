@@ -1,0 +1,6 @@
+{
+  "text": "Still loading the 3D library. You can reload now or keep using Parts and the other views.",
+  "stage": "loading",
+  "reload": true,
+  "parts": false
+}

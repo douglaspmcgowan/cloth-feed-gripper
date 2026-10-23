@@ -1,0 +1,62 @@
+127.0.0.1 - - [22/Oct/2026 22:44:20] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 65228)
+Traceback (most recent call last):
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 1346, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 687, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 451, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 439, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 694, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 896, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+    ~~~~~~~~~~^^^^^
+  File "C:\Users\dougl\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [22/Oct/2026 22:44:22] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:44:27] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:44:31] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:44:36] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:44:41] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:44:47] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:44:52] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:45:03] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:45:03] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:45:10] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:45:11] code 404, message File not found
+127.0.0.1 - - [22/Oct/2026 22:45:11] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Oct/2026 22:45:21] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:45:34] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:45:49] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:45:52] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:46:02] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:46:05] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:46:08] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:46:11] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:46:14] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:46:31] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:46:49] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Oct/2026 22:47:10] "GET /cad/gripper/viewer.html HTTP/1.1" 200 -

@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-10-23T05:44:19.957739+00:00",
+  "head": "b6c7712c292dc83cbfe17a89aae3e4ef0fa2d20d",
+  "commands": [
+    {
+      "name": "focused-browser",
+      "command": "python cad/gripper/tests/test_viewer_fit_framing.py --url http://127.0.0.1:4200/cad/gripper/viewer.html --dependency-dir C:/Users/dougl/Projects/product-design-system/gripper-ui-fixture/package --cached-module C:/Users/dougl/Projects/product-design-system/gripper-ui-runtime/cdn-three.module.min.js --playwright-module C:/Users/dougl/Worktrees/product-design-system/pds-ux-linked-selection-20261022/studio/web/node_modules/@playwright/test/index.js --browser-channel chrome --output docs/gripper/evidence/camera-independent-review-20261023/browser",
+      "admission": "C:/Users/dougl/.agents/tools/Invoke-HeavyTestAdmission.ps1",
+      "exit": 0,
+      "elapsed_seconds": 113.425
+    },
+    {
+      "name": "independent-browser",
+      "command": "node docs/gripper/evidence/camera-independent-review-20261023/independent.cjs",
+      "admission": "C:/Users/dougl/.agents/tools/Invoke-HeavyTestAdmission.ps1",
+      "exit": 2,
+      "elapsed_seconds": 64.938
+    }
+  ],
+  "cleanup": {
+    "owned_server_pid": 57924,
+    "owned_server_exited": true,
+    "server_exit": 1,
+    "other_processes_touched": false
+  },
+  "server_pid": 57924,
+  "finished_at": "2026-10-23T05:47:18.976563+00:00"
+}

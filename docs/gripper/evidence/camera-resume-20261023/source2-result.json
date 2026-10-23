@@ -1,0 +1,127 @@
+{
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "work": {
+    "attempt": "source2 after preserved failure1; one producer",
+    "branch": "agent/gripper-camera-resume-20261023",
+    "prepared_head": "214f7c847c226ec4f6851d3c4b6158b4780a3b3f",
+    "source_and_proof_commit": "ed77773de9654ac05940a5ea3f623be5cdb46a8a",
+    "source_and_proof_push": "succeeded to origin/agent/gripper-camera-resume-20261023",
+    "result_commit_parent": "ed77773de9654ac05940a5ea3f623be5cdb46a8a",
+    "default_branch_touched": false,
+    "work_scope_state": "not enrolled; no task-state enrollment, reconciliation, repair, or TASK.md edits"
+  },
+  "root_cause": {
+    "model": "vw_6 initialized a fixed-distance home camera, resize changed aspect only, and pose interpolation moved gripper parts without fitting them. The arm is outside V3.grip and remains context only.",
+    "fit_permalink": "vw_11 selectFinding called fitSync before applying the six parsed camera values. fitSync serialized the old home camera into the URL; warm reload then correctly parsed that overwritten camera.",
+    "fix": "vw_6 now bounds visible meshes under V3.grip with ancestor visibility, samples explode 0, 0.5 and 1 only when framing is requested, and fits those bounds to the current perspective canvas while preserving viewing direction. Entry, explode-to, and camera-only Reset use that frame. vw_11 applies selection pose state before camera restore/serialization and does not serialize an unready camera. parseHash is unchanged; no geometry, GLB, or sleeps were added."
+  },
+  "verification": {
+    "baseline": {
+      "source_baseline_head": "6200f39c993cd169477d16b7b59a240100910726",
+      "prepared_head_verified": true,
+      "original_product_hashes_verified_before_edit": 7,
+      "untouched_data_hashes_after_generator": {"matched": 87, "total": 87, "mismatched": []}
+    },
+    "red": {
+      "command": "python cad/gripper/tests/test_viewer_fit_framing.py --url http://127.0.0.1:4198/cad/gripper/viewer.html --dependency-dir C:/Users/dougl/Projects/product-design-system/gripper-ui-fixture/package --cached-module C:/Users/dougl/Projects/product-design-system/gripper-ui-runtime/cdn-three.module.min.js --playwright-module C:/Users/dougl/Worktrees/product-design-system/pds-ux-linked-selection-20261022/studio/web/node_modules/@playwright/test/index.js --browser-channel chrome --camera-only --output docs/gripper/evidence/camera-resume-20261023/source2-red",
+      "assertions": 21,
+      "failures": 9,
+      "node_exit": 2,
+      "python_wrapper_exit": 1,
+      "failure_reason": "six negative exploded-pose margins across three viewports; cold fit hash serialization replaced the camera; warm reload restored that overwritten camera and hash",
+      "result_generated_utc": "2026-10-23T05:16:20.121Z",
+      "elapsed_seconds": null
+    },
+    "green": {
+      "command": "python cad/gripper/tests/test_viewer_fit_framing.py --url http://127.0.0.1:4198/cad/gripper/viewer.html --dependency-dir C:/Users/dougl/Projects/product-design-system/gripper-ui-fixture/package --cached-module C:/Users/dougl/Projects/product-design-system/gripper-ui-runtime/cdn-three.module.min.js --playwright-module C:/Users/dougl/Worktrees/product-design-system/pds-ux-linked-selection-20261022/studio/web/node_modules/@playwright/test/index.js --browser-channel chrome --output docs/gripper/evidence/camera-resume-20261023/source2-green",
+      "runner": "Invoke-HeavyTestAdmission.ps1 -Run",
+      "assertions": 28,
+      "failures": 0,
+      "exit": 0,
+      "result_generated_utc": "2026-10-23T05:25:55.415Z",
+      "elapsed_seconds": null,
+      "dependency_boundary": "Playwright intercepted only https://cdn.jsdelivr.net/npm/three@0.186.1/ with the pinned local fixture and cached module; this does not establish CDN availability."
+    },
+    "project_static_pytest": {
+      "command": "python -m pytest -q cad/gripper/tests/test_viewer_static.py",
+      "exit": 1,
+      "result": "pytest could not import because the current Python environment lacks pygments; no static tests were collected."
+    },
+    "generator": {
+      "command": "python cad/gripper/viewer_src/viewer_build.py",
+      "exit": 0,
+      "output": "data 6461 KB; GLB 3968 KB; context 2623 KB; total 13.7 MB",
+      "generated_viewer_committed": true
+    },
+    "diff_check": "git diff --check and staged git diff --cached --check passed",
+    "independent_acceptance": "PENDING; parent-owned fresh browser-capable design-review/user/present review remains required"
+  },
+  "framing": {
+    "required_margin_css_px": 8,
+    "minimum_margin_css_px_by_pose_and_viewport": [
+      {"pose": "assembled", "viewport": "390x844", "margins": {"left": 40.34, "right": 79.36, "top": 98.65, "bottom": 74.58}},
+      {"pose": "exploded-midpoint", "viewport": "390x844", "margins": {"left": 90.69, "right": 120.8, "top": 159.98, "bottom": 150.4}},
+      {"pose": "exploded-endpoint", "viewport": "390x844", "margins": {"left": 58.34, "right": 104.58, "top": 133.24, "bottom": 108.59}},
+      {"pose": "assembled", "viewport": "768x1024", "margins": {"left": 198.21, "right": 243.5, "top": 88.54, "bottom": 60.37}},
+      {"pose": "exploded-midpoint", "viewport": "768x1024", "margins": {"left": 241.11, "right": 283.4, "top": 142.32, "bottom": 128.43}},
+      {"pose": "exploded-endpoint", "viewport": "768x1024", "margins": {"left": 196.54, "right": 262.38, "top": 105.78, "bottom": 70.09}},
+      {"pose": "assembled", "viewport": "1440x1000", "margins": {"left": 180.26, "right": 237.44, "top": 107.97, "bottom": 72.38}},
+      {"pose": "exploded-midpoint", "viewport": "1440x1000", "margins": {"left": 234.58, "right": 288.09, "top": 176.1, "bottom": 158.49}},
+      {"pose": "exploded-endpoint", "viewport": "1440x1000", "margins": {"left": 178.23, "right": 261.6, "top": 129.92, "bottom": 84.7}}
+    ],
+    "explicit_fit_camera": {
+      "expected": [111, 20.2, 158.6, 0, -30, 0],
+      "cold_delta": [0, 0.000000000000011, 0, 0, 0, 0],
+      "warm_delta": [0, 0.000000000000011, 0, 0, 0, 0],
+      "late_host_attach_delta": [0, 0.000000000000011, 0, 0, 0, 0],
+      "finding_jaw_roll_section": {"finding": "pads", "jaw": -10, "roll": 0, "section_mode": "f", "section_enabled": false},
+      "permalink_preserved": true,
+      "manual_orbit_passed": true,
+      "resize_camera_delta_max": 0.000000000000004
+    }
+  },
+  "controls_before_after": {
+    "unchanged": true,
+    "model": {"total": 60, "tags": {"a": 18, "button": 25, "input": 17}},
+    "fit": {"total": 83, "tags": {"button": 79, "select": 1, "input": 3}},
+    "parts": {"total": 55, "tags": {"a": 11, "button": 42, "select": 2}},
+    "assembly": {"total": 46, "tags": {"button": 43, "input": 1, "a": 2}}
+  },
+  "detector": {
+    "command": "node C:/Users/dougl/.agents/skills/impeccable/scripts/detect.mjs --json cad/gripper/viewer.html cad/gripper/viewer_src/vw_6.html cad/gripper/viewer_src/vw_11.html",
+    "source_findings": 0,
+    "generated_viewer_findings": 8,
+    "inherited_warning": "All eight are existing lazy data-img placeholders in viewer.html; pre-edit scan showed the same warnings. No source findings or unscanned files."
+  },
+  "screenshots": {
+    "red_pngs": [
+      "source2-red/fit-cold.png", "source2-red/fit-warm.png", "source2-red/fit-late-host-attach.png",
+      "source2-red/model-390x844/assembled.png", "source2-red/model-390x844/exploded-midpoint.png", "source2-red/model-390x844/exploded.png",
+      "source2-red/model-768x1024/assembled.png", "source2-red/model-768x1024/exploded-midpoint.png", "source2-red/model-768x1024/exploded.png",
+      "source2-red/model-1440x1000/assembled.png", "source2-red/model-1440x1000/exploded-midpoint.png", "source2-red/model-1440x1000/exploded.png"
+    ],
+    "green_pngs": [
+      "source2-green/fit-cold.png", "source2-green/fit-warm.png", "source2-green/fit-late-host-attach.png",
+      "source2-green/model-390x844/assembled.png", "source2-green/model-390x844/exploded-midpoint.png", "source2-green/model-390x844/exploded.png",
+      "source2-green/model-768x1024/assembled.png", "source2-green/model-768x1024/exploded-midpoint.png", "source2-green/model-768x1024/exploded.png",
+      "source2-green/model-1440x1000/assembled.png", "source2-green/model-1440x1000/exploded-midpoint.png", "source2-green/model-1440x1000/exploded.png",
+      "source2-green/finding-gap-390x844.png", "source2-green/finding-gap-768x1024.png", "source2-green/finding-gap-1440x1000.png",
+      "source2-green/finding-overlap-390x844.png", "source2-green/finding-overlap-768x1024.png", "source2-green/finding-overlap-1440x1000.png",
+      "source2-green/dependency-initial-390.png", "source2-green/dependency-still-390.png", "source2-green/dependency-terminal-390.png"
+    ],
+    "visual_inspection": "All 33 retained PNGs inspected at native rendering size.",
+    "committed_byte_check": {"pngs_equal_git_blob_bytes": 33, "pngs_total": 33}
+  },
+  "limitations": [
+    "Independent acceptance is still pending.",
+    "The static pytest suite was not collected because pygments is absent from the current Python installation.",
+    "Fresh remote listing could not authenticate in this process; the explicit push command itself succeeded.",
+    "Git pull before editing was denied because the shared worktree metadata directory is outside this process's write access; the verified prepared HEAD/source-baseline was unchanged before editing."
+  ],
+  "cleanup": {
+    "http_server_pid": 29048,
+    "http_server_stop": "pending exact-process verification and shutdown",
+    "task_state": "left absent and untouched",
+    "next_action": "Parent obtains fresh independent browser-capable acceptance."
+  }
+}

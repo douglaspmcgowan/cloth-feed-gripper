@@ -1,0 +1,562 @@
+[
+  {
+    "name": "assets",
+    "description": "\"Maintain a small append-only index of reusable produced assets.\"",
+    "sha256": "181712acf9cbaf9e2acd4d712d3f0d8de333201bbf45631ff8ca4b4317fc2f6f"
+  },
+  {
+    "name": "boss-update",
+    "description": "\"Roll daily reports over a date range into an upward, outcome-only status update for a boss or advisor.\"",
+    "sha256": "92b4020a42972550fbda9f6662bc557fa6fe80ae9d299a9493bfcd49b8ed48ff"
+  },
+  {
+    "name": "brainstorming",
+    "description": "\"Use before any creative work -- a new feature, component, or behavior change -- to explore intent, requirements, and design first.\"",
+    "sha256": "63d508fa3fa11ecec8fc4ea20efd084a2b3990024e25da61fcb2a23185189adf"
+  },
+  {
+    "name": "brandkit",
+    "description": "\"Generate premium brand-kit imagery: logo systems, identity decks, guideline boards. Not imagegen-frontend-web, which shoots website sections.\"",
+    "sha256": "62c4743dba573c0677849d12bc724b5b848273202308bdb2eb1e039e6e1b69e9"
+  },
+  {
+    "name": "browser-use",
+    "description": "\"Use when driving a browser or webview for live UI work where session state, user-authored content, downloads, timeouts, or multiple browser surfaces.\"",
+    "sha256": "055c7da9872f922547b389202e7eff6c1d5b7d4bfb8e200084e4f41feb39c08d"
+  },
+  {
+    "name": "burnout",
+    "description": "\"Spend remaining usage productively through the bounded frontier loop before a limit reset.\"",
+    "sha256": "9b413b41a8e2211a542a44cb062ad288f6d2d7630b60cbf9921366d4409321c0"
+  },
+  {
+    "name": "caltime",
+    "description": "\"Log Douglas's weekly Berkeley AI-tutor hours in TRS: pick blocks from his calendar, enter and save, never submit.\"",
+    "sha256": "b9d4ccbbb76b2dd8b6d36b147884db86187f9e8bfb3cfe314c19c85d15e4829d"
+  },
+  {
+    "name": "canvas-sync",
+    "description": "\"Launch one xhigh Haiku agent to diff Canvas against the courses app, then update the app, Obsidian notes and Todoist.\"",
+    "sha256": "f775f48f4fc2157f033c57dde44c2b02a0f16cb93e2f85938b803fc52d7b72cc"
+  },
+  {
+    "name": "clean",
+    "description": "\"Use for cleanup of documents (vault, notes, skills, briefs) or source code (dead code, duplication, module boundaries, debt).\"",
+    "sha256": "21ff417b2d0998e604aafd22a76ab11c0acf7bee3eda60cd017bacf8b27dc9e2"
+  },
+  {
+    "name": "clean-downloads",
+    "description": "\"Sort new Downloads files into existing Google Drive folders, quarantine sensitive ones, delete junk. Windows host only.\"",
+    "sha256": "e46b8693be809a79b0042e5cedc6f2984d69b985aa7b8882024c215b77d43846"
+  },
+  {
+    "name": "cloud-protocol",
+    "description": "\"Use before dispatching, monitoring, or landing a Codex Cloud task: environment setup, remote preflight, host verification, and the.\"",
+    "sha256": "c09d4b7a4f408a6d3596ca8703db85511388da1ff5c78013a94c744ee48c921f"
+  },
+  {
+    "name": "codex-cloud-environment",
+    "description": "Create and verify one Codex Cloud environment through a one-call Haiku browser agent.",
+    "sha256": "1b0a81f590b27ee2151dbe7753d5546f1c00dab7eeed9973e7c8c2939428ab1e"
+  },
+  {
+    "name": "compare-options",
+    "description": "\"Compare concrete options for a tool, approach, or design choice using evidence and explicit tradeoffs.\"",
+    "sha256": "0273a7d791c446d75548039cecaddd1b599837b81f62983011c313b5549c69b8"
+  },
+  {
+    "name": "condense",
+    "description": "\"Use when a paper must be shortened in its authors' words or re-shown as an outline, visual set, or poster.\"",
+    "sha256": "9331dd4514cf5c1db53a87ab302303ddac43620e6e5eb1d0afc2cfc6c226eed2"
+  },
+  {
+    "name": "connect",
+    "description": "Choose and plan the smallest useful CLI, MCP, HTTP, or library integration surface for an app.",
+    "sha256": "0ec3c23ee332243af42586abc03295cc1fc3450a093e1556225a9b20f1d7972a"
+  },
+  {
+    "name": "correct",
+    "description": "\"Use when Douglas reports a correction, repeated defect, unsafe omission, or a safeguard that did not fire.\"",
+    "sha256": "5d85695ef644cb3230e6b8c8b7961081424b435d95d512c81cb159c6f1188446"
+  },
+  {
+    "name": "craft",
+    "description": "\"Use for any design operation: create or edit interfaces, critique, visual systems, tokens, type, color, slides, or brands.\"",
+    "sha256": "de67ad724220b95f648ec71845366374953c8e7e57c953e8272ffd9b7fd4bb64"
+  },
+  {
+    "name": "daily-activity",
+    "description": "\"Produce a report-only daily activity summary with outcomes, debugging arcs, and follow-up opportunities.\"",
+    "sha256": "974ecf03dfe010114b742c59c3aff9a9f6d314f10a6bdfe5d6a79329d0129017"
+  },
+  {
+    "name": "debloat",
+    "description": "\"Use when sweeping a system for unnecessary or pointless things \u2014 dead paths, unread config, orphan packages, unconsumed jobs \u2014 where the finding.\"",
+    "sha256": "58a9204190c180a1fc640ccff381b5de1b8c97902a8f1022ae801bc38410edd1"
+  },
+  {
+    "name": "deep-search",
+    "description": "\"Multi-step cited web research for open questions needing 3+ sources. Not compare-options (named candidates) or index (writes to vault).\"",
+    "sha256": "38299ca9bec451ffaca45bf23d39ef21883cedd6bd249463f072b5e6dd2c2a8c"
+  },
+  {
+    "name": "design-review",
+    "description": "Review a built interface's information architecture, usability, and visual hierarchy; return prioritized findings only.",
+    "sha256": "7a4a64f86184d5f3332e339efe28b7a740cb17e7c90353a8c5d614bf741ad12c"
+  },
+  {
+    "name": "detective",
+    "description": "\"Use when investigating patterns across many recent agent sessions, transcripts, or work records.\"",
+    "sha256": "5377ce66a088eedade7450622e9a5b2d5fbf821840842dc47044e894f318ca45"
+  },
+  {
+    "name": "discussion-prep",
+    "description": "\"Prepare evidence-linked cards, questions, briefs, and slides from mixed discussion materials.\"",
+    "sha256": "842a283a2db98d0ca8ed3eab5f32bd6bdfe51672e6ea9937e6151ca487bce078"
+  },
+  {
+    "name": "environment-preflight",
+    "description": "\"Run a cheap, evidence-based readiness audit before substantial project work.\"",
+    "sha256": "fa8c40332794458c3a086c3887fe2274af2d509cb98e09085506911b1f720464"
+  },
+  {
+    "name": "evolve",
+    "description": "\"Use when improving a tool by doing real work with it: dogfooding, friction logs, 'test it by using it', self-hosted harness changes.\"",
+    "sha256": "ba0caaf4a4fff2b7040f9c003a11609613ae13196d5bed989d92b52aa8261e4c"
+  },
+  {
+    "name": "fleet",
+    "description": "\"Dispatch, delegate, launch, route, and harvest agents through the fleet router.\"",
+    "sha256": "6113fa0bea7f05e87ef36f183c643bc3c70d4aa72e703c0f828d110156520033"
+  },
+  {
+    "name": "frontend-slides",
+    "description": "\"Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files.\"",
+    "sha256": "654b28806c5fc10e1329f050b1ed8203ec2f633f66894446e81f71583fc06112"
+  },
+  {
+    "name": "frontier",
+    "description": "\"Use when open-ended work needs repeated, user-directed choices about the next improvement direction.\"",
+    "sha256": "bd44031ad12d42df5d5220263972f78642c29602f056494032dbe55820cf0ca7"
+  },
+  {
+    "name": "full-output-enforcement",
+    "description": "\"Force complete, unabridged code output: no placeholders, no elisions, clean handling of token-limit splits.\"",
+    "sha256": "3d5e8f24b2d4987b5bf902b97f4201dc0697267197fbc861e43e3a629c98c797"
+  },
+  {
+    "name": "fullscope",
+    "description": "\"Use when Douglas says 'full scope' or gives a short build ask like 'make an app': expand it to a 50-200 item scope brief, then build it canary-first.\"",
+    "sha256": "4f5c4d93920273291bed27ae4732fddd35e0284935652c46c7990fce13985a67"
+  },
+  {
+    "name": "goal-engineer",
+    "description": "\"Author measurable, bounded goals that unattended work can consume and verify.\"",
+    "sha256": "0678f4c048a56904a175214a535941e1bfe48374d38cac72e2f52b33c792ccca"
+  },
+  {
+    "name": "grill-me",
+    "description": "\"Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree.\"",
+    "sha256": "1b7fd5e8beef506956036a0094f4ddf1a467648ea66cd0423d44ae4b8364753c"
+  },
+  {
+    "name": "harness-review",
+    "description": "\"Adversarially review a harness or code target for edge cases, unsafe assumptions, and missing evidence, or sweep the whole harness for decay.\"",
+    "sha256": "b1fcde4617320b85c68a77bef1c6539508e2d7bf756038b9c293bae421e9e8c9"
+  },
+  {
+    "name": "hone",
+    "description": "\"Measure, isolate, and verify one performance improvement at a time; keep only gains proven against a baseline.\"",
+    "sha256": "89e24a2715dbf4a3553ee711fd155b96a32509a6cb5cf7908a72861af1ca94ef"
+  },
+  {
+    "name": "html-slides",
+    "description": "\"Single-file HTML decks with a component library: flip cards, charts, tables, timelines, themes. Slide components, not the frontend-slides build flow.\"",
+    "sha256": "3a4e1774386565c008f4648b9e6c1d13adf78a7dc6f263b67448a9dd08286014"
+  },
+  {
+    "name": "hue",
+    "description": "\"Generate a new design-language skill from a brief, screenshot, or an existing skill to remix.\"",
+    "sha256": "a78b447c87f05287b1278a6d71923ded54471a70f19c32020e53ec6a6f518d47"
+  },
+  {
+    "name": "image-artist",
+    "description": "\"Route image-generation work to the matching brand, web, or mobile owner, or to the image-to-code craft leaf; generate nothing itself.\"",
+    "sha256": "2745af37a5c126bed490154d010629edfab6604a6ad1a1763eeb2b53a0f62442"
+  },
+  {
+    "name": "imagegen-frontend-mobile",
+    "description": "\"Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows.\"",
+    "sha256": "7ab4aa07ef2aaf342e7980f85980cc91e321bee96c871a124880a532d6635c94"
+  },
+  {
+    "name": "imagegen-frontend-web",
+    "description": "\"Generate premium, conversion-aware website section reference images, one image per section. Not brandkit (logo/identity imagery).\"",
+    "sha256": "afd31289928a4f09dbfddd5f1028e65079b4f6cd56bc8906c8eb4179502a879a"
+  },
+  {
+    "name": "impeccable",
+    "description": "\"Frontend interface work of any kind: design, redesign, critique, audit, or polish a site, app, dashboard, or component. Not backend-only work.\"",
+    "sha256": "9e9bfbc8dffb1bdbf2e37aa14738ebfc90e1a9acb2f4b85ee2d70d1f3640d0b9"
+  },
+  {
+    "name": "index",
+    "description": "\"The one entry point for NEW vault material \u2014 a source, topic, or question. clean grooms what already exists; this writes new state.\"",
+    "sha256": "97167c8f17bc0b34ae6afdf545c57674c8a91ee7c5b0fd8ffc3aef1221520908"
+  },
+  {
+    "name": "ingest",
+    "description": "\"Route new material to vault or recording ingestion by source type; perform no ingestion itself.\"",
+    "sha256": "8b37a30242e5e3b15b1b59f9489c088af3e26fc92e90b86a5e5b58bf6dc3c8bc"
+  },
+  {
+    "name": "investigate",
+    "description": "\"Find the root cause and full impact of one specific incident using authoritative evidence.\"",
+    "sha256": "0163d94a16edb8c62c6eecc2da8ed0109c5d7f643711a0ad16e1a26edd0c8dab"
+  },
+  {
+    "name": "janitor",
+    "description": "\"Audit this machine's processes, sessions, ports, and memory; prepare safe cleanup evidence.\"",
+    "sha256": "e82d9f62ab0ec39b70959bf1d8d0d0c20002a0d25ccdba4b9c9f28501b6c8e45"
+  },
+  {
+    "name": "jules-protocol",
+    "description": "\"Use for one Jules API task from preflight through artifact verification, including the credential-by-name-only rule and the pushed-branch.\"",
+    "sha256": "b42a384fa8d07b7bdb10db695d9db7b78ff0b0c1c8d7fc3956a722693c8b6c2e"
+  },
+  {
+    "name": "learn",
+    "description": "\"Learn a practical craft or workflow from current primary and practitioner evidence.\"",
+    "sha256": "5a31234567796388501225153d2dc6bdbe94c6bc6d7ecd545f4cbb2efc5d4370"
+  },
+  {
+    "name": "lego",
+    "description": "\"Catalog proven, reusable implementation patterns from real source files into a cited LEGO.md library.\"",
+    "sha256": "9b716faa0f21043f30a8cb10f9ed78b7212310f44c5f40efa5f54cf818f1d503"
+  },
+  {
+    "name": "librarian",
+    "description": "\"Use when maintaining, auditing, consolidating, or repairing Douglas's Obsidian vault, especially link, corpus, archive, or navigation drift.\"",
+    "sha256": "55ff3bb530508323dd36e26b3c5e911e324146a9e7f81584bc1609342a84a2b0"
+  },
+  {
+    "name": "longrun",
+    "description": "\"Arm and operate a long unattended project run with durable state, supervision, recurring self-checks, and safe approval handling.\"",
+    "sha256": "fc853bcdf43e53248655509ff39c3b7dd1af93ec255597980b084081120acabd"
+  },
+  {
+    "name": "loop-engineer",
+    "description": "\"Use when authoring, checking, arming, revising, or debugging a bounded agent loop contract.\"",
+    "sha256": "ca557a8f0115f973967f89e278b6cadafbccc0c38f4dda6aa8289129eb89eba7"
+  },
+  {
+    "name": "loop-protocol",
+    "description": "\"Use before authoring, arming, revising, or debugging a recurring agent run.\"",
+    "sha256": "37e46323cf4903fd95699a3d3632b4bcee81de5b712946cdf0c8d6d93ff7661e"
+  },
+  {
+    "name": "machine-ops",
+    "description": "\"Route a fault in this Windows host itself to the versioned tool that repairs it, and to janitor when the answer is measurement.\"",
+    "sha256": "f5328582c2380b3fcacbdc59cb8e215bbd192ea69e4630d930ec8de81adbca71"
+  },
+  {
+    "name": "make-api",
+    "description": "\"Design, build, and live-test a small HTTP API with an explicit contract and safe operational defaults.\"",
+    "sha256": "cab2e41cfd5068119939034f4f2896e13936579efb16290bf226b9180ea7c6d8"
+  },
+  {
+    "name": "make-cli",
+    "description": "\"Design and implement a reliable command-line interface for a defined local or service workflow.\"",
+    "sha256": "6241d44438e5948d4e4526dfa6f81925e40abfaaff2601c00adaa9f25cec2d66"
+  },
+  {
+    "name": "make-mcp",
+    "description": "Build and verify an MCP server after validating that an existing server cannot meet the need.",
+    "sha256": "f25adc10ce66a625963233cb8caac4b933663bd5c9de0d84c39845bb48efe66b"
+  },
+  {
+    "name": "mastermind",
+    "description": "\"Choose the next planning or exploratory move across projects and agent threads; run no work itself.\"",
+    "sha256": "0a07a5989e1d3efc33c9abfd489450624aa84e787b89a0d430083e79c7752818"
+  },
+  {
+    "name": "mission-control",
+    "description": "\"One-glance status of this machine and every project: what needs attention, what's filed, machine health.\"",
+    "sha256": "2df7c9c823e89836a189aed187641e096254e96b518b1a8955b0f17c063b93da"
+  },
+  {
+    "name": "modernize",
+    "description": "\"Find current harness or ecosystem changes that plausibly improve one existing codebase.\"",
+    "sha256": "521c9e77334e757ec742374f0f4b00731f660c01ec6a18607b83c079b3e22d8a"
+  },
+  {
+    "name": "multi-claude",
+    "description": "\"Use when configuring, launching, or piloting multiple Claude accounts that share one harness on one or more Windows machines.\"",
+    "sha256": "2cc8ad6a05be48fb879f3e297657a80aa67e5b3b739de3edbce2c2b43cd9ecac"
+  },
+  {
+    "name": "news-digest",
+    "description": "\"Build and refresh Douglas's persistent AI, design, and technology news digest from authorized inbox and public sources.\"",
+    "sha256": "47ff8b04b19539e9b7b0766a3279fddbdd7d99798e5813864b08cf3165670ff2"
+  },
+  {
+    "name": "notes",
+    "description": "\"Write notes, student docs, or quick messages in Douglas's human note voice: terse, skimmable. Not for formal reports, papers, or specs.\"",
+    "sha256": "d1c0f3fc1333c5b100f98ce0e0a478a78bf1092e36c363f19452cb350415e09e"
+  },
+  {
+    "name": "onboard",
+    "description": "\"Make a codebase or application legible with an evidence-backed developer explainer or in-app help.\"",
+    "sha256": "b0c7700cba32965c5b43949d6b51aaf79b761ca3eeb0c38c2196d817a478cadc"
+  },
+  {
+    "name": "orchestration-protocol",
+    "description": "\"Use for conductor lifecycle, bounded delegation, independent verification, and integration evidence: one writer, one proving command, one.\"",
+    "sha256": "2b8fce93a0fe8e2bbc27ec4b5f4f82ee8d7a970f7fcba7eab76c0c1cdbd5b8d4"
+  },
+  {
+    "name": "package",
+    "description": "\"Package a repository as portable and clean-clone-verified. Not start-project (scaffolds new) or deliver (hands off finished work).\"",
+    "sha256": "a06ae06b7109f1d5a8ebe7e824d94760f832feea8265284f83ffdb9f7eed9c30"
+  },
+  {
+    "name": "paper-read",
+    "description": "\"Use when one research paper must be read closely enough to argue with it, not summarized.\"",
+    "sha256": "ea3ab3681cea1c3c6bc79a5ef19e84683d4f205d56929d7b2b64c44ca0cfde0a"
+  },
+  {
+    "name": "pathway",
+    "description": "\"Run a named, ordered chain of existing skills from the pathway registry against one target.\"",
+    "sha256": "7f2cd5f3fc7327c484f411575c5d7665aa44a7ccdaa2c838adeecd56f5dca0ac"
+  },
+  {
+    "name": "plan",
+    "description": "\"Turn a prompt brief into a one-reply approval packet and Work Scope tasks: units, routing, approvals, loops.\"",
+    "sha256": "13e80fcabdad374eff14fb411f33bb54a30bd28f791174d542d92f10f2239c31"
+  },
+  {
+    "name": "present",
+    "description": "\"Test whether a rendered interface communicates both its concrete data and its intended takeaway to a fresh viewer.\"",
+    "sha256": "d709c685b85d923c22b5931e97fba5cff623b00df83b2b7be42bd2c3be5a0c37"
+  },
+  {
+    "name": "probe",
+    "description": "Measure test effectiveness through risk-led coverage gaps, properties, and mutation testing where applicable.",
+    "sha256": "4321f53ace549f5fe8c313fb49844896fb455e9f8a3aeff61d2d6e33b44fe60f"
+  },
+  {
+    "name": "prompt",
+    "description": "\"Turn a raw or rambling prompt into a structured, harness-enriched brief with cited context and stop conditions.\"",
+    "sha256": "2c55d00e02ed54e22dfe56f6d3c2027fcd2385e730bcab6258d9d268782252af"
+  },
+  {
+    "name": "queue",
+    "description": "\"Use when a defect or idea belongs in a project's discovery queue for later work.\"",
+    "sha256": "82f4fd95a0a1d7e51976a598876cd96edd0ca61d88119b2b28d104c861eb965e"
+  },
+  {
+    "name": "recon",
+    "description": "\"Map a field, mirror what Douglas already does, and hand him a Have/Partial/Gap comparison plus forward paths.\"",
+    "sha256": "803f10e24378b514c88236e85e2c08299894ae4beef6bcd1bb8197b673988f3c"
+  },
+  {
+    "name": "recording-ingest",
+    "description": "\"Turn a recording or its transcript into an attributed extraction -- summary, every task and commitment with its owner and quoted line, decisions.\"",
+    "sha256": "3747ed737a71e096d0986f1eb5169c6c1184b8f7605d0c3d1474893d925b1627"
+  },
+  {
+    "name": "redact",
+    "description": "\"Black out SSNs, account numbers and other sensitive values in a PDF or image without reading the document.\"",
+    "sha256": "82c5a6e0debb3a34c921842526e38cc1c898a80caedc89b5ad253945d67c8554"
+  },
+  {
+    "name": "remote-machine-protocol",
+    "description": "\"Use for driving agent CLIs on a second physical Windows machine over the tailnet: SSH, psmux session persistence, slot dispatch, and what an SSH.\"",
+    "sha256": "b120f8bd65d9ccdcf176acac4f962580347f08409c8af059e36d6b2b35468364"
+  },
+  {
+    "name": "replicate",
+    "description": "\"Replicate a reference artifact through an explicit feature-parity checklist and item-by-item verification.\"",
+    "sha256": "ce971f3924b03e5fba9b92da71cf1e62e79e9d9dfa06a68c930208bf3df610dd"
+  },
+  {
+    "name": "review",
+    "description": "\"Route any review request to its single best owner; this skill chooses but never runs the review.\"",
+    "sha256": "f641fc9111d7f6f85de83bde22268a863936dc2bab0c572bdb003b5199baa122"
+  },
+  {
+    "name": "review-lenses",
+    "description": "\"Use when reviewing a repository or diff for observability, configuration, concurrency, or idempotency defects.\"",
+    "sha256": "ebd14fa7265ca9a180e5cbf12fe710bce3a453d5acd80316bf1fcb12c9df2ac6"
+  },
+  {
+    "name": "sage",
+    "description": "\"Distill recurring, cited lessons from a repository's review and verification artifacts into durable WISDOM.\"",
+    "sha256": "7043d3c6de5f5300fccf175912f6766fd8b3fc0fd8ca7d49ab7013cc8b2bd0cb"
+  },
+  {
+    "name": "sift",
+    "description": "\"Collect, categorize, and route a broad public research source set for human triage.\"",
+    "sha256": "ba80cbf4aa39003313b47afc9f27f4a8c5e5edb916f5692578cfc1dc0a55c653"
+  },
+  {
+    "name": "slides",
+    "description": "\"Use when building a deck, poster or flyer: routes to a PowerPoint-native or an HTML build once the governing design language is read.\"",
+    "sha256": "334eaada6d32585533f3e1c4b79c058187fa8aa32d7e787ce0983f93b997f944"
+  },
+  {
+    "name": "solo-review",
+    "description": "\"Use when one primary perspective should review a focused codebase or CAD target, with an optional verified fix loop.\"",
+    "sha256": "8f4b7e06b206bbbc34e1345428722b3bcdd462942b248cd65f94be4f4c5a01e5"
+  },
+  {
+    "name": "spar",
+    "description": "\"Use when a bounded target needs adversarial break-fix rounds with independent attack lenses and evidence gates.\"",
+    "sha256": "f95e07f44a343dd6b6ca769142f81aa958fc8e1d90bd9f4da5cc618d97b7256f"
+  },
+  {
+    "name": "spec",
+    "description": "\"Write SPEC.md with testable acceptance criteria. brainstorming resolves unsettled intent first; task state turns it into executable work.\"",
+    "sha256": "462e5d1eefa5e35e02a664b471599fdcd0ab12e7968f65881e50f74fd5efe8df"
+  },
+  {
+    "name": "stack",
+    "description": "\"Use when a new app needs its stack chosen, scaffolded, and given an architecture before any feature is written.\"",
+    "sha256": "0d82a499e8ee674ab56e4f7bebd50af31d2edd38ff5345373afff0df295cc83b"
+  },
+  {
+    "name": "start-project",
+    "description": "\"Scaffold a new project against the harness, or wire an unscaffolded folder into it, with connectors declared and verified.\"",
+    "sha256": "5ea3264ca474a6fb18357dad89866a30f8844f0c2fd5843a00f4fa44b14a13e9"
+  },
+  {
+    "name": "stingy",
+    "description": "\"Audit a Claude Code session transcript for token waste and return a ranked, evidence-backed report with the fix for each class.\"",
+    "sha256": "99b271639f80af83137b77444037c5347fdd860d0dd508632510b33604c1aeaf"
+  },
+  {
+    "name": "swe",
+    "description": "\"Route software engineering through skill selection, development, debugging, dispatch, review, and delivery.\"",
+    "sha256": "1bee6f2967303fb1711006a2f47d9a421c237a3109ad424ebc5b7bf3ef51d76d"
+  },
+  {
+    "name": "syschaos-handoff",
+    "description": "\"Use when handing this session's work to a new Claude session on the second machine that Douglas can pilot.\"",
+    "sha256": "49d949478894496358eb113f2b99aba6b8f09d6b09d0d43b643534ad1cb0c635"
+  },
+  {
+    "name": "systematic-debugging",
+    "description": "\"Find root cause before proposing any fix for a bug or test failure. A symptom fix without a found cause is a failure.\"",
+    "sha256": "92855bf3d5f4e354fd0b84c54634c535fde1fb58c1049d6556ed81fcbecc293e"
+  },
+  {
+    "name": "tactician",
+    "description": "\"Assess a project\u2019s verified loose ends, choose the next moves inside a settled shape, and drive them through delegated builders to a pull request.\"",
+    "sha256": "05cbb3a9716f6342fb7c8ebf5a7bd839e66b41a745b5014df523aa525ef8ffbe"
+  },
+  {
+    "name": "task",
+    "description": "\"Use when a substantive mixed prompt contains questions, rulings, intent, and executable work that must all be accounted for.\"",
+    "sha256": "612ddf48587188271ffdb9bd927d5fdfe597dd4dba01110a11b7a7b1250ca513"
+  },
+  {
+    "name": "tech-debt-audit",
+    "description": "\"Thorough, user-invoked tech debt and architecture audit of the current codebase.\"",
+    "sha256": "d817fe975a7334efea23fa67dba760938cbe70d8ad70eae30e657177eccdf94d"
+  },
+  {
+    "name": "test-driven-development",
+    "description": "\"Write a failing test before implementation code, and watch it fail, for any feature or bugfix.\"",
+    "sha256": "ba02474ee6cd0d77458656ab04d5e3f7df57191cb725da6aeb46446ba04c2dbb"
+  },
+  {
+    "name": "todoist",
+    "description": "\"Read and manage Douglas's Todoist -- add, file, label, reschedule, complete, and review tasks -- through the Todoist v1 API.\"",
+    "sha256": "fdd502dcc73016f96802b6626c795b7db94793733935891a43d919e0b8d6a472"
+  },
+  {
+    "name": "trailblaze",
+    "description": "\"Author or revise evidence-backed reusable skill pathways; route one-off work and pathway execution to their existing owners.\"",
+    "sha256": "c6cc65b457cbe2a696646bdc3eebfc70d4b136fcd619eaf022979ea98644fd8a"
+  },
+  {
+    "name": "trainer",
+    "description": "\"Mine a canonical skill's real usage history for evidence-backed improvement opportunities.\"",
+    "sha256": "4f95143bc9501aaa491b9bf4e595dcbb839111b3a687fa2849762d2a691e0041"
+  },
+  {
+    "name": "transcribe",
+    "description": "\"Use when transcribing user-authorized audio through an available trusted transcription process.\"",
+    "sha256": "35466be6bb70cc282613141460d9f79e655727c931ac687e16ecf5c9a08a15d0"
+  },
+  {
+    "name": "triage",
+    "description": "\"Deduplicate, invalidate, cluster, and recommend action for a whole open work set.\"",
+    "sha256": "0badf4f65cbbadba25fb613e6b194095ded0e982a6cda96ba0fe07758d1a3997"
+  },
+  {
+    "name": "tune",
+    "description": "Calibrate active voice guides from supplied samples with measurement, reviewable changes, and backup-before-write.",
+    "sha256": "3d51e135b50601e19fbcf470ecf2d5f98f6338ea9c23425acd02c35cf135af91"
+  },
+  {
+    "name": "ui-feature-ledger",
+    "description": "\"Protect approved interactive UI controls from unrequested removal across later edits.\"",
+    "sha256": "5a60c34a7b6c18a495ece11582b4b4520c19b67953e835aa82e64f55157eeb5f"
+  },
+  {
+    "name": "ultraskill",
+    "description": "\"Use when creating, editing, testing, installing, or retiring a skill across Claude, Codex, and Cursor.\"",
+    "sha256": "bab25b84c38df3c2d45102e456c31a35cb89da2242da4cb240ccd5b3794f49a6"
+  },
+  {
+    "name": "usage-mode",
+    "description": "\"Show, set, clear, or list agent usage modes for sessions, projects, and the machine.\"",
+    "sha256": "414137e8c5b4b51880218ca7ce55e5c851611bcb9f1495d8afc3d1d6455997e9"
+  },
+  {
+    "name": "user",
+    "description": "\"Independently exercise a running product against its explicit claimed functionality.\"",
+    "sha256": "7c21b420f6709d41831cd921d05d297f01aee568701356a00da645c8b0475572"
+  },
+  {
+    "name": "vault-protocol",
+    "description": "\"The contract for every agent that reads, searches, writes, moves, links, or mirrors Douglas's Obsidian vault: placement, folder READMEs, authorship.\"",
+    "sha256": "6cdffbe18f6b418f8e71c494da113101fcf9d8415447f667548294f4ad9082b3"
+  },
+  {
+    "name": "verification-before-completion",
+    "description": "\"Run and read verification output before claiming any work complete, fixed, passing, or ready to commit.\"",
+    "sha256": "46ca9ce768d314ee898aeac595924972b7ee9157b7bead20fdd001ae4efc8d34"
+  },
+  {
+    "name": "video-cut",
+    "description": "\"Cut video from transcript evidence, validate every seam, and retain a reversible cut plan.\"",
+    "sha256": "95f35418a01f51ec9a6af5542031e4178b8a5f2e50a5236cddbcbd5538c4c37a"
+  },
+  {
+    "name": "voice",
+    "description": "\"Rewrite existing prose in Douglas\u2019s voice while preserving its facts, specifics, and meaning.\"",
+    "sha256": "27b7f9e35cecf154e3fbac70e1eb1b3e3424ff2582f9d1f2c9d1d0e2ee4b1bb0"
+  },
+  {
+    "name": "wayfinder",
+    "description": "\"Plan work too big for one session as a map of decision tickets in a local markdown tracker, resolved one ticket at a time.\"",
+    "sha256": "eb4c486981446fc63550ec3130dc339d14718ead458a52509a81e73a1be229fa"
+  },
+  {
+    "name": "wispr",
+    "description": "\"Use when a Wispr Flow meeting transcript is needed, or a notes.wisprflow.ai link is shared, on the Windows host.\"",
+    "sha256": "6b8f3f749c5fb3043bc1416a377377fa787827a3485b28c002a0d677ddd6bc61"
+  },
+  {
+    "name": "work-scope",
+    "description": "\"Use when Get-WorkResume.ps1 returns state, or structured guarded task state is being adopted.\"",
+    "sha256": "d6da7181e0e693b2aeba65e4a7e2194ba4b9fbd17c1ede8fe743ec029f046f9f"
+  },
+  {
+    "name": "worktree-protocol",
+    "description": "\"Use for stable checkouts, one root per repository, cross-agent isolation, cloud-synced-folder exclusions, and worktree cleanup.\"",
+    "sha256": "cac3a7300c990b44de2f86993101676019dcf2e62d7f58c1ea0aa2dbba7b70a6"
+  }
+]

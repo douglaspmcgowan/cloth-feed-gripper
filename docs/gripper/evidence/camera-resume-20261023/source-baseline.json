@@ -1,0 +1,169 @@
+{
+  "head": "6200f39c993cd169477d16b7b59a240100910726",
+  "verified_original_product_files": [
+    {
+      "path": "cad/gripper/viewer_src/vw_6.html",
+      "git_blob_sha256": "814dde26924d95f89b8cb2b87e5cff914477c337e27b31ab1ab408544104206e"
+    },
+    {
+      "path": "cad/gripper/viewer_src/vw_11.html",
+      "git_blob_sha256": "0d7b7bc37184dbfbeb6b37701a37796ec7ff26e40361ac2cfc3f5180393f26f4"
+    },
+    {
+      "path": "cad/gripper/tests/test_viewer_fit_framing.py",
+      "git_blob_sha256": "6f3908553413bd0e2f9b61b3bbb577b2c877dbfaaa8bef4d599b713170d3e0a4"
+    },
+    {
+      "path": "cad/gripper/viewer.html",
+      "git_blob_sha256": "e2b4bce9d5eb3f944fc4089d27eb74f52656c21193e8efac1f63521b58d57380"
+    },
+    {
+      "path": "cad/gripper/viewer_src/FEATURE-LEDGER.md",
+      "git_blob_sha256": "51e56c06e76897e98c27089097f11774ee3067e52d10b4b7a3f003216ed79b8c"
+    },
+    {
+      "path": "cad/gripper/viewer_src/viewer_build.py",
+      "git_blob_sha256": "932c7f0c9c683f73127fb7979b08f5b660d9ade436bb52fadc90592feb7d55b7"
+    },
+    {
+      "path": "SPEC.md",
+      "git_blob_sha256": "f24c0c9f528fe0b2d2750e5e4c3c4e02d01fc79a093840c0ffc4098433d6ae91"
+    }
+  ],
+  "unchanged_data_hashes": {
+    "cad/gripper/out/B40_numeric_deltas.json": "2c4cd2b2df5049cbb4e298659f5dbcbaedb55c1fa19b1ef061f08a5e03f102c6",
+    "cad/gripper/out/assembly.step": "ff0d485102ab93eb5ce7328cd0900672d99b198d5cc2591d04cda594c317b446",
+    "cad/gripper/out/dog_check.json": "156584df76eb0d7aa99e65d3e61afb3166ff249fc8839265250af12aed408476",
+    "cad/gripper/out/fasteners.step": "a468fd3c80034bfa12109803e52643f9234e2be6a3fd7dbc85f0b0919058dc63",
+    "cad/gripper/out/fasteners.stl": "a92f7da0498a8135eb1d8b91113d6a27827e03a9b7e858f7e0589836166a9461",
+    "cad/gripper/out/fasteners_a.step": "371cce4060c6ed5fdcf35dce75f8d3aa564b5141564ae77319a7a601591b131c",
+    "cad/gripper/out/fasteners_a.stl": "c91721030a3c9091d6739537b0a47407789c77399dbac8484526cd7d92e66619",
+    "cad/gripper/out/fasteners_b.step": "11aa9d128c5994828e8494de9365314d0a1b4cd55dcc57381dc9c1a2a518081e",
+    "cad/gripper/out/fasteners_b.stl": "777424c6525e7979fa6f51fb34c2a6d76a2b2bc709408424f5b7d36ca72bf68d",
+    "cad/gripper/out/finger_a.step": "e3fd9fe0627646f9c7d88ca5e3244734a0d65d09e83e7a26a88b6ae32df1ce26",
+    "cad/gripper/out/finger_a.stl": "dcc60c28cce14cb0572a95160298503999c2732eb55bb579ce4abc86bb8253f4",
+    "cad/gripper/out/finger_b.step": "fdb067bc0721545791c30e85e6d5fb5c838491065ef116d410f08d3fb9dee7af",
+    "cad/gripper/out/finger_b.stl": "f16ebf0fc37010e16624ff79c3b2141a4e175ad4f07af6155661e52e62109ca0",
+    "cad/gripper/out/fit3d.json": "1b80cebb002168f269c05dc97b7b32028b40c5a998bd4c99a490dbbd11f2cd46",
+    "cad/gripper/out/fitcheck.json": "62c7cd20fd68d1797b098929cee757d73bfd1e278b7e7bdd78b2909b4af0191a",
+    "cad/gripper/out/front_plate.step": "2b0d4f5ed284fe6ca600547bd7a7d330965bafeb94af0d0d7844a8e8e70b7a52",
+    "cad/gripper/out/front_plate.stl": "439aa816631b3f2c0ae223091b14d71e6ed4fab36198db19ece6cb430dcc1878",
+    "cad/gripper/out/fsr_backing_b.step": "f260ee6b1b2dac28ba727f5dade77578fd17efac4ba7c3d422220595f47153c1",
+    "cad/gripper/out/fsr_backing_b.stl": "fae72e0b6867d99dfa4093b8e8a0f07bdaa67c0564c1874b69f021212819d140",
+    "cad/gripper/out/fsr_puck_b.step": "d5c8da44d2c46a1c19cd469fc1b071cc4f5806ddeaae0aacd46f34590e2798a9",
+    "cad/gripper/out/fsr_puck_b.stl": "f7a37ec57b719623e966371f17f39f8b576cd05ff3253f6eab7a5ef78f6c92fd",
+    "cad/gripper/out/fsr_sensor_b.step": "de01e4801eed0b99d3f2ae22daae6579817135b2427ebbb185385a0d7cb1dd4b",
+    "cad/gripper/out/fsr_sensor_b.stl": "eee0e6787f72c188f2a8a6a04f1ddd18f9081a685aebc7d3a369b064ffce768b",
+    "cad/gripper/out/horn.step": "fe6635d4dcbefb1f463be9fa44403226a4d09cce62a30dfe8f340b372c9480c1",
+    "cad/gripper/out/horn.stl": "b4bf7dd4c7e47a1dd94e83e715284da2baf4f7065c7090cd81ece2c943338332",
+    "cad/gripper/out/housing.step": "ea82adb7107cf598767de57e5d46dd9570938a3b98c0fbcee8b726e60e14c385",
+    "cad/gripper/out/housing.stl": "a7277c228d9fc28afdbe11b30868d899da83e9c9e9ab1771b0c8e6c346d32310",
+    "cad/gripper/out/knuckle_a.step": "a8ed1ca9a7a75a068cb89a049a08ef09714482da3e78c6a3e172303625d9e718",
+    "cad/gripper/out/knuckle_a.stl": "584349cdef03cd57d275fab52d2a1a9a95365eeb36e4ed52ab4aa06b929dfd1e",
+    "cad/gripper/out/knuckle_b.step": "ff4c415cbe478e2de1cb1eb0a132e068e0fd05ed1ac4731539c4830d276b74e4",
+    "cad/gripper/out/knuckle_b.stl": "88faa5d5038d51a4b2b0bc537905c29c91ce5bf430d50653224820d3e06ad1cd",
+    "cad/gripper/out/nail_a.step": "6541ad101b1b313e4aa3f4a7a9680285c6e6fb00fb6cd77a5e0395eff47f5b2d",
+    "cad/gripper/out/nail_a.stl": "e81392681128dade2c079599874bdbe65ce4bcff4f96fee3405261fb816b7ac8",
+    "cad/gripper/out/parts.json": "8adf04a514289849f63b9f2a456719eee9b68baaecf9c1e21d0b042266cbaec5",
+    "cad/gripper/out/r10_options.json": "1f15c80ed95155642496e759d27d9e8d21bbb6d2a3302ac31d29379d6a6cddbc",
+    "cad/gripper/out/servo.step": "f6be2c28c117425a231876bdaba3d02a9a1de982dc0609baaaaf930e74c09262",
+    "cad/gripper/out/servo.stl": "130636e7dc8c4acac557584b20780c202df9dd5baf147e92827da57c1b33de43",
+    "cad/gripper/out/web/gripper_closed.glb": "8763a3a0830a3a9cf5dbd9dbf6698ccc2d540b917193fa863828061154dca760",
+    "cad/gripper/out/wrist_mount.step": "7365cc2921cbebfab7485672aada2cec2b57f967abd3fec456f652aa86500ced",
+    "cad/gripper/out/wrist_mount.stl": "fdb3325367f39e3df4ec70926074246cee64774e7131a0ea3c34a767d7ac413d",
+    "cad/so101/.gitattributes": "b225be471fcd704185d0c10d353cd5d7d4e401e6cfea096bfa6d5d2a18209768",
+    "cad/so101/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "cad/so101/Motor_holder_SO101_Wrist.step": "e58d86502535a5a4936677e9d934f1bda9417e83f7480f475061728c146739c4",
+    "cad/so101/Moving_Jaw_SO101.step": "dff53ace072470c9a6c84dbb68dd84f9fd0959429f181905d9d05fe3007549b5",
+    "cad/so101/SO-ARM101_camera_wrist_mount.step": "abba98321af20b6aadf0a82ac3758a27745efae047c662489026c6991f241f38",
+    "cad/so101/SO101 Assembly.step": "f754be35708382b05ce65768ae33c612f91dca11ad19d14807dc637eb944ba3d",
+    "cad/so101/SOURCE.md": "bd70e15c45edb361e1b39e8ed0d200c46c680f38401218969bc9f2ee650cc5fd",
+    "cad/so101/Simulation/SO101/assets/base_motor_holder_so101_v1.part": "3fc04275864139676a50041a322caf8807a063c0d6e73e7f74aa136eb8368df9",
+    "cad/so101/Simulation/SO101/assets/base_motor_holder_so101_v1.stl": "8cd2f241037ea377af1191fffe0dd9d9006beea6dcc48543660ed41647072424",
+    "cad/so101/Simulation/SO101/assets/base_so101_v2.part": "6c611cca00540c8f1aef67b1caba15e6674d5a1380eb51aa9c9216c6bfda37ac",
+    "cad/so101/Simulation/SO101/assets/base_so101_v2.stl": "bb12b7026575e1f70ccc7240051f9d943553bf34e5128537de6cd86fae33924d",
+    "cad/so101/Simulation/SO101/assets/motor_holder_so101_base_v1.part": "1b4035c9fec35cd43ef5ecf74ad84827c45eed184b2194fe0a0f70ec42e464d7",
+    "cad/so101/Simulation/SO101/assets/motor_holder_so101_base_v1.stl": "31242ae6fb59d8b15c66617b88ad8e9bded62d57c35d11c0c43a70d2f4caa95b",
+    "cad/so101/Simulation/SO101/assets/motor_holder_so101_wrist_v1.part": "4ee9c4242bb7dec967ae1555e934995b5fe2fb9373af6db4741301b73082d4d6",
+    "cad/so101/Simulation/SO101/assets/motor_holder_so101_wrist_v1.stl": "887f92e6013cb64ea3a1ab8675e92da1e0beacfd5e001f972523540545e08011",
+    "cad/so101/Simulation/SO101/assets/moving_jaw_so101_v1.part": "97f6cefdce9495f86924ffb57f00f2cad8f8d5381e14f1932d6a51d00df1081e",
+    "cad/so101/Simulation/SO101/assets/moving_jaw_so101_v1.stl": "785a9dded2f474bc1d869e0d3dae398a3dcd9c0c345640040472210d2861fa9d",
+    "cad/so101/Simulation/SO101/assets/rotation_pitch_so101_v1.part": "0b7b24211a542555168d0a415ff4f05e6a4a9803045e8e31ffe1984fc3135e91",
+    "cad/so101/Simulation/SO101/assets/rotation_pitch_so101_v1.stl": "9be900cc2a2bf718102841ef82ef8d2873842427648092c8ed2ca1e2ef4ffa34",
+    "cad/so101/Simulation/SO101/assets/sts3215_03a_no_horn_v1.part": "fdb32d86e6127a8f7642dd82dac283a0e7d2b45d5df537d003daa642c15e0ffa",
+    "cad/so101/Simulation/SO101/assets/sts3215_03a_no_horn_v1.stl": "75ef3781b752e4065891aea855e34dc161a38a549549cd0970cedd07eae6f887",
+    "cad/so101/Simulation/SO101/assets/sts3215_03a_v1.part": "82eed501939906901c5bab37f01ba428bcab39856d244f9bd6fe07f441ceb0e0",
+    "cad/so101/Simulation/SO101/assets/sts3215_03a_v1.stl": "a37c871fb502483ab96c256baf457d36f2e97afc9205313d9c5ab275ef941cd0",
+    "cad/so101/Simulation/SO101/assets/under_arm_so101_v1.part": "352adb8567f41a1fa517d0f0e8960749691a1d7079af73f15f1072c838c69709",
+    "cad/so101/Simulation/SO101/assets/under_arm_so101_v1.stl": "d01d1f2de365651dcad9d6669e94ff87ff7652b5bb2d10752a66a456a86dbc71",
+    "cad/so101/Simulation/SO101/assets/upper_arm_so101_v1.part": "63541673e4b9662974a8b148ea077a9067898a316d8c29aade06b20e22b05cb1",
+    "cad/so101/Simulation/SO101/assets/upper_arm_so101_v1.stl": "475056e03a17e71919b82fd88ab9a0b898ab50164f2a7943652a6b2941bb2d4f",
+    "cad/so101/Simulation/SO101/assets/waveshare_mounting_plate_so101_v2.part": "4a616d2126b70d46a939460ead1bbaf235aa1775672b35dd3e210811e6aa7dfb",
+    "cad/so101/Simulation/SO101/assets/waveshare_mounting_plate_so101_v2.stl": "e197e24005a07d01bbc06a8c42311664eaeda415bf859f68fa247884d0f1a6e9",
+    "cad/so101/Simulation/SO101/assets/wrist_camera_mount_so101_v1.stl": "e17a626158951ac8cdf8d960962c1a3c8bf23b64635a02f88b62016fe895cef8",
+    "cad/so101/Simulation/SO101/assets/wrist_camera_so101_v1.stl": "1147857bb136876c81f98d18b533342bae2383f0e23bec216064c9f093bd3577",
+    "cad/so101/Simulation/SO101/assets/wrist_roll_follower_so101_v1.part": "93d674dfca5e566d1b033676f1fc50b4f0cc22e564a82ad7895f3dfd66b68848",
+    "cad/so101/Simulation/SO101/assets/wrist_roll_follower_so101_v1.stl": "4b17b410a12d64ec39554abc3e8054d8a97384b2dc4a8d95a5ecb2a93670f5f4",
+    "cad/so101/Simulation/SO101/assets/wrist_roll_pitch_so101_v2.part": "e9ba6151922dfc8312a54c73ae19224c0b16b863595e0eba86081eaf676ed376",
+    "cad/so101/Simulation/SO101/assets/wrist_roll_pitch_so101_v2.stl": "6c7ec5525b4d8b9e397a30ab4bb0037156a5d5f38a4adf2c7d943d6c56eda5ae",
+    "cad/so101/Simulation/SO101/joints_properties.xml": "abbcc92761943befe3a24b1c13e82c62c5b8c2914303818f3c870b1f51cd45ed",
+    "cad/so101/Simulation/SO101/scene.xml": "3b79a253a742f55ff0b16682173609229560d97744be472a238ea2e0a6a31ef6",
+    "cad/so101/Simulation/SO101/so101_new_calib.xml": "d75253eb568e8a7214db9c631ab7bed4217f608a26f7276ebe9a7636cac82580",
+    "cad/so101/Simulation/SO101/so101_old_calib.xml": "2e2c8453613edc7291931dd12e236721d6520a0e0766afc2fccc399cd21b5d04",
+    "cad/so101/Simulation_README.md": "103328279b4e3d5cd498e74d16c13b9245f557127f3af75be312ac6236efbd14",
+    "cad/so101/WristCam_README.md": "5e39abc416eac8844939aae069f890cadec07d51b0060e4be5c7698cd21f530a",
+    "cad/so101/Wrist_Roll_Follower_SO101.step": "b7f9d59f7991f425fff784eab07f0bf65471903dd6d6177e7cb109bebcd02b35",
+    "cad/so101/Wrist_Roll_Pitch_SO101.step": "39c5e78647d471ab4e4328ec6d00f06ad90dc48a0b1ffe4baf1a951c1304f74b",
+    "cad/so101/joints_properties.xml": "abbcc92761943befe3a24b1c13e82c62c5b8c2914303818f3c870b1f51cd45ed",
+    "cad/so101/measure_interface.py": "649113070991d835a4f980e102e69028d8c998c1cfa9331a9421eccbcb00e10b",
+    "cad/so101/so101_new_calib.urdf": "3a65d2d35e68a8d2f0c2cc176d19b884506543c93ba72980145b80abe276022c",
+    "cad/so101/so101_old_calib.urdf": "a8151e4f7e5818d066680671d372ce49e7d30c4d068edb1666ab1bab2d5a8afc"
+  },
+  "geometry_population": 87,
+  "older_original_manifest": {
+    "actual_source_owner_head": "299a989a12f98550354bde66194e061b322da553",
+    "accepted_product_base": "024db1e",
+    "source_branch": "agent/gripper-camera-fit-20261022",
+    "source_files": [
+      {
+        "source_path": "cad/gripper/viewer_src/vw_6.html",
+        "carrier_path": "cad/gripper/viewer_src/vw_6.html",
+        "sha256": "814dde26924d95f89b8cb2b87e5cff914477c337e27b31ab1ab408544104206e"
+      },
+      {
+        "source_path": "cad/gripper/viewer_src/vw_11.html",
+        "carrier_path": "cad/gripper/viewer_src/vw_11.html",
+        "sha256": "0d7b7bc37184dbfbeb6b37701a37796ec7ff26e40361ac2cfc3f5180393f26f4"
+      },
+      {
+        "source_path": "cad/gripper/tests/test_viewer_fit_framing.py",
+        "carrier_path": "cad/gripper/tests/test_viewer_fit_framing.py",
+        "sha256": "6f3908553413bd0e2f9b61b3bbb577b2c877dbfaaa8bef4d599b713170d3e0a4"
+      },
+      {
+        "source_path": "cad/gripper/viewer.html",
+        "carrier_path": "cad/gripper/viewer.html",
+        "sha256": "e2b4bce9d5eb3f944fc4089d27eb74f52656c21193e8efac1f63521b58d57380"
+      },
+      {
+        "source_path": "cad/gripper/viewer_src/FEATURE-LEDGER.md",
+        "carrier_path": "cad/gripper/viewer_src/FEATURE-LEDGER.md",
+        "sha256": "51e56c06e76897e98c27089097f11774ee3067e52d10b4b7a3f003216ed79b8c"
+      },
+      {
+        "source_path": "cad/gripper/viewer_src/viewer_build.py",
+        "carrier_path": "cad/gripper/viewer_src/viewer_build.py",
+        "sha256": "932c7f0c9c683f73127fb7979b08f5b660d9ade436bb52fadc90592feb7d55b7"
+      },
+      {
+        "source_path": "SPEC.md",
+        "carrier_path": "cases/gripper/evidence/camera-source-20261022/SPEC.md",
+        "sha256": "f24c0c9f528fe0b2d2750e5e4c3c4e02d01fc79a093840c0ffc4098433d6ae91"
+      }
+    ],
+    "parent_start": "2026-10-22T14:03:59Z",
+    "parent_deadline": "2026-10-22T16:03:59Z",
+    "source_changes_before_builder": 0
+  },
+  "line_ending_note": "Original source identity compares Git blob bytes, avoiding Windows checkout CRLF differences."
+}
