@@ -1,0 +1,182 @@
+[
+  {
+    "value": "fasteners-a-fasteners",
+    "text": "Fasteners, side A to fasteners, body"
+  },
+  {
+    "value": "fasteners-b-fasteners",
+    "text": "Fasteners, side B to fasteners, body"
+  },
+  {
+    "value": "fasteners-a-front-plate",
+    "text": "Fasteners, side A to front plate"
+  },
+  {
+    "value": "fasteners-b-front-plate",
+    "text": "Fasteners, side B to front plate"
+  },
+  {
+    "value": "fasteners-b-housing",
+    "text": "Fasteners, side B to housing"
+  },
+  {
+    "value": "finger-a-finger-b",
+    "text": "Finger A to finger B"
+  },
+  {
+    "value": "finger-a-fsr-backing-b",
+    "text": "Finger A to sensor backing"
+  },
+  {
+    "value": "finger-a-fsr-puck-b",
+    "text": "Finger A to sensor puck"
+  },
+  {
+    "value": "finger-a-fsr-sensor-b",
+    "text": "Finger A to force sensor FSR 402"
+  },
+  {
+    "value": "horn-servo",
+    "text": "Servo horn to dsservo DS3230 MG"
+  },
+  {
+    "value": "nail-a-finger-b",
+    "text": "Nail on finger A to finger B"
+  },
+  {
+    "value": "nail-a-fsr-backing-b",
+    "text": "Nail on finger A to sensor backing"
+  },
+  {
+    "value": "nail-a-fsr-puck-b",
+    "text": "Nail on finger A to sensor puck"
+  },
+  {
+    "value": "nail-a-fsr-sensor-b",
+    "text": "Nail on finger A to force sensor FSR 402"
+  },
+  {
+    "value": "roll-wrist",
+    "text": "Wrist plate to the arm's wrist link"
+  },
+  {
+    "value": "fasteners-a-servo",
+    "text": "Fasteners, side A to dsservo DS3230 MG"
+  },
+  {
+    "value": "horn-fasteners",
+    "text": "Horn face to pivot pin A"
+  },
+  {
+    "value": "horn-knuckle-b",
+    "text": "Servo horn to knuckle B"
+  },
+  {
+    "value": "finger-a-front-plate",
+    "text": "Finger A to front plate"
+  },
+  {
+    "value": "finger-a-housing",
+    "text": "Finger A to housing"
+  },
+  {
+    "value": "finger-b-front-plate",
+    "text": "Finger B to front plate"
+  },
+  {
+    "value": "finger-b-housing",
+    "text": "Finger B to housing"
+  },
+  {
+    "value": "knuckle-a-servo",
+    "text": "Knuckle A to dsservo DS3230 MG"
+  },
+  {
+    "value": "knuckle-b-wrist-mount",
+    "text": "Knuckle B to wrist mount plate"
+  },
+  {
+    "value": "knuckle-b-servo",
+    "text": "Knuckle B to dsservo DS3230 MG"
+  },
+  {
+    "value": "fasteners-a-knuckle-b",
+    "text": "Fasteners, side A to knuckle B"
+  },
+  {
+    "value": "knuckle-a-fasteners-b",
+    "text": "Knuckle A to fasteners, side B"
+  },
+  {
+    "value": "fasteners-b-servo",
+    "text": "Fasteners, side B to dsservo DS3230 MG"
+  },
+  {
+    "value": "overlaps-body",
+    "text": "12 overlaps in the body, 0 not intended"
+  },
+  {
+    "value": "boss-bore-finish",
+    "text": "Printed and reamed servo boss bore"
+  },
+  {
+    "value": "pads",
+    "text": "Pads overlap in the grip"
+  },
+  {
+    "value": "knuckle-a-fasteners",
+    "text": "Knuckle A to fasteners, body"
+  },
+  {
+    "value": "knuckle-b-fasteners",
+    "text": "Knuckle B to fasteners, body"
+  },
+  {
+    "value": "knuckle-a-knuckle-b",
+    "text": "Gear teeth, knuckle A to knuckle B"
+  },
+  {
+    "value": "fasteners-a-housing",
+    "text": "Fasteners, side A to housing"
+  },
+  {
+    "value": "horn-housing",
+    "text": "Horn rim to housing wall"
+  },
+  {
+    "value": "knuckle-a-front-plate",
+    "text": "Knuckle A to front plate"
+  },
+  {
+    "value": "knuckle-a-housing",
+    "text": "Knuckle A to housing"
+  },
+  {
+    "value": "knuckle-b-front-plate",
+    "text": "Knuckle B to front plate"
+  },
+  {
+    "value": "knuckle-b-housing",
+    "text": "Knuckle B to housing"
+  },
+  {
+    "value": "finger-a-knuckle-b",
+    "text": "Finger A to knuckle B"
+  },
+  {
+    "value": "knuckle-a-finger-b",
+    "text": "Knuckle A to finger B"
+  },
+  {
+    "value": "fasteners-a-finger-b",
+    "text": "Fasteners, side A to finger B"
+  },
+  {
+    "value": "finger-a-fasteners-b",
+    "text": "Finger A to fasteners, side B"
+  },
+  {
+    "value": "envelope",
+    "text": "Unverified arm clearance"
+  }
+]

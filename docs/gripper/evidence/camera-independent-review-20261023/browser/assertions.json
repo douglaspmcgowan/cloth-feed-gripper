@@ -1,0 +1,2872 @@
+{
+  "passed": true,
+  "failures": [],
+  "results": [
+    {
+      "id": "fasteners-b-fasteners",
+      "title": "Fasteners, side B to fasteners, body",
+      "kind": "gap",
+      "stage": {
+        "left": 16,
+        "top": 321,
+        "right": 374,
+        "bottom": 844.265625,
+        "width": 358,
+        "height": 523.265625
+      },
+      "labels": [
+        {
+          "text": "0.01 mm",
+          "r": {
+            "left": 162.6171875,
+            "top": 592.203125,
+            "right": 227.3828125,
+            "bottom": 609.796875,
+            "width": 64.765625,
+            "height": 17.59375
+          }
+        },
+        {
+          "text": "Fasteners, side B",
+          "r": {
+            "left": 125.4765625,
+            "top": 572.203125,
+            "right": 234.5234375,
+            "bottom": 589.796875,
+            "width": 109.046875,
+            "height": 17.59375
+          }
+        },
+        {
+          "text": "Fasteners, body",
+          "r": {
+            "left": 158.65625,
+            "top": 612.203125,
+            "right": 261.34375,
+            "bottom": 629.796875,
+            "width": 102.6875,
+            "height": 17.59375
+          }
+        }
+      ],
+      "pts": [
+        {
+          "x": 194.9703231504762,
+          "y": 582.6299811944735,
+          "z": 0.9874442439260471,
+          "source": [
+            15.73,
+            -0.29,
+            11.25
+          ]
+        },
+        {
+          "x": 195.02967745734466,
+          "y": 582.6356438635154,
+          "z": 0.9874439799394376,
+          "source": [
+            15.72,
+            -0.29,
+            11.25
+          ]
+        }
+      ],
+      "locator": {
+        "left": 270,
+        "top": 381,
+        "width": 96,
+        "height": 96,
+        "hidden": false
+      },
+      "canvas": {
+        "width": 358,
+        "height": 523.265625
+      },
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "ready": true,
+      "parts": 16,
+      "locDrawn": 2
+    },
+    {
+      "id": "pads",
+      "title": "Pads overlap in the grip",
+      "kind": "overlap",
+      "stage": {
+        "left": 16,
+        "top": 275,
+        "right": 374,
+        "bottom": 798.265625,
+        "width": 358,
+        "height": 523.265625
+      },
+      "labels": [
+        {
+          "text": "736 mm³ by design",
+          "r": {
+            "left": 97.4140625,
+            "top": 552.203125,
+            "right": 220.5859375,
+            "bottom": 569.796875,
+            "width": 123.171875,
+            "height": 17.59375
+          }
+        }
+      ],
+      "pts": [
+        {
+          "x": 158.73482602122243,
+          "y": 560.9136258619374,
+          "z": 0.9904892870908653,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 158.73482602122243,
+          "y": 560.9136258619374,
+          "z": 0.9904892870908653,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 158.73482602122243,
+          "y": 560.9136258619374,
+          "z": 0.9904892870908653,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 158.73482602122243,
+          "y": 560.9136258619374,
+          "z": 0.9904892870908653,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 158.73482602122243,
+          "y": 560.9136258619374,
+          "z": 0.9904892870908653,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 158.73482602122243,
+          "y": 560.9136258619374,
+          "z": 0.9904892870908653,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 158.73482602122243,
+          "y": 560.9136258619374,
+          "z": 0.9904892870908653,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 158.73482602122243,
+          "y": 560.9136258619374,
+          "z": 0.9904892870908653,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        }
+      ],
+      "locator": {
+        "left": 270,
+        "top": 335,
+        "width": 96,
+        "height": 96,
+        "hidden": false
+      },
+      "canvas": {
+        "width": 358,
+        "height": 523.265625
+      },
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "ready": true,
+      "parts": 16,
+      "locDrawn": 2
+    },
+    {
+      "id": "fasteners-b-fasteners",
+      "title": "Fasteners, side B to fasteners, body",
+      "kind": "gap",
+      "stage": {
+        "left": 23.03125,
+        "top": 463.5,
+        "right": 744.96875,
+        "bottom": 1023.5,
+        "width": 721.9375,
+        "height": 560
+      },
+      "labels": [
+        {
+          "text": "0.01 mm",
+          "r": {
+            "left": 351.6484375,
+            "top": 751.703125,
+            "right": 416.4140625,
+            "bottom": 769.296875,
+            "width": 64.765625,
+            "height": 17.59375
+          }
+        },
+        {
+          "text": "Fasteners, side B",
+          "r": {
+            "left": 295.5078125,
+            "top": 731.703125,
+            "right": 404.5546875,
+            "bottom": 749.296875,
+            "width": 109.046875,
+            "height": 17.59375
+          }
+        },
+        {
+          "text": "Fasteners, body",
+          "r": {
+            "left": 367.6875,
+            "top": 771.703125,
+            "right": 470.375,
+            "bottom": 789.296875,
+            "width": 102.6875,
+            "height": 17.59375
+          }
+        }
+      ],
+      "pts": [
+        {
+          "x": 383.9312888640294,
+          "y": 743.4934474076509,
+          "z": 0.9724603256224906,
+          "source": [
+            15.73,
+            -0.29,
+            11.25
+          ]
+        },
+        {
+          "x": 384.06871417934826,
+          "y": 743.506552882579,
+          "z": 0.9724590910590172,
+          "source": [
+            15.72,
+            -0.29,
+            11.25
+          ]
+        }
+      ],
+      "locator": {
+        "left": 608.96875,
+        "top": 471.5,
+        "width": 128,
+        "height": 128,
+        "hidden": false
+      },
+      "canvas": {
+        "width": 721.9375,
+        "height": 560
+      },
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "ready": true,
+      "parts": 16,
+      "locDrawn": 2
+    },
+    {
+      "id": "pads",
+      "title": "Pads overlap in the grip",
+      "kind": "overlap",
+      "stage": {
+        "left": 23.03125,
+        "top": 445,
+        "right": 744.96875,
+        "bottom": 1005,
+        "width": 721.9375,
+        "height": 560
+      },
+      "labels": [
+        {
+          "text": "736 mm³ by design",
+          "r": {
+            "left": 240.4453125,
+            "top": 771.203125,
+            "right": 363.6171875,
+            "bottom": 788.796875,
+            "width": 123.171875,
+            "height": 17.59375
+          }
+        }
+      ],
+      "pts": [
+        {
+          "x": 301.99380893269046,
+          "y": 779.8829170074795,
+          "z": 0.9795419651324976,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 301.99380893269046,
+          "y": 779.8829170074795,
+          "z": 0.9795419651324976,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 301.99380893269046,
+          "y": 779.8829170074795,
+          "z": 0.9795419651324976,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 301.99380893269046,
+          "y": 779.8829170074795,
+          "z": 0.9795419651324976,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 301.99380893269046,
+          "y": 779.8829170074795,
+          "z": 0.9795419651324976,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 301.99380893269046,
+          "y": 779.8829170074795,
+          "z": 0.9795419651324976,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 301.99380893269046,
+          "y": 779.8829170074795,
+          "z": 0.9795419651324976,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 301.99380893269046,
+          "y": 779.8829170074795,
+          "z": 0.9795419651324976,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        }
+      ],
+      "locator": {
+        "left": 608.96875,
+        "top": 453,
+        "width": 128,
+        "height": 128,
+        "hidden": false
+      },
+      "canvas": {
+        "width": 721.9375,
+        "height": 560
+      },
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "ready": true,
+      "parts": 16,
+      "locDrawn": 2
+    },
+    {
+      "id": "fasteners-b-fasteners",
+      "title": "Fasteners, side B to fasteners, body",
+      "kind": "gap",
+      "stage": {
+        "left": 280,
+        "top": 299.59375,
+        "right": 1052,
+        "bottom": 999.59375,
+        "width": 772,
+        "height": 700
+      },
+      "labels": [
+        {
+          "text": "0.01 mm",
+          "r": {
+            "left": 633.6171875,
+            "top": 657.796875,
+            "right": 698.3828125,
+            "bottom": 675.390625,
+            "width": 64.765625,
+            "height": 17.59375
+          }
+        },
+        {
+          "text": "Fasteners, side B",
+          "r": {
+            "left": 575.4765625,
+            "top": 637.796875,
+            "right": 684.5234375,
+            "bottom": 655.390625,
+            "width": 109.046875,
+            "height": 17.59375
+          }
+        },
+        {
+          "text": "Fasteners, body",
+          "r": {
+            "left": 651.65625,
+            "top": 677.796875,
+            "right": 754.34375,
+            "bottom": 695.390625,
+            "width": 102.6875,
+            "height": 17.59375
+          }
+        }
+      ],
+      "pts": [
+        {
+          "x": 665.9265238793824,
+          "y": 649.5867436045817,
+          "z": 0.9764906478974998,
+          "source": [
+            15.73,
+            -0.29,
+            11.25
+          ]
+        },
+        {
+          "x": 666.0734789044534,
+          "y": 649.600756660874,
+          "z": 0.9764897445525874,
+          "source": [
+            15.72,
+            -0.29,
+            11.25
+          ]
+        }
+      ],
+      "locator": {
+        "left": 916,
+        "top": 307.59375,
+        "width": 128,
+        "height": 128,
+        "hidden": false
+      },
+      "canvas": {
+        "width": 772,
+        "height": 700
+      },
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "ready": true,
+      "parts": 16,
+      "locDrawn": 2
+    },
+    {
+      "id": "pads",
+      "title": "Pads overlap in the grip",
+      "kind": "overlap",
+      "stage": {
+        "left": 280,
+        "top": 299.59375,
+        "right": 1052,
+        "bottom": 999.59375,
+        "width": 772,
+        "height": 700
+      },
+      "labels": [
+        {
+          "text": "736 mm³ by design",
+          "r": {
+            "left": 516.4140625,
+            "top": 699.796875,
+            "right": 639.5859375,
+            "bottom": 717.390625,
+            "width": 123.171875,
+            "height": 17.59375
+          }
+        }
+      ],
+      "pts": [
+        {
+          "x": 577.7530523061682,
+          "y": 708.6482017068383,
+          "z": 0.9824360000910964,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 577.7530523061682,
+          "y": 708.6482017068383,
+          "z": 0.9824360000910964,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 577.7530523061682,
+          "y": 708.6482017068383,
+          "z": 0.9824360000910964,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 577.7530523061682,
+          "y": 708.6482017068383,
+          "z": 0.9824360000910964,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 577.7530523061682,
+          "y": 708.6482017068383,
+          "z": 0.9824360000910964,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 577.7530523061682,
+          "y": 708.6482017068383,
+          "z": 0.9824360000910964,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 577.7530523061682,
+          "y": 708.6482017068383,
+          "z": 0.9824360000910964,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        },
+        {
+          "x": 577.7530523061682,
+          "y": 708.6482017068383,
+          "z": 0.9824360000910964,
+          "source": [
+            0,
+            -36.23,
+            6.25
+          ]
+        }
+      ],
+      "locator": {
+        "left": 916,
+        "top": 307.59375,
+        "width": 128,
+        "height": 128,
+        "hidden": false
+      },
+      "canvas": {
+        "width": 772,
+        "height": 700
+      },
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "ready": true,
+      "parts": 16,
+      "locDrawn": 2
+    },
+    {
+      "slowRecovery": true
+    },
+    {
+      "name": "assembled gripper margins 390x844",
+      "passed": true,
+      "bounds": {
+        "theme": "light",
+        "canvas": {
+          "x": 16,
+          "y": 242,
+          "width": 358,
+          "height": 523.265625
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.7746447408580098,
+          0.5566591537516817,
+          -0.7149595810467362,
+          0.622926317519153
+        ],
+        "margins_px": {
+          "left": 40.33859138641624,
+          "right": 79.35801147844897,
+          "top": 98.65484806719599,
+          "bottom": 74.57592648692072
+        }
+      },
+      "required_margin_px": 8
+    },
+    {
+      "name": "exploded midpoint gripper margins 390x844",
+      "passed": true,
+      "bounds": {
+        "theme": "light",
+        "canvas": {
+          "x": 16,
+          "y": 201,
+          "width": 358,
+          "height": 523.265625
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.4933337726940557,
+          0.3251286789649221,
+          -0.425167020629939,
+          0.38853286218230665
+        ],
+        "margins_px": {
+          "left": 90.69325468776404,
+          "right": 120.80196646527894,
+          "top": 159.97986701856823,
+          "bottom": 150.39516911034355
+        }
+      },
+      "required_margin_px": 8,
+      "explode": 0.5
+    },
+    {
+      "name": "exploded endpoint gripper margins 390x844",
+      "passed": true,
+      "bounds": {
+        "theme": "light",
+        "canvas": {
+          "x": 16,
+          "y": 201,
+          "width": 358,
+          "height": 523.265625
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.6741000395134819,
+          0.41576429013849353,
+          -0.5849576449896124,
+          0.49074957484701776
+        ],
+        "margins_px": {
+          "left": 58.336092927086746,
+          "right": 104.57819206520966,
+          "top": 133.2366209995955,
+          "bottom": 108.58869864799117
+        }
+      },
+      "required_margin_px": 8,
+      "explode": 1
+    },
+    {
+      "name": "assembled gripper margins 768x1024",
+      "passed": true,
+      "bounds": {
+        "theme": "dark",
+        "canvas": {
+          "x": 23.03125,
+          "y": 219.5,
+          "width": 721.9375,
+          "height": 560
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.45088987434234906,
+          0.32541563020837444,
+          -0.7843769075593994,
+          0.683775872280838
+        ],
+        "margins_px": {
+          "left": 198.2115956709852,
+          "right": 243.50387673322086,
+          "top": 88.54275576136536,
+          "bottom": 60.374465883368174
+        }
+      },
+      "required_margin_px": 8
+    },
+    {
+      "name": "exploded midpoint gripper margins 768x1024",
+      "passed": true,
+      "bounds": {
+        "theme": "dark",
+        "canvas": {
+          "x": 23.03125,
+          "y": 219.5,
+          "width": 721.9375,
+          "height": 560
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.33204245777294544,
+          0.21489340075445737,
+          -0.5413364154017727,
+          0.49170087391370854
+        ],
+        "margins_px": {
+          "left": 241.1117990707721,
+          "right": 283.3989477464145,
+          "top": 142.3237553041616,
+          "bottom": 128.42580368750365
+        }
+      },
+      "required_margin_px": 8,
+      "explode": 0.5
+    },
+    {
+      "name": "exploded endpoint gripper margins 768x1024",
+      "passed": true,
+      "bounds": {
+        "theme": "dark",
+        "canvas": {
+          "x": 23.03125,
+          "y": 219.5,
+          "width": 721.9375,
+          "height": 560
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.4555175731898356,
+          0.27312310580406685,
+          -0.7496610857752617,
+          0.6222024552520997
+        ],
+        "margins_px": {
+          "left": 196.54114100263155,
+          "right": 262.37984390178826,
+          "top": 105.78331252941209,
+          "bottom": 70.09489598292673
+        }
+      },
+      "required_margin_px": 8,
+      "explode": 1
+    },
+    {
+      "name": "assembled gripper margins 1440x1000",
+      "passed": true,
+      "bounds": {
+        "theme": "light",
+        "canvas": {
+          "x": 280,
+          "y": 140.09375,
+          "width": 772,
+          "height": 700
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.5329929913968123,
+          0.38488326672534157,
+          -0.7932041920955839,
+          0.6915183536408507
+        ],
+        "margins_px": {
+          "left": 180.26470532083044,
+          "right": 237.43505904401815,
+          "top": 107.96857622570226,
+          "bottom": 72.37853276654563
+        }
+      },
+      "required_margin_px": 8
+    },
+    {
+      "name": "exploded midpoint gripper margins 1440x1000",
+      "passed": true,
+      "bounds": {
+        "theme": "light",
+        "canvas": {
+          "x": 280,
+          "y": 140.09375,
+          "width": 772,
+          "height": 700
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.39227864395825873,
+          0.2536487870286141,
+          -0.5471836920801914,
+          0.496860762767134
+        ],
+        "margins_px": {
+          "left": 234.58044343211213,
+          "right": 288.09156820695495,
+          "top": 176.09873303150312,
+          "bottom": 158.48570777193302
+        }
+      },
+      "required_margin_px": 8,
+      "explode": 0.5
+    },
+    {
+      "name": "exploded endpoint gripper margins 1440x1000",
+      "passed": true,
+      "bounds": {
+        "theme": "light",
+        "canvas": {
+          "x": 280,
+          "y": 140.09375,
+          "width": 772,
+          "height": 700
+        },
+        "meshes": 63,
+        "vertices": 240240,
+        "outsideXY": 0,
+        "outsideDepth": 0,
+        "ndc": [
+          -0.5382610379365493,
+          0.3222834309102344,
+          -0.7580082804487503,
+          0.6287897020787498
+        ],
+        "margins_px": {
+          "left": 178.23123935649195,
+          "right": 261.59859566864947,
+          "top": 129.92360427243756,
+          "bottom": 84.69710184293737
+        }
+      },
+      "required_margin_px": 8,
+      "explode": 1
+    },
+    {
+      "name": "explicit fit camera cold",
+      "passed": true,
+      "camera": [
+        111,
+        20.19999999999999,
+        158.6,
+        0,
+        -30,
+        0
+      ],
+      "expected": [
+        111,
+        20.2,
+        158.6,
+        0,
+        -30,
+        0
+      ],
+      "delta": [
+        0,
+        1.0658141036401503e-14,
+        0,
+        0,
+        0,
+        0
+      ],
+      "hash": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+      "host": "fit3d"
+    },
+    {
+      "name": "fit permalink retained cold",
+      "passed": true,
+      "actual": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+      "expected": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off"
+    },
+    {
+      "name": "fit state retained cold",
+      "passed": true,
+      "finding": "pads",
+      "theta": -10,
+      "roll": 0,
+      "cut": {
+        "on": false,
+        "mode": "f",
+        "flip": false,
+        "off": 0
+      }
+    },
+    {
+      "name": "explicit fit camera warm",
+      "passed": true,
+      "camera": [
+        111,
+        20.19999999999999,
+        158.6,
+        0,
+        -30,
+        0
+      ],
+      "expected": [
+        111,
+        20.2,
+        158.6,
+        0,
+        -30,
+        0
+      ],
+      "delta": [
+        0,
+        1.0658141036401503e-14,
+        0,
+        0,
+        0,
+        0
+      ],
+      "hash": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+      "host": "fit3d"
+    },
+    {
+      "name": "fit permalink retained warm",
+      "passed": true,
+      "actual": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+      "expected": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off"
+    },
+    {
+      "name": "fit state retained warm",
+      "passed": true,
+      "finding": "pads",
+      "theta": -10,
+      "roll": 0,
+      "cut": {
+        "on": false,
+        "mode": "f",
+        "flip": false,
+        "off": 0
+      }
+    },
+    {
+      "name": "explicit fit camera late-host-attach",
+      "passed": true,
+      "camera": [
+        111,
+        20.19999999999999,
+        158.6,
+        0,
+        -30,
+        0
+      ],
+      "expected": [
+        111,
+        20.2,
+        158.6,
+        0,
+        -30,
+        0
+      ],
+      "delta": [
+        0,
+        1.0658141036401503e-14,
+        0,
+        0,
+        0,
+        0
+      ],
+      "hash": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+      "host": "fit3d"
+    },
+    {
+      "name": "fit permalink retained late-host-attach",
+      "passed": true,
+      "actual": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off",
+      "expected": "#fit-f-pads~j=-10~r=0~c=111.0,20.2,158.6,0.0,-30.0,0.0~s=off"
+    },
+    {
+      "name": "fit state retained late-host-attach",
+      "passed": true,
+      "finding": "pads",
+      "theta": -10,
+      "roll": 0,
+      "cut": {
+        "on": false,
+        "mode": "f",
+        "flip": false,
+        "off": 0
+      }
+    },
+    {
+      "name": "manual orbit remains interactive",
+      "passed": true,
+      "before": [
+        111,
+        20.19999999999999,
+        158.6,
+        0,
+        -30,
+        0
+      ],
+      "after": [
+        14.513246042838603,
+        97.88095400662384,
+        153.07131439840646,
+        0,
+        -30,
+        0
+      ],
+      "delta": [
+        96.4867539571614,
+        77.68095400662385,
+        5.528685601593537,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "resize preserves manual camera",
+      "passed": true,
+      "before": [
+        14.513246042838603,
+        97.88095400662384,
+        153.07131439840646,
+        0,
+        -30,
+        0
+      ],
+      "after": [
+        14.513246042838599,
+        97.88095400662384,
+        153.07131439840646,
+        0,
+        -30,
+        0
+      ],
+      "delta": [
+        3.552713678800501e-15,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rendered control counts",
+      "passed": true,
+      "counts": {
+        "model": {
+          "total": 60,
+          "byTag": {
+            "a": 18,
+            "button": 25,
+            "input": 17
+          },
+          "controls": [
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "153.9 g with cloth"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": "How to read Model",
+              "text": "i"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Full screen"
+            },
+            {
+              "tag": "input",
+              "id": "jaw",
+              "role": null,
+              "label": null,
+              "text": "0"
+            },
+            {
+              "tag": "button",
+              "id": "explode",
+              "role": null,
+              "label": null,
+              "text": "Explode"
+            },
+            {
+              "tag": "button",
+              "id": "ctxBtn",
+              "role": null,
+              "label": null,
+              "text": "Arm wrist"
+            },
+            {
+              "tag": "button",
+              "id": "stockBtn",
+              "role": null,
+              "label": null,
+              "text": "Stock gripper"
+            },
+            {
+              "tag": "button",
+              "id": "lookBtn",
+              "role": null,
+              "label": null,
+              "text": "Shadows and shading"
+            },
+            {
+              "tag": "button",
+              "id": "resetCam",
+              "role": null,
+              "label": null,
+              "text": "Reset view"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "53,342 g mm"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Fasteners, body",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, body"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Fasteners, body",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Fasteners, side A",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side A"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Fasteners, side A",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Fasteners, side B",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side B"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Fasteners, side B",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Finger A",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Finger A",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Finger B",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger B"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Finger B",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Front plate",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Front plate"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Front plate",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Sensor backing",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Sensor backing"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Sensor backing",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Sensor puck",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Sensor puck"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Sensor puck",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Force sensor FSR 402",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Force sensor FSR 402"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Force sensor FSR 402",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Servo horn",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Servo horn"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Servo horn",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Housing",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Housing"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Housing",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Knuckle A with gear sector",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle A with gear sector"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Knuckle A with gear sector",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Knuckle B with gear sector",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle B with gear sector"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Knuckle B with gear sector",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Nail on finger A",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Nail on finger A"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Nail on finger A",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show DSServo DS3230 MG",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "DSServo DS3230 MG"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open DSServo DS3230 MG",
+              "text": "Open"
+            },
+            {
+              "tag": "input",
+              "id": null,
+              "role": null,
+              "label": "Show Wrist mount plate",
+              "text": "on"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Wrist mount plate"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": "Open Wrist mount plate",
+              "text": "Open"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Method and assumptions"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Sources"
+            }
+          ]
+        },
+        "fit": {
+          "total": 83,
+          "byTag": {
+            "button": 79,
+            "select": 1,
+            "input": 3
+          },
+          "controls": [
+            {
+              "tag": "button",
+              "id": "tab-fit-3d",
+              "role": "tab",
+              "label": null,
+              "text": "3D check"
+            },
+            {
+              "tag": "button",
+              "id": "tab-fit-findings",
+              "role": "tab",
+              "label": null,
+              "text": "Findings"
+            },
+            {
+              "tag": "button",
+              "id": "tab-fit-checks",
+              "role": "tab",
+              "label": null,
+              "text": "All checks"
+            },
+            {
+              "tag": "button",
+              "id": "tab-fit-section",
+              "role": "tab",
+              "label": null,
+              "text": "Section sheet"
+            },
+            {
+              "tag": "button",
+              "id": "tab-fit-isometric",
+              "role": "tab",
+              "label": null,
+              "text": "Isometric sheet"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": "How to read 3D check",
+              "text": "i"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Full screen"
+            },
+            {
+              "tag": "button",
+              "id": "fitPrev",
+              "role": null,
+              "label": "Previous finding",
+              "text": ""
+            },
+            {
+              "tag": "select",
+              "id": "fitPick",
+              "role": null,
+              "label": "Finding",
+              "text": "Fasteners, side A to fasteners, body Fasteners, side B to fasteners, body Fasten"
+            },
+            {
+              "tag": "button",
+              "id": "fitNext",
+              "role": null,
+              "label": "Next finding",
+              "text": ""
+            },
+            {
+              "tag": "button",
+              "id": "fitAll",
+              "role": null,
+              "label": null,
+              "text": "Whole assembly"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Front"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Side"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Top"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Iso"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finding"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Reset"
+            },
+            {
+              "tag": "input",
+              "id": "fitJaw",
+              "role": null,
+              "label": null,
+              "text": "-11"
+            },
+            {
+              "tag": "input",
+              "id": "fitRoll",
+              "role": null,
+              "label": null,
+              "text": "0"
+            },
+            {
+              "tag": "button",
+              "id": "fitPlay",
+              "role": null,
+              "label": null,
+              "text": "Sweep the jaw"
+            },
+            {
+              "tag": "button",
+              "id": "fitCutOn",
+              "role": null,
+              "label": null,
+              "text": "Section"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "X"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Y"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Z"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finding"
+            },
+            {
+              "tag": "button",
+              "id": "fitFlip",
+              "role": null,
+              "label": null,
+              "text": "Flip"
+            },
+            {
+              "tag": "input",
+              "id": "fitCutPos",
+              "role": null,
+              "label": null,
+              "text": "0"
+            },
+            {
+              "tag": "button",
+              "id": "fitLink",
+              "role": null,
+              "label": null,
+              "text": "Copy link"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Show"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Show"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Show"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Show"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Show"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Show"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Show"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Show"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side A to fasteners, body smallest at −11° 0.01 mm gap; B4 0.020 mm a"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side B to fasteners, body smallest at −11° 0.01 mm gap; B4 0.020 mm a"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side A to front plate smallest at −11° 1.25 mm gap; B4 0.020 mm at ri"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side B to front plate smallest at −11° 1.25 mm gap; B4 0.020 mm at ri"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side B to housing smallest at −11° 1.25 mm gap; B4 0.020 mm at risk; "
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A to finger B touching at −11° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A to sensor backing touching at −7.4° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A to sensor puck touching at −4° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A to force sensor FSR 402 touching at −7° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Servo horn to dsservo DS3230 MG touching at −11° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Nail on finger A to finger B touching at −5° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Nail on finger A to sensor backing touching at −2° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Nail on finger A to sensor puck touching at −1° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Nail on finger A to force sensor FSR 402 touching at −1° 0.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Wrist plate to the arm's wrist link the same at every roll angle and both jaw an"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side A to dsservo DS3230 MG smallest at −11° 1.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Horn face to pivot pin A smallest at −11° 2.24 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Servo horn to knuckle B smallest at −1° 4.37 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A to front plate smallest at −11° 4.50 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A to housing smallest at −11° 4.50 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger B to front plate smallest at −11° 4.50 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger B to housing smallest at −11° 4.50 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle A to dsservo DS3230 MG smallest at −11° 7.00 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle B to wrist mount plate smallest at −11° 7.30 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle B to dsservo DS3230 MG smallest at −11° 8.04 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side A to knuckle B smallest at −11° 9.52 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle A to fasteners, side B smallest at −11° 9.52 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side B to dsservo DS3230 MG smallest at −11° 9.75 mm no requirement"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "12 overlaps in the body, 0 not intended seated; the parts do not move 12 by desi"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Printed and reamed servo boss bore 3D model: printed Ø8.8 mm; finished Ø9.0 H7 p"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Pads overlap in the grip at −11°, past touch 736 mm³ by design"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle A to fasteners, body smallest at −11° 0.08 mm gap; B38 0.300 mm met gove"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle B to fasteners, body smallest at −11° 0.08 mm gap; B38 0.300 mm met gove"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Gear teeth, knuckle A to knuckle B the same at every jaw angle 0.11 mm gap; gear"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side A to housing the same at every jaw angle 0.75 mm; F09 at least 0"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Horn rim to housing wall the same at every jaw angle 0.75 mm; B18 at least 0.60 "
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle A to front plate smallest at −11° 1.00 mm gap; B38 0.300 mm met governed"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle A to housing smallest at −11° 1.00 mm gap; B38 0.300 mm met governed els"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle B to front plate smallest at −11° 1.00 mm gap; B38 0.300 mm met governed"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle B to housing smallest at −11° 1.00 mm gap; B38 0.300 mm met governed els"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A to knuckle B smallest at −11° 1.22 mm; B19 at least 0.70 mm met"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle A to finger B smallest at −11° 1.22 mm; B19 at least 0.70 mm met"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fasteners, side A to finger B smallest at −11° 2.63 mm; B19 at least 0.70 mm met"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A to fasteners, side B smallest at −11° 2.63 mm; B19 at least 0.70 mm met"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Unverified arm clearance radius in the 40 to 60 mm band from the interface 52.5 "
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Method and assumptions"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Sources"
+            }
+          ]
+        },
+        "parts": {
+          "total": 55,
+          "byTag": {
+            "a": 11,
+            "button": 42,
+            "select": 2
+          },
+          "controls": [
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "135.4 g on the arm"
+            },
+            {
+              "tag": "button",
+              "id": "tab-parts-browse",
+              "role": "tab",
+              "label": null,
+              "text": "Browse"
+            },
+            {
+              "tag": "button",
+              "id": "tab-parts-list",
+              "role": "tab",
+              "label": null,
+              "text": "List only"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": "How to read Browse",
+              "text": "i"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Full screen"
+            },
+            {
+              "tag": "select",
+              "id": "partsShow",
+              "role": null,
+              "label": null,
+              "text": "all parts printed bought fasteners"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Housing 1 × PETG, 11.7 g ream pin holes 3.0 H7 (with front plate), boss bore 9.0"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Front plate 1 × PETG, 4.1 g ream blind pin holes 3.0 H7 with the housing; 2 heat"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Wrist mount plate 1 × PETG, 9.3 g ream peg holes 3.0; press 4 M3 heat-set insert"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle A with gear sector 1 × PA6-CF, 6.1 g ream bore 6.0 H7, press bush 3x6x10"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle B with gear sector 1 × PA6-CF, 6.4 g ream bore 6.0 H7, press bush 3x6x10"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger A 1 × TPU 95A, 4.6 g clear the Ø2 peg holes with a 2.0 drill by hand"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger B 1 × TPU 95A, 4.6 g as finger A"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Nail on finger A 1 × PLA, 0.30 g bond (CA) on finger A pad"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Sensor backing 1 × PLA, 0.53 g bond (CA) on finger B pad"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Sensor puck 1 × PLA, 0.04 g bond (CA) on the FSR active area"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "DSServo DS3230 MG 1 × bought, 60.0 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Servo horn 1 × bought, 3.4 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Force sensor FSR 402 1 × bought, 0.60 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Horn centre screw 1 × bought, 0.00 g bought; not modelled in CAD"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Dog set screws 2 × steel, 0.86 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Servo horn 2 × bought, 0.00 g bought; included in horn model"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle pins 2 × steel, 1.8 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Knuckle bushes 2 × steel, 3.7 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Shims 4 × steel, 0.81 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Deck locating pins 2 × steel, 0.67 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Horn screws 4 × steel, 1.8 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Deck screws 4 × steel, 1.8 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Heat-set inserts 4 × brass, 0.81 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Camera-pad inserts (optional) 2 × bought, 0.00 g bought; not modelled in CAD"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Ear screws 4 × steel, 2.5 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Compression limiters 4 × steel, 1.0 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Washers 4 × steel, 0.48 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Nuts 4 × steel, 1.0 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Front plate screws 3 × steel, 2.9 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger pegs 4 × steel, 2.4 g bought"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Finger root bolts 2 × steel, 1.3 g bought"
+            },
+            {
+              "tag": "button",
+              "id": "ptab3d",
+              "role": "tab",
+              "label": null,
+              "text": "3D"
+            },
+            {
+              "tag": "button",
+              "id": "ptabDraw",
+              "role": "tab",
+              "label": null,
+              "text": "Drawing"
+            },
+            {
+              "tag": "select",
+              "id": "partCtx",
+              "role": null,
+              "label": null,
+              "text": "in place, others faded alone exploded, others faded"
+            },
+            {
+              "tag": "button",
+              "id": "partDims",
+              "role": null,
+              "label": null,
+              "text": "Dimensions"
+            },
+            {
+              "tag": "button",
+              "id": "partCut",
+              "role": null,
+              "label": null,
+              "text": "Section"
+            },
+            {
+              "tag": "button",
+              "id": "partReset",
+              "role": null,
+              "label": null,
+              "text": "Reset view"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Drawing sheet"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Fit check"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Mass roll-up"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "4 tolerance stacks"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "step 1"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "step 2"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "step 3"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "step 10"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "step 16"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "step 17"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Method and assumptions"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Sources"
+            }
+          ]
+        },
+        "assembly": {
+          "total": 46,
+          "byTag": {
+            "button": 43,
+            "input": 1,
+            "a": 2
+          },
+          "controls": [
+            {
+              "tag": "button",
+              "id": "tab-assembly-steps",
+              "role": "tab",
+              "label": null,
+              "text": "Steps"
+            },
+            {
+              "tag": "button",
+              "id": "tab-assembly-findings",
+              "role": "tab",
+              "label": null,
+              "text": "Findings and tools"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": "How to read Steps",
+              "text": "i"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Full screen"
+            },
+            {
+              "tag": "button",
+              "id": "asmPrev",
+              "role": null,
+              "label": "Previous step",
+              "text": "Previous"
+            },
+            {
+              "tag": "button",
+              "id": "asmPlay",
+              "role": null,
+              "label": null,
+              "text": "Play"
+            },
+            {
+              "tag": "button",
+              "id": "asmNext",
+              "role": null,
+              "label": "Next step",
+              "text": "Next"
+            },
+            {
+              "tag": "button",
+              "id": "asmReplay",
+              "role": null,
+              "label": null,
+              "text": "Replay step"
+            },
+            {
+              "tag": "input",
+              "id": "asmScrub",
+              "role": null,
+              "label": "Scrub through the build",
+              "text": "0"
+            },
+            {
+              "tag": "button",
+              "id": "asmArm",
+              "role": null,
+              "label": null,
+              "text": "Arm wrist"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "1 Clamp the housing and front plate together and line-ream the pin holes"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Housing"
+            },
+            {
+              "tag": "a",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Front plate"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "2 Ream the boss-web bore 9.0 H7"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "3 Ream the four peg holes 3.0 H7"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "4 Ream both knuckle bores 6.0 H7 and press in the bushes"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "5 Tap the two dog holes in the horn"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "6 Heat-set four inserts into the wrist plate"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "7 Bond the two locating pins into the spider holes"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "8 Measure the horn hole depth, then seat the wrist plate on the horn"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "9 Fit the four horn screws"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "10 Press four limiter sleeves into the seat holes"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "11 Power the servo to the jaw-0 pulse"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "12 Slide the horn in from below under the arc slots"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "13 Slide the servo in from behind and drive the centre screw"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "14 Fit the four ear screws with washers and nuts"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "15 Fit the two dog set screws through the arc slots"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "16 Press the two h8 pins in from the front"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "17 Lift the housing up onto the wrist plate"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "18 Fit the four deck screws"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "19 Slip the two back shims onto the pins"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "20 Fit knuckle A with its bush onto pin A"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "21 Fit knuckle B with its bush onto pin B"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "22 Pick and slip on the two front shims"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "23 Press the front plate onto the pins and standoffs"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "24 Fit the three front plate screws"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "25 Slide finger A up into the root block of knuckle A"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "26 Pin finger A with two dowels and an M2 bolt"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "27 Slide finger B up into the root block of knuckle B"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "28 Pin finger B with two dowels and an M2 bolt"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "29 Open the jaw 20 degrees and bond the FSR backing and the FSR on finger B"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "30 Bond the puck onto the FSR active area"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "31 Bond the nail onto the pad of finger A"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "32 Close the jaw, check the gap and travel, then calibrate the pinch point"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Method and assumptions"
+            },
+            {
+              "tag": "button",
+              "id": null,
+              "role": null,
+              "label": null,
+              "text": "Sources"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

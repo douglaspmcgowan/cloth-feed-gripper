@@ -1,0 +1,1 @@
+{"error":{"message":"URL is not a constructor","stack":"TypeError: URL is not a constructor\n    at C:\\Users\\dougl\\Worktrees\\cloth-feed-gripper\\gripper-camera-review-20261023\\docs\\gripper\\evidence\\camera-independent-review-20261023\\independent.cjs:49:23"},"screenshots":10,"scenarios":3,"cleanup":{"browser_closed":true}}

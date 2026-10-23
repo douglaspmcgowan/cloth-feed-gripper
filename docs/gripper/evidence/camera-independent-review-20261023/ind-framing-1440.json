@@ -1,0 +1,8278 @@
+[
+  {
+    "pose": "assembled",
+    "bounds": {
+      "canvas": {
+        "x": 280,
+        "y": 140.09375,
+        "width": 772,
+        "height": 700
+      },
+      "all_meshes": [
+        {
+          "name": "housing",
+          "positions": 47832,
+          "ancestry": [
+            {
+              "name": "housing",
+              "visible": true
+            },
+            {
+              "name": "housing",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "front_plate",
+          "positions": 14466,
+          "ancestry": [
+            {
+              "name": "front_plate",
+              "visible": true
+            },
+            {
+              "name": "front_plate",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "wrist_mount",
+          "positions": 31158,
+          "ancestry": [
+            {
+              "name": "wrist_mount",
+              "visible": true
+            },
+            {
+              "name": "wrist_mount",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "knuckle_a",
+          "positions": 6936,
+          "ancestry": [
+            {
+              "name": "knuckle_a",
+              "visible": true
+            },
+            {
+              "name": "knuckle_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "knuckle_b",
+          "positions": 7476,
+          "ancestry": [
+            {
+              "name": "knuckle_b",
+              "visible": true
+            },
+            {
+              "name": "knuckle_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "finger_a",
+          "positions": 1452,
+          "ancestry": [
+            {
+              "name": "finger_a",
+              "visible": true
+            },
+            {
+              "name": "finger_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "finger_b",
+          "positions": 1452,
+          "ancestry": [
+            {
+              "name": "finger_b",
+              "visible": true
+            },
+            {
+              "name": "finger_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nail_a",
+          "positions": 36,
+          "ancestry": [
+            {
+              "name": "nail_a",
+              "visible": true
+            },
+            {
+              "name": "nail_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_backing_b",
+          "positions": 324,
+          "ancestry": [
+            {
+              "name": "fsr_backing_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_backing_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_sensor_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "fsr_sensor_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_sensor_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_puck_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "fsr_puck_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_puck_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "servo",
+          "positions": 7740,
+          "ancestry": [
+            {
+              "name": "servo",
+              "visible": true
+            },
+            {
+              "name": "servo",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn",
+          "positions": 10596,
+          "ancestry": [
+            {
+              "name": "horn",
+              "visible": true
+            },
+            {
+              "name": "horn",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "pin_a",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "pin_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "pin_b",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "pin_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_a_back",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "shim_a_back",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_a_front",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_a_front",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_b_back",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_b_back",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_b_front",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_b_front",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "horn_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_2",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_3",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_4",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_1",
+          "positions": 2256,
+          "ancestry": [
+            {
+              "name": "deck_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_2",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_2",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_3",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_3",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_4",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_4",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "locpin_1",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "locpin_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "locpin_2",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "locpin_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_1",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "ear_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_1",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_1",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_1",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_2",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_2",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_2",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_2",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_3",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_3",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_3",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_3",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_4",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_4",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_4",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_4",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "plate_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_2",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "plate_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_3",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "plate_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "bush_a",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "bush_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_a_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "peg_a_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_a_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "peg_a_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "m2_a",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "m2_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "dog_screw_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "dog_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "dog_screw_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "dog_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fasteners_a",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "bush_b",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "bush_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_b_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "peg_b_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_b_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "peg_b_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "m2_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "m2_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        }
+      ],
+      "visible_names": [
+        "housing",
+        "front_plate",
+        "wrist_mount",
+        "knuckle_a",
+        "knuckle_b",
+        "finger_a",
+        "finger_b",
+        "nail_a",
+        "fsr_backing_b",
+        "fsr_sensor_b",
+        "fsr_puck_b",
+        "servo",
+        "horn",
+        "pin_a",
+        "pin_b",
+        "shim_a_back",
+        "shim_a_front",
+        "shim_b_back",
+        "shim_b_front",
+        "horn_screw_1",
+        "horn_screw_2",
+        "horn_screw_3",
+        "horn_screw_4",
+        "deck_screw_1",
+        "insert_1",
+        "deck_screw_2",
+        "insert_2",
+        "deck_screw_3",
+        "insert_3",
+        "deck_screw_4",
+        "insert_4",
+        "locpin_1",
+        "locpin_2",
+        "ear_screw_1",
+        "limiter_1",
+        "washer_1",
+        "nut_1",
+        "ear_screw_2",
+        "limiter_2",
+        "washer_2",
+        "nut_2",
+        "ear_screw_3",
+        "limiter_3",
+        "washer_3",
+        "nut_3",
+        "ear_screw_4",
+        "limiter_4",
+        "washer_4",
+        "nut_4",
+        "plate_screw_1",
+        "plate_screw_2",
+        "plate_screw_3",
+        "bush_a",
+        "peg_a_1",
+        "peg_a_2",
+        "m2_a",
+        "dog_screw_1",
+        "dog_screw_2",
+        "fasteners_a",
+        "bush_b",
+        "peg_b_1",
+        "peg_b_2",
+        "m2_b"
+      ],
+      "vertex_population": 240240,
+      "part_keys": [
+        "housing",
+        "front_plate",
+        "wrist_mount",
+        "knuckle_a",
+        "knuckle_b",
+        "finger_a",
+        "finger_b",
+        "nail_a",
+        "fsr_backing_b",
+        "fsr_sensor_b",
+        "fsr_puck_b",
+        "servo",
+        "horn",
+        "fasteners",
+        "fasteners_a",
+        "fasteners_b"
+      ],
+      "margins": {
+        "left": 180.26470532083044,
+        "right": 237.43505904401815,
+        "top": 107.96857622570226,
+        "bottom": 72.37853276654563
+      },
+      "depth": [
+        0.9917929162019965,
+        0.9941093057526299
+      ],
+      "explode": 0,
+      "camera": [
+        157.5687198753511,
+        53.23891608438734,
+        211.47317125050157,
+        0,
+        -18.042171478271484,
+        -13.625
+      ]
+    }
+  },
+  {
+    "pose": "transition",
+    "bounds": {
+      "canvas": {
+        "x": 280,
+        "y": 140.09375,
+        "width": 772,
+        "height": 700
+      },
+      "all_meshes": [
+        {
+          "name": "housing",
+          "positions": 47832,
+          "ancestry": [
+            {
+              "name": "housing",
+              "visible": true
+            },
+            {
+              "name": "housing",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "front_plate",
+          "positions": 14466,
+          "ancestry": [
+            {
+              "name": "front_plate",
+              "visible": true
+            },
+            {
+              "name": "front_plate",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "wrist_mount",
+          "positions": 31158,
+          "ancestry": [
+            {
+              "name": "wrist_mount",
+              "visible": true
+            },
+            {
+              "name": "wrist_mount",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "knuckle_a",
+          "positions": 6936,
+          "ancestry": [
+            {
+              "name": "knuckle_a",
+              "visible": true
+            },
+            {
+              "name": "knuckle_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "knuckle_b",
+          "positions": 7476,
+          "ancestry": [
+            {
+              "name": "knuckle_b",
+              "visible": true
+            },
+            {
+              "name": "knuckle_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "finger_a",
+          "positions": 1452,
+          "ancestry": [
+            {
+              "name": "finger_a",
+              "visible": true
+            },
+            {
+              "name": "finger_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "finger_b",
+          "positions": 1452,
+          "ancestry": [
+            {
+              "name": "finger_b",
+              "visible": true
+            },
+            {
+              "name": "finger_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nail_a",
+          "positions": 36,
+          "ancestry": [
+            {
+              "name": "nail_a",
+              "visible": true
+            },
+            {
+              "name": "nail_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_backing_b",
+          "positions": 324,
+          "ancestry": [
+            {
+              "name": "fsr_backing_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_backing_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_sensor_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "fsr_sensor_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_sensor_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_puck_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "fsr_puck_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_puck_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "servo",
+          "positions": 7740,
+          "ancestry": [
+            {
+              "name": "servo",
+              "visible": true
+            },
+            {
+              "name": "servo",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn",
+          "positions": 10596,
+          "ancestry": [
+            {
+              "name": "horn",
+              "visible": true
+            },
+            {
+              "name": "horn",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "pin_a",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "pin_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "pin_b",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "pin_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_a_back",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "shim_a_back",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_a_front",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_a_front",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_b_back",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_b_back",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_b_front",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_b_front",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "horn_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_2",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_3",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_4",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_1",
+          "positions": 2256,
+          "ancestry": [
+            {
+              "name": "deck_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_2",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_2",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_3",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_3",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_4",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_4",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "locpin_1",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "locpin_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "locpin_2",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "locpin_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_1",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "ear_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_1",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_1",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_1",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_2",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_2",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_2",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_2",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_3",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_3",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_3",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_3",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_4",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_4",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_4",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_4",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "plate_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_2",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "plate_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_3",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "plate_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "bush_a",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "bush_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_a_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "peg_a_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_a_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "peg_a_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "m2_a",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "m2_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "dog_screw_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "dog_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "dog_screw_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "dog_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fasteners_a",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "bush_b",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "bush_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_b_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "peg_b_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_b_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "peg_b_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "m2_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "m2_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        }
+      ],
+      "visible_names": [
+        "housing",
+        "front_plate",
+        "wrist_mount",
+        "knuckle_a",
+        "knuckle_b",
+        "finger_a",
+        "finger_b",
+        "nail_a",
+        "fsr_backing_b",
+        "fsr_sensor_b",
+        "fsr_puck_b",
+        "servo",
+        "horn",
+        "pin_a",
+        "pin_b",
+        "shim_a_back",
+        "shim_a_front",
+        "shim_b_back",
+        "shim_b_front",
+        "horn_screw_1",
+        "horn_screw_2",
+        "horn_screw_3",
+        "horn_screw_4",
+        "deck_screw_1",
+        "insert_1",
+        "deck_screw_2",
+        "insert_2",
+        "deck_screw_3",
+        "insert_3",
+        "deck_screw_4",
+        "insert_4",
+        "locpin_1",
+        "locpin_2",
+        "ear_screw_1",
+        "limiter_1",
+        "washer_1",
+        "nut_1",
+        "ear_screw_2",
+        "limiter_2",
+        "washer_2",
+        "nut_2",
+        "ear_screw_3",
+        "limiter_3",
+        "washer_3",
+        "nut_3",
+        "ear_screw_4",
+        "limiter_4",
+        "washer_4",
+        "nut_4",
+        "plate_screw_1",
+        "plate_screw_2",
+        "plate_screw_3",
+        "bush_a",
+        "peg_a_1",
+        "peg_a_2",
+        "m2_a",
+        "dog_screw_1",
+        "dog_screw_2",
+        "fasteners_a",
+        "bush_b",
+        "peg_b_1",
+        "peg_b_2",
+        "m2_b"
+      ],
+      "vertex_population": 240240,
+      "part_keys": [
+        "housing",
+        "front_plate",
+        "wrist_mount",
+        "knuckle_a",
+        "knuckle_b",
+        "finger_a",
+        "finger_b",
+        "nail_a",
+        "fsr_backing_b",
+        "fsr_sensor_b",
+        "fsr_puck_b",
+        "servo",
+        "horn",
+        "fasteners",
+        "fasteners_a",
+        "fasteners_b"
+      ],
+      "margins": {
+        "left": 280.6725426740657,
+        "right": 316.35310622868036,
+        "top": 217.90324816970738,
+        "bottom": 215.39602845906424
+      },
+      "depth": [
+        0.9964132107920336,
+        0.9969851799987508
+      ],
+      "explode": 0,
+      "camera": [
+        312.67896597871476,
+        117.37776021106707,
+        430.6988434535715,
+        4.294775294185926,
+        -22.1293736700293,
+        -9.850000381469727
+      ]
+    }
+  },
+  {
+    "pose": "exploded",
+    "bounds": {
+      "canvas": {
+        "x": 280,
+        "y": 140.09375,
+        "width": 772,
+        "height": 700
+      },
+      "all_meshes": [
+        {
+          "name": "housing",
+          "positions": 47832,
+          "ancestry": [
+            {
+              "name": "housing",
+              "visible": true
+            },
+            {
+              "name": "housing",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "front_plate",
+          "positions": 14466,
+          "ancestry": [
+            {
+              "name": "front_plate",
+              "visible": true
+            },
+            {
+              "name": "front_plate",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "wrist_mount",
+          "positions": 31158,
+          "ancestry": [
+            {
+              "name": "wrist_mount",
+              "visible": true
+            },
+            {
+              "name": "wrist_mount",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "knuckle_a",
+          "positions": 6936,
+          "ancestry": [
+            {
+              "name": "knuckle_a",
+              "visible": true
+            },
+            {
+              "name": "knuckle_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "knuckle_b",
+          "positions": 7476,
+          "ancestry": [
+            {
+              "name": "knuckle_b",
+              "visible": true
+            },
+            {
+              "name": "knuckle_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "finger_a",
+          "positions": 1452,
+          "ancestry": [
+            {
+              "name": "finger_a",
+              "visible": true
+            },
+            {
+              "name": "finger_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "finger_b",
+          "positions": 1452,
+          "ancestry": [
+            {
+              "name": "finger_b",
+              "visible": true
+            },
+            {
+              "name": "finger_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nail_a",
+          "positions": 36,
+          "ancestry": [
+            {
+              "name": "nail_a",
+              "visible": true
+            },
+            {
+              "name": "nail_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_backing_b",
+          "positions": 324,
+          "ancestry": [
+            {
+              "name": "fsr_backing_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_backing_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_sensor_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "fsr_sensor_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_sensor_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_puck_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "fsr_puck_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_puck_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "servo",
+          "positions": 7740,
+          "ancestry": [
+            {
+              "name": "servo",
+              "visible": true
+            },
+            {
+              "name": "servo",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn",
+          "positions": 10596,
+          "ancestry": [
+            {
+              "name": "horn",
+              "visible": true
+            },
+            {
+              "name": "horn",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "pin_a",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "pin_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "pin_b",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "pin_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_a_back",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "shim_a_back",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_a_front",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_a_front",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_b_back",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_b_back",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_b_front",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_b_front",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "horn_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_2",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_3",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_4",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_1",
+          "positions": 2256,
+          "ancestry": [
+            {
+              "name": "deck_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_2",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_2",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_3",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_3",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_4",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_4",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "locpin_1",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "locpin_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "locpin_2",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "locpin_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_1",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "ear_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_1",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_1",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_1",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_2",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_2",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_2",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_2",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_3",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_3",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_3",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_3",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_4",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_4",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_4",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_4",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "plate_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_2",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "plate_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_3",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "plate_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "bush_a",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "bush_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_a_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "peg_a_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_a_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "peg_a_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "m2_a",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "m2_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "dog_screw_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "dog_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "dog_screw_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "dog_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fasteners_a",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "bush_b",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "bush_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_b_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "peg_b_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_b_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "peg_b_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "m2_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "m2_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        }
+      ],
+      "visible_names": [
+        "housing",
+        "front_plate",
+        "wrist_mount",
+        "knuckle_a",
+        "knuckle_b",
+        "finger_a",
+        "finger_b",
+        "nail_a",
+        "fsr_backing_b",
+        "fsr_sensor_b",
+        "fsr_puck_b",
+        "servo",
+        "horn",
+        "pin_a",
+        "pin_b",
+        "shim_a_back",
+        "shim_a_front",
+        "shim_b_back",
+        "shim_b_front",
+        "horn_screw_1",
+        "horn_screw_2",
+        "horn_screw_3",
+        "horn_screw_4",
+        "deck_screw_1",
+        "insert_1",
+        "deck_screw_2",
+        "insert_2",
+        "deck_screw_3",
+        "insert_3",
+        "deck_screw_4",
+        "insert_4",
+        "locpin_1",
+        "locpin_2",
+        "ear_screw_1",
+        "limiter_1",
+        "washer_1",
+        "nut_1",
+        "ear_screw_2",
+        "limiter_2",
+        "washer_2",
+        "nut_2",
+        "ear_screw_3",
+        "limiter_3",
+        "washer_3",
+        "nut_3",
+        "ear_screw_4",
+        "limiter_4",
+        "washer_4",
+        "nut_4",
+        "plate_screw_1",
+        "plate_screw_2",
+        "plate_screw_3",
+        "bush_a",
+        "peg_a_1",
+        "peg_a_2",
+        "m2_a",
+        "dog_screw_1",
+        "dog_screw_2",
+        "fasteners_a",
+        "bush_b",
+        "peg_b_1",
+        "peg_b_2",
+        "m2_b"
+      ],
+      "vertex_population": 240240,
+      "part_keys": [
+        "housing",
+        "front_plate",
+        "wrist_mount",
+        "knuckle_a",
+        "knuckle_b",
+        "finger_a",
+        "finger_b",
+        "nail_a",
+        "fsr_backing_b",
+        "fsr_sensor_b",
+        "fsr_puck_b",
+        "servo",
+        "horn",
+        "fasteners",
+        "fasteners_a",
+        "fasteners_b"
+      ],
+      "margins": {
+        "left": 178.23123935649195,
+        "right": 261.59859566864947,
+        "top": 129.92360427243756,
+        "bottom": 84.69710184293737
+      },
+      "depth": [
+        0.9960177303064103,
+        0.9971857212737005
+      ],
+      "explode": 1,
+      "camera": [
+        312.67896597871476,
+        117.37776021106706,
+        430.6988434535715,
+        4.294775294185926,
+        -22.129373670029306,
+        -9.850000381469727
+      ]
+    }
+  },
+  {
+    "pose": "manual-orbit-exploded",
+    "bounds": {
+      "canvas": {
+        "x": 280,
+        "y": 140.09375,
+        "width": 772,
+        "height": 700
+      },
+      "all_meshes": [
+        {
+          "name": "housing",
+          "positions": 47832,
+          "ancestry": [
+            {
+              "name": "housing",
+              "visible": true
+            },
+            {
+              "name": "housing",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "front_plate",
+          "positions": 14466,
+          "ancestry": [
+            {
+              "name": "front_plate",
+              "visible": true
+            },
+            {
+              "name": "front_plate",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "wrist_mount",
+          "positions": 31158,
+          "ancestry": [
+            {
+              "name": "wrist_mount",
+              "visible": true
+            },
+            {
+              "name": "wrist_mount",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "knuckle_a",
+          "positions": 6936,
+          "ancestry": [
+            {
+              "name": "knuckle_a",
+              "visible": true
+            },
+            {
+              "name": "knuckle_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "knuckle_b",
+          "positions": 7476,
+          "ancestry": [
+            {
+              "name": "knuckle_b",
+              "visible": true
+            },
+            {
+              "name": "knuckle_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "finger_a",
+          "positions": 1452,
+          "ancestry": [
+            {
+              "name": "finger_a",
+              "visible": true
+            },
+            {
+              "name": "finger_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "finger_b",
+          "positions": 1452,
+          "ancestry": [
+            {
+              "name": "finger_b",
+              "visible": true
+            },
+            {
+              "name": "finger_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nail_a",
+          "positions": 36,
+          "ancestry": [
+            {
+              "name": "nail_a",
+              "visible": true
+            },
+            {
+              "name": "nail_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_backing_b",
+          "positions": 324,
+          "ancestry": [
+            {
+              "name": "fsr_backing_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_backing_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_sensor_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "fsr_sensor_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_sensor_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fsr_puck_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "fsr_puck_b",
+              "visible": true
+            },
+            {
+              "name": "fsr_puck_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "servo",
+          "positions": 7740,
+          "ancestry": [
+            {
+              "name": "servo",
+              "visible": true
+            },
+            {
+              "name": "servo",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn",
+          "positions": 10596,
+          "ancestry": [
+            {
+              "name": "horn",
+              "visible": true
+            },
+            {
+              "name": "horn",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "pin_a",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "pin_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "pin_b",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "pin_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_a_back",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "shim_a_back",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_a_front",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_a_front",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_b_back",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_b_back",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "shim_b_front",
+          "positions": 3024,
+          "ancestry": [
+            {
+              "name": "shim_b_front",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "horn_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_2",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_3",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "horn_screw_4",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "horn_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_1",
+          "positions": 2256,
+          "ancestry": [
+            {
+              "name": "deck_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_2",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_2",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_3",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_3",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "deck_screw_4",
+          "positions": 2640,
+          "ancestry": [
+            {
+              "name": "deck_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "insert_4",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "insert_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "locpin_1",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "locpin_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "locpin_2",
+          "positions": 1500,
+          "ancestry": [
+            {
+              "name": "locpin_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_1",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "ear_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_1",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_1",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_1",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_2",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_2",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_2",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_2",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_3",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_3",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_3",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_3",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "ear_screw_4",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "ear_screw_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "limiter_4",
+          "positions": 1884,
+          "ancestry": [
+            {
+              "name": "limiter_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "washer_4",
+          "positions": 3786,
+          "ancestry": [
+            {
+              "name": "washer_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "nut_4",
+          "positions": 1578,
+          "ancestry": [
+            {
+              "name": "nut_4",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_1",
+          "positions": 3396,
+          "ancestry": [
+            {
+              "name": "plate_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_2",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "plate_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "plate_screw_3",
+          "positions": 3012,
+          "ancestry": [
+            {
+              "name": "plate_screw_3",
+              "visible": true
+            },
+            {
+              "name": "fasteners",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "bush_a",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "bush_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_a_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "peg_a_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_a_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "peg_a_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "m2_a",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "m2_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "dog_screw_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "dog_screw_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "dog_screw_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "dog_screw_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "fasteners_a",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "fasteners_a",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "bush_b",
+          "positions": 540,
+          "ancestry": [
+            {
+              "name": "bush_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_b_1",
+          "positions": 384,
+          "ancestry": [
+            {
+              "name": "peg_b_1",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "peg_b_2",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "peg_b_2",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        },
+        {
+          "name": "m2_b",
+          "positions": 300,
+          "ancestry": [
+            {
+              "name": "m2_b",
+              "visible": true
+            },
+            {
+              "name": "fasteners_b",
+              "visible": true
+            },
+            {
+              "name": "gripper_closed",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            },
+            {
+              "name": "",
+              "visible": true
+            }
+          ],
+          "shown": true
+        }
+      ],
+      "visible_names": [
+        "housing",
+        "front_plate",
+        "wrist_mount",
+        "knuckle_a",
+        "knuckle_b",
+        "finger_a",
+        "finger_b",
+        "nail_a",
+        "fsr_backing_b",
+        "fsr_sensor_b",
+        "fsr_puck_b",
+        "servo",
+        "horn",
+        "pin_a",
+        "pin_b",
+        "shim_a_back",
+        "shim_a_front",
+        "shim_b_back",
+        "shim_b_front",
+        "horn_screw_1",
+        "horn_screw_2",
+        "horn_screw_3",
+        "horn_screw_4",
+        "deck_screw_1",
+        "insert_1",
+        "deck_screw_2",
+        "insert_2",
+        "deck_screw_3",
+        "insert_3",
+        "deck_screw_4",
+        "insert_4",
+        "locpin_1",
+        "locpin_2",
+        "ear_screw_1",
+        "limiter_1",
+        "washer_1",
+        "nut_1",
+        "ear_screw_2",
+        "limiter_2",
+        "washer_2",
+        "nut_2",
+        "ear_screw_3",
+        "limiter_3",
+        "washer_3",
+        "nut_3",
+        "ear_screw_4",
+        "limiter_4",
+        "washer_4",
+        "nut_4",
+        "plate_screw_1",
+        "plate_screw_2",
+        "plate_screw_3",
+        "bush_a",
+        "peg_a_1",
+        "peg_a_2",
+        "m2_a",
+        "dog_screw_1",
+        "dog_screw_2",
+        "fasteners_a",
+        "bush_b",
+        "peg_b_1",
+        "peg_b_2",
+        "m2_b"
+      ],
+      "vertex_population": 240240,
+      "part_keys": [
+        "housing",
+        "front_plate",
+        "wrist_mount",
+        "knuckle_a",
+        "knuckle_b",
+        "finger_a",
+        "finger_b",
+        "nail_a",
+        "fsr_backing_b",
+        "fsr_sensor_b",
+        "fsr_puck_b",
+        "servo",
+        "horn",
+        "fasteners",
+        "fasteners_a",
+        "fasteners_b"
+      ],
+      "margins": {
+        "left": 239.39363869661418,
+        "right": 222.5969361413219,
+        "top": 150.48652146564413,
+        "bottom": 120.41538591813455
+      },
+      "depth": [
+        0.9959196942421119,
+        0.9971043346166474
+      ],
+      "explode": 1,
+      "camera": [
+        -31.008243384712436,
+        288.7328233783795,
+        449.241193817085,
+        4.294775294185926,
+        -22.129373670029306,
+        -9.850000381469727
+      ]
+    }
+  }
+]
