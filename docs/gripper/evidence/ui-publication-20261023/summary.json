@@ -1,0 +1,171 @@
+{
+  "at": "2026-10-23T04:45:15.545642+00:00",
+  "status": "SCOPED_UI_DELIVERED",
+  "source_PR": 21,
+  "source_head": "024db1ef479d57db8bfac7756425628a65bf388f",
+  "merge": "2018f46d6cf3653b7ccfcecc140b7c4cb617a160",
+  "merged_at": "2026-10-23T04:23:13Z",
+  "default_ancestry": "actual exit0",
+  "deployment": {
+    "id": "dpl_CMsPUA7dVC8two9dMHUrRugN5hXL",
+    "url": "https://cloth-feed-gripper-owmxwkdnb-douglas-mcgowans-projects.vercel.app",
+    "alias": "https://cloth-feed-gripper.vercel.app",
+    "actual_READY": true
+  },
+  "actual_checks": {
+    "Windows_static": "29passed/0failed/1unchanged nativeCadQueryskip in3.92s",
+    "public": "19files/18allowlisted/0open/0allowlist errors",
+    "lint": 0,
+    "VerifyProject": "passed",
+    "SpecsChecked_entries": 4,
+    "production_identity": {
+      "at": "2026-10-23T04:32:25.087973+00:00",
+      "base": "https://cloth-feed-gripper.vercel.app",
+      "accepted_source_head": "024db1ef479d57db8bfac7756425628a65bf388f",
+      "files": [
+        {
+          "path": "review/index.html",
+          "url": "https://cloth-feed-gripper.vercel.app/review/",
+          "status": 200,
+          "local_bytes": 13696354,
+          "remote_bytes": 13696354,
+          "expected_sha256": "31ec87e55bf45187fdf755c226db24e9865197d7d36e0f3c802d59e5a9961d7b",
+          "actual_sha256": "31ec87e55bf45187fdf755c226db24e9865197d7d36e0f3c802d59e5a9961d7b",
+          "equal": true
+        },
+        {
+          "path": "facts.json",
+          "url": "https://cloth-feed-gripper.vercel.app/facts.json",
+          "status": 200,
+          "local_bytes": 8486,
+          "remote_bytes": 8486,
+          "expected_sha256": "b711689a503670bb73a43aba1ffeac26cb970b7e17464e4dfe683d7e7227b18e",
+          "actual_sha256": "b711689a503670bb73a43aba1ffeac26cb970b7e17464e4dfe683d7e7227b18e",
+          "equal": true
+        },
+        {
+          "path": "provenance.json",
+          "url": "https://cloth-feed-gripper.vercel.app/provenance.json",
+          "status": 200,
+          "local_bytes": 1780,
+          "remote_bytes": 1780,
+          "expected_sha256": "1a9cef580761d32d1a50f2d61d2989f60b7ed50e1a79d48f13adb0961aa24d89",
+          "actual_sha256": "1a9cef580761d32d1a50f2d61d2989f60b7ed50e1a79d48f13adb0961aa24d89",
+          "equal": true
+        }
+      ],
+      "population": 3,
+      "status": "CURRENT",
+      "scope": "Exact public-byte identity only; browser flow, hidden paths and wholeC2 remain separate"
+    },
+    "live_guard": "27ok/0failed",
+    "production_browser": "existing CLI actual exit0;6gap-overlap cases at390/768/1440,3dependency states,1delayed-success recovery",
+    "native_pngs_fully_decoded": 9,
+    "inspected_native": [
+      "finding-gap-390x844.png",
+      "dependency-terminal-390.png"
+    ]
+  },
+  "fixture_boundary": "Actual production HTML/GLB/data; only exact original verified three@0.186.1 dependency prefix served from recorded fixtures. Block/delay controls intentionally injected. No source/modeldata replacement. External CDN availability is not certified by this fixture run.",
+  "prior_independent_acceptance": "READY d6604e31/PDS87 on identical product blobs; entire accepted/default Git trees equal before docs evidence",
+  "unchanged": "allengineeringvalues/meshes/fit source; hardwareunbuilt; film; separate exploded-whole-model/camera-bearing reload issues remain open",
+  "full_C2_C3_hardware": "No whole-product or hardware acceptance inferred",
+  "files": [
+    {
+      "file": "assertions.json",
+      "bytes": 13752,
+      "sha256": "197ca4f089a843468c4411566f025520d5fc03d00f76b8f09fcef892159a9e4f"
+    },
+    {
+      "file": "dependency-initial-390.png",
+      "bytes": 31081,
+      "sha256": "62cdb81cfff1bf265c3b7e596501daccd63f374dd88734b3b1559766c8a740b8"
+    },
+    {
+      "file": "dependency-initial.json",
+      "bytes": 94,
+      "sha256": "a353f727414b5d910a1be0ea1cd960d9f69add9b59f86f5e7d1d429411d75e88"
+    },
+    {
+      "file": "dependency-still-390.png",
+      "bytes": 35869,
+      "sha256": "881b7ce166ea1345b197dbf08f89577948121c4962d2cfbf1ec6c0168e04694c"
+    },
+    {
+      "file": "dependency-still.json",
+      "bytes": 163,
+      "sha256": "d7e3eeff2b4da183fde7c9c70010e156de6bc932fbebe0ff691fc3df00118b28"
+    },
+    {
+      "file": "dependency-terminal-390.png",
+      "bytes": 35153,
+      "sha256": "e88e884f5ff300044bb1b793552d2171e5cfb37fba7df26706f2e509ea5d18c9"
+    },
+    {
+      "file": "dependency-terminal.json",
+      "bytes": 212,
+      "sha256": "15b1d3280a9af0ad6f9de350ecc3e85e12147fe15c84f0024d801776efb5d54f"
+    },
+    {
+      "file": "finding-gap-1440x1000.json",
+      "bytes": 1589,
+      "sha256": "08a17d1cb1f8b78a5f14fddaf8743ff9c52b092cdbe5ac2105fa3ef25eb3bf0b"
+    },
+    {
+      "file": "finding-gap-1440x1000.png",
+      "bytes": 257475,
+      "sha256": "becdee204f5977141735012f19266945bb28d3f26735fcc1b4232c5df7314ae6"
+    },
+    {
+      "file": "finding-gap-390x844.json",
+      "bytes": 1588,
+      "sha256": "86374689415095adaf94354182e6f3c23496636fa2577b438e91a06b896866b1"
+    },
+    {
+      "file": "finding-gap-390x844.png",
+      "bytes": 81812,
+      "sha256": "cb35ab4a00a4b067a11c63fb58d3d4354615bbd318342378a293952a33a3172f"
+    },
+    {
+      "file": "finding-gap-768x1024.json",
+      "bytes": 1600,
+      "sha256": "0a19cec0220bba2caea78a3be9f210e17665262a452c8498402520279bf44d18"
+    },
+    {
+      "file": "finding-gap-768x1024.png",
+      "bytes": 144368,
+      "sha256": "84648b69717b4cc19c812c2d47329ddf3e76f0ced84c15312b8725c05151c98d"
+    },
+    {
+      "file": "finding-overlap-1440x1000.json",
+      "bytes": 2115,
+      "sha256": "967ef97ed68a2f42dff12b882e844e35047ea57f5de559540ac413177d63a4c2"
+    },
+    {
+      "file": "finding-overlap-1440x1000.png",
+      "bytes": 297486,
+      "sha256": "379c360fdc0d30d2be33dd612a3847dbb4975a3cd990878050c95fccd1cca559"
+    },
+    {
+      "file": "finding-overlap-390x844.json",
+      "bytes": 2119,
+      "sha256": "04651190bbb419edfe2326be6e60baa429155e40eb8fd907d462abacdb376c13"
+    },
+    {
+      "file": "finding-overlap-390x844.png",
+      "bytes": 87296,
+      "sha256": "d99da50d1bca8cc60efb80a4b1f6a41ee64a485d2c4c894ed301ba120c7c2bc3"
+    },
+    {
+      "file": "finding-overlap-768x1024.json",
+      "bytes": 2130,
+      "sha256": "14333118d677bb79118857df95fb99a6fd708859daf2fd149adf916db4e702a1"
+    },
+    {
+      "file": "finding-overlap-768x1024.png",
+      "bytes": 162391,
+      "sha256": "2e3eaae9c861bb380f52b78353b60eaee745341a7b821095d4103e091b0e0e49"
+    }
+  ],
+  "metered_spend": 0
+}
