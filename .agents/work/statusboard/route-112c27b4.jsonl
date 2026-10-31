@@ -1,0 +1,2 @@
+{"surface":"route","agent_id":"route-112c27b4","last_step":"registered","heartbeat_at":"2026-10-17T00:46:34.9522558Z","state":"starting"}
+{"state":"blocked","surface":"route","agent_id":"route-112c27b4","heartbeat_at":"2026-10-17T00:47:12.9510384Z","last_step":"host-load-budget"}
