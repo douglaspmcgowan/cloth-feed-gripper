@@ -1,0 +1,2 @@
+C:\Users\dougl\Worktrees\cloth-feed-gripper\actuation-stable\analysis\gripper\actuation\actuation_trade.py:596: RuntimeWarning: Mean of empty slice
+  "t_contact_s": r(np.nanmean(res["t_contact"])), "t_45_s": r(np.nanmean(res["t_45"])),

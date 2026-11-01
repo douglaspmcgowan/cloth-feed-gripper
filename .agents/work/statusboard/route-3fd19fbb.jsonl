@@ -1,0 +1,2 @@
+{"surface":"route","heartbeat_at":"2026-10-19T12:58:20.1379252Z","last_step":"registered","agent_id":"route-3fd19fbb","state":"starting"}
+{"last_step":"no-eligible-surface","state":"blocked","heartbeat_at":"2026-10-19T12:58:27.0058254Z","surface":"route","agent_id":"route-3fd19fbb"}
