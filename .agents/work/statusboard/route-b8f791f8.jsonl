@@ -1,0 +1,30 @@
+{"state":"starting","last_step":"registered","heartbeat_at":"2026-10-19T08:47:12.8067985Z","agent_id":"route-b8f791f8","surface":"route"}
+{"surface":"codex","heartbeat_at":"2026-10-19T08:47:20.7086718Z","agent_id":"route-b8f791f8","state":"starting","last_step":"selected"}
+{"last_step":"starting","agent_id":"route-b8f791f8","surface":"codex","state":"working","heartbeat_at":"2026-10-19T08:47:23.2452733Z"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"starting","progress":false,"heartbeat_at":"2026-10-19T08:47:23.5100924Z"}
+{"agent_id":"route-b8f791f8","state":"working","heartbeat_at":"2026-10-19T08:48:26.8510858Z","surface":"codex","last_step":"working 2026-10-19T08:48:26.2114792Z"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:48:26.2114792Z","progress":true,"heartbeat_at":"2026-10-19T08:48:27.1231337Z"}
+{"agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:49:27.4647850Z","state":"working","heartbeat_at":"2026-10-19T08:49:27.9774425Z","surface":"codex"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:49:27.4647850Z","progress":true,"heartbeat_at":"2026-10-19T08:49:28.2494371Z"}
+{"last_step":"working 2026-10-19T08:50:28.5772592Z","agent_id":"route-b8f791f8","surface":"codex","heartbeat_at":"2026-10-19T08:50:29.0939162Z","state":"working"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:50:28.5772592Z","progress":true,"heartbeat_at":"2026-10-19T08:50:29.3742742Z"}
+{"surface":"codex","last_step":"working 2026-10-19T08:51:29.6537668Z","heartbeat_at":"2026-10-19T08:51:30.1668227Z","state":"working","agent_id":"route-b8f791f8"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:51:29.6537668Z","progress":true,"heartbeat_at":"2026-10-19T08:51:30.3950231Z"}
+{"heartbeat_at":"2026-10-19T08:52:31.2615019Z","last_step":"working 2026-10-19T08:52:30.6977456Z","state":"working","agent_id":"route-b8f791f8","surface":"codex"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:52:30.6977456Z","progress":true,"heartbeat_at":"2026-10-19T08:52:31.5338868Z"}
+{"last_step":"baseline","state":"working","surface":"route","heartbeat_at":"2026-10-19T08:52:43.5215939Z","agent_id":"route-b8f791f8"}
+{"last_step":"working 2026-10-19T08:53:31.8086276Z","agent_id":"route-b8f791f8","heartbeat_at":"2026-10-19T08:53:32.3756148Z","surface":"codex","state":"working"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:53:31.8086276Z","progress":true,"heartbeat_at":"2026-10-19T08:53:32.6604758Z"}
+{"last_step":"working 2026-10-19T08:54:33.0175443Z","surface":"codex","heartbeat_at":"2026-10-19T08:54:33.5021773Z","state":"working","agent_id":"route-b8f791f8"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:54:33.0175443Z","progress":true,"heartbeat_at":"2026-10-19T08:54:33.7320726Z"}
+{"surface":"codex","state":"working","last_step":"working 2026-10-19T08:55:34.1087949Z","agent_id":"route-b8f791f8","heartbeat_at":"2026-10-19T08:55:34.6881902Z"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:55:34.1087949Z","progress":true,"heartbeat_at":"2026-10-19T08:55:34.9712990Z"}
+{"agent_id":"route-b8f791f8","heartbeat_at":"2026-10-19T08:56:35.8404072Z","state":"working","surface":"codex","last_step":"working 2026-10-19T08:56:35.2373557Z"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:56:35.2373557Z","progress":true,"heartbeat_at":"2026-10-19T08:56:36.0735159Z"}
+{"state":"working","heartbeat_at":"2026-10-19T08:57:36.8771465Z","last_step":"working 2026-10-19T08:57:36.3425163Z","surface":"codex","agent_id":"route-b8f791f8"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:57:36.3425163Z","progress":true,"heartbeat_at":"2026-10-19T08:57:37.0868256Z"}
+{"state":"working","last_step":"working 2026-10-19T08:58:37.3818009Z","surface":"codex","heartbeat_at":"2026-10-19T08:58:37.8164385Z","agent_id":"route-b8f791f8"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"working 2026-10-19T08:58:37.3818009Z","progress":true,"heartbeat_at":"2026-10-19T08:58:38.0446660Z"}
+{"state":"failed","agent_id":"route-b8f791f8","last_step":"completed exit=1","heartbeat_at":"2026-10-19T08:59:04.1634662Z","surface":"codex"}
+{"state":"working","surface":"codex","agent_id":"route-b8f791f8","last_step":"completed exit=1","progress":true,"heartbeat_at":"2026-10-19T08:59:04.3978265Z"}
+{"last_step":"cli-unavailable","agent_id":"route-b8f791f8","state":"blocked","heartbeat_at":"2026-10-19T08:59:11.5847291Z","surface":"codex"}
